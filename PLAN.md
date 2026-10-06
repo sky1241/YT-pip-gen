@@ -61,11 +61,11 @@ Terminée quand `image/style.md` est validé et que le kebab a son plan d'axes d
 - [ ] Écrire `image/style.md` : mots-clés de prompt, palette, 3 à 5 images de référence
 - [ ] Dessiner le plan du kebab vu de dessus : tables, comptoir, broche, miroir, escalier, vitrine
 - [ ] Lister les 6 à 8 axes de caméra et qui s'assoit où (Claude peut le préparer depuis le script)
-- [ ] Définir les cartons texte façon Eva pour les chiffres clés : police, couleurs, durée à l'écran
+- [ ] Définir les cartons texte façon Eva (chiffres clés) et le carton SMS : police, couleurs, durée à l'écran
 
 ## Phase 3 — Pilote d'une minute, à la main
 
-Terminée quand la minute des mots croisés est montée et que le temps passé à chaque étape est noté. Trois persos : Sky, Patrick et Mohamed.
+Terminée quand la minute des mots croisés est montée et que le temps passé à chaque étape est noté. Trois persos : Sky, Patrick et Mohamed. Les images à faire sont listées une par une dans `image/INVENTAIRE.md`, section 1.
 
 - [ ] Fiches texte des trois persos : rôle, énergie, silhouette, palette, tenue, détails asymétriques
 - [ ] Image maître de Sky : training noir, chemise blanche à fleurs de lys, yeux bleus
@@ -103,7 +103,7 @@ Terminée quand la scène du pilote se refait en automatique et que tu as compar
 
 Terminée quand chaque perso de l'épisode 1 a coché son protocole et que chaque axe de caméra a son fond. La liste suit « Le Miroir », à ajuster selon ce que couvre l'épisode.
 
-Le protocole, pour chaque perso, est dans `CLAUDE.md` : fiche texte, image maître, rotation, expressions, bouches, passage local, LoRA testé, voix.
+Le protocole, pour chaque perso, est dans `CLAUDE.md` : fiche texte, image maître, rotation, expressions, bouches, passage local, LoRA testé, voix. Les images à faire sont listées une par une dans `image/INVENTAIRE.md`, section 2.
 
 - [ ] Sky
   - [ ] Design : fiche, image maître, rotation

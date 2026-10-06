@@ -111,9 +111,12 @@ kebab-datastream/              (git : tout ce qui sert de référence)
 │   ├── brouillons/            textes en cours
 │   └── episodes/epNN/         episode.md : la version figée par un tag
 ├── image/
+│   ├── INVENTAIRE.md          la liste image par image, à cocher
 │   ├── style.md               le style visuel de référence
 │   ├── persos/<slug>/         fiche.json, references/, expressions/, bouches/
 │   ├── decors/<lieu>/<axe>/   fonds fixes validés
+│   ├── accessoires/           objets récurrents : galette, tasse, téléphone…
+│   ├── gabarits/              cartons texte et SMS, faits en code
 │   └── explorations/          essais non validés
 ├── audio/
 │   └── voix/<slug>/           description, référence audio, réglages
@@ -134,6 +137,7 @@ kebab-datastream/              (git : tout ce qui sert de référence)
 - **Une seule source de vérité par sujet** : `ecriture/canon.yaml` (noms, lieux), `image/persos/<slug>/fiche.json` (look d'un perso), `audio/voix/<slug>/` (sa voix), `image/style.md` (style visuel), `PLAN.md` (avancement).
 - **Tout ce qui est généré est reproductible** : modèle, LoRA et poids, prompt, seed et références sont notés dans `plans.json`.
 - **On n'écrase jamais une référence validée** : les nouvelles versions s'ajoutent (`_v2`, `_v3`).
+- **Dans `image/INVENTAIRE.md`, une case = un fichier** : dès qu'un fichier validé existe au chemin indiqué, cocher la case.
 - **Tenir `journal.md`** : après chaque session de génération, noter les réglages et les prompts qui marchent, ceux qui ratent, et pourquoi. C'est ce qui fait progresser le pipeline d'une scène à l'autre.
 - **Surveiller la taille du repo** : GitHub bloque tout fichier de plus de 100 Mo. Si le repo devient lourd, passer les images en Git LFS.
 - **Avant tout téléchargement lourd ou toute suppression, demander à l'auteur.** Annoncer la taille et la licence avant de télécharger un modèle.

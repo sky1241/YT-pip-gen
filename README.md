@@ -15,12 +15,13 @@ disque externe, hors git.
 - **[PLAN.md](PLAN.md)** — la checklist de l'épisode en cours (8 phases). C'est ce fichier qui fait foi.
 - **[ecriture/canon.yaml](ecriture/canon.yaml)** — noms, lieux, âges + les points à trancher.
 - **[ecriture/continuite.md](ecriture/continuite.md)** — l'anti-dérive, mis à jour à chaque épisode.
+- **[image/INVENTAIRE.md](image/INVENTAIRE.md)** — la liste image par image de l'épisode, une case = un fichier.
 
 ## Structure
 
 ```
 ecriture/     bible, canon, continuité, brouillons, épisodes figés
-image/        style, fiches persos, décors, explorations
+image/        inventaire, style, fiches persos, décors, accessoires, gabarits, explorations
 audio/        voix par perso
 production/   plans.json par scène (epNN/sNN/)
 workflows/    workflows ComfyUI au format API

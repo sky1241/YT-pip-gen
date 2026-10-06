@@ -1,6 +1,8 @@
 # === Kebab Datastream — canon.yaml ===
 # LA seule vérité : noms, lieux, âges. Une source de vérité par sujet.
 # Ne jamais modifier les noms présents dans les scripts de l'auteur (CLAUDE.md règle 6).
+# Chaque info vient de la bible (ecriture/bible/bible.md), avec sa ligne source.
+# Couvre le casting récurrent ; les noms ponctuels vivent dans les textes d'épisode.
 
 # ---------------------------------------------------------------------------
 # À TRANCHER AVEC L'AUTEUR (ne pas décider seul — CLAUDE.md)
@@ -8,6 +10,7 @@
 a_trancher:
   canon_kebab:
     # Décide un LoRA ET tous les décors.
+    # La bible porte les deux : section « ## MEHMET » (l.247), mais « Le kebab (Mohamed) » (l.162).
     options:
       - "Mohamed à Annemasse (texte du CERN)"
       - "Mehmet à Clichy (texte Navier-Stokes)"
@@ -27,49 +30,108 @@ a_trancher:
     choix: null
 
 # ---------------------------------------------------------------------------
+# ENTREPRISE
+# ---------------------------------------------------------------------------
+entreprise:
+  nom: "Datastream"
+  note: "Construite par Seb (bible l.362)"
+
+# ---------------------------------------------------------------------------
 # PERSONNAGES (slugs en minuscules, sans accents ni espaces)
+# age = uniquement si la bible le pose explicitement ; sinon null.
 # ---------------------------------------------------------------------------
 personnages:
+  # --- Principaux (bible « QUI ILS SONT », l.243) ---
   sky:
     nom: "Sky"
     role: "auteur-personnage (protagoniste)"
-    age: null
-    note: "Fiche look : image/persos/sky/fiche.json"
+    age: 32
+    naissance: 1994
+    source: "bible l.320 (« né en 1994, 32 ans ») ; l.207"
   maelle:
     nom: "Maëlle"
+    role: "CISO"
     age: null
-    note: "Fiche look : image/persos/maelle/fiche.json — image maître faite"
+    source: "bible l.406"
   patrick:
     nom: "Patrick"
+    role: "dev, 20 ans de COBOL"
     age: null
+    source: "bible l.382"
   mohamed:
     nom: "Mohamed"
+    role: "le kebab"
     age: null
-    note: "Dépend du canon_kebab (Mohamed/Annemasse vs Mehmet/Clichy)"
+    source: "bible l.162, l.247"
+    note: "slug provisoire — devient `mehmet` si le canon tranche pour Clichy"
   seb:
     nom: "Seb"
+    role: "a construit Datastream, le patron"
     age: null
+    source: "bible l.360"
   nath:
     nom: "Nath"
+    role: "CFO"
     age: null
+    source: "bible l.338"
   theo:
     nom: "Théo"
-    age: null
+    age: "19-21"
+    source: "bible l.320 (« Théo a 19-21 ans »)"
   daria:
     nom: "Daria"
+    role: "Russe de Moscou, trois ans de physique"
     age: null
-  grep:
-    nom: "Grep"
-    role: "chat"
+    source: "bible l.296"
+  vincent:
+    nom: "Vincent"
+    role: "pense en systèmes, parle en 6 mots max"
+    age: null
+    source: "bible l.276"
+    note: "pas à l'écran dans « Le Miroir » (image/INVENTAIRE.md)"
+
+  # --- Secondaires (bible l.198 : univers Annemasse, hors arc kebab) ---
+  clara:
+    nom: "Clara"
+    role: "trie des factures"
+    age: null
+    source: "bible l.200"
+  emilie:
+    nom: "Émilie"
+    role: "la revenante"
+    age: null
+    source: "bible l.203"
+  lea:
+    nom: "Léa"
+    role: "dev junior"
+    age: "20-23"
+    source: "bible l.207 (« 20-23 ans »)"
+    note: "pas à l'écran dans « Le Miroir » (image/INVENTAIRE.md)"
+
+  # --- Les chats (bible l.222) ---
   nmap:
     nom: "Nmap"
-    role: "chat"
+    role: "chat de Sky et Maëlle"
+    source: "bible l.223"
+    note: "design à définir, la bible ne le décrit pas"
+  grep:
+    nom: "Grep"
+    role: "chat de Daria, gris tigré, yeux jaunes"
+    source: "bible l.224"
 
 # ---------------------------------------------------------------------------
-# LIEUX
+# LIEUX (bible « LA GÉOGRAPHIE », l.160)
+# Un seul bâtiment : le kebab au rez-de-chaussée, le bureau à l'étage.
 # ---------------------------------------------------------------------------
 lieux:
+  ville: null            # Annemasse ou Clichy — dépend du canon_kebab
   kebab:
-    nom: null          # dépend du canon_kebab
-    ville: null        # Annemasse ou Clichy
+    etage: "rez-de-chaussée"
+    source: "bible l.162"
     note: "Décor principal type sitcom : quelques axes fixes, mêmes places."
+  bureau:
+    etage: "étage du dessus"
+    source: "bible l.167"
+    note: "Open space + bureaux individuels de Maëlle, Sky (plus petit que celui de Seb)."
+  escalier:
+    source: "bible l.175"

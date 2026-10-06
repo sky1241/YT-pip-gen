@@ -19,7 +19,8 @@
     "cicatrice": "petite cicatrice au sourcil"
   },
   "details_asymetriques": {
-    "_note": "côtés exacts à fixer avec l'auteur",
+    "_note": "côtés exacts à fixer avec l'auteur (à vérifier sur chaque image, cf. image/INVENTAIRE.md)",
+    "cote_rase": null,
     "cicatrice_sourcil_cote": null,
     "bague_main": null
   },
@@ -28,22 +29,7 @@
   "image_maitre": "image/persos/maelle/references/master_v1.png",
   "lora": {
     "flip_horizontal": false,
-    "_note": "flip désactivé (détails asymétriques)",
-    "entraine": false,
-    "test_standard_ok": false
+    "_note": "flip désactivé (détails asymétriques)"
   },
-  "voix": {
-    "dossier": "audio/voix/maelle/",
-    "decrite": false
-  },
-  "protocole_perso": {
-    "1_fiche_texte": true,
-    "2_image_maitre": true,
-    "3_rotation": false,
-    "4_expressions": false,
-    "5_bouches": false,
-    "6_passage_local": false,
-    "7_lora_test": false,
-    "8_voix": false
-  }
+  "voix": "audio/voix/maelle/"
 }
