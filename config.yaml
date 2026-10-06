@@ -1,0 +1,25 @@
+# === Kebab Datastream — config.yaml ===
+# Aucun chemin en dur ailleurs : tout passe par ce fichier (CLAUDE.md > Conventions).
+# Les chemins de référence (images, scripts) sont relatifs à la racine du repo.
+# Le disque externe reçoit tout ce qui est généré + les poids des modèles.
+
+# --- Disque externe (hors git) ---
+# NOTE AUTEUR : valeurs posées par défaut sur le disque 5 To détecté
+# (/media/sky/disque 5T). À confirmer / changer si la machine de production
+# monte le disque ailleurs (ex : la Debian sans sudo du fleet).
+disque_externe_label: "disque 5T"
+sorties_root: "/media/sky/disque 5T/YT-pip-gen-data/sorties"   # variantes, clips, voix générées, montages
+modeles_root: "/media/sky/disque 5T/YT-pip-gen-data/modeles"   # poids des modèles
+
+# --- ComfyUI (piloté par son API HTTP ; valeur par défaut, rien n'est installé) ---
+comfyui_url: "http://127.0.0.1:8188"
+
+# --- Machine de production ---
+# À trancher en Phase 0 : celle qui a le GPU. nvidia-smi fixe les modèles utilisables.
+machine_production: null       # ex : "debian" / "pc2" / "sky-master"
+vram_go: null                  # noté après nvidia-smi
+
+# --- Outils (chemins, remplis au fur et à mesure, rien installé pour l'instant) ---
+ffmpeg_bin: "ffmpeg"
+kdenlive_appimage: null        # chemin de l'AppImage une fois posée sur le disque externe
+python_venv: null              # chemin du venv en espace utilisateur

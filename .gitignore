@@ -1,0 +1,62 @@
+# === Kebab Datastream — .gitignore ===
+# Règle (CLAUDE.md) : le repo = table de référence. Tout ce qui est généré ou
+# lourd vit sur le disque externe (sorties/, modeles/), hors git.
+
+# --- Secrets ---
+.env
+*.key
+*.pem
+
+# --- Sorties générées (variantes d'images, clips, voix, montages) ---
+# Elles restent sur le disque externe (config.yaml: sorties_root) jusqu'à
+# validation de l'auteur. Seules les versions validées entrent dans git.
+sorties/
+modeles/
+
+# --- Vidéo générée / rendus ---
+*.mp4
+*.mov
+*.webm
+*.mkv
+*.avi
+*.gif
+
+# --- Audio généré (les voix validées vont dans audio/voix/, suivies à la main) ---
+*.wav
+*.flac
+*.mp3
+*.ogg
+*.aac
+
+# --- Poids de modèles (jamais dans git) ---
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.onnx
+*.gguf
+*.bin
+
+# --- Python / venv (installations en espace utilisateur) ---
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# --- AppImages / binaires d'outils ---
+*.AppImage
+*.deb
+
+# --- Caches divers ---
+.cache/
+*.tmp
+*.log
+.DS_Store
+Thumbs.db
+
+# --- ComfyUI (si jamais installé dans le repo par erreur) ---
+ComfyUI/
+custom_nodes/

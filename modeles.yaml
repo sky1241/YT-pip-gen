@@ -1,0 +1,17 @@
+# === Kebab Datastream — modeles.yaml ===
+# Un modèle = lien + empreinte + licence. La série est publiée sur YouTube :
+# vérifier chaque licence AVANT de monétiser (CLAUDE.md > Stack).
+# Rien n'est téléchargé pour l'instant — ce fichier se remplit en Phase 0.
+#
+# Modèle d'entrée (à copier/remplir quand un modèle est réellement posé) :
+#
+# - nom: NoobAI-XL
+#   type: checkpoint-image        # checkpoint-image | video | tts | lora | upscaler
+#   lien: ""
+#   empreinte_sha256: ""
+#   licence: ""                   # ex : "Fair AI Public License 1.0-SD"
+#   fichier: ""                   # chemin relatif à modeles_root (config.yaml)
+#   vram_go: null
+#   note: ""
+
+modeles: []

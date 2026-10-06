@@ -1,0 +1,75 @@
+# === Kebab Datastream — canon.yaml ===
+# LA seule vérité : noms, lieux, âges. Une source de vérité par sujet.
+# Ne jamais modifier les noms présents dans les scripts de l'auteur (CLAUDE.md règle 6).
+
+# ---------------------------------------------------------------------------
+# À TRANCHER AVEC L'AUTEUR (ne pas décider seul — CLAUDE.md)
+# ---------------------------------------------------------------------------
+a_trancher:
+  canon_kebab:
+    # Décide un LoRA ET tous les décors.
+    options:
+      - "Mohamed à Annemasse (texte du CERN)"
+      - "Mehmet à Clichy (texte Navier-Stokes)"
+    choix: null
+  episode_1_couvre:
+    options:
+      - "« Le Miroir » seul"
+      - "« Le Miroir » + le call (briefing de guerre)"
+    choix: null
+  points_narratifs_en_suspens:
+    theorie_du_tout: null      # ambiguë ou révélée
+    quenelles: null
+    vanne_sodomie: null
+    briefing_de_guerre: null   # cet épisode ou le suivant
+  style_reference_serie:
+    question: "Le rendu de l'image maître de Maëlle devient-il la référence de style de toute la série ?"
+    choix: null
+
+# ---------------------------------------------------------------------------
+# PERSONNAGES (slugs en minuscules, sans accents ni espaces)
+# ---------------------------------------------------------------------------
+personnages:
+  sky:
+    nom: "Sky"
+    role: "auteur-personnage (protagoniste)"
+    age: null
+    note: "Fiche look : image/persos/sky/fiche.json"
+  maelle:
+    nom: "Maëlle"
+    age: null
+    note: "Fiche look : image/persos/maelle/fiche.json — image maître faite"
+  patrick:
+    nom: "Patrick"
+    age: null
+  mohamed:
+    nom: "Mohamed"
+    age: null
+    note: "Dépend du canon_kebab (Mohamed/Annemasse vs Mehmet/Clichy)"
+  seb:
+    nom: "Seb"
+    age: null
+  nath:
+    nom: "Nath"
+    age: null
+  theo:
+    nom: "Théo"
+    age: null
+  daria:
+    nom: "Daria"
+    age: null
+  grep:
+    nom: "Grep"
+    role: "chat"
+  nmap:
+    nom: "Nmap"
+    role: "chat"
+
+# ---------------------------------------------------------------------------
+# LIEUX
+# ---------------------------------------------------------------------------
+lieux:
+  kebab:
+    nom: null          # dépend du canon_kebab
+    ville: null        # Annemasse ou Clichy
+    note: "Décor principal type sitcom : quelques axes fixes, mêmes places."
