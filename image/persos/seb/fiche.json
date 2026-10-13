@@ -1,0 +1,47 @@
+{
+  "slug": "seb",
+  "nom": "Seb",
+  "role": "patron, cofondateur : il a construit Datastream",
+  "_a_completer": [
+    "silhouette, visage et coiffure",
+    "codes couleur de la palette",
+    "le costard : couleur, cravate ou pas",
+    "détails asymétriques, puis le réglage du flip du LoRA",
+    "ce qu'il ne porte jamais",
+    "image maître"
+  ],
+  "energie": {
+    "resume": "Nerveuse, comprimée, constipée",
+    "tempo": "Moyen avec des pics de panique",
+    "volume": "Moyen, monte quand il comprend trop tard",
+    "frequence": "Le condensateur. Accumule la charge, lâche d'un coup (« oh non »)."
+  },
+  "silhouette": null,
+  "palette": {
+    "_note": "à définir avec l'auteur : la bible ne décrit pas son look"
+  },
+  "tenue_canonique": {
+    "tenue": "costard",
+    "_note": "bible-ecriture.md : « Frustré, loyal, costard » ; dans le texte, il a décroché Rothschild « en costard »"
+  },
+  "traits": {
+    "sous_pression": "il se fige : la galette intacte, les mains à plat, le regard dans le vide, puis la tête dans les mains",
+    "arc": "il mange enfin sa galette quand il lâche prise"
+  },
+  "expressions_signatures": {
+    "fige": "devant sa galette mixte intacte",
+    "recul": "il voit le sourire en premier et recule sur la banquette",
+    "tete-dans-les-mains": "« oh non », une fois par épisode (hors Le Miroir)"
+  },
+  "details_asymetriques": {
+    "_note": "à fixer avec l'auteur"
+  },
+  "accessoires": ["galette mixte"],
+  "ne_porte_jamais": [],
+  "image_maitre": null,
+  "lora": {
+    "flip_horizontal": null
+  },
+  "voix": "audio/voix/seb/",
+  "sources": "bible : table des énergies, section SEB ; bible-ecriture.md : le cast ; « Le Miroir » (ecriture/brouillons/cern.md, partie 1)"
+}

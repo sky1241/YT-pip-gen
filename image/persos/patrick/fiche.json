@@ -1,0 +1,46 @@
+{
+  "slug": "patrick",
+  "nom": "Patrick",
+  "role": "dev senior, 20 ans de COBOL",
+  "_a_completer": [
+    "silhouette, visage et coiffure",
+    "codes couleur de la palette",
+    "tenue canonique",
+    "détails asymétriques, puis le réglage du flip du LoRA",
+    "ce qu'il ne porte jamais",
+    "image maître"
+  ],
+  "energie": {
+    "resume": "Basse, constante, gravitationnelle",
+    "tempo": "Lent. Toujours lent.",
+    "volume": "Bas. Plus c'est important, plus c'est bas.",
+    "frequence": "Le transformateur. Il convertit le chaos en signal propre."
+  },
+  "silhouette": null,
+  "palette": {
+    "_note": "à définir avec l'auteur : la bible ne décrit pas son look"
+  },
+  "tenue_canonique": null,
+  "traits": {
+    "parole": "dit « monsieur » et « madame » ; pense avant de parler",
+    "sous_pression": "il ralentit : il pose sa tasse et joint les mains"
+  },
+  "expressions_signatures": {
+    "sans-lever-les-yeux": "le regard sur la grille, le stylo plume en l'air",
+    "fronce-les-sourcils": "sur son document COBOL",
+    "sourcil-millimetre": "le sourcil qui monte d'un millimètre",
+    "mains-qui-tremblent": "ses mains tremblent légèrement sur la tasse",
+    "sourire-rare": "le vrai sourire, une fois par mois (bible-ecriture.md)"
+  },
+  "details_asymetriques": {
+    "_note": "à fixer avec l'auteur"
+  },
+  "accessoires": ["tasse de thé en porcelaine", "théière", "stylo plume", "grille de mots croisés", "document COBOL"],
+  "ne_porte_jamais": [],
+  "image_maitre": null,
+  "lora": {
+    "flip_horizontal": null
+  },
+  "voix": "audio/voix/patrick/",
+  "sources": "bible : table des énergies, section PATRICK, réactions de groupe ; bible-ecriture.md : règles spéciales de Patrick ; « Le Miroir » (ecriture/brouillons/cern.md, partie 1)"
+}

@@ -11,6 +11,8 @@ a_trancher:
   canon_kebab:
     # Décide un LoRA ET tous les décors.
     # La bible porte les deux : section « ## MEHMET » (l.247), mais « Le kebab (Mohamed) » (l.162).
+    # Le passé suit le nom : la bible dit Mohamed resté ouvert à Alger pendant le Hirak (2019) ;
+    # la bible d'écriture (bible-ecriture.md) dit Mehmet, « Istanbul 2016, les tanks », avec un cousin à Istanbul.
     options:
       - "Mohamed à Annemasse (texte du CERN)"
       - "Mehmet à Clichy (texte Navier-Stokes)"

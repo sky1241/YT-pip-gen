@@ -1,0 +1,45 @@
+{
+  "slug": "daria",
+  "nom": "Daria",
+  "role": "dev, nouvelle recrue depuis trois semaines ; trois ans de physique à Moscou",
+  "_a_completer": [
+    "silhouette, visage et coiffure",
+    "codes couleur de la palette",
+    "tenue canonique",
+    "détails asymétriques, puis le réglage du flip du LoRA",
+    "ce qu'elle ne porte jamais",
+    "image maître"
+  ],
+  "energie": {
+    "resume": "Tendue, froide, compétente",
+    "tempo": "Moyen-rapide, raccourcit sous pression",
+    "volume": "Moyen, l'accent russe ressort sous tension",
+    "frequence": "Le capteur. Elle détecte ce que personne voit et le nomme."
+  },
+  "silhouette": null,
+  "palette": {
+    "_note": "à définir avec l'auteur : la bible ne décrit pas son look"
+  },
+  "tenue_canonique": null,
+  "traits": {
+    "parole": "directe, factuelle, accent russe",
+    "sous_pression": "plus froide, phrases plus courtes, elle passe en mode données"
+  },
+  "expressions_signatures": {
+    "incredule": "elle fixe la galette, puis Sky, puis la galette",
+    "blanche": "terrifiée, quand elle comprend que Sky a le cadre unifié",
+    "collee-au-miroir": "elle s'approche du miroir et regarde les dessins",
+    "rougit": "jusqu'aux oreilles (hors Le Miroir)"
+  },
+  "details_asymetriques": {
+    "_note": "à fixer avec l'auteur"
+  },
+  "accessoires": ["sac à dos (Grep dedans)", "Ayran"],
+  "ne_porte_jamais": [],
+  "image_maitre": null,
+  "lora": {
+    "flip_horizontal": null
+  },
+  "voix": "audio/voix/daria/",
+  "sources": "bible : table des énergies, section DARIA ; « Le Miroir » (ecriture/brouillons/cern.md, partie 1)"
+}

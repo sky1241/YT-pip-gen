@@ -18,13 +18,13 @@ Terminée quand une image, une phrase de voix et un clip de 5 secondes sortent d
 
 - [x] Créer le repo GitHub
 - [x] Mettre à jour `CLAUDE.md` pour le repo unique (zones `ecriture/`, `image/`, `audio/`, `production/`, `continuite.md`, tags git)
-- [ ] Poser le contenu du dossier de départ à la racine du repo, puis premier commit
-- [ ] Vérifier avec `/context` que Claude Code charge bien `CLAUDE.md`
-- [ ] Lancer le « premier lancement » de `CLAUDE.md` (dossiers, `config.yaml`, `canon.yaml`, fiches de Sky et Maëlle)
-- [ ] Vérifier la carte graphique et sa VRAM avec `nvidia-smi`, et noter le résultat
-- [ ] Choisir la machine de production : celle qui a le GPU
-- [ ] Préparer le disque externe (`sorties/`, `modeles/`) et noter ses chemins dans `config.yaml`
-- [ ] Vérifier qu'aucune variable `ANTHROPIC_API_KEY` ne traîne sur la machine
+- [x] Poser le contenu du dossier de départ à la racine du repo, puis premier commit
+- [x] Vérifier avec `/context` que Claude Code charge bien `CLAUDE.md`
+- [x] Lancer le « premier lancement » de `CLAUDE.md` (dossiers, `config.yaml`, `canon.yaml`, fiches de Sky et Maëlle)
+- [x] Vérifier la carte graphique et sa VRAM, et noter le résultat : AMD Radeon RX 5700 XT, 8 Go, aucune carte NVIDIA sur le parc (`config.yaml`)
+- [ ] Choisir la machine de production : aucune ne fait tourner la vidéo en l'état, voir `CLAUDE.md` > À trancher
+- [x] Préparer le disque externe (`sorties/`, `modeles/`) et noter ses chemins dans `config.yaml`
+- [x] Vérifier qu'aucune variable `ANTHROPIC_API_KEY` ne traîne sur la machine
 - [ ] Installer Python (venv), ffmpeg et ComfyUI, en espace utilisateur sur la Debian sans sudo
 - [ ] Générer une première image dans ComfyUI
 - [ ] Installer Kdenlive (AppImage)
@@ -45,6 +45,7 @@ Terminée quand l'épisode 1 est figé dans le repo avec le tag `ep01-v1`. Cette
   - [ ] Chiffres du consortium reconstruits sur un marché spatial sourcé
 - [ ] Réduire le tic « vient de »
 - [ ] Trancher les points en suspens : la théorie du tout (ambiguë ou révélée), les quenelles, la vanne sur la sodomie, le briefing de guerre (cet épisode ou le suivant)
+- [ ] Trancher les écarts entre `bible-ecriture.md` et la bible ou le texte : le couple (« Sky = soumis content »), Mehmet à Istanbul ou Mohamed à Alger, Sky à 87 ou 92 kg, Yamauchi ou Asai, l'explication des langues que `corrections-cern.md` remplace
 - [ ] Fact-check final : chaque chiffre sourcé et daté, chaque comparaison faite sur la même base
 - [ ] Lire l'épisode à voix haute, chrono en main : viser 15 minutes
 - [ ] Déposer l'épisode dans `ecriture/episodes/ep01/episode.md`
@@ -62,19 +63,20 @@ Terminée quand `image/style.md` est validé et que le kebab a son plan d'axes d
 - [ ] Dessiner le plan du kebab vu de dessus : tables, comptoir, broche, miroir, escalier, vitrine
 - [ ] Lister les 6 à 8 axes de caméra et qui s'assoit où (Claude peut le préparer depuis le script)
 - [ ] Définir les cartons texte façon Eva (chiffres clés) et le carton SMS : police, couleurs, durée à l'écran
+- [ ] Tester une première planche de la palette des émotions sur Maëlle, dont l'image maître existe, puis sa découpe en fichiers
 
 ## Phase 3 — Pilote d'une minute, à la main
 
 Terminée quand la minute des mots croisés est montée et que le temps passé à chaque étape est noté. Trois persos : Sky, Patrick et Mohamed. Les images à faire sont listées une par une dans `image/INVENTAIRE.md`, section 1.
 
-- [ ] Fiches texte des trois persos : rôle, énergie, silhouette, palette, tenue, détails asymétriques
-- [ ] Image maître de Sky : training noir, chemise blanche à fleurs de lys, yeux bleus
+- [ ] Fiches des trois persos : compléter le look, d'après la liste « à compléter » de chaque fiche (rôle, énergie et signatures sont déjà posés)
+- [ ] Image maître de Sky : training noir, chemise blanche à fleurs de lys, baskets, yeux bleus
 - [ ] Image maître de Patrick
 - [ ] Image maître de Mohamed
-- [ ] Expressions utiles au pilote, dont le sourire de Sky : yeux sans reflet, joues plates, seule la bouche bouge
+- [ ] Expressions du pilote, marquées « · pilote » dans `image/INVENTAIRE.md`, dont le sourire de Sky : yeux sans reflet, joues plates, seule la bouche bouge
 - [ ] Bouches fermée, mi-ouverte et ouverte pour les trois
 - [ ] Fonds de la table du fond et du comptoir
-- [ ] Voix des trois persos, décrites depuis la table des énergies
+- [ ] Voix des trois persos : compléter et valider leur description dans `audio/voix/` (énergie et 3 répliques déjà posées)
 - [ ] Découpage de la scène en `plans.json` (Claude)
 - [ ] Voix générées, puis animatic → validation
 - [ ] Images clés en 2 ou 3 variantes → choix
@@ -103,49 +105,85 @@ Terminée quand la scène du pilote se refait en automatique et que tu as compar
 
 Terminée quand chaque perso de l'épisode 1 a coché son protocole et que chaque axe de caméra a son fond. La liste suit « Le Miroir », à ajuster selon ce que couvre l'épisode.
 
-Le protocole, pour chaque perso, est dans `CLAUDE.md` : fiche texte, image maître, rotation, expressions, bouches, passage local, LoRA testé, voix. Les images à faire sont listées une par une dans `image/INVENTAIRE.md`, section 2.
+Le protocole, pour chaque perso, est dans `CLAUDE.md`. Ici, une case par étape. Le détail fichier par fichier est dans `image/INVENTAIRE.md`, et ce qui manque à chaque fiche est dans sa liste « à compléter ».
+
+La palette des émotions, la même pour tous : 36 émotions en 6 planches, définies dans `image/emotions.md`.
 
 - [ ] Sky
-  - [ ] Design : fiche, image maître, rotation
-  - [ ] Expressions et bouches, plus le jeu du sourire : sourire fermé, grimace, rire ouvert
+  - [ ] Fiche : compléter le look
+  - [ ] Image maître
+  - [ ] Rotation : face, trois-quarts, profil, dos, en pied
+  - [ ] Palette des émotions de face : les 6 planches
+  - [ ] Palette des émotions de trois-quarts : les 6 planches
+  - [ ] Signatures : les 9, dont le jeu du sourire
+  - [ ] Bouches : les 6 de base et les 6 du sourire (sourire fermé, grimace, rire ouvert, sous les deux angles)
   - [ ] LoRA : passage local, entraînement, test standard
-  - [ ] Voix
+  - [ ] Voix : compléter et valider `audio/voix/sky/`
 - [ ] Maëlle
-  - [ ] Design : fiche, rotation (image maître faite)
-  - [ ] Expressions et bouches, taches de rousseur simplifiées
+  - [ ] Fiche : compléter le look, dont le côté de chaque détail asymétrique
+  - [x] Image maître
+  - [ ] Rotation : face, trois-quarts, profil, dos, en pied
+  - [ ] Palette des émotions : les 6 planches
+  - [ ] Signatures : les 4
+  - [ ] Bouches : les 6, taches de rousseur simplifiées
   - [ ] LoRA : passage local, entraînement sans retournement horizontal, test standard
-  - [ ] Voix
+  - [ ] Voix : compléter et valider `audio/voix/maelle/`
 - [ ] Patrick
-  - [ ] Design : fiche, image maître, rotation
-  - [ ] Expressions et bouches
+  - [ ] Fiche : compléter le look
+  - [ ] Image maître
+  - [ ] Rotation : face, trois-quarts, profil, dos, en pied
+  - [ ] Palette des émotions : les 6 planches
+  - [ ] Signatures : les 5
+  - [ ] Bouches : les 6
   - [ ] LoRA : passage local, entraînement, test standard
-  - [ ] Voix
+  - [ ] Voix : compléter et valider `audio/voix/patrick/`
 - [ ] Mohamed
-  - [ ] Design : fiche, image maître, rotation
-  - [ ] Expressions et bouches
+  - [ ] Fiche : trancher le canon (Mohamed ou Mehmet), puis compléter le look
+  - [ ] Image maître
+  - [ ] Rotation : face, trois-quarts, profil, dos, en pied
+  - [ ] Palette des émotions : les 6 planches
+  - [ ] Signatures : les 3
+  - [ ] Bouches : les 6
   - [ ] LoRA : passage local, entraînement, test standard
-  - [ ] Voix
+  - [ ] Voix : compléter et valider `audio/voix/mohamed/`
 - [ ] Seb
-  - [ ] Design : fiche, image maître, rotation
-  - [ ] Expressions et bouches
+  - [ ] Fiche : compléter le look, dont le costard
+  - [ ] Image maître
+  - [ ] Rotation : face, trois-quarts, profil, dos, en pied
+  - [ ] Palette des émotions : les 6 planches
+  - [ ] Signatures : les 3
+  - [ ] Bouches : les 6
   - [ ] LoRA : passage local, entraînement, test standard
-  - [ ] Voix
+  - [ ] Voix : compléter et valider `audio/voix/seb/`
 - [ ] Nath
-  - [ ] Design : fiche, image maître, rotation
-  - [ ] Expressions et bouches
+  - [ ] Fiche : compléter le look
+  - [ ] Image maître
+  - [ ] Rotation : face, trois-quarts, profil, dos, en pied
+  - [ ] Palette des émotions : les 6 planches
+  - [ ] Signatures : les 4
+  - [ ] Bouches : les 6
   - [ ] LoRA : passage local, entraînement, test standard
-  - [ ] Voix
+  - [ ] Voix : compléter et valider `audio/voix/nath/`
 - [ ] Théo
-  - [ ] Design : fiche, image maître, rotation
-  - [ ] Expressions et bouches
+  - [ ] Fiche : compléter le look
+  - [ ] Image maître
+  - [ ] Rotation : face, trois-quarts, profil, dos, en pied
+  - [ ] Palette des émotions : les 6 planches
+  - [ ] Signatures : les 3
+  - [ ] Bouches : les 6
   - [ ] LoRA : passage local, entraînement, test standard
-  - [ ] Voix
+  - [ ] Voix : compléter et valider `audio/voix/theo/`
 - [ ] Daria
-  - [ ] Design : fiche, image maître, rotation
-  - [ ] Expressions et bouches
+  - [ ] Fiche : compléter le look
+  - [ ] Image maître
+  - [ ] Rotation : face, trois-quarts, profil, dos, en pied
+  - [ ] Palette des émotions : les 6 planches
+  - [ ] Signatures : les 4
+  - [ ] Bouches : les 6
   - [ ] LoRA : passage local, entraînement, test standard
-  - [ ] Voix
-- [ ] Grep et Nmap, les chats : image maître et rotation
+  - [ ] Voix : compléter et valider `audio/voix/daria/`
+- [ ] Grep, le chat de Daria : fiche (le motif du pelage), image maître, rotation, 2 signatures
+- [ ] Nmap, le chat de Sky et Maëlle : fiche (tout le design), image maître, rotation
 - [ ] LoRA de style
 - [ ] Un fond par axe de caméra du kebab, plus l'escalier
 - [ ] Une image maître par axe, avec les persos à leur place habituelle

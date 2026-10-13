@@ -7,7 +7,7 @@ Mini-série anime en français, style années 90 (entre *Le Voyage de Chihiro* e
 - **« Sky » désigne à la fois l'auteur et le personnage principal.** Dans ce fichier, « l'auteur » = l'utilisateur, « Sky » = le personnage.
 - **L'auteur écrit les épisodes. Claude ne les écrit jamais.** Il ne réécrit un passage que sur demande explicite : il liste d'abord les passages touchés et ce qu'il propose, l'auteur valide, puis il réécrit. Un problème repéré (science, canon, cohérence) se signale à l'auteur, il ne se corrige pas en silence.
 - **Claude pilote la production.** Il tient ce repo à jour comme table de référence, envoie les commandes aux modèles de génération et améliore le pipeline en continu. L'auteur dirige et valide.
-- Qualité visée : propre et cohérente, pas parfaite. La cohérence d'un plan à l'autre prime sur la beauté d'une image isolée.
+- Qualité visée : propre et cohérente, pas parfaite. Agréable à regarder, drôle à l'oral : on ne fait pas du Miyazaki. La cohérence d'un plan à l'autre prime sur la beauté d'une image isolée.
 
 ## Avant tout travail
 
@@ -21,7 +21,7 @@ Mini-série anime en français, style années 90 (entre *Le Voyage de Chihiro* e
 2. **Comparer des choses comparables** : mêmes unités, même base.
 3. **Aucun chiffre sans source ni date de vérification.** Si ce n'est pas vérifiable, le signaler. Ne jamais inventer.
 4. **Toujours finir par le bas** : Sky lance, un perso technique reformule, Mohamed ou Théo résume en une phrase que tout le monde comprend.
-5. **La bible fait foi** (`ecriture/bible/bible.md`) : voix, tics, règles des persos. Sky ne dit jamais un terme scientifique propre, sauf s'il touche à la destruction.
+5. **La bible fait foi** (`ecriture/bible/bible.md`) : voix, tics, règles des persos. Sky ne dit jamais un terme scientifique propre, sauf s'il touche à la destruction. Le même dossier contient la bible d'écriture (`bible-ecriture.md` : format, voix de Sky, outils de réaction, pièges à répétition), la recette d'un épisode (`recette-episode.md`) et la stratégie de traduction (`traduction-anglaise.md`). Ces trois fichiers sont plus anciens que la bible : quand ils la contredisent, ou contredisent le texte d'un épisode, c'est la bible et le texte qui priment, et Claude signale l'écart à l'auteur.
 6. **Ne jamais modifier les noms présents dans les scripts de l'auteur.** Les références à des personnes et à des événements réels sont un choix assumé (satire volontairement ambiguë). Claude ne reproduit pas pour autant le visage d'une personne réelle : pour les personnes réelles qui apparaissent à l'écran, des designs inventés.
 7. **Textes en chantier :**
    - Le texte du CERN (`ecriture/brouillons/cern.md`) est en cours de correction scientifique (`ecriture/corrections-cern.md`). À part la scène d'ouverture (les mots croisés), ne génère pas ses voix avant que l'auteur ait validé les corrections.
@@ -73,18 +73,18 @@ Dans l'ordre. Un perso n'entre en production que quand les 8 étapes sont faites
 1. **Fiche texte** (`image/persos/<slug>/fiche.json`), tirée de la bible : rôle, énergie, silhouette, palette (codes couleur), tenue canonique, détails asymétriques avec le côté exact, accessoires, ce qu'il ne porte jamais.
 2. **Image maître**, conçue dans ChatGPT et validée par l'auteur.
 3. **Planche de rotation** : face, trois-quarts, profil, dos, en pied, sur fond neutre et sous la même lumière. AniSora peut générer une rotation à 360° depuis l'image de face.
-4. **Expressions** : 5 de base (neutre, sourire, colère, surprise, tristesse ou gêne) + 2 à 4 signatures tirées de la bible.
+4. **Expressions** : la palette des émotions, la même pour tous : 36 émotions en 6 planches (`image/emotions.md`), + 2 à 4 signatures tirées de la bible ou du texte. Sky, le protagoniste, en a plus : sa palette aussi de trois-quarts, et toutes ses signatures. La liste fichier par fichier est dans `image/INVENTAIRE.md`.
 5. **Bouches** : fermée, mi-ouverte, ouverte, sous les angles principaux.
 6. **Passage local** : tout repasse dans le modèle local (image-to-image), dans le style final. C'est le jeu d'entraînement du LoRA.
 7. **LoRA + test standard** : les mêmes 10 prompts de test pour chaque perso. Retournement horizontal (flip) désactivé pour tout perso aux détails asymétriques.
-8. **Voix** (`audio/voix/<slug>/`) : description tirée de la table des énergies de la bible, 3 répliques types, validation.
+8. **Voix** (`audio/voix/<slug>/`) : description tirée de la table des énergies de la bible, 3 répliques types, validation. Sky a la voix de l'auteur, faite par lui. Les autres partent d'une voix de base choisie d'après leur description, retouchée au montage si besoin.
 
 ## Stack (gratuite, à confirmer selon la VRAM)
 
 - **ComfyUI** en local, piloté par son API HTTP. Les workflows sont exportés au format API dans `workflows/`. Ne jamais utiliser les « API nodes » (modèles fermés payants).
 - **Images** : checkpoint anime SDXL (NoobAI-XL ou Illustrious).
 - **Vidéo** : AniSora (V3.x, construit sur Wan 2.2 ; une version de la V3.1 tourne avec 12 Go de VRAM) pour l'image-to-video, l'interpolation entre images clés, l'animation par masque, le guidage audio, la rotation à 360° d'un perso et la super-résolution. Wan 2.2 en complément (speech-to-video). LTX si la VRAM le permet.
-- **Voix** : Qwen3-TTS, voix créées par description. Celle de Sky peut être clonée sur la voix de l'auteur.
+- **Voix** : Qwen3-TTS. Sky a la voix de l'auteur. Les autres partent d'une voix de base choisie d'après leur description, retouchée au montage si besoin.
 - **Montage** : Kdenlive (AppImage), timeline via OpenTimelineIO.
 - **Outils** : Python, ffmpeg.
 - La licence de chaque modèle est notée dans `modeles.yaml` : la série est publiée sur YouTube. AniSora est sous Apache 2.0 avec des restrictions d'usage à lire avant de monétiser.
@@ -104,16 +104,22 @@ kebab-datastream/              (git : tout ce qui sert de référence)
 ├── modeles.yaml               modèles : lien, empreinte, licence
 ├── journal.md                 ce qui marche et ce qui rate : réglages, prompts, pièges
 ├── ecriture/
-│   ├── bible/bible.md         persos, relations, règles d'écriture
+│   ├── bible/
+│   │   ├── bible.md           persos, relations, dynamiques, espaces, craft : fait foi
+│   │   ├── bible-ecriture.md  format, voix de Sky, outils de réaction, pièges
+│   │   ├── recette-episode.md ce que chaque épisode doit enseigner et mélanger
+│   │   └── traduction-anglaise.md   la stratégie pour la version anglaise
 │   ├── canon.yaml             noms, lieux, âges : la seule vérité
 │   ├── continuite.md          l'état de la série, mis à jour à chaque épisode
 │   ├── corrections-cern.md    brief de corrections du texte du CERN
 │   ├── brouillons/            textes en cours
+│   ├── sources/               textes d'origine du JDR (lulz, institut, Léa) : ne font pas foi
 │   └── episodes/epNN/         episode.md : la version figée par un tag
 ├── image/
 │   ├── INVENTAIRE.md          la liste image par image, à cocher
+│   ├── emotions.md            la palette des émotions, commune à tous les persos
 │   ├── style.md               le style visuel de référence
-│   ├── persos/<slug>/         fiche.json, references/, expressions/, bouches/
+│   ├── persos/<slug>/         fiche.json, planches/, references/, expressions/, bouches/
 │   ├── decors/<lieu>/<axe>/   fonds fixes validés
 │   ├── accessoires/           objets récurrents : galette, tasse, téléphone…
 │   ├── gabarits/              cartons texte et SMS, faits en code
@@ -171,8 +177,7 @@ Statuts : `a_generer` → `genere` → `valide` ou `rejete`. Les répliques sont
 
 - **Canon du kebab** : Mohamed à Annemasse (texte du CERN) ou Mehmet à Clichy (texte Navier-Stokes). Ça décide un LoRA et tous les décors.
 - **Ce que couvre l'épisode 1** : « Le Miroir » seul, ou avec le call.
-- **La VRAM de la machine** (`nvidia-smi`), qui fixe les modèles utilisables.
-- **Le style définitif** (`image/style.md`), et si le rendu de l'image maître de Maëlle devient la référence de toute la série.
+- **La machine de génération.** Aucune machine du parc n'a de carte NVIDIA (relevé du 13 octobre 2026, détail dans `config.yaml`). La mieux équipée, sky-master, a une AMD Radeon RX 5700 XT de 8 Go : c'est trop peu pour AniSora, qui demande 12 Go dans sa version légère, et ROCm ne prend pas officiellement en charge cette génération de puce. Options : tester les images sur cette carte, puis louer ou acheter une carte NVIDIA pour la vidéo.- **Le style définitif** (`image/style.md`), et si le rendu de l'image maître de Maëlle devient la référence de toute la série.
 
 ## Premier lancement
 
@@ -186,4 +191,4 @@ Statuts : `a_generer` → `genere` → `valide` ou `rejete`. Les répliques sont
 
 ## Plus tard
 
-- Version anglaise : sous-titres d'abord, puis doublage en TTS avec les mêmes voix. Les jeux de mots (dont les mots croisés de Patrick) se réécrivent, ils ne se traduisent pas.
+- Version anglaise : sous-titres d'abord, puis doublage en TTS avec les mêmes voix. La stratégie déjà décidée pour le texte est dans `ecriture/bible/traduction-anglaise.md` : le français brut de Sky reste, avec sa traduction. Les jeux de mots (dont les mots croisés de Patrick) se réécrivent, ils ne se traduisent pas.

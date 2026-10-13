@@ -5,8 +5,8 @@
 
 # --- Disque externe (hors git) ---
 # NOTE AUTEUR : valeurs posées par défaut sur le disque 5 To détecté
-# (/media/sky/disque 5T). À confirmer / changer si la machine de production
-# monte le disque ailleurs (ex : la Debian sans sudo du fleet).
+# (/media/sky/disque 5T). À confirmer / changer si la génération tourne
+# sur une autre machine que sky-master.
 disque_externe_label: "disque 5T"
 sorties_root: "/media/sky/disque 5T/YT-pip-gen-data/sorties"   # variantes, clips, voix générées, montages
 modeles_root: "/media/sky/disque 5T/YT-pip-gen-data/modeles"   # poids des modèles
@@ -15,11 +15,15 @@ modeles_root: "/media/sky/disque 5T/YT-pip-gen-data/modeles"   # poids des modè
 comfyui_url: "http://127.0.0.1:8188"
 
 # --- Machine de production ---
-# À trancher en Phase 0 : celle qui a le GPU. nvidia-smi fixe les modèles utilisables.
-machine_production: null       # ex : "debian" / "pc2" / "sky-master"
-vram_go: null                  # noté après nvidia-smi
+# À trancher (CLAUDE.md > À trancher). Relevé du 2026-10-13 : aucune carte NVIDIA sur le parc.
+#   sky-master : AMD Radeon RX 5700 XT (gfx1010), 8 Go de VRAM, ROCm 6.2.2 ; 15 Go de RAM ; pas de sudo
+#   pc1 : GeForce GTX 770 (2013), sans pilote NVIDIA
+#   pc2 : portable, Mobility Radeon HD 5650, 7 Go de RAM
+#   pc3 : portable, Intel HD Graphics 620, 7 Go de RAM
+machine_production: null       # ex : "sky-master"
+vram_go: 8                     # sky-master ; carte AMD, relevé avec rocminfo (pas de nvidia-smi)
 
 # --- Outils (chemins, remplis au fur et à mesure, rien installé pour l'instant) ---
-ffmpeg_bin: "ffmpeg"
-kdenlive_appimage: null        # chemin de l'AppImage une fois posée sur le disque externe
+ffmpeg_bin: "ffmpeg"           # ffmpeg 5.1.9, déjà sur sky-master
+kdenlive_appimage: null        # à poser : le Kdenlive installé (22.12.3, paquet Debian) n'a pas l'import OpenTimelineIO natif (25.04 et plus)
 python_venv: null              # chemin du venv en espace utilisateur

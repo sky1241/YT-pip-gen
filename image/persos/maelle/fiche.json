@@ -1,8 +1,19 @@
 {
   "slug": "maelle",
   "nom": "Maëlle",
-  "role": null,
-  "energie": null,
+  "role": "CISO, femme de Sky",
+  "_a_completer": [
+    "silhouette",
+    "codes couleur de la palette",
+    "le côté rasé, le côté de la cicatrice, la main de la bague",
+    "ce qu'elle ne porte jamais"
+  ],
+  "energie": {
+    "resume": "Haute tension constante, contrôlée",
+    "tempo": "Rapide, staccato",
+    "volume": "Monte par paliers — murmure → normal → HURLE",
+    "frequence": "Le disjoncteur. Elle régule. Quand elle saute, tout disjoncte."
+  },
   "silhouette": null,
   "palette": {
     "_note": "codes couleur à fixer depuis l'image maître / la bible",
@@ -18,6 +29,12 @@
     "taches_de_rousseur": "oui — à simplifier en production",
     "cicatrice": "petite cicatrice au sourcil"
   },
+  "expressions_signatures": {
+    "regard-qui-tue": "« T'as compris quoi exactement Daria. »",
+    "bras-croises": "elle s'adosse, croise les bras et s'efface quand le sourire de Sky arrive",
+    "mode-ciso": "la voix basse et le ton froid : ce n'est plus la femme qui parle, c'est la CISO",
+    "rougeur": "elle rougit malgré elle (hors Le Miroir)"
+  },
   "details_asymetriques": {
     "_note": "côtés exacts à fixer avec l'auteur (à vérifier sur chaque image, cf. image/INVENTAIRE.md)",
     "cote_rase": null,
@@ -31,5 +48,6 @@
     "flip_horizontal": false,
     "_note": "flip désactivé (détails asymétriques)"
   },
-  "voix": "audio/voix/maelle/"
+  "voix": "audio/voix/maelle/",
+  "sources": "bible : table des énergies, section MAËLLE ; « Le Miroir » (ecriture/brouillons/cern.md, partie 1)"
 }

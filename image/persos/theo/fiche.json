@@ -1,0 +1,44 @@
+{
+  "slug": "theo",
+  "nom": "Théo",
+  "role": "dev junior",
+  "_a_completer": [
+    "silhouette, visage et coiffure",
+    "codes couleur de la palette",
+    "tenue canonique",
+    "détails asymétriques, puis le réglage du flip du LoRA",
+    "ce qu'il ne porte jamais",
+    "image maître"
+  ],
+  "energie": {
+    "resume": "Haute, rebondissante, solaire",
+    "tempo": "Rapide, pas de pause",
+    "volume": "Fort, toujours fort",
+    "frequence": "Le haut-parleur. Il amplifie tout ce que la pièce pense tout bas."
+  },
+  "silhouette": null,
+  "palette": {
+    "_note": "à définir avec l'auteur : la bible ne décrit pas son look"
+  },
+  "tenue_canonique": null,
+  "traits": {
+    "parole": "dit « monsieur Mohamed » ; parle la bouche pleine",
+    "sous_pression": "il fait des blagues"
+  },
+  "expressions_signatures": {
+    "bouche-pleine": "il parle avec des frites dans la bouche",
+    "panique": "« Pas le sourire. »",
+    "mains-sous-la-table": "elles tremblent à « 600 millions le gramme » (hors Le Miroir)"
+  },
+  "details_asymetriques": {
+    "_note": "à fixer avec l'auteur"
+  },
+  "accessoires": ["frites", "bouteille de Fanta"],
+  "ne_porte_jamais": [],
+  "image_maitre": null,
+  "lora": {
+    "flip_horizontal": null
+  },
+  "voix": "audio/voix/theo/",
+  "sources": "bible : table des énergies, section THÉO ; « Le Miroir » (ecriture/brouillons/cern.md, partie 1)"
+}

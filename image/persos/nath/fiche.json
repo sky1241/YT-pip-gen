@@ -1,0 +1,45 @@
+{
+  "slug": "nath",
+  "nom": "Nath",
+  "role": "CFO",
+  "_a_completer": [
+    "silhouette, visage et coiffure",
+    "codes couleur de la palette",
+    "tenue canonique",
+    "détails asymétriques, puis le réglage du flip du LoRA",
+    "ce qu'elle ne porte jamais",
+    "image maître"
+  ],
+  "energie": {
+    "resume": "Plate, régulière, métronomique",
+    "tempo": "Constant, rapide quand le stylo court",
+    "volume": "Bas sauf quand elle pose le stylo et lève les yeux",
+    "frequence": "L'oscilloscope. Elle mesure les fréquences des autres."
+  },
+  "silhouette": null,
+  "palette": {
+    "_note": "à définir avec l'auteur : la bible ne décrit pas son look"
+  },
+  "tenue_canonique": null,
+  "traits": {
+    "parole": "dit le chiffre sans lever les yeux",
+    "sous_pression": "le stylo court plus vite, elle lève les yeux moins souvent"
+  },
+  "expressions_signatures": {
+    "plisse-les-yeux": "devant les dessins du miroir",
+    "pose-le-stylo": "le stylo immobile, elle lève les yeux : le chiffre change tout",
+    "sourcil-leve": "« t'es sûr ? » (hors Le Miroir)",
+    "calcul": "le stylo qui court (hors Le Miroir)"
+  },
+  "details_asymetriques": {
+    "_note": "à fixer avec l'auteur"
+  },
+  "accessoires": ["stylo", "casque (sans musique)"],
+  "ne_porte_jamais": [],
+  "image_maitre": null,
+  "lora": {
+    "flip_horizontal": null
+  },
+  "voix": "audio/voix/nath/",
+  "sources": "bible : table des énergies, section NATH ; « Le Miroir » (ecriture/brouillons/cern.md, partie 1)"
+}

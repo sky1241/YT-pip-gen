@@ -51,6 +51,7 @@ __pycache__/
 *.deb
 
 # --- Caches divers ---
+.muninn/
 .cache/
 *.tmp
 *.log

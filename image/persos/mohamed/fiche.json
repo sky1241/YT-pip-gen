@@ -1,0 +1,48 @@
+{
+  "slug": "mohamed",
+  "_note_slug": "provisoire : devient « mehmet » si le canon tranche pour Clichy (ecriture/canon.yaml)",
+  "nom": "Mohamed",
+  "role": "patron du kebab",
+  "_a_completer": [
+    "le canon : Mohamed (Alger) ou Mehmet (Istanbul), qui décide aussi son passé",
+    "silhouette, visage et coiffure",
+    "codes couleur de la palette",
+    "tenue canonique",
+    "détails asymétriques, puis le réglage du flip du LoRA",
+    "ce qu'il ne porte jamais",
+    "image maître"
+  ],
+  "energie": {
+    "resume": "Chaude, stable, immuable",
+    "tempo": "Lent, régulier, celui de la broche",
+    "volume": "Moyen, jamais il crie, jamais il chuchote",
+    "frequence": "La terre. Le ground. Tout le circuit est branché sur lui."
+  },
+  "silhouette": null,
+  "palette": {
+    "_note": "à définir avec l'auteur : la bible ne décrit pas son look"
+  },
+  "tenue_canonique": null,
+  "traits": {
+    "place": "derrière le comptoir, à la broche",
+    "parole": "parle sans lever les yeux ; marmonne en arabe quand ça le dépasse",
+    "sous_pression": "il fait comme d'habitude : il essuie son comptoir",
+    "origine": "dépend du canon : Mohamed, resté ouvert à Alger pendant le Hirak en 2019 (bible) ; Mehmet, « Istanbul 2016, les tanks », avec un cousin à Istanbul (bible-ecriture.md). Le « pendant un coup d'État » de la bible vient sans doute de la version Mehmet"
+  },
+  "expressions_signatures": {
+    "essuie-le-comptoir": "il essuie le comptoir sans lever les yeux",
+    "haussement-epaules": "quand on lui dit qu'il fait de la science",
+    "tete-penchee": "il penche la tête devant les dessins du miroir"
+  },
+  "details_asymetriques": {
+    "_note": "à fixer avec l'auteur"
+  },
+  "accessoires": ["torchon", "théière de Patrick", "marqueur (qu'il lance sans regarder)"],
+  "ne_porte_jamais": [],
+  "image_maitre": null,
+  "lora": {
+    "flip_horizontal": null
+  },
+  "voix": "audio/voix/mohamed/",
+  "sources": "bible : table des énergies, section MEHMET ; bible-ecriture.md : règles spéciales de Mehmet ; « Le Miroir » (ecriture/brouillons/cern.md, partie 1)"
+}

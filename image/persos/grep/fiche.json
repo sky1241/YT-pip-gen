@@ -1,0 +1,31 @@
+{
+  "slug": "grep",
+  "nom": "Grep",
+  "role": "le chat de Daria",
+  "_a_completer": [
+    "le motif du pelage et ses côtés, puis le réglage du flip du LoRA",
+    "image maître"
+  ],
+  "silhouette": null,
+  "palette": {
+    "pelage": "gris tigré",
+    "yeux": "jaunes"
+  },
+  "traits": {
+    "air": "air de propriétaire",
+    "habitude": "décide que rien n'est intéressant et va dormir sous le bureau de Patrick"
+  },
+  "expressions_signatures": {
+    "dans-le-sac": "il sort la tête du sac de Daria",
+    "proteste": "il tombe du sac et proteste"
+  },
+  "details_asymetriques": {
+    "_note": "à fixer avec l'auteur : le motif tigré n'est pas symétrique"
+  },
+  "image_maitre": null,
+  "lora": {
+    "flip_horizontal": null
+  },
+  "voix": null,
+  "sources": "bible : les chats ; « Le Miroir » (ecriture/brouillons/cern.md, partie 1)"
+}

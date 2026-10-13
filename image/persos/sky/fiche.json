@@ -1,10 +1,25 @@
 {
   "slug": "sky",
   "nom": "Sky",
-  "role": "auteur-personnage (protagoniste)",
-  "energie": null,
+  "role": "protagoniste : électricien, associé de Seb chez Datastream",
+  "_a_completer": [
+    "codes couleur de la palette",
+    "taille : 1m87 dans la fiche des personnages du JDR d'origine, une autre histoire (à confirmer)",
+    "poids : 87 kg dans la bible et le texte, 92 kg dans bible-ecriture.md (à trancher)",
+    "détails asymétriques s'il y en a, puis le réglage du flip du LoRA",
+    "ce qu'il ne porte jamais",
+    "image maître"
+  ],
+  "energie": {
+    "resume": "Variable — bouffe = moyen, silence = zéro, sourire = explosion",
+    "tempo": "Imprévisible",
+    "volume": "Bas sauf mode institut",
+    "frequence": "L'ampère. Le courant. Il EST l'énergie qui traverse le circuit."
+  },
   "silhouette": {
-    "poids_kg": 87
+    "poids_kg": 87,
+    "masse_grasse": "8 %",
+    "_note": "« Les avant-bras d'un mec qui a porté des câbles pendant 10 ans » (Le Miroir)"
   },
   "palette": {
     "_note": "codes couleur à fixer depuis l'image maître / la bible",
@@ -14,19 +29,39 @@
   },
   "tenue_canonique": {
     "training": "noir",
-    "chemise": "blanche à fleurs de lys"
+    "chemise": "blanche à fleurs de lys",
+    "chaussures": "baskets"
   },
   "traits": {
     "yeux": "bleus, avec reflets en temps normal"
+  },
+  "modes": {
+    "_note": "la state machine de la bible, reliée aux expressions de image/INVENTAIRE.md",
+    "bouffe": "bouche-pleine",
+    "silence": "regard-vide",
+    "sourire": "le-sourire, puis rire-degenere",
+    "soumis": "blemit, cherche-feu-vert (devant Maëlle uniquement)",
+    "institut": "hors épisode 1"
   },
   "jeu_du_sourire": {
     "sourire": "les reflets des yeux disparaissent, pas de plis aux yeux, joues plates, seule la bouche bouge",
     "rire_degenere": "grimace façon Tanya (Youjo Senki)"
   },
+  "expressions_signatures": {
+    "regard-plafond": "il mâche et regarde le plafond",
+    "bouche-pleine": "bouche pleine, pas impressionné",
+    "sourcil-leve": "il regarde quelqu'un en levant un sourcil",
+    "haussement-epaules": "il hausse les épaules, comme si on lui disait qu'il a du sel sur la table",
+    "blemit": "il avale sa bouchée d'un coup, pose la galette, les mains à plat",
+    "regard-vide": "les yeux fixent un point que personne voit",
+    "le-sourire": "voir jeu_du_sourire",
+    "rire-degenere": "voir jeu_du_sourire",
+    "cherche-feu-vert": "il regarde Maëlle : le regard du mec qui vérifie, qui cherche le feu vert"
+  },
   "details_asymetriques": {
     "_note": "à fixer avec l'auteur si besoin"
   },
-  "accessoires": [],
+  "accessoires": ["galette poulet harissa", "plateau de frites", "bouteille de Fanta", "téléphone chiffré", "laptop", "marqueur (au miroir)"],
   "ne_porte_jamais": [],
   "image_maitre": null,
   "bouches_supplementaires": ["sourire fermé", "grimace", "rire ouvert"],
@@ -34,5 +69,6 @@
     "flip_horizontal": null
   },
   "voix": "audio/voix/sky/",
-  "_note_voix": "peut être clonée sur la voix de l'auteur (CLAUDE.md > Stack)"
+  "_note_voix": "la voix de l'auteur, faite par lui (CLAUDE.md > Stack)",
+  "sources": "bible : table des énergies, sections SKY et LE SOURIRE ; « Le Miroir » (ecriture/brouillons/cern.md, partie 1)"
 }

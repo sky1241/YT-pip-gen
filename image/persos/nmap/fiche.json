@@ -1,0 +1,26 @@
+{
+  "slug": "nmap",
+  "nom": "Nmap",
+  "role": "le chat de Sky et Maëlle",
+  "_a_completer": [
+    "tout le design : pelage, yeux, gabarit",
+    "image maître"
+  ],
+  "silhouette": null,
+  "palette": {
+    "_note": "design à définir : la bible ne le décrit pas"
+  },
+  "traits": {
+    "habitude": "griffe la cheville en passant ; dort sur le serveur au bureau"
+  },
+  "expressions_signatures": {},
+  "details_asymetriques": {
+    "_note": "à fixer avec l'auteur"
+  },
+  "image_maitre": null,
+  "lora": {
+    "flip_horizontal": null
+  },
+  "voix": null,
+  "sources": "bible : les chats ; « Le Miroir » (ecriture/brouillons/cern.md, partie 1)"
+}
