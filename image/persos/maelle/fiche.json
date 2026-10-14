@@ -3,10 +3,8 @@
   "nom": "Maëlle",
   "role": "CISO, femme de Sky",
   "_a_completer": [
-    "silhouette",
-    "codes couleur de la palette",
-    "le côté rasé, le côté de la cicatrice, la main de la bague",
-    "ce qu'elle ne porte jamais"
+    "valider les codes couleur relevés sur l'image maître",
+    "silhouette : sa taille"
   ],
   "energie": {
     "resume": "Haute tension constante, contrôlée",
@@ -14,20 +12,37 @@
     "volume": "Monte par paliers — murmure → normal → HURLE",
     "frequence": "Le disjoncteur. Elle régule. Quand elle saute, tout disjoncte."
   },
-  "silhouette": null,
+  "silhouette": {
+    "carrure": "épaules de nageuse, bras toniques, tendons visibles aux avant-bras (prompt d'origine et images validées)",
+    "taille": null
+  },
   "palette": {
-    "_note": "codes couleur à fixer depuis l'image maître / la bible",
-    "cheveux": "roux",
-    "col_roule": "noir"
+    "_note": "relevée sur master_v1.png le 2026-10-14, sous la lumière chaude du matin : à valider",
+    "cheveux": "#93411C (cuivre)",
+    "cote_rase": "#79462C",
+    "peau": "#C87139",
+    "levres": "#AB5336",
+    "col_roule": "#191515 (noir)",
+    "yeux": "vert olive (relevé à l'œil)"
   },
   "tenue_canonique": {
     "cheveux": "roux en undercut",
     "haut": "col roulé noir",
-    "accessoires_portes": ["bague", "café à la main"]
+    "accessoires_portes": [
+      "bague",
+      "café à la main"
+    ],
+    "bas": "pantalon noir ajusté, taille haute",
+    "chaussures": "bottines noires à talon carré",
+    "_note": "le bas et les chaussures sont validés sur references/pied_v1.png (2026-10-14)"
   },
   "traits": {
-    "taches_de_rousseur": "oui — à simplifier en production",
-    "cicatrice": "petite cicatrice au sourcil"
+    "taches_de_rousseur": "oui, à simplifier : une légère poussière sur le nez et le haut des joues, toujours aux mêmes endroits",
+    "cicatrice": "petite cicatrice au sourcil",
+    "yeux": "verts, trait d'eye-liner fin",
+    "machoire": "carrée",
+    "maquillage": "aucun, sauf un trait d'eye-liner noir, précis comme tracé au scalpel",
+    "ongles": "courts, pas vernis"
   },
   "expressions_signatures": {
     "regard-qui-tue": "« T'as compris quoi exactement Daria. »",
@@ -36,18 +51,27 @@
     "rougeur": "elle rougit malgré elle (hors Le Miroir)"
   },
   "details_asymetriques": {
-    "_note": "côtés exacts à fixer avec l'auteur (à vérifier sur chaque image, cf. image/INVENTAIRE.md)",
-    "cote_rase": null,
-    "cicatrice_sourcil_cote": null,
-    "bague_main": null
+    "_note": "relevés sur master_v1.png le 2026-10-14 ; « gauche » = sa gauche à elle. Confirmés : toutes les planches validées par l'auteur les respectent, et il n'a rien objecté",
+    "cote_rase": "sa gauche ; les longues mèches tombent sur sa droite",
+    "cicatrice_sourcil_cote": "sourcil gauche, une petite cicatrice verticale",
+    "bague_main": "pouce droit, un large anneau d'argent",
+    "expressions_d_un_seul_cote": "côté gauche, comme sur l'image maître (mépris, doute, confusion, malice)"
   },
-  "accessoires": ["bague", "café"],
-  "ne_porte_jamais": [],
+  "accessoires": [
+    "bague",
+    "café"
+  ],
+  "ne_porte_jamais": [
+    "de vernis à ongles",
+    "d'autre maquillage que son trait d'eye-liner"
+  ],
   "image_maitre": "image/persos/maelle/references/master_v1.png",
   "lora": {
     "flip_horizontal": false,
     "_note": "flip désactivé (détails asymétriques)"
   },
   "voix": "audio/voix/maelle/",
-  "sources": "bible : table des énergies, section MAËLLE ; « Le Miroir » (ecriture/brouillons/cern.md, partie 1)"
+  "sources": "bible : table des énergies, section MAËLLE ; « Le Miroir » (ecriture/brouillons/cern.md, partie 1) ; prompts d'origine de l'image maître (prompts-chatgpt.md)",
+  "palette_emotions": "de trois-quarts, sous l'angle de son image maître (on voit son côté gauche) ; planche 1 faite le 2026-10-14",
+  "provenance": "image/persos/maelle/provenance.json"
 }

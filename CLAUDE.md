@@ -72,7 +72,7 @@ Dans l'ordre. Un perso n'entre en production que quand les 8 étapes sont faites
 
 1. **Fiche texte** (`image/persos/<slug>/fiche.json`), tirée de la bible : rôle, énergie, silhouette, palette (codes couleur), tenue canonique, détails asymétriques avec le côté exact, accessoires, ce qu'il ne porte jamais.
 2. **Image maître**, conçue dans ChatGPT et validée par l'auteur.
-3. **Planche de rotation** : face, trois-quarts, profil, dos, en pied, sur fond neutre et sous la même lumière. AniSora peut générer une rotation à 360° depuis l'image de face.
+3. **Planche de rotation** : face, trois-quarts et profil des deux côtés, dos, en pied, sur fond neutre et sous la même lumière. Les deux côtés comptent : un perso aux détails asymétriques s'entraîne sans retournement horizontal, son LoRA doit donc voir chacun. AniSora peut générer une rotation à 360° depuis l'image de face.
 4. **Expressions** : la palette des émotions, la même pour tous : 36 émotions en 6 planches (`image/emotions.md`), + 2 à 4 signatures tirées de la bible ou du texte. Sky, le protagoniste, en a plus : sa palette aussi de trois-quarts, et toutes ses signatures. La liste fichier par fichier est dans `image/INVENTAIRE.md`.
 5. **Bouches** : fermée, mi-ouverte, ouverte, sous les angles principaux.
 6. **Passage local** : tout repasse dans le modèle local (image-to-image), dans le style final. C'est le jeu d'entraînement du LoRA.

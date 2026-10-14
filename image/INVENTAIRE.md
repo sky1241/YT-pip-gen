@@ -18,7 +18,7 @@ Les chemins partent de `image/`. Lumière de tout l'épisode : le matin, avec du
 
 ## Ce que chaque perso demande
 
-- **Une image maître**, puis **la rotation** : face, trois-quarts, profil, dos, en pied.
+- **Une image maître**, puis **la rotation** : face, trois-quarts et profil des deux côtés, dos, en pied. Les deux côtés comptent : un perso asymétrique s'entraîne sans retournement horizontal, son LoRA doit voir chacun.
 - **La palette des émotions**, la même pour tous : 36 émotions en 6 planches, définies dans [`emotions.md`](emotions.md). Ici, une case = une planche : Claude la découpe en 6 fichiers `expressions/<émotion>_v1.png`. La joie est un vrai sourire ; « le sourire » de Sky est une signature à part.
 - **Les signatures** : les expressions que la bible ou le texte décrivent, identiques à chaque fois. Celles marquées « hors Le Miroir » ne servent pas dans cet épisode, mais elles comptent pour le LoRA et pour la suite.
 - **Les bouches** : fermée, mi-ouverte, ouverte, de face et de trois-quarts.
@@ -27,10 +27,11 @@ Les chemins partent de `image/`. Lumière de tout l'épisode : le matin, avec du
 - « · pilote » marque ce qu'il faut pour la minute des mots croisés.
 
 Noms des fichiers :
-- Rotation : `references/face_v1.png`, `trois-quarts_v1.png`, `profil_v1.png`, `dos_v1.png`, `pied_v1.png`.
+- Rotation : `references/face_v1.png`, `trois-quarts-gauche_v1.png`, `trois-quarts-droit_v1.png`, `profil-gauche_v1.png`, `profil-droit_v1.png`, `dos_v1.png`, `pied_v1.png`. « Gauche » et « droit » désignent le côté du perso qu'on voit, pas celui de l'image : `profil-gauche` montre sa joue gauche.
 - Expressions : `expressions/<nom>_v1.png` pour la face. De trois-quarts, le nom prend le préfixe `trois-quarts_`.
 - Bouches : `bouches/<angle>_<forme>_v1.png`, l'angle étant `face` ou `trois-quarts`.
 - Planches de la palette : `planches/emotions-<n>_v1.png`, découpées en `expressions/<fichier>_v1.png` avec les noms de `emotions.md`.
+- Les autres planches : `planches/rotation_v1.png`, `planches/signatures_v1.png` et `planches/bouches_v1.png`, découpées en `references/`, `expressions/` et `bouches/`.
 
 ## 1. Pilote — en premier
 
@@ -40,8 +41,10 @@ Noms des fichiers :
 
 **Rotation**
 - [ ] `references/face_v1.png`
-- [ ] `references/trois-quarts_v1.png`
-- [ ] `references/profil_v1.png`
+- [ ] `references/trois-quarts-gauche_v1.png`
+- [ ] `references/trois-quarts-droit_v1.png`
+- [ ] `references/profil-gauche_v1.png`
+- [ ] `references/profil-droit_v1.png`
 - [ ] `references/dos_v1.png`
 - [ ] `references/pied_v1.png`
 
@@ -93,8 +96,10 @@ Noms des fichiers :
 
 **Rotation**
 - [ ] `references/face_v1.png`
-- [ ] `references/trois-quarts_v1.png`
-- [ ] `references/profil_v1.png`
+- [ ] `references/trois-quarts-gauche_v1.png`
+- [ ] `references/trois-quarts-droit_v1.png`
+- [ ] `references/profil-gauche_v1.png`
+- [ ] `references/profil-droit_v1.png`
 - [ ] `references/dos_v1.png`
 - [ ] `references/pied_v1.png`
 
@@ -127,8 +132,10 @@ Noms des fichiers :
 
 **Rotation**
 - [ ] `references/face_v1.png`
-- [ ] `references/trois-quarts_v1.png`
-- [ ] `references/profil_v1.png`
+- [ ] `references/trois-quarts-gauche_v1.png`
+- [ ] `references/trois-quarts-droit_v1.png`
+- [ ] `references/profil-gauche_v1.png`
+- [ ] `references/profil-droit_v1.png`
 - [ ] `references/dos_v1.png`
 - [ ] `references/pied_v1.png`
 
@@ -172,33 +179,37 @@ Noms des fichiers :
 - [x] `references/master_v1.png` : image maître
 
 **Rotation**
-- [ ] `references/face_v1.png`
-- [ ] `references/trois-quarts_v1.png`
-- [ ] `references/profil_v1.png`
-- [ ] `references/dos_v1.png`
-- [ ] `references/pied_v1.png`
+- [x] `references/face_v1.png`
+- [x] `references/trois-quarts-gauche_v1.png`
+- [x] `references/trois-quarts-droit_v1.png`
+- [x] `references/profil-gauche_v1.png`
+- [x] `references/profil-droit_v1.png`
+- [x] `references/dos_v1.png`
+- [x] `references/pied_v1.png`
 
-**Palette des émotions** (les 36 de `emotions.md`, en 6 planches)
-- [ ] `planches/emotions-1_v1.png` : neutre, joie, tristesse, colère, peur, surprise
-- [ ] `planches/emotions-2_v1.png` : dégoût, mépris, rire, pleurs, rage, terreur
-- [ ] `planches/emotions-3_v1.png` : stupeur, intérêt, concentration, confusion, doute, méfiance
-- [ ] `planches/emotions-4_v1.png` : gêne, honte, fierté, jalousie, tendresse, désir
-- [ ] `planches/emotions-5_v1.png` : contentement, soulagement, exaltation, triomphe, émerveillement, déception
-- [ ] `planches/emotions-6_v1.png` : inquiétude, agacement, malice, ennui, fatigue, douleur
+**Palette des émotions, de trois-quarts** (les 36 de `emotions.md`, sous l'angle de son image maître, côté gauche)
+- [x] `planches/trois-quarts_emotions-1_v1.png` : neutre, joie, tristesse, colère, peur, surprise
+- [x] `planches/trois-quarts_emotions-2_v1.png` : dégoût, mépris, rire, pleurs, rage, terreur
+- [x] `planches/trois-quarts_emotions-3_v1.png` : stupeur, intérêt, concentration, confusion, doute, méfiance
+- [x] `planches/trois-quarts_emotions-4_v1.png` : gêne, honte, fierté, jalousie, tendresse, désir
+- [x] `planches/trois-quarts_emotions-5_v1.png` : contentement, soulagement, exaltation, triomphe, émerveillement, déception
+- [x] `planches/trois-quarts_emotions-6_v1.png` : inquiétude, agacement, malice, ennui, fatigue, douleur
+- [x] `planches/trois-quarts_reprises_v2.png` : joie, stupeur, concentration, soulagement, émerveillement, malice, en version 2 (le soulagement reste à refaire seul)
+- [x] `expressions/trois-quarts_soulagement_v3.png` : le soulagement, seul, bouche ouverte qui soupire
 
 **Signatures**
-- [ ] `expressions/regard-qui-tue_v1.png` : « T'as compris quoi exactement Daria. »
-- [ ] `expressions/bras-croises_v1.png` : elle s'adosse et s'efface quand le sourire arrive
-- [ ] `expressions/mode-ciso_v1.png` : « C'est pas la femme qui parle », la voix basse quand elle classifie le miroir
-- [ ] `expressions/rougeur_v1.png` : elle rougit malgré elle (hors Le Miroir)
+- [x] `expressions/regard-qui-tue_v1.png` : « T'as compris quoi exactement Daria. »
+- [x] `expressions/bras-croises_v1.png` : elle s'adosse et s'efface quand le sourire arrive
+- [x] `expressions/mode-ciso_v1.png` : « C'est pas la femme qui parle », la voix basse quand elle classifie le miroir
+- [x] `expressions/rougeur_v1.png` : elle rougit malgré elle (hors Le Miroir)
 
 **Bouches**
-- [ ] `bouches/face_fermee_v1.png`
-- [ ] `bouches/face_mi-ouverte_v1.png`
-- [ ] `bouches/face_ouverte_v1.png`
-- [ ] `bouches/trois-quarts_fermee_v1.png`
-- [ ] `bouches/trois-quarts_mi-ouverte_v1.png`
-- [ ] `bouches/trois-quarts_ouverte_v1.png`
+- [x] `bouches/face_fermee_v1.png`
+- [x] `bouches/face_mi-ouverte_v1.png`
+- [x] `bouches/face_ouverte_v1.png`
+- [x] `bouches/trois-quarts_fermee_v1.png`
+- [x] `bouches/trois-quarts_mi-ouverte_v1.png`
+- [x] `bouches/trois-quarts_ouverte_v1.png`
 
 ### Daria — `persos/daria/`
 
@@ -206,8 +217,10 @@ Noms des fichiers :
 
 **Rotation**
 - [ ] `references/face_v1.png`
-- [ ] `references/trois-quarts_v1.png`
-- [ ] `references/profil_v1.png`
+- [ ] `references/trois-quarts-gauche_v1.png`
+- [ ] `references/trois-quarts-droit_v1.png`
+- [ ] `references/profil-gauche_v1.png`
+- [ ] `references/profil-droit_v1.png`
 - [ ] `references/dos_v1.png`
 - [ ] `references/pied_v1.png`
 
@@ -239,8 +252,10 @@ Noms des fichiers :
 
 **Rotation**
 - [ ] `references/face_v1.png`
-- [ ] `references/trois-quarts_v1.png`
-- [ ] `references/profil_v1.png`
+- [ ] `references/trois-quarts-gauche_v1.png`
+- [ ] `references/trois-quarts-droit_v1.png`
+- [ ] `references/profil-gauche_v1.png`
+- [ ] `references/profil-droit_v1.png`
 - [ ] `references/dos_v1.png`
 - [ ] `references/pied_v1.png`
 
@@ -271,8 +286,10 @@ Noms des fichiers :
 
 **Rotation**
 - [ ] `references/face_v1.png`
-- [ ] `references/trois-quarts_v1.png`
-- [ ] `references/profil_v1.png`
+- [ ] `references/trois-quarts-gauche_v1.png`
+- [ ] `references/trois-quarts-droit_v1.png`
+- [ ] `references/profil-gauche_v1.png`
+- [ ] `references/profil-droit_v1.png`
 - [ ] `references/dos_v1.png`
 - [ ] `references/pied_v1.png`
 
@@ -303,8 +320,10 @@ Noms des fichiers :
 
 **Rotation**
 - [ ] `references/face_v1.png`
-- [ ] `references/trois-quarts_v1.png`
-- [ ] `references/profil_v1.png`
+- [ ] `references/trois-quarts-gauche_v1.png`
+- [ ] `references/trois-quarts-droit_v1.png`
+- [ ] `references/profil-gauche_v1.png`
+- [ ] `references/profil-droit_v1.png`
 - [ ] `references/dos_v1.png`
 - [ ] `references/pied_v1.png`
 
@@ -335,8 +354,10 @@ Noms des fichiers :
 **Grep — `persos/grep/`** : gris tigré, yeux jaunes, air de propriétaire
 - [ ] `references/master_v1.png`
 - [ ] `references/face_v1.png`
-- [ ] `references/trois-quarts_v1.png`
-- [ ] `references/profil_v1.png`
+- [ ] `references/trois-quarts-gauche_v1.png`
+- [ ] `references/trois-quarts-droit_v1.png`
+- [ ] `references/profil-gauche_v1.png`
+- [ ] `references/profil-droit_v1.png`
 - [ ] `references/dos_v1.png`
 - [ ] `expressions/dans-le-sac_v1.png` : il sort la tête du sac de Daria
 - [ ] `expressions/proteste_v1.png` : « Grep tombe. Grep proteste. »
@@ -344,8 +365,10 @@ Noms des fichiers :
 **Nmap — `persos/nmap/`** : design à définir, la bible ne le décrit pas
 - [ ] `references/master_v1.png`
 - [ ] `references/face_v1.png`
-- [ ] `references/trois-quarts_v1.png`
-- [ ] `references/profil_v1.png`
+- [ ] `references/trois-quarts-gauche_v1.png`
+- [ ] `references/trois-quarts-droit_v1.png`
+- [ ] `references/profil-gauche_v1.png`
+- [ ] `references/profil-droit_v1.png`
 - [ ] `references/dos_v1.png`
 
 ### Décors — `decors/kebab/`

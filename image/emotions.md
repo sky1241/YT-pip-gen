@@ -75,7 +75,7 @@ Certaines émotions n'ont pas de case, parce qu'aucune expression du visage ne l
 
 | Case | Émotion | Fichier | Ce qui la rend lisible |
 |---|---|---|---|
-| 1 | Contentement | `contentement` | Petit sourire calme, yeux mi-clos |
+| 1 | Contentement | `contentement` | Petit sourire calme, yeux fermés ou mi-clos, visage détendu |
 | 2 | Soulagement | `soulagement` | Il expire, yeux fermés, épaules qui tombent, demi-sourire |
 | 3 | Exaltation | `exaltation` | Grand sourire, yeux brillants, sourcils hauts : la joie qui déborde |
 | 4 | Triomphe | `triomphe` | Grand sourire bouche ouverte, menton levé, poing serré |

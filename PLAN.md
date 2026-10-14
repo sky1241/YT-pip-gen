@@ -63,7 +63,7 @@ Terminée quand `image/style.md` est validé et que le kebab a son plan d'axes d
 - [ ] Dessiner le plan du kebab vu de dessus : tables, comptoir, broche, miroir, escalier, vitrine
 - [ ] Lister les 6 à 8 axes de caméra et qui s'assoit où (Claude peut le préparer depuis le script)
 - [ ] Définir les cartons texte façon Eva (chiffres clés) et le carton SMS : police, couleurs, durée à l'écran
-- [ ] Tester une première planche de la palette des émotions sur Maëlle, dont l'image maître existe, puis sa découpe en fichiers
+- [x] Tester une première planche de la palette des émotions sur Maëlle, dont l'image maître existe, puis sa découpe en fichiers (`pipeline/decouper_planche.py`)
 
 ## Phase 3 — Pilote d'une minute, à la main
 
@@ -112,7 +112,8 @@ La palette des émotions, la même pour tous : 36 émotions en 6 planches, défi
 - [ ] Sky
   - [ ] Fiche : compléter le look
   - [ ] Image maître
-  - [ ] Rotation : face, trois-quarts, profil, dos, en pied
+  - [ ] Rotation : face, trois-quarts et profil des deux côtés, dos
+  - [ ] Image en pied
   - [ ] Palette des émotions de face : les 6 planches
   - [ ] Palette des émotions de trois-quarts : les 6 planches
   - [ ] Signatures : les 9, dont le jeu du sourire
@@ -120,18 +121,21 @@ La palette des émotions, la même pour tous : 36 émotions en 6 planches, défi
   - [ ] LoRA : passage local, entraînement, test standard
   - [ ] Voix : compléter et valider `audio/voix/sky/`
 - [ ] Maëlle
-  - [ ] Fiche : compléter le look, dont le côté de chaque détail asymétrique
+  - [ ] Fiche : valider les codes couleur relevés et donner sa taille (les côtés asymétriques sont confirmés, le reste du look est posé)
   - [x] Image maître
-  - [ ] Rotation : face, trois-quarts, profil, dos, en pied
-  - [ ] Palette des émotions : les 6 planches
-  - [ ] Signatures : les 4
-  - [ ] Bouches : les 6, taches de rousseur simplifiées
+  - [x] Rotation : face, trois-quarts et profil des deux côtés, dos
+  - [x] Image en pied
+  - [x] Palette des émotions de trois-quarts, sous l'angle de son image maître : les 6 planches et les reprises (la version retenue de chaque émotion est dans `provenance.json`)
+  - [x] Signatures : les 4
+  - [x] Bouches : les 6 (références de forme ; les calques se feront en local sur une seule image de base)
+  - [ ] Taches de rousseur à simplifier au passage local : sur les planches, elles restent nombreuses
   - [ ] LoRA : passage local, entraînement sans retournement horizontal, test standard
   - [ ] Voix : compléter et valider `audio/voix/maelle/`
 - [ ] Patrick
   - [ ] Fiche : compléter le look
   - [ ] Image maître
-  - [ ] Rotation : face, trois-quarts, profil, dos, en pied
+  - [ ] Rotation : face, trois-quarts et profil des deux côtés, dos
+  - [ ] Image en pied
   - [ ] Palette des émotions : les 6 planches
   - [ ] Signatures : les 5
   - [ ] Bouches : les 6
@@ -140,7 +144,8 @@ La palette des émotions, la même pour tous : 36 émotions en 6 planches, défi
 - [ ] Mohamed
   - [ ] Fiche : trancher le canon (Mohamed ou Mehmet), puis compléter le look
   - [ ] Image maître
-  - [ ] Rotation : face, trois-quarts, profil, dos, en pied
+  - [ ] Rotation : face, trois-quarts et profil des deux côtés, dos
+  - [ ] Image en pied
   - [ ] Palette des émotions : les 6 planches
   - [ ] Signatures : les 3
   - [ ] Bouches : les 6
@@ -149,7 +154,8 @@ La palette des émotions, la même pour tous : 36 émotions en 6 planches, défi
 - [ ] Seb
   - [ ] Fiche : compléter le look, dont le costard
   - [ ] Image maître
-  - [ ] Rotation : face, trois-quarts, profil, dos, en pied
+  - [ ] Rotation : face, trois-quarts et profil des deux côtés, dos
+  - [ ] Image en pied
   - [ ] Palette des émotions : les 6 planches
   - [ ] Signatures : les 3
   - [ ] Bouches : les 6
@@ -158,7 +164,8 @@ La palette des émotions, la même pour tous : 36 émotions en 6 planches, défi
 - [ ] Nath
   - [ ] Fiche : compléter le look
   - [ ] Image maître
-  - [ ] Rotation : face, trois-quarts, profil, dos, en pied
+  - [ ] Rotation : face, trois-quarts et profil des deux côtés, dos
+  - [ ] Image en pied
   - [ ] Palette des émotions : les 6 planches
   - [ ] Signatures : les 4
   - [ ] Bouches : les 6
@@ -167,7 +174,8 @@ La palette des émotions, la même pour tous : 36 émotions en 6 planches, défi
 - [ ] Théo
   - [ ] Fiche : compléter le look
   - [ ] Image maître
-  - [ ] Rotation : face, trois-quarts, profil, dos, en pied
+  - [ ] Rotation : face, trois-quarts et profil des deux côtés, dos
+  - [ ] Image en pied
   - [ ] Palette des émotions : les 6 planches
   - [ ] Signatures : les 3
   - [ ] Bouches : les 6
@@ -176,7 +184,8 @@ La palette des émotions, la même pour tous : 36 émotions en 6 planches, défi
 - [ ] Daria
   - [ ] Fiche : compléter le look
   - [ ] Image maître
-  - [ ] Rotation : face, trois-quarts, profil, dos, en pied
+  - [ ] Rotation : face, trois-quarts et profil des deux côtés, dos
+  - [ ] Image en pied
   - [ ] Palette des émotions : les 6 planches
   - [ ] Signatures : les 4
   - [ ] Bouches : les 6
