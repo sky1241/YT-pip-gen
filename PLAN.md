@@ -5,7 +5,7 @@ Version du 6 octobre 2026, mise à jour le 15 octobre 2026. C'est ce fichier qui
 ## Où on en est (15 octobre 2026)
 
 - **Fait** : les fondations du repo, la palette des émotions et l'outil de découpe. Maëlle et Sky ont toutes leurs planches de référence (Sky : la série 2, les 50 cases de son inventaire). Le PyTorch d'AMD tourne sur la carte de sky-master, testé le 15 octobre.
-- **En cours** : la phase 0, côté machine. ComfyUI tourne sur la carte AMD et a sorti une première image ; la RAM du PC est la limite (une deuxième image a fait tuer VS Code par le système).
+- **En cours** : la phase 0, côté machine. ComfyUI tourne sur la carte AMD, environ 2 minutes par image, lancé par `pipeline/comfyui.py` ; minage désinstallé, 3 Go de RAM récupérés.
 - **Ensuite** : le premier LoRA, celui de Sky, et son test standard, avant de faire les autres persos. Si la carte de sky-master ne suffit pas pour l'entraînement ou la vidéo : Modal ou Kaggle, gratuits, puis une location en dernier recours.
 - **Décisions qui attendent l'auteur** : le modèle de base d'images (sa licence compte pour YouTube), sauter le passage local pour le premier test du LoRA, le canon du kebab, ce que couvre l'épisode 1, le style de référence.
 - **Pas commencé** : l'écriture de l'épisode 1 (phase 1), le plan du kebab et ses décors, Patrick, Mohamed et les autres persos, les voix, le pilote.

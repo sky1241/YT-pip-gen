@@ -318,3 +318,10 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   redémarrer : 11,3 Go disponibles avec VS Code ouvert.
 - **Le sudo** : le compte a tous les droits root sans mot de passe (`/etc/sudoers.d/linux-upgrade`). CLAUDE.md dit « Debian sans
   sudo, installations en espace utilisateur » : signalé à l'auteur, la règle reste en place tant qu'il ne l'a pas changée.
+- **Deuxième test, le 2026-10-15, minage désinstallé** : ComfyUI comme service utilisateur, plafonné à 10 Go de RAM
+  (`systemd-run --user -p MemoryMax=10G`). Sans autre réglage, chaque image recopie le modèle en RAM (7,4 Go de mémoire anonyme
+  au pic) et la deuxième fait déborder le plafond : c'est ComfyUI que le système arrête, plus VS Code. Avec `--highvram`, le modèle
+  reste sur la carte et la RAM tient (2,8 Go), mais le VAE ne trouve plus de place sur la carte (« tried to allocate 2.25 GiB »),
+  même en tuiles de 512. Ce qui marche : `--highvram --cpu-vae`. Mesuré : 204 s pour la première image (le modèle lu depuis le
+  disque USB, environ 100 s), puis 130 s par image (91 s de calcul à 3,64 s par pas, le VAE sur le processeur). RAM de ComfyUI :
+  2,9 à 3,8 Go ; VRAM : 5,7 à 6,5 Go ; RAM disponible pour le reste : 7,7 Go. Le lanceur : `pipeline/comfyui.py`.
