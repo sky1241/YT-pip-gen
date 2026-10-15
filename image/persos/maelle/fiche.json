@@ -4,7 +4,7 @@
   "role": "CISO, femme de Sky",
   "_a_completer": [
     "valider les codes couleur relevés sur l'image maître",
-    "silhouette : sa taille"
+    "valider la lecture de ChatGPT sur sa silhouette (description-chatgpt.md)"
   ],
   "energie": {
     "resume": "Haute tension constante, contrôlée",
@@ -14,7 +14,8 @@
   },
   "silhouette": {
     "carrure": "épaules de nageuse, bras toniques, tendons visibles aux avant-bras (prompt d'origine et images validées)",
-    "taille": null
+    "taille": "1m65 (l'auteur, le 2026-10-14)",
+    "corps": "sablier athlétique : taille marquée sans être fine, hanches un peu larges, fessiers et cuisses forts (lecture de ChatGPT sur l'image en pied : à valider par l'auteur)"
   },
   "palette": {
     "_note": "relevée sur master_v1.png le 2026-10-14, sous la lumière chaude du matin : à valider",
@@ -73,5 +74,6 @@
   "voix": "audio/voix/maelle/",
   "sources": "bible : table des énergies, section MAËLLE ; « Le Miroir » (ecriture/brouillons/cern.md, partie 1) ; prompts d'origine de l'image maître (prompts-chatgpt.md)",
   "palette_emotions": "de trois-quarts, sous l'angle de son image maître (on voit son côté gauche) ; planche 1 faite le 2026-10-14",
-  "provenance": "image/persos/maelle/provenance.json"
+  "provenance": "image/persos/maelle/provenance.json",
+  "description_maitre": "image/persos/maelle/description-chatgpt.md : à coller en tête de ses prompts, avec l'image maître jointe (sans le bloc d'expression par défaut pour une planche d'émotions)"
 }

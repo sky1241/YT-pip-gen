@@ -96,7 +96,7 @@ Certaines émotions n'ont pas de case, parce qu'aucune expression du visage ne l
 ## Le jeu de chaque perso
 
 - **La même palette pour tous, pas la même intensité.** La bible le dit : Patrick parle plus bas quand c'est important, Mohamed ne crie jamais et ne chuchote jamais, Nath reste plate, Daria devient froide sous pression. Chez eux, la rage reste froide et le rire reste court.
-- **Sky garde les reflets dans les yeux sur toute la palette.** Seul « le sourire », une de ses signatures, les éteint.
+- **Sky garde le reflet de son œil droit sur toute la palette** (le gauche est aveugle). Seul « le sourire », une de ses signatures, l'éteint.
 - **Les expressions asymétriques** (mépris, confusion, doute, malice) : le côté se fixe une fois par perso, comme ses détails asymétriques. Sinon, il change d'un plan à l'autre.
 - **Le désir reste du sous-entendu**, comme le veut la bible : une envie de galette ou un regard appuyé, jamais plus.
 - Les signatures restent à part : ce sont les moments propres à chaque perso, décrits dans sa fiche.

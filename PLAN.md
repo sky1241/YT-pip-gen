@@ -45,7 +45,7 @@ Terminée quand l'épisode 1 est figé dans le repo avec le tag `ep01-v1`. Cette
   - [ ] Chiffres du consortium reconstruits sur un marché spatial sourcé
 - [ ] Réduire le tic « vient de »
 - [ ] Trancher les points en suspens : la théorie du tout (ambiguë ou révélée), les quenelles, la vanne sur la sodomie, le briefing de guerre (cet épisode ou le suivant)
-- [ ] Trancher les écarts entre `bible-ecriture.md` et la bible ou le texte : le couple (« Sky = soumis content »), Mehmet à Istanbul ou Mohamed à Alger, Sky à 87 ou 92 kg, Yamauchi ou Asai, l'explication des langues que `corrections-cern.md` remplace
+- [ ] Trancher les écarts entre `bible-ecriture.md` et la bible ou le texte : le couple (« Sky = soumis content »), Mehmet à Istanbul ou Mohamed à Alger, Sky à 87 ou 92 kg (l'auteur a dit 92 le 2026-10-14 : reste à aligner le texte du CERN et la bible), Yamauchi ou Asai, l'explication des langues que `corrections-cern.md` remplace
 - [ ] Fact-check final : chaque chiffre sourcé et daté, chaque comparaison faite sur la même base
 - [ ] Lire l'épisode à voix haute, chrono en main : viser 15 minutes
 - [ ] Déposer l'épisode dans `ecriture/episodes/ep01/episode.md`
@@ -57,7 +57,7 @@ Terminée quand l'épisode 1 est figé dans le repo avec le tag `ep01-v1`. Cette
 Terminée quand `image/style.md` est validé et que le kebab a son plan d'axes de caméra.
 
 - [x] Image maître de Maëlle
-- [ ] Décider si le rendu de Maëlle devient la référence de style de toute la série
+- [ ] Décider si le rendu de Maëlle devient la référence de style de toute la série (de fait, l'image maître de Sky a été faite avec elle en référence de style)
 - [ ] Explorer le style dans ChatGPT : une vue large du kebab et Sky, dans le même rendu
 - [ ] Écrire `image/style.md` : mots-clés de prompt, palette, 3 à 5 images de référence
 - [ ] Dessiner le plan du kebab vu de dessus : tables, comptoir, broche, miroir, escalier, vitrine
@@ -70,7 +70,7 @@ Terminée quand `image/style.md` est validé et que le kebab a son plan d'axes d
 Terminée quand la minute des mots croisés est montée et que le temps passé à chaque étape est noté. Trois persos : Sky, Patrick et Mohamed. Les images à faire sont listées une par une dans `image/INVENTAIRE.md`, section 1.
 
 - [ ] Fiches des trois persos : compléter le look, d'après la liste « à compléter » de chaque fiche (rôle, énergie et signatures sont déjà posés)
-- [ ] Image maître de Sky : training noir, chemise blanche à fleurs de lys, baskets, yeux bleus
+- [x] Image maître de Sky : chemise blanche à lys, training noir, lunettes aviateur, œil gauche aveugle (`image/persos/sky/description-chatgpt.md`) ; la monture est plaquée or (v2), et la v3 est la référence de la série 2
 - [ ] Image maître de Patrick
 - [ ] Image maître de Mohamed
 - [ ] Expressions du pilote, marquées « · pilote » dans `image/INVENTAIRE.md`, dont le sourire de Sky : yeux sans reflet, joues plates, seule la bouche bouge
@@ -109,19 +109,20 @@ Le protocole, pour chaque perso, est dans `CLAUDE.md`. Ici, une case par étape.
 
 La palette des émotions, la même pour tous : 36 émotions en 6 planches, définies dans `image/emotions.md`.
 
-- [ ] Sky
-  - [ ] Fiche : compléter le look
-  - [ ] Image maître
-  - [ ] Rotation : face, trois-quarts et profil des deux côtés, dos
-  - [ ] Image en pied
-  - [ ] Palette des émotions de face : les 6 planches
-  - [ ] Palette des émotions de trois-quarts : les 6 planches
-  - [ ] Signatures : les 9, dont le jeu du sourire
-  - [ ] Bouches : les 6 de base et les 6 du sourire (sourire fermé, grimace, rire ouvert, sous les deux angles)
+- [ ] Sky (série 2 : la série 1, monture argentée, est archivée sur le disque externe le 2026-10-14)
+  - [ ] Fiche : relever les codes couleur sur l'image maître v3 (ceux de la fiche viennent de la v1), puis les faire valider
+  - [x] Image maître (v1, puis v2 en or)
+  - [x] Image maître v3 : sans le trait entre les sourcils ni les taches autour des yeux, barbe de 3 jours (l'œil aveugle reste un peu plus grand : ChatGPT refuse de le retoucher, l'auteur garde la v3)
+  - [x] Rotation : face, trois-quarts et profil des deux côtés, dos
+  - [x] Image en pied
+  - [x] Palette des émotions de face : les 6 planches, les reprises et le clignement (mi-clos, fermé)
+  - [x] Palette des émotions de trois-quarts : les 6 planches et leur retouche (deux bagues restent à corriger au passage local)
+  - [x] Signatures : les 9, dont le jeu du sourire en monstre, plus le rire du dégénéré de trois-quarts
+  - [x] Bouches : les 6 de base et les 6 du sourire (sourire fermé, grimace, rire ouvert, sous les deux angles)
   - [ ] LoRA : passage local, entraînement, test standard
   - [ ] Voix : compléter et valider `audio/voix/sky/`
 - [ ] Maëlle
-  - [ ] Fiche : valider les codes couleur relevés et donner sa taille (les côtés asymétriques sont confirmés, le reste du look est posé)
+  - [ ] Fiche : valider les codes couleur relevés (1m65, côtés asymétriques confirmés, le reste du look est posé)
   - [x] Image maître
   - [x] Rotation : face, trois-quarts et profil des deux côtés, dos
   - [x] Image en pied

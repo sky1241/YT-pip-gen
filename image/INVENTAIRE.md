@@ -37,58 +37,68 @@ Noms des fichiers :
 
 ### Sky — `persos/sky/`
 
-- [ ] `references/master_v1.png` : image maître (training noir, chemise blanche à fleurs de lys, baskets, yeux bleus) · pilote
+La série 1, faite avec la monture argentée, est archivée sur le disque externe : `<sorties_root>/persos/sky/archive_serie-1_2026-10-14/`. La série 2 repart de l'image maître v3, dans une nouvelle conversation ChatGPT.
+
+- [x] `references/master_v1.png` : l'image maître de départ (chemise blanche à lys, training noir, lunettes aviateur, œil gauche aveugle), monture argentée : gardée comme historique
+- [x] `references/master_v2.png` : la même, monture plaquée or, avec des taches sous les verres et un trait entre les sourcils
+- [x] `references/master_v3.png` : la référence de la série 2 : ni trait ni taches, barbe de 3 jours · pilote
 
 **Rotation**
-- [ ] `references/face_v1.png`
-- [ ] `references/trois-quarts-gauche_v1.png`
-- [ ] `references/trois-quarts-droit_v1.png`
-- [ ] `references/profil-gauche_v1.png`
-- [ ] `references/profil-droit_v1.png`
-- [ ] `references/dos_v1.png`
-- [ ] `references/pied_v1.png`
+- [x] `references/face_v1.png`
+- [x] `references/trois-quarts-gauche_v1.png`
+- [x] `references/trois-quarts-droit_v1.png`
+- [x] `references/profil-gauche_v1.png`
+- [x] `references/profil-droit_v1.png`
+- [x] `references/dos_v1.png`
+- [x] `references/pied_v1.png`
 
-**Palette des émotions, de face** (yeux avec reflets, comme en temps normal)
-- [ ] `planches/emotions-1_v1.png` : neutre, joie, tristesse, colère, peur, surprise · pilote
-- [ ] `planches/emotions-2_v1.png` : dégoût, mépris, rire, pleurs, rage, terreur
-- [ ] `planches/emotions-3_v1.png` : stupeur, intérêt, concentration, confusion, doute, méfiance
-- [ ] `planches/emotions-4_v1.png` : gêne, honte, fierté, jalousie, tendresse, désir
-- [ ] `planches/emotions-5_v1.png` : contentement, soulagement, exaltation, triomphe, émerveillement, déception
-- [ ] `planches/emotions-6_v1.png` : inquiétude, agacement, malice, ennui, fatigue, douleur
+**Palette des émotions, de face** (l'œil droit garde son reflet, comme en temps normal ; le gauche est aveugle)
+- [x] `planches/emotions-1_v1.png` : neutre, joie, tristesse, colère, peur, surprise · pilote
+- [x] `planches/emotions-2_v1.png` : dégoût, mépris, rire, pleurs, rage, terreur
+- [x] `planches/emotions-3_v1.png` : stupeur, intérêt, concentration, confusion, doute, méfiance
+- [x] `planches/emotions-4_v1.png` : gêne, honte, fierté, jalousie, tendresse, désir
+- [x] `planches/emotions-5_v1.png` : contentement, soulagement, exaltation, triomphe, émerveillement, déception
+- [x] `planches/emotions-6_v1.png` : inquiétude, agacement, malice, ennui, fatigue, douleur
+- [x] `planches/reprises_v2.png` : les reprises de face et les deux images du clignement. La malice et le doute n'y sont pas meilleurs : leurs versions 1 restent
+- [x] `expressions/clignement-mi-clos_v1.png` : le neutre, les deux yeux mi-clos : le milieu du clignement, pour l'animation (sort des reprises)
+- [x] `expressions/clignement_v1.png` : le neutre, les deux yeux fermés : le clignement, pour l'animation (sort des reprises)
 
-**Palette des émotions, de trois-quarts**
-- [ ] `planches/trois-quarts_emotions-1_v1.png` : neutre, joie, tristesse, colère, peur, surprise
-- [ ] `planches/trois-quarts_emotions-2_v1.png` : dégoût, mépris, rire, pleurs, rage, terreur
-- [ ] `planches/trois-quarts_emotions-3_v1.png` : stupeur, intérêt, concentration, confusion, doute, méfiance
-- [ ] `planches/trois-quarts_emotions-4_v1.png` : gêne, honte, fierté, jalousie, tendresse, désir
-- [ ] `planches/trois-quarts_emotions-5_v1.png` : contentement, soulagement, exaltation, triomphe, émerveillement, déception
-- [ ] `planches/trois-quarts_emotions-6_v1.png` : inquiétude, agacement, malice, ennui, fatigue, douleur
+**Palette des émotions, de trois-quarts** (côté droit : son œil bleu devant). L'angle vient de `references/trois-quarts-droit_v1.png`, joint au prompt : dans la série 1, sans lui, le trois-quarts était à peine tourné.
+- [x] `planches/trois-quarts_emotions-1_v1.png` : neutre, joie, tristesse, colère, peur, surprise
+- [x] `planches/trois-quarts_emotions-2_v1.png` : dégoût, mépris, rire, pleurs, rage, terreur
+- [x] `planches/trois-quarts_emotions-3_v1.png` : stupeur, intérêt, concentration, confusion, doute, méfiance
+- [x] `planches/trois-quarts_emotions-4_v1.png` : gêne, honte, fierté, jalousie, tendresse, désir
+- [x] `planches/trois-quarts_emotions-5_v1.png` : contentement, soulagement, exaltation, triomphe, émerveillement, déception
+- [x] `planches/trois-quarts_emotions-6_v1.png` : inquiétude, agacement, malice, ennui, fatigue, douleur
+- [x] `planches/trois-quarts_retouche_v2.png` : la retouche de trois-quarts : le rire et le soulagement ferment l'œil aveugle, la fatigue ne garde qu'une bague. Le triomphe garde sa v1 : la retouche lui a fermé l'œil aveugle (un clin d'œil)
 
 **Signatures**
-- [ ] `expressions/regard-plafond_v1.png` : « Mâche. Regarde le plafond. », juste avant « merde » · pilote
-- [ ] `expressions/bouche-pleine_v1.png` : « Bouche pleine. Pas impressionné. » · pilote
-- [ ] `expressions/sourcil-leve_v1.png` : il regarde Daria en levant un sourcil
-- [ ] `expressions/haussement-epaules_v1.png` : « comme si elle venait de lui dire qu'il avait du sel sur la table »
-- [ ] `expressions/blemit_v1.png` : « grève un mois », il avale sa bouchée d'un coup et pose les mains à plat
-- [ ] `expressions/regard-vide_v1.png` : le mode silence, les yeux fixent un point que personne voit
-- [ ] `expressions/le-sourire_v1.png` : yeux sans reflet, joues plates, seule la bouche bouge · pilote
-- [ ] `expressions/trois-quarts_le-sourire_v1.png` : le même, de trois-quarts
-- [ ] `expressions/rire-degenere_v1.png` : la grimace façon Tanya, quand il dessine sur le miroir
-- [ ] `expressions/cherche-feu-vert_v1.png` : il regarde Maëlle, « le regard du mec qui vérifie »
+- [x] `expressions/regard-plafond_v1.png` : « Mâche. Regarde le plafond. », juste avant « merde » · pilote
+- [x] `expressions/bouche-pleine_v1.png` : « Bouche pleine. Pas impressionné. » · pilote
+- [x] `expressions/sourcil-leve_v2.png` : il regarde Daria en levant un sourcil
+- [x] `expressions/haussement-epaules_v1.png` : « comme si elle venait de lui dire qu'il avait du sel sur la table »
+- [x] `expressions/blemit_v1.png` : « grève un mois », il avale sa bouchée d'un coup et pose les mains à plat
+- [x] `expressions/regard-vide_v1.png` : le mode silence, les yeux fixent un point que personne voit
+- [x] `expressions/le-sourire_v2.png` : le prédateur. L'œil droit perd son reflet, joues plates, seule la bouche bouge, une ombre sur le haut du visage, la pupille minuscule, des crocs (la version « monstre », validée le 2026-10-15) · pilote
+- [x] `expressions/trois-quarts_le-sourire_v2.png` : le même, de trois-quarts
+- [x] `expressions/rire-degenere_v2.png` : le rire qui monte du ventre, des crocs, l'œil droit exorbité, quand il dessine sur le miroir
+- [x] `expressions/trois-quarts_rire-degenere_v1.png` : le même rire, de trois-quarts : il dessine sur le miroir en riant
+- [x] `expressions/cherche-feu-vert_v2.png` : il regarde Maëlle, « le regard du mec qui vérifie »
+- [x] `planches/retouche-1_v2.png` : la retouche : le sourcil levé, le feu vert (l'œil aveugle avait un iris), et le doute de la palette
 
 **Bouches**
-- [ ] `bouches/face_fermee_v1.png` · pilote
-- [ ] `bouches/face_mi-ouverte_v1.png` · pilote
-- [ ] `bouches/face_ouverte_v1.png` · pilote
-- [ ] `bouches/trois-quarts_fermee_v1.png`
-- [ ] `bouches/trois-quarts_mi-ouverte_v1.png`
-- [ ] `bouches/trois-quarts_ouverte_v1.png`
-- [ ] `bouches/face_sourire-ferme_v1.png`
-- [ ] `bouches/face_sourire-grimace_v1.png`
-- [ ] `bouches/face_sourire-rire_v1.png`
-- [ ] `bouches/trois-quarts_sourire-ferme_v1.png`
-- [ ] `bouches/trois-quarts_sourire-grimace_v1.png`
-- [ ] `bouches/trois-quarts_sourire-rire_v1.png`
+- [x] `bouches/face_fermee_v1.png` · pilote
+- [x] `bouches/face_mi-ouverte_v1.png` · pilote
+- [x] `bouches/face_ouverte_v1.png` · pilote
+- [x] `bouches/trois-quarts_fermee_v1.png`
+- [x] `bouches/trois-quarts_mi-ouverte_v1.png`
+- [x] `bouches/trois-quarts_ouverte_v1.png`
+- [x] `bouches/face_sourire-ferme_v1.png`
+- [x] `bouches/face_sourire-grimace_v1.png`
+- [x] `bouches/face_sourire-rire_v1.png`
+- [x] `bouches/trois-quarts_sourire-ferme_v1.png`
+- [x] `bouches/trois-quarts_sourire-grimace_v1.png`
+- [x] `bouches/trois-quarts_sourire-rire_v1.png`
 
 ### Patrick — `persos/patrick/`
 

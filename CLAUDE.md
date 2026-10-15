@@ -65,6 +65,7 @@ On n'automatise que ce qui a déjà marché une fois à la main.
 - Un LoRA par perso + un LoRA de style. `image/style.md` est la référence visuelle.
 - Contexte par image selon le besoin : image-to-image (composition, couleurs), ControlNet (pose, structure), IP-Adapter (style ou identité). Le prompt ne doit jamais contredire l'image de référence.
 - `image/explorations/` contient des essais non validés. Ils ne servent jamais de référence de production.
+- **Descriptions maîtres** (`image/persos/<slug>/description-chatgpt.md`) : écrites par ChatGPT d'après l'image maître validée, elles verrouillent l'apparence et se collent en tête de chaque prompt du perso. ChatGPT ne connaît pas l'histoire : pour le caractère, la voix et le jeu, c'est la bible qui fait foi. Ce qu'il ajoute de lui-même reste à valider par l'auteur.
 
 ### Protocole de création d'un perso
 
@@ -119,7 +120,7 @@ kebab-datastream/              (git : tout ce qui sert de référence)
 │   ├── INVENTAIRE.md          la liste image par image, à cocher
 │   ├── emotions.md            la palette des émotions, commune à tous les persos
 │   ├── style.md               le style visuel de référence
-│   ├── persos/<slug>/         fiche.json, planches/, references/, expressions/, bouches/
+│   ├── persos/<slug>/         fiche.json, description-chatgpt.md, prompts-chatgpt.md, provenance.json, planches/, references/, expressions/, bouches/
 │   ├── decors/<lieu>/<axe>/   fonds fixes validés
 │   ├── accessoires/           objets récurrents : galette, tasse, téléphone…
 │   ├── gabarits/              cartons texte et SMS, faits en code
@@ -185,7 +186,7 @@ Statuts : `a_generer` → `genere` → `valide` ou `rejete`. Les répliques sont
 2. Créer ce qui manque : `audio/`, `production/`, `workflows/`, `pipeline/`, `image/decors/` ; le `.gitignore` (vidéos, audio généré, caches, fichiers temporaires, `.env`) ; `config.yaml` (demander le chemin du disque externe) ; `ecriture/canon.yaml` avec les points à trancher ; `ecriture/continuite.md` avec ses rubriques ; `modeles.yaml` et `journal.md` vides.
 3. Créer les fiches de Maëlle et de Sky avec ce qui est déjà décidé :
    - **Maëlle** (`image/persos/maelle/fiche.json`) : image maître `references/master_v1.png`. Roux en undercut, taches de rousseur (à simplifier en production), petite cicatrice au sourcil, bague, col roulé noir, café à la main. Détails asymétriques : côtés à fixer avec l'auteur, flip désactivé au LoRA.
-   - **Sky** (`image/persos/sky/fiche.json`) : training noir, chemise blanche à fleurs de lys, yeux bleus, 87 kg. En temps normal, ses yeux ont des reflets. Le sourire : les reflets disparaissent, pas de plis aux yeux, joues plates, seule la bouche bouge. Le rire du dégénéré : grimace façon Tanya (*Youjo Senki*). Bouches en plus : sourire fermé, grimace, rire ouvert.
+   - **Sky** (`image/persos/sky/fiche.json`) : training noir, chemise blanche à lys, lunettes aviateur plaquées or, œil droit bleu et œil gauche aveugle, 1m87 et 92 kg (l'auteur, le 2026-10-14 ; le texte du CERN dit encore 87). Sa description maître est dans `image/persos/sky/description-chatgpt.md`. En temps normal, son œil droit a un reflet. Le sourire : ce reflet disparaît, pas de plis aux yeux, joues plates, seule la bouche bouge, avec une ombre sur le haut du visage, la pupille minuscule et des crocs : un monstre, pas un malin (l'auteur, le 2026-10-15). Le rire du dégénéré : grimace façon Tanya (*Youjo Senki*). Bouches en plus : sourire fermé, grimace, rire ouvert.
 4. Premier commit.
 5. Ne rien télécharger de lourd sans accord.
 

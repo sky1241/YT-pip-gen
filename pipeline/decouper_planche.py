@@ -1,6 +1,6 @@
 """Découpe une planche ChatGPT en fichiers séparés.
 
-La planche est une grille de cases séparées par de fines lignes blanches. Le script
+La planche est une grille de cases séparées par de fines lignes blanches ou noires. Le script
 trouve ces lignes tout seul, puis range chaque case sous son nom, de gauche à droite
 puis de haut en bas, dans le dossier du perso. Il n'écrase jamais un fichier existant.
 
@@ -19,17 +19,22 @@ from PIL import Image
 RACINE = Path(__file__).resolve().parent.parent
 
 
-def gouttieres(im, axe):
-    """Les bandes de pixels presque blancs qui traversent toute l'image."""
+def gouttieres(im, axe, noires=False):
+    """Les bandes de pixels presque blancs qui traversent toute l'image.
+
+    Avec noires=True, les fines lignes presque noires à la place : un col roulé noir
+    traverse aussi l'image, mais en bande épaisse, donc on ne garde que les traits fins.
+    """
     W, H = im.size
     n, m = (W, H) if axe == "x" else (H, W)
     px = im.load()
     pas = range(0, m, 4)
 
-    def blanc(i, k):
-        return min(px[i, k] if axe == "x" else px[k, i]) > 235
+    def separe(i, k):
+        p = px[i, k] if axe == "x" else px[k, i]
+        return max(p) < 80 if noires else min(p) > 235
 
-    plein = [sum(blanc(i, k) for k in pas) / len(pas) > 0.9 for i in range(n)]
+    plein = [sum(separe(i, k) for k in pas) / len(pas) > 0.9 for i in range(n)]
     bandes, i = [], 0
     while i < n:
         if plein[i]:
@@ -40,6 +45,8 @@ def gouttieres(im, axe):
             i = j
         else:
             i += 1
+    if noires:
+        bandes = [(a, b) for a, b in bandes if b - a <= 8]
     return bandes
 
 
@@ -72,7 +79,16 @@ def main():
 
     im = Image.open(planche).convert("RGB")
     W, H = im.size
-    boites = [(x0, y0, x1, y1) for (y0, y1) in cases(H, gouttieres(im, "y")) for (x0, x1) in cases(W, gouttieres(im, "x"))]
+
+    def grille(noires):
+        return [(x0, y0, x1, y1)
+                for (y0, y1) in cases(H, gouttieres(im, "y", noires))
+                for (x0, x1) in cases(W, gouttieres(im, "x", noires))]
+
+    boites = grille(noires=False)
+    if len(boites) != len(liste):
+        # ChatGPT sépare parfois les cases par un trait noir au lieu d'un blanc
+        boites = grille(noires=True)
     if len(boites) != len(liste):
         sys.exit(f"{len(boites)} cases trouvées pour {len(liste)} noms : rien n'est écrit")
 

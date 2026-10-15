@@ -1,0 +1,998 @@
+{
+  "_note": "D'où vient chaque image de la série 2 de Sky, et laquelle sert. Les prompts sont dans prompts-chatgpt.md. Toutes viennent de ChatGPT, dans une nouvelle conversation, l'image maître v3 jointe. La série 1 et sa provenance sont archivées sur le disque externe : <sorties_root>/persos/sky/archive_serie-1_2026-10-14/.",
+  "palette_retenue": {
+    "neutre": "expressions/neutre_v1.png",
+    "joie": "expressions/joie_v1.png",
+    "tristesse": "expressions/tristesse_v1.png",
+    "colere": "expressions/colere_v1.png",
+    "peur": "expressions/peur_v1.png",
+    "surprise": "expressions/surprise_v1.png",
+    "degout": "expressions/degout_v1.png",
+    "mepris": "expressions/mepris_v1.png",
+    "rire": "expressions/rire_v1.png",
+    "pleurs": "expressions/pleurs_v1.png",
+    "rage": "expressions/rage_v1.png",
+    "terreur": "expressions/terreur_v1.png",
+    "stupeur": "expressions/stupeur_v1.png",
+    "interet": "expressions/interet_v1.png",
+    "concentration": "expressions/concentration_v1.png",
+    "confusion": "expressions/confusion_v1.png",
+    "doute": "expressions/doute_v3.png",
+    "mefiance": "expressions/mefiance_v1.png",
+    "gene": "expressions/gene_v1.png",
+    "honte": "expressions/honte_v1.png",
+    "fierte": "expressions/fierte_v1.png",
+    "jalousie": "expressions/jalousie_v1.png",
+    "tendresse": "expressions/tendresse_v1.png",
+    "desir": "expressions/desir_v1.png",
+    "contentement": "expressions/contentement_v1.png",
+    "soulagement": "expressions/soulagement_v1.png",
+    "exaltation": "expressions/exaltation_v1.png",
+    "triomphe": "expressions/triomphe_v1.png",
+    "emerveillement": "expressions/emerveillement_v1.png",
+    "deception": "expressions/deception_v1.png",
+    "inquietude": "expressions/inquietude_v1.png",
+    "agacement": "expressions/agacement_v1.png",
+    "malice": "expressions/malice_v1.png",
+    "ennui": "expressions/ennui_v1.png",
+    "fatigue": "expressions/fatigue_v1.png",
+    "douleur": "expressions/douleur_v1.png",
+    "clignement-mi-clos": "expressions/clignement-mi-clos_v1.png",
+    "clignement": "expressions/clignement_v1.png"
+  },
+  "images": {
+    "bouches/face_fermee_v1.png": {
+      "planche": "planches/bouches_v1.png",
+      "case": 1,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "bouches/face_mi-ouverte_v1.png": {
+      "planche": "planches/bouches_v1.png",
+      "case": 2,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "bouches/face_ouverte_v1.png": {
+      "planche": "planches/bouches_v1.png",
+      "case": 3,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "bouches/face_sourire-ferme_v1.png": {
+      "planche": "planches/bouches-sourire_v1.png",
+      "case": 1,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "bouches/face_sourire-grimace_v1.png": {
+      "planche": "planches/bouches-sourire_v1.png",
+      "case": 2,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "bouches/face_sourire-rire_v1.png": {
+      "planche": "planches/bouches-sourire_v1.png",
+      "case": 3,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "bouches/trois-quarts_fermee_v1.png": {
+      "planche": "planches/bouches_v1.png",
+      "case": 4,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "bouches/trois-quarts_mi-ouverte_v1.png": {
+      "planche": "planches/bouches_v1.png",
+      "case": 5,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "bouches/trois-quarts_ouverte_v1.png": {
+      "planche": "planches/bouches_v1.png",
+      "case": 6,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "bouches/trois-quarts_sourire-ferme_v1.png": {
+      "planche": "planches/bouches-sourire_v1.png",
+      "case": 4,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "bouches/trois-quarts_sourire-grimace_v1.png": {
+      "planche": "planches/bouches-sourire_v1.png",
+      "case": 5,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "bouches/trois-quarts_sourire-rire_v1.png": {
+      "planche": "planches/bouches-sourire_v1.png",
+      "case": 6,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/agacement_v1.png": {
+      "planche": "planches/emotions-6_v1.png",
+      "case": 2,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/blemit_v1.png": {
+      "planche": "planches/signatures-1_v1.png",
+      "case": 4,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/bouche-pleine_v1.png": {
+      "planche": "planches/signatures-1_v1.png",
+      "case": 2,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/cherche-feu-vert_v1.png": {
+      "planche": "planches/signatures-1_v1.png",
+      "case": 6,
+      "date": "2026-10-15",
+      "retenue": false,
+      "remplacee_par": "expressions/cherche-feu-vert_v2.png",
+      "raison": "l'œil aveugle avait un iris bleu"
+    },
+    "expressions/cherche-feu-vert_v2.png": {
+      "planche": "planches/retouche-1_v2.png",
+      "case": 2,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/clignement-mi-clos_v1.png": {
+      "planche": "planches/reprises_v2.png",
+      "case": 3,
+      "date": "2026-10-15",
+      "retenue": true,
+      "_note": "sorti en clignement-mi-clos_v2 et renommé : c'est sa première version"
+    },
+    "expressions/clignement_v1.png": {
+      "planche": "planches/reprises_v2.png",
+      "case": 4,
+      "date": "2026-10-15",
+      "retenue": true,
+      "_note": "sorti en clignement_v2 et renommé : c'est sa première version"
+    },
+    "expressions/colere_v1.png": {
+      "planche": "planches/emotions-1_v1.png",
+      "case": 4,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/concentration_v1.png": {
+      "planche": "planches/emotions-3_v1.png",
+      "case": 3,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/confusion_v1.png": {
+      "planche": "planches/emotions-3_v1.png",
+      "case": 4,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/contentement_v1.png": {
+      "planche": "planches/emotions-5_v1.png",
+      "case": 1,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/deception_v1.png": {
+      "planche": "planches/emotions-5_v1.png",
+      "case": 6,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/degout_v1.png": {
+      "planche": "planches/emotions-2_v1.png",
+      "case": 1,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/desir_v1.png": {
+      "planche": "planches/emotions-4_v1.png",
+      "case": 6,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/douleur_v1.png": {
+      "planche": "planches/emotions-6_v1.png",
+      "case": 6,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/doute_v1.png": {
+      "planche": "planches/emotions-3_v1.png",
+      "case": 5,
+      "date": "2026-10-15",
+      "retenue": false,
+      "remplacee_par": "expressions/doute_v3.png",
+      "raison": "le sourcil levé se voyait à peine"
+    },
+    "expressions/doute_v2.png": {
+      "planche": "planches/reprises_v2.png",
+      "case": 2,
+      "date": "2026-10-15",
+      "retenue": false,
+      "raison": "pas plus net que la v1 : le sourcil levé reste ambigu"
+    },
+    "expressions/doute_v3.png": {
+      "planche": "planches/retouche-1_v2.png",
+      "case": 3,
+      "date": "2026-10-15",
+      "retenue": true,
+      "_note": "sortie en doute_v2 de la découpe, rangée en v3 : la v2 existait déjà"
+    },
+    "expressions/emerveillement_v1.png": {
+      "planche": "planches/emotions-5_v1.png",
+      "case": 5,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/ennui_v1.png": {
+      "planche": "planches/emotions-6_v1.png",
+      "case": 4,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/exaltation_v1.png": {
+      "planche": "planches/emotions-5_v1.png",
+      "case": 3,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/fatigue_v1.png": {
+      "planche": "planches/emotions-6_v1.png",
+      "case": 5,
+      "date": "2026-10-15",
+      "retenue": true,
+      "_note": "l'œil bleu fermé, l'aveugle mi-clos : avec le bâillement, ça se lit, gardé"
+    },
+    "expressions/fierte_v1.png": {
+      "planche": "planches/emotions-4_v1.png",
+      "case": 3,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/gene_v1.png": {
+      "planche": "planches/emotions-4_v1.png",
+      "case": 1,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/haussement-epaules_v1.png": {
+      "planche": "planches/signatures-2_v1.png",
+      "case": 1,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/honte_v1.png": {
+      "planche": "planches/emotions-4_v1.png",
+      "case": 2,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/inquietude_v1.png": {
+      "planche": "planches/emotions-6_v1.png",
+      "case": 1,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/interet_v1.png": {
+      "planche": "planches/emotions-3_v1.png",
+      "case": 2,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/jalousie_v1.png": {
+      "planche": "planches/emotions-4_v1.png",
+      "case": 4,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/joie_v1.png": {
+      "planche": "planches/emotions-1_v1.png",
+      "case": 2,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/le-sourire_v1.png": {
+      "planche": "planches/signatures-2_v1.png",
+      "case": 2,
+      "date": "2026-10-15",
+      "retenue": false,
+      "raison": "trop gentil : l'auteur veut le monstre, comme le sourire de Tanya dans Youjo Senki (prompt H bis)",
+      "remplacee_par": "expressions/le-sourire_v2.png"
+    },
+    "expressions/le-sourire_v2.png": {
+      "planche": "planches/signatures-2_v2.png",
+      "case": 1,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/malice_v1.png": {
+      "planche": "planches/emotions-6_v1.png",
+      "case": 3,
+      "date": "2026-10-15",
+      "retenue": true,
+      "_note": "gardée : le sourire est du côté de l'œil aveugle, mais c'est la version qui se lit le mieux ; deux essais pour le mettre de l'autre côté"
+    },
+    "expressions/malice_v2.png": {
+      "planche": "planches/reprises_v2.png",
+      "case": 1,
+      "date": "2026-10-15",
+      "retenue": false,
+      "raison": "la tête droite, mais le sourire, plus sage, penche encore du côté de l'œil aveugle : la v1 se lit mieux"
+    },
+    "expressions/malice_v3.png": {
+      "planche": "planches/retouche-1_v2.png",
+      "case": 4,
+      "date": "2026-10-15",
+      "retenue": false,
+      "raison": "le sourire, plus petit, reste du côté de l'œil aveugle : la v1 se lit mieux",
+      "_note": "sortie en malice_v2 de la découpe, rangée en v3"
+    },
+    "expressions/mefiance_v1.png": {
+      "planche": "planches/emotions-3_v1.png",
+      "case": 6,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/mepris_v1.png": {
+      "planche": "planches/emotions-2_v1.png",
+      "case": 2,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/neutre_v1.png": {
+      "planche": "planches/emotions-1_v1.png",
+      "case": 1,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/peur_v1.png": {
+      "planche": "planches/emotions-1_v1.png",
+      "case": 5,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/pleurs_v1.png": {
+      "planche": "planches/emotions-2_v1.png",
+      "case": 4,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/rage_v1.png": {
+      "planche": "planches/emotions-2_v1.png",
+      "case": 5,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/regard-plafond_v1.png": {
+      "planche": "planches/signatures-1_v1.png",
+      "case": 1,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/regard-vide_v1.png": {
+      "planche": "planches/signatures-1_v1.png",
+      "case": 5,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/rire-degenere_v1.png": {
+      "planche": "planches/signatures-2_v1.png",
+      "case": 4,
+      "date": "2026-10-15",
+      "retenue": false,
+      "raison": "trop gentil : l'auteur veut le monstre, comme le sourire de Tanya dans Youjo Senki (prompt H bis)",
+      "remplacee_par": "expressions/rire-degenere_v2.png"
+    },
+    "expressions/rire-degenere_v2.png": {
+      "planche": "planches/signatures-2_v2.png",
+      "case": 3,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/rire_v1.png": {
+      "planche": "planches/emotions-2_v1.png",
+      "case": 3,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/soulagement_v1.png": {
+      "planche": "planches/emotions-5_v1.png",
+      "case": 2,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/sourcil-leve_v1.png": {
+      "planche": "planches/signatures-1_v1.png",
+      "case": 3,
+      "date": "2026-10-15",
+      "retenue": false,
+      "remplacee_par": "expressions/sourcil-leve_v2.png",
+      "raison": "le sourcil levé se voyait à peine"
+    },
+    "expressions/sourcil-leve_v2.png": {
+      "planche": "planches/retouche-1_v2.png",
+      "case": 1,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/stupeur_v1.png": {
+      "planche": "planches/emotions-3_v1.png",
+      "case": 1,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/surprise_v1.png": {
+      "planche": "planches/emotions-1_v1.png",
+      "case": 6,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/tendresse_v1.png": {
+      "planche": "planches/emotions-4_v1.png",
+      "case": 5,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/terreur_v1.png": {
+      "planche": "planches/emotions-2_v1.png",
+      "case": 6,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/triomphe_v1.png": {
+      "planche": "planches/emotions-5_v1.png",
+      "case": 4,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/tristesse_v1.png": {
+      "planche": "planches/emotions-1_v1.png",
+      "case": 3,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/trois-quarts_agacement_v1.png": {
+      "planche": "planches/trois-quarts_emotions-6_v1.png",
+      "case": 2,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/trois-quarts_colere_v1.png": {
+      "planche": "planches/trois-quarts_emotions-1_v1.png",
+      "case": 4,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/trois-quarts_concentration_v1.png": {
+      "planche": "planches/trois-quarts_emotions-3_v1.png",
+      "case": 3,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/trois-quarts_confusion_v1.png": {
+      "planche": "planches/trois-quarts_emotions-3_v1.png",
+      "case": 4,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/trois-quarts_contentement_v1.png": {
+      "planche": "planches/trois-quarts_emotions-5_v1.png",
+      "case": 1,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/trois-quarts_deception_v1.png": {
+      "planche": "planches/trois-quarts_emotions-5_v1.png",
+      "case": 6,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/trois-quarts_degout_v1.png": {
+      "planche": "planches/trois-quarts_emotions-2_v1.png",
+      "case": 1,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/trois-quarts_desir_v1.png": {
+      "planche": "planches/trois-quarts_emotions-4_v1.png",
+      "case": 6,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/trois-quarts_douleur_v1.png": {
+      "planche": "planches/trois-quarts_emotions-6_v1.png",
+      "case": 6,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/trois-quarts_doute_v1.png": {
+      "planche": "planches/trois-quarts_emotions-3_v1.png",
+      "case": 5,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/trois-quarts_emerveillement_v1.png": {
+      "planche": "planches/trois-quarts_emotions-5_v1.png",
+      "case": 5,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/trois-quarts_ennui_v1.png": {
+      "planche": "planches/trois-quarts_emotions-6_v1.png",
+      "case": 4,
+      "date": "2026-10-15",
+      "retenue": true,
+      "_note": "la bague fine semble à l'index ou au majeur, pas à l'auriculaire : gardé, le détail est trop fin pour une retouche fiable"
+    },
+    "expressions/trois-quarts_exaltation_v1.png": {
+      "planche": "planches/trois-quarts_emotions-5_v1.png",
+      "case": 3,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/trois-quarts_fatigue_v1.png": {
+      "planche": "planches/trois-quarts_emotions-6_v1.png",
+      "case": 5,
+      "date": "2026-10-15",
+      "retenue": false,
+      "remplacee_par": "expressions/trois-quarts_fatigue_v2.png",
+      "raison": "deux bagues"
+    },
+    "expressions/trois-quarts_fatigue_v2.png": {
+      "planche": "planches/trois-quarts_retouche_v2.png",
+      "case": 4,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/trois-quarts_fierte_v1.png": {
+      "planche": "planches/trois-quarts_emotions-4_v1.png",
+      "case": 3,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/trois-quarts_gene_v1.png": {
+      "planche": "planches/trois-quarts_emotions-4_v1.png",
+      "case": 1,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/trois-quarts_honte_v1.png": {
+      "planche": "planches/trois-quarts_emotions-4_v1.png",
+      "case": 2,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/trois-quarts_inquietude_v1.png": {
+      "planche": "planches/trois-quarts_emotions-6_v1.png",
+      "case": 1,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/trois-quarts_interet_v1.png": {
+      "planche": "planches/trois-quarts_emotions-3_v1.png",
+      "case": 2,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/trois-quarts_jalousie_v1.png": {
+      "planche": "planches/trois-quarts_emotions-4_v1.png",
+      "case": 4,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/trois-quarts_joie_v1.png": {
+      "planche": "planches/trois-quarts_emotions-1_v1.png",
+      "case": 2,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/trois-quarts_le-sourire_v1.png": {
+      "planche": "planches/signatures-2_v1.png",
+      "case": 3,
+      "date": "2026-10-15",
+      "retenue": false,
+      "raison": "trop gentil : l'auteur veut le monstre, comme le sourire de Tanya dans Youjo Senki (prompt H bis)",
+      "remplacee_par": "expressions/trois-quarts_le-sourire_v2.png"
+    },
+    "expressions/trois-quarts_le-sourire_v2.png": {
+      "planche": "planches/signatures-2_v2.png",
+      "case": 2,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/trois-quarts_malice_v1.png": {
+      "planche": "planches/trois-quarts_emotions-6_v1.png",
+      "case": 3,
+      "date": "2026-10-15",
+      "retenue": true,
+      "_note": "de son côté gauche, celui de l'œil aveugle, comme de face"
+    },
+    "expressions/trois-quarts_mefiance_v1.png": {
+      "planche": "planches/trois-quarts_emotions-3_v1.png",
+      "case": 6,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/trois-quarts_mepris_v1.png": {
+      "planche": "planches/trois-quarts_emotions-2_v1.png",
+      "case": 2,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/trois-quarts_neutre_v1.png": {
+      "planche": "planches/trois-quarts_emotions-1_v1.png",
+      "case": 1,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/trois-quarts_peur_v1.png": {
+      "planche": "planches/trois-quarts_emotions-1_v1.png",
+      "case": 5,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/trois-quarts_pleurs_v1.png": {
+      "planche": "planches/trois-quarts_emotions-2_v1.png",
+      "case": 4,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/trois-quarts_rage_v1.png": {
+      "planche": "planches/trois-quarts_emotions-2_v1.png",
+      "case": 5,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/trois-quarts_rire-degenere_v1.png": {
+      "planche": "planches/signatures-2_v2.png",
+      "case": 4,
+      "date": "2026-10-15",
+      "retenue": true,
+      "_note": "sorti en trois-quarts_rire-degenere_v2 et renommé : c'est sa première version"
+    },
+    "expressions/trois-quarts_rire_v1.png": {
+      "planche": "planches/trois-quarts_emotions-2_v1.png",
+      "case": 3,
+      "date": "2026-10-15",
+      "retenue": false,
+      "remplacee_par": "expressions/trois-quarts_rire_v2.png",
+      "raison": "l'œil aveugle restait ouvert"
+    },
+    "expressions/trois-quarts_rire_v2.png": {
+      "planche": "planches/trois-quarts_retouche_v2.png",
+      "case": 1,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/trois-quarts_soulagement_v1.png": {
+      "planche": "planches/trois-quarts_emotions-5_v1.png",
+      "case": 2,
+      "date": "2026-10-15",
+      "retenue": false,
+      "remplacee_par": "expressions/trois-quarts_soulagement_v2.png",
+      "raison": "l'œil aveugle restait ouvert"
+    },
+    "expressions/trois-quarts_soulagement_v2.png": {
+      "planche": "planches/trois-quarts_retouche_v2.png",
+      "case": 2,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/trois-quarts_stupeur_v1.png": {
+      "planche": "planches/trois-quarts_emotions-3_v1.png",
+      "case": 1,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/trois-quarts_surprise_v1.png": {
+      "planche": "planches/trois-quarts_emotions-1_v1.png",
+      "case": 6,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/trois-quarts_tendresse_v1.png": {
+      "planche": "planches/trois-quarts_emotions-4_v1.png",
+      "case": 5,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/trois-quarts_terreur_v1.png": {
+      "planche": "planches/trois-quarts_emotions-2_v1.png",
+      "case": 6,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "expressions/trois-quarts_triomphe_v1.png": {
+      "planche": "planches/trois-quarts_emotions-5_v1.png",
+      "case": 4,
+      "date": "2026-10-15",
+      "retenue": true,
+      "_note": "gardée : les yeux sont bons ; la chevalière gravée à l'index se corrigera au passage local"
+    },
+    "expressions/trois-quarts_triomphe_v2.png": {
+      "planche": "planches/trois-quarts_retouche_v2.png",
+      "case": 3,
+      "date": "2026-10-15",
+      "retenue": false,
+      "raison": "la bague est devenue fine, mais la retouche a fermé l'œil aveugle alors que l'œil bleu reste ouvert : un clin d'œil"
+    },
+    "expressions/trois-quarts_tristesse_v1.png": {
+      "planche": "planches/trois-quarts_emotions-1_v1.png",
+      "case": 3,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "planches/bouches-sourire_v1.png": {
+      "source": "ChatGPT",
+      "prompt": "J",
+      "date": "2026-10-15",
+      "cases": 6,
+      "_note": "le visage de « l'autre » (ombre, pupille minuscule, crocs) ; d'une case à l'autre d'une rangée, la tête bouge de 1 à 3 pixels"
+    },
+    "planches/bouches_v1.png": {
+      "source": "ChatGPT",
+      "prompt": "I",
+      "date": "2026-10-15",
+      "cases": 6,
+      "_note": "toute la tête redessinée dans chaque case, comme demandé ; d'une case à l'autre d'une rangée, le haut du visage bouge de 2 à 3 pixels : des références de forme, pas des calques à coller"
+    },
+    "planches/emotions-1_v1.png": {
+      "source": "ChatGPT",
+      "prompt": "E1",
+      "date": "2026-10-15",
+      "cases": 6
+    },
+    "planches/emotions-2_v1.png": {
+      "source": "ChatGPT",
+      "prompt": "E2",
+      "date": "2026-10-15",
+      "cases": 6
+    },
+    "planches/emotions-3_v1.png": {
+      "source": "ChatGPT",
+      "prompt": "E3",
+      "date": "2026-10-15",
+      "cases": 6
+    },
+    "planches/emotions-4_v1.png": {
+      "source": "ChatGPT",
+      "prompt": "E4",
+      "date": "2026-10-15",
+      "cases": 6
+    },
+    "planches/emotions-5_v1.png": {
+      "source": "ChatGPT",
+      "prompt": "E5",
+      "date": "2026-10-15",
+      "cases": 6
+    },
+    "planches/emotions-6_v1.png": {
+      "source": "ChatGPT",
+      "prompt": "E6",
+      "date": "2026-10-15",
+      "cases": 6
+    },
+    "planches/reprises_v2.png": {
+      "source": "ChatGPT",
+      "prompt": "F",
+      "date": "2026-10-15",
+      "cases": 4
+    },
+    "planches/retouche-1_v2.png": {
+      "source": "ChatGPT",
+      "prompt": "G bis",
+      "date": "2026-10-15",
+      "cases": 4,
+      "_note": "retouche d'un assemblage fait par Claude : sourcil-leve_v1, cherche-feu-vert_v1, doute_v1, malice_v1"
+    },
+    "planches/rotation_v1.png": {
+      "source": "ChatGPT",
+      "prompt": "C",
+      "date": "2026-10-15",
+      "cases": 6
+    },
+    "planches/signatures-1_v1.png": {
+      "source": "ChatGPT",
+      "prompt": "G",
+      "date": "2026-10-15",
+      "cases": 6
+    },
+    "planches/signatures-2_v1.png": {
+      "source": "ChatGPT",
+      "prompt": "H",
+      "date": "2026-10-15",
+      "cases": 4
+    },
+    "planches/signatures-2_v2.png": {
+      "source": "ChatGPT",
+      "prompt": "H bis",
+      "date": "2026-10-15",
+      "cases": 4
+    },
+    "planches/trois-quarts_emotions-1_v1.png": {
+      "source": "ChatGPT",
+      "prompt": "K1",
+      "date": "2026-10-15",
+      "cases": 6,
+      "_note": "la vue trois-quarts droite de la rotation jointe pour l'angle"
+    },
+    "planches/trois-quarts_emotions-2_v1.png": {
+      "source": "ChatGPT",
+      "prompt": "K2",
+      "date": "2026-10-15",
+      "cases": 6
+    },
+    "planches/trois-quarts_emotions-3_v1.png": {
+      "source": "ChatGPT",
+      "prompt": "K3",
+      "date": "2026-10-15",
+      "cases": 6
+    },
+    "planches/trois-quarts_emotions-4_v1.png": {
+      "source": "ChatGPT",
+      "prompt": "K4",
+      "date": "2026-10-15",
+      "cases": 6
+    },
+    "planches/trois-quarts_emotions-5_v1.png": {
+      "source": "ChatGPT",
+      "prompt": "K5",
+      "date": "2026-10-15",
+      "cases": 6
+    },
+    "planches/trois-quarts_emotions-6_v1.png": {
+      "source": "ChatGPT",
+      "prompt": "K6",
+      "date": "2026-10-15",
+      "cases": 6
+    },
+    "planches/trois-quarts_retouche_v2.png": {
+      "source": "ChatGPT",
+      "prompt": "K7",
+      "date": "2026-10-15",
+      "cases": 4,
+      "_note": "retouche d'un assemblage fait par Claude : trois-quarts_rire_v1, trois-quarts_soulagement_v1, trois-quarts_triomphe_v1, trois-quarts_fatigue_v1"
+    },
+    "references/dos_v1.png": {
+      "planche": "planches/rotation_v1.png",
+      "case": 6,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "references/face_v1.png": {
+      "planche": "planches/rotation_v1.png",
+      "case": 1,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "references/master_v1.png": {
+      "source": "ChatGPT",
+      "prompt": "série 1, prompt 0, puis une retouche de l'auteur pour les veines",
+      "date": "2026-10-14",
+      "retenue": false,
+      "remplacee_par": "references/master_v3.png",
+      "raison": "monture argentée"
+    },
+    "references/master_v2.png": {
+      "source": "ChatGPT",
+      "prompt": "série 1, prompts 0 bis et 0 ter : retouches de la v1",
+      "date": "2026-10-14",
+      "retenue": false,
+      "remplacee_par": "references/master_v3.png",
+      "raison": "taches sous les verres, trait entre les sourcils, barbe fournie"
+    },
+    "references/master_v3.png": {
+      "source": "ChatGPT",
+      "prompt": "A : retouche de la v2",
+      "date": "2026-10-14",
+      "retenue": true,
+      "_note": "ni trait ni taches, barbe de 3 jours ; l'œil aveugle reste un peu plus grand, ChatGPT a refusé de le retoucher, l'auteur garde cette version"
+    },
+    "references/pied_v1.png": {
+      "source": "ChatGPT",
+      "prompt": "D",
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "references/profil-droit_v1.png": {
+      "planche": "planches/rotation_v1.png",
+      "case": 5,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "references/profil-gauche_v1.png": {
+      "planche": "planches/rotation_v1.png",
+      "case": 4,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "references/trois-quarts-droit_v1.png": {
+      "planche": "planches/rotation_v1.png",
+      "case": 3,
+      "date": "2026-10-15",
+      "retenue": true
+    },
+    "references/trois-quarts-gauche_v1.png": {
+      "planche": "planches/rotation_v1.png",
+      "case": 2,
+      "date": "2026-10-15",
+      "retenue": true
+    }
+  },
+  "signatures_retenues": {
+    "regard-plafond": "expressions/regard-plafond_v1.png",
+    "bouche-pleine": "expressions/bouche-pleine_v1.png",
+    "blemit": "expressions/blemit_v1.png",
+    "regard-vide": "expressions/regard-vide_v1.png",
+    "sourcil-leve": "expressions/sourcil-leve_v2.png",
+    "cherche-feu-vert": "expressions/cherche-feu-vert_v2.png",
+    "haussement-epaules": "expressions/haussement-epaules_v1.png",
+    "le-sourire": "expressions/le-sourire_v2.png",
+    "trois-quarts_le-sourire": "expressions/trois-quarts_le-sourire_v2.png",
+    "rire-degenere": "expressions/rire-degenere_v2.png",
+    "trois-quarts_rire-degenere": "expressions/trois-quarts_rire-degenere_v1.png"
+  },
+  "bouches_retenues": {
+    "face_fermee": "bouches/face_fermee_v1.png",
+    "face_mi-ouverte": "bouches/face_mi-ouverte_v1.png",
+    "face_ouverte": "bouches/face_ouverte_v1.png",
+    "trois-quarts_fermee": "bouches/trois-quarts_fermee_v1.png",
+    "trois-quarts_mi-ouverte": "bouches/trois-quarts_mi-ouverte_v1.png",
+    "trois-quarts_ouverte": "bouches/trois-quarts_ouverte_v1.png",
+    "face_sourire-ferme": "bouches/face_sourire-ferme_v1.png",
+    "face_sourire-grimace": "bouches/face_sourire-grimace_v1.png",
+    "face_sourire-rire": "bouches/face_sourire-rire_v1.png",
+    "trois-quarts_sourire-ferme": "bouches/trois-quarts_sourire-ferme_v1.png",
+    "trois-quarts_sourire-grimace": "bouches/trois-quarts_sourire-grimace_v1.png",
+    "trois-quarts_sourire-rire": "bouches/trois-quarts_sourire-rire_v1.png"
+  },
+  "palette_retenue_trois_quarts": {
+    "neutre": "expressions/trois-quarts_neutre_v1.png",
+    "joie": "expressions/trois-quarts_joie_v1.png",
+    "tristesse": "expressions/trois-quarts_tristesse_v1.png",
+    "colere": "expressions/trois-quarts_colere_v1.png",
+    "peur": "expressions/trois-quarts_peur_v1.png",
+    "surprise": "expressions/trois-quarts_surprise_v1.png",
+    "degout": "expressions/trois-quarts_degout_v1.png",
+    "mepris": "expressions/trois-quarts_mepris_v1.png",
+    "rire": "expressions/trois-quarts_rire_v2.png",
+    "pleurs": "expressions/trois-quarts_pleurs_v1.png",
+    "rage": "expressions/trois-quarts_rage_v1.png",
+    "terreur": "expressions/trois-quarts_terreur_v1.png",
+    "stupeur": "expressions/trois-quarts_stupeur_v1.png",
+    "interet": "expressions/trois-quarts_interet_v1.png",
+    "concentration": "expressions/trois-quarts_concentration_v1.png",
+    "confusion": "expressions/trois-quarts_confusion_v1.png",
+    "doute": "expressions/trois-quarts_doute_v1.png",
+    "mefiance": "expressions/trois-quarts_mefiance_v1.png",
+    "gene": "expressions/trois-quarts_gene_v1.png",
+    "honte": "expressions/trois-quarts_honte_v1.png",
+    "fierte": "expressions/trois-quarts_fierte_v1.png",
+    "jalousie": "expressions/trois-quarts_jalousie_v1.png",
+    "tendresse": "expressions/trois-quarts_tendresse_v1.png",
+    "desir": "expressions/trois-quarts_desir_v1.png",
+    "contentement": "expressions/trois-quarts_contentement_v1.png",
+    "soulagement": "expressions/trois-quarts_soulagement_v2.png",
+    "exaltation": "expressions/trois-quarts_exaltation_v1.png",
+    "triomphe": "expressions/trois-quarts_triomphe_v1.png",
+    "emerveillement": "expressions/trois-quarts_emerveillement_v1.png",
+    "deception": "expressions/trois-quarts_deception_v1.png",
+    "inquietude": "expressions/trois-quarts_inquietude_v1.png",
+    "agacement": "expressions/trois-quarts_agacement_v1.png",
+    "malice": "expressions/trois-quarts_malice_v1.png",
+    "ennui": "expressions/trois-quarts_ennui_v1.png",
+    "fatigue": "expressions/trois-quarts_fatigue_v2.png",
+    "douleur": "expressions/trois-quarts_douleur_v1.png"
+  }
+}

@@ -3,12 +3,8 @@
   "nom": "Sky",
   "role": "protagoniste : électricien, associé de Seb chez Datastream",
   "_a_completer": [
-    "codes couleur de la palette",
-    "taille : 1m87 dans la fiche des personnages du JDR d'origine, une autre histoire (à confirmer)",
-    "poids : 87 kg dans la bible et le texte, 92 kg dans bible-ecriture.md (à trancher)",
-    "détails asymétriques s'il y en a, puis le réglage du flip du LoRA",
-    "ce qu'il ne porte jamais",
-    "image maître"
+    "relever les codes couleur sur l'image maître v3 (ceux de la palette viennent de la v1), puis les faire valider par l'auteur",
+    "au passage local, corriger deux bagues : expressions/trois-quarts_triomphe_v1.png (une chevalière gravée à l'index) et expressions/trois-quarts_ennui_v1.png (au mauvais doigt) : une seule bande fine en bronze, à l'auriculaire droit"
   ],
   "energie": {
     "resume": "Variable — bouffe = moyen, silence = zéro, sourire = explosion",
@@ -17,23 +13,50 @@
     "frequence": "L'ampère. Le courant. Il EST l'énergie qui traverse le circuit."
   },
   "silhouette": {
-    "poids_kg": 87,
+    "poids_kg": 92,
+    "_note_poids": "92 kg donné par l'auteur le 2026-10-14 ; le texte du CERN et la bible disent 87 kg, à aligner dans le texte",
     "masse_grasse": "8 %",
-    "_note": "« Les avant-bras d'un mec qui a porté des câbles pendant 10 ans » (Le Miroir)"
+    "avant_bras": "énormes et denses, veines bien visibles : « les avant-bras d'un mec qui a porté des câbles pendant 10 ans »",
+    "taille": "1m87 (l'auteur, le 2026-10-14)",
+    "carrure": "très larges épaules, dos et poitrine épais, bras puissants, grandes mains ; musculature fonctionnelle et lourde, pas de culturiste de scène"
   },
   "palette": {
-    "_note": "codes couleur à fixer depuis l'image maître / la bible",
-    "yeux": "bleus",
-    "training": "noir",
-    "chemise": "blanche à fleurs de lys"
+    "_note": "relevée sur references/master_v1.png le 2026-10-14, sous la lumière chaude du matin : à valider",
+    "cheveux": "#7D4428 (châtain clair, entre brun et blond)",
+    "barbe": "#914F2B (un peu plus claire que les cheveux)",
+    "peau": "#AF6332 (chaude, légèrement hâlée)",
+    "oeil_droit": "#263C58 (bleu profond, avec un reflet vif)",
+    "oeil_gauche": "blanc laiteux (aveugle)",
+    "chemise": "blanche, lys noirs et blancs",
+    "pantalon": "#0E0D0D (noir)",
+    "bague": "bronze",
+    "collier": "cordon de cuir noir ; chaîne et deux anneaux en métal",
+    "lunettes": "monture plaquée or"
   },
   "tenue_canonique": {
-    "training": "noir",
-    "chemise": "blanche à fleurs de lys",
-    "chaussures": "baskets"
+    "chemise": "blanche à manches longues, boutonnée, un peu ample mais tendue sur la poitrine, ouverte en haut ; motif clairsemé de lys noirs et blancs (la fleur, pas le symbole héraldique), surtout sur le torse, col et manches presque unis",
+    "manches": "retroussées juste sous le coude : les coudes restent couverts, les avant-bras se voient en entier",
+    "pantalon": "pantalon de training noir, ample, à cordon, tissu doux et mat, sans logo ni bande",
+    "chaussures": "baskets noires (validées sur references/pied_v1.png, le 2026-10-14)",
+    "lunettes": "grandes lunettes de vue aviateur, monture fine plaquée or (l'auteur, le 2026-10-14), double pont : une fine barre droite relie le haut des verres, au-dessus du pont du nez ; verres parfaitement clairs, jamais teintés",
+    "colliers": [
+      "un cordon de cuir noir très fin, serré au cou",
+      "plus bas, une fine chaîne en métal qui finit sur deux anneaux entrelacés"
+    ],
+    "bague": "une seule, en bronze, à l'auriculaire droit",
+    "_note_pied": "sur l'image en pied, la chemise est ouverte jusqu'au ventre et l'élastique bleu clair du caleçon dépasse : détails de cette image, pas du look de base, sauf avis contraire de l'auteur"
   },
   "traits": {
-    "yeux": "bleus, avec reflets en temps normal"
+    "visage": "masculin et anguleux : mâchoire carrée, pommettes marquées, nez droit ; présence calme, un peu intimidante",
+    "cheveux": "courts, en bataille, un peu hérissés ; châtain clair, entre brun et blond, ni blond ni brun foncé",
+    "sourcils": "du même ton, un peu plus clairs, droits et marqués",
+    "barbe": "barbe de 3 jours : de petits poils courts partout (mâchoire, menton, lèvre du haut, joues), un peu plus clairs que les cheveux, avec des poils blancs mêlés (l'auteur, le 2026-10-14, image maître v3)",
+    "oeil_droit": "bleu très profond, avec un reflet vif en temps normal",
+    "oeil_gauche": "aveugle : entièrement blanc laiteux, sans iris ni pupille ; naturel, ni brillant ni surnaturel. L'auteur le voulait de la taille de l'œil droit, ChatGPT n'a pas voulu le retoucher : il reste un peu plus grand sur l'image maître v3, qui fait foi",
+    "cernes": "très marquées sous les deux yeux, brun-noir : il a l'air de dormir une heure par nuit ; elles se voient à travers les lunettes",
+    "expression_par_defaut": "calme, fatigué, observateur, un peu détaché : paupières lourdes, bouche détendue, posture droite",
+    "dents": "normales ; quand « l'autre » arrive (le sourire, le rire du dégénéré), ses canines deviennent des crocs pointus, comme un prédateur (l'auteur, le 2026-10-14, renforcé le 2026-10-15 ; référence : le sourire de Tanya dans Youjo Senki, captures montrées par l'auteur, non stockées)",
+    "desir": "pour lui, le désir de la palette est celui de la bouffe"
   },
   "modes": {
     "_note": "la state machine de la bible, reliée aux expressions de image/INVENTAIRE.md",
@@ -44,8 +67,9 @@
     "institut": "hors épisode 1"
   },
   "jeu_du_sourire": {
-    "sourire": "les reflets des yeux disparaissent, pas de plis aux yeux, joues plates, seule la bouche bouge",
-    "rire_degenere": "grimace façon Tanya (Youjo Senki)"
+    "sourire": "le reflet de son œil droit s'éteint, la pupille devient minuscule, une ombre lourde tombe sur le haut du visage ; pas de plis aux yeux, joues plates, seule la bouche bouge : un sourire beaucoup trop large, dents serrées, des crocs ; la tête baissée, il regarde par en dessous. Froid, calme, terrifiant (version validée par l'auteur le 2026-10-15)",
+    "rire_degenere": "le rire qui monte du ventre : la tête rejetée en arrière, la bouche grande ouverte, des crocs, l'œil droit exorbité à pupille minuscule, de la sueur à la tempe (façon Tanya, Youjo Senki ; validé le 2026-10-15)",
+    "_note_monstre": "l'auteur, le 2026-10-15 : la première version était « trop gentillette, on sent pas assez le monstre par rapport à Youjo Senki ». Le sourire et le rire doivent faire peur : ombre sur le haut du visage, l'œil bleu à pupille minuscule, le sourire bien trop large, des crocs"
   },
   "expressions_signatures": {
     "regard-plafond": "il mâche et regarde le plafond",
@@ -54,21 +78,47 @@
     "haussement-epaules": "il hausse les épaules, comme si on lui disait qu'il a du sel sur la table",
     "blemit": "il avale sa bouchée d'un coup, pose la galette, les mains à plat",
     "regard-vide": "les yeux fixent un point que personne voit",
-    "le-sourire": "voir jeu_du_sourire",
+    "le-sourire": "voir jeu_du_sourire : le prédateur",
     "rire-degenere": "voir jeu_du_sourire",
     "cherche-feu-vert": "il regarde Maëlle : le regard du mec qui vérifie, qui cherche le feu vert"
   },
   "details_asymetriques": {
-    "_note": "à fixer avec l'auteur si besoin"
+    "_note": "« gauche » = sa gauche à lui. Relevés sur l'image maître et dans la description de ChatGPT (2026-10-14)",
+    "oeil_aveugle": "le gauche ; le droit est bleu",
+    "bague": "auriculaire droit",
+    "expressions_d_un_seul_cote": "le mépris, la confusion, le doute et le sourcil levé du côté droit, celui de l'œil bleu ; la malice de son côté gauche, celui de l'œil aveugle : ChatGPT l'y remet à chaque essai, en génération comme en retouche, on la garde là (2026-10-15)"
   },
-  "accessoires": ["galette poulet harissa", "plateau de frites", "bouteille de Fanta", "téléphone chiffré", "laptop", "marqueur (au miroir)"],
-  "ne_porte_jamais": [],
-  "image_maitre": null,
-  "bouches_supplementaires": ["sourire fermé", "grimace", "rire ouvert"],
+  "accessoires": [
+    "galette poulet harissa",
+    "plateau de frites",
+    "bouteille de Fanta",
+    "téléphone chiffré",
+    "laptop",
+    "marqueur (au miroir)"
+  ],
+  "ne_porte_jamais": [
+    "d'autre bague que celle de l'auriculaire",
+    "de verres teintés ni de lunettes de soleil",
+    "de logo, d'inscription ni de bande sur le pantalon",
+    "de motif sur le col ni sur les manches",
+    "de monture argentée"
+  ],
+  "image_maitre": "image/persos/sky/references/master_v3.png",
+  "bouches_supplementaires": [
+    "sourire fermé",
+    "grimace",
+    "rire ouvert"
+  ],
   "lora": {
-    "flip_horizontal": null
+    "flip_horizontal": false,
+    "_note": "flip désactivé : œil gauche aveugle, bague à droite"
   },
   "voix": "audio/voix/sky/",
   "_note_voix": "la voix de l'auteur, faite par lui (CLAUDE.md > Stack)",
-  "sources": "bible : table des énergies, sections SKY et LE SOURIRE ; « Le Miroir » (ecriture/brouillons/cern.md, partie 1)"
+  "sources": "bible : table des énergies, sections SKY et LE SOURIRE ; « Le Miroir » (ecriture/brouillons/cern.md, partie 1)",
+  "_note_visage": "Sky, c'est l'auteur : son image maître peut partir d'une photo de lui, avec son accord. La règle des visages réels (CLAUDE.md, règle 6) vise les vraies personnes de la satire.",
+  "description_maitre": "image/persos/sky/description-chatgpt.md : à coller en tête de chaque prompt de Sky, avec l'image maître jointe",
+  "traits_a_raccorder_dans_le_texte": "la bible et le texte parlent de ses « yeux bleus » (« le monsieur avec les yeux bleus ») : avec un œil aveugle, à l'auteur de voir s'il retouche ces passages ou s'il l'explique",
+  "palette_emotions": "de face, et de trois-quarts côté droit (son œil bleu devant), pour répondre au trois-quarts gauche de Maëlle en champ-contrechamp",
+  "_note_image_maitre": "la v3 est la référence de la série 2 (validée par l'auteur le 2026-10-14) ; la v1 (argent) et la v2 (or, avec des taches) restent comme historique"
 }
