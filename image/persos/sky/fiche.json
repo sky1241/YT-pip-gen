@@ -111,7 +111,22 @@
   ],
   "lora": {
     "flip_horizontal": false,
-    "_note": "flip désactivé : œil gauche aveugle, bague à droite"
+    "_note": "flip désactivé : œil gauche aveugle, bague à droite",
+    "declencheur": "skykebab",
+    "_note_legendes": "légendes en tags Danbooru (le format d'Animagine XL 4.0). Les traits fixes (lunettes dorées, œil aveugle, œil bleu, barbe, chemise, colliers, bague) ne sont jamais écrits : le mot déclencheur les absorbe. On écrit ce qui change : l'angle, l'expression, le cadrage",
+    "legende_maitre": "upper body, sitting, table, indoors, restaurant, holding bottle, food, morning, sunlight",
+    "legendes_signatures": {
+      "regard-plafond": "chewing, looking up, thinking",
+      "bouche-pleine": "eating, mouth full, puffy cheeks, expressionless",
+      "sourcil-leve": "raised eyebrow, unimpressed",
+      "blemit": "pale skin, shocked, sweat, nervous",
+      "regard-vide": "empty eyes, blank stare, expressionless",
+      "cherche-feu-vert": "looking to the side, side glance, nervous",
+      "haussement-epaules": "shrugging, palms up, open hands",
+      "le-sourire": "evil smile, shaded face, sharp teeth, fangs, constricted pupils, head down",
+      "rire-degenere": "evil laugh, crazy laugh, open mouth, sharp teeth, fangs, constricted pupils, head back, shaded face, sweat"
+    },
+    "test_signature": "le-sourire"
   },
   "voix": "audio/voix/sky/",
   "_note_voix": "la voix de l'auteur, faite par lui (CLAUDE.md > Stack)",

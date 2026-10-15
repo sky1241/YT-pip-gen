@@ -333,3 +333,11 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   perso sans entraînement, il existe FLUX.1 Kontext, Qwen Image Edit et Krea 2, à partir d'une image de référence, mais faits pour
   la photo, autour de 11 à 12 Go en fp8 (environ 6 Go compressés), et pas testés sur de l'anime : pour Sky et ses détails
   asymétriques, le LoRA reste la voie sûre.
+- **Le LoRA de Sky, v1 : le jeu et l'entraînement, le 2026-10-15.** Le jeu : 105 images retenues (`pipeline/preparer_lora.py sky v1`),
+  agrandies ×4 avec Real-ESRGAN anime 6B par tuiles de 192 pixels (d'un seul bloc, une convolution demandait 4,5 Go et débordait),
+  puis ramenées à environ un mégapixel ; légendes en tags Danbooru, mot déclencheur `skykebab`, les traits fixes jamais écrits.
+  Sur `<sorties_root>/lora/sky/jeu_v1/`. L'envoi vers Kaggle fichier par fichier allait à 45 Ko/s (210 fichiers, un aller-retour
+  chacun) : en un seul zip, 94 Mo en 13 s, et Kaggle le décompresse tout seul. Jeu privé `skyzer/kebab-lora-sky-jeu-v1`.
+  L'entraînement : notebook privé `skyzer/kebab-lora-sky-v1` sur une T4, kohya sd-scripts v0.12.0, Animagine XL 4.0, LoRA de rang 32
+  (alpha 16), le UNet seul, AdamW8bit à 1e-4, cosinus, 8 époques × 2 répétitions, sans retournement, fp16 et le VAE en fp32.
+  Le script et sa description : `pipeline/kaggle/lora_sky_v1/`. Lancé vers 15 h.

@@ -129,7 +129,7 @@ La palette des émotions, la même pour tous : 36 émotions en 6 planches, défi
   - [x] Palette des émotions de trois-quarts : les 6 planches et leur retouche (deux bagues restent à corriger au passage local)
   - [x] Signatures : les 9, dont le jeu du sourire en monstre, plus le rire du dégénéré de trois-quarts
   - [x] Bouches : les 6 de base et les 6 du sourire (sourire fermé, grimace, rire ouvert, sous les deux angles)
-  - [ ] LoRA : passage local, entraînement, test standard. C'est la prochaine grosse étape. Pour un premier test, Claude propose d'entraîner directement sur les images de ChatGPT, sans passage local : à valider par l'auteur
+  - [ ] LoRA : passage local, entraînement, test standard. Premier essai en cours (le 2026-10-15) : la v1, entraînée sur Kaggle directement sur les images de ChatGPT, sans passage local ; le test standard est dans `image/test-standard.md`
   - [ ] Voix : compléter et valider `audio/voix/sky/`
 - [ ] Maëlle
   - [ ] Fiche : valider les codes couleur relevés (1m65, côtés asymétriques confirmés, le reste du look est posé)
