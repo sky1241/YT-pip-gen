@@ -308,3 +308,13 @@ Vérifié sur les pages officielles, le 2026-10-15 :
 - **Les 3 Go réservés** : l'option `hugepagesz=1G default_hugepagesz=1G hugepages=3` de `/etc/default/grub` vient du réglage du
   minage (`/opt/linux-upgrade/mining/tune_system.sh`, pour xmrig) ; ces pages ne servent à rien en ce moment. Les libérer demande
   les droits root (le compte n'est pas dans le groupe sudo).
+- **Le minage désinstallé, à la demande de l'auteur, le 2026-10-15** : rien ne tournait. Supprimés : les services utilisateur
+  (`mining-*`, `monerod`, `monero-wallet-rpc`) et système (`mining-gpu-power-cap`, `mining-thp-disable`), les programmes
+  (`/opt/miners` : xmrig, xmrig-mo, lolMiner, SRBMiner), `/etc/sysctl.d/99-mining-hugepages.conf`, les règles sudo du minage
+  (`/etc/sudoers.d/mining` et `mining-gpu-powercap`), l'option `hugepages=3` de GRUB (copie de l'ancien fichier :
+  `/etc/default/grub.avant-desinstallation-minage`, puis update-grub), le module msr, et `/opt/linux-upgrade/mining`, archivé avant
+  dans `/media/sky/VIDE 1To/archives/mining_opt-linux-upgrade_2026-10-15.tar.gz` (sa config et son `.env`). Pas touché : le
+  portefeuille Monero et la chaîne (105 Go) sur « VIDE 1To », la règle sudo de linux-upgrade. Les 3 Go réservés sont libérés sans
+  redémarrer : 11,3 Go disponibles avec VS Code ouvert.
+- **Le sudo** : le compte a tous les droits root sans mot de passe (`/etc/sudoers.d/linux-upgrade`). CLAUDE.md dit « Debian sans
+  sudo, installations en espace utilisateur » : signalé à l'auteur, la règle reste en place tant qu'il ne l'a pas changée.

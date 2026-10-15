@@ -19,7 +19,8 @@ comfyui_dir: "/home/sky/ComfyUI"   # cloné le 2026-10-15 (commit ba99487), mod�
 
 # --- Machine de production ---
 # À trancher (CLAUDE.md > À trancher). Relevé du 2026-10-13 : aucune carte NVIDIA sur le parc.
-#   sky-master : AMD Radeon RX 5700 XT (gfx1010), 8 Go de VRAM, ROCm 6.2.2 ; 15 Go de RAM ; pas de sudo
+#   sky-master : AMD Radeon RX 5700 XT (gfx1010), 8 Go de VRAM, ROCm 6.2.2 ; 15 Go de RAM ; sudo sans mot de passe
+#     (relevé le 2026-10-15 : /etc/sudoers.d/linux-upgrade, contrairement à ce que disait le relevé du 2026-10-13)
 #   pc1 : GeForce GTX 770 (2013), sans pilote NVIDIA
 #   pc2 : portable, Mobility Radeon HD 5650, 7 Go de RAM
 #   pc3 : portable, Intel HD Graphics 620, 7 Go de RAM
