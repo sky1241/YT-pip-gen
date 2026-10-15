@@ -29,6 +29,11 @@ La série 1, faite avec la monture argentée, est archivée sur le disque extern
 | J | Les bouches du sourire : faite | `planches/bouches-sourire_v1.png` |
 | K1 à K6 | Palette de trois-quarts, planches 1 à 6 : faites | `planches/trois-quarts_emotions-1_v1.png` à `trois-quarts_emotions-6_v1.png` |
 | K7 | La retouche de trois-quarts : deux yeux, deux bagues : faite | `planches/trois-quarts_retouche_v2.png` |
+| L1 | En pied : de face, de trois-quarts des deux côtés | `planches/pied-1_v1.png` |
+| L2 | En pied : de profil des deux côtés, de dos | `planches/pied-2_v1.png` |
+| L3 | Trois poses : assis de face, assis de côté, debout accoudé | `planches/poses_v1.png` |
+| L4 | Six gestes de face | `planches/gestes_v1.png` |
+| L5 | Les six gestes de trois-quarts | `planches/trois-quarts_gestes_v1.png` |
 
 La suite du tableau s'écrit au fil de la série. Les chemins partent de `image/persos/sky/`.
 
@@ -474,3 +479,83 @@ When Sky closes his eyes, the eyelid of his blind eye closes too: this is the on
 Résultat, le 2026-10-15 : trois cases sur quatre. Le rire et le soulagement ferment l'œil aveugle, la fatigue ne garde qu'une bague (et ferme les deux yeux). Le triomphe a une bague fine, mais la retouche lui a fermé l'œil aveugle alors que l'œil bleu reste ouvert : un clin d'œil. On garde sa v1 ; sa chevalière se corrigera au passage local, avec la bague de l'ennui.
 
 Sky est fini côté ChatGPT : les 50 cases de son inventaire.
+
+## La série en pied et en gestes, pour le LoRA v2
+
+Le test du LoRA v1 (le 2026-10-15) a montré le trou du jeu : une seule image en pied, alors le LoRA n'apprend que le buste et invente le reste de la tenue. Ces cinq planches le comblent, toutes sur le fond gris clair des autres (pas de blanc : l'outil de découpe repère les cases par leurs fines bandes blanches). Pas de décor : en production, Sky est intégré dans nos propres fonds. Dans la conversation de la série 2 ; si elle est perdue, refaire d'abord le prompt B avec l'image maître v3.
+
+### Prompt L1 — En pied, de face et de trois-quarts
+
+Joins l'image maître v3. Découpe : `--noms pied-face,pied-trois-quarts-gauche,pied-trois-quarts-droit --dossier references`.
+
+```
+Make a full-body sheet of Sky: a regular grid of 3 columns and 1 row, landscape format (1536×1024), three equal tall cells separated by thin white gaps. In each cell, Sky stands full body from head to feet, neutral expression, arms relaxed, same scale, same light, plain light-grey background. His usual outfit, exactly as in his master image: the white long-sleeved shirt with the sparse black-and-white lily pattern, sleeves pushed up just below the elbows, open at the top of the chest; both necklaces; black tracksuit trousers in a soft matte fabric, no logo, no stripes; black sneakers. His only ring is a thin plain bronze band on his right little finger. His glasses keep their thin gold-plated frame and their double bridge (a thin straight bar between the tops of the lenses). His left eye stays blind: entirely milky white, with no iris and no pupil. Cells, left to right:
+
+1. Front view.
+2. Three-quarter view showing HIS LEFT side (the blind eye side).
+3. Three-quarter view showing HIS RIGHT side (the blue eye side).
+
+No text or labels anywhere.
+```
+
+### Prompt L2 — En pied, de profil et de dos
+
+Joins l'image maître v3. Découpe : `--noms pied-profil-gauche,pied-profil-droit,pied-dos --dossier references`.
+
+```
+Make a full-body sheet of Sky: a regular grid of 3 columns and 1 row, landscape format (1536×1024), three equal tall cells separated by thin white gaps. In each cell, Sky stands full body from head to feet, neutral expression, arms relaxed, same scale, same light, plain light-grey background. His usual outfit, exactly as in his master image: the white long-sleeved shirt with the sparse black-and-white lily pattern, sleeves pushed up just below the elbows, open at the top of the chest; both necklaces; black tracksuit trousers in a soft matte fabric, no logo, no stripes; black sneakers. His only ring is a thin plain bronze band on his right little finger. His glasses keep their thin gold-plated frame and their double bridge (a thin straight bar between the tops of the lenses). His left eye stays blind: entirely milky white, with no iris and no pupil. Cells, left to right:
+
+1. Profile showing HIS LEFT side.
+2. Profile showing HIS RIGHT side.
+3. Back view.
+
+No text or labels anywhere.
+```
+
+### Prompt L3 — Trois poses
+
+Joins l'image maître v3. Découpe : `--noms assis-face,assis-cote,accoude --dossier references`.
+
+```
+Make a full-body sheet of Sky: a regular grid of 3 columns and 1 row, landscape format (1536×1024), three equal tall cells separated by thin white gaps. In each cell, Sky full body from head to feet, neutral expression, same scale, same light, plain light-grey background, no other furniture than the one named. His usual outfit, exactly as in his master image: the white long-sleeved shirt with the sparse black-and-white lily pattern, sleeves pushed up just below the elbows, open at the top of the chest; both necklaces; black tracksuit trousers in a soft matte fabric, no logo, no stripes; black sneakers. His only ring is a thin plain bronze band on his right little finger. His glasses keep their thin gold-plated frame and their double bridge (a thin straight bar between the tops of the lenses). His left eye stays blind: entirely milky white, with no iris and no pupil. Cells, left to right:
+
+1. Sitting on a simple wooden chair, facing the viewer, forearms resting on his thighs.
+2. Sitting on the same chair, seen from HIS RIGHT side.
+3. Standing, leaning with his right elbow on a plain light-grey block at counter height.
+
+No text or labels anywhere.
+```
+
+### Prompt L4 — Six gestes de face
+
+Joins l'image maître v3. Découpe : `--noms mange,boit,bouche-pleine,telephone,ecrit-marqueur,laptop --dossier gestes`.
+
+```
+Make a sheet of Sky's gestures: a regular grid of 3 columns and 2 rows, landscape format (1536×1024), six equal cells separated by thin white gaps. In each cell, Sky from the waist up, facing the viewer, same framing, same light, plain light-grey background. Only his pose and his hands change; his face keeps his usual calm look unless a cell asks otherwise. His usual outfit, exactly as in his master image: the white long-sleeved shirt with the sparse black-and-white lily pattern, sleeves pushed up just below the elbows, open at the top of the chest; both necklaces; black tracksuit trousers in a soft matte fabric, no logo, no stripes; black sneakers. His only ring is a thin plain bronze band on his right little finger. His glasses keep their thin gold-plated frame and their double bridge (a thin straight bar between the tops of the lenses). His left eye stays blind: entirely milky white, with no iris and no pupil. Cells read left to right, then top to bottom:
+
+1. Biting into a chicken wrap held in both hands.
+2. Drinking from a bottle of orange soda, with no logo and no text on it.
+3. Chewing with his mouth full, cheeks puffed, unimpressed.
+4. Looking at a smartphone held in his right hand, the bronze ring visible.
+5. Writing with a black marker on a transparent glass pane in front of him, his right hand raised.
+6. Typing on a laptop set on a small plain table in front of him.
+
+No text or labels anywhere.
+```
+
+### Prompt L5 — Les six gestes de trois-quarts
+
+Joins la vue trois-quarts droite de la rotation (`references/trois-quarts-droit_v1.png`), pour l'angle. Découpe : la même que L4, le préfixe `trois-quarts_` s'ajoute tout seul.
+
+```
+Make a sheet of Sky's gestures: a regular grid of 3 columns and 2 rows, landscape format (1536×1024), six equal cells separated by thin white gaps. In each cell, Sky from the waist up, in a three-quarter view showing HIS RIGHT side, exactly at the angle of the attached image (his blue right eye nearer to us, his blind left eye farther away), same framing, same light, plain light-grey background. Only his pose and his hands change; his face keeps his usual calm look unless a cell asks otherwise. His usual outfit, exactly as in his master image: the white long-sleeved shirt with the sparse black-and-white lily pattern, sleeves pushed up just below the elbows, open at the top of the chest; both necklaces; black tracksuit trousers in a soft matte fabric, no logo, no stripes; black sneakers. His only ring is a thin plain bronze band on his right little finger. His glasses keep their thin gold-plated frame and their double bridge (a thin straight bar between the tops of the lenses). His left eye stays blind: entirely milky white, with no iris and no pupil. Cells read left to right, then top to bottom:
+
+1. Biting into a chicken wrap held in both hands.
+2. Drinking from a bottle of orange soda, with no logo and no text on it.
+3. Chewing with his mouth full, cheeks puffed, unimpressed.
+4. Looking at a smartphone held in his right hand, the bronze ring visible.
+5. Writing with a black marker on a transparent glass pane in front of him, his right hand raised.
+6. Typing on a laptop set on a small plain table in front of him.
+
+No text or labels anywhere.
+```

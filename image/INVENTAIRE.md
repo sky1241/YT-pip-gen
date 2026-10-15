@@ -19,15 +19,17 @@ Les chemins partent de `image/`. Lumière de tout l'épisode : le matin, avec du
 ## Ce que chaque perso demande
 
 - **Une image maître**, puis **la rotation** : face, trois-quarts et profil des deux côtés, dos, en pied. Les deux côtés comptent : un perso asymétrique s'entraîne sans retournement horizontal, son LoRA doit voir chacun.
+- **En pied et en gestes** : la rotation est en buste, il faut aussi le corps entier et les mains, sinon le LoRA n'apprend que le buste (leçon du premier LoRA de Sky, le 2026-10-15). Quatre planches sur fond gris clair : en pied de face et de trois-quarts des deux côtés, en pied de profil des deux côtés et de dos, trois poses (assis de face, assis de côté, debout accoudé), et six gestes en plan moyen avec ses accessoires (`fiche.json` > `accessoires`). Ici aussi, une case = une planche.
 - **La palette des émotions**, la même pour tous : 36 émotions en 6 planches, définies dans [`emotions.md`](emotions.md). Ici, une case = une planche : Claude la découpe en 6 fichiers `expressions/<émotion>_v1.png`. La joie est un vrai sourire ; « le sourire » de Sky est une signature à part.
 - **Les signatures** : les expressions que la bible ou le texte décrivent, identiques à chaque fois. Celles marquées « hors Le Miroir » ne servent pas dans cet épisode, mais elles comptent pour le LoRA et pour la suite.
 - **Les bouches** : fermée, mi-ouverte, ouverte, de face et de trois-quarts.
-- **Sky en a plus**, parce que c'est le protagoniste : sa palette des émotions aussi de trois-quarts, neuf signatures, et les bouches du sourire sous les deux angles.
+- **Sky en a plus**, parce que c'est le protagoniste : sa palette des émotions aussi de trois-quarts, neuf signatures, les bouches du sourire sous les deux angles, et ses gestes aussi de trois-quarts.
 - **Les chats** n'ont ni palette des émotions ni bouches : une image maître, la rotation et leurs gags.
 - « · pilote » marque ce qu'il faut pour la minute des mots croisés.
 
 Noms des fichiers :
 - Rotation : `references/face_v1.png`, `trois-quarts-gauche_v1.png`, `trois-quarts-droit_v1.png`, `profil-gauche_v1.png`, `profil-droit_v1.png`, `dos_v1.png`, `pied_v1.png`. « Gauche » et « droit » désignent le côté du perso qu'on voit, pas celui de l'image : `profil-gauche` montre sa joue gauche.
+- En pied et poses : `references/pied-face_v1.png`, `pied-trois-quarts-gauche_v1.png`, `pied-trois-quarts-droit_v1.png`, `pied-profil-gauche_v1.png`, `pied-profil-droit_v1.png`, `pied-dos_v1.png`, `assis-face_v1.png`, `assis-cote_v1.png`, `accoude_v1.png`. Gestes : `gestes/<geste>_v1.png`. Planches : `planches/pied-1_v1.png`, `pied-2_v1.png`, `poses_v1.png`, `gestes_v1.png`.
 - Expressions : `expressions/<nom>_v1.png` pour la face. De trois-quarts, le nom prend le préfixe `trois-quarts_`.
 - Bouches : `bouches/<angle>_<forme>_v1.png`, l'angle étant `face` ou `trois-quarts`.
 - Planches de la palette : `planches/emotions-<n>_v1.png`, découpées en `expressions/<fichier>_v1.png` avec les noms de `emotions.md`.
@@ -51,6 +53,13 @@ La série 1, faite avec la monture argentée, est archivée sur le disque extern
 - [x] `references/profil-droit_v1.png`
 - [x] `references/dos_v1.png`
 - [x] `references/pied_v1.png`
+
+**En pied et en gestes** (pour son LoRA)
+- [ ] `planches/pied-1_v1.png` : en pied, de face et de trois-quarts des deux côtés
+- [ ] `planches/pied-2_v1.png` : en pied, de profil des deux côtés et de dos
+- [ ] `planches/poses_v1.png` : assis de face, assis de côté, debout accoudé
+- [ ] `planches/gestes_v1.png` : il mange sa galette, boit son Fanta, la bouche pleine, regarde son téléphone, écrit au marqueur sur une vitre, sur son laptop
+- [ ] `planches/trois-quarts_gestes_v1.png` : les mêmes gestes de trois-quarts, côté droit (son œil bleu devant)
 
 **Palette des émotions, de face** (l'œil droit garde son reflet, comme en temps normal ; le gauche est aveugle)
 - [x] `planches/emotions-1_v1.png` : neutre, joie, tristesse, colère, peur, surprise · pilote
@@ -113,6 +122,12 @@ La série 1, faite avec la monture argentée, est archivée sur le disque extern
 - [ ] `references/dos_v1.png`
 - [ ] `references/pied_v1.png`
 
+**En pied et en gestes** (pour son LoRA)
+- [ ] `planches/pied-1_v1.png` : en pied, de face et de trois-quarts des deux côtés
+- [ ] `planches/pied-2_v1.png` : en pied, de profil des deux côtés et de dos
+- [ ] `planches/poses_v1.png` : assis de face, assis de côté, debout accoudé
+- [ ] `planches/gestes_v1.png` : six gestes avec ses accessoires (`fiche.json` > `accessoires`), à fixer avec l'auteur avant les prompts
+
 **Palette des émotions** (les 36 de `emotions.md`, en 6 planches)
 - [ ] `planches/emotions-1_v1.png` : neutre, joie, tristesse, colère, peur, surprise · pilote
 - [ ] `planches/emotions-2_v1.png` : dégoût, mépris, rire, pleurs, rage, terreur
@@ -148,6 +163,12 @@ La série 1, faite avec la monture argentée, est archivée sur le disque extern
 - [ ] `references/profil-droit_v1.png`
 - [ ] `references/dos_v1.png`
 - [ ] `references/pied_v1.png`
+
+**En pied et en gestes** (pour son LoRA)
+- [ ] `planches/pied-1_v1.png` : en pied, de face et de trois-quarts des deux côtés
+- [ ] `planches/pied-2_v1.png` : en pied, de profil des deux côtés et de dos
+- [ ] `planches/poses_v1.png` : assis de face, assis de côté, debout accoudé
+- [ ] `planches/gestes_v1.png` : six gestes avec ses accessoires (`fiche.json` > `accessoires`), à fixer avec l'auteur avant les prompts
 
 **Palette des émotions** (les 36 de `emotions.md`, en 6 planches)
 - [ ] `planches/emotions-1_v1.png` : neutre, joie, tristesse, colère, peur, surprise · pilote
@@ -197,6 +218,12 @@ La série 1, faite avec la monture argentée, est archivée sur le disque extern
 - [x] `references/dos_v1.png`
 - [x] `references/pied_v1.png`
 
+**En pied et en gestes** (pour son LoRA)
+- [ ] `planches/pied-1_v1.png` : en pied, de face et de trois-quarts des deux côtés
+- [ ] `planches/pied-2_v1.png` : en pied, de profil des deux côtés et de dos
+- [ ] `planches/poses_v1.png` : assis de face, assis de côté, debout accoudé
+- [ ] `planches/gestes_v1.png` : elle boit son café, tient sa tasse à deux mains, bras croisés, ramasse une serviette sur la table, regarde son téléphone, sur un laptop
+
 **Palette des émotions, de trois-quarts** (les 36 de `emotions.md`, sous l'angle de son image maître, côté gauche)
 - [x] `planches/trois-quarts_emotions-1_v1.png` : neutre, joie, tristesse, colère, peur, surprise
 - [x] `planches/trois-quarts_emotions-2_v1.png` : dégoût, mépris, rire, pleurs, rage, terreur
@@ -234,6 +261,12 @@ La série 1, faite avec la monture argentée, est archivée sur le disque extern
 - [ ] `references/dos_v1.png`
 - [ ] `references/pied_v1.png`
 
+**En pied et en gestes** (pour son LoRA)
+- [ ] `planches/pied-1_v1.png` : en pied, de face et de trois-quarts des deux côtés
+- [ ] `planches/pied-2_v1.png` : en pied, de profil des deux côtés et de dos
+- [ ] `planches/poses_v1.png` : assis de face, assis de côté, debout accoudé
+- [ ] `planches/gestes_v1.png` : six gestes avec ses accessoires (`fiche.json` > `accessoires`), à fixer avec l'auteur avant les prompts
+
 **Palette des émotions** (les 36 de `emotions.md`, en 6 planches)
 - [ ] `planches/emotions-1_v1.png` : neutre, joie, tristesse, colère, peur, surprise
 - [ ] `planches/emotions-2_v1.png` : dégoût, mépris, rire, pleurs, rage, terreur
@@ -269,6 +302,12 @@ La série 1, faite avec la monture argentée, est archivée sur le disque extern
 - [ ] `references/dos_v1.png`
 - [ ] `references/pied_v1.png`
 
+**En pied et en gestes** (pour son LoRA)
+- [ ] `planches/pied-1_v1.png` : en pied, de face et de trois-quarts des deux côtés
+- [ ] `planches/pied-2_v1.png` : en pied, de profil des deux côtés et de dos
+- [ ] `planches/poses_v1.png` : assis de face, assis de côté, debout accoudé
+- [ ] `planches/gestes_v1.png` : six gestes avec ses accessoires (`fiche.json` > `accessoires`), à fixer avec l'auteur avant les prompts
+
 **Palette des émotions** (les 36 de `emotions.md`, en 6 planches)
 - [ ] `planches/emotions-1_v1.png` : neutre, joie, tristesse, colère, peur, surprise
 - [ ] `planches/emotions-2_v1.png` : dégoût, mépris, rire, pleurs, rage, terreur
@@ -303,6 +342,12 @@ La série 1, faite avec la monture argentée, est archivée sur le disque extern
 - [ ] `references/dos_v1.png`
 - [ ] `references/pied_v1.png`
 
+**En pied et en gestes** (pour son LoRA)
+- [ ] `planches/pied-1_v1.png` : en pied, de face et de trois-quarts des deux côtés
+- [ ] `planches/pied-2_v1.png` : en pied, de profil des deux côtés et de dos
+- [ ] `planches/poses_v1.png` : assis de face, assis de côté, debout accoudé
+- [ ] `planches/gestes_v1.png` : six gestes avec ses accessoires (`fiche.json` > `accessoires`), à fixer avec l'auteur avant les prompts
+
 **Palette des émotions** (les 36 de `emotions.md`, en 6 planches)
 - [ ] `planches/emotions-1_v1.png` : neutre, joie, tristesse, colère, peur, surprise
 - [ ] `planches/emotions-2_v1.png` : dégoût, mépris, rire, pleurs, rage, terreur
@@ -336,6 +381,12 @@ La série 1, faite avec la monture argentée, est archivée sur le disque extern
 - [ ] `references/profil-droit_v1.png`
 - [ ] `references/dos_v1.png`
 - [ ] `references/pied_v1.png`
+
+**En pied et en gestes** (pour son LoRA)
+- [ ] `planches/pied-1_v1.png` : en pied, de face et de trois-quarts des deux côtés
+- [ ] `planches/pied-2_v1.png` : en pied, de profil des deux côtés et de dos
+- [ ] `planches/poses_v1.png` : assis de face, assis de côté, debout accoudé
+- [ ] `planches/gestes_v1.png` : six gestes avec ses accessoires (`fiche.json` > `accessoires`), à fixer avec l'auteur avant les prompts
 
 **Palette des émotions** (les 36 de `emotions.md`, en 6 planches)
 - [ ] `planches/emotions-1_v1.png` : neutre, joie, tristesse, colère, peur, surprise

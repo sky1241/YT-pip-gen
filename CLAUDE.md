@@ -73,7 +73,7 @@ Dans l'ordre. Un perso n'entre en production que quand les 8 étapes sont faites
 
 1. **Fiche texte** (`image/persos/<slug>/fiche.json`), tirée de la bible : rôle, énergie, silhouette, palette (codes couleur), tenue canonique, détails asymétriques avec le côté exact, accessoires, ce qu'il ne porte jamais.
 2. **Image maître**, conçue dans ChatGPT et validée par l'auteur.
-3. **Planche de rotation** : face, trois-quarts et profil des deux côtés, dos, en pied, sur fond neutre et sous la même lumière. Les deux côtés comptent : un perso aux détails asymétriques s'entraîne sans retournement horizontal, son LoRA doit donc voir chacun. AniSora peut générer une rotation à 360° depuis l'image de face.
+3. **Planche de rotation** : face, trois-quarts et profil des deux côtés, dos, en pied, sur fond neutre et sous la même lumière. Les deux côtés comptent : un perso aux détails asymétriques s'entraîne sans retournement horizontal, son LoRA doit donc voir chacun. AniSora peut générer une rotation à 360° depuis l'image de face. Puis **la série en pied et en gestes**, sur le même fond gris clair : les mêmes vues en pied, trois poses (assis de face, assis de côté, debout accoudé) et six gestes avec ses accessoires. Avec une seule image en pied, le LoRA n'apprend que le buste : c'est la leçon du premier LoRA de Sky (2026-10-15).
 4. **Expressions** : la palette des émotions, la même pour tous : 36 émotions en 6 planches (`image/emotions.md`), + 2 à 4 signatures tirées de la bible ou du texte. Sky, le protagoniste, en a plus : sa palette aussi de trois-quarts, et toutes ses signatures. La liste fichier par fichier est dans `image/INVENTAIRE.md`.
 5. **Bouches** : fermée, mi-ouverte, ouverte, sous les angles principaux.
 6. **Passage local** : tout repasse dans le modèle local (image-to-image), dans le style final. C'est le jeu d'entraînement du LoRA.
@@ -120,7 +120,7 @@ kebab-datastream/              (git : tout ce qui sert de référence)
 │   ├── INVENTAIRE.md          la liste image par image, à cocher
 │   ├── emotions.md            la palette des émotions, commune à tous les persos
 │   ├── style.md               le style visuel de référence
-│   ├── persos/<slug>/         fiche.json, description-chatgpt.md, prompts-chatgpt.md, provenance.json, planches/, references/, expressions/, bouches/
+│   ├── persos/<slug>/         fiche.json, description-chatgpt.md, prompts-chatgpt.md, provenance.json, planches/, references/, expressions/, gestes/, bouches/
 │   ├── decors/<lieu>/<axe>/   fonds fixes validés
 │   ├── accessoires/           objets récurrents : galette, tasse, téléphone…
 │   ├── gabarits/              cartons texte et SMS, faits en code

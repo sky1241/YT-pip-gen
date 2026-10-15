@@ -6,7 +6,7 @@ Version du 6 octobre 2026, mise à jour le 15 octobre 2026. C'est ce fichier qui
 
 - **Fait** : les fondations du repo, la palette des émotions et l'outil de découpe. Maëlle et Sky ont toutes leurs planches de référence (Sky : la série 2, les 50 cases de son inventaire). La chaîne d'images marche de bout en bout : ComfyUI sur la carte AMD de sky-master (`pipeline/comfyui.py`), le modèle Animagine XL 4.0, le premier LoRA de Sky entraîné sur Kaggle en une heure et testé (`image/test-standard.md`). Le minage est désinstallé, et Claude se lance depuis un terminal (icône « Kebab Datastream »).
 - **En cours** : le LoRA de Sky. La v1 reconnaît son visage, ses cheveux, sa barbe, ses lunettes dorées, ses colliers et son sourire de monstre ; l'auteur en est content. Elle rate l'œil aveugle hors de face, et la tenue hors des gros plans (une seule image en pied dans le jeu).
-- **Ensuite** : la v2 du LoRA de Sky, avec une quinzaine d'images en pied et en situation à faire dans ChatGPT, puis le LoRA de Maëlle, dont les images sont prêtes.
+- **Ensuite** : la v2 du LoRA de Sky, avec ses 5 planches en pied et en gestes à faire dans ChatGPT (environ 24 images, fond gris clair), puis Maëlle : ses 4 planches en pied et en gestes, et son LoRA. Chaque nouveau perso aura ces planches dès le départ.
 - **Décisions qui attendent l'auteur** : le canon du kebab, ce que couvre l'épisode 1, le style de référence (et s'il prend un LoRA de style années 90 tout fait), garder ou non la règle « sans sudo » de CLAUDE.md (le compte a sudo).
 - **Pas commencé** : l'écriture de l'épisode 1 (phase 1), le plan du kebab et ses décors, Patrick, Mohamed et les autres persos, les voix, la vidéo, le pilote.
 
@@ -125,13 +125,14 @@ La palette des émotions, la même pour tous : 36 émotions en 6 planches, défi
   - [x] Image maître v3 : sans le trait entre les sourcils ni les taches autour des yeux, barbe de 3 jours (l'œil aveugle reste un peu plus grand : ChatGPT refuse de le retoucher, l'auteur garde la v3)
   - [x] Rotation : face, trois-quarts et profil des deux côtés, dos
   - [x] Image en pied
+  - [ ] En pied et en gestes : les 5 planches (prompts L1 à L5 de `prompts-chatgpt.md`), pour le LoRA v2
   - [x] Palette des émotions de face : les 6 planches, les reprises et le clignement (mi-clos, fermé)
   - [x] Palette des émotions de trois-quarts : les 6 planches et leur retouche (deux bagues restent à corriger au passage local)
   - [x] Signatures : les 9, dont le jeu du sourire en monstre, plus le rire du dégénéré de trois-quarts
   - [x] Bouches : les 6 de base et les 6 du sourire (sourire fermé, grimace, rire ouvert, sous les deux angles)
   - [ ] LoRA : passage local, entraînement, test standard
     - [x] v1, le 2026-10-15 : 105 images de ChatGPT sans passage local, entraînée sur Kaggle en 1 h, testée (planche : `<sorties_root>/comfyui/test-standard_sky_v1_planche.png`). Visage, lunettes, colliers et sourire appris ; l'œil aveugle seulement de face, la tenue seulement en buste
-    - [ ] v2 : ajouter une quinzaine d'images dans ChatGPT (en pied sous plusieurs angles, assis à la table du kebab, debout au comptoir, en train de manger), un tag pour ses yeux dans les légendes, puis réentraîner et refaire le test
+    - [ ] v2 : les 5 planches en pied et en gestes (environ 24 images, sur fond gris clair), un tag pour ses yeux dans les légendes, puis réentraîner et refaire le test
     - [ ] Corriger les deux bagues (`trois-quarts_triomphe_v1`, `trois-quarts_ennui_v1`) au passage local
   - [ ] Voix : compléter et valider `audio/voix/sky/`
 - [ ] Maëlle
@@ -139,6 +140,7 @@ La palette des émotions, la même pour tous : 36 émotions en 6 planches, défi
   - [x] Image maître
   - [x] Rotation : face, trois-quarts et profil des deux côtés, dos
   - [x] Image en pied
+  - [ ] En pied et en gestes : les 4 planches, avant son LoRA (elle n'a qu'une image en pied, comme Sky en v1)
   - [x] Palette des émotions de trois-quarts, sous l'angle de son image maître : les 6 planches et les reprises (la version retenue de chaque émotion est dans `provenance.json`)
   - [x] Signatures : les 4
   - [x] Bouches : les 6 (références de forme ; les calques se feront en local sur une seule image de base)
@@ -150,6 +152,7 @@ La palette des émotions, la même pour tous : 36 émotions en 6 planches, défi
   - [ ] Image maître
   - [ ] Rotation : face, trois-quarts et profil des deux côtés, dos
   - [ ] Image en pied
+  - [ ] En pied et en gestes : les 4 planches
   - [ ] Palette des émotions : les 6 planches
   - [ ] Signatures : les 5
   - [ ] Bouches : les 6
@@ -160,6 +163,7 @@ La palette des émotions, la même pour tous : 36 émotions en 6 planches, défi
   - [ ] Image maître
   - [ ] Rotation : face, trois-quarts et profil des deux côtés, dos
   - [ ] Image en pied
+  - [ ] En pied et en gestes : les 4 planches
   - [ ] Palette des émotions : les 6 planches
   - [ ] Signatures : les 3
   - [ ] Bouches : les 6
@@ -170,6 +174,7 @@ La palette des émotions, la même pour tous : 36 émotions en 6 planches, défi
   - [ ] Image maître
   - [ ] Rotation : face, trois-quarts et profil des deux côtés, dos
   - [ ] Image en pied
+  - [ ] En pied et en gestes : les 4 planches
   - [ ] Palette des émotions : les 6 planches
   - [ ] Signatures : les 3
   - [ ] Bouches : les 6
@@ -180,6 +185,7 @@ La palette des émotions, la même pour tous : 36 émotions en 6 planches, défi
   - [ ] Image maître
   - [ ] Rotation : face, trois-quarts et profil des deux côtés, dos
   - [ ] Image en pied
+  - [ ] En pied et en gestes : les 4 planches
   - [ ] Palette des émotions : les 6 planches
   - [ ] Signatures : les 4
   - [ ] Bouches : les 6
@@ -190,6 +196,7 @@ La palette des émotions, la même pour tous : 36 émotions en 6 planches, défi
   - [ ] Image maître
   - [ ] Rotation : face, trois-quarts et profil des deux côtés, dos
   - [ ] Image en pied
+  - [ ] En pied et en gestes : les 4 planches
   - [ ] Palette des émotions : les 6 planches
   - [ ] Signatures : les 3
   - [ ] Bouches : les 6
@@ -200,6 +207,7 @@ La palette des émotions, la même pour tous : 36 émotions en 6 planches, défi
   - [ ] Image maître
   - [ ] Rotation : face, trois-quarts et profil des deux côtés, dos
   - [ ] Image en pied
+  - [ ] En pied et en gestes : les 4 planches
   - [ ] Palette des émotions : les 6 planches
   - [ ] Signatures : les 4
   - [ ] Bouches : les 6
