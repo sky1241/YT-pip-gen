@@ -26,4 +26,4 @@ vram_go: 8                     # sky-master ; carte AMD, relevé avec rocminfo (
 # --- Outils (chemins, remplis au fur et à mesure, rien installé pour l'instant) ---
 ffmpeg_bin: "ffmpeg"           # ffmpeg 5.1.9, déjà sur sky-master
 kdenlive_appimage: null        # à poser : le Kdenlive installé (22.12.3, paquet Debian) n'a pas l'import OpenTimelineIO natif (25.04 et plus)
-python_venv: null              # chemin du venv en espace utilisateur
+python_venv: "/home/sky/venvs/kebab"   # Python 3.13, PyTorch 2.12.0+rocm7.14.1 pour gfx1010 (AMD, index whl-multi-arch), posé le 2026-10-15

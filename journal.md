@@ -253,3 +253,42 @@ Format d'une entrée :
   eyelid of his blind eye closes too ») a débordé sur une case où rien ne devait se fermer : le triomphe y a perdu son
   œil aveugle ouvert. Dans une retouche à plusieurs cases, écrire chaque règle dans sa case, jamais en général.
 - Sky, série 2 : fini côté ChatGPT, les 50 cases de l'inventaire. Restent le passage local, le LoRA, le test standard et la voix.
+
+## 2026-10-15 — Avant le test du LoRA de Sky : licences, location, carte AMD
+
+Vérifié sur les pages officielles, le 2026-10-15 :
+- **NoobAI-XL** (Laxhar, README de noobai-XL-Vpred-0.5) : « We prohibit any form of commercialization, including but not
+  limited to monetization or commercial use of the model, derivative models, or model-generated products », et les LoRA
+  doivent être publiés. Incompatible avec une chaîne monétisée, alors que CLAUDE.md le cite comme candidat : signalé à l'auteur.
+- **Illustrious XL early release v0.1** (OnomaAIResearch) : Fair AI Public License 1.0-SD. La page dit « We do not restrict any
+  upload or spread of the generation results », la licence ne couvre pas les sorties ; elle « décourage » la monétisation et
+  interdit de monétiser un modèle dérivé fermé. Les obligations sur un dérivé (un LoRA) jouent s'il est distribué.
+- **Animagine XL 4.0** (cagliostrolab) : CreativeML Open RAIL++-M, la licence de SDXL sans modification : usage commercial permis,
+  avec les restrictions d'usage.
+- **Location** : RunPod, une RTX 4090 (24 Go) vers 0,34 $/h en Community Cloud (computeprices.com, relevé d'août 2026), facturée
+  à la seconde ; dépôt minimum de 10 $, non remboursable (documentation RunPod).
+- **La carte AMD** : d'abord écrit « pas prise en charge, il faut compiler PyTorch », d'après des retours anciens. C'est faux depuis
+  2026 : AMD (projet TheRock, ROCm 7.14) marque gfx1010 « Build Passing, Sanity Tested, Release Ready » sur Linux et Windows, et
+  publie PyTorch pour elle (`torch[device-gfx1010]`, index https://repo.amd.com/rocm/whl-multi-arch/), installable avec pip sans
+  sudo : 869 Mo de paquets pour Python 3.13 (mesuré par requêtes HEAD). Un test publié l'a fait tourner sur une RX 5700 XT, mais
+  sous Windows (PR unsloth #11755, septembre 2026) ; sur Linux, pas de retour publié sur cette carte. Piège connu : ROCm 7 est
+  2 à 3 fois plus lent sur gfx101x pour certaines opérations (le VAE en tuiles), corrigé par MIOPEN_FIND_MODE=TRUST_VERIFY_FULL
+  (TheRock, issue #2848). Pour une image, Vulkan marche aussi sur la carte (pilote RADV), avec stable-diffusion.cpp, sans entraînement.
+- **La RAM** : 15,9 Go, dont 3 réservés au démarrage en pages de 1 Go (option du noyau `hugepages=3`, rien ne s'en sert) ; avec
+  VS Code, les navigateurs et Discord ouverts, il en reste 3,7 et le swap est plein aux deux tiers.
+- **AniSora sur 8 Go** (vérifié le 2026-10-15) : la version la plus légère d'AniSora est la V3.1 « 12GB VRAM » (ModelScope,
+  2025-09-25) ; les V3 à V3.2 sont des modèles de 14 milliards de paramètres, en fp16 et fp8 pour ComfyUI (Kijai/WanVideo_comfy),
+  pas de version GGUF publiée. Son modèle de base, Wan 2.2 14B, tourne compressé (GGUF Q4) sur des cartes NVIDIA de 8 Go : environ
+  111 s par clip sur une RTX 4060 (lilting.ch), 181 s pour 5 s en 480p (runflow.io), avec environ 13 Go de RAM (workflow Cordux).
+  Aucun essai publié sur une carte AMD de la génération de la 5700 XT : à tester après les images, sans promesse.
+- **Test de la carte AMD, le 2026-10-15** : PyTorch 2.12.0+rocm7.14.1 (paquets AMD `torch[device-gfx1010]`, 869 Mo, venv
+  `/home/sky/venvs/kebab`, 5,1 Go installés, sans sudo) voit la RX 5700 XT : gfx1010, 8,57 Go. Produit de matrices fp16 4096 :
+  5,6 TFLOPS ; convolution fp16 512 canaux en 128×128 : 14 ms (5,3 TFLOPS), avec MIOPEN_FIND_MODE=TRUST_VERIFY_FULL ; attention
+  sur 4096 jetons : 50 ms. Résultats justes (écart relatif de 3 à 4 dix-millièmes avec le calcul du processeur, normal en fp16).
+  Pas encore d'image : il faut le modèle de base.
+- **Les autres options vérifiées** (le 2026-10-15) : Modal, 30 $ de calcul gratuit par mois (une L4 de 24 Go à 0,000222 $/s, soit
+  environ 0,80 $/h : près de 37 h par mois), piloté par du code ; Kaggle, environ 30 h de GPU par semaine d'après les utilisateurs
+  (T4 ou P100, 16 Go, sessions de 12 h, notebooks) ; Colab gratuit, sans quota publié, notebooks seulement, pas d'interface web
+  comme ComfyUI sans payer ; AMD Developer Cloud, des crédits gratuits sur MI300X pour les développeurs indépendants et les projets
+  open source, sur demande, carte bancaire exigée, crédits valables 30 jours selon AMD (les montants publiés varient). Hugging Face
+  ZeroGPU (5 min par jour) et Paperspace gratuit (8 Go) ne servent à rien ici.

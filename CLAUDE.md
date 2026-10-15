@@ -178,7 +178,7 @@ Statuts : `a_generer` → `genere` → `valide` ou `rejete`. Les répliques sont
 
 - **Canon du kebab** : Mohamed à Annemasse (texte du CERN) ou Mehmet à Clichy (texte Navier-Stokes). Ça décide un LoRA et tous les décors.
 - **Ce que couvre l'épisode 1** : « Le Miroir » seul, ou avec le call.
-- **La machine de génération.** Aucune machine du parc n'a de carte NVIDIA (relevé du 13 octobre 2026, détail dans `config.yaml`). La mieux équipée, sky-master, a une AMD Radeon RX 5700 XT de 8 Go : c'est trop peu pour AniSora, qui demande 12 Go dans sa version légère, et ROCm ne prend pas officiellement en charge cette génération de puce. Options : tester les images sur cette carte, puis louer ou acheter une carte NVIDIA pour la vidéo.- **Le style définitif** (`image/style.md`), et si le rendu de l'image maître de Maëlle devient la référence de toute la série.
+- **La machine de génération.** Aucune machine du parc n'a de carte NVIDIA (relevé du 13 octobre 2026, détail dans `config.yaml`). La mieux équipée, sky-master, a une AMD Radeon RX 5700 XT de 8 Go : c'est trop peu pour AniSora, qui demande 12 Go dans sa version légère. Depuis 2026, AMD publie PyTorch pour cette puce (ROCm 7.14, projet TheRock, vérifié le 2026-10-15) : à tester pour les images et le LoRA. Options : tester les images sur cette carte, puis louer ou acheter une carte NVIDIA pour la vidéo.- **Le style définitif** (`image/style.md`), et si le rendu de l'image maître de Maëlle devient la référence de toute la série.
 
 ## Premier lancement
 

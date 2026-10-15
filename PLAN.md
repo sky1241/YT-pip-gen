@@ -1,6 +1,14 @@
 # Kebab Datastream — Checklist épisode 1
 
-Version du 6 octobre 2026. C'est ce fichier qui fait foi : on coche ici, plus dans le doc claude.ai.
+Version du 6 octobre 2026, mise à jour le 15 octobre 2026. C'est ce fichier qui fait foi : on coche ici, plus dans le doc claude.ai.
+
+## Où on en est (15 octobre 2026)
+
+- **Fait** : les fondations du repo, la palette des émotions et l'outil de découpe. Maëlle et Sky ont toutes leurs planches de référence (Sky : la série 2, les 50 cases de son inventaire). Le PyTorch d'AMD tourne sur la carte de sky-master, testé le 15 octobre.
+- **En cours** : la phase 0, côté machine. Installer ComfyUI et sortir une première image en local.
+- **Ensuite** : le premier LoRA, celui de Sky, et son test standard, avant de faire les autres persos. Si la carte de sky-master ne suffit pas pour l'entraînement ou la vidéo : Modal ou Kaggle, gratuits, puis une location en dernier recours.
+- **Décisions qui attendent l'auteur** : le modèle de base d'images (sa licence compte pour YouTube), sauter le passage local pour le premier test du LoRA, le canon du kebab, ce que couvre l'épisode 1, le style de référence.
+- **Pas commencé** : l'écriture de l'épisode 1 (phase 1), le plan du kebab et ses décors, Patrick, Mohamed et les autres persos, les voix, le pilote.
 
 ## Mode d'emploi
 
@@ -22,14 +30,16 @@ Terminée quand une image, une phrase de voix et un clip de 5 secondes sortent d
 - [x] Vérifier avec `/context` que Claude Code charge bien `CLAUDE.md`
 - [x] Lancer le « premier lancement » de `CLAUDE.md` (dossiers, `config.yaml`, `canon.yaml`, fiches de Sky et Maëlle)
 - [x] Vérifier la carte graphique et sa VRAM, et noter le résultat : AMD Radeon RX 5700 XT, 8 Go, aucune carte NVIDIA sur le parc (`config.yaml`)
-- [ ] Choisir la machine de production : aucune ne fait tourner la vidéo en l'état, voir `CLAUDE.md` > À trancher
+- [ ] Choisir la machine de production. Pour les images : sky-master, sa carte AMD calcule avec le PyTorch d'AMD (testé le 2026-10-15). Pour la vidéo : AniSora demande 12 Go et la carte en a 8, donc une version compressée à essayer, sans garantie, sinon Modal ou Kaggle (gratuits), puis une location. Voir `CLAUDE.md` > À trancher
+- [ ] Choisir le modèle de base d'images d'après sa licence : Animagine XL 4.0 (usage commercial permis) ou Illustrious XL v0.1 (images libres, la monétisation « découragée »), 6,9 Go chacun. NoobAI-XL est exclu si la chaîne est monétisée : sa licence interdit de commercialiser ses images (détail dans `journal.md`, 2026-10-15)
+- [ ] Créer les comptes de calcul de secours : Modal (30 $ de calcul gratuits par mois) et Kaggle (environ 30 h de GPU par semaine)
 - [x] Préparer le disque externe (`sorties/`, `modeles/`) et noter ses chemins dans `config.yaml`
 - [x] Vérifier qu'aucune variable `ANTHROPIC_API_KEY` ne traîne sur la machine
-- [ ] Installer Python (venv), ffmpeg et ComfyUI, en espace utilisateur sur la Debian sans sudo
-- [ ] Générer une première image dans ComfyUI
+- [ ] Installer Python (venv), ffmpeg et ComfyUI, en espace utilisateur sur la Debian sans sudo (le venv et le PyTorch d'AMD sont posés et testés le 2026-10-15, ffmpeg 5.1.9 est déjà là ; reste ComfyUI)
+- [ ] Générer une première image dans ComfyUI (attend le choix du modèle de base)
 - [ ] Installer Kdenlive (AppImage)
 - [ ] Installer Qwen3-TTS et générer une phrase test
-- [ ] Tester AniSora sur ta carte (la version 12 Go si besoin) : un clip de 5 secondes depuis une image
+- [ ] Tester AniSora : un clip de 5 secondes depuis une image. Sur sky-master, la version 12 Go ne tient pas (8 Go) : une version compressée à essayer après les images ; sinon sur Modal ou Kaggle
 
 ## Phase 1 — Écriture
 
@@ -73,8 +83,8 @@ Terminée quand la minute des mots croisés est montée et que le temps passé �
 - [x] Image maître de Sky : chemise blanche à lys, training noir, lunettes aviateur, œil gauche aveugle (`image/persos/sky/description-chatgpt.md`) ; la monture est plaquée or (v2), et la v3 est la référence de la série 2
 - [ ] Image maître de Patrick
 - [ ] Image maître de Mohamed
-- [ ] Expressions du pilote, marquées « · pilote » dans `image/INVENTAIRE.md`, dont le sourire de Sky : yeux sans reflet, joues plates, seule la bouche bouge
-- [ ] Bouches fermée, mi-ouverte et ouverte pour les trois
+- [ ] Expressions du pilote, marquées « · pilote » dans `image/INVENTAIRE.md`, dont le sourire de Sky : yeux sans reflet, joues plates, seule la bouche bouge (celles de Sky sont faites ; restent Patrick et Mohamed)
+- [ ] Bouches fermée, mi-ouverte et ouverte pour les trois (celles de Sky sont faites)
 - [ ] Fonds de la table du fond et du comptoir
 - [ ] Voix des trois persos : compléter et valider leur description dans `audio/voix/` (énergie et 3 répliques déjà posées)
 - [ ] Découpage de la scène en `plans.json` (Claude)
@@ -119,7 +129,7 @@ La palette des émotions, la même pour tous : 36 émotions en 6 planches, défi
   - [x] Palette des émotions de trois-quarts : les 6 planches et leur retouche (deux bagues restent à corriger au passage local)
   - [x] Signatures : les 9, dont le jeu du sourire en monstre, plus le rire du dégénéré de trois-quarts
   - [x] Bouches : les 6 de base et les 6 du sourire (sourire fermé, grimace, rire ouvert, sous les deux angles)
-  - [ ] LoRA : passage local, entraînement, test standard
+  - [ ] LoRA : passage local, entraînement, test standard. C'est la prochaine grosse étape. Pour un premier test, Claude propose d'entraîner directement sur les images de ChatGPT, sans passage local : à valider par l'auteur
   - [ ] Voix : compléter et valider `audio/voix/sky/`
 - [ ] Maëlle
   - [ ] Fiche : valider les codes couleur relevés (1m65, côtés asymétriques confirmés, le reste du look est posé)
