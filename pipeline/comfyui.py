@@ -21,10 +21,12 @@ SERVICE = "comfyui"
 
 # Les options testées sur la RX 5700 XT (journal.md, 2026-10-15)
 OPTIONS = [
-    "--disable-dynamic-vram",   # la « dynamic VRAM » échoue sur cette carte (VBAR allocation failed)
+    "--disable-dynamic-vram",   # la « dynamic VRAM » échoue sur cette carte (VBAR allocation failed) ; pour la même
+                                # raison, jamais PYTORCH_CUDA_ALLOC_CONF=expandable_segments : toute allocation échoue
     "--disable-pinned-memory",  # la mémoire épinglée pose problème sur gfx1010
     "--highvram",               # garde le modèle sur la carte : sinon il se recopie en RAM à chaque image
     "--cpu-vae",                # le VAE sur le processeur : sur la carte, il ne tient plus à côté du modèle
+    "--fp8_e4m3fn-text-enc",    # les encodeurs de texte en fp8 : sinon un LoRA ne tient plus sur les 8 Go
 ]
 
 

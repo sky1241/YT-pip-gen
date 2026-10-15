@@ -39,10 +39,12 @@ def prompts_du_test(fiche):
 def workflow(positif, lora, graine, largeur, hauteur, prefixe):
     return {
         "1": {"class_type": "CheckpointLoaderSimple", "inputs": {"ckpt_name": "animagine-xl-4.0.safetensors"}},
-        "2": {"class_type": "LoraLoader", "inputs": {"model": ["1", 0], "clip": ["1", 1], "lora_name": lora,
-                                                      "strength_model": 1.0, "strength_clip": 1.0}},
-        "3": {"class_type": "CLIPTextEncode", "inputs": {"text": positif, "clip": ["2", 1]}},
-        "4": {"class_type": "CLIPTextEncode", "inputs": {"text": NEGATIF, "clip": ["2", 1]}},
+        # Le LoRA en mode « bypass » : il s'ajoute pendant le calcul sans réécrire les poids du modèle. Le chargement
+        # classique garde une copie des poids d'origine sur la carte et déborde des 8 Go (journal.md, 2026-10-15).
+        "2": {"class_type": "LoraLoaderBypassModelOnly", "inputs": {"model": ["1", 0], "lora_name": lora,
+                                                                     "strength_model": 1.0}},
+        "3": {"class_type": "CLIPTextEncode", "inputs": {"text": positif, "clip": ["1", 1]}},
+        "4": {"class_type": "CLIPTextEncode", "inputs": {"text": NEGATIF, "clip": ["1", 1]}},
         "5": {"class_type": "EmptyLatentImage", "inputs": {"width": largeur, "height": hauteur, "batch_size": 1}},
         "6": {"class_type": "KSampler", "inputs": {"seed": graine, "steps": 25, "cfg": 5.0, "sampler_name": "euler_ancestral",
                                                    "scheduler": "normal", "denoise": 1.0, "model": ["2", 0],

@@ -341,3 +341,17 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   L'entraînement : notebook privé `skyzer/kebab-lora-sky-v1` sur une T4, kohya sd-scripts v0.12.0, Animagine XL 4.0, LoRA de rang 32
   (alpha 16), le UNet seul, AdamW8bit à 1e-4, cosinus, 8 époques × 2 répétitions, sans retournement, fp16 et le VAE en fp32.
   Le script et sa description : `pipeline/kaggle/lora_sky_v1/`. Lancé vers 15 h.
+- **LoRA de Sky v1, résultat, le 2026-10-15.** Entraînement : 1 680 étapes en 1 h 02 (2,21 s par étape sur une T4), 68 min en tout,
+  perte moyenne de 0,072 à 0,062, sans valeur aberrante ; 4 fichiers de 170 Mo (époques 2, 4, 6, 8) dans `<modeles_root>/loras/`.
+  Premier lancement raté : kohya écrit le cache des latents à côté des images, et `/kaggle/input` est en lecture seule (corrigé :
+  les images sont copiées dans `/tmp/jeu`). Le test standard en local (`pipeline/test_lora.py`), à part trois pièges : le chargement
+  classique du LoRA garde une copie des poids d'origine sur la carte (avec `--highvram`) et déborde des 8 Go → le nœud
+  `LoraLoaderBypassModelOnly`, qui ajoute le LoRA pendant le calcul ; `PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True` fait échouer
+  toute allocation sur cette carte (comme la « dynamic VRAM ») ; après une saturation, la carte reste bloquée jusqu'au redémarrage
+  de ComfyUI. Avec le LoRA en bypass et les encodeurs de texte en fp8 : 4,5 s par pas, 2 min 25 par image.
+  Ce que montre le test (planche : `<sorties_root>/comfyui/test-standard_sky_v1_planche.png`) : le visage, les cheveux, la barbe,
+  les lunettes dorées et les deux colliers sont appris. L'œil aveugle n'est juste que de face (tests 1 et 8) ; de trois-quarts et en
+  situation, les deux yeux deviennent blancs (2, 6) ou bleus (9). La tenue tient en buste, mais pas ailleurs : chemise noire ou veste
+  en situation (6, 7, 10), et en pied (5) une autre tenue complète (long manteau, torse nu, pantalon marron, bottes) : le jeu n'avait
+  qu'une seule image en pied. Pistes pour une v2 : des images en pied et en situation dans le jeu, un tag pour les yeux
+  (« heterochromia ») dans les légendes, et la retouche locale de l'œil en production en dernier recours.
