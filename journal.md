@@ -325,3 +325,11 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   même en tuiles de 512. Ce qui marche : `--highvram --cpu-vae`. Mesuré : 204 s pour la première image (le modèle lu depuis le
   disque USB, environ 100 s), puis 130 s par image (91 s de calcul à 3,64 s par pas, le VAE sur le processeur). RAM de ComfyUI :
   2,9 à 3,8 Go ; VRAM : 5,7 à 6,5 Go ; RAM disponible pour le reste : 7,7 Go. Le lanceur : `pipeline/comfyui.py`.
+- **Modèles déjà prêts, cherchés sur Hugging Face le 2026-10-15** : des LoRA de style « anime des années 90 » existent pour la
+  famille SDXL, petits et sans compte : `ntc-ai/SDXL-LoRA-slider.90s-anime` (MIT), `strkyyy/anime-90s-retro` (openrail++, mot
+  déclencheur `4n1m390s`), `nDimensional/Shaded-Retro-Style-Anime-with-Natural-Language-SDXL-LoRA` (creativeml-openrail-m). Les
+  dépôts « Muapi » sont des copies de modèles de Civitai : leur licence affichée n'est peut-être pas celle de l'auteur d'origine.
+  Éviter les LoRA qui imitent un artiste vivant ou un studio nommé (Sadamoto, Ghibli) pour une chaîne monétisée. Pour garder un
+  perso sans entraînement, il existe FLUX.1 Kontext, Qwen Image Edit et Krea 2, à partir d'une image de référence, mais faits pour
+  la photo, autour de 11 à 12 Go en fp8 (environ 6 Go compressés), et pas testés sur de l'anime : pour Sky et ses détails
+  asymétriques, le LoRA reste la voie sûre.
