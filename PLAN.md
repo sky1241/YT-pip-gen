@@ -2,13 +2,13 @@
 
 Version du 6 octobre 2026, mise à jour le 15 octobre 2026. C'est ce fichier qui fait foi : on coche ici, plus dans le doc claude.ai.
 
-## Où on en est (15 octobre 2026)
+## Où on en est (15 octobre 2026, fin de journée)
 
-- **Fait** : les fondations du repo, la palette des émotions et l'outil de découpe. Maëlle et Sky ont toutes leurs planches de référence (Sky : la série 2, les 50 cases de son inventaire). Le PyTorch d'AMD tourne sur la carte de sky-master, testé le 15 octobre.
-- **En cours** : la phase 0, côté machine. ComfyUI tourne sur la carte AMD, environ 2 minutes par image, lancé par `pipeline/comfyui.py` ; minage désinstallé, 3 Go de RAM récupérés.
-- **Ensuite** : le premier LoRA, celui de Sky, et son test standard, avant de faire les autres persos. Si la carte de sky-master ne suffit pas pour l'entraînement ou la vidéo : Modal ou Kaggle, gratuits, puis une location en dernier recours.
-- **Décisions qui attendent l'auteur** : le modèle de base d'images (sa licence compte pour YouTube), sauter le passage local pour le premier test du LoRA, le canon du kebab, ce que couvre l'épisode 1, le style de référence.
-- **Pas commencé** : l'écriture de l'épisode 1 (phase 1), le plan du kebab et ses décors, Patrick, Mohamed et les autres persos, les voix, le pilote.
+- **Fait** : les fondations du repo, la palette des émotions et l'outil de découpe. Maëlle et Sky ont toutes leurs planches de référence (Sky : la série 2, les 50 cases de son inventaire). La chaîne d'images marche de bout en bout : ComfyUI sur la carte AMD de sky-master (`pipeline/comfyui.py`), le modèle Animagine XL 4.0, le premier LoRA de Sky entraîné sur Kaggle en une heure et testé (`image/test-standard.md`). Le minage est désinstallé, et Claude se lance depuis un terminal (icône « Kebab Datastream »).
+- **En cours** : le LoRA de Sky. La v1 reconnaît son visage, ses cheveux, sa barbe, ses lunettes dorées, ses colliers et son sourire de monstre ; l'auteur en est content. Elle rate l'œil aveugle hors de face, et la tenue hors des gros plans (une seule image en pied dans le jeu).
+- **Ensuite** : la v2 du LoRA de Sky, avec une quinzaine d'images en pied et en situation à faire dans ChatGPT, puis le LoRA de Maëlle, dont les images sont prêtes.
+- **Décisions qui attendent l'auteur** : le canon du kebab, ce que couvre l'épisode 1, le style de référence (et s'il prend un LoRA de style années 90 tout fait), garder ou non la règle « sans sudo » de CLAUDE.md (le compte a sudo).
+- **Pas commencé** : l'écriture de l'épisode 1 (phase 1), le plan du kebab et ses décors, Patrick, Mohamed et les autres persos, les voix, la vidéo, le pilote.
 
 ## Mode d'emploi
 
@@ -30,13 +30,13 @@ Terminée quand une image, une phrase de voix et un clip de 5 secondes sortent d
 - [x] Vérifier avec `/context` que Claude Code charge bien `CLAUDE.md`
 - [x] Lancer le « premier lancement » de `CLAUDE.md` (dossiers, `config.yaml`, `canon.yaml`, fiches de Sky et Maëlle)
 - [x] Vérifier la carte graphique et sa VRAM, et noter le résultat : AMD Radeon RX 5700 XT, 8 Go, aucune carte NVIDIA sur le parc (`config.yaml`)
-- [ ] Choisir la machine de production. Pour les images : sky-master, sa carte AMD calcule avec le PyTorch d'AMD (testé le 2026-10-15). Pour la vidéo : AniSora demande 12 Go et la carte en a 8, donc une version compressée à essayer, sans garantie, sinon Modal ou Kaggle (gratuits), puis une location. Voir `CLAUDE.md` > À trancher
-- [ ] Choisir le modèle de base d'images d'après sa licence : Animagine XL 4.0 (usage commercial permis) ou Illustrious XL v0.1 (images libres, la monétisation « découragée »), 6,9 Go chacun. NoobAI-XL est exclu si la chaîne est monétisée : sa licence interdit de commercialiser ses images (détail dans `journal.md`, 2026-10-15)
-- [ ] Créer les comptes de calcul de secours : Modal (30 $ de calcul gratuits par mois) et Kaggle (environ 30 h de GPU par semaine). Modal est fait et relié à sky-master le 2026-10-15, mais ses cartes graphiques demandent une carte bancaire, même pour les crédits gratuits ; reste Kaggle
+- [ ] Choisir la machine de production. Pour les images : sky-master, 2 min 30 par image avec un LoRA (testé le 2026-10-15). Pour entraîner les LoRA : Kaggle, gratuit, environ 1 h par perso. Pour la vidéo : AniSora demande 12 Go et la carte en a 8, donc une version compressée à essayer, sans garantie, sinon Modal ou Kaggle (gratuits), puis une location. Voir `CLAUDE.md` > À trancher
+- [x] Choisir le modèle de base d'images d'après sa licence : Animagine XL 4.0 (usage commercial permis), pris pour les premiers tests le 2026-10-15 ; Illustrious XL v0.1 (images libres, la monétisation « découragée »), 6,9 Go chacun. NoobAI-XL est exclu si la chaîne est monétisée : sa licence interdit de commercialiser ses images (détail dans `journal.md`, 2026-10-15)
+- [x] Créer les comptes de calcul de secours, le 2026-10-15 : Kaggle (30 h de GPU par semaine, relié à sky-master, a servi au LoRA de Sky) et Modal (relié, mais ses cartes graphiques demandent une carte bancaire, même pour les crédits gratuits)
 - [x] Préparer le disque externe (`sorties/`, `modeles/`) et noter ses chemins dans `config.yaml`
 - [x] Vérifier qu'aucune variable `ANTHROPIC_API_KEY` ne traîne sur la machine
 - [x] Installer Python (venv), ffmpeg et ComfyUI, en espace utilisateur sur la Debian sans sudo (le venv, le PyTorch d'AMD et ComfyUI le 2026-10-15 ; ffmpeg 5.1.9 était déjà là)
-- [ ] Générer une première image dans ComfyUI : sortie le 2026-10-15 avec Animagine XL 4.0 (`<sorties_root>/comfyui/test_premiere-image_00001_.png`), à valider par l'auteur. Limite : la RAM, voir le journal
+- [x] Générer une première image dans ComfyUI : le 2026-10-15, avec Animagine XL 4.0, puis le test standard du LoRA de Sky (`<sorties_root>/comfyui/`)
 - [ ] Installer Kdenlive (AppImage)
 - [ ] Installer Qwen3-TTS et générer une phrase test
 - [ ] Tester AniSora : un clip de 5 secondes depuis une image. Sur sky-master, la version 12 Go ne tient pas (8 Go) : une version compressée à essayer après les images ; sinon sur Modal ou Kaggle
@@ -129,7 +129,10 @@ La palette des émotions, la même pour tous : 36 émotions en 6 planches, défi
   - [x] Palette des émotions de trois-quarts : les 6 planches et leur retouche (deux bagues restent à corriger au passage local)
   - [x] Signatures : les 9, dont le jeu du sourire en monstre, plus le rire du dégénéré de trois-quarts
   - [x] Bouches : les 6 de base et les 6 du sourire (sourire fermé, grimace, rire ouvert, sous les deux angles)
-  - [ ] LoRA : passage local, entraînement, test standard. Premier essai en cours (le 2026-10-15) : la v1, entraînée sur Kaggle directement sur les images de ChatGPT, sans passage local ; le test standard est dans `image/test-standard.md`
+  - [ ] LoRA : passage local, entraînement, test standard
+    - [x] v1, le 2026-10-15 : 105 images de ChatGPT sans passage local, entraînée sur Kaggle en 1 h, testée (planche : `<sorties_root>/comfyui/test-standard_sky_v1_planche.png`). Visage, lunettes, colliers et sourire appris ; l'œil aveugle seulement de face, la tenue seulement en buste
+    - [ ] v2 : ajouter une quinzaine d'images dans ChatGPT (en pied sous plusieurs angles, assis à la table du kebab, debout au comptoir, en train de manger), un tag pour ses yeux dans les légendes, puis réentraîner et refaire le test
+    - [ ] Corriger les deux bagues (`trois-quarts_triomphe_v1`, `trois-quarts_ennui_v1`) au passage local
   - [ ] Voix : compléter et valider `audio/voix/sky/`
 - [ ] Maëlle
   - [ ] Fiche : valider les codes couleur relevés (1m65, côtés asymétriques confirmés, le reste du look est posé)
@@ -204,7 +207,7 @@ La palette des émotions, la même pour tous : 36 émotions en 6 planches, défi
   - [ ] Voix : compléter et valider `audio/voix/daria/`
 - [ ] Grep, le chat de Daria : fiche (le motif du pelage), image maître, rotation, 2 signatures
 - [ ] Nmap, le chat de Sky et Maëlle : fiche (tout le design), image maître, rotation
-- [ ] LoRA de style
+- [ ] LoRA de style : d'abord essayer les LoRA « années 90 » déjà prêts sur Hugging Face, notés dans `journal.md` (2026-10-15)
 - [ ] Un fond par axe de caméra du kebab, plus l'escalier
 - [ ] Une image maître par axe, avec les persos à leur place habituelle
 
