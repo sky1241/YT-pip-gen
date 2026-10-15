@@ -5,7 +5,7 @@ Version du 6 octobre 2026, mise à jour le 15 octobre 2026. C'est ce fichier qui
 ## Où on en est (15 octobre 2026)
 
 - **Fait** : les fondations du repo, la palette des émotions et l'outil de découpe. Maëlle et Sky ont toutes leurs planches de référence (Sky : la série 2, les 50 cases de son inventaire). Le PyTorch d'AMD tourne sur la carte de sky-master, testé le 15 octobre.
-- **En cours** : la phase 0, côté machine. Installer ComfyUI et sortir une première image en local.
+- **En cours** : la phase 0, côté machine. ComfyUI tourne sur la carte AMD et a sorti une première image ; la RAM du PC est la limite (une deuxième image a fait tuer VS Code par le système).
 - **Ensuite** : le premier LoRA, celui de Sky, et son test standard, avant de faire les autres persos. Si la carte de sky-master ne suffit pas pour l'entraînement ou la vidéo : Modal ou Kaggle, gratuits, puis une location en dernier recours.
 - **Décisions qui attendent l'auteur** : le modèle de base d'images (sa licence compte pour YouTube), sauter le passage local pour le premier test du LoRA, le canon du kebab, ce que couvre l'épisode 1, le style de référence.
 - **Pas commencé** : l'écriture de l'épisode 1 (phase 1), le plan du kebab et ses décors, Patrick, Mohamed et les autres persos, les voix, le pilote.
@@ -32,11 +32,11 @@ Terminée quand une image, une phrase de voix et un clip de 5 secondes sortent d
 - [x] Vérifier la carte graphique et sa VRAM, et noter le résultat : AMD Radeon RX 5700 XT, 8 Go, aucune carte NVIDIA sur le parc (`config.yaml`)
 - [ ] Choisir la machine de production. Pour les images : sky-master, sa carte AMD calcule avec le PyTorch d'AMD (testé le 2026-10-15). Pour la vidéo : AniSora demande 12 Go et la carte en a 8, donc une version compressée à essayer, sans garantie, sinon Modal ou Kaggle (gratuits), puis une location. Voir `CLAUDE.md` > À trancher
 - [ ] Choisir le modèle de base d'images d'après sa licence : Animagine XL 4.0 (usage commercial permis) ou Illustrious XL v0.1 (images libres, la monétisation « découragée »), 6,9 Go chacun. NoobAI-XL est exclu si la chaîne est monétisée : sa licence interdit de commercialiser ses images (détail dans `journal.md`, 2026-10-15)
-- [ ] Créer les comptes de calcul de secours : Modal (30 $ de calcul gratuits par mois) et Kaggle (environ 30 h de GPU par semaine)
+- [ ] Créer les comptes de calcul de secours : Modal (30 $ de calcul gratuits par mois) et Kaggle (environ 30 h de GPU par semaine). Modal est fait et relié à sky-master le 2026-10-15, mais ses cartes graphiques demandent une carte bancaire, même pour les crédits gratuits ; reste Kaggle
 - [x] Préparer le disque externe (`sorties/`, `modeles/`) et noter ses chemins dans `config.yaml`
 - [x] Vérifier qu'aucune variable `ANTHROPIC_API_KEY` ne traîne sur la machine
-- [ ] Installer Python (venv), ffmpeg et ComfyUI, en espace utilisateur sur la Debian sans sudo (le venv et le PyTorch d'AMD sont posés et testés le 2026-10-15, ffmpeg 5.1.9 est déjà là ; reste ComfyUI)
-- [ ] Générer une première image dans ComfyUI (attend le choix du modèle de base)
+- [x] Installer Python (venv), ffmpeg et ComfyUI, en espace utilisateur sur la Debian sans sudo (le venv, le PyTorch d'AMD et ComfyUI le 2026-10-15 ; ffmpeg 5.1.9 était déjà là)
+- [ ] Générer une première image dans ComfyUI : sortie le 2026-10-15 avec Animagine XL 4.0 (`<sorties_root>/comfyui/test_premiere-image_00001_.png`), à valider par l'auteur. Limite : la RAM, voir le journal
 - [ ] Installer Kdenlive (AppImage)
 - [ ] Installer Qwen3-TTS et générer une phrase test
 - [ ] Tester AniSora : un clip de 5 secondes depuis une image. Sur sky-master, la version 12 Go ne tient pas (8 Go) : une version compressée à essayer après les images ; sinon sur Modal ou Kaggle

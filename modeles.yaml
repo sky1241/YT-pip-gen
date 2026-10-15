@@ -14,4 +14,13 @@
 #   vram_go: null
 #   note: ""
 
-modeles: []
+modeles:
+  - nom: Animagine XL 4.0
+    type: checkpoint-image
+    lien: "https://huggingface.co/cagliostrolab/animagine-xl-4.0/resolve/main/animagine-xl-4.0.safetensors"
+    empreinte_sha256: "1d5b43ff75b6ab598502d4c779d2fbfa3dceca51c60c3b609640a60772333916"
+    licence: "CreativeML Open RAIL++-M (celle de SDXL, sans modification : usage commercial permis, restrictions d'usage), vérifiée le 2026-10-15"
+    fichier: "checkpoints/animagine-xl-4.0.safetensors"
+    taille_octets: 6938434056
+    vram_go: 8
+    note: "téléchargé le 2026-10-15, empreinte vérifiée ; premier modèle testé sur sky-master (prompts en tags Danbooru, 1024x1024)"

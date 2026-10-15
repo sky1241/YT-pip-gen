@@ -13,6 +13,9 @@ modeles_root: "/media/sky/disque 5T/YT-pip-gen-data/modeles"   # poids des modè
 
 # --- ComfyUI (piloté par son API HTTP ; valeur par défaut, rien n'est installé) ---
 comfyui_url: "http://127.0.0.1:8188"
+comfyui_dir: "/home/sky/ComfyUI"   # cloné le 2026-10-15 (commit ba99487), modèles via ~/ComfyUI/extra_model_paths.yaml
+# Lancement sur sky-master (voir journal.md, 2026-10-15) : MIOPEN_FIND_MODE=TRUST_VERIFY_FULL, --disable-dynamic-vram,
+# --disable-pinned-memory, et dans son propre groupe mémoire : systemd-run --user --scope -p MemoryMax=7G
 
 # --- Machine de production ---
 # À trancher (CLAUDE.md > À trancher). Relevé du 2026-10-13 : aucune carte NVIDIA sur le parc.

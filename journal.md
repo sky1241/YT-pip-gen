@@ -292,3 +292,19 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   comme ComfyUI sans payer ; AMD Developer Cloud, des crédits gratuits sur MI300X pour les développeurs indépendants et les projets
   open source, sur demande, carte bancaire exigée, crédits valables 30 jours selon AMD (les montants publiés varient). Hugging Face
   ZeroGPU (5 min par jour) et Paperspace gratuit (8 Go) ne servent à rien ici.
+- **Modal, le 2026-10-15** : compte « ludovik1241 » créé par l'auteur, client Modal 1.6.1 dans `/home/sky/venvs/modal`, jeton dans
+  `~/.modal.toml` (droits 600, hors du repo). Sans moyen de paiement, Modal ne donne que 1 $ sur les 30 $ mensuels, et refuse toute
+  carte graphique (« Please add a payment method to use T4 GPU functions ») : rien n'a été facturé. Pour s'en servir : ajouter une
+  carte et régler aussitôt la limite de dépense (modal.com/docs/guide/budgets).
+- **Première image en local, le 2026-10-15** : ComfyUI (commit ba99487) sur la RX 5700 XT, Animagine XL 4.0, 1024×1024, 25 pas,
+  euler_ancestral, cfg 5, seed 42 (`workflows/premiere-image_sdxl.json`). Échantillonnage : 3,65 s par pas, 93 s pour l'image.
+  Le premier lancement a pris 505 s en tout : le chargement du modèle depuis le disque USB et la recherche des noyaux de MIOpen.
+  Pièges : (1) la « dynamic VRAM » de ComfyUI échoue sur cette carte (« VBAR allocation failed », l'espace d'adresses virtuel
+  refusé) : `--disable-dynamic-vram`. (2) La RAM : avec le navigateur ouvert, le chargement a rempli la mémoire, arrêté à la main ;
+  navigateurs fermés, la première image est passée, mais la deuxième (avec `--cache-none`, qui recharge le modèle) a déclenché le
+  tueur de mémoire du système, qui a tué VS Code et la session de Claude, ComfyUI compris. Parade : lancer ComfyUI dans son propre
+  groupe mémoire (`systemd-run --user --scope -p MemoryMax=7G`, possible sans sudo, testé), garder le modèle en mémoire entre deux
+  images (pas de `--cache-none`), et faire tourner Claude dans un terminal plutôt que dans VS Code (VS Code prend 2 à 4 Go).
+- **Les 3 Go réservés** : l'option `hugepagesz=1G default_hugepagesz=1G hugepages=3` de `/etc/default/grub` vient du réglage du
+  minage (`/opt/linux-upgrade/mining/tune_system.sh`, pour xmrig) ; ces pages ne servent à rien en ce moment. Les libérer demande
+  les droits root (le compte n'est pas dans le groupe sudo).
