@@ -151,3 +151,16 @@ Edit ONLY this image. Keep everything else exactly as it is: the same view, the 
 ```
 
 À contrôler à la reprise : à droite, deux chaises par table, côté allée, tournées vers la banquette, aucune contre la banquette ni au bout ; plus de plantes sur les tables ; deux sauces et des serviettes par table ; rien d'autre de changé.
+
+La v2 de la retouche 4 n'était pas la bonne idée (non envoyée). L'auteur, le 2026-10-16 : faire pivoter les chaises d'un quart de tour par rapport à la table, pour que deux personnes soient assises face à face et une troisième sur la banquette, au bout de la table.
+
+## Prompt KB1 retouche 4 v3 — Deux chaises face à face, la banquette au bout
+
+```
+Edit ONLY this image. Keep everything else exactly as it is: the same view, the same layout, the same style and the same light. Make only these three changes:
+1. The four tables along the red bench on the right: each table keeps one short end against the bench. Put one chair on each long side of the table, the two chairs facing each other across the table, so two people sit face to face and a third person sits on the bench at the end of the table. No chair between a table and the bench.
+2. Every table: remove the small plant on it. The large plants standing on the floor stay.
+3. Every table keeps only a red sauce bottle, a white sauce bottle and a napkin dispenser.
+```
+
+À contrôler à la reprise : à droite, par table, une chaise de chaque long côté, face à face, la banquette au bout ; plus de plantes sur les tables ; deux sauces et des serviettes par table ; les tables du milieu inchangées ; rien d'autre de changé.
