@@ -383,3 +383,12 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   et en gestes), le tag `heterochromia` dans 107 légendes, environ 10 minutes sur la carte AMD ; sortie
   `<sorties_root>/lora/sky/jeu_v2/`. Envoyé en un zip (111 Mo, 10 s à 12 Mo/s) au jeu privé `skyzer/kebab-lora-sky-jeu-v2`, puis
   `kaggle kernels push -p pipeline/kaggle/lora_sky_v2 --accelerator NvidiaTeslaT4` : mêmes réglages que la v1, pour comparer.
+- **LoRA de Sky v2 entraîné, le 2026-10-16** : 80 min sur la T4 de Kaggle (126 images × 2 répétitions × 8 époques = 2016 pas,
+  perte moyenne finale 0,063). Les 4 fichiers (époques 2, 4, 6, 8) sont vérifiés et copiés dans `<modeles_root>/loras/`.
+  Le journal de Kaggle est dans `<sorties_root>/lora/sky/kaggle_v2/`. Reste le test standard.
+- **Le disque système de sky-master était plein (2026-10-16)** : 16 Ko libres sur 233 Go, et toutes les commandes de Claude
+  échouaient (sortie impossible à écrire dans /tmp). Avec l'accord de l'auteur, on a supprimé le SDK Android (13 Go) et le dépôt
+  local de la fleet multi-agent `~/.claude-channel` (30 Go, presque tout dans son `.git`, l'historique reste sur GitHub). Les
+  fichiers qui n'existaient qu'en local, la crontab et les services d'avant sont archivés dans
+  `/media/sky/disque 5T/archives/claude-channel_2026-10-16/`. Les tâches de la fleet sont arrêtées ; le réglage du clavier
+  pour Barrier est gardé (`~/.local/bin/setxkbmap-fleet.sh`), ainsi que la mise à jour des IP du mesh. Après : 42 Go libres.
