@@ -37,9 +37,13 @@ if not legendes:
     legendes = glob.glob("/tmp/jeu/**/*.txt", recursive=True)
 assert legendes, "aucune légende trouvée"
 dossier_images = os.path.dirname(legendes[0])
+if dossier_images.startswith("/kaggle/input"):
+    # /kaggle/input est en lecture seule, et kohya écrit le cache des latents à côté des images
+    lancer(f"mkdir -p /tmp/jeu && cp '{dossier_images}'/*.png '{dossier_images}'/*.txt /tmp/jeu/")
+    dossier_images = "/tmp/jeu"
 images = glob.glob(os.path.join(dossier_images, "*.png"))
-print(dossier_images, len(images), "images,", len(legendes), "légendes", flush=True)
-assert len(images) == len(legendes) == 105
+print(dossier_images, len(images), "images,", len(glob.glob(os.path.join(dossier_images, "*.txt"))), "légendes", flush=True)
+assert len(images) == len(glob.glob(os.path.join(dossier_images, "*.txt"))) == 105
 
 etape("kohya sd-scripts v0.12.0")
 lancer(f"git clone -q --depth 1 --branch v0.12.0 https://github.com/kohya-ss/sd-scripts {SCRIPTS}")
