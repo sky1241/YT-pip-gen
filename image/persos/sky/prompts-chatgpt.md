@@ -570,7 +570,7 @@ No text or labels anywhere.
 
 ### La reprise : ce que Claude contrôle et fait après chaque planche
 
-L'auteur demande un prompt à la fois (« donne-moi le prompt 1 de Sky ») et envoie l'image. Claude met l'image à joindre dans le presse-papiers (`setsid -f xclip -selection clipboard -t image/png -i <fichier>`) : l'image en pied validée pour L1 à L3 (`~/Téléchargements/sky_pour_L1-L3_en-pied_v1.png`), l'image maître v3 pour L4 (`~/Téléchargements/sky_pour_L1-L4_image-maitre_v3.png`), la vue trois-quarts droite pour L5 (`~/Téléchargements/sky_pour_L5_trois-quarts-droit.png`). Puis, pour chaque planche reçue :
+L'auteur demande un prompt à la fois (« donne-moi le prompt 1 de Sky ») et envoie l'image. Claude met l'image à joindre dans le presse-papiers (`setsid -f xclip -selection clipboard -t image/png -i <fichier>`) : l'image en pied validée pour L1 à L3 (`~/Téléchargements/sky_pour_L1-L3_en-pied_v1.png`), l'image maître v3 pour L4 (`~/Téléchargements/sky_pour_L4_image-maitre_v3.png`), la vue trois-quarts droite pour L5 (`~/Téléchargements/sky_pour_L5_trois-quarts-droit.png`). Puis, pour chaque planche reçue :
 
 1. **Ranger** : copier l'image reçue en `planches/<nom>_v1.png` (`cp -n`), puis découper avec la commande du prompt (`python3 pipeline/decouper_planche.py image/persos/sky/planches/<nom>_v1.png --noms … --dossier …`). Les découpes d'essai se font d'abord dans le scratchpad.
 2. **Contrôler en zoomant**, sur chaque case :
