@@ -82,7 +82,28 @@ VUES = {
     "profil-droit": "upper body, profile, from side, facing right",
     "dos": "upper body, from behind",
     "pied": "full body, standing",
+    "pied-face": "full body, standing, facing viewer",
+    "pied-trois-quarts-gauche": "full body, standing, three-quarter view, facing left",
+    "pied-trois-quarts-droit": "full body, standing, three-quarter view, facing right",
+    "pied-profil-gauche": "full body, standing, profile, from side, facing left",
+    "pied-profil-droit": "full body, standing, profile, from side, facing right",
+    "pied-dos": "full body, standing, from behind",
+    "assis-face": "full body, sitting, chair, facing viewer",
+    "assis-cote": "full body, sitting, chair, from side, facing right",
+    "accoude": "full body, standing, leaning, elbow rest",
 }
+# Les gestes en plan moyen (gestes/), d'après fiche.json > accessoires ; ceux de Sky pour l'instant
+GESTES = {
+    "mange": "eating, biting, holding food with both hands, wrap",
+    "boit": "drinking, holding bottle, soda bottle",
+    "bouche-pleine": "chewing, mouth full, puffy cheeks, unimpressed",
+    "telephone": "holding phone, looking at phone, smartphone",
+    "ecrit-marqueur": "writing, holding marker, raised hand, glass",
+    "laptop": "using laptop, typing, laptop, table",
+}
+# Le tag des yeux (fiche.json > lora > tag_yeux) ne va que là où les deux yeux sont ouverts et visibles
+SANS_YEUX = {"dos", "pied-dos", "profil-gauche", "profil-droit", "pied-profil-gauche", "pied-profil-droit", "assis-cote",
+             "rire", "contentement", "soulagement", "fatigue", "douleur", "clignement", "clignement-mi-clos"}
 FOND = "simple background, grey background"
 
 
@@ -93,22 +114,26 @@ def legende(chemin, fiche):
     tq = base.startswith("trois-quarts_")
     cle = base.removeprefix("trois-quarts_")
     angle = "three-quarter view, facing right" if tq else "facing viewer"
+    yeux = fiche["lora"].get("tag_yeux")
+    yeux = f"{yeux}, " if yeux and cle not in SANS_YEUX else ""
     if dossier == "references":
         if base.startswith("master"):
-            return fiche["lora"]["legende_maitre"]
-        return f"{VUES[base]}, {FOND}"
+            return yeux + fiche["lora"]["legende_maitre"]
+        return f"{VUES[base]}, {yeux}{FOND}"
     if dossier == "bouches":
         cle = base.split("_", 1)[1]
-        return f"portrait, close-up, {angle}, {BOUCHES[cle]}, {FOND}"
+        return f"portrait, close-up, {angle}, {yeux}{BOUCHES[cle]}, {FOND}"
+    if dossier == "gestes":
+        return f"upper body, {angle}, {yeux}{GESTES[cle]}, {FOND}"
     tags = EMOTIONS.get(cle) or fiche["lora"]["legendes_signatures"][cle]
     cadrage = "upper body" if cle != "haussement-epaules" else "upper body, cowboy shot"
-    return f"{cadrage}, {angle}, {tags}, {FOND}"
+    return f"{cadrage}, {angle}, {yeux}{tags}, {FOND}"
 
 
 def images_retenues(perso):
     prov = json.loads((perso / "provenance.json").read_text())
     fichiers = []
-    for cle in ("palette_retenue", "palette_retenue_trois_quarts", "signatures_retenues", "bouches_retenues"):
+    for cle in ("palette_retenue", "palette_retenue_trois_quarts", "signatures_retenues", "bouches_retenues", "gestes_retenus"):
         fichiers += prov.get(cle, {}).values()
     for chemin, info in prov["images"].items():
         if chemin.startswith("references/") and info.get("retenue"):

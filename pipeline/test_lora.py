@@ -73,6 +73,8 @@ def main():
     fiche = json.loads((RACINE / "image" / "persos" / slug / "fiche.json").read_text())
     genre = "1girl" if fiche.get("genre") == "f" else "1boy"
     debut = f"{fiche['lora']['declencheur']}, {genre}, solo, {'male' if genre == '1boy' else 'female'} focus"
+    if fiche["lora"].get("tag_yeux"):
+        debut += ", " + fiche["lora"]["tag_yeux"]
     nom = lora.removesuffix(".safetensors")
     sorties = Path(CONFIG["sorties_root"]) / "comfyui"
     images = []

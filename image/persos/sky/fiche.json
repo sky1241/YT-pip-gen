@@ -126,7 +126,9 @@
       "le-sourire": "evil smile, shaded face, sharp teeth, fangs, constricted pupils, head down",
       "rire-degenere": "evil laugh, crazy laugh, open mouth, sharp teeth, fangs, constricted pupils, head back, shaded face, sweat"
     },
-    "test_signature": "le-sourire"
+    "test_signature": "le-sourire",
+    "tag_yeux": "heterochromia",
+    "_note_tag_yeux": "ajouté pour la v2 (2026-10-16) : en v1, l'œil aveugle n'était juste que de face. Le tag va dans chaque légende où les deux yeux sont ouverts et visibles, et dans chaque prompt de génération"
   },
   "voix": "audio/voix/sky/",
   "_note_voix": "la voix de l'auteur, faite par lui (CLAUDE.md > Stack)",

@@ -125,7 +125,7 @@ La palette des émotions, la même pour tous : 36 émotions en 6 planches, défi
   - [x] Image maître v3 : sans le trait entre les sourcils ni les taches autour des yeux, barbe de 3 jours (l'œil aveugle reste un peu plus grand : ChatGPT refuse de le retoucher, l'auteur garde la v3)
   - [x] Rotation : face, trois-quarts et profil des deux côtés, dos
   - [x] Image en pied
-  - [ ] En pied et en gestes : les 5 planches (prompts L1 à L5 de `prompts-chatgpt.md`), pour le LoRA v2
+  - [ ] En pied et en gestes : les 5 planches (prompts L1 à L5 de `prompts-chatgpt.md`, avec la liste de contrôle de chaque planche et la procédure du LoRA v2), pour le LoRA v2
   - [x] Palette des émotions de face : les 6 planches, les reprises et le clignement (mi-clos, fermé)
   - [x] Palette des émotions de trois-quarts : les 6 planches et leur retouche (deux bagues restent à corriger au passage local)
   - [x] Signatures : les 9, dont le jeu du sourire en monstre, plus le rire du dégénéré de trois-quarts

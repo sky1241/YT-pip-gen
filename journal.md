@@ -355,3 +355,7 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   en situation (6, 7, 10), et en pied (5) une autre tenue complète (long manteau, torse nu, pantalon marron, bottes) : le jeu n'avait
   qu'une seule image en pied. Pistes pour une v2 : des images en pied et en situation dans le jeu, un tag pour les yeux
   (« heterochromia ») dans les légendes, et la retouche locale de l'œil en production en dernier recours.
+- **Préparé pour la v2, le 2026-10-16** : les 5 prompts en pied et en gestes de Sky, la liste de contrôle de chaque planche et la
+  procédure du LoRA v2 (`image/persos/sky/prompts-chatgpt.md`, fin du fichier) ; `pipeline/preparer_lora.py` sait légender les vues
+  en pied, les poses et les gestes, et ajoute le tag des yeux (`heterochromia`, `fiche.json` > `lora` > `tag_yeux`) là où les deux
+  yeux sont ouverts ; `pipeline/test_lora.py` l'ajoute aux prompts ; le notebook `pipeline/kaggle/lora_sky_v2/` est prêt.

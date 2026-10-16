@@ -559,3 +559,33 @@ Make a sheet of Sky's gestures: a regular grid of 3 columns and 2 rows, landscap
 
 No text or labels anywhere.
 ```
+
+### La reprise : ce que Claude contrôle et fait après chaque planche
+
+L'auteur demande un prompt à la fois (« donne-moi le prompt 1 de Sky ») et envoie l'image. Claude met l'image à joindre dans le presse-papiers (`setsid -f xclip -selection clipboard -t image/png -i <fichier>`) : l'image maître v3 pour L1 à L4 (`~/Téléchargements/sky_pour_L1-L4_image-maitre_v3.png`), la vue trois-quarts droite pour L5 (`~/Téléchargements/sky_pour_L5_trois-quarts-droit.png`). Puis, pour chaque planche reçue :
+
+1. **Ranger** : copier l'image reçue en `planches/<nom>_v1.png` (`cp -n`), puis découper avec la commande du prompt (`python3 pipeline/decouper_planche.py image/persos/sky/planches/<nom>_v1.png --noms … --dossier …`). Les découpes d'essai se font d'abord dans le scratchpad.
+2. **Contrôler en zoomant**, sur chaque case :
+   - **l'œil aveugle** : son œil gauche est blanc laiteux, sans iris ni pupille, partout où il se voit. De face, il est à droite de l'image. L'œil bleu garde son reflet ;
+   - **les lunettes** : la monture dorée fine, avec la barre du haut, sans taches sous les verres ni trait entre les sourcils ;
+   - **la barbe de 3 jours** et les cernes ;
+   - **la tenue** : la chemise blanche aux lys noirs et blancs (des lys, pas des fleurs de lys), manches sous le coude, ouverte en haut ; les deux colliers (le cordon de cuir serré, la chaîne et ses deux anneaux) ; le pantalon de training noir mat, sans bande ni logo ; les baskets noires ;
+   - **la bague** : une seule, une bande fine en bronze, à l'auriculaire droit. Deux bagues et une chevalière à l'index sont déjà arrivées ;
+   - **la carrure** : 1m87, 92 kg, les avant-bras épais aux veines visibles ;
+   - aucun texte, le fond gris clair, les cases séparées.
+   Et selon le prompt :
+   - **L1** : les pieds entiers dans le cadre ; case 2, son côté gauche (l'œil aveugle devant) ; case 3, son côté droit (l'œil bleu devant).
+   - **L2** : le profil gauche montre l'œil aveugle, le profil droit l'œil bleu ; le dos sans visage.
+   - **L3** : une chaise en bois simple et rien d'autre ; accoudé du coude droit ; assis de côté, c'est son côté droit qu'on voit.
+   - **L4** : la galette à deux mains, la bouteille sans logo, le téléphone et le marqueur dans la main droite, la bague visible ; des mains bien formées.
+   - **L5** : un vrai trois-quarts, à l'angle de `references/trois-quarts-droit_v1.png`, l'œil bleu devant.
+3. **Si une case rate** : la mettre dans une retouche, en assemblant les cases ratées (4 au plus) dans `<sorties_root>/persos/sky/`, avec une consigne écrite case par case, jamais une règle générale en fin de prompt (leçon du K7). L'image part dans le même message que le prompt, qui commence par « Edit ONLY the image attached to this message ».
+4. **Noter** : la case de l'inventaire (Sky > En pied et en gestes), « faite » dans le tableau des prompts, `provenance.json` (la planche et ses cases ; les vues en pied et les poses comme des `references/` retenues ; les gestes dans une clé `gestes_retenus`), une ligne au journal. Push à la fin de la série, ou quand l'auteur le demande.
+
+### Après les cinq planches : le LoRA v2
+
+1. Libérer la carte (`~/venvs/kebab/bin/python pipeline/comfyui.py arreter`), puis préparer le jeu : `MIOPEN_FIND_MODE=TRUST_VERIFY_FULL ~/venvs/kebab/bin/python pipeline/preparer_lora.py sky v2`. Environ 130 images, avec le tag `heterochromia` là où les deux yeux sont ouverts (`fiche.json` > `lora` > `tag_yeux`).
+2. Envoyer le jeu à Kaggle en un seul zip (fichier par fichier, ça va à 45 Ko/s) : `zip -0 -r jeu_v2.zip .` dans le dossier du jeu, le zip seul dans un dossier avec un `dataset-metadata.json` (`skyzer/kebab-lora-sky-jeu-v2`), puis `~/venvs/kaggle/bin/kaggle datasets create -p <ce dossier>`. Attendre `kaggle datasets status` → `ready`.
+3. Lancer : `~/venvs/kaggle/bin/kaggle kernels push -p pipeline/kaggle/lora_sky_v2 --accelerator NvidiaTeslaT4`, environ 1 h 15. Suivre avec `kaggle kernels status`, et la progression avec `kaggle kernels logs -f` (la barre de kohya y passe).
+4. Récupérer : `kaggle kernels output skyzer/kebab-lora-sky-v2 -p <sorties_root>/lora/sky/kaggle_v2`, puis copier les `.safetensors` dans `<modeles_root>/loras/`.
+5. Tester : `pipeline/comfyui.py demarrer`, puis `pipeline/test_lora.py sky sky_v2.safetensors` (environ 25 min, le LoRA en mode bypass). Comparer la planche avec celle de la v1, l'œil aveugle et la tenue en premier, et noter le résultat au journal et au plan.
