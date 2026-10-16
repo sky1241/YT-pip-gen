@@ -33,7 +33,7 @@ La série 1, faite avec la monture argentée, est archivée sur le disque extern
 | L2 | En pied : de profil des deux côtés, de dos : faite | `planches/pied-2_v1.png` |
 | L3 | Trois poses : assis de face, assis de côté, debout accoudé : faite | `planches/poses_v1.png` |
 | L4 | Six gestes de face : faite | `planches/gestes_v1.png` |
-| L5 | Les six gestes de trois-quarts | `planches/trois-quarts_gestes_v1.png` |
+| L5 | Les six gestes de trois-quarts : faite | `planches/trois-quarts_gestes_v1.png` |
 
 La suite du tableau s'écrit au fil de la série. Les chemins partent de `image/persos/sky/`.
 
@@ -569,6 +569,10 @@ Make a sheet of Sky's gestures: a regular grid of 3 columns and 2 rows, landscap
 
 No text or labels anywhere.
 ```
+
+Résultat, le 2026-10-16 : bonne du premier coup, validée par l'auteur. Un vrai trois-quarts côté droit, l'œil bleu devant et l'œil aveugle blanc dans les six cases ; il mâche vraiment en case 3, les joues gonflées.
+
+La série en pied et en gestes est finie : 5 planches, 9 vues en pied et poses, 12 gestes.
 
 ### La reprise : ce que Claude contrôle et fait après chaque planche
 

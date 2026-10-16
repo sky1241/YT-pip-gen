@@ -59,7 +59,7 @@ La série 1, faite avec la monture argentée, est archivée sur le disque extern
 - [x] `planches/pied-2_v1.png` : en pied, de profil des deux côtés et de dos
 - [x] `planches/poses_v1.png` : assis de face, assis de côté, debout accoudé
 - [x] `planches/gestes_v1.png` : il mange sa galette, boit son Fanta, la bouche pleine, regarde son téléphone, écrit au marqueur sur une vitre, sur son laptop
-- [ ] `planches/trois-quarts_gestes_v1.png` : les mêmes gestes de trois-quarts, côté droit (son œil bleu devant)
+- [x] `planches/trois-quarts_gestes_v1.png` : les mêmes gestes de trois-quarts, côté droit (son œil bleu devant)
 
 **Palette des émotions, de face** (l'œil droit garde son reflet, comme en temps normal ; le gauche est aveugle)
 - [x] `planches/emotions-1_v1.png` : neutre, joie, tristesse, colère, peur, surprise · pilote

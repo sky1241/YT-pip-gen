@@ -1,12 +1,12 @@
 # Kebab Datastream — Checklist épisode 1
 
-Version du 6 octobre 2026, mise à jour le 15 octobre 2026. C'est ce fichier qui fait foi : on coche ici, plus dans le doc claude.ai.
+Version du 6 octobre 2026, mise à jour le 16 octobre 2026. C'est ce fichier qui fait foi : on coche ici, plus dans le doc claude.ai.
 
-## Où on en est (15 octobre 2026, fin de journée)
+## Où on en est (16 octobre 2026)
 
 - **Fait** : les fondations du repo, la palette des émotions et l'outil de découpe. Maëlle et Sky ont toutes leurs planches de référence (Sky : la série 2, les 50 cases de son inventaire). La chaîne d'images marche de bout en bout : ComfyUI sur la carte AMD de sky-master (`pipeline/comfyui.py`), le modèle Animagine XL 4.0, le premier LoRA de Sky entraîné sur Kaggle en une heure et testé (`image/test-standard.md`). Le minage est désinstallé, et Claude se lance depuis un terminal (icône « Kebab Datastream »).
 - **En cours** : le LoRA de Sky. La v1 reconnaît son visage, ses cheveux, sa barbe, ses lunettes dorées, ses colliers et son sourire de monstre ; l'auteur en est content. Elle rate l'œil aveugle hors de face, et la tenue hors des gros plans (une seule image en pied dans le jeu).
-- **Ensuite** : la v2 du LoRA de Sky, avec ses 5 planches en pied et en gestes à faire dans ChatGPT (environ 24 images, fond gris clair), puis Maëlle : ses 4 planches en pied et en gestes, et son LoRA. Chaque nouveau perso aura ces planches dès le départ.
+- **Ensuite** : la v2 du LoRA de Sky. Ses 5 planches en pied et en gestes sont faites (le 2026-10-16, 21 images) : reste à préparer le jeu, l'entraîner sur Kaggle et le tester. Puis Maëlle : ses 4 planches en pied et en gestes, et son LoRA. Chaque nouveau perso aura ces planches dès le départ.
 - **Décisions qui attendent l'auteur** : le canon du kebab, ce que couvre l'épisode 1, le style de référence (et s'il prend un LoRA de style années 90 tout fait), garder ou non la règle « sans sudo » de CLAUDE.md (le compte a sudo).
 - **Pas commencé** : l'écriture de l'épisode 1 (phase 1), le plan du kebab et ses décors, Patrick, Mohamed et les autres persos, les voix, la vidéo, le pilote.
 
@@ -125,15 +125,15 @@ La palette des émotions, la même pour tous : 36 émotions en 6 planches, défi
   - [x] Image maître v3 : sans le trait entre les sourcils ni les taches autour des yeux, barbe de 3 jours (l'œil aveugle reste un peu plus grand : ChatGPT refuse de le retoucher, l'auteur garde la v3)
   - [x] Rotation : face, trois-quarts et profil des deux côtés, dos
   - [x] Image en pied
-  - [ ] En pied et en gestes : les 5 planches (prompts L1 à L5 de `prompts-chatgpt.md`, avec la liste de contrôle de chaque planche et la procédure du LoRA v2), pour le LoRA v2
+  - [x] En pied et en gestes : les 5 planches, le 2026-10-16 (prompts L1 à L5 de `prompts-chatgpt.md`, avec la liste de contrôle de chaque planche et la procédure du LoRA v2), pour le LoRA v2
   - [x] Palette des émotions de face : les 6 planches, les reprises et le clignement (mi-clos, fermé)
   - [x] Palette des émotions de trois-quarts : les 6 planches et leur retouche (deux bagues restent à corriger au passage local)
   - [x] Signatures : les 9, dont le jeu du sourire en monstre, plus le rire du dégénéré de trois-quarts
   - [x] Bouches : les 6 de base et les 6 du sourire (sourire fermé, grimace, rire ouvert, sous les deux angles)
   - [ ] LoRA : passage local, entraînement, test standard
     - [x] v1, le 2026-10-15 : 105 images de ChatGPT sans passage local, entraînée sur Kaggle en 1 h, testée (planche : `<sorties_root>/comfyui/test-standard_sky_v1_planche.png`). Visage, lunettes, colliers et sourire appris ; l'œil aveugle seulement de face, la tenue seulement en buste
-    - [ ] v2 : les 5 planches en pied et en gestes (environ 24 images, sur fond gris clair), un tag pour ses yeux dans les légendes, puis réentraîner et refaire le test
-    - [ ] Corriger les deux bagues (`trois-quarts_triomphe_v1`, `trois-quarts_ennui_v1`) au passage local
+    - [ ] v2 : les 5 planches en pied et en gestes (faites, 21 images), le tag `heterochromia` dans les légendes (prêt) ; reste à réentraîner et refaire le test
+    - [ ] Corriger les bagues ratées au passage local (la liste : `fiche.json` > `_a_completer` ; l'auteur ne les fait plus refaire dans ChatGPT)
   - [ ] Voix : compléter et valider `audio/voix/sky/`
 - [ ] Maëlle
   - [ ] Fiche : valider les codes couleur relevés (1m65, côtés asymétriques confirmés, le reste du look est posé)

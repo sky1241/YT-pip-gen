@@ -376,3 +376,6 @@ Vérifié sur les pages officielles, le 2026-10-15 :
 - **L4 : validé.** Six gestes de face, les yeux justes partout. Case 3 (la bouche pleine) : il ne mâche pas, ChatGPT a fait une bouche
   fermée aux joues plates. Gardée, avec une légende qui dit ce qu'elle montre : `preparer_lora.py` lit maintenant
   `fiche.json` > `lora` > `legendes_par_fichier` pour les gestes. Le prompt L5 insiste sur les joues gonflées.
+- **L5 : validé du premier coup.** Le trois-quarts côté droit, à l'angle de `references/trois-quarts-droit_v1.png` jointe : l'œil
+  bleu devant, l'œil aveugle blanc dans les six cases. Avec « both cheeks visibly puffed out », il mâche vraiment (case 3).
+  La série en pied et en gestes est finie : 21 images en plus pour le jeu v2 (126 en tout).
