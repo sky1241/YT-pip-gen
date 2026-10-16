@@ -509,9 +509,9 @@ Joins l'image en pied validée (`references/pied_v1.png`), pour la tenue et la f
 ```
 Make a full-body sheet of Sky: a regular grid of 3 columns and 1 row, landscape format (1536×1024), three equal tall cells separated by thin white gaps. In each cell, Sky stands full body from head to feet, neutral expression, arms relaxed, same scale, same light, plain light-grey background. His usual outfit, exactly as in the attached full-body image: the white long-sleeved shirt with the sparse black-and-white lily pattern, sleeves pushed up just below the elbows, open only at the top of the chest, no underwear visible; both necklaces; the shirt hangs loose over his trousers, never tucked in; loose black tracksuit trousers in a soft matte fabric, with an elastic waistband and a black drawstring, worn low on the hips, baggy, gathered loosely at the ankles over the sneakers: not dress trousers, so no crease, no pleats, no fly, no belt; no logo, no stripes; black sneakers. His only ring is a thin plain bronze band on his right little finger. His glasses keep their thin gold-plated frame and their double bridge (a thin straight bar between the tops of the lenses). His left eye stays blind: entirely milky white, with no iris and no pupil. Cells, left to right:
 
-1. Profile showing HIS LEFT side.
-2. Profile showing HIS RIGHT side.
-3. Back view.
+1. Profile showing HIS LEFT side: we see only his blind left eye, entirely milky white.
+2. Profile showing HIS RIGHT side: we see only his blue right eye.
+3. Back view: no face visible.
 
 No text or labels anywhere.
 ```
