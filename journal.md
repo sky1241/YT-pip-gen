@@ -403,3 +403,7 @@ Vérifié sur les pages officielles, le 2026-10-15 :
     à lys). Avec la tenue écrite (`white shirt, untucked shirt, black pants, track pants, black sneakers`, et en négatif
     `striped pants, side stripes, stripes, patterned pants, bracelet`) : juste sur deux graines, sauf un fin passepoil blanc sur le
     pantalon, que « track pants » appelle sans doute. Recette notée dans `fiche.json` > `lora` > `tags_en_pied`.
+- **Le style de la série est décidé (l'auteur, le 2026-10-16)** : celui des images de référence de Sky et de Maëlle, un anime des
+  années 90 entre *Street Fighter II*, *Evangelion* et Ghibli. Écrit dans `image/style.md`. Ce qui fait varier le visage au test
+  du LoRA v2 : le LoRA n'a vu que du fond gris, alors dans un décor c'est Animagine qui dessine, avec son rendu moderne. Prochaine
+  piste : IP-Adapter, avec l'image maître de l'axe comme référence de style à chaque image.

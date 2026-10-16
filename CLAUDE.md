@@ -62,7 +62,7 @@ On n'automatise que ce qui a déjà marché une fois à la main.
 
 - **ChatGPT sert uniquement à la conception** : fiches persos, fonds, exploration du style. Aucune image clé de production ne vient de ChatGPT : elles sortent toutes du modèle local, pour la cohérence.
 - **Fonds fixes** : un fond par axe de caméra, fait une fois et réutilisé. Les persos s'intègrent dedans. Le kebab fonctionne comme un décor de sitcom : quelques axes fixes, les mêmes places qui reviennent.
-- Un LoRA par perso + un LoRA de style. `image/style.md` est la référence visuelle.
+- Un LoRA par perso + un LoRA de style. `image/style.md` est la référence visuelle : le style des images de référence de Sky et de Maëlle, un anime des années 90 entre *Street Fighter II*, *Evangelion* et Ghibli (l'auteur, le 2026-10-16).
 - Contexte par image selon le besoin : image-to-image (composition, couleurs), ControlNet (pose, structure), IP-Adapter (style ou identité). Le prompt ne doit jamais contredire l'image de référence.
 - `image/explorations/` contient des essais non validés. Ils ne servent jamais de référence de production.
 - **Descriptions maîtres** (`image/persos/<slug>/description-chatgpt.md`) : écrites par ChatGPT d'après l'image maître validée, elles verrouillent l'apparence et se collent en tête de chaque prompt du perso. ChatGPT ne connaît pas l'histoire : pour le caractère, la voix et le jeu, c'est la bible qui fait foi. Ce qu'il ajoute de lui-même reste à valider par l'auteur.
@@ -178,7 +178,7 @@ Statuts : `a_generer` → `genere` → `valide` ou `rejete`. Les répliques sont
 
 - **Canon du kebab** : Mohamed à Annemasse (texte du CERN) ou Mehmet à Clichy (texte Navier-Stokes). Ça décide un LoRA et tous les décors.
 - **Ce que couvre l'épisode 1** : « Le Miroir » seul, ou avec le call.
-- **La machine de génération.** Aucune machine du parc n'a de carte NVIDIA (relevé du 13 octobre 2026, détail dans `config.yaml`). La mieux équipée, sky-master, a une AMD Radeon RX 5700 XT de 8 Go : c'est trop peu pour AniSora, qui demande 12 Go dans sa version légère. Depuis 2026, AMD publie PyTorch pour cette puce (ROCm 7.14, projet TheRock, vérifié le 2026-10-15) : à tester pour les images et le LoRA. Options : tester les images sur cette carte, puis louer ou acheter une carte NVIDIA pour la vidéo.- **Le style définitif** (`image/style.md`), et si le rendu de l'image maître de Maëlle devient la référence de toute la série.
+- **La machine de génération.** Aucune machine du parc n'a de carte NVIDIA (relevé du 13 octobre 2026, détail dans `config.yaml`). La mieux équipée, sky-master, a une AMD Radeon RX 5700 XT de 8 Go : c'est trop peu pour AniSora, qui demande 12 Go dans sa version légère. Depuis 2026, AMD publie PyTorch pour cette puce (ROCm 7.14, projet TheRock, vérifié le 2026-10-15) : à tester pour les images et le LoRA. Options : tester les images sur cette carte, puis louer ou acheter une carte NVIDIA pour la vidéo.- **Un LoRA de style** en plus de l'IP-Adapter : un « années 90 » tout fait, ou le nôtre. Le style lui-même est décidé (`image/style.md`, l'auteur, le 2026-10-16).
 
 ## Premier lancement
 
