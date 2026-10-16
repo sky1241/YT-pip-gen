@@ -364,3 +364,6 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   bleu à l'œil aveugle. Leçon : pour une image en pied, joindre l'image en pied validée (`references/pied_v1.png`) et décrire la
   façon de porter la tenue (chemise par-dessus, jogging à cordon porté bas sur les hanches, « not dress trousers »), pas seulement
   les vêtements. Fiche, prompts L1 à L5 et liste de contrôle corrigés.
+- **L1, deuxième essai : validé.** Avec `references/pied_v1.png` jointe et la façon de porter la tenue décrite, la tenue est juste
+  dans les trois cases, l'œil aveugle aussi. Défaut laissé passer par l'auteur : un seul anneau au collier au lieu de deux.
+  Découpe : 3 cases de 512 × 1024 dans `references/`.

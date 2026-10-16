@@ -928,6 +928,31 @@
       "case": 2,
       "date": "2026-10-15",
       "retenue": true
+    },
+    "planches/pied-1_v1.png": {
+      "source": "ChatGPT",
+      "prompt": "L1",
+      "date": "2026-10-16",
+      "cases": 3,
+      "_note": "deuxième essai, avec references/pied_v1.png jointe ; validé par l'auteur malgré les anneaux du collier (un seul au lieu de deux entrelacés)"
+    },
+    "references/pied-face_v1.png": {
+      "planche": "planches/pied-1_v1.png",
+      "case": 1,
+      "date": "2026-10-16",
+      "retenue": true
+    },
+    "references/pied-trois-quarts-gauche_v1.png": {
+      "planche": "planches/pied-1_v1.png",
+      "case": 2,
+      "date": "2026-10-16",
+      "retenue": true
+    },
+    "references/pied-trois-quarts-droit_v1.png": {
+      "planche": "planches/pied-1_v1.png",
+      "case": 3,
+      "date": "2026-10-16",
+      "retenue": true
     }
   },
   "signatures_retenues": {

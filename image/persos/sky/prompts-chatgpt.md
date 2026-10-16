@@ -29,7 +29,7 @@ La série 1, faite avec la monture argentée, est archivée sur le disque extern
 | J | Les bouches du sourire : faite | `planches/bouches-sourire_v1.png` |
 | K1 à K6 | Palette de trois-quarts, planches 1 à 6 : faites | `planches/trois-quarts_emotions-1_v1.png` à `trois-quarts_emotions-6_v1.png` |
 | K7 | La retouche de trois-quarts : deux yeux, deux bagues : faite | `planches/trois-quarts_retouche_v2.png` |
-| L1 | En pied : de face, de trois-quarts des deux côtés | `planches/pied-1_v1.png` |
+| L1 | En pied : de face, de trois-quarts des deux côtés : faite | `planches/pied-1_v1.png` |
 | L2 | En pied : de profil des deux côtés, de dos | `planches/pied-2_v1.png` |
 | L3 | Trois poses : assis de face, assis de côté, debout accoudé | `planches/poses_v1.png` |
 | L4 | Six gestes de face | `planches/gestes_v1.png` |
@@ -499,6 +499,8 @@ No text or labels anywhere.
 ```
 
 Premier essai, le 2026-10-16 : refusé par l'auteur. Un pantalon de costume (pli, braguette) porté haut à la taille, la chemise rentrée dedans, alors que l'image en pied validée montre un pantalon de jogging à cordon, porté bas sur les hanches, et la chemise par-dessus. Le prompt n'avait ni « ample », ni « à cordon », ni la chemise portée par-dessus, et l'image maître jointe s'arrête au buste. En plus, case 3, l'œil aveugle a un iris bleu. Rangé hors du repo : `<sorties_root>/persos/sky/pied-1_rejetee_essai-1.png`. Le prompt ci-dessus est corrigé : l'image en pied jointe, le pantalon et la chemise décrits, l'œil aveugle redit dans la case 3.
+
+Deuxième essai, avec le prompt corrigé et `references/pied_v1.png` jointe : bon, validé par l'auteur. Le jogging à cordon porté bas, la chemise par-dessus, l'œil aveugle blanc dans les trois cases (case 3 au loin, sans iris), une seule bague à l'auriculaire droit. Le collier n'a qu'un anneau au lieu de deux entrelacés : l'auteur le laisse passer.
 
 ### Prompt L2 — En pied, de profil et de dos
 
