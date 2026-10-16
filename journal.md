@@ -411,3 +411,9 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   2005). Le jogging à cordon, la chemise par-dessus, juste. Reste : des semelles blanches. Recette mise à jour dans
   `fiche.json` > `lora` > `tags_en_pied`. IP-Adapter Plus SDXL et son encodeur téléchargés (3,4 Go, Apache 2.0, empreintes
   vérifiées, `modeles.yaml`), nœuds ComfyUI_IPAdapter_plus installés : chargés sans erreur par ComfyUI.
+- **IP-Adapter, premier essai (2026-10-16)** : IP-Adapter Plus SDXL en « style transfer », poids 1,0, l'image maître v3 de Sky
+  comme référence, sur les tests 1, 6, 7, 8, 10 du LoRA v2 (mêmes graines). Il tient sur la carte de 8 Go, sans temps en plus
+  (2 min 26 par image). Mais le résultat est moins bon : il recopie le contenu de la référence (des lys en fond, la boisson
+  orange, la nourriture, même sous la pluie), la peau pâlit et les couleurs tournent au pastel, loin du rendu chaud de l'image
+  maître. Seul gain : la chemise redevient blanche sous la pluie. À essayer : un poids plus faible (0,4 à 0,6), et surtout une
+  référence sans perso ni objets, un décor vide dans le style (le kebab, prompt KB1).
