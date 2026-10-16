@@ -367,3 +367,6 @@ Vérifié sur les pages officielles, le 2026-10-15 :
 - **L1, deuxième essai : validé.** Avec `references/pied_v1.png` jointe et la façon de porter la tenue décrite, la tenue est juste
   dans les trois cases, l'œil aveugle aussi. Défaut laissé passer par l'auteur : un seul anneau au collier au lieu de deux.
   Découpe : 3 cases de 512 × 1024 dans `references/`.
+- **L2 : validé du premier coup.** Les profils nommés par leur œil (« we see only his blind left eye ») : chaque profil montre le bon.
+  Défaut : de dos, une bague à chaque auriculaire, malgré « His only ring » ; à corriger au passage local. Les prompts suivants
+  ajoutent « His left hand has no ring ».

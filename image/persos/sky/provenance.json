@@ -953,6 +953,31 @@
       "case": 3,
       "date": "2026-10-16",
       "retenue": true
+    },
+    "planches/pied-2_v1.png": {
+      "source": "ChatGPT",
+      "prompt": "L2",
+      "date": "2026-10-16",
+      "cases": 3,
+      "_note": "validée par l'auteur ; défaut : dans la vue de dos, une bague à chaque auriculaire (la gauche est en trop), à corriger au passage local"
+    },
+    "references/pied-profil-gauche_v1.png": {
+      "planche": "planches/pied-2_v1.png",
+      "case": 1,
+      "date": "2026-10-16",
+      "retenue": true
+    },
+    "references/pied-profil-droit_v1.png": {
+      "planche": "planches/pied-2_v1.png",
+      "case": 2,
+      "date": "2026-10-16",
+      "retenue": true
+    },
+    "references/pied-dos_v1.png": {
+      "planche": "planches/pied-2_v1.png",
+      "case": 3,
+      "date": "2026-10-16",
+      "retenue": true
     }
   },
   "signatures_retenues": {
