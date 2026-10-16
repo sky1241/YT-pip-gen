@@ -1,0 +1,11 @@
+{
+  "_note": "D'où vient chaque image du kebab : la conversation ChatGPT, le prompt (image/decors/kebab/prompts-chatgpt.md), la date.",
+  "images": {
+    "maquette_v1.png": {
+      "source": "ChatGPT",
+      "prompt": "KB1 v3",
+      "date": "2026-10-16",
+      "_note": "téléchargée par l'auteur sous le nom « Kebab chaleureux ouvert sur la rue.png » ; la bonne base pour l'auteur, quatre corrections à faire en retouche"
+    }
+  }
+}

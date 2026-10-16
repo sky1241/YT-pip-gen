@@ -6,7 +6,8 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 
 | Prompt | Image | Où la ranger |
 |---|---|---|
-| KB1 | La maquette : tout le kebab vu de dessus, en coupe, sans personne | `image/decors/kebab/maquette_v1.png` |
+| KB1 | La maquette : tout le kebab vu de dessus, en coupe, sans personne : la v3 est la bonne base | `image/decors/kebab/maquette_v1.png` |
+| KB1 retouche | Les quatre corrections : menu, escalier ouvert, miroir fumé, tables | `image/decors/kebab/maquette_v2.png` |
 
 La suite (un fond vide par axe de caméra) s'écrit d'après KB1 et d'après les scènes du texte.
 
