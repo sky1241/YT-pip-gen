@@ -392,3 +392,14 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   fichiers qui n'existaient qu'en local, la crontab et les services d'avant sont archivés dans
   `/media/sky/disque 5T/archives/claude-channel_2026-10-16/`. Les tâches de la fleet sont arrêtées ; le réglage du clavier
   pour Barrier est gardé (`~/.local/bin/setxkbmap-fleet.sh`), ainsi que la mise à jour des IP du mesh. Après : 42 Go libres.
+- **Test standard du LoRA de Sky v2 (`sky_v2.safetensors`), le 2026-10-16** : planche
+  `<sorties_root>/comfyui/test-standard_sky_v2_planche.png`, 2 min 20 par image. Contre la v1 :
+  - l'œil aveugle est juste sur les 10 images (la v1 : seulement de face, 1 et 8), y compris de trois-quarts, de profil, dans le
+    sourire en monstre (9) et sous la pluie (10). Le tag `heterochromia` et les vues de plus ont marché ;
+  - la chemise blanche à lys est juste sur 9 images (la v1 en ratait 3) ; il reste la nuit sous la pluie (10), en chemise noire à lys ;
+  - les directions « facing left / right » ne sont pas toujours suivies, mais les yeux restent du bon côté du visage ;
+  - en pied (5), la tenue reste fausse sans aide : la chemise s'allonge en pan jusqu'aux genoux, les lys passent sur le pantalon,
+    des bracelets apparaissent. L'époque 6 fait pire (manteau ouvert, short) ; la légende exacte de l'entraînement aussi (pantalon
+    à lys). Avec la tenue écrite (`white shirt, untucked shirt, black pants, track pants, black sneakers`, et en négatif
+    `striped pants, side stripes, stripes, patterned pants, bracelet`) : juste sur deux graines, sauf un fin passepoil blanc sur le
+    pantalon, que « track pants » appelle sans doute. Recette notée dans `fiche.json` > `lora` > `tags_en_pied`.

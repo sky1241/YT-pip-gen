@@ -6,7 +6,7 @@ Version du 6 octobre 2026, mise à jour le 16 octobre 2026. C'est ce fichier qui
 
 - **Fait** : les fondations du repo, la palette des émotions et l'outil de découpe. Maëlle et Sky ont toutes leurs planches de référence (Sky : la série 2, les 50 cases de son inventaire). La chaîne d'images marche de bout en bout : ComfyUI sur la carte AMD de sky-master (`pipeline/comfyui.py`), le modèle Animagine XL 4.0, le premier LoRA de Sky entraîné sur Kaggle en une heure et testé (`image/test-standard.md`). Le minage est désinstallé, et Claude se lance depuis un terminal (icône « Kebab Datastream »).
 - **En cours** : le LoRA de Sky. La v1 reconnaît son visage, ses cheveux, sa barbe, ses lunettes dorées, ses colliers et son sourire de monstre ; l'auteur en est content. Elle rate l'œil aveugle hors de face, et la tenue hors des gros plans (une seule image en pied dans le jeu).
-- **Ensuite** : la v2 du LoRA de Sky. Ses 5 planches en pied et en gestes sont faites (le 2026-10-16, 21 images) : reste à préparer le jeu, l'entraîner sur Kaggle et le tester. Puis Maëlle : ses 4 planches en pied et en gestes, et son LoRA. Chaque nouveau perso aura ces planches dès le départ.
+- **Ensuite** : l'avis de l'auteur sur la v2 du LoRA de Sky (faite et testée le 2026-10-16 : l'œil aveugle est appris). Puis Maëlle : ses 4 planches en pied et en gestes, et son LoRA. Chaque nouveau perso aura ces planches dès le départ.
 - **Décisions qui attendent l'auteur** : le canon du kebab, ce que couvre l'épisode 1, le style de référence (et s'il prend un LoRA de style années 90 tout fait), garder ou non la règle « sans sudo » de CLAUDE.md (le compte a sudo).
 - **Pas commencé** : l'écriture de l'épisode 1 (phase 1), le plan du kebab et ses décors, Patrick, Mohamed et les autres persos, les voix, la vidéo, le pilote.
 
@@ -132,7 +132,7 @@ La palette des émotions, la même pour tous : 36 émotions en 6 planches, défi
   - [x] Bouches : les 6 de base et les 6 du sourire (sourire fermé, grimace, rire ouvert, sous les deux angles)
   - [ ] LoRA : passage local, entraînement, test standard
     - [x] v1, le 2026-10-15 : 105 images de ChatGPT sans passage local, entraînée sur Kaggle en 1 h, testée (planche : `<sorties_root>/comfyui/test-standard_sky_v1_planche.png`). Visage, lunettes, colliers et sourire appris ; l'œil aveugle seulement de face, la tenue seulement en buste
-    - [ ] v2 : les 5 planches en pied et en gestes (faites, 21 images), le tag `heterochromia` dans les légendes (prêt) ; reste à réentraîner et refaire le test
+    - [ ] v2, entraînée et testée le 2026-10-16, en attente de l'avis de l'auteur (planche : `<sorties_root>/comfyui/test-standard_sky_v2_planche.png`). L'œil aveugle juste sur les 10 tests (la v1 : 2 sur 10), la chemise juste sur 9 ; en pied, il faut écrire la tenue dans le prompt (`fiche.json` > `lora` > `tags_en_pied`)
     - [ ] Corriger les bagues ratées au passage local (la liste : `fiche.json` > `_a_completer` ; l'auteur ne les fait plus refaire dans ChatGPT)
   - [ ] Voix : compléter et valider `audio/voix/sky/`
 - [ ] Maëlle
