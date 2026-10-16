@@ -136,3 +136,18 @@ Edit ONLY this image. Keep everything else exactly as it is: the same view, the 
 ```
 
 À contrôler à la reprise : les tables de droite collées à la banquette, deux chaises face à elle ; plus de plantes sur les tables, les grandes plantes au sol toujours là ; sur chaque table, deux sauces et des serviettes ; rien d'autre de changé.
+
+Avant d'envoyer la retouche 4, l'auteur la corrige, le 2026-10-16 : les plantes, les sauces et les serviettes, c'est bon ; mais pour les chaises de droite, la v3 les a mises contre la banquette et au bout des tables. Il faut les faire pivoter d'un quart de tour : deux chaises côte à côte du côté de l'allée, tournées vers la banquette. Les retouches intermédiaires sont rangées hors du repo : `<sorties_root>/decors/kebab/maquette_retouche-1.png` à `-3`.
+
+## Prompt KB1 retouche 4 v2 — Les chaises face à la banquette
+
+Remplace la retouche 4, qui n'a pas été envoyée. Dans la case « Décrivez les modifications » de l'image de la retouche 3.
+
+```
+Edit ONLY this image. Keep everything else exactly as it is: the same view, the same layout, the same style and the same light. Make only these three changes:
+1. The four tables along the red bench on the right: each table stays pushed against the bench. Its two chairs stand side by side on the aisle side of the table, the side opposite the bench, and both chairs are turned to face the bench across the table, like people sitting in front of someone on the bench. No chair between a table and the bench, no chair at the ends of these tables.
+2. Every table: remove the small plant on it. The large plants standing on the floor stay.
+3. Every table keeps only a red sauce bottle, a white sauce bottle and a napkin dispenser.
+```
+
+À contrôler à la reprise : à droite, deux chaises par table, côté allée, tournées vers la banquette, aucune contre la banquette ni au bout ; plus de plantes sur les tables ; deux sauces et des serviettes par table ; rien d'autre de changé.
