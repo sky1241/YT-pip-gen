@@ -190,3 +190,5 @@ Edit ONLY the first attached image, the kebab restaurant. The second attached im
 ```
 
 À contrôler à la reprise : six tables identiques, quatre chaises chacune, face à face ; trois au milieu, trois perpendiculaires à la banquette ; rien du plan recopié ; rien d'autre de changé.
+
+Résultat de la retouche 5 v2, le 2026-10-16, dans une nouvelle conversation : six tables, mais celles de droite restent parallèles à la banquette, avec des chaises des deux côtés, et les plantes sont revenues sur les tables. Capture hors du repo (`maquette_retouche-5_capture.png`). Cinq retouches n'ont pas suffi : les modèles d'images placent mal les meubles et leur orientation. Claude propose d'arrêter les retouches : la maquette fixe l'ambiance et le plan général, et `plan_v1.png` (rangé dans le repo) fixe la disposition exacte. Les tables de droite se règlent dans les fonds par axe, avec le plan joint ; et si ça rate encore, dans le modèle local, guidé par le plan (ControlNet).

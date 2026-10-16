@@ -6,6 +6,11 @@
       "prompt": "KB1 v3",
       "date": "2026-10-16",
       "_note": "téléchargée par l'auteur sous le nom « Kebab chaleureux ouvert sur la rue.png » ; la bonne base pour l'auteur, quatre corrections à faire en retouche"
+    },
+    "plan_v1.png": {
+      "source": "Claude, en code (pipeline/plan_kebab.py)",
+      "date": "2026-10-16",
+      "_note": "le plan vu de dessus, d'après la maquette et les consignes de l'auteur : six tables identiques de quatre chaises, trois au milieu, trois perpendiculaires à la banquette. L'auteur : « ton plan est bon », les tables corrigées ensuite à sa demande"
     }
   }
 }
