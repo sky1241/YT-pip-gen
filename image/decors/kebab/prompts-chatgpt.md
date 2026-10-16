@@ -178,3 +178,15 @@ Edit ONLY the first attached image, the kebab restaurant. The second attached im
 ```
 
 À contrôler à la reprise : les quatre tables de droite perpendiculaires à la banquette, une chaise de chaque côté, face à face ; rien du plan recopié (ni couleurs, ni étiquettes) ; rien d'autre de changé.
+
+L'auteur sur le plan, le 2026-10-16 : bon, sauf les tables : six tables rectangulaires identiques, quatre chaises à chacune. Plan redessiné : trois tables au milieu (la première devant le miroir) et trois le long de la banquette, perpendiculaires, un petit bout contre elle ; à chaque table, deux chaises de chaque long côté, face à face.
+
+## Prompt KB1 retouche 5 v2 — Les six tables, d'après le plan
+
+Remplace la retouche 5, qui n'a pas été envoyée. Deux images jointes dans le même message : l'image retouchée (la dernière) et le plan (`~/Téléchargements/kebab_plan-vu-de-dessus.png`).
+
+```
+Edit ONLY the first attached image, the kebab restaurant. The second attached image is a floor plan of the same restaurant seen from above; it is only a guide, do not copy its colours, its labels or its style. Keep everything else in the restaurant exactly as it is: the same view, the same style, the same light, the same counter, bench, staircase, mirror and plants. Make only this change: arrange the tables and chairs exactly as in the plan. There are six identical rectangular wooden tables, each with four chairs, two on each long side, facing each other across the table. Three tables stand in a row in the middle of the room, the first one in front of the mirror. Three tables stand along the red bench on the right, each turned perpendicular to the bench, one short end touching the bench. Each table keeps a red sauce bottle, a white sauce bottle and a napkin dispenser. No text anywhere.
+```
+
+À contrôler à la reprise : six tables identiques, quatre chaises chacune, face à face ; trois au milieu, trois perpendiculaires à la banquette ; rien du plan recopié ; rien d'autre de changé.

@@ -43,17 +43,19 @@ txt(2.65, 2.4, "passe")
 rect(1.6, 0.0, 2.3, 0.7, "#9fd3e6"); txt(1.95, 0.35, "frigo")
 # le miroir, au mur du fond
 d.line([p(3.8, 0.05), p(7.2, 0.05)], fill="#6a8fb0", width=10); txt(5.5, 0.35, "MIROIR (Sky y écrit)", G)
-# les tables du milieu : 4 tables pour 4, deux chaises face à face de chaque côté
-for ty in (1.3, 3.0, 4.6, 6.1):
+# 6 tables identiques (0,8 × 1,2 m), 4 chaises chacune, deux de chaque long côté, face à face
+# au milieu : 3 tables, dont celle devant le miroir
+for ty in (1.3, 3.6, 5.9):
     tx = 5.5
     rect(tx - 0.4, ty - 0.6, tx + 0.4, ty + 0.6, "#d9a066")
     for cy in (ty - 0.3, ty + 0.3):
         chaise(tx - 0.65, cy, "droite"); chaise(tx + 0.65, cy, "gauche")
-# la banquette le long de la rampe, à droite, et ses 4 tables perpendiculaires
+# à droite : la banquette le long de la rampe, et 3 tables perpendiculaires, un petit bout contre elle
 rect(8.6, 1.0, 9.2, 7.2, "#b03a2e"); txt(8.9, 0.75, "banquette")
-for ty in (1.4, 3.1, 4.8, 6.5):
-    rect(7.3, ty - 0.3, 8.6, ty + 0.3, "#d9a066")
-    chaise(7.9, ty - 0.55, "bas"); chaise(7.9, ty + 0.55, "haut")
+for ty in (1.9, 4.1, 6.3):
+    rect(7.4, ty - 0.4, 8.6, ty + 0.4, "#d9a066")
+    for cx in (7.7, 8.3):
+        chaise(cx, ty - 0.65, "bas"); chaise(cx, ty + 0.65, "haut")
 # la rampe ouverte et l'escalier vers Datastream
 d.line([p(9.3, 0.6), p(9.3, 7.6)], fill="#8a5a2b", width=4)
 rect(9.4, 0.4, 10.9, 7.8, "#e8e0d0")
