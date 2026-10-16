@@ -135,9 +135,9 @@
     },
     "_note_legendes_par_fichier": "quand une case ne montre pas le geste prévu, sa légende dit ce qu'elle montre : gestes/bouche-pleine_v1.png ne mâche pas (bouche fermée, joues plates, la galette à la main), 2026-10-16",
     "tags_en_pied": {
-      "positif": "white shirt, untucked shirt, black pants, track pants, black sneakers",
+      "positif": "white shirt, untucked shirt, black pants, sweatpants, black sneakers",
       "negatif": "striped pants, side stripes, stripes, patterned pants, bracelet",
-      "_note": "testé avec sky_v2 le 2026-10-16 : sans ces tags, le LoRA v2 met les lys sur le pantalon ou allonge la chemise en manteau ; avec, la tenue est juste sur deux graines, sauf un fin passepoil blanc sur le côté du pantalon (« track pants » l'appelle : essayer « sweatpants »)"
+      "_note": "testé avec sky_v2 le 2026-10-16, sur deux graines : la tenue juste, sans bande. Sans ces tags, le LoRA v2 met les lys sur le pantalon ou allonge la chemise en manteau ; avec « track pants », un passepoil blanc apparaît. Reste : des semelles blanches (les baskets de référence sont toutes noires)"
     }
   },
   "voix": "audio/voix/sky/",

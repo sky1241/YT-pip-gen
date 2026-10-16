@@ -1,7 +1,7 @@
 # === Kebab Datastream — modeles.yaml ===
 # Un modèle = lien + empreinte + licence. La série est publiée sur YouTube :
 # vérifier chaque licence AVANT de monétiser (CLAUDE.md > Stack).
-# Rien n'est téléchargé pour l'instant — ce fichier se remplit en Phase 0.
+# Chaque modèle posé sur le disque externe a son entrée ci-dessous.
 #
 # Modèle d'entrée (à copier/remplir quand un modèle est réellement posé) :
 #
@@ -24,3 +24,33 @@ modeles:
     taille_octets: 6938434056
     vram_go: 8
     note: "téléchargé le 2026-10-15, empreinte vérifiée ; premier modèle testé sur sky-master (prompts en tags Danbooru, 1024x1024)"
+
+  - nom: Real-ESRGAN x4plus anime 6B
+    type: upscaler
+    lien: "https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.2.4/RealESRGAN_x4plus_anime_6B.pth"
+    empreinte_sha256: "f872d837d3c90ed2e05227bed711af5671a6fd1c9f7d7e91c911a61f155e99da"
+    licence: "BSD-3-Clause (dépôt xinntao/Real-ESRGAN)"
+    fichier: "upscale_models/RealESRGAN_x4plus_anime_6B.pth"
+    taille_octets: 17938799
+    vram_go: 1
+    note: "agrandit les cases des planches avant l'entraînement d'un LoRA (pipeline/preparer_lora.py), par tuiles de 192 pixels ; noté ici le 2026-10-16"
+
+  - nom: IP-Adapter Plus SDXL (ViT-H)
+    type: ip-adapter
+    lien: "https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter-plus_sdxl_vit-h.safetensors"
+    empreinte_sha256: "3f5062b8400c94b7159665b21ba5c62acdcd7682262743d7f2aefedef00e6581"
+    licence: "Apache 2.0 (dépôt h94/IP-Adapter), vérifiée le 2026-10-16"
+    fichier: "ipadapter/ip-adapter-plus_sdxl_vit-h.safetensors"
+    taille_octets: 847517512
+    vram_go: null
+    note: "téléchargé le 2026-10-16, empreinte identique à celle de Hugging Face ; donne une image de référence de style à chaque génération (image/style.md). Nœuds : ComfyUI_IPAdapter_plus (cubiq, GPL-3.0, dernier commit a0f451a du 2025-04-14, dans ~/ComfyUI/custom_nodes)"
+
+  - nom: CLIP ViT-H-14 laion2B (encodeur d'images de l'IP-Adapter)
+    type: encodeur-image
+    lien: "https://huggingface.co/h94/IP-Adapter/resolve/main/models/image_encoder/model.safetensors"
+    empreinte_sha256: "6ca9667da1ca9e0b0f75e46bb030f7e011f44f86cbfb8d5a36590fcd7507b030"
+    licence: "Apache 2.0 (dépôt h94/IP-Adapter ; le modèle d'origine, OpenCLIP de LAION, est sous MIT), vérifiée le 2026-10-16"
+    fichier: "clip_vision/CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors"
+    taille_octets: 2528373448
+    vram_go: null
+    note: "téléchargé le 2026-10-16, empreinte identique à celle de Hugging Face ; renommé au nom qu'attend ComfyUI_IPAdapter_plus"

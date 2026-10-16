@@ -407,3 +407,7 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   années 90 entre *Street Fighter II*, *Evangelion* et Ghibli. Écrit dans `image/style.md`. Ce qui fait varier le visage au test
   du LoRA v2 : le LoRA n'a vu que du fond gris, alors dans un décor c'est Animagine qui dessine, avec son rendu moderne. Prochaine
   piste : IP-Adapter, avec l'image maître de l'axe comme référence de style à chaque image.
+- **En pied, « sweatpants » au lieu de « track pants » (2026-10-16)** : la bande blanche disparaît sur les deux graines (1005,
+  2005). Le jogging à cordon, la chemise par-dessus, juste. Reste : des semelles blanches. Recette mise à jour dans
+  `fiche.json` > `lora` > `tags_en_pied`. IP-Adapter Plus SDXL et son encodeur téléchargés (3,4 Go, Apache 2.0, empreintes
+  vérifiées, `modeles.yaml`), nœuds ComfyUI_IPAdapter_plus installés : chargés sans erreur par ComfyUI.
