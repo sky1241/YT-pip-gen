@@ -370,3 +370,6 @@ Vérifié sur les pages officielles, le 2026-10-15 :
 - **L2 : validé du premier coup.** Les profils nommés par leur œil (« we see only his blind left eye ») : chaque profil montre le bon.
   Défaut : de dos, une bague à chaque auriculaire, malgré « His only ring » ; à corriger au passage local. Les prompts suivants
   ajoutent « His left hand has no ring ».
+- **L3 : validé du premier coup.** Yeux et tenue justes. Accoudé du coude gauche au lieu du droit, sans conséquence. Encore une bague
+  à chaque main (assis de face) : l'auteur arrête là le contrôle des bagues, le LoRA n'apprend pas un détail de quelques pixels ;
+  les ratés sont listés dans `fiche.json` > `_a_completer`, pour le passage local ou l'inpainting en production.

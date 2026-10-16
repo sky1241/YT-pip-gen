@@ -4,7 +4,7 @@
   "role": "protagoniste : électricien, associé de Seb chez Datastream",
   "_a_completer": [
     "relever les codes couleur sur l'image maître v3 (ceux de la palette viennent de la v1), puis les faire valider par l'auteur",
-    "au passage local, corriger trois bagues : expressions/trois-quarts_triomphe_v1.png (une chevalière gravée à l'index), expressions/trois-quarts_ennui_v1.png (au mauvais doigt) et references/pied-dos_v1.png (une bague en trop à l'auriculaire gauche) : une seule bande fine en bronze, à l'auriculaire droit"
+    "les bagues en trop ou mal placées, laissées passer par l'auteur le 2026-10-16 (« le LoRA va pas bugger pour une bague ») : expressions/trois-quarts_triomphe_v1.png (une chevalière à l'index), expressions/trois-quarts_ennui_v1.png (au mauvais doigt), references/pied-dos_v1.png et references/assis-face_v1.png (une bague à chaque main). Le canon reste une seule bande fine en bronze, à l'auriculaire droit : à corriger au passage local, ou en production par inpainting si une bague se voit dans un plan"
   ],
   "energie": {
     "resume": "Variable — bouffe = moyen, silence = zéro, sourire = explosion",

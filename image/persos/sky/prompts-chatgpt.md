@@ -31,7 +31,7 @@ La série 1, faite avec la monture argentée, est archivée sur le disque extern
 | K7 | La retouche de trois-quarts : deux yeux, deux bagues : faite | `planches/trois-quarts_retouche_v2.png` |
 | L1 | En pied : de face, de trois-quarts des deux côtés : faite | `planches/pied-1_v1.png` |
 | L2 | En pied : de profil des deux côtés, de dos : faite | `planches/pied-2_v1.png` |
-| L3 | Trois poses : assis de face, assis de côté, debout accoudé | `planches/poses_v1.png` |
+| L3 | Trois poses : assis de face, assis de côté, debout accoudé : faite | `planches/poses_v1.png` |
 | L4 | Six gestes de face | `planches/gestes_v1.png` |
 | L5 | Les six gestes de trois-quarts | `planches/trois-quarts_gestes_v1.png` |
 
@@ -532,6 +532,8 @@ Make a full-body sheet of Sky: a regular grid of 3 columns and 1 row, landscape 
 No text or labels anywhere.
 ```
 
+Résultat, le 2026-10-16 : validée par l'auteur. Les yeux justes dans les trois cases, la tenue juste. Assis de face, une bague à chaque main ; accoudé du coude gauche au lieu du droit, sans conséquence (la légende ne dit pas le côté).
+
 ### Prompt L4 — Six gestes de face
 
 Joins l'image maître v3. Découpe : `--noms mange,boit,bouche-pleine,telephone,ecrit-marqueur,laptop --dossier gestes`.
@@ -576,7 +578,7 @@ L'auteur demande un prompt à la fois (« donne-moi le prompt 1 de Sky ») et en
    - **les lunettes** : la monture dorée fine, avec la barre du haut, sans taches sous les verres ni trait entre les sourcils ;
    - **la barbe de 3 jours** et les cernes ;
    - **la tenue** : la chemise blanche aux lys noirs et blancs (des lys, pas des fleurs de lys), manches sous le coude, ouverte en haut ; les deux colliers (le cordon de cuir serré, la chaîne et ses deux anneaux) ; la chemise portée par-dessus, jamais rentrée ; le pantalon de training noir mat, ample, à cordon, porté bas sur les hanches et resserré aux chevilles, sans bande ni logo, pas un pantalon de costume (pas de pli ni de braguette) ; les baskets noires ;
-   - **la bague** : une seule, une bande fine en bronze, à l'auriculaire droit. Deux bagues et une chevalière à l'index sont déjà arrivées ;
+   - **la bague** : ne plus la contrôler. L'auteur a tranché le 2026-10-16 : une bague en trop ne fait pas refaire une planche (le LoRA n'apprend pas un détail de quelques pixels). Les ratés se notent dans `fiche.json` > `_a_completer` ;
    - **la carrure** : 1m87, 92 kg, les avant-bras épais aux veines visibles ;
    - aucun texte, le fond gris clair, les cases séparées.
    Et selon le prompt :

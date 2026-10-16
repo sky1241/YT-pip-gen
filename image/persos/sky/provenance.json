@@ -978,6 +978,31 @@
       "case": 3,
       "date": "2026-10-16",
       "retenue": true
+    },
+    "planches/poses_v1.png": {
+      "source": "ChatGPT",
+      "prompt": "L3",
+      "date": "2026-10-16",
+      "cases": 3,
+      "_note": "validée par l'auteur ; assis de face, une bague à chaque main ; accoudé du coude gauche au lieu du droit (la légende ne dit pas le côté)"
+    },
+    "references/assis-face_v1.png": {
+      "planche": "planches/poses_v1.png",
+      "case": 1,
+      "date": "2026-10-16",
+      "retenue": true
+    },
+    "references/assis-cote_v1.png": {
+      "planche": "planches/poses_v1.png",
+      "case": 2,
+      "date": "2026-10-16",
+      "retenue": true
+    },
+    "references/accoude_v1.png": {
+      "planche": "planches/poses_v1.png",
+      "case": 3,
+      "date": "2026-10-16",
+      "retenue": true
     }
   },
   "signatures_retenues": {
