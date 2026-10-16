@@ -104,3 +104,20 @@ Edit ONLY this image. Keep everything else exactly as it is: the same view, the 
 ```
 
 À contrôler à la reprise : tous les panneaux repliés à gauche ; le pied de l'escalier dégagé, accessible depuis la rue et la salle ; rien d'autre de changé.
+
+Résultat de la retouche 2, le 2026-10-16 : les panneaux sont tous à gauche, le pied de l'escalier est dégagé. L'auteur demande encore : les panneaux vitrés sur toute la hauteur (ce sont eux qui ferment le kebab) ; les chaises toujours face à face (plus simple pour placer les persos) ; en haut de l'escalier, une porte, celle de Datastream, les bureaux de Sky.
+
+## Prompt KB1 retouche 3 — Les panneaux, les chaises, la porte de Datastream
+
+Comme la retouche 2 : dans la case « Décrivez les modifications » de l'image retouchée.
+
+```
+Edit ONLY this image. Keep everything else exactly as it is: the same view, the same layout, the same style and the same light. Make only these three changes:
+1. The folded glass panels at the left end of the shopfront: make them full height, from the floor up to the top of the shopfront opening, because they close the whole shop at night.
+2. The chairs: at every table in the middle of the room, two chairs on each long side, facing each other, and no chair at the ends. At every table along the red bench, the bench is on one long side and two chairs face it on the other side.
+3. At the top of the staircase: a plain closed wooden door, the entrance of the office upstairs, with no sign and no text on it.
+```
+
+À contrôler à la reprise : les panneaux du sol au haut de la devanture ; les chaises face à face partout ; la porte en haut de l'escalier, sans texte ; rien d'autre de changé.
+
+Ce que Claude garde pour les fonds par axe, plutôt qu'en retouche de la maquette : moins de petits objets (une plante par table, des sauces sur chaque table, une douzaine de plantes en tout) ; chacun devrait revenir identique d'un axe à l'autre. La maquette fixe le plan ; ce sont les fonds par axe qui feront foi.
