@@ -1003,6 +1003,43 @@
       "case": 3,
       "date": "2026-10-16",
       "retenue": true
+    },
+    "planches/gestes_v1.png": {
+      "source": "ChatGPT",
+      "prompt": "L4",
+      "date": "2026-10-16",
+      "cases": 6,
+      "_note": "validée par l'auteur ; case 3 : il ne mâche pas (bouche fermée, joues plates), sa légende le dit (fiche.json > lora > legendes_par_fichier)"
+    },
+    "gestes/mange_v1.png": {
+      "planche": "planches/gestes_v1.png",
+      "case": 1,
+      "date": "2026-10-16"
+    },
+    "gestes/boit_v1.png": {
+      "planche": "planches/gestes_v1.png",
+      "case": 2,
+      "date": "2026-10-16"
+    },
+    "gestes/bouche-pleine_v1.png": {
+      "planche": "planches/gestes_v1.png",
+      "case": 3,
+      "date": "2026-10-16"
+    },
+    "gestes/telephone_v1.png": {
+      "planche": "planches/gestes_v1.png",
+      "case": 4,
+      "date": "2026-10-16"
+    },
+    "gestes/ecrit-marqueur_v1.png": {
+      "planche": "planches/gestes_v1.png",
+      "case": 5,
+      "date": "2026-10-16"
+    },
+    "gestes/laptop_v1.png": {
+      "planche": "planches/gestes_v1.png",
+      "case": 6,
+      "date": "2026-10-16"
     }
   },
   "signatures_retenues": {
@@ -1069,5 +1106,13 @@
     "ennui": "expressions/trois-quarts_ennui_v1.png",
     "fatigue": "expressions/trois-quarts_fatigue_v2.png",
     "douleur": "expressions/trois-quarts_douleur_v1.png"
+  },
+  "gestes_retenus": {
+    "mange": "gestes/mange_v1.png",
+    "boit": "gestes/boit_v1.png",
+    "bouche-pleine": "gestes/bouche-pleine_v1.png",
+    "telephone": "gestes/telephone_v1.png",
+    "ecrit-marqueur": "gestes/ecrit-marqueur_v1.png",
+    "laptop": "gestes/laptop_v1.png"
   }
 }

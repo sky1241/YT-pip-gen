@@ -58,7 +58,7 @@ La série 1, faite avec la monture argentée, est archivée sur le disque extern
 - [x] `planches/pied-1_v1.png` : en pied, de face et de trois-quarts des deux côtés
 - [x] `planches/pied-2_v1.png` : en pied, de profil des deux côtés et de dos
 - [x] `planches/poses_v1.png` : assis de face, assis de côté, debout accoudé
-- [ ] `planches/gestes_v1.png` : il mange sa galette, boit son Fanta, la bouche pleine, regarde son téléphone, écrit au marqueur sur une vitre, sur son laptop
+- [x] `planches/gestes_v1.png` : il mange sa galette, boit son Fanta, la bouche pleine, regarde son téléphone, écrit au marqueur sur une vitre, sur son laptop
 - [ ] `planches/trois-quarts_gestes_v1.png` : les mêmes gestes de trois-quarts, côté droit (son œil bleu devant)
 
 **Palette des émotions, de face** (l'œil droit garde son reflet, comme en temps normal ; le gauche est aveugle)

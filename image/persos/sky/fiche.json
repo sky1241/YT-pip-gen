@@ -129,7 +129,11 @@
     },
     "test_signature": "le-sourire",
     "tag_yeux": "heterochromia",
-    "_note_tag_yeux": "ajouté pour la v2 (2026-10-16) : en v1, l'œil aveugle n'était juste que de face. Le tag va dans chaque légende où les deux yeux sont ouverts et visibles, et dans chaque prompt de génération"
+    "_note_tag_yeux": "ajouté pour la v2 (2026-10-16) : en v1, l'œil aveugle n'était juste que de face. Le tag va dans chaque légende où les deux yeux sont ouverts et visibles, et dans chaque prompt de génération",
+    "legendes_par_fichier": {
+      "gestes/bouche-pleine_v1.png": "holding food, wrap, closed mouth, unimpressed"
+    },
+    "_note_legendes_par_fichier": "quand une case ne montre pas le geste prévu, sa légende dit ce qu'elle montre : gestes/bouche-pleine_v1.png ne mâche pas (bouche fermée, joues plates, la galette à la main), 2026-10-16"
   },
   "voix": "audio/voix/sky/",
   "_note_voix": "la voix de l'auteur, faite par lui (CLAUDE.md > Stack)",

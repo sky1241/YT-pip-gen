@@ -32,7 +32,7 @@ La série 1, faite avec la monture argentée, est archivée sur le disque extern
 | L1 | En pied : de face, de trois-quarts des deux côtés : faite | `planches/pied-1_v1.png` |
 | L2 | En pied : de profil des deux côtés, de dos : faite | `planches/pied-2_v1.png` |
 | L3 | Trois poses : assis de face, assis de côté, debout accoudé : faite | `planches/poses_v1.png` |
-| L4 | Six gestes de face | `planches/gestes_v1.png` |
+| L4 | Six gestes de face : faite | `planches/gestes_v1.png` |
 | L5 | Les six gestes de trois-quarts | `planches/trois-quarts_gestes_v1.png` |
 
 La suite du tableau s'écrit au fil de la série. Les chemins partent de `image/persos/sky/`.
@@ -551,6 +551,8 @@ Make a sheet of Sky's gestures: a regular grid of 3 columns and 2 rows, landscap
 No text or labels anywhere.
 ```
 
+Résultat, le 2026-10-16 : validée par l'auteur. Les yeux, les lunettes et la barbe justes dans les six cases ; la bouteille sans logo ; les traits du marqueur flottent devant lui, sans lettres. Case 3, il ne mâche pas : bouche fermée, joues plates, la galette à la main ; sa légende le dit (`fiche.json` > `lora` > `legendes_par_fichier`). Pour L5, la case 3 insiste sur les joues gonflées.
+
 ### Prompt L5 — Les six gestes de trois-quarts
 
 Joins la vue trois-quarts droite de la rotation (`references/trois-quarts-droit_v1.png`), pour l'angle. Découpe : la même que L4, le préfixe `trois-quarts_` s'ajoute tout seul.
@@ -560,7 +562,7 @@ Make a sheet of Sky's gestures: a regular grid of 3 columns and 2 rows, landscap
 
 1. Biting into a chicken wrap held in both hands.
 2. Drinking from a bottle of orange soda, with no logo and no text on it.
-3. Chewing with his mouth full, cheeks puffed, unimpressed.
+3. Chewing a big bite, his mouth full: lips closed, both cheeks visibly puffed out, unimpressed, the wrap in his hand.
 4. Looking at a smartphone held in his right hand, the bronze ring visible.
 5. Writing with a black marker on a transparent glass pane in front of him, his right hand raised.
 6. Typing on a laptop set on a small plain table in front of him.

@@ -124,7 +124,8 @@ def legende(chemin, fiche):
         cle = base.split("_", 1)[1]
         return f"portrait, close-up, {angle}, {yeux}{BOUCHES[cle]}, {FOND}"
     if dossier == "gestes":
-        return f"upper body, {angle}, {yeux}{GESTES[cle]}, {FOND}"
+        tags = fiche["lora"].get("legendes_par_fichier", {}).get(chemin) or GESTES[cle]
+        return f"upper body, {angle}, {yeux}{tags}, {FOND}"
     tags = EMOTIONS.get(cle) or fiche["lora"]["legendes_signatures"][cle]
     cadrage = "upper body" if cle != "haussement-epaules" else "upper body, cowboy shot"
     return f"{cadrage}, {angle}, {yeux}{tags}, {FOND}"
