@@ -11,6 +11,12 @@
       "source": "Claude, en code (pipeline/plan_kebab.py)",
       "date": "2026-10-16",
       "_note": "le plan vu de dessus, d'après la maquette et les consignes de l'auteur : six tables identiques de quatre chaises, trois au milieu, trois perpendiculaires à la banquette. L'auteur : « ton plan est bon », les tables corrigées ensuite à sa demande"
+    },
+    "maquette_v2.png": {
+      "source": "ChatGPT",
+      "prompt": "KB1 v3 et ses retouches (1 à 5 v2), puis une retouche de l'auteur pour enlever les plantes des tables",
+      "date": "2026-10-16",
+      "_note": "choisie par l'auteur (« garde celle-là ») : la référence de l'ambiance et du plan général. Téléchargée sous le nom « Restaurant de kebab baigné de lumière dorée.png ». Écarts connus : les tables de droite parallèles à la banquette et un peu carrées ; la disposition exacte est celle de plan_v1.png"
     }
   }
 }
