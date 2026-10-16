@@ -379,3 +379,7 @@ Vérifié sur les pages officielles, le 2026-10-15 :
 - **L5 : validé du premier coup.** Le trois-quarts côté droit, à l'angle de `references/trois-quarts-droit_v1.png` jointe : l'œil
   bleu devant, l'œil aveugle blanc dans les six cases. Avec « both cheeks visibly puffed out », il mâche vraiment (case 3).
   La série en pied et en gestes est finie : 21 images en plus pour le jeu v2 (126 en tout).
+- **LoRA de Sky v2, le 2026-10-16 : jeu préparé et entraînement lancé.** `preparer_lora.py sky v2` : 126 images (105 + les 21 en pied
+  et en gestes), le tag `heterochromia` dans 107 légendes, environ 10 minutes sur la carte AMD ; sortie
+  `<sorties_root>/lora/sky/jeu_v2/`. Envoyé en un zip (111 Mo, 10 s à 12 Mo/s) au jeu privé `skyzer/kebab-lora-sky-jeu-v2`, puis
+  `kaggle kernels push -p pipeline/kaggle/lora_sky_v2 --accelerator NvidiaTeslaT4` : mêmes réglages que la v1, pour comparer.
