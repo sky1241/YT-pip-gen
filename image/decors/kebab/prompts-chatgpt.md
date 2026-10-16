@@ -8,7 +8,7 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 |---|---|---|
 | KB1 | La maquette : tout le kebab vu de dessus, en coupe, sans personne : la v3 est la bonne base | `image/decors/kebab/maquette_v1.png` |
 | KB1 retouches | Le menu, l'escalier ouvert, le miroir fumé, les panneaux, la porte de Datastream, les tables : faite, choisie par l'auteur | `image/decors/kebab/maquette_v2.png` |
-| Plan | Vu de dessus, en code (`pipeline/plan_kebab.py`) : la disposition exacte | `image/decors/kebab/plan_v1.png` |
+| Plan | Vu de dessus, en code (`pipeline/plan_kebab.py`) : la disposition exacte | `image/decors/kebab/plan_v2.png` (la v1 sans la banquette en L) |
 
 La suite (un fond vide par axe de caméra) s'écrit d'après KB1 et d'après les scènes du texte.
 
@@ -197,3 +197,5 @@ Résultat de la retouche 5 v2, le 2026-10-16, dans une nouvelle conversation : s
 **Maquette retenue, le 2026-10-16** : l'auteur a enlevé lui-même les plantes des tables et garde cette version (`maquette_v2.png`) : « toi tu as compris et tu sais comment on s'en servira ». Les tables de droite y restent parallèles à la banquette et un peu carrées ; `plan_v1.png` fait foi pour la disposition.
 
 **Écart avec le texte du CERN, signalé à l'auteur** : le texte met le grand miroir « derrière la banquette » (l. 482), Sky « au fond, table bancale » (l. 14), Seb et Maëlle sur la banquette (l. 460, 466). Dans la maquette, la banquette longe le mur de droite et le miroir est au mur du fond, sans banquette devant. Le texte cite aussi l'horloge Efes au-dessus du comptoir (l. 498), le menu plastifié sur la vitrine (l. 606), le chat sur le comptoir (l. 703), l'escalier qui grince (l. 121) : à reprendre dans les fonds par axe.
+
+**Décisions de l'auteur, le 2026-10-16** : le canon est Annemasse (`ecriture/canon.yaml`) ; la banquette en L sous le miroir lui va ; l'escalier sera en bois. Le texte peut s'adapter au décor si besoin : à l'origine, c'était une histoire, pas un script. `plan_v2.png` reprend tout ça : la banquette en L, la table de Sky au fond avec la banquette derrière elle et le miroir au-dessus, deux tables au milieu, trois le long de la rampe, l'escalier en bois. La maquette (`maquette_v2.png`) n'est plus retouchée : ces changements iront dans les fonds par axe.

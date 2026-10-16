@@ -176,7 +176,6 @@ Statuts : `a_generer` → `genere` → `valide` ou `rejete`. Les répliques sont
 
 ## À trancher avec l'auteur (ne pas décider seul)
 
-- **Canon du kebab** : Mohamed à Annemasse (texte du CERN) ou Mehmet à Clichy (texte Navier-Stokes). Ça décide un LoRA et tous les décors.
 - **Ce que couvre l'épisode 1** : « Le Miroir » seul, ou avec le call.
 - **La machine de génération.** Aucune machine du parc n'a de carte NVIDIA (relevé du 13 octobre 2026, détail dans `config.yaml`). La mieux équipée, sky-master, a une AMD Radeon RX 5700 XT de 8 Go : c'est trop peu pour AniSora, qui demande 12 Go dans sa version légère. Depuis 2026, AMD publie PyTorch pour cette puce (ROCm 7.14, projet TheRock, vérifié le 2026-10-15) : à tester pour les images et le LoRA. Options : tester les images sur cette carte, puis louer ou acheter une carte NVIDIA pour la vidéo.- **Un LoRA de style** en plus de l'IP-Adapter : un « années 90 » tout fait, ou le nôtre. Le style lui-même est décidé (`image/style.md`, l'auteur, le 2026-10-16).
 

@@ -16,7 +16,7 @@ a_trancher:
     options:
       - "Mohamed à Annemasse (texte du CERN)"
       - "Mehmet à Clichy (texte Navier-Stokes)"
-    choix: null
+    choix: "Mohamed à Annemasse"   # l'auteur, le 2026-10-16 (« on garde Annemasse ») ; à aligner : la section « ## MEHMET » de la bible, la bible d'écriture (Mehmet, Istanbul 2016) et le texte Navier-Stokes (Mehmet, Clichy)
   episode_1_couvre:
     options:
       - "« Le Miroir » seul"
@@ -29,7 +29,7 @@ a_trancher:
     briefing_de_guerre: null   # cet épisode ou le suivant
   style_reference_serie:
     question: "Le rendu de l'image maître de Maëlle devient-il la référence de style de toute la série ?"
-    choix: null
+    choix: "le style des images de référence de Sky et de Maëlle (image/style.md), l'auteur, le 2026-10-16"
 
 # ---------------------------------------------------------------------------
 # ENTREPRISE
@@ -65,7 +65,7 @@ personnages:
     role: "le kebab"
     age: null
     source: "bible l.162, l.247"
-    note: "slug provisoire — devient `mehmet` si le canon tranche pour Clichy"
+    note: "slug définitif : le canon a tranché pour Mohamed à Annemasse (2026-10-16)"
   seb:
     nom: "Seb"
     role: "a construit Datastream, le patron"
@@ -126,7 +126,7 @@ personnages:
 # Un seul bâtiment : le kebab au rez-de-chaussée, le bureau à l'étage.
 # ---------------------------------------------------------------------------
 lieux:
-  ville: null            # Annemasse ou Clichy — dépend du canon_kebab
+  ville: "Annemasse"     # l'auteur, le 2026-10-16 ; le texte du CERN : « Dehors, Annemasse. Le bruit du tram. »
   kebab:
     etage: "rez-de-chaussée"
     source: "bible l.162"

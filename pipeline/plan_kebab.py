@@ -1,11 +1,11 @@
 """Plan du kebab vu de dessus, d'après la maquette (image/decors/kebab/), en mètres. y = 0 au mur du fond, la rue en bas.
 
-  python3 pipeline/plan_kebab.py image/decors/kebab/plan_v1.png
+  python3 pipeline/plan_kebab.py image/decors/kebab/plan_v2.png   (jamais par-dessus une version validée)
 """
 from PIL import Image, ImageDraw, ImageFont
 import sys
 E = 90                      # pixels par mètre
-MX, MY = 60, 60             # marges
+MX, MY = 60, 100            # marges
 W, D = 11.0, 8.0            # la salle : largeur (gauche-droite) et profondeur (fond-rue)
 img = Image.new("RGB", (int(W * E + 2 * MX), int(D * E + 2 * MY + 60)), "white")
 d = ImageDraw.Draw(img)
@@ -42,17 +42,21 @@ txt(2.65, 2.4, "passe")
 # le frigo à boissons, au fond à gauche
 rect(1.6, 0.0, 2.3, 0.7, "#9fd3e6"); txt(1.95, 0.35, "frigo")
 # le miroir, au mur du fond
-d.line([p(3.8, 0.05), p(7.2, 0.05)], fill="#6a8fb0", width=10); txt(5.5, 0.35, "MIROIR (Sky y écrit)", G)
-# 6 tables identiques (0,8 × 1,2 m), 4 chaises chacune, deux de chaque long côté, face à face
-# au milieu : 3 tables, dont celle devant le miroir
-for ty in (1.3, 3.6, 5.9):
+d.line([p(3.8, 0.05), p(7.2, 0.05)], fill="#6a8fb0", width=10); txt(5.5, -0.25, "MIROIR, au-dessus de la banquette (Sky y écrit)", G)
+# 6 tables identiques (0,8 × 1,2 m), deux chaises de chaque long côté, face à face
+# au fond, la table de Sky (« au fond, table bancale ») : la banquette derrière elle, le miroir au-dessus (texte du CERN, l. 14 et 482)
+rect(4.9, 0.85, 6.1, 1.65, "#d9a066"); txt(5.5, 1.25, "table de Sky")
+chaise(5.2, 1.9, "haut"); chaise(5.8, 1.9, "haut")
+# au milieu : 2 tables
+for ty in (3.6, 5.9):
     tx = 5.5
     rect(tx - 0.4, ty - 0.6, tx + 0.4, ty + 0.6, "#d9a066")
     for cy in (ty - 0.3, ty + 0.3):
         chaise(tx - 0.65, cy, "droite"); chaise(tx + 0.65, cy, "gauche")
 # à droite : la banquette le long de la rampe, et 3 tables perpendiculaires, un petit bout contre elle
-rect(8.6, 1.0, 9.2, 7.2, "#b03a2e"); txt(8.9, 0.75, "banquette")
-for ty in (1.9, 4.1, 6.3):
+# la banquette en L : sous le miroir, le long du mur du fond, puis le long de la rampe
+rect(3.6, 0.2, 9.2, 0.8, "#b03a2e"); rect(8.6, 0.8, 9.2, 7.2, "#b03a2e"); txt(3.2, 0.5, "banquette")
+for ty in (2.4, 4.4, 6.4):
     rect(7.4, ty - 0.4, 8.6, ty + 0.4, "#d9a066")
     for cx in (7.7, 8.3):
         chaise(cx, ty - 0.65, "bas"); chaise(cx, ty + 0.65, "haut")
@@ -61,7 +65,7 @@ d.line([p(9.3, 0.6), p(9.3, 7.6)], fill="#8a5a2b", width=4)
 rect(9.4, 0.4, 10.9, 7.8, "#e8e0d0")
 for k in range(14):
     yy = 0.4 + k * 0.5; d.line([p(9.4, yy), p(10.9, yy)], fill="#a09080", width=1)
-txt(10.15, 4.2, "ESCALIER", G); txt(10.15, 4.6, "monte vers le fond")
+txt(10.15, 4.2, "ESCALIER", G); txt(10.15, 4.6, "en bois, il grince"); txt(10.15, 5.0, "monte vers le fond")
 rect(9.6, 0.0, 10.7, 0.12, "#8a5a2b"); txt(10.15, -0.25, "porte de Datastream (en haut)")
 txt(10.15, 7.55, "pied : depuis la rue")
 d.text((MX, 15), "Le kebab vu de dessus (plan de travail, 1 carreau = 1 m)", fill="black", font=G)

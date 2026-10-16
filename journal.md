@@ -417,3 +417,8 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   orange, la nourriture, même sous la pluie), la peau pâlit et les couleurs tournent au pastel, loin du rendu chaud de l'image
   maître. Seul gain : la chemise redevient blanche sous la pluie. À essayer : un poids plus faible (0,4 à 0,6), et surtout une
   référence sans perso ni objets, un décor vide dans le style (le kebab, prompt KB1).
+- **Le kebab, le 2026-10-16** : la maquette vue de dessus faite dans ChatGPT (`image/decors/kebab/maquette_v2.png`), après trois
+  versions et cinq retouches. Ce qui marche : décrire le plan zone par zone, dire « 2D, NOT a 3D render », retoucher dans la case
+  « Décrivez les modifications » de l'image. Ce qui rate : l'orientation des tables et des chaises, ChatGPT refait sa disposition à
+  lui, même avec un plan joint, et une nouvelle conversation fait revenir ce qu'on avait enlevé. D'où un plan vu de dessus en code
+  (`pipeline/plan_kebab.py`, `plan_v2.png`) qui fait foi pour la disposition. Le canon est tranché : Mohamed à Annemasse.

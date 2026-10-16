@@ -17,6 +17,11 @@
       "prompt": "KB1 v3 et ses retouches (1 à 5 v2), puis une retouche de l'auteur pour enlever les plantes des tables",
       "date": "2026-10-16",
       "_note": "choisie par l'auteur (« garde celle-là ») : la référence de l'ambiance et du plan général. Téléchargée sous le nom « Restaurant de kebab baigné de lumière dorée.png ». Écarts connus : les tables de droite parallèles à la banquette et un peu carrées ; la disposition exacte est celle de plan_v1.png"
+    },
+    "plan_v2.png": {
+      "source": "Claude, en code (pipeline/plan_kebab.py)",
+      "date": "2026-10-16",
+      "_note": "d'après le texte du CERN, validé par l'auteur : la banquette en L, sous le miroir puis le long de la rampe ; la table de Sky au fond, la banquette derrière elle ; l'escalier en bois. Six tables identiques"
     }
   }
 }
