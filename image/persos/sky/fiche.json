@@ -36,7 +36,7 @@
   "tenue_canonique": {
     "chemise": "blanche à manches longues, boutonnée, un peu ample mais tendue sur la poitrine, ouverte en haut ; motif clairsemé de lys noirs et blancs (la fleur, pas le symbole héraldique), surtout sur le torse, col et manches presque unis",
     "manches": "retroussées juste sous le coude : les coudes restent couverts, les avant-bras se voient en entier",
-    "pantalon": "pantalon de training noir, ample, à cordon, tissu doux et mat, sans logo ni bande",
+    "pantalon": "pantalon de training noir, ample, à cordon et taille élastique, porté bas sur les hanches, resserré mollement aux chevilles sur les baskets, tissu doux et mat, sans logo ni bande ; jamais un pantalon de costume (l'auteur, le 2026-10-16, d'après references/pied_v1.png)",
     "chaussures": "baskets noires (validées sur references/pied_v1.png, le 2026-10-14)",
     "lunettes": "grandes lunettes de vue aviateur, monture fine plaquée or (l'auteur, le 2026-10-14), double pont : une fine barre droite relie le haut des verres, au-dessus du pont du nez ; verres parfaitement clairs, jamais teintés",
     "colliers": [
@@ -44,7 +44,8 @@
       "plus bas, une fine chaîne en métal qui finit sur deux anneaux entrelacés"
     ],
     "bague": "une seule, en bronze, à l'auriculaire droit",
-    "_note_pied": "sur l'image en pied, la chemise est ouverte jusqu'au ventre et l'élastique bleu clair du caleçon dépasse : détails de cette image, pas du look de base, sauf avis contraire de l'auteur"
+    "_note_pied": "sur l'image en pied, la chemise est ouverte jusqu'au ventre et l'élastique bleu clair du caleçon dépasse : détails de cette image, pas du look de base, sauf avis contraire de l'auteur",
+    "chemise_portee": "par-dessus le pantalon, jamais rentrée (l'auteur, le 2026-10-16, d'après references/pied_v1.png)"
   },
   "traits": {
     "visage": "masculin et anguleux : mâchoire carrée, pommettes marquées, nez droit ; présence calme, un peu intimidante",

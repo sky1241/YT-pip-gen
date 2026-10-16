@@ -359,3 +359,8 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   procédure du LoRA v2 (`image/persos/sky/prompts-chatgpt.md`, fin du fichier) ; `pipeline/preparer_lora.py` sait légender les vues
   en pied, les poses et les gestes, et ajoute le tag des yeux (`heterochromia`, `fiche.json` > `lora` > `tag_yeux`) là où les deux
   yeux sont ouverts ; `pipeline/test_lora.py` l'ajoute aux prompts ; le notebook `pipeline/kaggle/lora_sky_v2/` est prêt.
+- **L1, premier essai, le 2026-10-16 : refusé.** Avec l'image maître v3 jointe (elle s'arrête au buste) et « black tracksuit
+  trousers » seuls, ChatGPT a mis un pantalon de costume (pli, braguette) porté haut, la chemise rentrée dedans ; et case 3, un iris
+  bleu à l'œil aveugle. Leçon : pour une image en pied, joindre l'image en pied validée (`references/pied_v1.png`) et décrire la
+  façon de porter la tenue (chemise par-dessus, jogging à cordon porté bas sur les hanches, « not dress trousers »), pas seulement
+  les vêtements. Fiche, prompts L1 à L5 et liste de contrôle corrigés.
