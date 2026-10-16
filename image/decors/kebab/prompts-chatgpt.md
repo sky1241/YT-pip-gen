@@ -164,3 +164,17 @@ Edit ONLY this image. Keep everything else exactly as it is: the same view, the 
 ```
 
 À contrôler à la reprise : à droite, par table, une chaise de chaque long côté, face à face, la banquette au bout ; plus de plantes sur les tables ; deux sauces et des serviettes par table ; les tables du milieu inchangées ; rien d'autre de changé.
+
+Résultat de la retouche 4 v3, le 2026-10-16 : les plantes ont quitté les tables, les sauces et les serviettes sont là. Mais les tables de droite sont devenues étroites, parallèles à la banquette, avec les deux chaises côté allée, tournées vers elle : ChatGPT n'a pas suivi la consigne. Capture rangée hors du repo (`<sorties_root>/decors/kebab/maquette_retouche-4_capture.png`).
+
+Les mots ne suffisent plus pour la disposition : Claude a dessiné un plan vu de dessus, en code (`pipeline/plan_kebab.py`), d'après la maquette et les consignes de l'auteur. Il servira aussi pour les axes de caméra, et à chaque prompt de fond. À faire valider par l'auteur.
+
+## Prompt KB1 retouche 5 — Les tables de droite, d'après le plan
+
+Joins deux images dans le même message : l'image retouchée (la dernière) et le plan (`~/Téléchargements/kebab_plan-vu-de-dessus.png`).
+
+```
+Edit ONLY the first attached image, the kebab restaurant. The second attached image is a floor plan of the same restaurant seen from above; it is only a guide, do not copy its colours, its labels or its style. Keep everything else in the restaurant exactly as it is: the same view, the same style, the same light. Make only this change: arrange the four tables along the red bench on the right exactly as in the plan. Each table is turned perpendicular to the bench, one short end touching the bench. One chair on each long side of the table, the two chairs facing each other across the table. No chair between a table and the bench. No text anywhere.
+```
+
+À contrôler à la reprise : les quatre tables de droite perpendiculaires à la banquette, une chaise de chaque côté, face à face ; rien du plan recopié (ni couleurs, ni étiquettes) ; rien d'autre de changé.
