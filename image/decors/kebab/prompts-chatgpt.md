@@ -121,3 +121,18 @@ Edit ONLY this image. Keep everything else exactly as it is: the same view, the 
 À contrôler à la reprise : les panneaux du sol au haut de la devanture ; les chaises face à face partout ; la porte en haut de l'escalier, sans texte ; rien d'autre de changé.
 
 Ce que Claude garde pour les fonds par axe, plutôt qu'en retouche de la maquette : moins de petits objets (une plante par table, des sauces sur chaque table, une douzaine de plantes en tout) ; chacun devrait revenir identique d'un axe à l'autre. La maquette fixe le plan ; ce sont les fonds par axe qui feront foi.
+
+Résultat de la retouche 3, le 2026-10-16 : les panneaux vont du sol au haut de la devanture, la porte de Datastream est en haut de l'escalier, les chaises du milieu sont face à face. L'auteur demande encore : à droite, les tables collées à la banquette, et les chaises de l'autre côté ; plus de plantes sur les tables. Les sauces blanche et rouge restent : si elles changent de place d'un plan à l'autre, ça passe pour quelqu'un qui s'en est servi (dans un même plan, le fond ne bouge pas). Claude garde aussi les distributeurs de serviettes : Sky griffonne ses formules sur les serviettes, et Maëlle les ramasse (bible).
+
+## Prompt KB1 retouche 4 — Les tables de la banquette, les tables sans plantes
+
+Comme la retouche 3 : dans la case « Décrivez les modifications » de l'image retouchée.
+
+```
+Edit ONLY this image. Keep everything else exactly as it is: the same view, the same layout, the same style and the same light. Make only these three changes:
+1. The tables along the red bench on the right: push each table right against the bench, remove the chairs between the tables and the bench, and keep two chairs on the other long side of each table, facing the bench.
+2. Every table: remove the small plant on it. The large plants standing on the floor stay.
+3. Every table keeps only a red sauce bottle, a white sauce bottle and a napkin dispenser.
+```
+
+À contrôler à la reprise : les tables de droite collées à la banquette, deux chaises face à elle ; plus de plantes sur les tables, les grandes plantes au sol toujours là ; sur chaque table, deux sauces et des serviettes ; rien d'autre de changé.
