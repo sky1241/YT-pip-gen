@@ -92,3 +92,15 @@ Edit ONLY the image attached to this message. Keep everything else exactly as it
 ```
 
 À contrôler à la reprise : les quatre changements, un par un ; et rien d'autre de changé (le comptoir, la broche, le frigo, la devanture, la banquette, le style, la lumière).
+
+Résultat de la retouche, le 2026-10-16 : mieux, l'ambiance est la bonne pour l'auteur (« l'ambiance du kebab c'est vraiment ça »). Le menu n'a plus de lettres, le miroir est fumé, les tables sont plus longues, et une rampe ouverte remplace le mur de l'escalier. Reste un défaut : les panneaux vitrés repliés sont en deux paquets, à gauche et à droite, et celui de droite bouche le pied de l'escalier. L'auteur : l'escalier est au bon endroit ; c'est son accès qui ne va pas, il mène à l'étage, chez Datastream, la boîte de Sky. Tous les panneaux repliés vont à gauche.
+
+## Prompt KB1 retouche 2 — Les panneaux à gauche, l'accès à l'escalier
+
+Dans ChatGPT, ouvre l'image retouchée et tape le prompt dans la case « Décrivez les modifications » : la retouche porte sur cette image-là.
+
+```
+Edit ONLY this image. Keep everything else exactly as it is: the same view, the same layout, the same style and the same light. Make only this change: the stack of folded glass panels at the right end of the shopfront, in front of the bottom of the staircase, moves to the left end of the shopfront, next to the other stack, so that all the folded panels are together on the left. The front right corner is then completely open: the bottom of the staircase can be reached directly from the street and from the dining room.
+```
+
+À contrôler à la reprise : tous les panneaux repliés à gauche ; le pied de l'escalier dégagé, accessible depuis la rue et la salle ; rien d'autre de changé.
