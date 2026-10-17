@@ -22,6 +22,7 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 | A17 | L'axe 17 : la table de Sky vue d'en haut, pour les inserts : **fait** | `image/decors/kebab/table-vue-de-dessus/fond_v1.png` |
 | A4 | L'axe 4 : depuis le comptoir, le regard de Mohamed : **fait** (une retouche) | `image/decors/kebab/depuis-le-comptoir/fond_v1.png` |
 | A12 | L'axe 12 : le grand miroir de biais : **fait** (une retouche) | `image/decors/kebab/miroir/fond_v1.png` |
+| A13 | L'axe 13 : depuis le miroir, la table de Sky en plongée | `image/decors/kebab/depuis-le-miroir/fond_v1.png` |
 | KB2 v2 | Le plan peint, d'après le plan v3 : bonne disposition, mais l'escalier sur la rue, la lumière de côté | (supprimé) |
 | KB2 v3 | Le plan peint, d'après le plan v5 sans caméras : **la base fixe, validée** | `image/decors/kebab/plan-peint_v2.png` |
 | A6 v3 | L'axe 6 : la table de Sky dans l'angle, la banquette, le miroir, la plante : **fait** (la vue en volumes, puis une retouche) | `image/decors/kebab/table-du-fond/fond_v1.png` |
@@ -874,3 +875,19 @@ Edit ONLY this image. Keep everything else exactly as it is: the same view, the 
 À contrôler à la reprise : plus de tache de soleil, une lumière douce et égale ; un plafond plein en haut à droite, sans porte ni ouverture ; rien d'autre de changé.
 
 **Résultat de la retouche A12, le 2026-10-17 : validé par l'auteur.**
+
+### Prompt A13 — Depuis le miroir, la table de Sky en plongée
+
+Ce que voit Sky quand il dessine sur le miroir : l'équipe autour de sa table, qui le regarde (« Le Miroir », l. 498). La caméra reculée sur la table de Sky et inclinée vers le bas. Quatre images jointes, dans cet ordre : `~/Téléchargements/kebab_pour_A13_1_vue.png`, `~/Téléchargements/kebab_pour_axes_plan-peint.png`, `~/Téléchargements/kebab_pour_A13_3_angle7.png` (le fond de l'axe 7 : la même salle vers la rue), `~/Téléchargements/kebab_pour_A13_4_angle6.png` (le fond de l'axe 6 : la même table).
+
+```
+The first attached image is a rough 3D layout of one view of our kebab restaurant, made of simple flat-coloured volumes: it fixes the camera, the perspective, the framing and the place of every object. The second attached image is the same restaurant seen from above, painted in our style: it gives the art style, the materials and the objects. The third and fourth attached images are two other views of the same restaurant, already painted and approved: the tables, chairs, bench, the side of the staircase and its banister, the street and the light must look exactly the same. Paint exactly the view of the first image, as an empty background for an anime series: keep the same camera, the same perspective and framing, and every object at the same place, with the same size and angle, as if the layout had been painted over. The camera stands with its back to the mirror, above the table in the corner, and looks down at it, toward the room and the street. Replace the simple volumes with the real objects:
+- at the bottom, our rectangular wooden table seen from above at an angle, with a napkin dispenser, a white sauce bottle and a red sauce bottle;
+- just beyond it, the two empty wooden chairs of our table, their backs facing us;
+- on the left, the long red padded bench running away from us along the right side of the room, and above it the closed side of the wooden staircase with its banister going up into the ceiling;
+- in the middle and on the right, the other rectangular wooden tables with their chairs, each with its sauce bottles and napkin dispenser;
+- at the far end, the open shopfront and the sunny street: the sidewalk, the tram track on its strip of grass, the trees across the street and the facade behind them, as in the third image.
+Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the style of the other images (clean dark outlines, flat cel shading, muted warm palette, painted details). NOT a 3D render, NOT photorealistic, and do not keep the flat colours of the layout. Light: the only daylight comes from the open shopfront at the far end; there are no windows; inside, the light is warm and dim, and the shadows of the tables and chairs fall toward the camera. No people. No text, no letters and no logos anywhere. Landscape format (1536×1024).
+```
+
+À contrôler à la reprise : la plongée sur la table ; les deux chaises de dos ; la banquette et le côté de l'escalier à gauche, la rampe dans le plafond ; les tables ; la rue au fond, comme à l'axe 7 ; aucune personne, aucun texte.
