@@ -65,8 +65,9 @@ for ty in (4.0, 6.2):
     rect(7.4, ty - 0.4, 8.6, ty + 0.4, "#d9a066")
     for cx in (7.7, 8.3):
         chaise(cx, ty - 0.65, "bas"); chaise(cx, ty + 0.65, "haut")
-# l'escalier vers Datastream, derrière un mur : on ne le voit pas depuis la salle, il ne s'ouvre que sur le palier, devant ;
-# la banquette de droite est adossée à ce mur (l'auteur, le 2026-10-17)
+# l'escalier vers Datastream : son côté salle est fermé sous les marches et suit leur pente, la rampe au-dessus ; au fond, il
+# touche le plafond et c'est un mur. La banquette de droite est adossée à ce côté ; l'escalier s'ouvre sur le palier, devant
+# (l'auteur, le 2026-10-17)
 # l'escalier part d'un palier, à l'intérieur, au bout de la banquette, et monte vers le fond ; la rampe s'arrête au palier
 d.line([p(9.3, 0), p(9.3, 6.4)], fill="black", width=6)
 rect(9.4, 0.4, 10.9, 6.4, "#e8e0d0")
@@ -88,7 +89,7 @@ img.save(sys.argv[1])
 # numéro : (x, y de la caméra, direction du regard en degrés : 0 = vers la droite, 90 = vers la rue, 270 = vers le fond)
 AXES = {
     1: (5.5, 9.3, 270), 2: (5.5, 8.35, 270), 3: (4.8, 1.3, 95), 4: (1.65, 4.0, 345), 5: (10.15, 3.2, 160),
-    6: (6.42, 2.33, 323), 7: (7.8, 0.5, 108), 8: (4.3, 4.6, 180), 9: (3.4, 3.1, 180), 10: (7.3, 7.6, 0),
+    6: (6.42, 2.33, 323), 7: (7.8, 0.5, 98), 8: (4.3, 4.6, 180), 9: (3.4, 3.1, 180), 10: (7.3, 7.6, 0),
     11: (10.15, 7.3, 270), 12: (4.6, 2.0, 315), 13: (7.0, 0.4, 100), 14: (6.2, 3.0, 315), 15: (6.0, 5.0, 100),
     16: (3.6, 2.4, 225), 17: (8.0, 1.25, 270), 18: (3.0, 2.4, 200), 19: (8.9, 1.7, 90),
     20: (6.95, 1.25, 0), 21: (8.95, 1.25, 180), 22: (8.0, 5.1, 90), 23: (8.0, 8.6, 270),

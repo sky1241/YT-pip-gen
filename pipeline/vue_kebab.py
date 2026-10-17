@@ -19,6 +19,7 @@ AXES = ast.literal_eval(_source[_debut:_source.index("}", _debut) + 1])
 ASSIS, DEBOUT = 1.2, 1.6
 CAMERAS = {n: (ASSIS, 0, 66) for n in (6, 7, 20, 21, 22, 24, 25)}
 CAMERAS.update({n: (DEBOUT, 0, 66) for n in (1, 2, 3, 4, 8, 9, 10, 12, 14, 15, 16, 19, 23)})
+CAMERAS[7] = (ASSIS, 0, 80)          # plus large : la rampe de l'escalier à gauche et la caisse à droite (l'auteur)
 CAMERAS.update({5: (2.1, -25, 70), 11: (DEBOUT, 18, 66), 13: (DEBOUT, -15, 66), 17: (2.2, -89, 60), 18: (DEBOUT, 10, 30)})
 
 FOND, OBJETS = [], []   # le décor (dessiné d'abord, dans l'ordre), puis les objets (triés du plus loin au plus proche)
@@ -43,7 +44,7 @@ def plaque(points, normale, couleur):
 # --- la rue, en face ---
 plaque([(-8, 8, 0), (19, 8, 0), (19, 14, 0), (-8, 14, 0)], (0, 0, 1), "#b4aa96")
 plaque([(-8, 8, 0.01), (19, 8, 0.01), (19, 9.8, 0.01), (-8, 9.8, 0.01)], (0, 0, 1), "#cdc1aa")      # le trottoir
-plaque([(-8, 10.75, 0.02), (19, 10.75, 0.02), (19, 11.45, 0.02), (-8, 11.45, 0.02)], (0, 0, 1), "#6f8f4a")  # l'herbe
+plaque([(-8, 10.2, 0.02), (19, 10.2, 0.02), (19, 12.0, 0.02), (-8, 12.0, 0.02)], (0, 0, 1), "#6f8f4a")  # la voie du tram, en herbe
 for yr in (10.7, 11.5):                                                                         # les rails du tram
     plaque([(-8, yr - 0.04, 0.03), (19, yr - 0.04, 0.03), (19, yr + 0.04, 0.03), (-8, yr + 0.04, 0.03)], (0, 0, 1), "#55524c")
 plaque([(-8, 14, 0), (19, 14, 0), (19, 14, 9), (-8, 14, 9)], (0, -1, 0), "#c8b796")              # l'immeuble d'en face
@@ -122,14 +123,20 @@ for ty in (4.0, 6.2):                                       # les deux tables de
 # --- l'escalier en bois, à droite, derrière un mur : on ne le voit pas depuis la salle, il ne s'ouvre que sur le palier,
 # devant (l'auteur, le 2026-10-17) ---
 BOIS = "#8a5a2b"
-boite(9.3, 0, 9.4, 6.4, 0, 3.0, "#dcc69c", morceau=0.5, trait=False)   # le mur de l'escalier, trié avec les marches
+# le côté de l'escalier, côté salle : fermé sous les marches, il suit leur pente ; la rampe monte au-dessus de la banquette
+# (l'auteur, le 2026-10-17). Au fond, l'escalier touche le plafond : de là, on ne voit qu'un mur.
 for k in range(12):                                         # monte du palier (y = 6,4) vers le fond, 25 cm par marche
     y0, y1, dessus = 6.4 - 0.5 * (k + 1), 6.4 - 0.5 * k, 0.25 * (k + 1)
     boite(9.4, y0, 10.9, y1, max(0, dessus - 0.55), dessus, "#9c6b3c")                 # la marche et son limon
-    boite(9.4, (y0 + y1) / 2 - 0.02, 9.45, (y0 + y1) / 2 + 0.02, dessus, dessus + 0.9, BOIS)   # les barreaux
-    boite(9.38, y0, 9.47, y1, dessus + 0.9, dessus + 0.96, BOIS)                      # la main courante
+    boite(9.3, y0, 9.4, y1, 0, dessus, "#dcc69c", trait=False)                        # le côté fermé, sous les marches
+    boite(9.33, (y0 + y1) / 2 - 0.02, 9.37, (y0 + y1) / 2 + 0.02, dessus, dessus + 0.9, BOIS)  # les barreaux
+    boite(9.3, y0, 9.4, y1, dessus + 0.9, dessus + 0.96, BOIS)                        # la main courante
 boite(9.4, 6.4, 10.9, 7.9, 0, 0.03, "#b07a45")              # le palier
 
+# --- les arbres de la rue, sur le trottoir d'en face ---
+for xa in (-2.0, 2.5, 7.0, 11.5):
+    boite(xa - 0.12, 13.0, xa + 0.12, 13.24, 0, 2.6, "#5a4030")
+    boite(xa - 1.0, 12.6, xa + 1.0, 13.6, 2.6, 4.6, "#4f7f3c")
 # --- les grandes plantes, au sol ---
 boite(9.0, 0.05, 9.3, 0.35, 1.0, 1.25, "#9a5b3a")            # la plante de l'angle, au-dessus du coin de la banquette
 boite(8.85, 0.02, 9.3, 0.5, 1.25, 1.95, "#3f7a3a")

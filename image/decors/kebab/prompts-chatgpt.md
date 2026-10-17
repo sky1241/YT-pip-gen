@@ -455,3 +455,23 @@ Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the 
 ```
 
 À contrôler à la reprise : le cadrage de la vue en volumes ; la table en bas et ses sauces ; les deux chaises face à nous ; la banquette et le mur à gauche, sans escalier ; les tables du milieu ; le comptoir, les salades et la caisse à droite ; la devanture ouverte, les rails et leur herbe ; aucune personne, aucun texte.
+
+Résultat de A7, le 2026-10-17 : « pas mal », mais il manque l'escalier : la vue en volumes ne le montrait pas. L'auteur l'a dessiné sur la vue : la rampe monte au-dessus de la banquette, à gauche. Et dans la rue, de l'herbe sur la voie du tram, pas des pavés, et un arbre de plus. Le côté de l'escalier suit donc la pente des marches, sa rampe au-dessus (vue en volumes corrigée ; à l'axe 6, l'escalier touche le plafond et reste un mur), la caméra 7 un peu plus large (80°), la voie du tram en herbe, des arbres sur le trottoir d'en face. Capture hors du repo (`table-du-fond-contrechamp_essai-1_capture.png`).
+
+### Prompt A7 v2 — Depuis la place de Sky, avec la rampe de l'escalier
+
+Joins `~/Téléchargements/kebab_pour_A7_1_vue.png` (refaite) puis `~/Téléchargements/kebab_pour_axes_plan-peint.png`.
+
+```
+The first attached image is a rough 3D layout of one view of our kebab restaurant, made of simple flat-coloured volumes: it fixes the camera, the perspective, the framing and the place of every object. The second attached image is the same restaurant seen from above, painted in our style: it gives the art style, the materials, the colours and the objects. Paint exactly the view of the first image, as an empty background for an anime series: keep the same camera, the same perspective and framing, and every object at the same place, with the same size and angle, as if the layout had been painted over. The camera is seated on the red bench at the back of the restaurant and looks toward the street. Replace the simple volumes with the real objects:
+- at the bottom of the frame, the near edge of our wooden table, with a white sauce bottle, a red sauce bottle and a napkin dispenser at the bottom left;
+- the brown upright panels with red seats are empty wooden chairs: the two nearest ones belong to our table and face us;
+- on the left, the red padded bench along the right side of the room; behind it, the side of the wooden staircase: closed below the steps, its top follows the slope of the stairs, and above it a wooden banister with its handrail goes up from the far end toward us and out of the top of the frame. We see the banister and the side of the stairs, not the steps themselves;
+- in the middle, the rectangular wooden tables of the room, each with its chairs on both long sides;
+- on the right, the stainless steel counter seen from the side, with the glass salad display on top and, at its front end, the cash register; the light blue upright block next to it is the stack of folded glass panels of the shopfront;
+- at the far end, the shopfront fully open onto the sunny street: the sidewalk, then the tram track laid on a strip of green grass, with grass between and around the rails and no paving stones there; across the street, a row of trees along the sidewalk, and behind them the plain facade of a building (the dark bars are its windows); the band above the opening is the top of the shopfront;
+- the large surface at the top is the ceiling.
+Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the style of the second image (clean dark outlines, flat cel shading, muted warm palette, painted details). NOT a 3D render, NOT photorealistic, and do not keep the flat colours of the layout. Light: the only daylight comes from the open shopfront at the far end; there are no other windows, the side walls are solid. The street is bright with warm morning sun; inside, the light is warm and dim, and the shadows of the tables and chairs fall toward the camera. No people. No text, no letters and no logos anywhere, including on the building across the street. Landscape format (1536×1024).
+```
+
+À contrôler à la reprise : la rampe de l'escalier qui monte vers nous au-dessus de la banquette, à gauche ; la voie du tram en herbe, sans pavés ; les arbres d'en face ; le comptoir et la caisse à droite ; les deux chaises face à nous ; aucune personne, aucun texte.
