@@ -11,14 +11,18 @@ import numpy as np
 
 POLICE = "/usr/share/fonts/truetype/lato/Lato-Black.ttf"
 
-# par axe : le panneau (x0, y0, x1, y1, en pixels du fond 1536×1024), le texte, sa couleur, l'espacement des lettres,
-# et le test « ce pixel est-il le panneau ? » (sur la luminosité moyenne, 0 à 255)
+# par axe : les panneaux. Un panneau : sa boîte (x0, y0, x1, y1, en pixels du fond 1536×1024), le test « ce pixel est-il
+# le panneau ? » (sur la luminosité moyenne, 0 à 255), et ses textes : chacun centré à une fraction de la largeur, avec sa
+# taille (une fraction de la hauteur), l'espacement de ses lettres et sa couleur
+ROUGE, BRUN, CREME = (122, 28, 22), (58, 40, 28), (236, 228, 210)
 ENSEIGNES = {
     1: [
-        {"boite": (205, 396, 1450, 448), "texte": "KEBAB", "couleur": (122, 28, 22), "espacement": 0.18, "taille": 0.86,
-         "panneau": lambda lum: lum > 115},
-        {"boite": (210, 182, 1445, 236), "texte": "DATASTREAM", "couleur": (236, 228, 210), "espacement": 0.25,
-         "panneau": lambda lum: lum < 75},
+        {"boite": (205, 396, 1450, 448), "panneau": lambda lum: lum > 115, "textes": [   # l'enseigne du kebab (l'auteur)
+            {"texte": "CHEZ MOMO", "centre": 0.19, "taille": 0.6, "espacement": 0.12, "couleur": BRUN},
+            {"texte": "KEBAB", "centre": 0.5, "taille": 0.86, "espacement": 0.18, "couleur": ROUGE},
+            {"texte": "24/24 · 7/7", "centre": 0.81, "taille": 0.6, "espacement": 0.1, "couleur": BRUN}]},
+        {"boite": (210, 182, 1445, 236), "panneau": lambda lum: lum < 75, "textes": [
+            {"texte": "DATASTREAM", "centre": 0.5, "taille": 0.72, "espacement": 0.25, "couleur": CREME}]},
     ],
 }
 
@@ -26,29 +30,28 @@ ENSEIGNES = {
 def poser(fond, sortie, axe=1):
     image = Image.open(fond).convert("RGB")
     lum = np.asarray(image).astype(int).mean(axis=2)
-    for e in ENSEIGNES[axe]:
-        x0, y0, x1, y1 = e["boite"]
-        hauteur = int((y1 - y0) * e.get("taille", 0.72))
-        police = ImageFont.truetype(POLICE, hauteur)
-        lettres = e["texte"]
-        largeurs = [police.getlength(c) for c in lettres]
-        pas = hauteur * e["espacement"]
-        total = sum(largeurs) + pas * (len(lettres) - 1)
-        calque = Image.new("L", image.size, 0)
-        d = ImageDraw.Draw(calque)
-        x = (x0 + x1) / 2 - total / 2
-        for c, w in zip(lettres, largeurs):
-            d.text((x, (y0 + y1) / 2), c, font=police, fill=255, anchor="lm")
-            x += w + pas
-        masque = np.asarray(calque) > 0
-        masque &= e["panneau"](lum)                        # pas sur les feuilles qui passent devant
-        pixels = np.asarray(image).copy()
-        # la lumière du fond (les ombres des feuilles) passe aussi sur les lettres
-        zone = lum[y0:y1, x0:x1][e["panneau"](lum[y0:y1, x0:x1])]
-        facteur = np.clip(lum[masque] / max(1.0, float(np.median(zone))), 0.6, 1.25)[:, None]
-        pixels[masque] = np.clip(np.array(e["couleur"])[None, :] * facteur, 0, 255).astype(np.uint8)
-        image = Image.fromarray(pixels)
-    image.save(sortie)
+    pixels = np.asarray(image).copy()
+    for panneau in ENSEIGNES[axe]:
+        x0, y0, x1, y1 = panneau["boite"]
+        zone = lum[y0:y1, x0:x1][panneau["panneau"](lum[y0:y1, x0:x1])]
+        reference = max(1.0, float(np.median(zone)))
+        for e in panneau["textes"]:
+            hauteur = int((y1 - y0) * e["taille"])
+            police = ImageFont.truetype(POLICE, hauteur)
+            largeurs = [police.getlength(c) for c in e["texte"]]
+            pas = hauteur * e["espacement"]
+            total = sum(largeurs) + pas * (len(largeurs) - 1)
+            calque = Image.new("L", image.size, 0)
+            d = ImageDraw.Draw(calque)
+            x = x0 + (x1 - x0) * e["centre"] - total / 2
+            for c, w in zip(e["texte"], largeurs):
+                d.text((x, (y0 + y1) / 2), c, font=police, fill=255, anchor="lm")
+                x += w + pas
+            masque = (np.asarray(calque) > 0) & panneau["panneau"](lum)    # pas sur les feuilles qui passent devant
+            # la lumière du fond (les ombres des feuilles) passe aussi sur les lettres
+            facteur = np.clip(lum[masque] / reference, 0.6, 1.25)[:, None]
+            pixels[masque] = np.clip(np.array(e["couleur"])[None, :] * facteur, 0, 255).astype(np.uint8)
+    Image.fromarray(pixels).save(sortie)
 
 
 if __name__ == "__main__":

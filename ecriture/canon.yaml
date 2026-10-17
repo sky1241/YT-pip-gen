@@ -130,6 +130,7 @@ lieux:
   kebab:
     etage: "rez-de-chaussée"
     source: "bible l.162"
+    enseigne: "CHEZ MOMO · KEBAB · 24/24 · 7/7"   # l'auteur, le 2026-10-17 ; posée en code (pipeline/enseignes.py), pas dans les fonds
     note: "Décor principal type sitcom : quelques axes fixes, mêmes places."
   bureau:
     etage: "étage du dessus"
