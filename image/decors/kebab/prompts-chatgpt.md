@@ -551,3 +551,17 @@ Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the 
 ```
 
 À contrôler à la reprise : le bout du comptoir en premier plan à gauche ; la broche, la hotte, l'horloge derrière ; le frigo et la plante à droite ; les mêmes que l'axe 21 ; aucune personne, aucun texte.
+
+Résultat de A8 v2, le 2026-10-17 : le bon angle. L'auteur relève : l'horloge est un carré blanc, la sienne est ronde ; la vitrine des salades est posée au fond, elle doit être sur le comptoir en inox. Capture hors du repo (`comptoir_essai-1_capture.png`).
+
+### Prompt A8 v2 retouche — L'horloge, la vitrine des salades
+
+Dans la case « Décrivez les modifications » de l'image.
+
+```
+Edit ONLY this image. Keep everything else exactly as it is: the same view, the same counter, kitchen, kebab spit, hood, fridge, plant, style and light. Make only these two changes:
+1. The plain white square on the wall, to the left of the hood: replace it with a round wall clock, with a light face, a dark round frame, two hands and simple tick marks, no numbers and no text.
+2. The glass refrigerated salad display: it stands on top of the stainless steel counter in the foreground, along its long side, from the left edge of the frame to about the middle of that counter, with its trays of lettuce, tomatoes, onions, red cabbage, carrots and cucumbers under the glass. Remove it from the back worktop.
+```
+
+À contrôler à la reprise : une horloge ronde, sans chiffres ; la vitrine sur le comptoir du premier plan ; rien d'autre de changé.
