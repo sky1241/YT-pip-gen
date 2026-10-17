@@ -422,3 +422,8 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   « Décrivez les modifications » de l'image. Ce qui rate : l'orientation des tables et des chaises, ChatGPT refait sa disposition à
   lui, même avec un plan joint, et une nouvelle conversation fait revenir ce qu'on avait enlevé. D'où un plan vu de dessus en code
   (`pipeline/plan_kebab.py`, `plan_v2.png`) qui fait foi pour la disposition. Le canon est tranché : Mohamed à Annemasse.
+- **Le plan du kebab peint, du premier coup (2026-10-17)** : le plan dessiné en code (`plan_v2.png`) joint en premier, la maquette
+  en second pour le style, et une vue « straight from above, exactly like the plan, as if the plan had been painted over ». Chaque
+  table et chaque chaise à sa place, là où cinq retouches de la maquette en vue isométrique avaient échoué. Gardé par l'auteur
+  (`image/decors/kebab/plan-peint_v1.png`) ; les autres images du kebab supprimées à sa demande (dans l'historique git).
+  À réutiliser pour chaque décor : dessiner le plan, puis faire peindre la vue prise du même point.

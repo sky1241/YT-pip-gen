@@ -1,27 +1,17 @@
 {
   "_note": "D'où vient chaque image du kebab : la conversation ChatGPT, le prompt (image/decors/kebab/prompts-chatgpt.md), la date.",
   "images": {
-    "maquette_v1.png": {
-      "source": "ChatGPT",
-      "prompt": "KB1 v3",
-      "date": "2026-10-16",
-      "_note": "téléchargée par l'auteur sous le nom « Kebab chaleureux ouvert sur la rue.png » ; la bonne base pour l'auteur, quatre corrections à faire en retouche"
-    },
-    "plan_v1.png": {
-      "source": "Claude, en code (pipeline/plan_kebab.py)",
-      "date": "2026-10-16",
-      "_note": "le plan vu de dessus, d'après la maquette et les consignes de l'auteur : six tables identiques de quatre chaises, trois au milieu, trois perpendiculaires à la banquette. L'auteur : « ton plan est bon », les tables corrigées ensuite à sa demande"
-    },
-    "maquette_v2.png": {
-      "source": "ChatGPT",
-      "prompt": "KB1 v3 et ses retouches (1 à 5 v2), puis une retouche de l'auteur pour enlever les plantes des tables",
-      "date": "2026-10-16",
-      "_note": "choisie par l'auteur (« garde celle-là ») : la référence de l'ambiance et du plan général. Téléchargée sous le nom « Restaurant de kebab baigné de lumière dorée.png ». Écarts connus : les tables de droite parallèles à la banquette et un peu carrées ; la disposition exacte est celle de plan_v1.png"
-    },
     "plan_v2.png": {
       "source": "Claude, en code (pipeline/plan_kebab.py)",
       "date": "2026-10-16",
       "_note": "d'après le texte du CERN, validé par l'auteur : la banquette en L, sous le miroir puis le long de la rampe ; la table de Sky au fond, la banquette derrière elle ; l'escalier en bois. Six tables identiques"
+    },
+    "plan-peint_v1.png": {
+      "source": "ChatGPT",
+      "prompt": "KB2",
+      "date": "2026-10-17",
+      "_note": "le plan v2 peint, vu exactement d'en haut, avec la maquette jointe pour le style : chaque élément à sa place, du premier coup. L'auteur : « on garde celui-ci ». Téléchargé sous le nom « Plan d’un petit restaurant kebab ensoleillé.png »"
     }
-  }
+  },
+  "_supprimees": "le 2026-10-17, à la demande de l'auteur (« vire les autres images ») : maquette_v1.png, maquette_v2.png et plan_v1.png, retirées du repo (elles restent dans l'historique git, jusqu'au commit 50132dd), et les retouches intermédiaires du disque externe"
 }

@@ -70,7 +70,7 @@ Terminée quand `image/style.md` est validé et que le kebab a son plan d'axes d
 - [x] Décider le style de la série : celui des images de référence de Sky et de Maëlle, un anime des années 90 entre *Street Fighter II*, *Evangelion* et Ghibli (l'auteur, le 2026-10-16)
 - [ ] Explorer le style dans ChatGPT : une vue large du kebab et Sky, dans le même rendu
 - [ ] Écrire `image/style.md` : mots-clés de prompt, palette, 3 à 5 images de référence (écrit le 2026-10-16 : la décision, les références et ce qui fait le style ; les mots-clés restent à tester, puis l'auteur valide)
-- [ ] Dessiner le plan du kebab vu de dessus : tables, comptoir, broche, miroir, escalier, vitrine
+- [x] Dessiner le plan du kebab vu de dessus : tables, comptoir, broche, miroir, escalier, vitrine (le 2026-10-17 : `image/decors/kebab/plan_v2.png` en code, et sa version peinte `plan-peint_v1.png`, gardée par l'auteur)
 - [ ] Lister les 6 à 8 axes de caméra et qui s'assoit où (Claude peut le préparer depuis le script)
 - [ ] Définir les cartons texte façon Eva (chiffres clés) et le carton SMS : police, couleurs, durée à l'écran
 - [x] Tester une première planche de la palette des émotions sur Maëlle, dont l'image maître existe, puis sa découpe en fichiers (`pipeline/decouper_planche.py`)

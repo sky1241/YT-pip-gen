@@ -6,10 +6,10 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 
 | Prompt | Image | Où la ranger |
 |---|---|---|
-| KB1 | La maquette : tout le kebab vu de dessus, en coupe, sans personne : la v3 est la bonne base | `image/decors/kebab/maquette_v1.png` |
-| KB1 retouches | Le menu, l'escalier ouvert, le miroir fumé, les panneaux, la porte de Datastream, les tables : faite, choisie par l'auteur | `image/decors/kebab/maquette_v2.png` |
+| KB1 | La maquette : tout le kebab vu de dessus, en coupe, sans personne : supprimée, remplacée par KB2 | (dans l'historique git) |
+| KB1 retouches | Le menu, l'escalier ouvert, le miroir fumé, les panneaux, la porte de Datastream, les tables : supprimée, remplacée par KB2 | (dans l'historique git) |
 | Plan | Vu de dessus, en code (`pipeline/plan_kebab.py`) : la disposition exacte | `image/decors/kebab/plan_v2.png` (la v1 sans la banquette en L) |
-| KB2 | Le plan peint : le kebab vu exactement d'en haut, comme le plan v2, dans le style de la maquette | `image/decors/kebab/plan-peint_v1.png` |
+| KB2 | Le plan peint : le kebab vu exactement d'en haut, comme le plan v2, dans le style de la maquette : faite, la référence du kebab | `image/decors/kebab/plan-peint_v1.png` |
 
 La suite (un fond vide par axe de caméra) s'écrit d'après KB1 et d'après les scènes du texte.
 
@@ -220,3 +220,7 @@ What is where, as in the plan:
 ```
 
 À contrôler à la reprise : la vue d'en haut, droite ; chaque élément à sa place du plan, surtout les six tables et leurs chaises ; la banquette en L sous le miroir ; l'escalier en bois et sa porte ; rien du plan recopié (couleurs, étiquettes) ; aucun texte.
+
+**Résultat de KB2, le 2026-10-17 : réussi du premier coup**, gardé par l'auteur, qui fait supprimer les autres images du kebab. Chaque élément est à sa place du plan : le comptoir en L (la caisse devant, les salades le long), la broche, le grill et la friteuse contre le mur gauche, l'horloge, le frigo au fond à gauche, le miroir au-dessus de la banquette en L, la table de Sky au fond, deux chaises face à la banquette, deux tables au milieu, trois perpendiculaires à la banquette, quatre chaises face à face, l'escalier en bois derrière sa rampe et la porte en haut, les panneaux repliés en bas à gauche. Aucun texte. La leçon : pour une disposition exacte, dessiner le plan en code et faire peindre la vue prise du même point, plutôt que de la décrire.
+
+Ce qui fait foi pour le kebab : `plan-peint_v1.png` pour l'image, `plan_v2.png` pour les mesures (en code, `pipeline/plan_kebab.py`).
