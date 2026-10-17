@@ -427,3 +427,8 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   table et chaque chaise à sa place, là où cinq retouches de la maquette en vue isométrique avaient échoué. Gardé par l'auteur
   (`image/decors/kebab/plan-peint_v1.png`) ; les autres images du kebab supprimées à sa demande (dans l'historique git).
   À réutiliser pour chaque décor : dessiner le plan, puis faire peindre la vue prise du même point.
+- **Le plan du kebab v3 (2026-10-17)** : l'auteur annote le plan dans ChatGPT (outil « Annoter ») : c'est le moyen le plus rapide
+  pour qu'il montre une disposition. Validé : la table de Sky dans l'angle de la banquette, pour cinq, Patrick au bout ; le miroir
+  sur toute la banquette du fond ; la rampe basse, l'angle ouvert sur l'escalier ; l'herbe entre les rails du tram ; trois
+  lumières par axe (jour, pluie, nuit). 21 axes (`image/decors/kebab/axes.md`). Le fond de l'axe 6, fait avant, est à refaire.
+  Leçon de l'axe 6 : écrire dans chaque prompt d'où vient la lumière (la rue seule) et le miroir fumé sans reflet.

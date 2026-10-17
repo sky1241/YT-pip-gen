@@ -1,6 +1,6 @@
 """Plan du kebab vu de dessus, d'après la maquette (image/decors/kebab/), en mètres. y = 0 au mur du fond, la rue en bas.
 
-  python3 pipeline/plan_kebab.py image/decors/kebab/plan_v2.png   (jamais par-dessus une version validée)
+  python3 pipeline/plan_kebab.py image/decors/kebab/plan_v3.png   (jamais par-dessus une version validée)
 """
 from PIL import Image, ImageDraw, ImageFont
 import sys
@@ -42,25 +42,29 @@ txt(2.65, 2.4, "passe")
 # le frigo à boissons, au fond à gauche
 rect(1.6, 0.0, 2.3, 0.7, "#9fd3e6"); txt(1.95, 0.35, "frigo")
 # le miroir, au mur du fond
-d.line([p(3.8, 0.05), p(7.2, 0.05)], fill="#6a8fb0", width=10); txt(5.5, -0.25, "MIROIR, au-dessus de la banquette (Sky y écrit)", G)
+# le miroir sur toute la longueur de la banquette du fond, à fleur de son bout gauche (l'auteur, le 2026-10-17)
+d.line([p(3.6, 0.05), p(8.6, 0.05)], fill="#6a8fb0", width=10); txt(5.6, -0.25, "MIROIR, au-dessus de toute la banquette du fond", G)
 # 6 tables identiques (0,8 × 1,2 m), deux chaises de chaque long côté, face à face
-# au fond, la table de Sky (« au fond, table bancale ») : la banquette derrière elle, le miroir au-dessus (texte du CERN, l. 14 et 482)
-rect(4.9, 0.85, 6.1, 1.65, "#d9a066"); txt(5.5, 1.25, "table de Sky")
-chaise(5.2, 1.9, "haut"); chaise(5.8, 1.9, "haut")
+# au fond, dans l'angle de la banquette, la table de Sky (« au fond, table bancale », texte du CERN, l. 14) : une table pour cinq
+# (l'auteur, le 2026-10-17). Sky et Maëlle sur la banquette du fond, deux chaises en face, Patrick au bout, sur la banquette de droite
+rect(7.4, 0.85, 8.6, 1.65, "#d9a066"); txt(8.0, 1.25, "table de Sky")
+chaise(7.7, 1.9, "haut"); chaise(8.3, 1.9, "haut")
 # au milieu : 2 tables
 for ty in (3.6, 5.9):
     tx = 5.5
     rect(tx - 0.4, ty - 0.6, tx + 0.4, ty + 0.6, "#d9a066")
     for cy in (ty - 0.3, ty + 0.3):
         chaise(tx - 0.65, cy, "droite"); chaise(tx + 0.65, cy, "gauche")
-# à droite : la banquette le long de la rampe, et 3 tables perpendiculaires, un petit bout contre elle
+# à droite : la banquette le long de la rampe, et 2 tables perpendiculaires, un petit bout contre elle (la première, près de l'angle,
+# enlevée pour la table de Sky : l'auteur, le 2026-10-17)
 # la banquette en L : sous le miroir, le long du mur du fond, puis le long de la rampe
 rect(3.6, 0.2, 9.2, 0.8, "#b03a2e"); rect(8.6, 0.8, 9.2, 7.2, "#b03a2e"); txt(3.2, 0.5, "banquette")
-for ty in (2.4, 4.4, 6.4):
+for ty in (4.0, 6.2):
     rect(7.4, ty - 0.4, 8.6, ty + 0.4, "#d9a066")
     for cx in (7.7, 8.3):
         chaise(cx, ty - 0.65, "bas"); chaise(cx, ty + 0.65, "haut")
-# la rampe ouverte et l'escalier vers Datastream
+# la rampe ouverte et l'escalier vers Datastream : entre la banquette et l'escalier, rien qu'une rampe basse, tout droit,
+# sans mur ni retour dans la salle ; l'angle reste grand ouvert (l'auteur, le 2026-10-17)
 d.line([p(9.3, 0.6), p(9.3, 7.6)], fill="#8a5a2b", width=4)
 rect(9.4, 0.4, 10.9, 7.8, "#e8e0d0")
 for k in range(14):
@@ -69,15 +73,19 @@ txt(10.15, 4.2, "ESCALIER", G); txt(10.15, 4.6, "en bois, il grince"); txt(10.15
 rect(9.6, 0.0, 10.7, 0.12, "#8a5a2b"); txt(10.15, -0.25, "porte de Datastream (en haut)")
 txt(10.15, 7.55, "pied : depuis la rue")
 d.text((MX, 15), "Le kebab vu de dessus (plan de travail, 1 carreau = 1 m)", fill="black", font=G)
+# qui s'assoit où, à la table de Sky
+txt(8.0, 0.5, "Sky, Maëlle", F, "white"); txt(8.9, 1.25, "P", G, "white")
+d.text(p(9.45, 1.1), "← Patrick, au bout", fill="black", font=F)
 img.save(sys.argv[1])
 
 # Les axes de caméra (image/decors/kebab/axes.md) : python3 pipeline/plan_kebab.py <sortie.png> axes
 # numéro : (x, y de la caméra, direction du regard en degrés : 0 = vers la droite, 90 = vers la rue, 270 = vers le fond)
 AXES = {
-    1: (5.5, 9.3, 270), 2: (5.5, 8.35, 270), 3: (7.6, 1.1, 100), 4: (1.65, 4.0, 0), 5: (10.15, 3.2, 160),
-    6: (5.5, 2.65, 270), 7: (5.5, 0.55, 90), 8: (4.3, 4.6, 180), 9: (3.4, 3.1, 180), 10: (6.6, 7.4, 8),
-    11: (10.15, 7.5, 270), 12: (3.3, 1.4, 330), 13: (6.5, 0.45, 110), 14: (6.6, 3.4, 300), 15: (6.0, 5.0, 100),
-    16: (3.6, 2.4, 225), 17: (5.5, 1.25, 270), 18: (3.0, 2.4, 200), 19: (8.0, 1.5, 90),
+    1: (5.5, 9.3, 270), 2: (5.5, 8.35, 270), 3: (4.8, 1.3, 95), 4: (1.65, 4.0, 345), 5: (10.15, 3.2, 160),
+    6: (8.0, 2.85, 270), 7: (7.8, 0.5, 90), 8: (4.3, 4.6, 180), 9: (3.4, 3.1, 180), 10: (6.6, 7.4, 8),
+    11: (10.15, 7.5, 270), 12: (4.6, 2.0, 315), 13: (7.0, 0.4, 100), 14: (6.2, 3.0, 315), 15: (6.0, 5.0, 100),
+    16: (3.6, 2.4, 225), 17: (8.0, 1.25, 270), 18: (3.0, 2.4, 200), 19: (8.9, 1.7, 90),
+    20: (6.95, 1.25, 0), 21: (8.95, 1.25, 180),
 }
 # un seul axe, pour le joindre au prompt de son fond : python3 pipeline/plan_kebab.py <sortie.png> axe <numéro>
 if len(sys.argv) > 3 and sys.argv[2] == "axe":
