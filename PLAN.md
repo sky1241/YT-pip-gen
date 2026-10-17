@@ -1,14 +1,14 @@
 # Kebab Datastream — Checklist épisode 1
 
-Version du 6 octobre 2026, mise à jour le 16 octobre 2026. C'est ce fichier qui fait foi : on coche ici, plus dans le doc claude.ai.
+Version du 6 octobre 2026, mise à jour le 17 octobre 2026. C'est ce fichier qui fait foi : on coche ici, plus dans le doc claude.ai.
 
-## Où on en est (16 octobre 2026)
+## Où on en est (17 octobre 2026)
 
-- **Fait** : les fondations du repo, la palette des émotions et l'outil de découpe. Maëlle et Sky ont toutes leurs planches de référence (Sky : la série 2, les 50 cases de son inventaire). La chaîne d'images marche de bout en bout : ComfyUI sur la carte AMD de sky-master (`pipeline/comfyui.py`), le modèle Animagine XL 4.0, le premier LoRA de Sky entraîné sur Kaggle en une heure et testé (`image/test-standard.md`). Le minage est désinstallé, et Claude se lance depuis un terminal (icône « Kebab Datastream »).
-- **En cours** : le LoRA de Sky. La v1 reconnaît son visage, ses cheveux, sa barbe, ses lunettes dorées, ses colliers et son sourire de monstre ; l'auteur en est content. Elle rate l'œil aveugle hors de face, et la tenue hors des gros plans (une seule image en pied dans le jeu).
+- **Fait** : les fondations du repo, la palette des émotions et l'outil de découpe. Maëlle et Sky ont toutes leurs planches de référence (Sky : la série 2, les 50 cases de son inventaire). La chaîne d'images marche de bout en bout : ComfyUI sur la carte AMD de sky-master (`pipeline/comfyui.py`), le modèle Animagine XL 4.0, le premier LoRA de Sky entraîné sur Kaggle en une heure et testé (`image/test-standard.md`). Le minage est désinstallé, et Claude se lance depuis un terminal (icône « Kebab Datastream »). Le style de la série est décidé (`image/style.md`), le canon aussi (Mohamed à Annemasse). Le kebab a son plan validé (`image/decors/kebab/plan_v6.png`), sa base peinte (`plan-peint_v2.png`), ses 25 axes (`axes.md`) et ses deux premiers fonds, les axes 6 et 7, faits avec la vue en volumes (`pipeline/vue_kebab.py`).
+- **En cours** : les fonds du kebab, un axe à la fois : 2 des 9 du pilote faits (6, 7), puis 20, 21, 8, 2, 1, 10, 17. Le LoRA de Sky. La v1 reconnaît son visage, ses cheveux, sa barbe, ses lunettes dorées, ses colliers et son sourire de monstre ; l'auteur en est content. Elle rate l'œil aveugle hors de face, et la tenue hors des gros plans (une seule image en pied dans le jeu).
 - **Ensuite** : l'avis de l'auteur sur la v2 du LoRA de Sky (faite et testée le 2026-10-16 : l'œil aveugle est appris). Puis Maëlle : ses 4 planches en pied et en gestes, et son LoRA. Chaque nouveau perso aura ces planches dès le départ.
 - **Décisions qui attendent l'auteur** : ce que couvre l'épisode 1, s'il faut un LoRA de style (années 90 tout fait, ou le nôtre) en plus de l'IP-Adapter ; le style lui-même est décidé (`image/style.md`), garder ou non la règle « sans sudo » de CLAUDE.md (le compte a sudo).
-- **Pas commencé** : l'écriture de l'épisode 1 (phase 1), le plan du kebab et ses décors, Patrick, Mohamed et les autres persos, les voix, la vidéo, le pilote.
+- **Pas commencé** : l'écriture de l'épisode 1 (phase 1), Patrick, Mohamed et les autres persos, les voix, la vidéo, le pilote.
 
 ## Mode d'emploi
 
@@ -70,8 +70,8 @@ Terminée quand `image/style.md` est validé et que le kebab a son plan d'axes d
 - [x] Décider le style de la série : celui des images de référence de Sky et de Maëlle, un anime des années 90 entre *Street Fighter II*, *Evangelion* et Ghibli (l'auteur, le 2026-10-16)
 - [ ] Explorer le style dans ChatGPT : une vue large du kebab et Sky, dans le même rendu
 - [ ] Écrire `image/style.md` : mots-clés de prompt, palette, 3 à 5 images de référence (écrit le 2026-10-16 : la décision, les références et ce qui fait le style ; les mots-clés restent à tester, puis l'auteur valide)
-- [x] Dessiner le plan du kebab vu de dessus : tables, comptoir, broche, miroir, escalier, vitrine (le 2026-10-17 : `image/decors/kebab/plan_v2.png` en code, et sa version peinte `plan-peint_v1.png`, gardée par l'auteur)
-- [x] Lister les 6 à 8 axes de caméra et qui s'assoit où (Claude peut le préparer depuis le script) : 25 axes, validés par l'auteur le 2026-10-17, sur le plan v5 (`image/decors/kebab/axes.md`, `plan-axes_v5.png`), trois lumières (jour, pluie, nuit), 45 fonds en tout dont 9 pour le pilote ; 6 points du texte à trancher
+- [x] Dessiner le plan du kebab vu de dessus : tables, comptoir, broche, miroir, escalier, vitrine (le 2026-10-17 : `image/decors/kebab/plan_v6.png` en code, et sa version peinte `plan-peint_v2.png`, la base fixe validée par l'auteur)
+- [x] Lister les 6 à 8 axes de caméra et qui s'assoit où (Claude peut le préparer depuis le script) : 25 axes, validés par l'auteur le 2026-10-17, sur le plan v6 (`image/decors/kebab/axes.md`, `plan-axes_v7.png`), trois lumières (jour, pluie, nuit), 45 fonds en tout dont 9 pour le pilote ; 6 points du texte à trancher
 - [ ] Définir les cartons texte façon Eva (chiffres clés) et le carton SMS : police, couleurs, durée à l'écran
 - [x] Tester une première planche de la palette des émotions sur Maëlle, dont l'image maître existe, puis sa découpe en fichiers (`pipeline/decouper_planche.py`)
 
@@ -85,7 +85,7 @@ Terminée quand la minute des mots croisés est montée et que le temps passé �
 - [ ] Image maître de Mohamed
 - [ ] Expressions du pilote, marquées « · pilote » dans `image/INVENTAIRE.md`, dont le sourire de Sky : yeux sans reflet, joues plates, seule la bouche bouge (celles de Sky sont faites ; restent Patrick et Mohamed)
 - [ ] Bouches fermée, mi-ouverte et ouverte pour les trois (celles de Sky sont faites)
-- [ ] Fonds de la table du fond et du comptoir
+- [ ] Les 9 fonds du pilote, de jour (axes 1, 2, 6, 7, 8, 10, 17, 20, 21 de `image/decors/kebab/axes.md`) : 6 (la table de Sky) et 7 (son contrechamp) faits et validés le 2026-10-17
 - [ ] Voix des trois persos : compléter et valider leur description dans `audio/voix/` (énergie et 3 répliques déjà posées)
 - [ ] Découpage de la scène en `plans.json` (Claude)
 - [ ] Voix générées, puis animatic → validation
@@ -216,7 +216,7 @@ La palette des émotions, la même pour tous : 36 émotions en 6 planches, défi
 - [ ] Grep, le chat de Daria : fiche (le motif du pelage), image maître, rotation, 2 signatures
 - [ ] Nmap, le chat de Sky et Maëlle : fiche (tout le design), image maître, rotation
 - [ ] LoRA de style : d'abord essayer les LoRA « années 90 » déjà prêts sur Hugging Face, notés dans `journal.md` (2026-10-15)
-- [ ] Un fond par axe de caméra du kebab, plus l'escalier
+- [ ] Un fond par axe de caméra du kebab, plus l'escalier : 45 fonds (23 de jour, 12 de pluie, 10 de nuit), la liste dans `image/decors/kebab/axes.md` et les cases dans `image/INVENTAIRE.md`
 - [ ] Une image maître par axe, avec les persos à leur place habituelle
 
 ## Phase 6 — Production scène par scène

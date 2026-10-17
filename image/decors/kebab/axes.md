@@ -23,6 +23,14 @@ Un axe = un fond vide, sans perso, fait une fois et réutilisé à chaque épiso
 - Dehors : la rue d'Annemasse, les rails du tram avec de l'herbe entre les rails, des potelets, un trottoir.
 - Trois lumières : le jour, la pluie (rideau de verre fermé, gris), la nuit.
 
+## La rue, vue de dedans (référence : l'axe 7)
+
+Le fond de l'axe 7 (`table-du-fond-contrechamp/fond_v1.png`), validé par l'auteur, fixe la rue d'en face pour tous les axes qui la voient (1, 2, 3, 13, 15, 22, 23, 24, 25) : le trottoir clair, la voie du tram posée sur une bande d'herbe, de l'herbe entre et autour des rails, pas de pavés ; de l'autre côté, une rangée d'arbres feuillus le long du trottoir, et derrière eux la façade d'un bâtiment beige et simple, à grandes fenêtres régulières, sans enseigne. Dans le prompt d'un axe qui voit la rue, joindre ce fond en troisième image, « pour la rue seulement ».
+
+## Le rideau de verre fermé (pluie, soir)
+
+L'auteur, le 2026-10-17 : quand il pleut ou le soir, les panneaux vitrés sont dépliés sur toute la devanture, **avec une porte au milieu**, c'est l'entrée quand le rideau est fermé. Claude : la porte est un des panneaux, le même verre et le même cadre, avec une poignée ; rideau ouvert, elle se replie avec les autres, à gauche. Devant elle, entre les deux tables du milieu et la devanture, il reste 1,5 m de passage. Cette version fermée se fait en retouche des fonds de jour (« Les trois lumières ») et pour les axes 22 et 23.
+
 ## Le plan, en bref (`plan_v6.png`)
 
 - À gauche, le comptoir en L (la caisse devant, **tournée vers Mohamed**, les salades le long), la broche, le grill et la friteuse contre le mur ; le frigo à boissons au fond à gauche.
