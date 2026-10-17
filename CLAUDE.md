@@ -2,7 +2,7 @@
 
 ## Le projet
 
-Mini-série anime en français, style années 90 (entre *Le Voyage de Chihiro* et *Evangelion*). Comédie de dialogue qui fait passer de vraies notions de science, de business et de géopolitique. Diffusion sur YouTube. Objectif : un épisode de 15 à 20 minutes par semaine, éventuellement publié en deux moitiés (coupure façon eyecatch). Chaque épisode est découpé en scènes d'une à deux minutes.
+Mini-série anime en français, style années 90 (entre *Le Voyage de Chihiro* et *Evangelion*). Comédie de dialogue qui fait passer de vraies notions de science, de business et de géopolitique. Diffusion sur YouTube. Objectif : un épisode d'environ 5 minutes par semaine (l'auteur, le 2026-10-17 ; avant : 15 à 20 minutes). La partie 1 du texte du CERN, « Le Miroir », fait les trois premiers épisodes, chacun fini sur un cliffhanger. Chaque épisode est découpé en scènes d'une à deux minutes.
 
 - **« Sky » désigne à la fois l'auteur et le personnage principal.** Dans ce fichier, « l'auteur » = l'utilisateur, « Sky » = le personnage.
 - **L'auteur écrit les épisodes. Claude ne les écrit jamais.** Il ne réécrit un passage que sur demande explicite : il liste d'abord les passages touchés et ce qu'il propose, l'auteur valide, puis il réécrit. Un problème repéré (science, canon, cohérence) se signale à l'auteur, il ne se corrige pas en silence.
@@ -176,7 +176,7 @@ Statuts : `a_generer` → `genere` → `valide` ou `rejete`. Les répliques sont
 
 ## À trancher avec l'auteur (ne pas décider seul)
 
-- **Ce que couvre l'épisode 1** : « Le Miroir » seul, ou avec le call.
+- **Les coupures de « Le Miroir » en trois épisodes** : Claude propose (le 2026-10-17), l'auteur valide.
 - **La machine de génération.** Aucune machine du parc n'a de carte NVIDIA (relevé du 13 octobre 2026, détail dans `config.yaml`). La mieux équipée, sky-master, a une AMD Radeon RX 5700 XT de 8 Go : c'est trop peu pour AniSora, qui demande 12 Go dans sa version légère. Depuis 2026, AMD publie PyTorch pour cette puce (ROCm 7.14, projet TheRock, vérifié le 2026-10-15) : à tester pour les images et le LoRA. Options : tester les images sur cette carte, puis louer ou acheter une carte NVIDIA pour la vidéo.- **Un LoRA de style** en plus de l'IP-Adapter : un « années 90 » tout fait, ou le nôtre. Le style lui-même est décidé (`image/style.md`, l'auteur, le 2026-10-16).
 
 ## Premier lancement

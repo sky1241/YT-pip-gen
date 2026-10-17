@@ -7,7 +7,7 @@ Version du 6 octobre 2026, mise à jour le 17 octobre 2026. C'est ce fichier qui
 - **Fait** : les fondations du repo, la palette des émotions et l'outil de découpe. Maëlle et Sky ont toutes leurs planches de référence (Sky : la série 2, les 50 cases de son inventaire). La chaîne d'images marche de bout en bout : ComfyUI sur la carte AMD de sky-master (`pipeline/comfyui.py`), le modèle Animagine XL 4.0, le premier LoRA de Sky entraîné sur Kaggle en une heure et testé (`image/test-standard.md`). Le minage est désinstallé, et Claude se lance depuis un terminal (icône « Kebab Datastream »). Le style de la série est décidé (`image/style.md`), le canon aussi (Mohamed à Annemasse). Le kebab a son plan validé (`image/decors/kebab/plan_v6.png`), sa base peinte (`plan-peint_v2.png`), ses 25 axes (`axes.md`) et ses fonds : les 9 du pilote (axes 1, 2, 6, 7, 8, 10, 17, 20, 21), plus l'axe 11 et la façade en quatre lumières, faits avec la vue en volumes (`pipeline/vue_kebab.py`).
 - **En cours** : les fonds du kebab de l'épisode 1, un axe à la fois (les 9 du pilote sont faits le 2026-10-17). Le LoRA de Sky. La v1 reconnaît son visage, ses cheveux, sa barbe, ses lunettes dorées, ses colliers et son sourire de monstre ; l'auteur en est content. Elle rate l'œil aveugle hors de face, et la tenue hors des gros plans (une seule image en pied dans le jeu).
 - **Ensuite** : l'avis de l'auteur sur la v2 du LoRA de Sky (faite et testée le 2026-10-16 : l'œil aveugle est appris). Puis Maëlle : ses 4 planches en pied et en gestes, et son LoRA. Chaque nouveau perso aura ces planches dès le départ.
-- **Décisions qui attendent l'auteur** : ce que couvre l'épisode 1, s'il faut un LoRA de style (années 90 tout fait, ou le nôtre) en plus de l'IP-Adapter ; le style lui-même est décidé (`image/style.md`), garder ou non la règle « sans sudo » de CLAUDE.md (le compte a sudo).
+- **Décisions qui attendent l'auteur** : les coupures de « Le Miroir » en trois épisodes de 5 minutes (proposées), s'il faut un LoRA de style (années 90 tout fait, ou le nôtre) en plus de l'IP-Adapter ; le style lui-même est décidé (`image/style.md`), garder ou non la règle « sans sudo » de CLAUDE.md (le compte a sudo).
 - **Pas commencé** : l'écriture de l'épisode 1 (phase 1), Patrick, Mohamed et les autres persos, les voix, la vidéo, le pilote.
 
 ## Mode d'emploi
@@ -46,7 +46,8 @@ Terminée quand une image, une phrase de voix et un clip de 5 secondes sortent d
 Terminée quand l'épisode 1 est figé dans le repo avec le tag `ep01-v1`. Cette phase peut avancer en parallèle de la phase 2.
 
 - [ ] Trancher le canon : Mohamed à Annemasse ou Mehmet à Clichy
-- [ ] Choisir ce que couvre l'épisode 1 dans le texte du CERN (environ 15 minutes) et où tombe la coupure du milieu
+- [x] Choisir ce que couvre l'épisode 1 dans le texte du CERN : « Le Miroir », la partie 1, en trois épisodes d'environ 5 minutes, un par semaine (l'auteur, le 2026-10-17)
+- [ ] Valider les deux coupures proposées (après le « non » à Porcari, l. 212 ; après « la theorie je l ai deja », l. 382) ; la fin : « j ai une autre idee un peu plus rentable », l. 566
 - [ ] Corriger la science avec `ecriture/corrections-cern.md`, pour la partie retenue :
   - [ ] CERN : 25 États membres, budget 2026 d'environ 1,5 milliard de CHF
   - [ ] Langues : remplacer l'explication de Maëlle par la transparence des nombres

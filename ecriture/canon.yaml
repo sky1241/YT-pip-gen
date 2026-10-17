@@ -21,7 +21,8 @@ a_trancher:
     options:
       - "« Le Miroir » seul"
       - "« Le Miroir » + le call (briefing de guerre)"
-    choix: null
+    choix: "« Le Miroir » (partie 1 du texte du CERN), coupé en trois épisodes d'environ 5 minutes"   # l'auteur, le 2026-10-17
+    coupures: null   # proposées par Claude le 2026-10-17 : après le « non » à Porcari (l. 212), après « la theorie je l ai deja c est tout con » (l. 382), fin sur « j ai une autre idee un peu plus rentable » (l. 566) ; à valider
   points_narratifs_en_suspens:
     theorie_du_tout: null      # ambiguë ou révélée
     quenelles: null
