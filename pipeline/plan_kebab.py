@@ -1,6 +1,6 @@
 """Plan du kebab vu de dessus, d'après la maquette (image/decors/kebab/), en mètres. y = 0 au mur du fond, la rue en bas.
 
-  python3 pipeline/plan_kebab.py image/decors/kebab/plan_v5.png   (jamais par-dessus une version validée)
+  python3 pipeline/plan_kebab.py image/decors/kebab/plan_v6.png   (jamais par-dessus une version validée)
 """
 from PIL import Image, ImageDraw, ImageFont
 import sys
@@ -65,10 +65,10 @@ for ty in (4.0, 6.2):
     rect(7.4, ty - 0.4, 8.6, ty + 0.4, "#d9a066")
     for cx in (7.7, 8.3):
         chaise(cx, ty - 0.65, "bas"); chaise(cx, ty + 0.65, "haut")
-# la rampe ouverte et l'escalier vers Datastream : entre la banquette et l'escalier, rien qu'une rampe basse, tout droit,
-# sans mur ni retour dans la salle ; l'angle reste grand ouvert (l'auteur, le 2026-10-17)
+# l'escalier vers Datastream, derrière un mur : on ne le voit pas depuis la salle, il ne s'ouvre que sur le palier, devant ;
+# la banquette de droite est adossée à ce mur (l'auteur, le 2026-10-17)
 # l'escalier part d'un palier, à l'intérieur, au bout de la banquette, et monte vers le fond ; la rampe s'arrête au palier
-d.line([p(9.3, 0.6), p(9.3, 6.4)], fill="#8a5a2b", width=4)
+d.line([p(9.3, 0), p(9.3, 6.4)], fill="black", width=6)
 rect(9.4, 0.4, 10.9, 6.4, "#e8e0d0")
 for k in range(12):
     yy = 0.4 + k * 0.5; d.line([p(9.4, yy), p(10.9, yy)], fill="#a09080", width=1)

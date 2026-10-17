@@ -4,7 +4,7 @@
     "plan_v5.png": {
       "source": "Claude, en code (pipeline/plan_kebab.py)",
       "date": "2026-10-17",
-      "_note": "corrections de l'auteur sur plan-axes_v4 : pas de muret devant l'escalier, la devanture ouverte jusqu'au coin de droite, le palier de l'escalier à l'intérieur ; la table de devant à droite, celle de Sky dans l'épisode Navier-Stokes"
+      "_note": "corrections de l'auteur sur plan-axes_v4 : pas de muret devant l'escalier, la devanture ouverte jusqu'au coin de droite, le palier de l'escalier à l'intérieur ; la table de devant à droite, celle de Sky dans l'épisode Navier-Stokes ; remplacé par plan_v6.png (le mur de l'escalier)"
     },
     "plan-peint_v2.png": {
       "source": "ChatGPT",
@@ -16,6 +16,16 @@
       "source": "Claude, en code",
       "date": "2026-10-17",
       "_note": "les 25 axes sur plan_v5 ; l'axe 6 redessiné par l'auteur (de biais, depuis le bout gauche de la table de Sky, vers l'angle), reculé de 60 cm pour laisser de l'air"
+    },
+    "plan_v6.png": {
+      "source": "Claude, en code (pipeline/plan_kebab.py)",
+      "date": "2026-10-17",
+      "_note": "l'auteur : l'escalier ne se voit pas depuis la salle, il monte derrière un mur (« c'est un mur tout simplement ») ; la banquette de droite est adossée à ce mur ; il ne s'ouvre que sur le palier, devant"
+    },
+    "plan-axes_v7.png": {
+      "source": "Claude, en code",
+      "date": "2026-10-17",
+      "_note": "les 25 axes sur plan_v6"
     }
   },
   "_supprimees": "le 2026-10-17, à la demande de l'auteur (« vire les autres images ») : maquette_v1.png, maquette_v2.png et plan_v1.png, retirées du repo (elles restent dans l'historique git, jusqu'au commit 50132dd), et les retouches intermédiaires du disque externe ; le 2026-10-17, à la demande de l'auteur (« clean-moi les images qui restent du kebab ») : plan-peint_v1.png, table-du-fond/fond_v1.png (l'ancien plan), plan_v2 à v4, plan-axes_v1 à v4 (dans l'historique git), les captures du disque externe et les images du kebab des Téléchargements"

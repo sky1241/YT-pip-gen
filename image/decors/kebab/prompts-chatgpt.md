@@ -421,3 +421,17 @@ Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the 
 ```
 
 À contrôler à la reprise : le cadrage et la perspective de la vue en volumes ; la banquette d'un seul tenant, du bord gauche à l'angle puis vers nous ; le miroir fumé ; la table, ses sauces et ses serviettes ; les dossiers des deux chaises en bas à droite ; le dessous de l'escalier en haut à droite, sans porte ; aucune personne, aucun texte.
+
+Résultat de A6 v3 (la vue en volumes), le 2026-10-17 : le bon angle et la bonne disposition. Reste l'angle de la pièce : l'auteur ne veut pas voir l'escalier, qui monte derrière un mur (« c'est un mur tout simplement »), et il manque la grande plante de l'angle. Plan v6 et vue en volumes corrigés (le mur de l'escalier, la plante). Capture hors du repo (`table-du-fond_essai-3_capture.png`).
+
+### Prompt A6 v3 retouche — Le mur de l'escalier, la plante de l'angle
+
+Dans la case « Décrivez les modifications » de l'image.
+
+```
+Edit ONLY this image. Keep everything else exactly as it is: the same view, the same table, bench, chairs, mirror, style and light. Make only these two changes:
+1. At the top right, remove the wooden staircase completely: there is no staircase in this view, only the plain wall, the same as the rest of the wall, up to the top of the frame.
+2. In the corner where the red bench turns, add a large green potted plant standing behind the corner of the bench, its broad leaves rising above the backrest against the two walls.
+```
+
+À contrôler à la reprise : plus d'escalier, un mur uni ; la plante dans l'angle, derrière le coin de la banquette ; rien d'autre de changé.

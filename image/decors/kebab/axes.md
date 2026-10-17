@@ -1,6 +1,6 @@
 # Le kebab — les axes de caméra
 
-Un axe = un fond vide, sans perso, fait une fois et réutilisé à chaque épisode (CLAUDE.md, « Images »). Les numéros sont ceux du plan `plan-axes_v6.png` (les cercles bleus : la caméra et la direction où elle regarde). Les positions viennent de `plan_v5.png` (le plan v3 validé par l'auteur le 2026-10-17, avec ses corrections), et les besoins des textes : le CERN (`ecriture/brouillons/cern.md`, numéros de ligne) et Navier-Stokes.
+Un axe = un fond vide, sans perso, fait une fois et réutilisé à chaque épisode (CLAUDE.md, « Images »). Les numéros sont ceux du plan `plan-axes_v7.png` (les cercles bleus : la caméra et la direction où elle regarde). Les positions viennent de `plan_v6.png` (le plan v3 validé par l'auteur le 2026-10-17, avec ses corrections), et les besoins des textes : le CERN (`ecriture/brouillons/cern.md`, numéros de ligne) et Navier-Stokes.
 
 ## Où on en est (2026-10-17)
 
@@ -18,17 +18,17 @@ Un axe = un fond vide, sans perso, fait une fois et réutilisé à chaque épiso
 - La table de Sky pour cinq, dans l'angle : Sky et Maëlle sur la banquette, deux chaises en face, Patrick au bout (« c'est l'ancien, ça résout les problèmes de champ ») ; Sky peut se lever et laisser sa place à Maëlle.
 - Les tables : rectangulaires, toutes pareilles, les chaises face à face, deux de chaque long côté ; celles de droite perpendiculaires à la banquette, un petit bout contre elle. La table de devant à droite : celle de Sky dans l'épisode Navier-Stokes.
 - Sur chaque table : une sauce rouge, une sauce blanche, un distributeur de serviettes (Sky griffonne dessus). Pas de plante sur les tables ; quelques grandes plantes au sol, dans les coins.
-- L'escalier en bois (il grince), dans le kebab : un palier à l'intérieur, à l'avant droit, puis il monte vers le fond jusqu'à la porte de Datastream (une porte en bois simple, sans texte). Une rampe basse et ouverte entre la banquette et l'escalier.
+- L'escalier en bois (il grince), dans le kebab : un palier à l'intérieur, à l'avant droit, puis il monte vers le fond, derrière un mur, jusqu'à la porte de Datastream, à l'étage (une porte en bois simple, sans texte, qu'on ne voit pas d'en bas). La banquette de droite est adossée au mur de l'escalier ; une grande plante dans l'angle de la banquette.
 - Dehors : la rue d'Annemasse, les rails du tram avec de l'herbe entre les rails, des potelets, un trottoir.
 - Trois lumières : le jour, la pluie (rideau de verre fermé, gris), la nuit.
 
-## Le plan, en bref (`plan_v5.png`)
+## Le plan, en bref (`plan_v6.png`)
 
 - À gauche, le comptoir en L (la caisse devant, **tournée vers Mohamed**, les salades le long), la broche, le grill et la friteuse contre le mur ; le frigo à boissons au fond à gauche.
 - Au fond, la banquette rouge en L : le long du mur du fond, puis le long de la rampe, à droite. **Le miroir couvre toute la banquette du fond**, à fleur de son bout gauche.
 - **La table de Sky, dans l'angle de la banquette, pour cinq** : Sky et Maëlle sur la banquette du fond, deux chaises en face, **Patrick au bout, sur la banquette de droite** (c'est l'ancien). Un plan où Sky se lève et laisse sa place à Maëlle est possible.
 - Au milieu, deux tables pour quatre ; le long de la banquette de droite, deux tables perpendiculaires, un petit bout contre elle. **La table de devant, à droite, est celle de Sky dans l'épisode Navier-Stokes**, près de la vitrine (l'auteur).
-- À droite, **l'escalier en bois est dans le kebab** : il part d'un palier intérieur, à l'avant droit, au bout de la banquette, et monte vers le fond jusqu'à la porte de Datastream. Le palier est derrière la devanture, **sans muret** : la devanture ouverte va jusqu'au coin de droite. **Entre la banquette et l'escalier, rien qu'une rampe basse, tout droit, sans mur ni retour dans la salle : l'angle reste grand ouvert.**
+- À droite, **l'escalier en bois est dans le kebab** : il part d'un palier intérieur, à l'avant droit, au bout de la banquette, et monte vers le fond jusqu'à la porte de Datastream. Le palier est derrière la devanture, **sans muret** : la devanture ouverte va jusqu'au coin de droite. **L'escalier monte derrière un mur : on ne le voit pas depuis la salle** (l'auteur, le 2026-10-17, « c'est un mur tout simplement ») ; la banquette de droite est adossée à ce mur, et l'escalier ne s'ouvre que sur le palier, devant, sans muret côté rue. **Une grande plante dans l'angle**, au-dessus du coin de la banquette.
 - Devant, la devanture ouverte sur la rue d'Annemasse ; les panneaux vitrés repliés à gauche. **Dans la rue, les rails du tram, avec de l'herbe entre les rails**, comme à Annemasse.
 
 ## Les règles de chaque prompt

@@ -24,7 +24,7 @@ CAMERAS.update({5: (2.1, -25, 70), 11: (DEBOUT, 18, 66), 13: (DEBOUT, -15, 66), 
 FOND, OBJETS = [], []   # le décor (dessiné d'abord, dans l'ordre), puis les objets (triés du plus loin au plus proche)
 
 
-def boite(x0, y0, x1, y1, z0, z1, couleur, liste=OBJETS, morceau=99):
+def boite(x0, y0, x1, y1, z0, z1, couleur, liste=OBJETS, morceau=99, trait=True):
     """Une boîte, en coordonnées du plan (x vers la droite, y vers la rue, z vers le haut). Les longues (banquettes,
     comptoir) se coupent en morceaux de 50 cm, pour que le tri du plus loin au plus proche reste juste."""
     nx = max(1, math.ceil((x1 - x0) / morceau - 1e-9))
@@ -32,12 +32,12 @@ def boite(x0, y0, x1, y1, z0, z1, couleur, liste=OBJETS, morceau=99):
     for i in range(nx):
         for j in range(ny):
             liste.append(("boite", (x0 + (x1 - x0) * i / nx, y0 + (y1 - y0) * j / ny,
-                                    x0 + (x1 - x0) * (i + 1) / nx, y0 + (y1 - y0) * (j + 1) / ny, z0, z1), couleur))
+                                    x0 + (x1 - x0) * (i + 1) / nx, y0 + (y1 - y0) * (j + 1) / ny, z0, z1), couleur, trait))
 
 
 def plaque(points, normale, couleur):
     """Une surface plate du décor (sol, mur, plafond) : ses coins, et le côté d'où elle se voit."""
-    FOND.append(("plaque", (points, normale), couleur))
+    FOND.append(("plaque", (points, normale), couleur, True))
 
 
 # --- la rue, en face ---
@@ -119,13 +119,10 @@ for ty in (4.0, 6.2):                                       # les deux tables de
     for cx in (7.7, 8.3):
         chaise(cx, ty - 0.65, "bas"); chaise(cx, ty + 0.65, "haut")
 
-# --- la rampe basse et l'escalier en bois, à droite ---
+# --- l'escalier en bois, à droite, derrière un mur : on ne le voit pas depuis la salle, il ne s'ouvre que sur le palier,
+# devant (l'auteur, le 2026-10-17) ---
 BOIS = "#8a5a2b"
-yy = 0.6
-while yy <= 6.4:
-    boite(9.27, yy - 0.03, 9.33, yy + 0.03, 0, 0.95, BOIS)
-    yy += 0.3
-boite(9.24, 0.6, 9.36, 6.4, 0.9, 0.97, BOIS, morceau=0.5)
+boite(9.3, 0, 9.4, 6.4, 0, 3.0, "#dcc69c", morceau=0.5, trait=False)   # le mur de l'escalier, trié avec les marches
 for k in range(12):                                         # monte du palier (y = 6,4) vers le fond, 25 cm par marche
     y0, y1, dessus = 6.4 - 0.5 * (k + 1), 6.4 - 0.5 * k, 0.25 * (k + 1)
     boite(9.4, y0, 10.9, y1, max(0, dessus - 0.55), dessus, "#9c6b3c")                 # la marche et son limon
@@ -134,6 +131,8 @@ for k in range(12):                                         # monte du palier (y
 boite(9.4, 6.4, 10.9, 7.9, 0, 0.03, "#b07a45")              # le palier
 
 # --- les grandes plantes, au sol ---
+boite(9.0, 0.05, 9.3, 0.35, 1.0, 1.25, "#9a5b3a")            # la plante de l'angle, au-dessus du coin de la banquette
+boite(8.85, 0.02, 9.3, 0.5, 1.25, 1.95, "#3f7a3a")
 for px, py in ((2.75, 0.4), (0.75, 7.3), (10.55, 7.55)):
     boite(px - 0.18, py - 0.18, px + 0.18, py + 0.18, 0, 0.4, "#9a5b3a")
     boite(px - 0.3, py - 0.3, px + 0.3, py + 0.3, 0.4, 1.1, "#3f7a3a")
@@ -204,7 +203,7 @@ def vue(numero, sortie):
             d.polygon(poly, fill=ombre(couleur, ECLAIRAGE.get(normale, 0.85)),
                       outline=ombre(couleur, 0.45) if trait else None)
 
-    for _, (points, normale), couleur in FOND:
+    for _, (points, normale), couleur, _trait in FOND:
         dessiner(points, normale, couleur)
         if normale == (0, 0, 1) and points[0][:2] == (0, 0):     # les carreaux du sol, tous les 50 cm
             for k in range(1, 22):
@@ -221,9 +220,9 @@ def vue(numero, sortie):
         c = ((x0 + x1) / 2, (y0 + y1) / 2, (z0 + z1) / 2)
         return math.dist(c, camera)
 
-    for _, forme, couleur in sorted(OBJETS, key=lambda o: -distance(o[1])):
+    for _, forme, couleur, trait in sorted(OBJETS, key=lambda o: -distance(o[1])):
         for points, normale in faces(forme):
-            dessiner(points, normale, couleur)
+            dessiner(points, normale, couleur, trait)
     img.save(sortie)
 
 
