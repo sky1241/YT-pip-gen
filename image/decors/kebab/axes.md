@@ -93,9 +93,11 @@ Les neuf fonds du pilote (la minute des mots croisés) : 1, 2, 6, 7, 8, 10, 17, 
 
 ## Comment on fait chaque fond
 
-Un prompt à la fois, comme pour Sky. D'abord le plan peint refait d'après `plan_v5.png` (prompt KB2 v2 et sa retouche). Puis, pour chaque axe, Claude dessine le plan avec cette seule caméra (`python3 pipeline/plan_kebab.py <sortie> axe <numéro>`), et l'auteur joint dans ChatGPT : ce plan, puis le plan peint, pour le style et les objets. Le prompt décrit la vue : où est la caméra, à quelle hauteur, et ce qu'on voit de gauche à droite. Claude contrôle (la disposition contre le plan, aucun texte, aucune personne, la lumière), range dans `image/decors/kebab/<dossier>/fond_v1.png` et note la provenance. Les prompts s'écrivent dans `prompts-chatgpt.md`.
+Un prompt à la fois, comme pour Sky. **La vue en volumes** (depuis le 2026-10-17, leçon de l'axe 6) : avec un plan vu de dessus et une caméra, ChatGPT ne respecte ni la place de la caméra ni ce qu'elle voit. Claude dessine donc la vue elle-même en volumes simples, à la bonne place et en perspective (`python3 pipeline/vue_kebab.py <sortie> <numéro>`, mêmes mesures que le plan, les axes lus dans `plan_kebab.py`), et ChatGPT la peint, comme il a peint le plan vu de dessus. L'auteur joint : la vue en volumes, puis le plan peint, pour le style et les objets. Le prompt décrit la vue : où est la caméra, à quelle hauteur, et ce qu'on voit de gauche à droite. Claude contrôle (la disposition contre le plan, aucun texte, aucune personne, la lumière), range dans `image/decors/kebab/<dossier>/fond_v1.png` et note la provenance. Les prompts s'écrivent dans `prompts-chatgpt.md`.
 
-### Le modèle de prompt d'un axe
+Axes à revoir quand on y arrive, la vue en volumes le montre : le 10 regarde le mur de droite depuis que l'escalier part d'un palier (à tourner vers le palier et les premières marches) ; le 11 aussi.
+
+### Le modèle de prompt d'un axe (première version, avec le plan et la caméra : remplacée par la vue en volumes, voir A6 v3 dans `prompts-chatgpt.md`)
 
 Deux images jointes dans le même message, dans cet ordre : le plan de l'axe seul (`~/Téléchargements/kebab_pour_A<n>_camera.png`, fait avec `pipeline/plan_kebab.py <sortie> axe <n>`), puis le plan peint (`~/Téléchargements/kebab_pour_axes_plan-peint.png`, copie de `plan-peint_v2.png`). Les parties entre crochets changent d'un axe à l'autre ; le reste ne bouge pas.
 

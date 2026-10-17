@@ -440,3 +440,7 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   caméras (joint en premier) et du dernier essai pour le style (« where it differs from the plan, follow the plan »), avec toutes
   les corrections écrites d'avance dans le prompt : juste du premier coup, sauf la caisse, encore tournée vers la rue. Validé par
   l'auteur ; les autres images du kebab supprimées à sa demande.
+- **La vue en volumes (2026-10-17)** : pour l'axe 6, ChatGPT n'a tenu ni la place de la caméra dessinée sur le plan, ni ce
+  qu'elle voit (vue de face au lieu de biais, la porte du haut visible). D'où `pipeline/vue_kebab.py` : la vue de chaque axe en
+  volumes simples, en perspective, avec les mesures du plan (axes lus dans `plan_kebab.py`), sans texte. ChatGPT la peint,
+  comme le plan vu de dessus. Les mêmes vues pourront guider le modèle local (ControlNet, profondeur ou contours).

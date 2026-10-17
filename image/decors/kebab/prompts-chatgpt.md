@@ -402,3 +402,22 @@ Light: the only daylight comes from the open shopfront, behind the camera; there
 ```
 
 À contrôler à la reprise : la vue de biais vers l'angle, assise ; la chaise vide en bas à droite ; la table de biais, ses deux sauces et ses serviettes ; la banquette du fond et le miroir fumé à gauche ; l'angle et la banquette de droite, le bout de la table contre elle ; la rampe basse, l'escalier et la porte au bord droit ; la lumière de derrière ; aucune personne, aucun texte.
+
+Résultat de A6 v2, le 2026-10-17 : raté, pour l'auteur. La caméra est de face devant la table, pas au bout gauche, de biais ; la porte de Datastream se voit en haut de l'escalier, alors que d'en bas on ne la voit pas ; la banquette doit continuer tout du long. Capture hors du repo (`table-du-fond_essai-2_capture.png`). Leçon : un plan vu de dessus avec une caméra ne suffit pas, ChatGPT ne tient pas la place de la caméra. Claude dessine désormais la vue elle-même en volumes simples (`pipeline/vue_kebab.py`), comme le plan qu'il a peint du premier coup. La caméra 6 reculée de 60 cm, même direction, pour laisser de l'air autour de la table.
+
+### Prompt A6 v3 — La table de Sky, d'après la vue en volumes
+
+Joins `~/Téléchargements/kebab_pour_A6_1_vue.png` (la vue en volumes) puis `~/Téléchargements/kebab_pour_axes_plan-peint.png`, dans la conversation des fonds.
+
+```
+The first attached image is a rough 3D layout of one view of our kebab restaurant, made of simple flat-coloured volumes: it fixes the camera, the perspective, the framing and the place of every object. The second attached image is the same restaurant seen from above, painted in our style: it gives the art style, the materials, the colours and the objects. Paint exactly the view of the first image, as an empty background for an anime series: keep the same camera, the same perspective and framing, and every object at the same place, with the same size and angle, as if the layout had been painted over. Replace the simple volumes with the real objects:
+- the dark rectangle with a brown frame on the left is the long mirror, in dark smoky glass, with no recognisable reflection;
+- the red volumes are one continuous L-shaped red padded bench, with no break: it runs along the back wall, turns in the corner and comes toward us on the right;
+- the light wood slab is the rectangular wooden table, with a red sauce bottle, a white sauce bottle and a napkin dispenser;
+- the brown upright panels at the bottom right are the backs of two empty wooden chairs with red seats, turned away from us;
+- the brown blocks at the top right are the underside of the wooden staircase, going up toward the back through an opening in the ceiling; we see no door, the office upstairs is out of sight;
+- the beige surfaces are the walls, the corner is between them.
+Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the style of the second image (clean dark outlines, flat cel shading, muted warm palette, painted details). NOT a 3D render, NOT photorealistic, and do not keep the flat colours of the layout. Light: the only daylight comes from the open shopfront, behind the camera; there are no windows, the side walls are solid; the shadows fall toward the back wall. Inside, the light is warm and dim. No people. No text, no letters and no logos anywhere. Landscape format (1536×1024).
+```
+
+À contrôler à la reprise : le cadrage et la perspective de la vue en volumes ; la banquette d'un seul tenant, du bord gauche à l'angle puis vers nous ; le miroir fumé ; la table, ses sauces et ses serviettes ; les dossiers des deux chaises en bas à droite ; le dessous de l'escalier en haut à droite, sans porte ; aucune personne, aucun texte.
