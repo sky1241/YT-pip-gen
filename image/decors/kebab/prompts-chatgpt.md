@@ -10,7 +10,8 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 | KB1 retouches | Le menu, l'escalier ouvert, le miroir fumé, les panneaux, la porte de Datastream, les tables : supprimée, remplacée par KB2 | (dans l'historique git) |
 | Plan | Vu de dessus, en code (`pipeline/plan_kebab.py`) : la disposition exacte | `image/decors/kebab/plan_v2.png` (la v1 sans la banquette en L) |
 | KB2 | Le plan peint : le kebab vu exactement d'en haut, comme le plan v2, dans le style de la maquette : faite, la référence du kebab | `image/decors/kebab/plan-peint_v1.png` |
-| A6 | L'axe 6 : la table de Sky, la banquette, le miroir | `image/decors/kebab/table-du-fond/fond_v1.png` |
+| A6 | L'axe 6 : la table de Sky, la banquette, le miroir : fait | `image/decors/kebab/table-du-fond/fond_v1.png` |
+| A7 | L'axe 7 : depuis la place de Sky, vers la rue | `image/decors/kebab/table-du-fond-contrechamp/fond_v1.png` |
 
 La suite (un fond vide par axe de caméra) s'écrit d'après KB1 et d'après les scènes du texte.
 
@@ -263,3 +264,24 @@ Edit ONLY this image. Keep everything else exactly as it is: the same view, the 
 ```
 
 À contrôler à la reprise : le miroir fumé, sans reflet ; plus de fenêtre implicite à gauche ; la lumière qui vient de derrière la caméra ; rien d'autre de changé.
+
+Résultat de la retouche A6, le 2026-10-17 : validée par l'auteur (« pas parfait mais c'est juste »). Le miroir est devenu un verre sombre et fumé, avec des lueurs chaudes floues : les dessins de Sky au marqueur blanc s'y liront bien. Plus de fenêtre implicite. La lumière est plus sombre que le matin du plan peint ; elle s'harmonisera à l'étalonnage, ce qui n'est pas possible pour une erreur de disposition. Les axes suivants gardent cette ambiance : intérieur chaud et tamisé, la rue lumineuse.
+
+### Prompt A7 — Depuis la place de Sky, vers la rue
+
+Joins `~/Téléchargements/kebab_pour_A7_camera.png` puis `~/Téléchargements/kebab_pour_axes_plan-peint.png` (le même plan peint pour tous les axes).
+
+```
+The first attached image is the floor plan of our kebab restaurant, with one camera marked in blue (number 7): its position and the cone of what it sees. The second attached image is the same restaurant seen from above, painted in our style; it gives the style, the materials, the colours and the objects. Paint the view from this camera, as an empty background for an anime series: a flat 2D hand-drawn background painting from a 1990s anime film, in the style of the second image (clean dark outlines, flat cel shading, muted warm palette, painted details). NOT a 3D render, NOT photorealistic. Landscape format (1536×1024); keep the important things away from the top and bottom edges, the image will be cropped to 16:9.
+The camera sits on the red bench at the back, in the place of someone seated at the back table, at the eye level of a seated person (about 1.2 m), and looks toward the street. Normal lens, straight vertical lines, no fisheye.
+What we see, from front to back:
+- At the bottom of the frame, the near edge of the back table, with a red sauce bottle, a white sauce bottle and a napkin dispenser.
+- On the other side of that table, its two empty wooden chairs, facing us.
+- Further away, the two tables in the middle of the room, one behind the other, each with two chairs on each long side.
+- On the right of the frame, the stainless steel counter seen from the side, with the salad display, and at its front end the cash register; the kebab spit is behind it, against the wall.
+- On the left of the frame, the tables along the red bench and the low wooden railing of the staircase.
+- At the far end, the shopfront fully open onto the sunny street: the sidewalk, the bollards, the tram rails, and the facade of a plain building across the street.
+Light: the only daylight comes from the open shopfront at the far end, on the street side; there are no other windows. The street is bright with warm morning sun; inside, the light is warm and dim, as in the second image, and the shadows of the tables and chairs fall toward the camera. No people. No text, no letters and no logos anywhere, including on the building across the street.
+```
+
+À contrôler à la reprise : la caméra assise sur la banquette, vers la rue ; la table de Sky en bas, ses deux chaises face à nous ; les deux tables du milieu ; le comptoir à droite de l'image, la banquette et la rampe à gauche (c'est le contrechamp : la gauche et la droite s'inversent) ; la devanture ouverte et la rue au fond ; la lumière qui vient de la rue ; aucune personne, aucun texte.

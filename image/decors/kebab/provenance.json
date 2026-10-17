@@ -11,6 +11,13 @@
       "prompt": "KB2",
       "date": "2026-10-17",
       "_note": "le plan v2 peint, vu exactement d'en haut, avec la maquette jointe pour le style : chaque élément à sa place, du premier coup. L'auteur : « on garde celui-ci ». Téléchargé sous le nom « Plan d’un petit restaurant kebab ensoleillé.png »"
+    },
+    "table-du-fond/fond_v1.png": {
+      "source": "ChatGPT",
+      "prompt": "A6 puis A6 retouche",
+      "date": "2026-10-17",
+      "axe": 6,
+      "_note": "validé par l'auteur (« pas parfait mais c'est juste ») ; téléchargé sous le nom « Diner rétro baigné de lumière dorée.png ». Plus sombre que le matin du plan peint : la lumière s'harmonisera à l'étalonnage (contrairement à une erreur de disposition). Recadrage 16:9 vérifié : y de 70 à 934"
     }
   },
   "_supprimees": "le 2026-10-17, à la demande de l'auteur (« vire les autres images ») : maquette_v1.png, maquette_v2.png et plan_v1.png, retirées du repo (elles restent dans l'historique git, jusqu'au commit 50132dd), et les retouches intermédiaires du disque externe"
