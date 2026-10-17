@@ -453,7 +453,7 @@ Chaque fond a aussi sa version pluie et sa version nuit, dans le même cadrage (
 Les axes de l'épisode 1, en plus de ceux du pilote (`decors/kebab/axes.md`, à valider par l'auteur).
 
 - [ ] `salle-depuis-le-fond/fond_v1.png` (3) : vers la rue, le contrechamp de l'entrée
-- [ ] `depuis-le-comptoir/fond_v1.png` (4) : le regard de Mohamed
+- [x] `depuis-le-comptoir/fond_v1.png` (4) : le regard de Mohamed
 - [ ] `depuis-l-escalier/fond_v1.png` (5) : en plongée, depuis le milieu de l'escalier
 - [ ] `broche/fond_v1.png` (9) : la broche, le grill, la hotte
 - [x] `escalier-vers-datastream/fond_v1.png` (11) : l'escalier et la porte de Datastream en haut
