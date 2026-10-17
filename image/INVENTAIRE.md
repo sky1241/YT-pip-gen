@@ -457,7 +457,7 @@ Les axes de l'épisode 1, en plus de ceux du pilote (`decors/kebab/axes.md`, à 
 - [ ] `depuis-l-escalier/fond_v1.png` (5) : en plongée, depuis le milieu de l'escalier
 - [ ] `broche/fond_v1.png` (9) : la broche, le grill, la hotte
 - [x] `escalier-vers-datastream/fond_v1.png` (11) : l'escalier et la porte de Datastream en haut
-- [ ] `miroir/fond_v1.png` (12) : le grand miroir de biais, vierge
+- [x] `miroir/fond_v1.png` (12) : le grand miroir de biais, vierge
 - [ ] `depuis-le-miroir/fond_v1.png` (13) : la salle vue par Sky qui dessine
 - [ ] `coin-de-la-banquette/fond_v1.png` (14) : l'angle de la banquette, les plans de groupe
 - [ ] `devanture/fond_v1.png` (15) : la devanture, les panneaux, le menu plastifié, la rue et le tram
