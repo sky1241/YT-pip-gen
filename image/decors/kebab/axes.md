@@ -1,6 +1,6 @@
 # Le kebab — les axes de caméra
 
-Un axe = un fond vide, sans perso, fait une fois et réutilisé à chaque épisode (CLAUDE.md, « Images »). Les numéros sont ceux du plan `plan-axes_v7.png` (les cercles bleus : la caméra et la direction où elle regarde). Les positions viennent de `plan_v6.png` (le plan v3 validé par l'auteur le 2026-10-17, avec ses corrections), et les besoins des textes : le CERN (`ecriture/brouillons/cern.md`, numéros de ligne) et Navier-Stokes.
+Un axe = un fond vide, sans perso, fait une fois et réutilisé à chaque épisode (CLAUDE.md, « Images »). Les numéros sont ceux du plan `plan-axes_v8.png` (les cercles bleus : la caméra et la direction où elle regarde). Les positions viennent de `plan_v7.png` (le plan v3 validé par l'auteur le 2026-10-17, avec ses corrections), et les besoins des textes : le CERN (`ecriture/brouillons/cern.md`, numéros de ligne) et Navier-Stokes.
 
 ## Où on en est (2026-10-17)
 
@@ -13,7 +13,7 @@ Un axe = un fond vide, sans perso, fait une fois et réutilisé à chaque épiso
 
 - Le canon : Mohamed à Annemasse. Le style : celui des images de référence de Sky et de Maëlle (`image/style.md`).
 - La devanture : pas de porte, des panneaux vitrés qui se replient en accordéon, tous à gauche, sur toute la hauteur ; ils ferment le kebab (la pluie, le soir). Ouverte sur toute la largeur, jusqu'au coin de droite, sans muret.
-- Le comptoir en L : la caisse juste en entrant, sur le petit côté devant, **tournée vers Mohamed** (c'est lui qui tape dedans) ; puis la vitrine des salades (laitue, tomates, oignons, chou rouge, carottes, concombres) et les sauces le long du grand côté ; la broche, le grill, la friteuse contre le mur gauche ; une horloge ronde au mur, la même dans tous les axes (celle de l'axe 21). La vitrine des salades est encastrée dans le comptoir en inox, les bacs à fleur du dessus, une vitre basse côté salle, le long de son grand côté, côté rue ; le bout du comptoir, côté fond (la passe), reste libre : c'est la place de la théière de Patrick quand le texte la met (l'auteur, axe 8).
+- Le comptoir en L : **la caisse à l'angle du L, au bout du grand côté, juste avant les salades, tournée vers Mohamed** (c'est lui qui tape dedans ; l'auteur, axe 2 : sur le plan peint, elle est encore sur le petit côté) ; puis la vitrine des salades (laitue, tomates, oignons, chou rouge, carottes, concombres) et les sauces le long du grand côté ; la broche, le grill, la friteuse contre le mur gauche ; une horloge ronde au mur, la même dans tous les axes (celle de l'axe 21). La vitrine des salades est encastrée dans le comptoir en inox, les bacs à fleur du dessus, une vitre basse côté salle, le long de son grand côté, côté rue ; le bout du comptoir, côté fond (la passe), reste libre : c'est la place de la théière de Patrick quand le texte la met (l'auteur, axe 8).
 - La théière de Patrick (« posée à côté de la machine à kebab », texte du CERN, l. 20) n'est pas peinte dans les fonds : c'est un accessoire (`image/accessoires/tasse-patrick_v1.png`), posé en calque dans les plans où le texte la met. Sinon, elle serait là dans chaque épisode, même sans Patrick.
 - Le frigo à boissons tout au fond à gauche, qu'on voit un plan sur deux ; il ne gêne pas Sky au miroir.
 - La banquette rouge en L, sous le miroir puis le long de la rampe ; le miroir sur toute la banquette du fond, à fleur de son bout gauche, en verre fumé.
@@ -32,9 +32,9 @@ Le fond de l'axe 7 (`table-du-fond-contrechamp/fond_v1.png`), validé par l'aute
 
 L'auteur, le 2026-10-17 : quand il pleut ou le soir, les panneaux vitrés sont dépliés sur toute la devanture, **avec une porte au milieu**, c'est l'entrée quand le rideau est fermé. Claude : la porte est un des panneaux, le même verre et le même cadre, avec une poignée ; rideau ouvert, elle se replie avec les autres, à gauche. Devant elle, entre les deux tables du milieu et la devanture, il reste 1,5 m de passage. Cette version fermée se fait en retouche des fonds de jour (« Les trois lumières ») et pour les axes 22 et 23.
 
-## Le plan, en bref (`plan_v6.png`)
+## Le plan, en bref (`plan_v7.png`)
 
-- À gauche, le comptoir en L (la caisse devant, **tournée vers Mohamed**, les salades le long), la broche, le grill et la friteuse contre le mur ; le frigo à boissons au fond à gauche.
+- À gauche, le comptoir en L (**la caisse à l'angle, tournée vers Mohamed**, puis les salades le long), la broche, le grill et la friteuse contre le mur ; le frigo à boissons au fond à gauche.
 - Au fond, la banquette rouge en L : le long du mur du fond, puis le long de la rampe, à droite. **Le miroir couvre toute la banquette du fond**, à fleur de son bout gauche.
 - **La table de Sky, dans l'angle de la banquette, pour cinq** : Sky et Maëlle sur la banquette du fond, deux chaises en face, **Patrick au bout, sur la banquette de droite** (c'est l'ancien). Un plan où Sky se lève et laisse sa place à Maëlle est possible.
 - Au milieu, deux tables pour quatre ; le long de la banquette de droite, deux tables perpendiculaires, un petit bout contre elle. **La table de devant, à droite, est celle de Sky dans l'épisode Navier-Stokes**, près de la vitrine (l'auteur).

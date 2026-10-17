@@ -10,7 +10,7 @@
       "source": "ChatGPT",
       "prompt": "KB2 v3",
       "date": "2026-10-17",
-      "_note": "la base fixe du kebab, validée par l'auteur (« on l'a enfin ! »), téléchargée sous le nom « Kebab chaleureux vu du ciel.png ». D'après plan_v5 ; le style de l'essai KB2 v2. Seul écart accepté : la caisse reste tournée vers la rue (elle doit être tournée vers Mohamed : à corriger dans les fonds par axe)"
+      "_note": "la base fixe du kebab, validée par l'auteur (« on l'a enfin ! »), téléchargée sous le nom « Kebab chaleureux vu du ciel.png ». D'après plan_v5 ; le style de l'essai KB2 v2. Seul écart accepté : la caisse reste tournée vers la rue (elle doit être tournée vers Mohamed : à corriger dans les fonds par axe) ; la caisse y est sur le petit côté, devant : depuis plan_v7, elle est à l'angle du L"
     },
     "plan-axes_v6.png": {
       "source": "Claude, en code",
@@ -20,7 +20,7 @@
     "plan_v6.png": {
       "source": "Claude, en code (pipeline/plan_kebab.py)",
       "date": "2026-10-17",
-      "_note": "l'auteur : l'escalier ne se voit pas depuis la salle, il monte derrière un mur (« c'est un mur tout simplement ») ; la banquette de droite est adossée à ce mur ; il ne s'ouvre que sur le palier, devant"
+      "_note": "l'auteur : l'escalier ne se voit pas depuis la salle, il monte derrière un mur (« c'est un mur tout simplement ») ; la banquette de droite est adossée à ce mur ; il ne s'ouvre que sur le palier, devant ; remplacé par plan_v7.png (la caisse à l'angle)"
     },
     "plan-axes_v7.png": {
       "source": "Claude, en code",
@@ -61,6 +61,16 @@
       "date": "2026-10-17",
       "axe": 8,
       "_note": "validé par l'auteur, téléchargé sous le nom « Restaurant kebab désert au coucher du soleil.png ». Le mur de la cuisine de face, la vitrine encastrée dans le comptoir, le bout du comptoir libre (la théière de Patrick), l'horloge ronde, la broche, la hotte, le frigo et la plante. Recadrage 16:9 vérifié (y de 70 à 934). Écarts relevés par Claude, acceptés : le plafond est peint comme un ciel de couchant, et la lumière dessine des carreaux de fenêtre sur le mur du fond ; l'étalonnage pourra les adoucir"
+    },
+    "plan_v7.png": {
+      "source": "Claude, en code (pipeline/plan_kebab.py)",
+      "date": "2026-10-17",
+      "_note": "l'auteur, sur la vue en volumes de l'axe 2 : la caisse à l'angle du L, au bout du grand côté, juste avant les salades, tournée vers Mohamed"
+    },
+    "plan-axes_v8.png": {
+      "source": "Claude, en code",
+      "date": "2026-10-17",
+      "_note": "les 25 axes sur plan_v7"
     }
   },
   "_supprimees": "le 2026-10-17, à la demande de l'auteur (« vire les autres images ») : maquette_v1.png, maquette_v2.png et plan_v1.png, retirées du repo (elles restent dans l'historique git, jusqu'au commit 50132dd), et les retouches intermédiaires du disque externe ; le 2026-10-17, à la demande de l'auteur (« clean-moi les images qui restent du kebab ») : plan-peint_v1.png, table-du-fond/fond_v1.png (l'ancien plan), plan_v2 à v4, plan-axes_v1 à v4 (dans l'historique git), les captures du disque externe et les images du kebab des Téléchargements"

@@ -1,6 +1,6 @@
 """Plan du kebab vu de dessus, d'après la maquette (image/decors/kebab/), en mètres. y = 0 au mur du fond, la rue en bas.
 
-  python3 pipeline/plan_kebab.py image/decors/kebab/plan_v6.png   (jamais par-dessus une version validée)
+  python3 pipeline/plan_kebab.py image/decors/kebab/plan_v7.png   (jamais par-dessus une version validée)
 """
 from PIL import Image, ImageDraw, ImageFont
 import sys
@@ -38,8 +38,11 @@ txt(W / 2, D + 0.45, "LA RUE : devanture ouverte sur toute la largeur, panneaux 
 rect(0, 1.4, 1.0, 6.4, "#d9d9d9")
 txt(0.5, 3.0, "broche", G); txt(0.5, 3.4, "grill"); txt(0.5, 4.6, "friteuse"); txt(0.5, 5.6, "plans inox")
 # le comptoir en L : petit côté devant (la caisse), long côté vers le fond (les salades)
-rect(1.2, 6.2, 3.0, 7.0, "#b0b8c0"); txt(2.0, 6.5, "CAISSE", G); txt(2.0, 6.82, "tournée vers Mohamed ↑", F)
+rect(1.2, 6.2, 3.0, 7.0, "#b0b8c0")
 rect(2.3, 1.8, 3.0, 6.2, "#b0b8c0"); txt(2.65, 4.6, "salades", G); txt(2.65, 5.0, "sauces")
+# la caisse à l'angle du L, au bout du grand côté, juste avant les salades, tournée vers Mohamed (l'auteur, le 2026-10-17)
+rect(2.4, 5.85, 2.9, 6.2, "#34343a"); d.text(p(1.25, 6.45), "CAISSE à l'angle,", fill="black", font=G)
+d.text(p(1.25, 6.72), "tournée vers Mohamed ←", fill="black", font=F)
 txt(2.65, 2.4, "passe")
 # le frigo à boissons, au fond à gauche
 rect(1.6, 0.0, 2.3, 0.7, "#9fd3e6"); txt(1.95, 0.35, "frigo")

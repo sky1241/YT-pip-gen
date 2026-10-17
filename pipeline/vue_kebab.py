@@ -78,8 +78,10 @@ boite(2.3, 1.8, 3.0, 6.2, 0, 1.0, INOX, morceau=0.5)                 # le long c
 for k, bac in enumerate(("#6aa84f", "#cc3b2b", "#efe6d2", "#7b3f8c", "#e08a2c", "#9bc46a")):
     boite(2.4, 3.6 + k * 0.37, 2.9, 3.6 + k * 0.37 + 0.33, 0.97, 1.005, bac)
 boite(2.98, 3.6, 3.02, 5.8, 1.0, 1.35, "verre")
-boite(1.6, 6.45, 2.0, 6.75, 1.0, 1.15, "#34343a")         # la caisse ; son écran tourné vers Mohamed (vers le fond)
-boite(1.65, 6.4, 1.95, 6.46, 1.15, 1.38, "#34343a")
+# la caisse, à l'angle du L, au bout du grand côté, juste avant les salades (l'auteur, axe 2) ; son écran tourné vers Mohamed,
+# vers l'intérieur du comptoir (vers la gauche), son dos vers la salle
+boite(2.45, 5.88, 2.85, 6.18, 1.0, 1.15, "#34343a")
+boite(2.45, 5.9, 2.51, 6.16, 1.15, 1.38, "#34343a")
 boite(1.6, 0, 2.3, 0.7, 0, 2.0, "#c8ccd0")                # le frigo à boissons
 boite(1.62, 0.7, 2.28, 0.72, 0.1, 1.9, "#9fd3e6")
 boite(0, 7.8, 0.6, 8.0, 0, 2.7, "#9fc7d6")                # les panneaux vitrés repliés
