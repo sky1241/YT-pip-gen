@@ -20,6 +20,7 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 | A10 | L'axe 10 : le pied de l'escalier, vu de la salle : **fait** | `image/decors/kebab/pied-de-l-escalier/fond_v1.png` |
 | A1 | L'axe 1 : l'extérieur, la façade depuis le trottoir d'en face : **fait** (une retouche ; les enseignes en code) | `image/decors/kebab/exterieur/fond_v1.png` |
 | A17 | L'axe 17 : la table de Sky vue d'en haut, pour les inserts : **fait** | `image/decors/kebab/table-vue-de-dessus/fond_v1.png` |
+| A4 | L'axe 4 : depuis le comptoir, le regard de Mohamed | `image/decors/kebab/depuis-le-comptoir/fond_v1.png` |
 | KB2 v2 | Le plan peint, d'après le plan v3 : bonne disposition, mais l'escalier sur la rue, la lumière de côté | (supprimé) |
 | KB2 v3 | Le plan peint, d'après le plan v5 sans caméras : **la base fixe, validée** | `image/decors/kebab/plan-peint_v2.png` |
 | A6 v3 | L'axe 6 : la table de Sky dans l'angle, la banquette, le miroir, la plante : **fait** (la vue en volumes, puis une retouche) | `image/decors/kebab/table-du-fond/fond_v1.png` |
@@ -809,3 +810,19 @@ Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the 
 À contrôler à la reprise : la vue droit d'en haut ; la table vide, le bois avec son grain ; les deux sauces et les serviettes au milieu ; la banquette en haut et à droite ; les assises des chaises en bas ; rien d'autre sur la table ; aucun texte.
 
 **Résultat de A17, le 2026-10-17 : validé par l'auteur du premier coup. Les 9 fonds du pilote sont faits.**
+
+### Prompt A4 — Depuis le comptoir, le regard de Mohamed
+
+Les fonds de l'épisode 1, après le pilote. Mohamed parle « depuis le comptoir » tout au long du « Miroir » (l. 34, 99, 254). La caméra à sa place, derrière le grand côté du comptoir, un peu inclinée vers le bas : les salades au premier plan, la salle au-delà. Quatre images jointes, dans cet ordre : `~/Téléchargements/kebab_pour_A4_1_vue.png`, `~/Téléchargements/kebab_pour_axes_plan-peint.png`, `~/Téléchargements/kebab_pour_A4_3_angle2.png` (le fond de l'axe 2 : la même salle), `~/Téléchargements/kebab_pour_A4_4_angle8.png` (le fond de l'axe 8 : le même comptoir, les mêmes salades).
+
+```
+The first attached image is a rough 3D layout of one view of our kebab restaurant, made of simple flat-coloured volumes: it fixes the camera, the perspective, the framing and the place of every object. The second attached image is the same restaurant seen from above, painted in our style: it gives the art style, the materials and the objects. The third and fourth attached images are two other views of the same restaurant, already painted and approved: the counter, the salad trays, the red bench, the mirror, the tables, chairs, plants, the staircase side and its banister, the walls and the light must look exactly the same. Paint exactly the view of the first image, as an empty background for an anime series: keep the same camera, the same perspective and framing, and every object at the same place, with the same size and angle, as if the layout had been painted over. The camera stands behind the stainless steel counter, where the cook stands, and looks over the counter into the dining room. Replace the simple volumes with the real objects:
+- in the foreground, the top of the stainless steel counter; the coloured rectangles are the trays of the refrigerated salad display built into it, seen from the cook's side: lettuce, tomatoes, onions and the others further right; the thin light blue outline is the low glass sneeze guard on the customer side, we see the room through it;
+- beyond the counter, the dining room: the rectangular wooden tables with their chairs, each with a red sauce bottle, a white sauce bottle and a napkin dispenser;
+- on the left, the long red padded bench along the back wall, with the long dark smoky mirror above it; in the back corner, the table of the corner and a large green potted plant;
+- on the right of the back, the side of the wooden staircase with its banister going up, above the bench that runs along the right side;
+- the surface at the top is the ceiling, plain and flat.
+Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the style of the other images (clean dark outlines, flat cel shading, muted warm palette, painted details). NOT a 3D render, NOT photorealistic, and do not keep the flat colours of the layout. Light: warm morning daylight comes from the open shopfront, out of frame on the left, behind the camera; there are no windows; the inside light is warm and dim. No people. No text, no letters and no logos anywhere. Landscape format (1536×1024).
+```
+
+À contrôler à la reprise : le dessus du comptoir et les bacs de salades au premier plan, la vitre basse ; la salle au-delà ; la banquette et le miroir à gauche, la plante de l'angle ; la rampe de l'escalier à droite ; un plafond uni ; aucune personne, aucun texte.
