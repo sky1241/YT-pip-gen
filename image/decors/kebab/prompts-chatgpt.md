@@ -10,6 +10,7 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 | KB1 retouches | Le menu, l'escalier ouvert, le miroir fumé, les panneaux, la porte de Datastream, les tables : supprimée, remplacée par KB2 | (dans l'historique git) |
 | Plan | Vu de dessus, en code (`pipeline/plan_kebab.py`) : la disposition exacte | `image/decors/kebab/plan_v2.png` (la v1 sans la banquette en L) |
 | KB2 | Le plan peint : le kebab vu exactement d'en haut, comme le plan v2, dans le style de la maquette : faite, la référence du kebab | `image/decors/kebab/plan-peint_v1.png` |
+| A6 | L'axe 6 : la table de Sky, la banquette, le miroir | `image/decors/kebab/table-du-fond/fond_v1.png` |
 
 La suite (un fond vide par axe de caméra) s'écrit d'après KB1 et d'après les scènes du texte.
 
@@ -224,3 +225,25 @@ What is where, as in the plan:
 **Résultat de KB2, le 2026-10-17 : réussi du premier coup**, gardé par l'auteur, qui fait supprimer les autres images du kebab. Chaque élément est à sa place du plan : le comptoir en L (la caisse devant, les salades le long), la broche, le grill et la friteuse contre le mur gauche, l'horloge, le frigo au fond à gauche, le miroir au-dessus de la banquette en L, la table de Sky au fond, deux chaises face à la banquette, deux tables au milieu, trois perpendiculaires à la banquette, quatre chaises face à face, l'escalier en bois derrière sa rampe et la porte en haut, les panneaux repliés en bas à gauche. Aucun texte. La leçon : pour une disposition exacte, dessiner le plan en code et faire peindre la vue prise du même point, plutôt que de la décrire.
 
 Ce qui fait foi pour le kebab : `plan-peint_v1.png` pour l'image, `plan_v2.png` pour les mesures (en code, `pipeline/plan_kebab.py`).
+
+## Les fonds par axe
+
+Les axes : `axes.md`. Pour chacun, deux images jointes dans le même message, dans cet ordre : le plan avec la seule caméra de l'axe (`python3 pipeline/plan_kebab.py <sortie> axe <numéro>`), puis le plan peint. Dans une nouvelle conversation ChatGPT réservée aux fonds du kebab, un prompt à la fois.
+
+### Prompt A6 — La table de Sky, la banquette, le miroir
+
+Joins `~/Téléchargements/kebab_pour_A6_1_camera.png` puis `~/Téléchargements/kebab_pour_A6_2_plan-peint.png`.
+
+```
+The first attached image is the floor plan of our kebab restaurant, with one camera marked in blue (number 6): its position and the cone of what it sees. The second attached image is the same restaurant seen from above, painted in our style; it gives the style, the materials, the colours and the objects. Paint the view from this camera, as an empty background for an anime series: a flat 2D hand-drawn background painting from a 1990s anime film, in the style of the second image (clean dark outlines, flat cel shading, muted warm palette, painted details). NOT a 3D render, NOT photorealistic. Landscape format (1536×1024); keep the important things away from the top and bottom edges, the image will be cropped to 16:9.
+The camera stands in the aisle, about two metres in front of the back table, at the eye level of a seated person (about 1.2 m), and looks straight at the back wall. Normal lens, straight vertical lines, no fisheye.
+What we see, from front to back:
+- At the bottom of the frame, the tops of the backs of the two empty wooden chairs of the back table, turned away from us.
+- The rectangular wooden table, with a red sauce bottle, a white sauce bottle and a napkin dispenser.
+- Behind the table, the long red padded bench along the back wall, empty.
+- Above the bench, the large plain mirror, slightly smoky, with only a soft, blurred, dim reflection of the bright street behind the camera. It is wide: it fills most of the width of the frame.
+- On the left edge, the end of the bench; on the right edge, the bench continues toward the corner where it turns.
+Morning: warm golden sunlight comes from the street, behind the camera, and falls on the bench and the wall in long warm patches. No people. No text, no letters and no logos anywhere.
+```
+
+À contrôler à la reprise : la caméra à hauteur d'une personne assise, face au mur du fond ; les dossiers des deux chaises en bas ; la table et ses deux sauces et ses serviettes ; la banquette vide ; le miroir large et fumé, sans reflet net ; rien d'important près des bords haut et bas (recadrage en 16:9) ; aucune personne, aucun texte ; le style du plan peint.

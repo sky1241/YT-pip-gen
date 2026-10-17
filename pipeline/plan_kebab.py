@@ -75,10 +75,33 @@ img.save(sys.argv[1])
 # numéro : (x, y de la caméra, direction du regard en degrés : 0 = vers la droite, 90 = vers la rue, 270 = vers le fond)
 AXES = {
     1: (5.5, 9.3, 270), 2: (5.5, 8.35, 270), 3: (7.6, 1.1, 100), 4: (1.65, 4.0, 0), 5: (10.15, 3.2, 160),
-    6: (5.5, 3.0, 270), 7: (5.5, 0.55, 90), 8: (4.3, 4.6, 180), 9: (3.4, 3.1, 180), 10: (6.6, 7.4, 8),
+    6: (5.5, 2.65, 270), 7: (5.5, 0.55, 90), 8: (4.3, 4.6, 180), 9: (3.4, 3.1, 180), 10: (6.6, 7.4, 8),
     11: (10.15, 7.5, 270), 12: (3.3, 1.4, 330), 13: (6.5, 0.45, 110), 14: (6.6, 3.4, 300), 15: (6.0, 5.0, 100),
     16: (3.6, 2.4, 225), 17: (5.5, 1.25, 270), 18: (3.0, 2.4, 200), 19: (8.0, 1.5, 90),
 }
+# un seul axe, pour le joindre au prompt de son fond : python3 pipeline/plan_kebab.py <sortie.png> axe <numéro>
+if len(sys.argv) > 3 and sys.argv[2] == "axe":
+    import math
+    x, y, a = AXES[int(sys.argv[3])]
+    r = math.radians(a)
+    bout = [p(x + 9 * math.cos(r + math.radians(da)), y + 9 * math.sin(r + math.radians(da))) for da in (-30, 30)]
+    voile = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    ImageDraw.Draw(voile).polygon([p(x, y), *bout], fill=(16, 96, 192, 60))
+    masque = Image.new("L", img.size, 0)      # le cône s'arrête aux murs (la rue reste, pour les axes 1 et 2)
+    ImageDraw.Draw(masque).rectangle([p(0, 0), p(W, D + 1.6)], fill=255)
+    voile.putalpha(Image.composite(voile.getchannel("A"), Image.new("L", img.size, 0), masque))
+    img = Image.alpha_composite(img.convert("RGBA"), voile).convert("RGB")
+    d = ImageDraw.Draw(img)
+    for da in (-30, 30):
+        k = 0.0
+        while k < 9 and 0 <= x + k * math.cos(r + math.radians(da)) <= W and -0.0 <= y + k * math.sin(r + math.radians(da)) <= D + 1.6:
+            k += 0.05
+        d.line([p(x, y), p(x + k * math.cos(r + math.radians(da)), y + k * math.sin(r + math.radians(da)))], fill="#1060c0", width=3)
+    cx, cy = p(x, y)
+    d.ellipse([cx - 16, cy - 16, cx + 16, cy + 16], fill="#1060c0", outline="white", width=3)
+    d.text((cx, cy), sys.argv[3], fill="white", font=G, anchor="mm")
+    d.text((cx + 22, cy + 6), "CAMÉRA", fill="#1060c0", font=G)
+    img.save(sys.argv[1])
 if len(sys.argv) > 2 and sys.argv[2] == "axes":
     import math
     for n, (x, y, a) in AXES.items():
