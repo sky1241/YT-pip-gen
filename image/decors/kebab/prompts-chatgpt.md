@@ -826,3 +826,17 @@ Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the 
 ```
 
 À contrôler à la reprise : le dessus du comptoir et les bacs de salades au premier plan, la vitre basse ; la salle au-delà ; la banquette et le miroir à gauche, la plante de l'angle ; la rampe de l'escalier à droite ; un plafond uni ; aucune personne, aucun texte.
+
+Résultat de A4, le 2026-10-17 : deux essais, l'auteur garde le second (capture hors du repo, `depuis-le-comptoir_essai-1_capture.png`). À corriger : au fond, le bout de l'escalier finit en un grand pan de mur vertical jusqu'au plafond, qu'il ne veut pas ; et la vitre basse dépasse à gauche, au-delà des bacs.
+
+### Prompt A4 retouche — Le bout de l'escalier, la vitre des salades
+
+Dans la case « Décrivez les modifications » du second essai.
+
+```
+Edit ONLY this image. Keep everything else exactly as it is: the same view, the same counter, salad trays, tables, chairs, bench, mirror, plant, style and light. Make only these two changes:
+1. At the back, the left end of the staircase: remove the tall vertical piece of wall that rises from the top step up to the ceiling. The side of the staircase ends with its top steps, and behind it there is only the back wall of the room, plain, the same as the rest of the wall; the banister keeps going up into the ceiling.
+2. The low glass sneeze guard above the salad trays: shorten it on the left so that it starts exactly above the first tray (the lettuce) and runs only above the trays. On the left of the trays, the plain stainless steel counter top has no glass above it.
+```
+
+À contrôler à la reprise : plus de pan de mur vertical au bout de l'escalier ; la vitre seulement au-dessus des bacs ; rien d'autre de changé.
