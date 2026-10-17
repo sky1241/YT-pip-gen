@@ -8,7 +8,8 @@ Un axe = un fond vide, sans perso, fait une fois et réutilisé à chaque épiso
 - **La base fixe, validée** : le plan peint `plan-peint_v2.png` (prompt KB2 v3, d'après `plan_v5.png`). Elle sert de référence de style et d'objets pour tous les axes. Seul écart accepté : la caisse y est encore tournée vers la rue ; dans chaque fond où elle se voit, le prompt la tourne vers Mohamed.
 - **Faits** (le 2026-10-17, avec la vue en volumes) : l'axe 6 (`table-du-fond/fond_v1.png`), l'axe 7 (`table-du-fond-contrechamp/fond_v1.png`) l'axe 20 (`bout-de-table/fond_v1.png`), l'axe 21 (`depuis-patrick/fond_v1.png`), l'axe 8 (`comptoir/fond_v1.png`) et l'axe 2 (`entree/fond_v1.png`, validé sans enthousiasme : l'angle ne convainc pas l'auteur).
 - **Fait aussi** : l'axe 11 (`escalier-vers-datastream/fond_v1.png`), hors pilote.
-- **Ensuite** : le reste du pilote (10, 1, 17), de jour. Claude ne lui montre qu'un axe à la fois (le plan de cet axe seul) ; le plan des 25 axes reste pour Claude. L'ancien fond de l'axe 6 est supprimé : l'axe 6 se refait en `fond_v1.png`.
+- **Fait** aussi : l'axe 10 (`pied-de-l-escalier/fond_v1.png`).
+- **Ensuite** : le reste du pilote (1, 17), de jour. Claude ne lui montre qu'un axe à la fois (le plan de cet axe seul) ; le plan des 25 axes reste pour Claude. L'ancien fond de l'axe 6 est supprimé : l'axe 6 se refait en `fond_v1.png`.
 
 ## Les décisions de l'auteur sur le décor (2026-10-16 et 17)
 
