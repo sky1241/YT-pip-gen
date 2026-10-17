@@ -585,3 +585,17 @@ Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the 
 À contrôler à la reprise : la ligne du plafond droite ; la vitrine encastrée dans le comptoir du premier plan, sur sa partie gauche seulement, pas sur le plan de travail du fond ; le bout du comptoir libre ; l'horloge ronde ; la broche, la hotte ; le frigo et la plante à droite ; aucune personne, aucun texte.
 
 L'auteur, avant d'envoyer A8 v3, le 2026-10-17 : dans la vue en volumes, la vitrine (un bloc bleu posé en retrait) a l'air derrière le comptoir, « ça va refaire le même bug ». Corrigé : la vitrine est encastrée dans le comptoir, les bacs de couleur à fleur du dessus, une vitre basse en contour seulement, côté salle. Le prompt A8 v3 ci-dessus est mis à jour en conséquence.
+
+Résultat de A8 v3, le 2026-10-17 : « c'est mieux ». La ligne du plafond droite, la vitrine encastrée dans le comptoir, le bout libre. À corriger : ChatGPT a fait l'horloge ronde et, à côté, un carré (le carré de la vue en volumes) ; et il a ajouté des blocs de cuisine gris à gauche. La vue en volumes dessine désormais l'horloge ronde. Capture hors du repo (`comptoir_essai-3_capture.png`).
+
+### Prompt A8 v3 retouche — L'horloge à la place du carré, sans les blocs de gauche
+
+Dans la case « Décrivez les modifications » de l'image.
+
+```
+Edit ONLY this image. Keep everything else exactly as it is: the same view, the same counter, salad trays, kebab spit, hood, fridge, plant, style and light. Make only these two changes:
+1. Remove the plain grey square panel on the wall, and move the round clock to exactly where that square was, between its current place and the hood. Only one clock, no square.
+2. On the left, remove the grey kitchen appliances and the stacks on top of them, behind the salad display: there is only the plain wall and the back worktop there, as on the rest of the wall.
+```
+
+À contrôler à la reprise : une seule horloge ronde, à la place du carré ; plus de blocs gris à gauche ; rien d'autre de changé.

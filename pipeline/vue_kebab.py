@@ -69,7 +69,8 @@ INOX = "#aeb3b8"
 boite(0, 1.4, 0.9, 6.4, 0, 0.9, INOX, morceau=0.5)                   # le plan de travail contre le mur
 boite(0.35, 2.65, 0.65, 2.95, 0.9, 1.6, "#8b5a2b")       # la broche
 boite(0, 2.3, 1.0, 3.3, 2.1, 2.5, INOX)                   # la hotte
-boite(0, 3.8, 0.03, 4.1, 2.1, 2.4, "#f2efe6")             # l'horloge
+plaque([(0.01, 3.95 + 0.17 * math.cos(k * math.pi / 8), 2.25 + 0.17 * math.sin(k * math.pi / 8)) for k in range(16)],
+       (1, 0, 0), "#f2efe6")                                # l'horloge, ronde (un carré, ChatGPT en faisait un panneau)
 boite(1.2, 6.2, 3.0, 7.0, 0, 1.0, INOX)                   # le petit côté, devant
 boite(2.3, 1.8, 3.0, 6.2, 0, 1.0, INOX, morceau=0.5)                 # le long côté
 # la vitrine des salades, encastrée dans le comptoir (l'auteur, axe 8) : les bacs à fleur du dessus, une vitre basse côté salle
