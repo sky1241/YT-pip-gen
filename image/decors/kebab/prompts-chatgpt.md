@@ -9,6 +9,7 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 | KB1 | La maquette : tout le kebab vu de dessus, en coupe, sans personne : la v3 est la bonne base | `image/decors/kebab/maquette_v1.png` |
 | KB1 retouches | Le menu, l'escalier ouvert, le miroir fumé, les panneaux, la porte de Datastream, les tables : faite, choisie par l'auteur | `image/decors/kebab/maquette_v2.png` |
 | Plan | Vu de dessus, en code (`pipeline/plan_kebab.py`) : la disposition exacte | `image/decors/kebab/plan_v2.png` (la v1 sans la banquette en L) |
+| KB2 | Le plan peint : le kebab vu exactement d'en haut, comme le plan v2, dans le style de la maquette | `image/decors/kebab/plan-peint_v1.png` |
 
 La suite (un fond vide par axe de caméra) s'écrit d'après KB1 et d'après les scènes du texte.
 
@@ -199,3 +200,23 @@ Résultat de la retouche 5 v2, le 2026-10-16, dans une nouvelle conversation : s
 **Écart avec le texte du CERN, signalé à l'auteur** : le texte met le grand miroir « derrière la banquette » (l. 482), Sky « au fond, table bancale » (l. 14), Seb et Maëlle sur la banquette (l. 460, 466). Dans la maquette, la banquette longe le mur de droite et le miroir est au mur du fond, sans banquette devant. Le texte cite aussi l'horloge Efes au-dessus du comptoir (l. 498), le menu plastifié sur la vitrine (l. 606), le chat sur le comptoir (l. 703), l'escalier qui grince (l. 121) : à reprendre dans les fonds par axe.
 
 **Décisions de l'auteur, le 2026-10-16** : le canon est Annemasse (`ecriture/canon.yaml`) ; la banquette en L sous le miroir lui va ; l'escalier sera en bois. Le texte peut s'adapter au décor si besoin : à l'origine, c'était une histoire, pas un script. `plan_v2.png` reprend tout ça : la banquette en L, la table de Sky au fond avec la banquette derrière elle et le miroir au-dessus, deux tables au milieu, trois le long de la rampe, l'escalier en bois. La maquette (`maquette_v2.png`) n'est plus retouchée : ces changements iront dans les fonds par axe.
+
+## Prompt KB2 — Le plan peint, vu exactement d'en haut
+
+L'idée : ChatGPT respecte mal une disposition décrite en mots, mais une vue prise du même point que le plan n'a qu'à le recouvrir de peinture. Deux images jointes dans le même message, dans cet ordre : le plan (`~/Téléchargements/kebab_pour_KB2_1_plan.png`) et la maquette pour le style (`~/Téléchargements/kebab_pour_KB2_2_style.png`). Dans une nouvelle conversation, ou dans celle du kebab.
+
+```
+The first attached image is the exact floor plan of a small kebab restaurant, seen straight from above. The second attached image shows the same restaurant and gives the art style, the materials and the light. Paint this restaurant seen straight from above, exactly like the plan: the same layout, every element at the same place, with the same size and the same orientation, as if the plan had been painted over. Style: a flat 2D hand-drawn background painting from a 1990s anime film, like the second image (clean dark outlines, flat cel shading, muted warm palette, warm golden morning light coming from the street, at the bottom of the image). NOT a 3D render, NOT photorealistic. Do not copy the colours or the labels of the plan. No people. No text, no letters and no logos anywhere. Landscape format (1536×1024).
+What is where, as in the plan:
+- At the bottom, the street; the shopfront is fully open, and at the bottom left the folding glass panels are folded together, full height.
+- On the left, the L-shaped stainless steel counter: the cash register on its short side at the front, then the refrigerated salad display and the sauces along its long side. Behind it, against the left wall, the vertical kebab spit under its hood, the grill, the fryer and the worktops. A round clock on the wall above the counter.
+- In the back left corner, the tall drinks fridge with glass doors.
+- On the back wall, the large plain mirror, slightly smoky, above a long red padded bench. The bench runs along the back wall, then turns and runs along the right side: an L-shaped bench.
+- At the back, in front of the bench, one rectangular wooden table with two chairs on its front side, facing the bench.
+- In the middle of the room, two identical rectangular wooden tables, each with two chairs on each long side, facing each other.
+- On the right, three identical rectangular wooden tables, each perpendicular to the bench with one short end against it, and two chairs on each long side, facing each other.
+- On the far right, behind a low open wooden railing, a wooden staircase going up from the street side toward the back, to a plain closed wooden door at the top.
+- On every table, a red sauce bottle, a white sauce bottle and a napkin dispenser. A few large plants on the floor, in the corners; no plant on the tables.
+```
+
+À contrôler à la reprise : la vue d'en haut, droite ; chaque élément à sa place du plan, surtout les six tables et leurs chaises ; la banquette en L sous le miroir ; l'escalier en bois et sa porte ; rien du plan recopié (couleurs, étiquettes) ; aucun texte.
