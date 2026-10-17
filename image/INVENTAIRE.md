@@ -195,14 +195,19 @@ La série 1, faite avec la monture argentée, est archivée sur le disque extern
 
 Les axes et leurs numéros : `decors/kebab/axes.md` et le plan `decors/kebab/plan-axes_v1.png`.
 
-- [x] `plan-peint_v1.png` : le kebab vu exactement d'en haut, la référence de la disposition et du style
+- [x] `plan_v3.png` : le plan en code, validé par l'auteur ; `plan-axes_v2.png` : les 21 axes
+- [ ] `plan-peint_v2.png` : le plan v3 peint, vu exactement d'en haut (la v1 suivait le plan v2)
 - [ ] `exterieur/fond_v1.png` (1) : la façade, deux étages, le kebab au rez-de-chaussée, Datastream au premier, la rue d'Annemasse et le tram
 - [ ] `entree/fond_v1.png` (2) : depuis le trottoir, toute la salle
-- [x] `table-du-fond/fond_v1.png` (6) : la table de Sky, la banquette, le grand miroir au-dessus
+- [ ] `table-du-fond/fond_v2.png` (6) : la table de Sky dans l'angle, la banquette, le grand miroir au-dessus (la v1 suivait le plan v2)
 - [ ] `table-du-fond-contrechamp/fond_v1.png` (7) : depuis la banquette, les deux chaises, la salle, la rue
 - [ ] `comptoir/fond_v1.png` (8) : la caisse, les salades, la broche, l'horloge, le menu
 - [ ] `pied-de-l-escalier/fond_v1.png` (10) : les premières marches, pour les descentes
 - [ ] `table-vue-de-dessus/fond_v1.png` (17) : le dessus de la table de Sky, pour les inserts
+- [ ] `bout-de-table/fond_v1.png` (20) : Patrick de face, au bout de la table, la rampe et l'escalier derrière lui
+- [ ] `depuis-patrick/fond_v1.png` (21) : Sky et Maëlle de profil sur la banquette, le miroir au-dessus
+
+Chaque fond a aussi sa version pluie et sa version nuit, dans le même cadrage (`axes.md`, « Les trois lumières ») : `<dossier>/fond_pluie_v1.png` et `<dossier>/fond_nuit_v1.png`. Leurs cases s'ajoutent ici quand le fond de jour est fait.
 
 ### Accessoires du pilote — `accessoires/`
 
@@ -457,14 +462,7 @@ Les axes de l'épisode 1, en plus de ceux du pilote (`decors/kebab/axes.md`, à 
 - [ ] `banquette-de-droite/fond_v1.png` (19) : les tables de droite en enfilade
 - [ ] `frigo/fond_v1.png` (16) : le frigo à boissons, si besoin
 
-Les variantes de pluie (Navier-Stokes), la devanture fermée par les panneaux vitrés :
-
-- [ ] `exterieur/fond_pluie_v1.png` (1)
-- [ ] `entree/fond_pluie_v1.png` (2)
-- [ ] `salle-depuis-le-fond/fond_pluie_v1.png` (3)
-- [ ] `table-du-fond-contrechamp/fond_pluie_v1.png` (7)
-- [ ] `depuis-le-miroir/fond_pluie_v1.png` (13)
-- [ ] `devanture/fond_pluie_v1.png` (15)
+Comme pour le pilote : la pluie et la nuit de chaque axe s'ajoutent quand son fond de jour est fait.
 
 ### Accessoires — `accessoires/`
 

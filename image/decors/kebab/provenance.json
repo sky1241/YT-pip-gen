@@ -4,20 +4,35 @@
     "plan_v2.png": {
       "source": "Claude, en code (pipeline/plan_kebab.py)",
       "date": "2026-10-16",
-      "_note": "d'après le texte du CERN, validé par l'auteur : la banquette en L, sous le miroir puis le long de la rampe ; la table de Sky au fond, la banquette derrière elle ; l'escalier en bois. Six tables identiques"
+      "_note": "d'après le texte du CERN, validé par l'auteur : la banquette en L, sous le miroir puis le long de la rampe ; la table de Sky au fond, la banquette derrière elle ; l'escalier en bois. Six tables identiques ; remplacé par plan_v3.png"
     },
     "plan-peint_v1.png": {
       "source": "ChatGPT",
       "prompt": "KB2",
       "date": "2026-10-17",
-      "_note": "le plan v2 peint, vu exactement d'en haut, avec la maquette jointe pour le style : chaque élément à sa place, du premier coup. L'auteur : « on garde celui-ci ». Téléchargé sous le nom « Plan d’un petit restaurant kebab ensoleillé.png »"
+      "_note": "le plan v2 peint, vu exactement d'en haut, avec la maquette jointe pour le style : chaque élément à sa place, du premier coup. L'auteur : « on garde celui-ci ». Téléchargé sous le nom « Plan d’un petit restaurant kebab ensoleillé.png » ; d'après plan_v2 : la disposition a changé avec plan_v3 (à refaire, prompt KB2 v2)"
     },
     "table-du-fond/fond_v1.png": {
       "source": "ChatGPT",
       "prompt": "A6 puis A6 retouche",
       "date": "2026-10-17",
       "axe": 6,
-      "_note": "validé par l'auteur (« pas parfait mais c'est juste ») ; téléchargé sous le nom « Diner rétro baigné de lumière dorée.png ». Plus sombre que le matin du plan peint : la lumière s'harmonisera à l'étalonnage (contrairement à une erreur de disposition). Recadrage 16:9 vérifié : y de 70 à 934"
+      "_note": "validé par l'auteur (« pas parfait mais c'est juste ») ; téléchargé sous le nom « Diner rétro baigné de lumière dorée.png ». Plus sombre que le matin du plan peint : la lumière s'harmonisera à l'étalonnage (contrairement à une erreur de disposition). Recadrage 16:9 vérifié : y de 70 à 934 ; dépassé par plan_v3 (la table de Sky est passée dans l'angle) : à refaire en fond_v2"
+    },
+    "plan_v3.png": {
+      "source": "Claude, en code (pipeline/plan_kebab.py)",
+      "date": "2026-10-17",
+      "_note": "validé par l'auteur (« on valide ce plan ») d'après ses annotations : la table de Sky dans l'angle, pour cinq, Patrick au bout sur la banquette de droite ; la première table de droite enlevée ; le miroir sur toute la banquette du fond ; la rampe basse et droite, l'angle grand ouvert sur l'escalier"
+    },
+    "plan-axes_v2.png": {
+      "source": "Claude, en code (pipeline/plan_kebab.py ... axes)",
+      "date": "2026-10-17",
+      "_note": "les 21 axes de caméra sur plan_v3 (axes.md)"
+    },
+    "plan-axes_v1.png": {
+      "source": "Claude, en code",
+      "date": "2026-10-17",
+      "_note": "les 19 axes sur plan_v2, remplacé par plan-axes_v2.png"
     }
   },
   "_supprimees": "le 2026-10-17, à la demande de l'auteur (« vire les autres images ») : maquette_v1.png, maquette_v2.png et plan_v1.png, retirées du repo (elles restent dans l'historique git, jusqu'au commit 50132dd), et les retouches intermédiaires du disque externe"

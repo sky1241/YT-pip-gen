@@ -10,8 +10,9 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 | KB1 retouches | Le menu, l'escalier ouvert, le miroir fumé, les panneaux, la porte de Datastream, les tables : supprimée, remplacée par KB2 | (dans l'historique git) |
 | Plan | Vu de dessus, en code (`pipeline/plan_kebab.py`) : la disposition exacte | `image/decors/kebab/plan_v2.png` (la v1 sans la banquette en L) |
 | KB2 | Le plan peint : le kebab vu exactement d'en haut, comme le plan v2, dans le style de la maquette : faite, la référence du kebab | `image/decors/kebab/plan-peint_v1.png` |
-| A6 | L'axe 6 : la table de Sky, la banquette, le miroir : fait | `image/decors/kebab/table-du-fond/fond_v1.png` |
-| A7 | L'axe 7 : depuis la place de Sky, vers la rue | `image/decors/kebab/table-du-fond-contrechamp/fond_v1.png` |
+| A6 | L'axe 6 : la table de Sky, la banquette, le miroir : fait, puis dépassé par le plan v3 | `image/decors/kebab/table-du-fond/fond_v1.png` |
+| A7 | L'axe 7 : écrit pour le plan v2, pas envoyé | |
+| KB2 v2 | Le plan peint, d'après le plan v3 | `image/decors/kebab/plan-peint_v2.png` |
 
 La suite (un fond vide par axe de caméra) s'écrit d'après KB1 et d'après les scènes du texte.
 
@@ -285,3 +286,25 @@ Light: the only daylight comes from the open shopfront at the far end, on the st
 ```
 
 À contrôler à la reprise : la caméra assise sur la banquette, vers la rue ; la table de Sky en bas, ses deux chaises face à nous ; les deux tables du milieu ; le comptoir à droite de l'image, la banquette et la rampe à gauche (c'est le contrechamp : la gauche et la droite s'inversent) ; la devanture ouverte et la rue au fond ; la lumière qui vient de la rue ; aucune personne, aucun texte.
+
+**Le plan v3, le 2026-10-17** : l'auteur a annoté le plan v2 dans ChatGPT (la première table de droite barrée, l'angle de la banquette entouré). Validé : la table de Sky dans l'angle de la banquette, pour cinq, Sky et Maëlle sur la banquette du fond, deux chaises en face, Patrick au bout sur la banquette de droite (« c'est l'ancien, ça résout les problèmes de champ ») ; le miroir sur toute la banquette du fond, à fleur de son bout gauche ; entre la banquette et l'escalier, une rampe basse et droite, l'angle grand ouvert ; de l'herbe entre les rails du tram ; trois lumières par axe (jour, pluie, nuit). Le fond A6 et le plan peint sont à refaire ; A7 n'a pas été envoyé. Les 21 axes : `axes.md`.
+
+### Prompt KB2 v2 — Le plan peint, d'après le plan v3
+
+Joins `~/Téléchargements/kebab_pour_KB2v2_1_plan.png` puis `~/Téléchargements/kebab_pour_KB2v2_2_ancien-plan-peint.png`. Dans la conversation de KB2, ou une nouvelle.
+
+```
+The first attached image is the exact floor plan of a small kebab restaurant, seen straight from above. The second attached image is an older painting of the same restaurant: take from it only the art style, the materials, the colours and the light; its layout is out of date, so follow only the plan. Paint this restaurant seen straight from above, exactly like the plan: the same layout, every element at the same place, with the same size and the same orientation, as if the plan had been painted over. Style: a flat 2D hand-drawn background painting from a 1990s anime film (clean dark outlines, flat cel shading, muted warm palette, warm golden morning light coming from the street, at the bottom of the image). NOT a 3D render, NOT photorealistic. Do not copy the colours or the labels of the plan. No people. No text, no letters and no logos anywhere. Landscape format (1536×1024).
+What is where, as in the plan:
+- At the bottom, the street with the tram rails and grass growing between the rails; the shopfront is fully open, and at the bottom left the folding glass panels are folded together, full height.
+- On the left, the L-shaped stainless steel counter: the cash register on its short side at the front, then the refrigerated salad display and the sauces along its long side. Behind it, against the left wall, the vertical kebab spit under its hood, the grill, the fryer and the worktops. A round clock on the wall above the counter.
+- In the back left corner, the tall drinks fridge with glass doors.
+- An L-shaped red padded bench: it runs along the back wall, then turns in the back right corner and runs along the right side. Above the whole back part of the bench, a long plain mirror, dark and smoky, from the left end of the bench to the corner.
+- In the back right corner, in the angle of the bench, one rectangular wooden table: its back long side against the back bench, its right short end against the right bench, and two chairs on its front long side.
+- In the middle of the room, two identical rectangular wooden tables, each with two chairs on each long side, facing each other.
+- Along the right bench, further toward the street, two identical rectangular wooden tables, each perpendicular to the bench with one short end against it, and two chairs on each long side.
+- On the far right, a wooden staircase going up from the street side toward the back, to a plain closed wooden door at the top. Between the bench and the staircase there is only a low, straight, open wooden railing: no wall, nothing that juts into the room.
+- On every table, a red sauce bottle, a white sauce bottle and a napkin dispenser. A few large plants on the floor, in the corners; no plant on the tables.
+```
+
+À contrôler à la reprise : la table de Sky dans l'angle, contre les deux banquettes ; le miroir sur toute la banquette du fond ; deux tables au milieu, deux le long de la banquette de droite ; la rampe basse et droite, sans mur ; l'herbe entre les rails ; rien de l'ancien plan peint recopié ; rien du plan (couleurs, étiquettes) ; aucun texte.
