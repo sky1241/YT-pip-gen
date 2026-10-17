@@ -451,3 +451,8 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   (`image/decors/kebab/table-du-fond-contrechamp/fond_v1.png`). Le premier essai avait raté l'escalier parce que la vue en volumes
   ne le montrait pas : ChatGPT peint ce qu'il voit dans la vue, rien de plus. Corrigée (le côté de l'escalier suit la pente,
   sa rampe au-dessus, la voie du tram en herbe, les arbres d'en face), la vue a donné l'image juste du premier coup.
+- **Les fonds 20, 21 et 8 du kebab (2026-10-17)** : 20 et 21 du premier coup, avec un fond déjà validé du même coin joint en
+  troisième image (la même plante, le même miroir). Le 8 en quatre essais : l'angle redessiné par l'auteur, puis le mur de la
+  cuisine pris de face (de biais, la ligne du plafond plongeait), puis la vitrine dessinée encastrée dans le comptoir (posée en
+  retrait, ChatGPT la mettait derrière) et l'horloge dessinée ronde (en carré, il peignait les deux). Ce que la vue en volumes
+  montre, ChatGPT le peint : chaque objet doit y avoir sa vraie forme et sa vraie place.

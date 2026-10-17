@@ -201,7 +201,7 @@ Les axes et leurs numéros : `decors/kebab/axes.md` et le plan `decors/kebab/pla
 - [ ] `entree/fond_v1.png` (2) : depuis le trottoir, toute la salle
 - [x] `table-du-fond/fond_v1.png` (6) : la table de Sky dans l'angle, la banquette, le grand miroir au-dessus, la plante de l'angle
 - [x] `table-du-fond-contrechamp/fond_v1.png` (7) : depuis la banquette, les deux chaises, la salle, la rue
-- [ ] `comptoir/fond_v1.png` (8) : la caisse, les salades, la broche, l'horloge, le menu
+- [x] `comptoir/fond_v1.png` (8) : la caisse, les salades, la broche, l'horloge, le menu
 - [ ] `pied-de-l-escalier/fond_v1.png` (10) : les premières marches, pour les descentes
 - [ ] `table-vue-de-dessus/fond_v1.png` (17) : le dessus de la table de Sky, pour les inserts
 - [x] `bout-de-table/fond_v1.png` (20) : Patrick de face, au bout de la table, la rampe et l'escalier derrière lui

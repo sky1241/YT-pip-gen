@@ -14,7 +14,7 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 | A7 v2 | L'axe 7 : depuis la place de Sky, vers la rue, la rampe à gauche : **fait** | `image/decors/kebab/table-du-fond-contrechamp/fond_v1.png` |
 | A20 | L'axe 20 : Patrick au bout de la table, vu de l'autre bout : **fait** | `image/decors/kebab/bout-de-table/fond_v1.png` |
 | A21 | L'axe 21 : depuis la place de Patrick, le long de la table, vers le comptoir : **fait** | `image/decors/kebab/depuis-patrick/fond_v1.png` |
-| A8 | L'axe 8 : le comptoir, vu de la salle | `image/decors/kebab/comptoir/fond_v1.png` |
+| A8 v3 | L'axe 8 : le comptoir et la cuisine, le mur de face : **fait** (après une retouche) | `image/decors/kebab/comptoir/fond_v1.png` |
 | KB2 v2 | Le plan peint, d'après le plan v3 : bonne disposition, mais l'escalier sur la rue, la lumière de côté | (supprimé) |
 | KB2 v3 | Le plan peint, d'après le plan v5 sans caméras : **la base fixe, validée** | `image/decors/kebab/plan-peint_v2.png` |
 | A6 v3 | L'axe 6 : la table de Sky dans l'angle, la banquette, le miroir, la plante : **fait** (la vue en volumes, puis une retouche) | `image/decors/kebab/table-du-fond/fond_v1.png` |
@@ -599,3 +599,5 @@ Edit ONLY this image. Keep everything else exactly as it is: the same view, the 
 ```
 
 À contrôler à la reprise : une seule horloge ronde, à la place du carré ; plus de blocs gris à gauche ; rien d'autre de changé.
+
+**Résultat de la retouche A8 v3, le 2026-10-17 : validé par l'auteur.** Une seule horloge ronde, plus de blocs gris. Leçon : tout ce que la vue en volumes dessine, ChatGPT le peint ; un objet doit y avoir sa vraie forme (l'horloge ronde, la vitrine encastrée), sinon il en fait un deuxième.
