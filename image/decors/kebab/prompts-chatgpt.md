@@ -683,3 +683,15 @@ Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the 
 ```
 
 À contrôler à la reprise : l'escalier droit qui monte, la rampe à gauche, le mur à droite ; la porte au bout, en haut, dans son mur, sans texte ; un aperçu de la banquette et du miroir à gauche ; la lumière de derrière, plus sombre en haut ; aucune personne, aucun texte.
+
+Résultat de A11, le 2026-10-17 : « pas mal ». L'escalier, la porte au bout, le mur à droite, la banquette et le miroir à gauche. Reste, pour l'auteur : la rampe est coupée en bas (un poteau isolé et une autre main courante au premier plan) ; elle doit descendre proprement jusqu'en bas. Capture hors du repo (`escalier-vers-datastream_essai-1_capture.png`).
+
+### Prompt A11 retouche — La rampe d'un seul tenant jusqu'en bas
+
+Dans la case « Décrivez les modifications » de l'image.
+
+```
+Edit ONLY this image. Keep everything else exactly as it is: the same view, the same stairs, door, walls, bench, mirror, style and light. Make only this change: the wooden banister on the left must be one continuous banister, from the top of the stairs down to the bottom step. Its handrail follows the slope of the stairs without any break, and ends at the bottom on a single newel post standing on the first step, at the bottom left. Remove the separate short railing and the extra post in the foreground at the bottom left.
+```
+
+À contrôler à la reprise : une seule rampe, d'un seul tenant, du haut jusqu'au poteau de la première marche ; plus de bout de rampe isolé au premier plan ; rien d'autre de changé.
