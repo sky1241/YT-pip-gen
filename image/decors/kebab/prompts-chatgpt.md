@@ -12,6 +12,7 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 | KB2 | Le plan peint, d'après le plan v2 : remplacé par KB2 v3 | (supprimé) |
 | A6 | L'axe 6, d'après le plan v2 : dépassé par le plan v3, supprimé | (supprimé) |
 | A7 v2 | L'axe 7 : depuis la place de Sky, vers la rue, la rampe à gauche : **fait** | `image/decors/kebab/table-du-fond-contrechamp/fond_v1.png` |
+| A20 | L'axe 20 : Patrick au bout de la table, vu de l'autre bout | `image/decors/kebab/bout-de-table/fond_v1.png` |
 | KB2 v2 | Le plan peint, d'après le plan v3 : bonne disposition, mais l'escalier sur la rue, la lumière de côté | (supprimé) |
 | KB2 v3 | Le plan peint, d'après le plan v5 sans caméras : **la base fixe, validée** | `image/decors/kebab/plan-peint_v2.png` |
 | A6 v3 | L'axe 6 : la table de Sky dans l'angle, la banquette, le miroir, la plante : **fait** (la vue en volumes, puis une retouche) | `image/decors/kebab/table-du-fond/fond_v1.png` |
@@ -477,3 +478,19 @@ Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the 
 À contrôler à la reprise : la rampe de l'escalier qui monte vers nous au-dessus de la banquette, à gauche ; la voie du tram en herbe, sans pavés ; les arbres d'en face ; le comptoir et la caisse à droite ; les deux chaises face à nous ; aucune personne, aucun texte.
 
 **Résultat de A7 v2, le 2026-10-17 : validé par l'auteur** (« on l'a »), rangé en `table-du-fond-contrechamp/fond_v1.png`, du premier coup avec la vue en volumes corrigée.
+
+### Prompt A20 — La place de Patrick, au bout de la table
+
+Trois images jointes, dans cet ordre : `~/Téléchargements/kebab_pour_A20_1_vue.png` (la vue en volumes), `~/Téléchargements/kebab_pour_axes_plan-peint.png`, et `~/Téléchargements/kebab_pour_A20_3_angle6.png` (le fond validé de l'axe 6 : le même coin, pour que la banquette, la plante et le mur soient les mêmes).
+
+```
+The first attached image is a rough 3D layout of one view of our kebab restaurant, made of simple flat-coloured volumes: it fixes the camera, the perspective, the framing and the place of every object. The second attached image is the same restaurant seen from above, painted in our style: it gives the art style, the materials and the objects. The third attached image is another view of the same corner of the restaurant, already painted and approved: the bench, the plant, the walls, the table and the light must look exactly the same. Paint exactly the view of the first image, as an empty background for an anime series: keep the same camera, the same perspective and framing, and every object at the same place, with the same size and angle, as if the layout had been painted over. The camera is seated at the left end of the table in the corner and looks along the table toward its far end. Replace the simple volumes with the real objects:
+- at the bottom, our rectangular wooden table, seen from its near end and running away from us; in its middle, a red sauce bottle, a white sauce bottle and a napkin dispenser;
+- at the far end of the table, the red padded bench of the right side of the room, empty: the seat at the head of the table;
+- on the left, the red padded bench along the back wall, seen from its end, running to the corner, and above it, in the corner, the same large green potted plant as in the third image;
+- on the right edge, the back of an empty wooden chair with a red seat;
+- behind the far bench, a plain beige wall: the side of the staircase, which goes up behind it, out of sight; at the top right, only the top of a wooden banister shows.
+Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the style of the second and third images (clean dark outlines, flat cel shading, muted warm palette, painted details). NOT a 3D render, NOT photorealistic, and do not keep the flat colours of the layout. Light: the only daylight comes from the open shopfront, out of frame on the right; there are no windows; the light is warm and dim, as in the third image, and the shadows fall to the left. No people. No text, no letters and no logos anywhere. Landscape format (1536×1024).
+```
+
+À contrôler à la reprise : la table vue de son bout ; la banquette vide au bout, la place de Patrick ; la banquette du fond à gauche et la même plante que l'axe 6 ; le dossier d'une chaise à droite ; le mur derrière, sans escalier visible, juste le haut d'une rampe ; la lumière de droite ; aucune personne, aucun texte.
