@@ -24,18 +24,19 @@ CAMERAS[8] = (DEBOUT, 0, 70)          # le mur de la cuisine de face : la ligne 
 CAMERAS[7] = (ASSIS, 0, 80)          # plus large : la rampe de l'escalier à gauche et la caisse à droite (l'auteur)
 CAMERAS.update({5: (2.1, -25, 70), 11: (DEBOUT, 18, 66), 13: (DEBOUT, -15, 66), 17: (2.2, -89, 60), 18: (DEBOUT, 10, 30)})
 
-FOND, OBJETS = [], []   # le décor (dessiné d'abord, dans l'ordre), puis les objets (triés du plus loin au plus proche)
+FOND, OBJETS = [], []   # les surfaces plates du décor, et les boîtes ; tout passe par un tampon de profondeur (vue)
 
 
-def boite(x0, y0, x1, y1, z0, z1, couleur, liste=OBJETS, morceau=99, trait=True):
-    """Une boîte, en coordonnées du plan (x vers la droite, y vers la rue, z vers le haut). Les longues (banquettes,
-    comptoir) se coupent en morceaux de 50 cm, pour que le tri du plus loin au plus proche reste juste."""
+def boite(x0, y0, x1, y1, z0, z1, couleur, liste=OBJETS, morceau=99, trait=True, groupe=None):
+    """Une boîte, en coordonnées du plan (x vers la droite, y vers la rue, z vers le haut). « morceau » la coupe en
+    morceaux, dont les jointures se dessinent (les coussins des banquettes) ; trait=False : pas de jointures."""
+    groupe = len(OBJETS) + len(FOND) if groupe is None else groupe
     nx = max(1, math.ceil((x1 - x0) / morceau - 1e-9))
     ny = max(1, math.ceil((y1 - y0) / morceau - 1e-9))
     for i in range(nx):
         for j in range(ny):
             liste.append(("boite", (x0 + (x1 - x0) * i / nx, y0 + (y1 - y0) * j / ny,
-                                    x0 + (x1 - x0) * (i + 1) / nx, y0 + (y1 - y0) * (j + 1) / ny, z0, z1), couleur, trait))
+                                    x0 + (x1 - x0) * (i + 1) / nx, y0 + (y1 - y0) * (j + 1) / ny, z0, z1), couleur, trait, groupe))
 
 
 def plaque(points, normale, couleur):
@@ -58,8 +59,17 @@ plaque([(0, 0, 0), (11, 0, 0), (11, 8, 0), (0, 8, 0)], (0, 0, 1), "#c9a27a")    
 plaque([(0, 0, 0), (11, 0, 0), (11, 0, 3), (0, 0, 3)], (0, 1, 0), "#e2cda3")                    # le mur du fond
 plaque([(0, 0, 0), (0, 8, 0), (0, 8, 3), (0, 0, 3)], (1, 0, 0), "#dcc69c")                      # le mur de gauche
 plaque([(11, 0, 0), (11, 8, 0), (11, 8, 3), (11, 0, 3)], (-1, 0, 0), "#dcc69c")                 # le mur de droite
-for x0, y0, x1, y1 in ((0, 0, 9.4, 8), (10.9, 0, 11, 8), (9.4, 4.4, 10.9, 8), (9.4, 0, 10.9, 0.4)):  # le plafond, ouvert
-    plaque([(x0, y0, 3), (x1, y0, 3), (x1, y1, 3), (x0, y1, 3)], (0, 0, -1), "#d6c29e")         # au-dessus de l'escalier
+for x0, y0, x1, y1 in ((0, 0, 9.3, 8), (9.3, 6.4, 11, 8)):    # le plafond ; au-dessus de l'escalier, la cage monte à l'étage
+    plaque([(x0, y0, 3), (x1, y0, 3), (x1, y1, 3), (x0, y1, 3)], (0, 0, -1), "#d6c29e")
+# la cage de l'escalier, jusqu'à l'étage : on monte, et au fond, en haut, la porte de Datastream dans son mur (l'auteur)
+plaque([(9.3, 0, 3), (11, 0, 3), (11, 0, 6), (9.3, 0, 6)], (0, 1, 0), "#d8c49c")              # le mur du haut, au fond
+plaque([(11, 0, 3), (11, 6.4, 3), (11, 6.4, 6), (11, 0, 6)], (-1, 0, 0), "#d2bd94")           # le mur de droite, en haut
+plaque([(9.3, 0, 6), (11, 0, 6), (11, 6.4, 6), (9.3, 6.4, 6)], (0, 0, -1), "#cdb88f")         # le plafond de la cage
+plaque([(9.3, 0, 3), (9.3, 6.4, 3), (9.3, 6.4, 6), (9.3, 0, 6)], (1, 0, 0), "#d2bd94")          # le mur gauche, en haut
+plaque([(9.3, 6.4, 3), (11, 6.4, 3), (11, 6.4, 6), (9.3, 6.4, 6)], (0, -1, 0), "#cdb88f")     # au-dessus du palier
+plaque([(9.3, 0, 3.0), (11, 0, 3.0), (11, 0.6, 3.0), (9.3, 0.6, 3.0)], (0, 0, 1), "#b07a45")   # le palier du haut
+plaque([(9.75, 0.01, 3.0), (10.65, 0.01, 3.0), (10.65, 0.01, 5.05), (9.75, 0.01, 5.05)], (0, 1, 0), "#7a4a24")  # la porte
+plaque([(10.45, 0.005, 3.95), (10.55, 0.005, 3.95), (10.55, 0.005, 4.05), (10.45, 0.005, 4.05)], (0, 1, 0), "#c9c9c9")
 plaque([(0, 8, 2.7), (11, 8, 2.7), (11, 8, 3), (0, 8, 3)], (0, -1, 0), "#cdb88f")               # le linteau, vu de dedans
 plaque([(0, 8, 2.7), (11, 8, 2.7), (11, 8, 7), (0, 8, 7)], (0, 1, 0), "#d8c6a2")                # la façade, vue de la rue
 for xf in (1.0, 4.0, 7.0, 9.5):                                                                 # les fenêtres de Datastream
@@ -133,10 +143,11 @@ for ty in (4.0, 6.2):                                       # les deux tables de
 BOIS = "#8a5a2b"
 # le côté de l'escalier, côté salle : fermé sous les marches, il suit leur pente ; la rampe monte au-dessus de la banquette
 # (l'auteur, le 2026-10-17). Au fond, l'escalier touche le plafond : de là, on ne voit qu'un mur.
-for k in range(12):                                         # monte du palier (y = 6,4) vers le fond, 25 cm par marche
+for k in range(11):                                         # monte du palier (y = 6,4) vers le fond, 25 cm par marche ;
+                                                            # la 12e marche, c'est le palier du haut
     y0, y1, dessus = 6.4 - 0.5 * (k + 1), 6.4 - 0.5 * k, 0.25 * (k + 1)
     boite(9.4, y0, 10.9, y1, max(0, dessus - 0.55), dessus, "#9c6b3c")                 # la marche et son limon
-    boite(9.3, y0, 9.4, y1, 0, dessus, "#dcc69c", trait=False)                        # le côté fermé, sous les marches
+    boite(9.3, y0, 9.4, y1, 0, dessus, "#dcc69c", trait=False, groupe="cote-escalier")   # le côté fermé, sous les marches
     boite(9.33, (y0 + y1) / 2 - 0.02, 9.37, (y0 + y1) / 2 + 0.02, dessus, dessus + 0.9, BOIS)  # les barreaux
     boite(9.3, y0, 9.4, y1, dessus + 0.9, dessus + 0.96, BOIS)                        # la main courante
 boite(9.4, 6.4, 10.9, 7.9, 0, 0.03, "#b07a45")              # le palier
@@ -173,6 +184,9 @@ ECLAIRAGE = {(0, 0, 1): 1.0, (0, 0, -1): 0.8, (0, 1, 0): 0.9, (0, -1, 0): 0.8, (
 
 
 def vue(numero, sortie):
+    """La vue d'un axe : chaque face est remplie avec un tampon de profondeur (ce qui est caché reste caché), puis les
+    contours se tracent là où deux faces se touchent à l'écran."""
+    import numpy as np
     cx, cy, angle = AXES[numero]
     h, inclinaison, champ = CAMERAS[numero]
     camera = (cx, cy, h)
@@ -191,9 +205,8 @@ def vue(numero, sortie):
         return (sum(v[i] * droite[i] for i in range(3)), sum(v[i] * haut[i] for i in range(3)),
                 sum(v[i] * avant[i] for i in range(3)))
 
-    def projeter(points):
-        pts = [vers_camera(p) for p in points]
-        coupe = []                                          # on coupe ce qui passe derrière la caméra
+    def couper(pts):                                        # on coupe ce qui passe derrière la caméra
+        coupe = []
         for i, p in enumerate(pts):
             q = pts[(i + 1) % len(pts)]
             if p[2] >= 0.05:
@@ -201,45 +214,85 @@ def vue(numero, sortie):
             if (p[2] >= 0.05) != (q[2] >= 0.05):
                 s = (0.05 - p[2]) / (q[2] - p[2])
                 coupe.append(tuple(p[k] + s * (q[k] - p[k]) for k in range(3)))
-        return [(LARGEUR / 2 + focale * x / z, HAUTEUR / 2 - focale * y / z) for x, y, z in coupe]
+        return coupe
+
+    def ecran(cam):
+        return [(LARGEUR / 2 + focale * x / z, HAUTEUR / 2 - focale * y / z) for x, y, z in cam]
 
     def visible(points, normale):
         c = [sum(p[k] for p in points) / len(points) for k in range(3)]
         return sum(normale[k] * (camera[k] - c[k]) for k in range(3)) > 0
 
-    img = Image.new("RGB", (LARGEUR, HAUTEUR), "#e8dcc4")
-    d = ImageDraw.Draw(img)
+    profondeur = np.full((HAUTEUR, LARGEUR), np.inf)
+    image = np.zeros((HAUTEUR, LARGEUR, 3), np.uint8)
+    image[:] = ombre("#e8dcc4", 1.0)
+    idents = np.full((HAUTEUR, LARGEUR), -1, np.int32)
+    cles, verres, sol = {}, [], []
 
-    def dessiner(points, normale, couleur, trait=True):
-        if not visible(points, normale) and couleur != "verre":
+    def remplir(points, normale, couleur, cle):
+        if couleur == "verre":
+            verres.append(points)
             return
-        poly = projeter(points)
-        if len(poly) >= 3 and couleur == "verre":            # le verre : son contour seulement, on voit à travers
+        if not visible(points, normale):
+            return
+        brut = [vers_camera(p) for p in points]
+        cam = couper(brut)
+        if len(cam) < 3:
+            return
+        poly = ecran(cam)
+        x0 = max(0, int(math.floor(min(u for u, _ in poly)))); x1 = min(LARGEUR, int(math.ceil(max(u for u, _ in poly))) + 1)
+        y0 = max(0, int(math.floor(min(v for _, v in poly)))); y1 = min(HAUTEUR, int(math.ceil(max(v for _, v in poly))) + 1)
+        if x0 >= x1 or y0 >= y1:
+            return
+        masque = Image.new("L", (x1 - x0, y1 - y0), 0)
+        ImageDraw.Draw(masque).polygon([(u - x0, v - y0) for u, v in poly], fill=1)
+        m = np.asarray(masque, bool)
+        if not m.any():
+            return
+        q0, q1, q2 = (np.array(p, float) for p in brut[:3])
+        n = np.cross(q1 - q0, q2 - q0)
+        if not n.any():
+            return
+        uu, vv = np.meshgrid(np.arange(x0, x1) + 0.5, np.arange(y0, y1) + 0.5)
+        rx, ry = (uu - LARGEUR / 2) / focale, -(vv - HAUTEUR / 2) / focale
+        with np.errstate(divide="ignore", invalid="ignore"):
+            z = float(n @ q0) / (n[0] * rx + n[1] * ry + n[2])
+        tampon = profondeur[y0:y1, x0:x1]
+        ok = m & (z > 0.04) & (z < tampon - 1e-4)
+        tampon[ok] = z[ok]
+        image[y0:y1, x0:x1][ok] = ombre(couleur, ECLAIRAGE.get(normale, 0.85))
+        idents[y0:y1, x0:x1][ok] = cles.setdefault(cle, len(cles))
+
+    for k, (_, (points, normale), couleur, _trait) in enumerate(FOND):
+        remplir(points, normale, couleur, ("plaque", k))
+        if normale == (0, 0, 1) and points[0][:2] == (0, 0):
+            sol.append(cles.get(("plaque", k)))
+    for k, (_, forme, couleur, trait, groupe) in enumerate(OBJETS):
+        for f, (points, normale) in enumerate(faces(forme)):
+            remplir(points, normale, couleur, ("boite", k, f) if trait else ("groupe", groupe, normale))
+
+    # les carreaux du sol, tous les 50 cm, retrouvés depuis la profondeur
+    if sol and sol[0] is not None:
+        ys, xs = np.nonzero(idents == sol[0])
+        z = profondeur[ys, xs]
+        rx, ry = (xs + 0.5 - LARGEUR / 2) / focale, -(ys + 0.5 - HAUTEUR / 2) / focale
+        wx = camera[0] + z * (rx * droite[0] + ry * haut[0] + avant[0])
+        wy = camera[1] + z * (rx * droite[1] + ry * haut[1] + avant[1])
+        seuil = 0.9 * z / focale
+        ligne = (np.abs(wx / 0.5 - np.round(wx / 0.5)) * 0.5 < seuil) | (np.abs(wy / 0.5 - np.round(wy / 0.5)) * 0.5 < seuil)
+        image[ys[ligne], xs[ligne]] = ombre("#c9a27a", 0.8)
+    # les contours, là où deux faces se touchent
+    bord = np.zeros((HAUTEUR, LARGEUR), bool)
+    bord[:, :-1] |= idents[:, :-1] != idents[:, 1:]
+    bord[:-1, :] |= idents[:-1, :] != idents[1:, :]
+    image[bord] = (image[bord] * 0.45).astype(np.uint8)
+    img = Image.fromarray(image)
+    d = ImageDraw.Draw(img)
+    for points in verres:                                   # le verre : son contour seulement, on voit à travers
+        cam = couper([vers_camera(p) for p in points])
+        if len(cam) >= 3:
+            poly = ecran(cam)
             d.line(poly + [poly[0]], fill=(110, 170, 195), width=3)
-        elif len(poly) >= 3:
-            d.polygon(poly, fill=ombre(couleur, ECLAIRAGE.get(normale, 0.85)),
-                      outline=ombre(couleur, 0.45) if trait else None)
-
-    for _, (points, normale), couleur, _trait in FOND:
-        dessiner(points, normale, couleur)
-        if normale == (0, 0, 1) and points[0][:2] == (0, 0):     # les carreaux du sol, tous les 50 cm
-            for k in range(1, 22):
-                ligne = projeter([(k * 0.5, 0, 0.005), (k * 0.5, 8, 0.005), (k * 0.5, 8, 0.006), (k * 0.5, 0, 0.006)])
-                if len(ligne) >= 2:
-                    d.line(ligne[:2], fill=ombre("#c9a27a", 0.8), width=1)
-            for k in range(1, 16):
-                ligne = projeter([(0, k * 0.5, 0.005), (11, k * 0.5, 0.005), (11, k * 0.5, 0.006), (0, k * 0.5, 0.006)])
-                if len(ligne) >= 2:
-                    d.line(ligne[:2], fill=ombre("#c9a27a", 0.8), width=1)
-
-    def distance(forme):
-        x0, y0, x1, y1, z0, z1 = forme
-        c = ((x0 + x1) / 2, (y0 + y1) / 2, (z0 + z1) / 2)
-        return math.dist(c, camera)
-
-    for _, forme, couleur, trait in sorted(OBJETS, key=lambda o: -distance(o[1])):
-        for points, normale in faces(forme):
-            dessiner(points, normale, couleur, trait)
     img.save(sortie)
 
 

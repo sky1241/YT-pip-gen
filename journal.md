@@ -456,3 +456,8 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   cuisine pris de face (de biais, la ligne du plafond plongeait), puis la vitrine dessinée encastrée dans le comptoir (posée en
   retrait, ChatGPT la mettait derrière) et l'horloge dessinée ronde (en carré, il peignait les deux). Ce que la vue en volumes
   montre, ChatGPT le peint : chaque objet doit y avoir sa vraie forme et sa vraie place.
+- **La vue en volumes avec un tampon de profondeur (2026-10-17)** : l'ancien rendu triait les boîtes du plus loin au plus
+  proche et dessinait le décor dans l'ordre ; quand la cage de l'escalier est montée jusqu'à l'étage, sa porte est apparue à
+  travers le plafond (à l'axe 2, là où ChatGPT l'avait mise en l'air). `pipeline/vue_kebab.py` remplit maintenant chaque face
+  avec un tampon de profondeur et trace les contours là où deux faces se touchent : ce qui est caché reste caché. Vérifié :
+  depuis le trottoir à gauche (axe 2), le plafond cache la porte ; du pied de l'escalier (axe 11), on la voit en haut.
