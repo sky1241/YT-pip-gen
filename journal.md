@@ -478,3 +478,7 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   heures (ou 20 millions de vues en Shorts) à partir du 1er février 2027, annoncé le 10 août 2026 (air.io, vidiq.com). RPM estimé
   en France : environ 2,5 à 2,6 $ pour 1 000 vues (dynamoi.com, tubeanalytics.net). Avec des épisodes de 5 minutes, il faut de
   l'ordre de 100 000 vues par an pour atteindre 4 000 heures : d'où une version compilée de chaque arc.
+- **Depuis la salle, pas de cage d'escalier (2026-10-17)** : à l'axe 12, la vue en volumes laissait voir la porte de Datastream
+  par l'ouverture du plafond au-dessus de l'escalier (juste en vrai, refusé par l'auteur : « le bug de l'escalier »).
+  `pipeline/vue_kebab.py` ferme ce plafond pour les caméras de la salle (x < 9,3) ; depuis l'escalier (axe 11), la cage et la
+  porte restent visibles.

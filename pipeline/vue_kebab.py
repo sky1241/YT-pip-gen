@@ -65,6 +65,9 @@ plaque([(0, 0, 0), (0, 8, 0), (0, 8, 3), (0, 0, 3)], (1, 0, 0), "#dcc69c")      
 plaque([(11, 0, 0), (11, 8, 0), (11, 8, 3), (11, 0, 3)], (-1, 0, 0), "#dcc69c")                 # le mur de droite
 for x0, y0, x1, y1 in ((0, 0, 9.3, 8), (9.3, 6.4, 11, 8)):    # le plafond ; au-dessus de l'escalier, la cage monte à l'étage
     plaque([(x0, y0, 3), (x1, y0, 3), (x1, y1, 3), (x0, y1, 3)], (0, 0, -1), "#d6c29e")
+# depuis la salle, le plafond paraît fermé au-dessus de l'escalier : la rampe entre dans le plafond, on ne voit pas la cage
+# (l'auteur, axes 2, 4 et 12). Ce plafond-là n'est dessiné que pour les caméras de la salle (x < 9,3)
+FOND.append(("plaque-salle", ([(9.3, 0, 3), (11, 0, 3), (11, 6.4, 3), (9.3, 6.4, 3)], (0, 0, -1)), "#d6c29e", True))
 # la cage de l'escalier, jusqu'à l'étage : on monte, et au fond, en haut, la porte de Datastream dans son mur (l'auteur)
 plaque([(9.3, 0, 3), (11, 0, 3), (11, 0, 6), (9.3, 0, 6)], (0, 1, 0), "#d8c49c")              # le mur du haut, au fond
 plaque([(11, 0, 3), (11, 6.4, 3), (11, 6.4, 6), (11, 0, 6)], (-1, 0, 0), "#d2bd94")           # le mur de droite, en haut
@@ -284,7 +287,9 @@ def vue(numero, sortie):
         image[y0:y1, x0:x1][ok] = ombre(couleur, ECLAIRAGE.get(normale, 0.85))
         idents[y0:y1, x0:x1][ok] = cles.setdefault(cle, len(cles))
 
-    for k, (_, (points, normale), couleur, _trait) in enumerate(FOND):
+    for k, (genre, (points, normale), couleur, _trait) in enumerate(FOND):
+        if genre == "plaque-salle" and camera[0] >= 9.3:
+            continue
         remplir(points, normale, couleur, ("plaque", k))
         if normale == (0, 0, 1) and points[0][:2] == (0, 0):
             sol.append(cles.get(("plaque", k)))

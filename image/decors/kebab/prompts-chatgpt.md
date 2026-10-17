@@ -860,3 +860,15 @@ Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the 
 ```
 
 À contrôler à la reprise : le miroir de biais, vierge, sombre, sans reflet reconnaissable ; la banquette dessous ; la même plante qu'à l'axe 6 ; le coin de la table ; le haut de l'escalier et la porte dans l'ombre, en haut à droite ; aucune personne, aucun texte.
+
+Résultat de A12, le 2026-10-17 : le miroir, la banquette, la plante, le coin de la table sont justes. L'auteur relève : la lumière n'est pas bonne (une grande tache de soleil en haut à gauche, comme une fenêtre) ; et en haut à droite, la porte vue par une ouverture du plafond, « le bug de l'escalier ». Depuis la salle, la cage ne doit jamais se voir : la vue en volumes ferme maintenant le plafond au-dessus de l'escalier pour les caméras de la salle. Capture hors du repo (`miroir_essai-1_capture.png`).
+
+### Prompt A12 retouche — La lumière, le plafond au-dessus de l'escalier
+
+```
+Edit ONLY this image. Keep everything else exactly as it is: the same view, the same mirror, frame, bench, plant, table and style. Make only these two changes:
+1. The light: there is no window in this room. Remove the bright patches of sunlight on the upper wall at the top left. The only daylight comes softly from the open shopfront behind the camera: the wall and the mirror frame get an even, warm, dim light, with no sharp light shapes on the wall.
+2. At the top right: remove the opening in the ceiling and the door seen through it. The ceiling is plain and closed there, the same as the rest of the ceiling, and the wall below it is plain.
+```
+
+À contrôler à la reprise : plus de tache de soleil, une lumière douce et égale ; un plafond plein en haut à droite, sans porte ni ouverture ; rien d'autre de changé.
