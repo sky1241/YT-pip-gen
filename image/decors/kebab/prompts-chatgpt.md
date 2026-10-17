@@ -636,3 +636,17 @@ Edit ONLY this image. Keep everything else exactly as it is: the same view, the 
 ```
 
 À contrôler à la reprise : la plante de l'angle, larges feuilles striées, pot gris ; la porte en bois en haut de l'escalier, sans texte ; rien d'autre de changé.
+
+Résultat de la retouche A2, le 2026-10-17 : la plante est la bonne, mais posée trop haut ; la porte est en l'air, au-dessus du plafond, l'angle complètement faux (l'auteur). Claude : depuis le trottoir, la porte, à l'étage, est cachée par le plafond ; la rampe qui monte dans le plafond, comme au premier essai, est juste. La porte se montrera aux axes 10 et 11. Capture hors du repo (`entree_essai-2_capture.png`).
+
+### Prompt A2 retouche 2 — Sans la porte, la plante plus bas
+
+Dans la case « Décrivez les modifications » de la dernière image.
+
+```
+Edit ONLY this image. Keep everything else exactly as it is: the same view, the same counter, kitchen, tables, chairs, bench, mirror, style and light. Make only these two changes:
+1. At the top right, remove the door and the posts around it: the wooden banister simply goes up along the side of the staircase and disappears into the ceiling, as on the rest of the staircase. No door in this view.
+2. The plant in the back right corner: lower it so that its grey pot is hidden behind the backrest of the red bench, standing on the floor in the corner; only its leaves rise above the backrest, against the two walls.
+```
+
+À contrôler à la reprise : plus de porte, la rampe qui entre dans le plafond ; le pot de la plante caché derrière le dossier, seules les feuilles dépassent ; rien d'autre de changé.
