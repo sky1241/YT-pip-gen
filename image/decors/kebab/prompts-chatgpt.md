@@ -21,6 +21,7 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 | A1 | L'axe 1 : l'extérieur, la façade depuis le trottoir d'en face : **fait** (une retouche ; les enseignes en code) | `image/decors/kebab/exterieur/fond_v1.png` |
 | A17 | L'axe 17 : la table de Sky vue d'en haut, pour les inserts : **fait** | `image/decors/kebab/table-vue-de-dessus/fond_v1.png` |
 | A4 | L'axe 4 : depuis le comptoir, le regard de Mohamed : **fait** (une retouche) | `image/decors/kebab/depuis-le-comptoir/fond_v1.png` |
+| A12 | L'axe 12 : le grand miroir de biais | `image/decors/kebab/miroir/fond_v1.png` |
 | KB2 v2 | Le plan peint, d'après le plan v3 : bonne disposition, mais l'escalier sur la rue, la lumière de côté | (supprimé) |
 | KB2 v3 | Le plan peint, d'après le plan v5 sans caméras : **la base fixe, validée** | `image/decors/kebab/plan-peint_v2.png` |
 | A6 v3 | L'axe 6 : la table de Sky dans l'angle, la banquette, le miroir, la plante : **fait** (la vue en volumes, puis une retouche) | `image/decors/kebab/table-du-fond/fond_v1.png` |
@@ -842,3 +843,20 @@ Edit ONLY this image. Keep everything else exactly as it is: the same view, the 
 À contrôler à la reprise : plus de pan de mur vertical au bout de l'escalier ; la vitre seulement au-dessus des bacs ; rien d'autre de changé.
 
 **Résultat de la retouche A4, le 2026-10-17 : validé par l'auteur.** Le haut de l'escalier reste un peu faux à l'angle du plafond, accepté.
+
+### Prompt A12 — Le grand miroir de biais
+
+Le miroir où Sky dessine (« Le Miroir », l. 482 : Seb et Daria s'approchent, l. 516 et 518). Il doit rester vierge et sombre : les dessins de Sky se poseront en calque. Quatre images jointes, dans cet ordre : `~/Téléchargements/kebab_pour_A12_1_vue.png`, `~/Téléchargements/kebab_pour_axes_plan-peint.png`, `~/Téléchargements/kebab_pour_A12_3_angle6.png` (le fond de l'axe 6 : le même miroir, la même banquette, la même plante, la même table), `~/Téléchargements/kebab_pour_A12_4_angle21.png` (le fond de l'axe 21 : le même miroir de côté).
+
+```
+The first attached image is a rough 3D layout of one view of our kebab restaurant, made of simple flat-coloured volumes: it fixes the camera, the perspective, the framing and the place of every object. The second attached image is the same restaurant seen from above, painted in our style: it gives the art style, the materials and the objects. The third and fourth attached images are two other views of the same corner, already painted and approved: the mirror, its frame, the red bench, the plant, the table, the walls and the light must look exactly the same. Paint exactly the view of the first image, as an empty background for an anime series: keep the same camera, the same perspective and framing, and every object at the same place, with the same size and angle, as if the layout had been painted over. The camera stands in the room and looks at the back wall at an angle. Replace the simple volumes with the real objects:
+- across most of the frame, the long mirror on the back wall, seen at an angle, in its thin brown frame: dark smoky glass, clean and empty, with only a faint blurred warm glow and no recognisable reflection; nothing is drawn or written on it;
+- below the mirror, the long red padded bench, empty, running toward the corner on the right;
+- in the corner, the same large green potted plant as in the third image, behind the corner of the bench;
+- at the bottom right, the corner of the wooden table, with a red sauce bottle and a white sauce bottle;
+- at the top right, the ceiling, and through the stairwell opening a glimpse of the top of the wooden staircase and its closed wooden door upstairs, in shadow;
+- on the right, the plain warm wall of the side of the room.
+Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the style of the other images (clean dark outlines, flat cel shading, muted warm palette, painted details). NOT a 3D render, NOT photorealistic, and do not keep the flat colours of the layout. Light: warm, dim light from the open shopfront behind the camera; there are no windows. No people. No text, no letters, no drawings and no logos anywhere, and nothing on the mirror. Landscape format (1536×1024).
+```
+
+À contrôler à la reprise : le miroir de biais, vierge, sombre, sans reflet reconnaissable ; la banquette dessous ; la même plante qu'à l'axe 6 ; le coin de la table ; le haut de l'escalier et la porte dans l'ombre, en haut à droite ; aucune personne, aucun texte.
