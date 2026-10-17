@@ -23,6 +23,7 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 | A4 | L'axe 4 : depuis le comptoir, le regard de Mohamed : **fait** (une retouche) | `image/decors/kebab/depuis-le-comptoir/fond_v1.png` |
 | A12 | L'axe 12 : le grand miroir de biais : **fait** (une retouche) | `image/decors/kebab/miroir/fond_v1.png` |
 | A13 | L'axe 13 : depuis le miroir, la table de Sky en plongée : **fait** (deux retouches) | `image/decors/kebab/depuis-le-miroir/fond_v1.png` |
+| A14 | L'axe 14 : l'angle de la banquette, debout, pour les plans de groupe | `image/decors/kebab/coin-de-la-banquette/fond_v1.png` |
 | KB2 v2 | Le plan peint, d'après le plan v3 : bonne disposition, mais l'escalier sur la rue, la lumière de côté | (supprimé) |
 | KB2 v3 | Le plan peint, d'après le plan v5 sans caméras : **la base fixe, validée** | `image/decors/kebab/plan-peint_v2.png` |
 | A6 v3 | L'axe 6 : la table de Sky dans l'angle, la banquette, le miroir, la plante : **fait** (la vue en volumes, puis une retouche) | `image/decors/kebab/table-du-fond/fond_v1.png` |
@@ -917,3 +918,20 @@ Edit ONLY the street seen through the open shopfront at the top of this image. K
 À contrôler à la reprise : deux arbres, espacés ; plus de haie ; la façade visible entre eux ; le reste inchangé.
 
 **Résultat de la retouche 2 de A13, le 2026-10-17 : validé par l'auteur.** Les deux arbres sont un peu petits à côté de ceux de l'axe 7, accepté.
+
+### Prompt A14 — L'angle de la banquette, debout
+
+Proche de l'axe 6, mais debout et plus loin : pour les plans de groupe autour de la table de Sky (Seb « assis au fond de la banquette », l. 1470). Quatre images jointes, dans cet ordre : `~/Téléchargements/kebab_pour_A14_1_vue.png`, `~/Téléchargements/kebab_pour_axes_plan-peint.png`, `~/Téléchargements/kebab_pour_A14_3_angle6.png` (le fond de l'axe 6 : le même coin), `~/Téléchargements/kebab_pour_A14_4_angle12.png` (le fond de l'axe 12 : le même miroir, la même plante, la même lumière).
+
+```
+The first attached image is a rough 3D layout of one view of our kebab restaurant, made of simple flat-coloured volumes: it fixes the camera, the perspective, the framing and the place of every object. The second attached image is the same restaurant seen from above, painted in our style: it gives the art style, the materials and the objects. The third and fourth attached images are two other views of the same corner, already painted and approved: the mirror, its frame, the red bench, the plant, the table, the walls and the light must look exactly the same. Paint exactly the view of the first image, as an empty background for an anime series: keep the same camera, the same perspective and framing, and every object at the same place, with the same size and angle, as if the layout had been painted over. The camera stands in the room, a few steps from the corner, and looks into the corner of the bench. Replace the simple volumes with the real objects:
+- on the left, the long dark smoky mirror on the back wall, in its thin brown frame, empty, with no recognisable reflection;
+- the red padded bench in one continuous L: along the back wall, then turning in the corner and coming toward us along the right wall;
+- in the corner, the same large green potted plant as in the other images, behind the corner of the bench;
+- in the angle of the bench, our rectangular wooden table with a red sauce bottle, a white sauce bottle and a napkin dispenser; at the bottom right, the backs of its two empty chairs;
+- on the right, the plain warm wall above the bench, which is the closed side of the staircase; at the top right, the top of that side and the wooden banister going up into the ceiling;
+- the surface at the top is the ceiling, plain and closed.
+Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the style of the other images (clean dark outlines, flat cel shading, muted warm palette, painted details). NOT a 3D render, NOT photorealistic, and do not keep the flat colours of the layout. Light: warm, dim, even light from the open shopfront behind the camera; there are no windows, no sharp patches of sunlight on the walls. No people. No text, no letters and no logos anywhere. Landscape format (1536×1024).
+```
+
+À contrôler à la reprise : le coin vu debout ; le miroir à gauche ; la banquette d'un seul tenant ; la même plante ; la table et ses chaises ; le haut du côté de l'escalier et la rampe en haut à droite, le plafond fermé ; une lumière douce, sans tache de soleil ; aucune personne, aucun texte.
