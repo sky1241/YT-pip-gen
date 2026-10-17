@@ -204,7 +204,7 @@ Les axes et leurs numéros : `decors/kebab/axes.md` et le plan `decors/kebab/pla
 - [ ] `comptoir/fond_v1.png` (8) : la caisse, les salades, la broche, l'horloge, le menu
 - [ ] `pied-de-l-escalier/fond_v1.png` (10) : les premières marches, pour les descentes
 - [ ] `table-vue-de-dessus/fond_v1.png` (17) : le dessus de la table de Sky, pour les inserts
-- [ ] `bout-de-table/fond_v1.png` (20) : Patrick de face, au bout de la table, la rampe et l'escalier derrière lui
+- [x] `bout-de-table/fond_v1.png` (20) : Patrick de face, au bout de la table, la rampe et l'escalier derrière lui
 - [ ] `depuis-patrick/fond_v1.png` (21) : Sky et Maëlle de profil sur la banquette, le miroir au-dessus
 
 Chaque fond a aussi sa version pluie et sa version nuit, dans le même cadrage (`axes.md`, « Les trois lumières ») : `<dossier>/fond_pluie_v1.png` et `<dossier>/fond_nuit_v1.png`. Leurs cases s'ajoutent ici quand le fond de jour est fait.

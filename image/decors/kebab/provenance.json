@@ -40,6 +40,13 @@
       "date": "2026-10-17",
       "axe": 7,
       "_note": "validé par l'auteur (« on l'a »), téléchargé sous le nom « Café rétro ouvert sur rue ensoleillée.png ». La rampe de l'escalier à gauche, la voie du tram en herbe, les arbres d'en face, le comptoir et la caisse à droite. Recadrage 16:9 vérifié (y de 70 à 934) : seul le bas des sauces du premier plan est coupé"
+    },
+    "bout-de-table/fond_v1.png": {
+      "source": "ChatGPT",
+      "prompt": "A20 (la vue en volumes, le fond de l'axe 6 joint)",
+      "date": "2026-10-17",
+      "axe": 20,
+      "_note": "validé par l'auteur du premier coup, téléchargé sous le nom « Coin repas chaleureux en style anime rétro.png ». La même plante et la même banquette que l'axe 6 ; la place de Patrick au bout, le mur de l'escalier derrière"
     }
   },
   "_supprimees": "le 2026-10-17, à la demande de l'auteur (« vire les autres images ») : maquette_v1.png, maquette_v2.png et plan_v1.png, retirées du repo (elles restent dans l'historique git, jusqu'au commit 50132dd), et les retouches intermédiaires du disque externe ; le 2026-10-17, à la demande de l'auteur (« clean-moi les images qui restent du kebab ») : plan-peint_v1.png, table-du-fond/fond_v1.png (l'ancien plan), plan_v2 à v4, plan-axes_v1 à v4 (dans l'historique git), les captures du disque externe et les images du kebab des Téléchargements"
