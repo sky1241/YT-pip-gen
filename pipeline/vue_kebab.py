@@ -72,7 +72,10 @@ boite(0, 2.3, 1.0, 3.3, 2.1, 2.5, INOX)                   # la hotte
 boite(0, 3.8, 0.03, 4.1, 2.1, 2.4, "#f2efe6")             # l'horloge
 boite(1.2, 6.2, 3.0, 7.0, 0, 1.0, INOX)                   # le petit côté, devant
 boite(2.3, 1.8, 3.0, 6.2, 0, 1.0, INOX, morceau=0.5)                 # le long côté
-boite(2.35, 3.6, 2.95, 5.8, 1.0, 1.25, "#a9d2dc")         # la vitrine des salades
+# la vitrine des salades, encastrée dans le comptoir (l'auteur, axe 8) : les bacs à fleur du dessus, une vitre basse côté salle
+for k, bac in enumerate(("#6aa84f", "#cc3b2b", "#efe6d2", "#7b3f8c", "#e08a2c", "#9bc46a")):
+    boite(2.4, 3.6 + k * 0.37, 2.9, 3.6 + k * 0.37 + 0.33, 0.97, 1.005, bac)
+boite(2.98, 3.6, 3.02, 5.8, 1.0, 1.35, "verre")
 boite(1.6, 6.45, 2.0, 6.75, 1.0, 1.15, "#34343a")         # la caisse ; son écran tourné vers Mohamed (vers le fond)
 boite(1.65, 6.4, 1.95, 6.46, 1.15, 1.38, "#34343a")
 boite(1.6, 0, 2.3, 0.7, 0, 2.0, "#c8ccd0")                # le frigo à boissons
@@ -204,10 +207,12 @@ def vue(numero, sortie):
     d = ImageDraw.Draw(img)
 
     def dessiner(points, normale, couleur, trait=True):
-        if not visible(points, normale):
+        if not visible(points, normale) and couleur != "verre":
             return
         poly = projeter(points)
-        if len(poly) >= 3:
+        if len(poly) >= 3 and couleur == "verre":            # le verre : son contour seulement, on voit à travers
+            d.line(poly + [poly[0]], fill=(110, 170, 195), width=3)
+        elif len(poly) >= 3:
             d.polygon(poly, fill=ombre(couleur, ECLAIRAGE.get(normale, 0.85)),
                       outline=ombre(couleur, 0.45) if trait else None)
 
