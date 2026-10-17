@@ -469,3 +469,7 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   (même lumière), puis la pluie (depuis la fermée), puis la nuit (depuis la fermée de jour, pas depuis la pluie). Chacune du
   premier coup. Les enseignes en code : `pipeline/enseignes.py` compare chaque pixel à son voisinage (flou de 6 px) pour laisser
   passer les traits de pluie devant les lettres sans couper les lettres sous les flaques de lumière des spots, la nuit.
+- **Les 9 fonds du pilote faits (2026-10-17)** : axes 1, 2, 6, 7, 8, 10, 17, 20, 21, plus l'axe 11 et la façade en quatre
+  lumières (ouverte, fermée, pluie, nuit). En deux jours avec la mise en place du plan. La méthode, stable depuis l'axe 20 : la vue
+  en volumes (`pipeline/vue_kebab.py`) + le plan peint + un ou deux fonds déjà validés du même coin ; une retouche de deux points
+  au plus si besoin ; les textes (enseignes) en code.
