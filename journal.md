@@ -461,3 +461,7 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   travers le plafond (à l'axe 2, là où ChatGPT l'avait mise en l'air). `pipeline/vue_kebab.py` remplit maintenant chaque face
   avec un tampon de profondeur et trace les contours là où deux faces se touchent : ce qui est caché reste caché. Vérifié :
   depuis le trottoir à gauche (axe 2), le plafond cache la porte ; du pied de l'escalier (axe 11), on la voit en haut.
+- **Les fonds 2, 11, 10 et 1 du kebab, et les enseignes en code (2026-10-17)** : quatre fonds validés de plus (l'entrée,
+  l'escalier jusqu'à la porte de Datastream, le pied de l'escalier, la façade). Avec deux ou trois fonds validés joints pour la
+  cohérence, ChatGPT tient les mêmes objets d'un axe à l'autre. La façade : ChatGPT peint des enseignes vides, et
+  `pipeline/enseignes.py` y pose « KEBAB » et « DATASTREAM » (seulement sur les pixels du panneau : les feuilles restent devant).
