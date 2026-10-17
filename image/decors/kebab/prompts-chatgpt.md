@@ -19,6 +19,7 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 | A11 | L'axe 11 : du palier, l'escalier qui monte à la porte de Datastream : **fait** (une retouche) | `image/decors/kebab/escalier-vers-datastream/fond_v1.png` |
 | A10 | L'axe 10 : le pied de l'escalier, vu de la salle : **fait** | `image/decors/kebab/pied-de-l-escalier/fond_v1.png` |
 | A1 | L'axe 1 : l'extérieur, la façade depuis le trottoir d'en face : **fait** (une retouche ; les enseignes en code) | `image/decors/kebab/exterieur/fond_v1.png` |
+| A17 | L'axe 17 : la table de Sky vue d'en haut, pour les inserts | `image/decors/kebab/table-vue-de-dessus/fond_v1.png` |
 | KB2 v2 | Le plan peint, d'après le plan v3 : bonne disposition, mais l'escalier sur la rue, la lumière de côté | (supprimé) |
 | KB2 v3 | Le plan peint, d'après le plan v5 sans caméras : **la base fixe, validée** | `image/decors/kebab/plan-peint_v2.png` |
 | A6 v3 | L'axe 6 : la table de Sky dans l'angle, la banquette, le miroir, la plante : **fait** (la vue en volumes, puis une retouche) | `image/decors/kebab/table-du-fond/fond_v1.png` |
@@ -791,3 +792,18 @@ Edit ONLY the time of day and the light of this image. Keep everything exactly w
 À contrôler à la reprise : le même cadrage et les mêmes objets ; le ciel de nuit ; les réverbères hors champ, la lumière orange sur le trottoir et les feuilles ; la salle allumée, sa lumière sur le trottoir ; les étages sombres ; aucune personne, aucun texte.
 
 **Résultat de A1 nuit, le 2026-10-17 : validé par l'auteur du premier coup.** La façade a ses quatre fonds : ouverte de jour, fermée de jour, fermée sous la pluie, fermée la nuit. Les enseignes se posent sur les quatre (`pipeline/enseignes.py` reconnaît les traits de pluie, fins, et laisse les lettres entières sous les flaques de lumière de nuit).
+
+### Prompt A17 — La table de Sky vue d'en haut
+
+Le fond des inserts : les accessoires (le laptop, la galette, les frites, le téléphone sur la sauce, la tasse de Patrick, la grille de mots croisés, les serviettes à formules) s'y posent en calques. Trois images jointes, dans cet ordre : `~/Téléchargements/kebab_pour_A17_1_vue.png`, `~/Téléchargements/kebab_pour_axes_plan-peint.png`, `~/Téléchargements/kebab_pour_A17_3_angle6.png` (le fond de l'axe 6 : la même table, le même bois, les mêmes sauces, la même banquette).
+
+```
+The first attached image is a rough 3D layout of one view of our kebab restaurant, made of simple flat-coloured volumes: it fixes the camera, the framing and the place of every object. The second attached image is the same restaurant seen from above, painted in our style: it gives the art style, the materials and the objects. The third attached image is another view of the same table, already painted and approved: the wooden table top, the sauce bottles, the napkin dispenser, the red bench and the light must look exactly the same. Paint exactly the view of the first image, as an empty background for an anime series: keep the same framing, and every object at the same place, with the same size, as if the layout had been painted over. The camera looks straight down at the table from above. Replace the simple volumes with the real objects:
+- in the middle of the frame, the rectangular wooden table top seen from directly above: warm, slightly worn wood with a visible grain, a few faint old stains and scratches, clean and empty;
+- in the middle of the table, seen from above: a red sauce bottle with its pointed cap, a white sauce bottle with its pointed cap, and a metal napkin dispenser with paper napkins;
+- at the top and on the right, the red padded bench around the table, seen from above: the seat cushions;
+- at the bottom, the seats of two empty wooden chairs with red cushions; at the bottom left, a little of the tiled floor.
+Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the style of the second and third images (clean dark outlines, flat cel shading, muted warm palette, painted details). NOT a 3D render, NOT photorealistic, and do not keep the flat colours of the layout. Light: warm and dim, coming softly from the bottom of the image (the street side); short soft shadows toward the top. No people, no plates, no food, no other objects on the table. No text, no letters and no logos anywhere. Landscape format (1536×1024).
+```
+
+À contrôler à la reprise : la vue droit d'en haut ; la table vide, le bois avec son grain ; les deux sauces et les serviettes au milieu ; la banquette en haut et à droite ; les assises des chaises en bas ; rien d'autre sur la table ; aucun texte.
