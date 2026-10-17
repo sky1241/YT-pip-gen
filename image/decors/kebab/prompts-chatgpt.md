@@ -765,3 +765,15 @@ Edit ONLY the shopfront on the ground floor of this image. Keep everything else 
 ```
 
 À contrôler à la reprise : les panneaux sur toute la largeur, du sol au caisson ; la porte au milieu, sa poignée ; la salle visible derrière le verre, la même ; les reflets doux ; le reste inchangé ; aucun texte.
+
+**Résultat de A1 fermé, le 2026-10-17 : validé par l'auteur du premier coup** (`exterieur/fond_ferme_v1.png`). Les enseignes se posent aux mêmes positions que sur `fond_v1`.
+
+### Prompt A1 pluie — La devanture fermée sous la pluie
+
+Retouche de l'image fermée, dans la même conversation. Seuls le temps et la lumière changent (Navier-Stokes : « Jeudi matin. Il pleut », la pluie qui fait un bruit de friture sur la vitrine).
+
+```
+Edit ONLY the weather and the light of this image. Keep everything exactly where it is: the same view, the same building, the closed glass shopfront and its door, the two blank signs, the inside of the restaurant, the neighbouring buildings, the sidewalk, the tram track and the trees. Make only this change: it is a grey, rainy morning with heavy rain. The sky is overcast and grey; there is no sunlight and no leaf shadows anymore. Rain falls in thin slanted streaks across the whole image; drops and trickles of water run down the glass of the shopfront and of the upper floors; the sidewalk is wet and shiny, with small puddles reflecting the warm light of the restaurant; the grass of the tram track is dark and wet; the leaves of the trees are darker and drip. Inside, the restaurant is lit by its warm ceiling lights, so it glows warmly behind the wet glass. No people, no umbrellas. No letters, no words, no logos anywhere.
+```
+
+À contrôler à la reprise : le même cadrage et les mêmes objets ; le ciel gris, plus de soleil ; la pluie en traits fins ; l'eau sur les vitres ; le trottoir mouillé, les flaques ; la salle éclairée derrière le verre ; aucune personne, aucun texte.

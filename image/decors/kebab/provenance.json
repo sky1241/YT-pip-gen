@@ -99,6 +99,13 @@
       "date": "2026-10-17",
       "axe": 1,
       "_note": "validé par l'auteur (« parfait »), téléchargé sous le nom « Café ouvert sous les arbres finissants.png ». Les étages en verre teinté, la devanture ouverte, les deux enseignes vides : « KEBAB » et « DATASTREAM » se posent en code (pipeline/enseignes.py), jamais peintes dans le fond"
+    },
+    "exterieur/fond_ferme_v1.png": {
+      "source": "ChatGPT",
+      "prompt": "A1 fermé (retouche de exterieur/fond_v1.png)",
+      "date": "2026-10-17",
+      "axe": 1,
+      "_note": "validé par l'auteur du premier coup, téléchargé sous le nom « Café vitré sous les ombres feuillues.png ». Les panneaux vitrés dépliés sur toute la devanture, la porte au milieu, la salle derrière le verre ; les enseignes vides, posées en code (pipeline/enseignes.py, mêmes positions que fond_v1)"
     }
   },
   "_supprimees": "le 2026-10-17, à la demande de l'auteur (« vire les autres images ») : maquette_v1.png, maquette_v2.png et plan_v1.png, retirées du repo (elles restent dans l'historique git, jusqu'au commit 50132dd), et les retouches intermédiaires du disque externe ; le 2026-10-17, à la demande de l'auteur (« clean-moi les images qui restent du kebab ») : plan-peint_v1.png, table-du-fond/fond_v1.png (l'ancien plan), plan_v2 à v4, plan-axes_v1 à v4 (dans l'historique git), les captures du disque externe et les images du kebab des Téléchargements"
