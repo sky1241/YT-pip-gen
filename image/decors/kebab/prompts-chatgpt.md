@@ -622,3 +622,17 @@ Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the 
 À contrôler à la reprise : la caisse à l'angle du L, juste avant les salades, tournée vers la cuisine ; le comptoir en L, la vitrine encastrée ; la cuisine, l'horloge ronde ; le frigo ; le miroir fumé au-dessus de la banquette en L ; la table de Sky dans l'angle ; la rampe en haut à droite ; un plafond uni (pas un ciel) ; les ombres vers le fond ; aucune personne, aucun texte.
 
 L'auteur, sur la vue en volumes de l'axe 2, avant de l'envoyer, le 2026-10-17 : la caisse à l'angle du L, au bout du grand côté, juste avant les salades (il l'a entourée en rouge). Plan v7, vue en volumes et prompt A2 mis à jour.
+
+Résultat de A2, le 2026-10-17 : « pas mal ». La caisse à l'angle, le comptoir, la cuisine, le frigo, le miroir, la banquette, les tables, la rampe. L'auteur relève : la plante de droite n'est pas la bonne (pas celle de l'axe 6 : un pot brun et des feuilles de palmier) ; il manque la porte en haut de l'escalier. Claude relève aussi, sans le corriger : le miroir laisse voir un reflet un peu net (une forme de porte, des arbres). Capture hors du repo (`entree_essai-1_capture.png`).
+
+### Prompt A2 retouche — La plante de l'angle, la porte en haut de l'escalier
+
+Dans la case « Décrivez les modifications » de l'image.
+
+```
+Edit ONLY this image. Keep everything else exactly as it is: the same view, the same counter, kitchen, tables, chairs, bench, mirror, style and light. Make only these two changes:
+1. The plant in the back right corner, behind the corner of the red bench: replace it with a large plant with broad, pointed, dark green leaves streaked with light green, in a plain grey metal pot, standing behind the corner of the bench, its leaves rising above the backrest against the two walls.
+2. At the top right, where the wooden staircase reaches the top at the back: add a plain closed wooden door with a metal handle at the head of the stairs, the entrance of the office upstairs, with no sign and no text.
+```
+
+À contrôler à la reprise : la plante de l'angle, larges feuilles striées, pot gris ; la porte en bois en haut de l'escalier, sans texte ; rien d'autre de changé.
