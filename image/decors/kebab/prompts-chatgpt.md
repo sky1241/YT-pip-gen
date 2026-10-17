@@ -652,3 +652,15 @@ Edit ONLY this image. Keep everything else exactly as it is: the same view, the 
 À contrôler à la reprise : plus de porte, la rampe qui entre dans le plafond ; le pot de la plante caché derrière le dossier, seules les feuilles dépassent ; rien d'autre de changé.
 
 L'auteur, avant d'envoyer la retouche 2, le 2026-10-17 : la porte est à l'étage, en haut de l'escalier, comme sur le plan peint ; depuis l'entrée, c'est la rampe de droite qui la cache. Le point 1 de la retouche 2 le dit ainsi.
+
+Résultat de la retouche 2 de A2, le 2026-10-17 : plus de porte en l'air, la plante plus bas. L'auteur veut quand même voir qu'il y a la porte en haut : « que le mur se creuse », en haut à droite. Claude : de face, depuis le trottoir, le plafond cache l'étage, la porte ne peut pas se voir en vrai ; c'est une triche de décor, courante dans les animes, limitée au coin en haut à droite. À l'axe 10 et 11, la porte se verra pour de bon.
+
+### Prompt A2 retouche 3 — La trémie de l'escalier, la porte en haut
+
+Dans la case « Décrivez les modifications » de la dernière image.
+
+```
+Edit ONLY the top right corner of this image. Keep everything else exactly as it is: the same view, counter, kitchen, tables, chairs, bench, mirror, plant, style and light. In the top right corner, above the wooden staircase and its banister: cut an opening into the ceiling, a stairwell going up to the floor above. Through that opening we see the last steps of the wooden staircase continuing up, and at the top, on the small landing of the upper floor, a plain closed wooden door with a metal handle, in soft shadow. No sign and no text on the door. The opening is the same warm wall colour inside, with a wooden edge.
+```
+
+À contrôler à la reprise : une ouverture dans le plafond au-dessus de l'escalier, les dernières marches et la porte en haut ; le reste inchangé.
