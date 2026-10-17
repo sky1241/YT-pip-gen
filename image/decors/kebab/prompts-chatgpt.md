@@ -565,3 +565,21 @@ Edit ONLY this image. Keep everything else exactly as it is: the same view, the 
 ```
 
 À contrôler à la reprise : une horloge ronde, sans chiffres ; la vitrine sur le comptoir du premier plan ; rien d'autre de changé.
+
+Résultat de la retouche A8 v2, le 2026-10-17 : « on se rapproche ». L'horloge est ronde, la vitrine sur le comptoir. Mais la ligne du plafond plonge vers le coin (la caméra de biais par rapport au mur de la cuisine), et la vitrine va trop à droite : il ne reste plus de place libre sur le comptoir (la place de la théière de Patrick). La caméra 8 passe de face au mur de la cuisine, un peu reculée, à l'horizontale, pour garder le frigo et la plante. Capture hors du repo (`comptoir_essai-2_capture.png`).
+
+### Prompt A8 v3 — Le comptoir, le mur de la cuisine de face
+
+Les mêmes trois images : `~/Téléchargements/kebab_pour_A8_1_vue.png` (refaite), `~/Téléchargements/kebab_pour_axes_plan-peint.png`, `~/Téléchargements/kebab_pour_A8_3_angle21.png`.
+
+```
+The first attached image is a rough 3D layout of one view of our kebab restaurant, made of simple flat-coloured volumes: it fixes the camera, the perspective, the framing and the place of every object. The second attached image is the same restaurant seen from above, painted in our style: it gives the art style, the materials and the objects. The third attached image is another view of the same counter and kitchen, already painted and approved: the counter, the kebab spit, the hood, the round clock, the fridge, the plant, the walls and the light must look exactly the same. Paint exactly the view of the first image, as an empty background for an anime series: keep the same camera, the same perspective and framing, and every object at the same place, with the same size and angle, as if the layout had been painted over. The camera stands in the dining room, level, facing the kitchen wall squarely: the line where the ceiling meets the kitchen wall is straight and horizontal. Replace the simple volumes with the real objects:
+- in the foreground, the stainless steel counter: its long side runs across the frame, and its end is on the right, near us; at the bottom left, the top of the back of an empty wooden chair;
+- on the left part of the counter only, the glass refrigerated salad display (the light blue block), with trays of lettuce, tomatoes, onions, red cabbage, carrots and cucumbers; it stops where the block stops. The right part of the counter top, up to its end, stays clear and empty;
+- behind the counter, against the kitchen wall: the kitchen worktops, the vertical kebab spit (the brown block) in front of its grill, the stainless steel hood above it (the grey block), and a round wall clock with a light face and a dark frame, no numbers (the small light square);
+- on the right, the back corner of the room: the tall drinks fridge with glass doors facing us, full of bottles, and in front of it a large green potted plant;
+- in the middle, the tiled floor; at the top, the ceiling.
+Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the style of the second and third images (clean dark outlines, flat cel shading, muted warm palette, painted details). NOT a 3D render, NOT photorealistic, and do not keep the flat colours of the layout. Light: the only daylight comes from the open shopfront, out of frame on the left, behind; there are no windows; the light is warm and dim, as in the third image, and the shadows fall to the right. No people. No text, no letters and no logos anywhere, including on the clock, the fridge and the counter. Landscape format (1536×1024).
+```
+
+À contrôler à la reprise : la ligne du plafond droite ; la vitrine sur la partie gauche du comptoir seulement, le bout du comptoir libre ; l'horloge ronde ; la broche, la hotte ; le frigo et la plante à droite ; aucune personne, aucun texte.
