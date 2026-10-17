@@ -78,6 +78,13 @@
       "date": "2026-10-17",
       "axe": 2,
       "_note": "validé par l'auteur, sans enthousiasme (« pas convaincu de ton angle, mais on dira que c'est bon »), téléchargé sous le nom « Café döner baigné de soleil couchant.png ». La caisse à l'angle du L, la rampe qui monte dans le plafond, la porte cachée. Le miroir garde un reflet un peu net. À refaire si l'auteur veut un autre angle d'entrée"
+    },
+    "escalier-vers-datastream/fond_v1.png": {
+      "source": "ChatGPT",
+      "prompt": "A11 (la vue en volumes validée par l'auteur, le fond de l'axe 2 joint) puis une retouche (la rampe d'un seul tenant)",
+      "date": "2026-10-17",
+      "axe": 11,
+      "_note": "validé par l'auteur, téléchargé sous le nom « Escalier baigné de lumière dorée.png ». L'escalier droit, la rampe jusqu'au poteau du bas, la porte de Datastream au bout, en haut, dans son mur"
     }
   },
   "_supprimees": "le 2026-10-17, à la demande de l'auteur (« vire les autres images ») : maquette_v1.png, maquette_v2.png et plan_v1.png, retirées du repo (elles restent dans l'historique git, jusqu'au commit 50132dd), et les retouches intermédiaires du disque externe ; le 2026-10-17, à la demande de l'auteur (« clean-moi les images qui restent du kebab ») : plan-peint_v1.png, table-du-fond/fond_v1.png (l'ancien plan), plan_v2 à v4, plan-axes_v1 à v4 (dans l'historique git), les captures du disque externe et les images du kebab des Téléchargements"

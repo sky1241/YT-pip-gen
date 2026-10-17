@@ -16,7 +16,7 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 | A21 | L'axe 21 : depuis la place de Patrick, le long de la table, vers le comptoir : **fait** | `image/decors/kebab/depuis-patrick/fond_v1.png` |
 | A8 v3 | L'axe 8 : le comptoir et la cuisine, le mur de face : **fait** (après une retouche) | `image/decors/kebab/comptoir/fond_v1.png` |
 | A2 | L'axe 2 : l'entrée, toute la salle depuis le trottoir : **fait** (deux retouches ; l'angle ne convainc pas l'auteur) | `image/decors/kebab/entree/fond_v1.png` |
-| A11 | L'axe 11 : du palier, l'escalier qui monte à la porte de Datastream | `image/decors/kebab/escalier-vers-datastream/fond_v1.png` |
+| A11 | L'axe 11 : du palier, l'escalier qui monte à la porte de Datastream : **fait** (une retouche) | `image/decors/kebab/escalier-vers-datastream/fond_v1.png` |
 | KB2 v2 | Le plan peint, d'après le plan v3 : bonne disposition, mais l'escalier sur la rue, la lumière de côté | (supprimé) |
 | KB2 v3 | Le plan peint, d'après le plan v5 sans caméras : **la base fixe, validée** | `image/decors/kebab/plan-peint_v2.png` |
 | A6 v3 | L'axe 6 : la table de Sky dans l'angle, la banquette, le miroir, la plante : **fait** (la vue en volumes, puis une retouche) | `image/decors/kebab/table-du-fond/fond_v1.png` |
@@ -695,3 +695,5 @@ Edit ONLY this image. Keep everything else exactly as it is: the same view, the 
 ```
 
 À contrôler à la reprise : une seule rampe, d'un seul tenant, du haut jusqu'au poteau de la première marche ; plus de bout de rampe isolé au premier plan ; rien d'autre de changé.
+
+**Résultat de la retouche A11, le 2026-10-17 : validé par l'auteur.**
