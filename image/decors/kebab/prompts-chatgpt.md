@@ -905,3 +905,13 @@ Edit ONLY the view through the open shopfront at the top of this image. Keep eve
 ```
 
 À contrôler à la reprise : plus de poteaux ; la même rue que l'axe 7 ; le reste inchangé.
+
+Résultat de la retouche A13, le 2026-10-17 : plus de poteaux, une rue proche de celle de l'axe 7. Mais trop d'arbres (l'auteur) : sept arbres serrés, une haie de buissons devant la façade. À l'axe 7, sur toute la largeur de la devanture, il y en a quatre, grands et espacés, sans haie ; d'ici, la caméra voit une partie de la rue seulement, soit deux arbres (la vue en volumes en a deux).
+
+### Prompt A13 retouche 2 — Deux arbres, sans haie
+
+```
+Edit ONLY the street seen through the open shopfront at the top of this image. Keep everything else exactly as it is. Make only this change: there are too many trees. Keep only two large leafy trees, spaced far apart, the same kind and size as in the third image of my previous message: one in the middle of the opening, one near its right end. Remove all the other trees and the row of bushes along the facade: between the two trees we see the plain beige facade with its large regular windows, and the grass of the tram track in front.
+```
+
+À contrôler à la reprise : deux arbres, espacés ; plus de haie ; la façade visible entre eux ; le reste inchangé.
