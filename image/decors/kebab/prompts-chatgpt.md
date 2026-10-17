@@ -645,8 +645,10 @@ Dans la case « Décrivez les modifications » de la dernière image.
 
 ```
 Edit ONLY this image. Keep everything else exactly as it is: the same view, the same counter, kitchen, tables, chairs, bench, mirror, style and light. Make only these two changes:
-1. At the top right, remove the door and the posts around it: the wooden banister simply goes up along the side of the staircase and disappears into the ceiling, as on the rest of the staircase. No door in this view.
+1. At the top right, remove the floating door and the posts around it. The door is upstairs, at the head of the staircase, and from here it is hidden: the wooden banister and the side of the staircase go up toward the back and hide the top of the stairs and the door. We see only the banister, rising and disappearing into the ceiling.
 2. The plant in the back right corner: lower it so that its grey pot is hidden behind the backrest of the red bench, standing on the floor in the corner; only its leaves rise above the backrest, against the two walls.
 ```
 
 À contrôler à la reprise : plus de porte, la rampe qui entre dans le plafond ; le pot de la plante caché derrière le dossier, seules les feuilles dépassent ; rien d'autre de changé.
+
+L'auteur, avant d'envoyer la retouche 2, le 2026-10-17 : la porte est à l'étage, en haut de l'escalier, comme sur le plan peint ; depuis l'entrée, c'est la rampe de droite qui la cache. Le point 1 de la retouche 2 le dit ainsi.
