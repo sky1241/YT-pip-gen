@@ -382,3 +382,23 @@ Light: the only daylight comes from the open shopfront behind the camera; there 
 ```
 
 À contrôler à la reprise : la caméra assise, face au mur du fond ; les dossiers des deux chaises en bas ; la table et ses deux sauces et ses serviettes ; la banquette vide qui tourne dans l'angle, le bout de la table contre elle ; le miroir fumé à gauche et au milieu ; la rampe basse, l'escalier et la porte à droite ; la lumière de derrière la caméra ; aucune personne, aucun texte.
+
+L'auteur redessine l'axe 6 dans ChatGPT, le 2026-10-17 : la caméra au bout gauche de la table, de biais vers l'angle (« ça me paraît plus juste »). Le prompt A6 ci-dessus est remplacé par celui-ci, non envoyé.
+
+### Prompt A6 v2 — La table de Sky, de biais vers l'angle
+
+Joins `~/Téléchargements/kebab_pour_A6_camera.png` (refait) puis `~/Téléchargements/kebab_pour_axes_plan-peint.png`.
+
+```
+The first attached image is the floor plan of our kebab restaurant, with one camera marked in blue (number 6): its position and the cone of what it sees. The second attached image is the same restaurant seen from above, painted in our style; it gives the style, the materials, the colours and the objects. Paint the view from this camera, as an empty background for an anime series: a flat 2D hand-drawn background painting from a 1990s anime film, in the style of the second image (clean dark outlines, flat cel shading, muted warm palette, painted details). NOT a 3D render, NOT photorealistic. Do not copy the labels of the plan. Landscape format (1536×1024); keep the important things away from the top and bottom edges, the image will be cropped to 16:9.
+The camera stands just in front of the left end of the table in the back right corner, at the eye level of a seated person (about 1.2 m), and looks diagonally into that corner. Normal lens, straight vertical lines, no fisheye.
+What we see:
+- At the bottom right of the frame, the near chair of the table, seen from behind, empty.
+- The rectangular wooden table, seen at an angle, with a red sauce bottle, a white sauce bottle and a napkin dispenser.
+- On the left and at the back of the frame, the red padded bench along the back wall, empty, and above it the long dark smoky mirror.
+- In the corner, the bench turns and comes toward us on the right of the frame: the right short end of the table touches it; that is the seat at the head of the table.
+- On the far right, beyond that bench, a low open wooden railing, and behind it the upper part of the wooden staircase, going up to a plain closed wooden door.
+Light: the only daylight comes from the open shopfront, behind the camera; there are no other windows, the side walls are solid. The shadows of the chairs and of the table fall toward the back wall. Inside, the light is warm and dim. The mirror is dark smoky glass, with no recognisable reflection. No people. No text, no letters and no logos anywhere.
+```
+
+À contrôler à la reprise : la vue de biais vers l'angle, assise ; la chaise vide en bas à droite ; la table de biais, ses deux sauces et ses serviettes ; la banquette du fond et le miroir fumé à gauche ; l'angle et la banquette de droite, le bout de la table contre elle ; la rampe basse, l'escalier et la porte au bord droit ; la lumière de derrière ; aucune personne, aucun texte.
