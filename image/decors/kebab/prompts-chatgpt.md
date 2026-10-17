@@ -14,7 +14,7 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 | A7 | L'axe 7 : écrit pour le plan v2, pas envoyé | |
 | KB2 v2 | Le plan peint, d'après le plan v3 : bonne disposition, mais l'escalier sur la rue, la lumière de côté | (supprimé) |
 | KB2 v3 | Le plan peint, d'après le plan v5 sans caméras : **la base fixe, validée** | `image/decors/kebab/plan-peint_v2.png` |
-| A6 (plan v5) | L'axe 6 : la table de Sky dans l'angle, la banquette, le miroir | `image/decors/kebab/table-du-fond/fond_v1.png` |
+| A6 v3 | L'axe 6 : la table de Sky dans l'angle, la banquette, le miroir, la plante : **fait** (la vue en volumes, puis une retouche) | `image/decors/kebab/table-du-fond/fond_v1.png` |
 
 La suite (un fond vide par axe de caméra) s'écrit d'après KB1 et d'après les scènes du texte.
 
@@ -435,3 +435,5 @@ Edit ONLY this image. Keep everything else exactly as it is: the same view, the 
 ```
 
 À contrôler à la reprise : plus d'escalier, un mur uni ; la plante dans l'angle, derrière le coin de la banquette ; rien d'autre de changé.
+
+**Résultat de la retouche A6 v3, le 2026-10-17 : validé par l'auteur** (« c'est parfait »), rangé en `table-du-fond/fond_v1.png`. Le mur uni à droite, la plante dans l'angle. La recette qui marche pour un axe : la vue en volumes (`pipeline/vue_kebab.py`) jointe en premier, le plan peint en second, la liste « tel volume = tel objet » ; puis, s'il reste un détail, une retouche de deux points au plus.

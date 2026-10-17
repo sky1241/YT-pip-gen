@@ -26,6 +26,13 @@
       "source": "Claude, en code",
       "date": "2026-10-17",
       "_note": "les 25 axes sur plan_v6"
+    },
+    "table-du-fond/fond_v1.png": {
+      "source": "ChatGPT",
+      "prompt": "A6 v3 (la vue en volumes) puis A6 v3 retouche",
+      "date": "2026-10-17",
+      "axe": 6,
+      "_note": "validé par l'auteur (« c'est parfait »), téléchargé sous le nom « Coin-repas chaleureux dans un style anime rétro.png ». Recadrage 16:9 vérifié (y de 70 à 934) : le miroir, la plante, la table et les chaises restent entiers"
     }
   },
   "_supprimees": "le 2026-10-17, à la demande de l'auteur (« vire les autres images ») : maquette_v1.png, maquette_v2.png et plan_v1.png, retirées du repo (elles restent dans l'historique git, jusqu'au commit 50132dd), et les retouches intermédiaires du disque externe ; le 2026-10-17, à la demande de l'auteur (« clean-moi les images qui restent du kebab ») : plan-peint_v1.png, table-du-fond/fond_v1.png (l'ancien plan), plan_v2 à v4, plan-axes_v1 à v4 (dans l'historique git), les captures du disque externe et les images du kebab des Téléchargements"

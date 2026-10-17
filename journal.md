@@ -444,3 +444,6 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   qu'elle voit (vue de face au lieu de biais, la porte du haut visible). D'où `pipeline/vue_kebab.py` : la vue de chaque axe en
   volumes simples, en perspective, avec les mesures du plan (axes lus dans `plan_kebab.py`), sans texte. ChatGPT la peint,
   comme le plan vu de dessus. Les mêmes vues pourront guider le modèle local (ControlNet, profondeur ou contours).
+- **Premier fond du kebab validé (2026-10-17)** : l'axe 6, la table de Sky (`image/decors/kebab/table-du-fond/fond_v1.png`).
+  Trois essais : le plan avec une caméra (vue de face au lieu de biais), puis la vue en volumes (le bon angle du premier coup),
+  puis une retouche de deux points (le mur de l'escalier, la plante de l'angle). La vue en volumes devient la méthode de tous les axes.

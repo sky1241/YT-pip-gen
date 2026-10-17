@@ -199,7 +199,7 @@ Les axes et leurs numéros : `decors/kebab/axes.md` et le plan `decors/kebab/pla
 - [x] `plan-peint_v2.png` : le plan v5 peint, vu exactement d'en haut : la base fixe du kebab
 - [ ] `exterieur/fond_v1.png` (1) : la façade, deux étages, le kebab au rez-de-chaussée, Datastream au premier, la rue d'Annemasse et le tram
 - [ ] `entree/fond_v1.png` (2) : depuis le trottoir, toute la salle
-- [ ] `table-du-fond/fond_v1.png` (6) : la table de Sky dans l'angle, la banquette, le grand miroir au-dessus
+- [x] `table-du-fond/fond_v1.png` (6) : la table de Sky dans l'angle, la banquette, le grand miroir au-dessus, la plante de l'angle
 - [ ] `table-du-fond-contrechamp/fond_v1.png` (7) : depuis la banquette, les deux chaises, la salle, la rue
 - [ ] `comptoir/fond_v1.png` (8) : la caisse, les salades, la broche, l'horloge, le menu
 - [ ] `pied-de-l-escalier/fond_v1.png` (10) : les premières marches, pour les descentes
