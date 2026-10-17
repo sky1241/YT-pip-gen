@@ -195,7 +195,7 @@ La série 1, faite avec la monture argentée, est archivée sur le disque extern
 
 Les axes et leurs numéros : `decors/kebab/axes.md` et le plan `decors/kebab/plan-axes_v1.png`.
 
-- [x] `plan_v3.png` : le plan en code, validé par l'auteur ; `plan-axes_v2.png` : les 21 axes
+- [x] `plan_v3.png` : le plan en code, validé par l'auteur ; `plan-axes_v3.png` : les 23 axes
 - [ ] `plan-peint_v2.png` : le plan v3 peint, vu exactement d'en haut (la v1 suivait le plan v2)
 - [ ] `exterieur/fond_v1.png` (1) : la façade, deux étages, le kebab au rez-de-chaussée, Datastream au premier, la rue d'Annemasse et le tram
 - [ ] `entree/fond_v1.png` (2) : depuis le trottoir, toute la salle
@@ -463,6 +463,11 @@ Les axes de l'épisode 1, en plus de ceux du pilote (`decors/kebab/axes.md`, à 
 - [ ] `frigo/fond_v1.png` (16) : le frigo à boissons, si besoin
 
 Comme pour le pilote : la pluie et la nuit de chaque axe s'ajoutent quand son fond de jour est fait.
+
+Les deux axes de la pluie seule, le rideau de verre fermé :
+
+- [ ] `vitrine-fermee/fond_pluie_v1.png` (22) : de l'intérieur, la pluie sur le verre
+- [ ] `a-travers-la-vitre/fond_pluie_v1.png` (23) : de la rue, la salle derrière le verre mouillé
 
 ### Accessoires — `accessoires/`
 

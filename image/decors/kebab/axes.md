@@ -1,6 +1,6 @@
 # Le kebab — les axes de caméra
 
-Un axe = un fond vide, sans perso, fait une fois et réutilisé à chaque épisode (CLAUDE.md, « Images »). Les numéros sont ceux du plan `plan-axes_v2.png` (les cercles bleus : la caméra et la direction où elle regarde). Les positions viennent de `plan_v3.png`, validé par l'auteur le 2026-10-17, et les besoins des textes : le CERN (`ecriture/brouillons/cern.md`, numéros de ligne) et Navier-Stokes.
+Un axe = un fond vide, sans perso, fait une fois et réutilisé à chaque épisode (CLAUDE.md, « Images »). Les numéros sont ceux du plan `plan-axes_v3.png` (les cercles bleus : la caméra et la direction où elle regarde). Les positions viennent de `plan_v3.png`, validé par l'auteur le 2026-10-17, et les besoins des textes : le CERN (`ecriture/brouillons/cern.md`, numéros de ligne) et Navier-Stokes.
 
 ## Le plan, en bref (`plan_v3.png`)
 
@@ -20,15 +20,17 @@ Un axe = un fond vide, sans perso, fait une fois et réutilisé à chaque épiso
 
 ## Les trois lumières
 
-Chaque axe a trois fonds, dans le même cadrage (l'auteur, le 2026-10-17) :
+Trois lumières, dans le même cadrage (l'auteur, le 2026-10-17) :
 
-- **Le jour** (`fond_v1.png`) : le matin, un intérieur chaud et tamisé, la rue lumineuse. On le fait en premier.
-- **La pluie** (`fond_pluie_v1.png`) : les panneaux vitrés dépliés ferment la devanture, la pluie coule sur le verre, la lumière est grise. Navier-Stokes : « Jeudi matin. Il pleut ».
+- **Le jour** (`fond_v1.png`) : le matin, un intérieur chaud et tamisé, la rue lumineuse. Pour tous les axes, en premier.
+- **La pluie** (`fond_pluie_v1.png`) : le rideau de verre est fermé, les panneaux vitrés dépliés sur toute la devanture, la pluie coule sur le verre, la lumière est grise. Navier-Stokes : « Jeudi matin. Il pleut ». Sky peut se tenir près de la vitre : d'où les axes 22 et 23, qui n'existent que sous la pluie.
 - **La nuit** (`fond_nuit_v1.png`) : le kebab ouvert tard, éclairé par ses appliques et ses panneaux de menu, la rue sombre sous les lampadaires.
 
 La pluie et la nuit se font en retouche du fond de jour : seule la lumière change, ce que ChatGPT retouche bien (contrairement à la disposition).
 
-## Les 21 axes
+**Qui a besoin de quoi.** Seuls les axes qui voient la rue ou la devanture changent vraiment avec la pluie ou la nuit : 1, 2, 3, 7, 10, 13, 15, 19. Pour les autres, tournés vers le fond, la pluie et la nuit passent d'abord par l'étalonnage au montage (plus gris, plus sombre) et par le son ; on ne fait leur fond de pluie ou de nuit que si un texte le demande. Le compte : 21 fonds de jour, 10 de pluie (les 8 axes et les axes 22 et 23), 8 de nuit, soit **39 fonds**, dont 9 pour le pilote, tous de jour.
+
+## Les 23 axes
 
 | N° | Dossier | D'où, vers où | Ce qu'on voit | À quoi il sert | Quand |
 |---|---|---|---|---|---|
@@ -53,6 +55,8 @@ La pluie et la nuit se font en retouche du fond de jour : seule la lumière chan
 | 19 | `banquette-de-droite/` | De la place de Patrick, le long de la banquette de droite, vers la rue | Les deux tables de droite en enfilade, la banquette, la rampe et l'escalier, la devanture au bout | Vincent « s'assoit dans le coin » (l. 705), les tables de l'équipe | épisode 1 |
 | 20 | `bout-de-table/` | Au bout gauche de la table de Sky, assis, vers Patrick | Patrick de face, au bout de la table, sur la banquette de droite ; derrière lui, la rampe et l'escalier | Patrick et ses mots croisés (l. 16, 32), ses répliques à Sky | pilote |
 | 21 | `depuis-patrick/` | De la place de Patrick, assis, le long de la table, vers la gauche | Sky et Maëlle de profil sur la banquette du fond, le miroir au-dessus d'eux ; au loin, le frigo et le bout du comptoir | Le contrechamp de Patrick : Sky qui mâche et regarde le plafond (l. 24) | pilote |
+| 22 | `vitrine-fermee/` | Dans la salle, d'une table de devant, assis, vers la rue | Le rideau de verre fermé sur toute la devanture, la pluie qui coule dessus, la rue floue et grise derrière | Sky près de la vitre, les jours de pluie (Navier-Stokes) | pluie seule |
+| 23 | `a-travers-la-vitre/` | Dehors, sur le trottoir, tout près du verre, vers la salle | À travers le verre mouillé : les tables de devant, la salle chaude derrière | Sky vu de la rue, derrière la vitre, sous la pluie | pluie seule |
 
 Les neuf fonds du pilote (la minute des mots croisés) : 1, 2, 6, 7, 8, 10, 17, 20, 21, de jour d'abord.
 
