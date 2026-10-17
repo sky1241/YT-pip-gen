@@ -15,6 +15,7 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 | A20 | L'axe 20 : Patrick au bout de la table, vu de l'autre bout : **fait** | `image/decors/kebab/bout-de-table/fond_v1.png` |
 | A21 | L'axe 21 : depuis la place de Patrick, le long de la table, vers le comptoir : **fait** | `image/decors/kebab/depuis-patrick/fond_v1.png` |
 | A8 v3 | L'axe 8 : le comptoir et la cuisine, le mur de face : **fait** (après une retouche) | `image/decors/kebab/comptoir/fond_v1.png` |
+| A2 | L'axe 2 : l'entrée, toute la salle depuis le trottoir | `image/decors/kebab/entree/fond_v1.png` |
 | KB2 v2 | Le plan peint, d'après le plan v3 : bonne disposition, mais l'escalier sur la rue, la lumière de côté | (supprimé) |
 | KB2 v3 | Le plan peint, d'après le plan v5 sans caméras : **la base fixe, validée** | `image/decors/kebab/plan-peint_v2.png` |
 | A6 v3 | L'axe 6 : la table de Sky dans l'angle, la banquette, le miroir, la plante : **fait** (la vue en volumes, puis une retouche) | `image/decors/kebab/table-du-fond/fond_v1.png` |
@@ -601,3 +602,21 @@ Edit ONLY this image. Keep everything else exactly as it is: the same view, the 
 À contrôler à la reprise : une seule horloge ronde, à la place du carré ; plus de blocs gris à gauche ; rien d'autre de changé.
 
 **Résultat de la retouche A8 v3, le 2026-10-17 : validé par l'auteur.** Une seule horloge ronde, plus de blocs gris. Leçon : tout ce que la vue en volumes dessine, ChatGPT le peint ; un objet doit y avoir sa vraie forme (l'horloge ronde, la vitrine encastrée), sinon il en fait un deuxième.
+
+### Prompt A2 — L'entrée, toute la salle depuis le trottoir
+
+La caméra 2 sur le trottoir, côté gauche, un peu tournée vers le comptoir, champ large : la caisse en premier plan, toute la salle, la rampe de l'escalier à droite. Quatre images jointes, dans cet ordre : `~/Téléchargements/kebab_pour_A2_1_vue.png`, `~/Téléchargements/kebab_pour_axes_plan-peint.png`, `~/Téléchargements/kebab_pour_A2_3_angle7.png` (le fond de l'axe 7), `~/Téléchargements/kebab_pour_A2_4_angle8.png` (le fond de l'axe 8).
+
+```
+The first attached image is a rough 3D layout of one view of our kebab restaurant, made of simple flat-coloured volumes: it fixes the camera, the perspective, the framing and the place of every object. The second attached image is the same restaurant seen from above, painted in our style: it gives the art style, the materials and the objects. The third and fourth attached images are two other views of the same restaurant, already painted and approved: the tables, chairs, bench, banister, counter, salad trays, kebab spit, hood, round clock, fridge, plants, walls and light must look exactly the same. Paint exactly the view of the first image, as an empty background for an anime series: keep the same camera, the same perspective and framing, and every object at the same place, with the same size and angle, as if the layout had been painted over. The camera stands on the sidewalk, in front of the fully open shopfront, and looks into the restaurant. Replace the simple volumes with the real objects:
+- on the left, the L-shaped stainless steel counter: in the foreground its short front side, with the cash register at its left end, its back turned to us (its screen faces the cook, inside the counter); then its long side running away from us, with the salad trays built into its top and a low glass sneeze guard;
+- behind the counter, on the left wall: the kitchen worktops, the vertical kebab spit (the brown block), the stainless steel hood (the grey block) and the round clock;
+- in the back left corner, the tall drinks fridge with glass doors and a large green plant;
+- on the back wall, the long dark smoky mirror above the red padded bench, which runs along the back wall and turns in the back right corner to come toward us along the right side; a large plant stands in that corner;
+- the rectangular wooden tables with their chairs: two in the middle of the room, one in the corner of the bench, and others along the right bench; on each table a red sauce bottle, a white sauce bottle and a napkin dispenser;
+- at the top right, the side of the wooden staircase with its banister, going up toward the back;
+- the large surface at the top is the ceiling, plain and flat, the same colour as in the other views.
+Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the style of the other images (clean dark outlines, flat cel shading, muted warm palette, painted details). NOT a 3D render, NOT photorealistic, and do not keep the flat colours of the layout. Light: warm morning sunlight comes from the street, behind the camera, through the open shopfront, and falls on the floor in long warm patches; the shadows of the tables and chairs point toward the back wall. There are no other windows; the side walls are solid. No people. No text, no letters and no logos anywhere, including on the clock, the counter and the cash register. Landscape format (1536×1024).
+```
+
+À contrôler à la reprise : la caisse en premier plan à gauche, de dos ; le comptoir en L, la vitrine encastrée ; la cuisine, l'horloge ronde ; le frigo ; le miroir fumé au-dessus de la banquette en L ; la table de Sky dans l'angle ; la rampe en haut à droite ; un plafond uni (pas un ciel) ; les ombres vers le fond ; aucune personne, aucun texte.

@@ -19,6 +19,7 @@ AXES = ast.literal_eval(_source[_debut:_source.index("}", _debut) + 1])
 ASSIS, DEBOUT = 1.2, 1.6
 CAMERAS = {n: (ASSIS, 0, 66) for n in (6, 7, 20, 21, 22, 24, 25)}
 CAMERAS.update({n: (DEBOUT, 0, 66) for n in (1, 2, 3, 4, 8, 9, 10, 12, 14, 15, 16, 19, 23)})
+CAMERAS[2] = (DEBOUT, -3, 76)         # du trottoir : toute la devanture dans le cadre, la caisse et la rampe comprises
 CAMERAS[8] = (DEBOUT, 0, 70)          # le mur de la cuisine de face : la ligne du plafond reste droite (l'auteur)
 CAMERAS[7] = (ASSIS, 0, 80)          # plus large : la rampe de l'escalier à gauche et la caisse à droite (l'auteur)
 CAMERAS.update({5: (2.1, -25, 70), 11: (DEBOUT, 18, 66), 13: (DEBOUT, -15, 66), 17: (2.2, -89, 60), 18: (DEBOUT, 10, 30)})
