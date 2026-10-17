@@ -338,3 +338,26 @@ Edit ONLY this image. Keep everything else exactly as it is: the same top view, 
 3. The light: the sunlight comes only from the open shopfront at the bottom of the image. The shadows of the tables, chairs and counter point straight up toward the back wall. No light comes from the left or the right: the side walls are solid, with no windows.
 4. The cash register on the front of the counter: turn it around so that its screen and keypad face the inside of the counter, toward the kitchen, where the cook stands; its back faces the street.
 ```
+
+L'auteur, le 2026-10-17 : pas de retouche, on refait le plan peint à partir du plan v5 sans caméras, pour avoir une base fixe et revalidée ; les axes, Claude les garde pour lui et n'en montre qu'un à la fois.
+
+### Prompt KB2 v3 — Le plan peint, d'après le plan v5
+
+Joins `~/Téléchargements/kebab_pour_KB2v3_1_plan.png` (le plan v5, sans caméras) puis `~/Téléchargements/kebab_pour_KB2v3_2_style.png` (l'essai KB2 v2, pour le style seulement).
+
+```
+The first attached image is the exact floor plan of a small kebab restaurant, seen straight from above. The second attached image is an earlier painting of the same restaurant: take from it only the art style, the materials and the colours; where it differs from the plan, follow the plan. Paint this restaurant seen straight from above, exactly like the plan: the same layout, every element at the same place, with the same size and the same orientation, as if the plan had been painted over. Style: a flat 2D hand-drawn background painting from a 1990s anime film (clean dark outlines, flat cel shading, muted warm palette). NOT a 3D render, NOT photorealistic. Do not copy the colours or the labels of the plan. No people. No text, no letters and no logos anywhere. Landscape format (1536×1024).
+Light: warm golden morning sunlight comes only from the street, at the bottom of the image, through the open shopfront. The shadows of the tables, chairs and counter point straight up toward the back wall. No light comes from the left or the right: the side walls are solid, with no windows.
+What is where, as in the plan:
+- At the bottom, the sidewalk and the street with the tram rails and grass growing between the rails. The shopfront is fully open across the whole width, up to the right corner, with no wall; at the bottom left, the folding glass panels are folded together, full height.
+- On the left, the L-shaped stainless steel counter. On its short side at the front, the cash register, turned toward the inside of the counter: its screen and keypad face the kitchen, where the cook stands, and its back faces the street. Then, along its long side, the refrigerated salad display and the sauces. Behind the counter, against the left wall, the vertical kebab spit under its hood, the grill, the fryer and the worktops. A round clock on the wall above the counter.
+- In the back left corner, the tall drinks fridge with glass doors.
+- An L-shaped red padded bench: it runs along the back wall, then turns in the back right corner and runs along the right side. Above the whole back part of the bench, a long plain mirror, dark and smoky, from the left end of the bench to the corner.
+- In the back right corner, in the angle of the bench, one rectangular wooden table: its back long side against the back bench, its right short end against the right bench, and two chairs on its front long side.
+- In the middle of the room, two identical rectangular wooden tables, each with two chairs on each long side, facing each other.
+- Along the right bench, further toward the street, two identical rectangular wooden tables, each perpendicular to the bench with one short end against it, and two chairs on each long side.
+- On the far right, a wooden staircase. It starts from a small landing inside the restaurant, at the front right, a little back from the street, reached from the dining room past the end of the red bench; from there it goes up toward the back, to a plain closed wooden door at the top. Between the bench and the staircase there is only a low, straight, open wooden railing: no wall, no tall panel.
+- On every table, a red sauce bottle, a white sauce bottle and a napkin dispenser. A few large plants on the floor, in the corners; no plant on the tables.
+```
+
+À contrôler à la reprise : chaque élément contre le plan v5 ; le palier de l'escalier dans la salle, la devanture ouverte jusqu'au coin, sans mur ; la rampe basse ; les ombres droites vers le fond ; la caisse tournée vers l'intérieur du comptoir ; aucun texte.
