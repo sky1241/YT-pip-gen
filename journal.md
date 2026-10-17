@@ -436,3 +436,7 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   (avec caméras, pour Claude). Les décisions de l'auteur sur le décor sont réunies en tête de `image/decors/kebab/axes.md`, avec le
   modèle de prompt d'un axe. 45 fonds en tout (23 de jour, 12 de pluie, 10 de nuit), 9 pour le pilote. La méthode qui marche :
   l'auteur annote le plan dans ChatGPT, Claude le redessine en code, ChatGPT peint la vue prise du même point.
+- **La base fixe du kebab (2026-10-17)** : le plan peint `image/decors/kebab/plan-peint_v2.png`, refait à partir du plan v5 sans
+  caméras (joint en premier) et du dernier essai pour le style (« where it differs from the plan, follow the plan »), avec toutes
+  les corrections écrites d'avance dans le prompt : juste du premier coup, sauf la caisse, encore tournée vers la rue. Validé par
+  l'auteur ; les autres images du kebab supprimées à sa demande.

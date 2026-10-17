@@ -196,10 +196,10 @@ La série 1, faite avec la monture argentée, est archivée sur le disque extern
 Les axes et leurs numéros : `decors/kebab/axes.md` et le plan `decors/kebab/plan-axes_v1.png`.
 
 - [x] `plan_v5.png` : le plan en code, validé par l'auteur ; `plan-axes_v5.png` : les 25 axes
-- [ ] `plan-peint_v2.png` : le plan v3 peint, vu exactement d'en haut (la v1 suivait le plan v2)
+- [x] `plan-peint_v2.png` : le plan v5 peint, vu exactement d'en haut : la base fixe du kebab
 - [ ] `exterieur/fond_v1.png` (1) : la façade, deux étages, le kebab au rez-de-chaussée, Datastream au premier, la rue d'Annemasse et le tram
 - [ ] `entree/fond_v1.png` (2) : depuis le trottoir, toute la salle
-- [ ] `table-du-fond/fond_v2.png` (6) : la table de Sky dans l'angle, la banquette, le grand miroir au-dessus (la v1 suivait le plan v2)
+- [ ] `table-du-fond/fond_v1.png` (6) : la table de Sky dans l'angle, la banquette, le grand miroir au-dessus
 - [ ] `table-du-fond-contrechamp/fond_v1.png` (7) : depuis la banquette, les deux chaises, la salle, la rue
 - [ ] `comptoir/fond_v1.png` (8) : la caisse, les salades, la broche, l'horloge, le menu
 - [ ] `pied-de-l-escalier/fond_v1.png` (10) : les premières marches, pour les descentes

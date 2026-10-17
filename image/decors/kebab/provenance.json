@@ -1,54 +1,6 @@
 {
   "_note": "D'où vient chaque image du kebab : la conversation ChatGPT, le prompt (image/decors/kebab/prompts-chatgpt.md), la date.",
   "images": {
-    "plan_v2.png": {
-      "source": "Claude, en code (pipeline/plan_kebab.py)",
-      "date": "2026-10-16",
-      "_note": "d'après le texte du CERN, validé par l'auteur : la banquette en L, sous le miroir puis le long de la rampe ; la table de Sky au fond, la banquette derrière elle ; l'escalier en bois. Six tables identiques ; remplacé par plan_v3.png"
-    },
-    "plan-peint_v1.png": {
-      "source": "ChatGPT",
-      "prompt": "KB2",
-      "date": "2026-10-17",
-      "_note": "le plan v2 peint, vu exactement d'en haut, avec la maquette jointe pour le style : chaque élément à sa place, du premier coup. L'auteur : « on garde celui-ci ». Téléchargé sous le nom « Plan d’un petit restaurant kebab ensoleillé.png » ; d'après plan_v2 : la disposition a changé avec plan_v3 (à refaire, prompt KB2 v2)"
-    },
-    "table-du-fond/fond_v1.png": {
-      "source": "ChatGPT",
-      "prompt": "A6 puis A6 retouche",
-      "date": "2026-10-17",
-      "axe": 6,
-      "_note": "validé par l'auteur (« pas parfait mais c'est juste ») ; téléchargé sous le nom « Diner rétro baigné de lumière dorée.png ». Plus sombre que le matin du plan peint : la lumière s'harmonisera à l'étalonnage (contrairement à une erreur de disposition). Recadrage 16:9 vérifié : y de 70 à 934 ; dépassé par plan_v3 (la table de Sky est passée dans l'angle) : à refaire en fond_v2"
-    },
-    "plan_v3.png": {
-      "source": "Claude, en code (pipeline/plan_kebab.py)",
-      "date": "2026-10-17",
-      "_note": "validé par l'auteur (« on valide ce plan ») d'après ses annotations : la table de Sky dans l'angle, pour cinq, Patrick au bout sur la banquette de droite ; la première table de droite enlevée ; le miroir sur toute la banquette du fond ; la rampe basse et droite, l'angle grand ouvert sur l'escalier ; remplacé par plan_v4.png"
-    },
-    "plan-axes_v2.png": {
-      "source": "Claude, en code (pipeline/plan_kebab.py ... axes)",
-      "date": "2026-10-17",
-      "_note": "les 21 axes de caméra sur plan_v3 (axes.md) ; remplacé par plan-axes_v3.png"
-    },
-    "plan-axes_v1.png": {
-      "source": "Claude, en code",
-      "date": "2026-10-17",
-      "_note": "les 19 axes sur plan_v2, remplacé par plan-axes_v2.png"
-    },
-    "plan-axes_v3.png": {
-      "source": "Claude, en code (pipeline/plan_kebab.py ... axes)",
-      "date": "2026-10-17",
-      "_note": "les 23 axes : les 21 et les deux de la pluie, le rideau de verre fermé (22, 23) ; remplacé par plan-axes_v4.png"
-    },
-    "plan_v4.png": {
-      "source": "Claude, en code (pipeline/plan_kebab.py)",
-      "date": "2026-10-17",
-      "_note": "corrections de l'auteur sur le plan peint v2 : l'escalier dans le kebab, pas sur la rue (façade pleine devant lui, un palier à l'intérieur, au bout de la banquette raccourcie) ; la caisse tournée vers Mohamed ; remplacé par plan_v5.png (sans le muret)"
-    },
-    "plan-axes_v4.png": {
-      "source": "Claude, en code",
-      "date": "2026-10-17",
-      "_note": "les 23 axes sur plan_v4 (les axes 10 et 11 suivent le palier) ; remplacé par plan-axes_v5.png"
-    },
     "plan_v5.png": {
       "source": "Claude, en code (pipeline/plan_kebab.py)",
       "date": "2026-10-17",
@@ -58,7 +10,13 @@
       "source": "Claude, en code",
       "date": "2026-10-17",
       "_note": "les 25 axes sur plan_v5 : deux de plus à la table de Navier-Stokes (24, 25), et les deux de la pluie (22, 23) tournés vers elle"
+    },
+    "plan-peint_v2.png": {
+      "source": "ChatGPT",
+      "prompt": "KB2 v3",
+      "date": "2026-10-17",
+      "_note": "la base fixe du kebab, validée par l'auteur (« on l'a enfin ! »), téléchargée sous le nom « Kebab chaleureux vu du ciel.png ». D'après plan_v5 ; le style de l'essai KB2 v2. Seul écart accepté : la caisse reste tournée vers la rue (elle doit être tournée vers Mohamed : à corriger dans les fonds par axe)"
     }
   },
-  "_supprimees": "le 2026-10-17, à la demande de l'auteur (« vire les autres images ») : maquette_v1.png, maquette_v2.png et plan_v1.png, retirées du repo (elles restent dans l'historique git, jusqu'au commit 50132dd), et les retouches intermédiaires du disque externe"
+  "_supprimees": "le 2026-10-17, à la demande de l'auteur (« vire les autres images ») : maquette_v1.png, maquette_v2.png et plan_v1.png, retirées du repo (elles restent dans l'historique git, jusqu'au commit 50132dd), et les retouches intermédiaires du disque externe ; le 2026-10-17, à la demande de l'auteur (« clean-moi les images qui restent du kebab ») : plan-peint_v1.png, table-du-fond/fond_v1.png (l'ancien plan), plan_v2 à v4, plan-axes_v1 à v4 (dans l'historique git), les captures du disque externe et les images du kebab des Téléchargements"
 }

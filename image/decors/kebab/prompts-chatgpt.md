@@ -9,10 +9,11 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 | KB1 | La maquette : tout le kebab vu de dessus, en coupe, sans personne : supprimée, remplacée par KB2 | (dans l'historique git) |
 | KB1 retouches | Le menu, l'escalier ouvert, le miroir fumé, les panneaux, la porte de Datastream, les tables : supprimée, remplacée par KB2 | (dans l'historique git) |
 | Plan | Vu de dessus, en code (`pipeline/plan_kebab.py`) : la disposition exacte | `image/decors/kebab/plan_v2.png` (la v1 sans la banquette en L) |
-| KB2 | Le plan peint : le kebab vu exactement d'en haut, comme le plan v2, dans le style de la maquette : faite, la référence du kebab | `image/decors/kebab/plan-peint_v1.png` |
-| A6 | L'axe 6 : la table de Sky, la banquette, le miroir : fait, puis dépassé par le plan v3 | `image/decors/kebab/table-du-fond/fond_v1.png` |
+| KB2 | Le plan peint, d'après le plan v2 : remplacé par KB2 v3 | (supprimé) |
+| A6 | L'axe 6, d'après le plan v2 : dépassé par le plan v3, supprimé | (supprimé) |
 | A7 | L'axe 7 : écrit pour le plan v2, pas envoyé | |
-| KB2 v2 | Le plan peint, d'après le plan v3 | `image/decors/kebab/plan-peint_v2.png` |
+| KB2 v2 | Le plan peint, d'après le plan v3 : bonne disposition, mais l'escalier sur la rue, la lumière de côté | (supprimé) |
+| KB2 v3 | Le plan peint, d'après le plan v5 sans caméras : **la base fixe, validée** | `image/decors/kebab/plan-peint_v2.png` |
 
 La suite (un fond vide par axe de caméra) s'écrit d'après KB1 et d'après les scènes du texte.
 
@@ -361,3 +362,5 @@ What is where, as in the plan:
 ```
 
 À contrôler à la reprise : chaque élément contre le plan v5 ; le palier de l'escalier dans la salle, la devanture ouverte jusqu'au coin, sans mur ; la rampe basse ; les ombres droites vers le fond ; la caisse tournée vers l'intérieur du comptoir ; aucun texte.
+
+**Résultat de KB2 v3, le 2026-10-17 : la base fixe, validée par l'auteur** (« on l'a enfin ! »), rangée en `plan-peint_v2.png`. Chaque élément du plan v5 est à sa place : le palier de l'escalier dans la salle et la devanture ouverte jusqu'au coin, la rampe basse, les ombres droites vers le fond, la table de Sky dans l'angle, l'herbe entre les rails. Seul écart accepté : la caisse reste tournée vers la rue. À la demande de l'auteur, toutes les autres images du kebab sont supprimées (repo, disque externe, Téléchargements) ; elles restent dans l'historique git. Les fonds par axe commencent : `axes.md`, « Le modèle de prompt d'un axe ».

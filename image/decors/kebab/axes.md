@@ -5,8 +5,8 @@ Un axe = un fond vide, sans perso, fait une fois et réutilisé à chaque épiso
 ## Où on en est (2026-10-17)
 
 - **Validé par l'auteur** : le plan `plan_v5.png` (sans caméras, à joindre dans ChatGPT) et les 25 axes `plan-axes_v5.png` (avec caméras, pour Claude). « On bougera peut-être 2 ou 3 plans un peu, mais l'idée est là. »
-- **En cours** : le plan peint v2 (`plan-peint_v2.png`). L'essai KB2 v2 a la bonne disposition ; sa retouche corrigée (le palier de l'escalier, la rampe basse, la lumière de face, la caisse tournée vers Mohamed) est dans `prompts-chatgpt.md`. C'est lui qui servira de référence de style et d'objets pour tous les axes.
-- **Ensuite** : l'auteur fait tous les fonds d'un coup, un prompt à la fois, le pilote d'abord (1, 2, 6, 7, 8, 10, 17, 20, 21), de jour. Le fond `table-du-fond/fond_v1.png` suit l'ancien plan : l'axe 6 se refait en `fond_v2.png`.
+- **La base fixe, validée** : le plan peint `plan-peint_v2.png` (prompt KB2 v3, d'après `plan_v5.png`). Elle sert de référence de style et d'objets pour tous les axes. Seul écart accepté : la caisse y est encore tournée vers la rue ; dans chaque fond où elle se voit, le prompt la tourne vers Mohamed.
+- **Ensuite** : l'auteur fait tous les fonds d'un coup, un prompt à la fois, le pilote d'abord (1, 2, 6, 7, 8, 10, 17, 20, 21), de jour. Claude ne lui montre qu'un axe à la fois (le plan de cet axe seul) ; le plan des 25 axes reste pour Claude. L'ancien fond de l'axe 6 est supprimé : l'axe 6 se refait en `fond_v1.png`.
 
 ## Les décisions de l'auteur sur le décor (2026-10-16 et 17)
 
