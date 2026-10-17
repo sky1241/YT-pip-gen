@@ -324,3 +324,17 @@ Edit ONLY this image. Keep everything else exactly as it is: the same top view, 
 ```
 
 À contrôler à la reprise : l'escalier fermé côté rue, son palier dans la salle ; la rampe basse ; les ombres droites vers le fond, sans lumière de côté ; la caisse tournée vers l'intérieur du comptoir ; rien d'autre de changé.
+
+L'auteur, sur le plan des axes v4 annoté, le 2026-10-17 : pas de muret devant l'escalier (« il saute ») ; la table de devant à droite est celle de Sky dans l'épisode Navier-Stokes, avec deux angles de plus ; deux plans, un sans caméras (pour ChatGPT), un avec (pour Claude). D'où `plan_v5.png` et `plan-axes_v5.png`, 25 axes. Le point 1 de la retouche ci-dessus change : pas de mur, le palier derrière la devanture ouverte.
+
+### Prompt KB2 v2 retouche, corrigée — Le palier, la rampe, la lumière, la caisse
+
+Remplace la retouche précédente si elle n'a pas été envoyée.
+
+```
+Edit ONLY this image. Keep everything else exactly as it is: the same top view, the same layout, the same style and colours. Make only these four changes:
+1. The staircase must not start on the sidewalk. Its bottom step now starts from a small landing inside the restaurant, at the front right, a little back from the street, reached from the dining room past the end of the red bench. The open shopfront continues across the whole front, up to the right corner, with no wall in front of the landing. From the landing, the staircase goes up toward the back as now, to the door.
+2. Between the red bench and the staircase, a low open wooden railing only, no tall panel.
+3. The light: the sunlight comes only from the open shopfront at the bottom of the image. The shadows of the tables, chairs and counter point straight up toward the back wall. No light comes from the left or the right: the side walls are solid, with no windows.
+4. The cash register on the front of the counter: turn it around so that its screen and keypad face the inside of the counter, toward the kitchen, where the cook stands; its back faces the street.
+```

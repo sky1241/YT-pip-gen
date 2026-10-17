@@ -1,6 +1,6 @@
 """Plan du kebab vu de dessus, d'après la maquette (image/decors/kebab/), en mètres. y = 0 au mur du fond, la rue en bas.
 
-  python3 pipeline/plan_kebab.py image/decors/kebab/plan_v4.png   (jamais par-dessus une version validée)
+  python3 pipeline/plan_kebab.py image/decors/kebab/plan_v5.png   (jamais par-dessus une version validée)
 """
 from PIL import Image, ImageDraw, ImageFont
 import sys
@@ -29,11 +29,11 @@ def chaise(x, y, vers):
 # les murs
 d.line([p(0, D), p(0, 0), p(W, 0), p(W, D)], fill="black", width=6)
 # la devanture : ouverte, les panneaux vitrés repliés à gauche
-d.line([p(0.6, D), p(9.3, D)], fill="#7fb2d9", width=3)
-# devant l'escalier, la façade est pleine : l'escalier est dans le kebab, pas sur la rue (l'auteur, le 2026-10-17)
-d.line([p(9.3, D), p(W, D)], fill="black", width=6)
+# la devanture ouverte va jusqu'au coin de droite, sans muret : l'escalier part d'un palier à l'intérieur, derrière elle
+# (l'auteur, le 2026-10-17)
+d.line([p(0.6, D), p(W, D)], fill="#7fb2d9", width=3)
 rect(0, D - 0.15, 0.6, D + 0.15, "#7fb2d9")
-txt(W / 2 - 0.6, D + 0.45, "LA RUE : devanture ouverte, panneaux vitrés repliés à gauche (ils ferment le kebab le soir) ; façade pleine devant l'escalier", F)
+txt(W / 2, D + 0.45, "LA RUE : devanture ouverte sur toute la largeur, panneaux vitrés repliés à gauche (ils ferment le kebab le soir)", F)
 # la cuisine, contre le mur gauche
 rect(0, 1.4, 1.0, 6.4, "#d9d9d9")
 txt(0.5, 3.0, "broche", G); txt(0.5, 3.4, "grill"); txt(0.5, 4.6, "friteuse"); txt(0.5, 5.6, "plans inox")
@@ -77,6 +77,8 @@ txt(10.15, 4.2, "ESCALIER", G); txt(10.15, 4.6, "en bois, il grince"); txt(10.15
 rect(9.6, 0.0, 10.7, 0.12, "#8a5a2b"); txt(10.15, -0.25, "porte de Datastream (en haut)")
 txt(10.15, 6.15, "pied : depuis la salle", F)
 d.text((MX, 15), "Le kebab vu de dessus (plan de travail, 1 carreau = 1 m)", fill="black", font=G)
+# la table de Navier-Stokes : Sky s'y assoit dans cet épisode, près de la vitrine (l'auteur, le 2026-10-17)
+txt(8.0, 6.2, "Navier-Stokes", F)
 # qui s'assoit où, à la table de Sky
 txt(8.0, 0.5, "Sky, Maëlle", F, "white"); txt(8.9, 1.25, "P", G, "white")
 d.text(p(9.45, 1.1), "← Patrick, au bout", fill="black", font=F)
@@ -89,7 +91,8 @@ AXES = {
     6: (8.0, 2.85, 270), 7: (7.8, 0.5, 90), 8: (4.3, 4.6, 180), 9: (3.4, 3.1, 180), 10: (7.3, 7.6, 0),
     11: (10.15, 7.3, 270), 12: (4.6, 2.0, 315), 13: (7.0, 0.4, 100), 14: (6.2, 3.0, 315), 15: (6.0, 5.0, 100),
     16: (3.6, 2.4, 225), 17: (8.0, 1.25, 270), 18: (3.0, 2.4, 200), 19: (8.9, 1.7, 90),
-    20: (6.95, 1.25, 0), 21: (8.95, 1.25, 180), 22: (5.5, 5.0, 90), 23: (6.2, 8.6, 280),
+    20: (6.95, 1.25, 0), 21: (8.95, 1.25, 180), 22: (8.0, 5.1, 90), 23: (8.0, 8.6, 270),
+    24: (6.75, 6.2, 0), 25: (8.95, 6.2, 180),
 }
 # un seul axe, pour le joindre au prompt de son fond : python3 pipeline/plan_kebab.py <sortie.png> axe <numéro>
 if len(sys.argv) > 3 and sys.argv[2] == "axe":

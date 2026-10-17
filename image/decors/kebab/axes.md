@@ -1,14 +1,14 @@
 # Le kebab — les axes de caméra
 
-Un axe = un fond vide, sans perso, fait une fois et réutilisé à chaque épisode (CLAUDE.md, « Images »). Les numéros sont ceux du plan `plan-axes_v4.png` (les cercles bleus : la caméra et la direction où elle regarde). Les positions viennent de `plan_v4.png` (le plan v3 validé par l'auteur le 2026-10-17, avec ses corrections), et les besoins des textes : le CERN (`ecriture/brouillons/cern.md`, numéros de ligne) et Navier-Stokes.
+Un axe = un fond vide, sans perso, fait une fois et réutilisé à chaque épisode (CLAUDE.md, « Images »). Les numéros sont ceux du plan `plan-axes_v5.png` (les cercles bleus : la caméra et la direction où elle regarde). Les positions viennent de `plan_v5.png` (le plan v3 validé par l'auteur le 2026-10-17, avec ses corrections), et les besoins des textes : le CERN (`ecriture/brouillons/cern.md`, numéros de ligne) et Navier-Stokes.
 
-## Le plan, en bref (`plan_v4.png`)
+## Le plan, en bref (`plan_v5.png`)
 
 - À gauche, le comptoir en L (la caisse devant, **tournée vers Mohamed**, les salades le long), la broche, le grill et la friteuse contre le mur ; le frigo à boissons au fond à gauche.
 - Au fond, la banquette rouge en L : le long du mur du fond, puis le long de la rampe, à droite. **Le miroir couvre toute la banquette du fond**, à fleur de son bout gauche.
 - **La table de Sky, dans l'angle de la banquette, pour cinq** : Sky et Maëlle sur la banquette du fond, deux chaises en face, **Patrick au bout, sur la banquette de droite** (c'est l'ancien). Un plan où Sky se lève et laisse sa place à Maëlle est possible.
-- Au milieu, deux tables pour quatre ; le long de la banquette de droite, deux tables perpendiculaires, un petit bout contre elle.
-- À droite, **l'escalier en bois est dans le kebab** : il part d'un palier intérieur, à l'avant droit, au bout de la banquette, et monte vers le fond jusqu'à la porte de Datastream. **Devant lui, la façade est pleine** : il ne donne pas sur la rue. **Entre la banquette et l'escalier, rien qu'une rampe basse, tout droit, sans mur ni retour dans la salle : l'angle reste grand ouvert.**
+- Au milieu, deux tables pour quatre ; le long de la banquette de droite, deux tables perpendiculaires, un petit bout contre elle. **La table de devant, à droite, est celle de Sky dans l'épisode Navier-Stokes**, près de la vitrine (l'auteur).
+- À droite, **l'escalier en bois est dans le kebab** : il part d'un palier intérieur, à l'avant droit, au bout de la banquette, et monte vers le fond jusqu'à la porte de Datastream. Le palier est derrière la devanture, **sans muret** : la devanture ouverte va jusqu'au coin de droite. **Entre la banquette et l'escalier, rien qu'une rampe basse, tout droit, sans mur ni retour dans la salle : l'angle reste grand ouvert.**
 - Devant, la devanture ouverte sur la rue d'Annemasse ; les panneaux vitrés repliés à gauche. **Dans la rue, les rails du tram, avec de l'herbe entre les rails**, comme à Annemasse.
 
 ## Les règles de chaque prompt
@@ -30,7 +30,7 @@ La pluie et la nuit se font en retouche du fond de jour : seule la lumière chan
 
 **Qui a besoin de quoi.** Seuls les axes qui voient la rue ou la devanture changent vraiment avec la pluie ou la nuit : 1, 2, 3, 7, 10, 13, 15, 19. Pour les autres, tournés vers le fond, la pluie et la nuit passent d'abord par l'étalonnage au montage (plus gris, plus sombre) et par le son ; on ne fait leur fond de pluie ou de nuit que si un texte le demande. Le compte : 21 fonds de jour, 10 de pluie (les 8 axes et les axes 22 et 23), 8 de nuit, soit **39 fonds**, dont 9 pour le pilote, tous de jour.
 
-## Les 23 axes
+## Les 25 axes
 
 | N° | Dossier | D'où, vers où | Ce qu'on voit | À quoi il sert | Quand |
 |---|---|---|---|---|---|
@@ -55,8 +55,10 @@ La pluie et la nuit se font en retouche du fond de jour : seule la lumière chan
 | 19 | `banquette-de-droite/` | De la place de Patrick, le long de la banquette de droite, vers la rue | Les deux tables de droite en enfilade, la banquette, la rampe et l'escalier, la devanture au bout | Vincent « s'assoit dans le coin » (l. 705), les tables de l'équipe | épisode 1 |
 | 20 | `bout-de-table/` | Au bout gauche de la table de Sky, assis, vers Patrick | Patrick de face, au bout de la table, sur la banquette de droite ; derrière lui, la rampe et l'escalier | Patrick et ses mots croisés (l. 16, 32), ses répliques à Sky | pilote |
 | 21 | `depuis-patrick/` | De la place de Patrick, assis, le long de la table, vers la gauche | Sky et Maëlle de profil sur la banquette du fond, le miroir au-dessus d'eux ; au loin, le frigo et le bout du comptoir | Le contrechamp de Patrick : Sky qui mâche et regarde le plafond (l. 24) | pilote |
-| 22 | `vitrine-fermee/` | Dans la salle, d'une table de devant, assis, vers la rue | Le rideau de verre fermé sur toute la devanture, la pluie qui coule dessus, la rue floue et grise derrière | Sky près de la vitre, les jours de pluie (Navier-Stokes) | pluie seule |
-| 23 | `a-travers-la-vitre/` | Dehors, sur le trottoir, tout près du verre, vers la salle | À travers le verre mouillé : les tables de devant, la salle chaude derrière | Sky vu de la rue, derrière la vitre, sous la pluie | pluie seule |
+| 22 | `vitrine-fermee/` | Derrière la table de Navier-Stokes, assis, vers la rue | La table en premier plan, le rideau de verre fermé, la pluie qui coule dessus, la rue floue et grise derrière | Sky près de la vitre, les jours de pluie (Navier-Stokes) | pluie seule |
+| 23 | `a-travers-la-vitre/` | Dehors, sur le trottoir, tout près du verre, vers la table de Navier-Stokes | À travers le verre mouillé : la table de Navier-Stokes, la salle chaude derrière | Sky vu de la rue, derrière la vitre, sous la pluie | pluie seule |
+| 24 | `table-navier-stokes/` | Dans la salle, assis, vers la table de devant à droite | La table, le bout de la banquette où s'assoit Sky, la rampe et le palier de l'escalier derrière, la vitrine à droite de l'image | Le plan maître de l'épisode Navier-Stokes ; Théo qui descend juste à côté (l. 27 de Navier-Stokes) | Navier-Stokes |
+| 25 | `table-navier-stokes-contrechamp/` | Du bout de la banquette, à la place de Sky, assis, vers la salle | Les chaises de la table, la salle, le comptoir au fond, la vitrine à gauche de l'image | Le contrechamp de Sky dans Navier-Stokes ; Mohamed depuis le comptoir (l. 17) | Navier-Stokes |
 
 Les neuf fonds du pilote (la minute des mots croisés) : 1, 2, 6, 7, 8, 10, 17, 20, 21, de jour d'abord.
 
