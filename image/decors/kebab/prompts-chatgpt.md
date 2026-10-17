@@ -891,3 +891,17 @@ Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the 
 ```
 
 À contrôler à la reprise : la plongée sur la table ; les deux chaises de dos ; la banquette et le côté de l'escalier à gauche, la rampe dans le plafond ; les tables ; la rue au fond, comme à l'axe 7 ; aucune personne, aucun texte.
+
+Résultat de A13, le 2026-10-17 : la plongée, la table, la banquette, les tables sont justes. Mais la rue n'est pas celle des fonds validés (l'auteur) : ChatGPT a lu les troncs des arbres d'en face, dans la vue en volumes, comme deux poteaux en bois plantés dans la devanture, et il a refait la rue à sa façon. Capture hors du repo (`depuis-le-miroir_essai-1_capture.png`). À écrire désormais dans chaque prompt qui voit la rue : « les barres sombres au loin sont les troncs des arbres d'en face, pas des poteaux ; la devanture n'a aucun poteau ».
+
+### Prompt A13 retouche — La rue des fonds validés, sans poteaux
+
+Dans la case « Décrivez les modifications », dans la même conversation (elle a encore l'image de l'axe 7, jointe au message précédent).
+
+```
+Edit ONLY the view through the open shopfront at the top of this image. Keep everything else exactly as it is: the same view, the same tables, chairs, bench, staircase, floor, style and light. Make only these two changes:
+1. Remove the two tall wooden posts standing in the shopfront: the shopfront is one wide opening with no posts or pillars at all, only its plain top edge.
+2. The street seen through the opening must be exactly the street of the third image of my previous message: the pale sidewalk, then the tram track laid on a strip of green grass, with grass between and around the rails, then the row of leafy trees along the opposite sidewalk, and behind them the plain beige facade with its large regular windows, in the same warm morning light.
+```
+
+À contrôler à la reprise : plus de poteaux ; la même rue que l'axe 7 ; le reste inchangé.

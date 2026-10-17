@@ -52,6 +52,7 @@ L'auteur, le 2026-10-17 : quand il pleut ou le soir, les panneaux vitrés sont d
 - **La seule lumière du jour vient de la devanture, côté rue ; aucune autre fenêtre.** Les ombres partent vers le fond (leçon de l'axe 6).
 - **Le miroir est en verre fumé sombre, sans reflet reconnaissable** : les dessins de Sky au marqueur blanc s'y lisent.
 - Aucune personne, aucun texte ni logo. Rien d'important près des bords haut et bas : l'image se recadre en 16:9.
+- Pour un axe qui voit la rue : joindre un fond validé qui la montre (l'axe 7), et écrire que les barres sombres au loin sont les troncs des arbres d'en face, pas des poteaux, et que la devanture n'a aucun poteau (leçon de l'axe 13).
 - « À hauteur d'homme » = environ 1,60 m ; « assis » = environ 1,20 m.
 
 ## Les trois lumières
