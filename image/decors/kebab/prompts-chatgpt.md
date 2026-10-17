@@ -17,6 +17,7 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 | A8 v3 | L'axe 8 : le comptoir et la cuisine, le mur de face : **fait** (après une retouche) | `image/decors/kebab/comptoir/fond_v1.png` |
 | A2 | L'axe 2 : l'entrée, toute la salle depuis le trottoir : **fait** (deux retouches ; l'angle ne convainc pas l'auteur) | `image/decors/kebab/entree/fond_v1.png` |
 | A11 | L'axe 11 : du palier, l'escalier qui monte à la porte de Datastream : **fait** (une retouche) | `image/decors/kebab/escalier-vers-datastream/fond_v1.png` |
+| A10 | L'axe 10 : le pied de l'escalier, vu de la salle | `image/decors/kebab/pied-de-l-escalier/fond_v1.png` |
 | KB2 v2 | Le plan peint, d'après le plan v3 : bonne disposition, mais l'escalier sur la rue, la lumière de côté | (supprimé) |
 | KB2 v3 | Le plan peint, d'après le plan v5 sans caméras : **la base fixe, validée** | `image/decors/kebab/plan-peint_v2.png` |
 | A6 v3 | L'axe 6 : la table de Sky dans l'angle, la banquette, le miroir, la plante : **fait** (la vue en volumes, puis une retouche) | `image/decors/kebab/table-du-fond/fond_v1.png` |
@@ -697,3 +698,20 @@ Edit ONLY this image. Keep everything else exactly as it is: the same view, the 
 À contrôler à la reprise : une seule rampe, d'un seul tenant, du haut jusqu'au poteau de la première marche ; plus de bout de rampe isolé au premier plan ; rien d'autre de changé.
 
 **Résultat de la retouche A11, le 2026-10-17 : validé par l'auteur.**
+
+### Prompt A10 — Le pied de l'escalier, vu de la salle
+
+La caméra 10 replacée : l'ancienne regardait le mur de droite. Du devant de la salle, près de la devanture, vers le palier : on voit descendre Daria, Théo, Vincent. La vue en volumes a maintenant une main courante en pente et un poteau en bas. Quatre images jointes, dans cet ordre : `~/Téléchargements/kebab_pour_A10_1_vue.png`, `~/Téléchargements/kebab_pour_axes_plan-peint.png`, `~/Téléchargements/kebab_pour_A10_3_angle11.png` (le fond de l'axe 11 : le même escalier, la même rampe), `~/Téléchargements/kebab_pour_A10_4_angle7.png` (le fond de l'axe 7 : la même rue, la même banquette, les mêmes tables).
+
+```
+The first attached image is a rough 3D layout of one view of our kebab restaurant, made of simple flat-coloured volumes: it fixes the camera, the perspective, the framing and the place of every object. The second attached image is the same restaurant seen from above, painted in our style: it gives the art style, the materials and the objects. The third and fourth attached images are two other views of the same restaurant, already painted and approved: the wooden staircase, its banister, the red bench, the tables, chairs, walls, the street and the light must look exactly the same. Paint exactly the view of the first image, as an empty background for an anime series: keep the same camera, the same perspective and framing, and every object at the same place, with the same size and angle, as if the layout had been painted over. The camera stands in the front of the dining room, near the open shopfront, and looks toward the bottom of the staircase. Replace the simple volumes with the real objects:
+- in the foreground, a rectangular wooden table with its chairs, a red sauce bottle, a white sauce bottle and a napkin dispenser, its short end against the red padded bench;
+- the red padded bench runs from the left to the middle of the frame, along the side of the staircase, and ends there;
+- above and behind the bench, the wooden staircase comes down toward us from the top left: its side is closed below the steps, a plain warm wall; its wooden banister follows the slope without a break, with its balusters, down to a single newel post at the bottom step;
+- at the bottom of the stairs, on the right of the bench end, a small wooden landing on the floor, with a large green potted plant in its far corner;
+- the plain warm wall on the right of the landing; at the far right, the open shopfront and the sunny street: the sidewalk, then the tram track on its strip of grass, as in the fourth image;
+- the surface at the top is the ceiling, plain and flat.
+Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the style of the other images (clean dark outlines, flat cel shading, muted warm palette, painted details). NOT a 3D render, NOT photorealistic, and do not keep the flat colours of the layout. Light: warm morning sunlight comes from the open shopfront on the right; the shadows fall to the left; there are no other windows. No people. No text, no letters and no logos anywhere. Landscape format (1536×1024).
+```
+
+À contrôler à la reprise : l'escalier qui descend vers nous, la rampe d'un seul tenant jusqu'au poteau ; la banquette qui s'arrête ; le palier en bois et sa plante ; la rue à droite, la voie en herbe ; la table au premier plan ; un plafond uni ; aucune personne, aucun texte.

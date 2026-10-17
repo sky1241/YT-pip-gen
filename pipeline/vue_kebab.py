@@ -20,6 +20,7 @@ ASSIS, DEBOUT = 1.2, 1.6
 CAMERAS = {n: (ASSIS, 0, 66) for n in (6, 7, 20, 21, 22, 24, 25)}
 CAMERAS.update({n: (DEBOUT, 0, 66) for n in (1, 2, 3, 4, 8, 9, 10, 12, 14, 15, 16, 19, 23)})
 CAMERAS[2] = (DEBOUT, -3, 76)         # du trottoir : toute la devanture dans le cadre, la caisse et la rampe comprises
+CAMERAS[10] = (DEBOUT, 0, 72)        # du devant de la salle, vers le palier et l'escalier : on voit descendre
 CAMERAS[8] = (DEBOUT, 0, 70)          # le mur de la cuisine de face : la ligne du plafond reste droite (l'auteur)
 CAMERAS[7] = (ASSIS, 0, 80)          # plus large : la rampe de l'escalier à gauche et la caisse à droite (l'auteur)
 CAMERAS.update({5: (2.1, -25, 70), 11: (DEBOUT, 18, 66), 13: (DEBOUT, -15, 66), 17: (2.2, -89, 60), 18: (DEBOUT, 10, 30)})
@@ -149,8 +150,10 @@ for k in range(11):                                         # monte du palier (y
     boite(9.4, y0, 10.9, y1, max(0, dessus - 0.55), dessus, "#9c6b3c")                 # la marche et son limon
     boite(9.3, y0, 9.4, y1, 0, dessus, "#dcc69c", trait=False, groupe="cote-escalier")   # le côté fermé, sous les marches
     boite(9.33, (y0 + y1) / 2 - 0.02, 9.37, (y0 + y1) / 2 + 0.02, dessus, dessus + 0.9, BOIS)  # les barreaux
-    boite(9.3, y0, 9.4, y1, dessus + 0.9, dessus + 0.96, BOIS)                        # la main courante
 boite(9.4, 6.4, 10.9, 7.9, 0, 0.03, "#b07a45")              # le palier
+for xr, nr in ((9.32, (-1, 0, 0)), (9.38, (1, 0, 0))):     # la main courante, en pente avec l'escalier, jusqu'au poteau du bas
+    plaque([(xr, 6.45, 1.1), (xr, 0.4, 3.9), (xr, 0.4, 4.0), (xr, 6.45, 1.2)], nr, BOIS)
+boite(9.29, 6.35, 9.41, 6.5, 0, 1.25, BOIS)                 # le poteau du bas, sur la première marche
 
 # --- les arbres de la rue, sur le trottoir d'en face ---
 for xa in (-2.0, 2.5, 7.0, 11.5):
