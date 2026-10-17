@@ -47,7 +47,8 @@ def poser(fond, sortie, axe=1):
             for c, w in zip(e["texte"], largeurs):
                 d.text((x, (y0 + y1) / 2), c, font=police, fill=255, anchor="lm")
                 x += w + pas
-            masque = (np.asarray(calque) > 0) & panneau["panneau"](lum)    # pas sur les feuilles qui passent devant
+            masque = (np.asarray(calque) > 0) & panneau["panneau"](lum)    # pas sur les feuilles qui passent devant,
+            masque &= lum < reference + 25                                 # ni sur les traits de pluie
             # la lumière du fond (les ombres des feuilles) passe aussi sur les lettres
             facteur = np.clip(lum[masque] / reference, 0.6, 1.25)[:, None]
             pixels[masque] = np.clip(np.array(e["couleur"])[None, :] * facteur, 0, 255).astype(np.uint8)

@@ -777,3 +777,15 @@ Edit ONLY the weather and the light of this image. Keep everything exactly where
 ```
 
 À contrôler à la reprise : le même cadrage et les mêmes objets ; le ciel gris, plus de soleil ; la pluie en traits fins ; l'eau sur les vitres ; le trottoir mouillé, les flaques ; la salle éclairée derrière le verre ; aucune personne, aucun texte.
+
+**Résultat de A1 pluie, le 2026-10-17 : validé par l'auteur.** ChatGPT a ajouté des spots au plafond de la salle, accepté. Les enseignes : `pipeline/enseignes.py` laisse passer les traits de pluie devant les lettres.
+
+### Prompt A1 nuit — La devanture fermée, la nuit
+
+Retouche de l'image fermée de jour (`fond_ferme_v1`), pas de celle de la pluie : dans ChatGPT, cliquer sur l'image fermée de jour, puis « Modifier ». Le kebab est ouvert 24 h sur 24 : de nuit, le rideau est fermé (`axes.md`), la salle allumée.
+
+```
+Edit ONLY the time of day and the light of this image. Keep everything exactly where it is: the same view, the same building, the closed glass shopfront and its door, the two blank signs, the inside of the restaurant, the neighbouring buildings, the sidewalk, the tram track and the trees. Make only this change: it is late at night, dry weather. The sky is dark blue, almost black; there is no sunlight and no leaf shadows. The street is lit by warm orange street lamps out of frame, from the left and the right, which light the sidewalk and the leaves of the trees from below. The restaurant is open and fully lit inside by its warm ceiling lights: it glows warmly behind the glass, and its light spills onto the sidewalk in front. The glass floors above are dark, with only one office window faintly lit. The two blank signs are lit softly from below. No people. No letters, no words, no logos anywhere.
+```
+
+À contrôler à la reprise : le même cadrage et les mêmes objets ; le ciel de nuit ; les réverbères hors champ, la lumière orange sur le trottoir et les feuilles ; la salle allumée, sa lumière sur le trottoir ; les étages sombres ; aucune personne, aucun texte.
