@@ -21,6 +21,7 @@ CAMERAS = {n: (ASSIS, 0, 66) for n in (6, 7, 20, 21, 22, 24, 25)}
 CAMERAS.update({n: (DEBOUT, 0, 66) for n in (1, 2, 3, 4, 8, 9, 10, 12, 14, 15, 16, 19, 23)})
 CAMERAS[2] = (DEBOUT, -3, 76)         # du trottoir : toute la devanture dans le cadre, la caisse et la rampe comprises
 CAMERAS[10] = (DEBOUT, 0, 72)        # du devant de la salle, vers le palier et l'escalier : on voit descendre
+CAMERAS[1] = (DEBOUT, 8, 84)         # du trottoir d'en face, un peu vers le haut : la devanture et les étages
 CAMERAS[8] = (DEBOUT, 0, 70)          # le mur de la cuisine de face : la ligne du plafond reste droite (l'auteur)
 CAMERAS[7] = (ASSIS, 0, 80)          # plus large : la rampe de l'escalier à gauche et la caisse à droite (l'auteur)
 CAMERAS.update({5: (2.1, -25, 70), 11: (DEBOUT, 18, 66), 13: (DEBOUT, -15, 66), 17: (2.2, -89, 60), 18: (DEBOUT, 10, 30)})
@@ -46,15 +47,16 @@ def plaque(points, normale, couleur):
 
 
 # --- la rue, en face ---
-plaque([(-8, 8, 0), (19, 8, 0), (19, 14, 0), (-8, 14, 0)], (0, 0, 1), "#b4aa96")
+plaque([(-8, 8, 0), (19, 8, 0), (19, 15.5, 0), (-8, 15.5, 0)], (0, 0, 1), "#b4aa96")
 plaque([(-8, 8, 0.01), (19, 8, 0.01), (19, 9.8, 0.01), (-8, 9.8, 0.01)], (0, 0, 1), "#cdc1aa")      # le trottoir
 plaque([(-8, 10.2, 0.02), (19, 10.2, 0.02), (19, 12.0, 0.02), (-8, 12.0, 0.02)], (0, 0, 1), "#6f8f4a")  # la voie du tram, en herbe
 for yr in (10.7, 11.5):                                                                         # les rails du tram
     plaque([(-8, yr - 0.04, 0.03), (19, yr - 0.04, 0.03), (19, yr + 0.04, 0.03), (-8, yr + 0.04, 0.03)], (0, 0, 1), "#55524c")
-plaque([(-8, 14, 0), (19, 14, 0), (19, 14, 9), (-8, 14, 9)], (0, -1, 0), "#c8b796")              # l'immeuble d'en face
+plaque([(-8, 12.4, 0.01), (19, 12.4, 0.01), (19, 15.5, 0.01), (-8, 15.5, 0.01)], (0, 0, 1), "#cdc1aa")  # le trottoir d'en face
+plaque([(-8, 15.5, 0), (19, 15.5, 0), (19, 15.5, 9), (-8, 15.5, 9)], (0, -1, 0), "#c8b796")              # l'immeuble d'en face
 for xf in range(-7, 19, 3):
     for zf in (3.6, 6.4):
-        plaque([(xf, 13.98, zf), (xf + 1.4, 13.98, zf), (xf + 1.4, 13.98, zf + 1.6), (xf, 13.98, zf + 1.6)], (0, -1, 0), "#8a7d66")
+        plaque([(xf, 15.48, zf), (xf + 1.4, 15.48, zf), (xf + 1.4, 15.48, zf + 1.6), (xf, 15.48, zf + 1.6)], (0, -1, 0), "#8a7d66")
 # --- la salle ---
 plaque([(0, 0, 0), (11, 0, 0), (11, 8, 0), (0, 8, 0)], (0, 0, 1), "#c9a27a")                    # le sol
 plaque([(0, 0, 0), (11, 0, 0), (11, 0, 3), (0, 0, 3)], (0, 1, 0), "#e2cda3")                    # le mur du fond
@@ -72,9 +74,24 @@ plaque([(9.3, 0, 3.0), (11, 0, 3.0), (11, 0.6, 3.0), (9.3, 0.6, 3.0)], (0, 0, 1)
 plaque([(9.75, 0.01, 3.0), (10.65, 0.01, 3.0), (10.65, 0.01, 5.05), (9.75, 0.01, 5.05)], (0, 1, 0), "#7a4a24")  # la porte
 plaque([(10.45, 0.005, 3.95), (10.55, 0.005, 3.95), (10.55, 0.005, 4.05), (10.45, 0.005, 4.05)], (0, 1, 0), "#c9c9c9")
 plaque([(0, 8, 2.7), (11, 8, 2.7), (11, 8, 3), (0, 8, 3)], (0, -1, 0), "#cdb88f")               # le linteau, vu de dedans
-plaque([(0, 8, 2.7), (11, 8, 2.7), (11, 8, 7), (0, 8, 7)], (0, 1, 0), "#d8c6a2")                # la façade, vue de la rue
-for xf in (1.0, 4.0, 7.0, 9.5):                                                                 # les fenêtres de Datastream
-    plaque([(xf, 8.02, 3.8), (xf + 1.3, 8.02, 3.8), (xf + 1.3, 8.02, 5.4), (xf, 8.02, 5.4)], (0, 1, 0), "#7d8a94")
+# la façade, vue de la rue : un petit immeuble de deux étages (texte du CERN, l. 10) : le kebab, Datastream au premier,
+# un étage au-dessus ; la devanture vitrée sur toute la largeur du rez-de-chaussée (l'auteur, axe 1)
+plaque([(0, 8, 2.7), (11, 8, 2.7), (11, 8, 9.4), (0, 8, 9.4)], (0, 1, 0), "#d8c6a2")
+plaque([(-0.1, 8.0, 9.4), (11.1, 8.0, 9.4), (11.1, 8.35, 9.4), (-0.1, 8.35, 9.4)], (0, 0, -1), "#b9a47e")   # la corniche
+plaque([(-0.1, 8.35, 9.4), (11.1, 8.35, 9.4), (11.1, 8.35, 9.7), (-0.1, 8.35, 9.7)], (0, 1, 0), "#b9a47e")
+plaque([(0, 8.02, 2.7), (11, 8.02, 2.7), (11, 8.02, 3.0), (0, 8.02, 3.0)], (0, 1, 0), "#8a5a2b")  # le bandeau, sans enseigne
+for zf in (3.7, 6.7):                                                    # les fenêtres : Datastream au premier, puis le deuxième
+    for xf in (0.8, 3.5, 6.2, 8.9):
+        plaque([(xf, 8.02, zf), (xf + 1.4, 8.02, zf), (xf + 1.4, 8.02, zf + 1.7), (xf, 8.02, zf + 1.7)], (0, 1, 0), "#7d8a94")
+# les immeubles voisins, de part et d'autre, leurs rez-de-chaussée fermés
+for x0, x1, hauteur, teinte in ((-9, 0, 10.5, "#c9b391"), (11, 20, 9.0, "#cbbba0")):
+    plaque([(x0, 8, 0), (x1, 8, 0), (x1, 8, hauteur), (x0, 8, hauteur)], (0, 1, 0), teinte)
+    for xf in range(int(x0) + 1, int(x1) - 1, 3):
+        for zf in (3.7, 6.7):
+            plaque([(xf, 8.02, zf), (xf + 1.4, 8.02, zf), (xf + 1.4, 8.02, zf + 1.7), (xf, 8.02, zf + 1.7)], (0, 1, 0), "#7d8a94")
+        plaque([(xf, 8.02, 0.3), (xf + 2.2, 8.02, 0.3), (xf + 2.2, 8.02, 2.4), (xf, 8.02, 2.4)], (0, 1, 0), "#8f8676")
+# le ciel, loin derrière
+plaque([(-200, -60, 0), (200, -60, 0), (200, -60, 120), (-200, -60, 120)], (0, 1, 0), "#a9c7d8")
 
 # --- la cuisine et le comptoir en L, à gauche ---
 INOX = "#aeb3b8"

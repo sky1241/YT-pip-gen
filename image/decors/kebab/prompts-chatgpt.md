@@ -18,6 +18,7 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 | A2 | L'axe 2 : l'entrée, toute la salle depuis le trottoir : **fait** (deux retouches ; l'angle ne convainc pas l'auteur) | `image/decors/kebab/entree/fond_v1.png` |
 | A11 | L'axe 11 : du palier, l'escalier qui monte à la porte de Datastream : **fait** (une retouche) | `image/decors/kebab/escalier-vers-datastream/fond_v1.png` |
 | A10 | L'axe 10 : le pied de l'escalier, vu de la salle : **fait** | `image/decors/kebab/pied-de-l-escalier/fond_v1.png` |
+| A1 | L'axe 1 : l'extérieur, la façade depuis le trottoir d'en face | `image/decors/kebab/exterieur/fond_v1.png` |
 | KB2 v2 | Le plan peint, d'après le plan v3 : bonne disposition, mais l'escalier sur la rue, la lumière de côté | (supprimé) |
 | KB2 v3 | Le plan peint, d'après le plan v5 sans caméras : **la base fixe, validée** | `image/decors/kebab/plan-peint_v2.png` |
 | A6 v3 | L'axe 6 : la table de Sky dans l'angle, la banquette, le miroir, la plante : **fait** (la vue en volumes, puis une retouche) | `image/decors/kebab/table-du-fond/fond_v1.png` |
@@ -717,3 +718,22 @@ Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the 
 À contrôler à la reprise : l'escalier qui descend vers nous, la rampe d'un seul tenant jusqu'au poteau ; la banquette qui s'arrête ; le palier en bois et sa plante ; la rue à droite, la voie en herbe ; la table au premier plan ; un plafond uni ; aucune personne, aucun texte.
 
 **Résultat de A10, le 2026-10-17 : validé par l'auteur du premier coup.** L'escalier manque de profondeur, sans gêne pour un plan fixe (les persos qui descendent se posent en bas des marches ou sur le palier : pas de gros gestes, CLAUDE.md).
+
+### Prompt A1 — L'extérieur, la façade depuis le trottoir d'en face
+
+L'auteur : « faire simple, la baie vitrée vue depuis la rue, sur le trottoir d'en face, et basta ». La rue est élargie dans la vue en volumes (le trottoir d'en face, puis l'immeuble d'en face, plus loin) pour que la caméra ait du recul. Quatre images jointes, dans cet ordre : `~/Téléchargements/kebab_pour_A1_1_vue.png`, `~/Téléchargements/kebab_pour_axes_plan-peint.png`, `~/Téléchargements/kebab_pour_A1_3_angle7.png` (le fond de l'axe 7 : la même rue, les mêmes arbres, la même voie en herbe), `~/Téléchargements/kebab_pour_A1_4_angle2.png` (le fond de l'axe 2 : la même salle).
+
+```
+The first attached image is a rough 3D layout of one view of our kebab restaurant, made of simple flat-coloured volumes: it fixes the camera, the perspective, the framing and the place of every object. The second attached image is the same restaurant seen from above, painted in our style: it gives the art style, the materials and the objects. The third and fourth attached images are two views already painted and approved: the street, the trees, the grass tram track, the interior of the restaurant and the light must look exactly the same. Paint exactly the view of the first image, as an empty background for an anime series: keep the same camera, the same perspective and framing, and every object at the same place, with the same size and angle, as if the layout had been painted over. The camera stands on the opposite sidewalk, under the trees, and looks across the street at the building, slightly upward. Replace the simple volumes with the real objects:
+- the building: a small, plain three-level building in a French town, warm beige rendered walls; on the upper floors, regular tall windows with simple frames (the grey rectangles), the office of a small company on the first floor; no balconies, no sign;
+- on the ground floor, across the whole width, the shopfront of the kebab restaurant, fully open: its folding glass panels are folded together at the left end (the light blue upright block); above the opening, a plain dark wooden fascia band, with no sign and no letters;
+- through the open shopfront, the inside of the restaurant, as in the fourth image: on the left, the stainless steel counter with the cash register and the salad display, the kebab spit and the hood behind; at the back, the long dark smoky mirror above the red bench; the tables and chairs; on the right, the wooden staircase going up; large green plants in the corners;
+- on both sides, the neighbouring buildings, with their ground floors closed (the dark grey rectangles are plain shutters);
+- in front of the building, the sidewalk, and in the foreground the tram track laid on a strip of green grass, with grass between and around the rails;
+- in the top corners, the leaves of the trees of the sidewalk where the camera stands.
+Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the style of the other images (clean dark outlines, flat cel shading, muted warm palette, painted details). NOT a 3D render, NOT photorealistic, and do not keep the flat colours of the layout. Light: warm morning sunlight on the facade; the inside of the restaurant is warm and a little darker. No people. No text, no letters, no logos and no numbers anywhere: no sign, no shop names, no street signs. Landscape format (1536×1024).
+```
+
+À contrôler à la reprise : trois niveaux, la devanture grande ouverte sur toute la largeur, les panneaux repliés à gauche ; la salle dedans, comme à l'axe 2 ; le bandeau sans enseigne ; la voie du tram en herbe au premier plan ; les feuilles des arbres en haut ; aucune personne, aucun texte.
+
+L'enseigne, si l'auteur en veut une, se pose en code au montage (`image/gabarits/`), comme tout texte à l'écran.
