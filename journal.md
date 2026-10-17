@@ -447,3 +447,7 @@ Vérifié sur les pages officielles, le 2026-10-15 :
 - **Premier fond du kebab validé (2026-10-17)** : l'axe 6, la table de Sky (`image/decors/kebab/table-du-fond/fond_v1.png`).
   Trois essais : le plan avec une caméra (vue de face au lieu de biais), puis la vue en volumes (le bon angle du premier coup),
   puis une retouche de deux points (le mur de l'escalier, la plante de l'angle). La vue en volumes devient la méthode de tous les axes.
+- **Deuxième fond du kebab validé (2026-10-17)** : l'axe 7, le contrechamp depuis la place de Sky
+  (`image/decors/kebab/table-du-fond-contrechamp/fond_v1.png`). Le premier essai avait raté l'escalier parce que la vue en volumes
+  ne le montrait pas : ChatGPT peint ce qu'il voit dans la vue, rien de plus. Corrigée (le côté de l'escalier suit la pente,
+  sa rampe au-dessus, la voie du tram en herbe, les arbres d'en face), la vue a donné l'image juste du premier coup.

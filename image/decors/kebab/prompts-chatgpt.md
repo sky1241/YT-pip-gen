@@ -11,7 +11,7 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 | Plan | Vu de dessus, en code (`pipeline/plan_kebab.py`) : la disposition exacte | `image/decors/kebab/plan_v2.png` (la v1 sans la banquette en L) |
 | KB2 | Le plan peint, d'après le plan v2 : remplacé par KB2 v3 | (supprimé) |
 | A6 | L'axe 6, d'après le plan v2 : dépassé par le plan v3, supprimé | (supprimé) |
-| A7 | L'axe 7 : depuis la place de Sky, vers la rue (vue en volumes) | `image/decors/kebab/table-du-fond-contrechamp/fond_v1.png` |
+| A7 v2 | L'axe 7 : depuis la place de Sky, vers la rue, la rampe à gauche : **fait** | `image/decors/kebab/table-du-fond-contrechamp/fond_v1.png` |
 | KB2 v2 | Le plan peint, d'après le plan v3 : bonne disposition, mais l'escalier sur la rue, la lumière de côté | (supprimé) |
 | KB2 v3 | Le plan peint, d'après le plan v5 sans caméras : **la base fixe, validée** | `image/decors/kebab/plan-peint_v2.png` |
 | A6 v3 | L'axe 6 : la table de Sky dans l'angle, la banquette, le miroir, la plante : **fait** (la vue en volumes, puis une retouche) | `image/decors/kebab/table-du-fond/fond_v1.png` |
@@ -475,3 +475,5 @@ Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the 
 ```
 
 À contrôler à la reprise : la rampe de l'escalier qui monte vers nous au-dessus de la banquette, à gauche ; la voie du tram en herbe, sans pavés ; les arbres d'en face ; le comptoir et la caisse à droite ; les deux chaises face à nous ; aucune personne, aucun texte.
+
+**Résultat de A7 v2, le 2026-10-17 : validé par l'auteur** (« on l'a »), rangé en `table-du-fond-contrechamp/fond_v1.png`, du premier coup avec la vue en volumes corrigée.
