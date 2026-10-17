@@ -15,7 +15,8 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 | A20 | L'axe 20 : Patrick au bout de la table, vu de l'autre bout : **fait** | `image/decors/kebab/bout-de-table/fond_v1.png` |
 | A21 | L'axe 21 : depuis la place de Patrick, le long de la table, vers le comptoir : **fait** | `image/decors/kebab/depuis-patrick/fond_v1.png` |
 | A8 v3 | L'axe 8 : le comptoir et la cuisine, le mur de face : **fait** (après une retouche) | `image/decors/kebab/comptoir/fond_v1.png` |
-| A2 | L'axe 2 : l'entrée, toute la salle depuis le trottoir | `image/decors/kebab/entree/fond_v1.png` |
+| A2 | L'axe 2 : l'entrée, toute la salle depuis le trottoir : **fait** (deux retouches ; l'angle ne convainc pas l'auteur) | `image/decors/kebab/entree/fond_v1.png` |
+| A11 | L'axe 11 : du palier, l'escalier qui monte à la porte de Datastream | `image/decors/kebab/escalier-vers-datastream/fond_v1.png` |
 | KB2 v2 | Le plan peint, d'après le plan v3 : bonne disposition, mais l'escalier sur la rue, la lumière de côté | (supprimé) |
 | KB2 v3 | Le plan peint, d'après le plan v5 sans caméras : **la base fixe, validée** | `image/decors/kebab/plan-peint_v2.png` |
 | A6 v3 | L'axe 6 : la table de Sky dans l'angle, la banquette, le miroir, la plante : **fait** (la vue en volumes, puis une retouche) | `image/decors/kebab/table-du-fond/fond_v1.png` |
@@ -664,3 +665,21 @@ Edit ONLY the top right corner of this image. Keep everything else exactly as it
 ```
 
 À contrôler à la reprise : une ouverture dans le plafond au-dessus de l'escalier, les dernières marches et la porte en haut ; le reste inchangé.
+
+**Résultat de la retouche 2 de A2, le 2026-10-17 : validé par l'auteur**, sans enthousiasme pour l'angle. La retouche 3 (la trémie) n'a pas été envoyée : l'auteur voulait la porte au bout de l'escalier, dans son mur, pas dans le plafond ; elle se voit à l'axe 11.
+
+### Prompt A11 — Du palier, l'escalier qui monte à la porte de Datastream
+
+La vue en volumes validée par l'auteur. Trois images jointes, dans cet ordre : `~/Téléchargements/kebab_pour_A11_1_vue.png`, `~/Téléchargements/kebab_pour_axes_plan-peint.png`, `~/Téléchargements/kebab_pour_A11_3_angle2.png` (le fond de l'axe 2 : le même escalier, la même rampe).
+
+```
+The first attached image is a rough 3D layout of one view of our kebab restaurant, made of simple flat-coloured volumes: it fixes the camera, the perspective, the framing and the place of every object. The second attached image is the same restaurant seen from above, painted in our style: it gives the art style, the materials and the objects. The third attached image is another view of the same restaurant, already painted and approved: the wooden staircase, its banister, the walls, the red bench and the light must look exactly the same. Paint exactly the view of the first image, as an empty background for an anime series: keep the same camera, the same perspective and framing, and every object at the same place, with the same size and angle, as if the layout had been painted over. The camera stands on the small landing at the bottom of the staircase and looks up the stairs. Replace the simple volumes with the real objects:
+- in the middle, the straight wooden staircase going up away from us, step after step, worn wood that creaks;
+- on the left, the wooden banister with its handrail and its balusters, going up along the stairs; below it and beyond it, a glimpse of the restaurant: the red padded bench and the long dark smoky mirror on the back wall;
+- on the right, the plain warm wall of the stairwell, going up;
+- at the top of the stairs, at the far end, a small landing and, in the wall at the end, a plain closed wooden door with a metal handle: the door of the office upstairs, with no sign and no text;
+- above, the ceiling of the stairwell.
+Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the style of the second and third images (clean dark outlines, flat cel shading, muted warm palette, painted details). NOT a 3D render, NOT photorealistic, and do not keep the flat colours of the layout. Light: warm morning daylight comes from the street, behind the camera, and lights the lower steps; the stairwell gets dimmer as it goes up, and the door at the top is in soft shadow. No people. No text, no letters and no logos anywhere. Landscape format (1536×1024).
+```
+
+À contrôler à la reprise : l'escalier droit qui monte, la rampe à gauche, le mur à droite ; la porte au bout, en haut, dans son mur, sans texte ; un aperçu de la banquette et du miroir à gauche ; la lumière de derrière, plus sombre en haut ; aucune personne, aucun texte.
