@@ -737,3 +737,19 @@ Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the 
 À contrôler à la reprise : trois niveaux, la devanture grande ouverte sur toute la largeur, les panneaux repliés à gauche ; la salle dedans, comme à l'axe 2 ; le bandeau sans enseigne ; la voie du tram en herbe au premier plan ; les feuilles des arbres en haut ; aucune personne, aucun texte.
 
 L'enseigne, si l'auteur en veut une, se pose en code au montage (`image/gabarits/`), comme tout texte à l'écran.
+
+Résultat de A1, le 2026-10-17 : « pas mal du tout, c'est propre ». Mais l'auteur voyait plutôt un immeuble un peu moderne : des baies vitrées teintées aux étages, une enseigne « KEBAB » assez grande au-dessus de la devanture, et un panneau « DATASTREAM » sur la façade vitrée, entre les deux étages. Claude : les deux panneaux se peignent vides, les lettres se posent en code (CLAUDE.md : les modèles déforment le texte ; le modèle local repassera sur l'image). Capture de cette première version hors du repo (`exterieur_essai-1_capture.png`).
+
+### Prompt A1 retouche — L'immeuble moderne, les deux enseignes vides
+
+Dans la case « Décrivez les modifications » de l'image.
+
+```
+Edit ONLY the upper part of the building in this image. Keep everything else exactly as it is: the same view, the same ground floor, the open shopfront and everything inside the restaurant, the neighbouring buildings, the sidewalk, the grass tram track, the trees, the style and the light. Make only these three changes:
+1. The two floors above the restaurant become a simple modern facade: large tinted glass panels, dark blue-grey, in thin dark metal frames, from one side of the building to the other, on both floors; the glass reflects the sky and the trees softly, and we cannot see inside.
+2. Above the open shopfront, replace the wooden fascia band with a clean sign box across the shopfront, light coloured, with nothing written on it: a blank sign.
+3. On the glass facade, at the level between the first and the second floor, a long horizontal sign panel across the building, dark, with nothing written on it: a blank sign.
+No letters, no words, no logos anywhere.
+```
+
+À contrôler à la reprise : les deux étages en verre teinté, cadres fins ; l'enseigne vide au-dessus de la devanture ; le panneau vide entre les étages ; le rez-de-chaussée, la salle, la rue et les arbres inchangés.
