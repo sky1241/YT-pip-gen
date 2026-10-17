@@ -2,7 +2,7 @@
 
 Un axe = un fond vide, sans perso, fait une fois et réutilisé à chaque épisode (CLAUDE.md, « Images »). Les numéros sont ceux du plan `plan-axes_v1.png` (les cercles bleus : la caméra et la direction où elle regarde). Les positions viennent de `plan_v2.png`, et les besoins des textes : le CERN (`ecriture/brouillons/cern.md`, numéros de ligne) et Navier-Stokes. Liste préparée le 2026-10-17, à valider par l'auteur.
 
-Lumière par défaut : le matin, soleil doré venu de la rue (`image/style.md`). « À hauteur d'homme » = environ 1,60 m ; « assis » = environ 1,20 m.
+Lumière par défaut : le matin, soleil doré venu de la rue (`image/style.md`). **La seule lumière du jour vient de la devanture ouverte, côté rue ; aucune autre fenêtre** : les ombres partent vers le fond. **Le miroir est en verre fumé sombre, sans reflet reconnaissable.** Ces deux règles s'écrivent dans chaque prompt (leçon de l'axe 6, le 2026-10-17). « À hauteur d'homme » = environ 1,60 m ; « assis » = environ 1,20 m.
 
 ## Les 19 axes
 

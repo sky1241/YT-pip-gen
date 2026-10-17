@@ -247,3 +247,19 @@ Morning: warm golden sunlight comes from the street, behind the camera, and fall
 ```
 
 À contrôler à la reprise : la caméra à hauteur d'une personne assise, face au mur du fond ; les dossiers des deux chaises en bas ; la table et ses deux sauces et ses serviettes ; la banquette vide ; le miroir large et fumé, sans reflet net ; rien d'important près des bords haut et bas (recadrage en 16:9) ; aucune personne, aucun texte ; le style du plan peint.
+
+Résultat de A6, le 2026-10-17 : le bon angle, pour l'auteur. La table, ses sauces et ses serviettes, la banquette vide qui tourne à droite, les dossiers des chaises en bas, le style du plan peint. Deux défauts, relevés par l'auteur : le miroir reflète une scène nette (des fenêtres à petits bois, des arbres, un plafond à poutres) qui n'est pas notre devanture ; et la lumière est fausse, avec une grande tache de soleil et des ombres de feuilles sur le mur de gauche, comme s'il y avait une fenêtre sur le côté. Capture hors du repo (`<sorties_root>/decors/kebab/table-du-fond_essai-1_capture.png`).
+
+La règle pour tous les axes, désormais écrite dans chaque prompt : **la seule lumière du jour vient de la devanture ouverte, côté rue ; il n'y a aucune autre fenêtre** ; et **le miroir est en verre fumé sombre, sans reflet reconnaissable**.
+
+### Prompt A6 retouche — Le miroir et la lumière
+
+Dans la case « Décrivez les modifications » de l'image.
+
+```
+Edit ONLY this image. Keep everything else exactly as it is: the same view, the same table, chairs, bench, plant, style and colours. Make only these two changes:
+1. The mirror: make its glass dark and smoky, almost opaque, with only a very faint, blurred warm glow. No recognisable reflection: no windows, no trees, no ceiling, no lamps in it.
+2. The light: there is no window on the left. Remove the bright patch of sunlight and the leaf shadows on the left wall. The only daylight comes from the open shopfront behind the camera: a soft, warm morning light on the back wall and the bench, with the shadows of the chairs and of the table falling toward the back wall.
+```
+
+À contrôler à la reprise : le miroir fumé, sans reflet ; plus de fenêtre implicite à gauche ; la lumière qui vient de derrière la caméra ; rien d'autre de changé.
