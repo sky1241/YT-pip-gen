@@ -789,3 +789,5 @@ Edit ONLY the time of day and the light of this image. Keep everything exactly w
 ```
 
 À contrôler à la reprise : le même cadrage et les mêmes objets ; le ciel de nuit ; les réverbères hors champ, la lumière orange sur le trottoir et les feuilles ; la salle allumée, sa lumière sur le trottoir ; les étages sombres ; aucune personne, aucun texte.
+
+**Résultat de A1 nuit, le 2026-10-17 : validé par l'auteur du premier coup.** La façade a ses quatre fonds : ouverte de jour, fermée de jour, fermée sous la pluie, fermée la nuit. Les enseignes se posent sur les quatre (`pipeline/enseignes.py` reconnaît les traits de pluie, fins, et laisse les lettres entières sous les flaques de lumière de nuit).

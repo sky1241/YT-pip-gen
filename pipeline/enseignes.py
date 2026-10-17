@@ -6,7 +6,7 @@ plan »). Le fond reste sans texte dans le repo ; les enseignes se posent au mon
 Les lettres ne se posent que sur les pixels du panneau : ce qui passe devant (les feuilles des arbres) reste devant.
 """
 import sys
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
 import numpy as np
 
 POLICE = "/usr/share/fonts/truetype/lato/Lato-Black.ttf"
@@ -30,6 +30,9 @@ ENSEIGNES = {
 def poser(fond, sortie, axe=1):
     image = Image.open(fond).convert("RGB")
     lum = np.asarray(image).astype(int).mean(axis=2)
+    # la luminosité autour de chaque pixel : un trait de pluie est fin et plus clair que ce qui l'entoure, une flaque de
+    # lumière (les spots de nuit) est large
+    autour = np.asarray(Image.fromarray(lum.astype(np.uint8)).filter(ImageFilter.BoxBlur(6))).astype(int)
     pixels = np.asarray(image).copy()
     for panneau in ENSEIGNES[axe]:
         x0, y0, x1, y1 = panneau["boite"]
@@ -48,7 +51,7 @@ def poser(fond, sortie, axe=1):
                 d.text((x, (y0 + y1) / 2), c, font=police, fill=255, anchor="lm")
                 x += w + pas
             masque = (np.asarray(calque) > 0) & panneau["panneau"](lum)    # pas sur les feuilles qui passent devant,
-            masque &= lum < reference + 25                                 # ni sur les traits de pluie
+            masque &= lum < autour + 18                                    # ni sur les traits de pluie
             # la lumière du fond (les ombres des feuilles) passe aussi sur les lettres
             facteur = np.clip(lum[masque] / reference, 0.6, 1.25)[:, None]
             pixels[masque] = np.clip(np.array(e["couleur"])[None, :] * facteur, 0, 255).astype(np.uint8)

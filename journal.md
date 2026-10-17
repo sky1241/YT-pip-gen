@@ -465,3 +465,7 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   l'escalier jusqu'à la porte de Datastream, le pied de l'escalier, la façade). Avec deux ou trois fonds validés joints pour la
   cohérence, ChatGPT tient les mêmes objets d'un axe à l'autre. La façade : ChatGPT peint des enseignes vides, et
   `pipeline/enseignes.py` y pose « KEBAB » et « DATASTREAM » (seulement sur les pixels du panneau : les feuilles restent devant).
+- **La façade en quatre lumières (2026-10-17)** : ouverte de jour, puis en retouches successives, une chose à la fois : fermée
+  (même lumière), puis la pluie (depuis la fermée), puis la nuit (depuis la fermée de jour, pas depuis la pluie). Chacune du
+  premier coup. Les enseignes en code : `pipeline/enseignes.py` compare chaque pixel à son voisinage (flou de 6 px) pour laisser
+  passer les traits de pluie devant les lettres sans couper les lettres sous les flaques de lumière des spots, la nuit.
