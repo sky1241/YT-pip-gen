@@ -14,6 +14,7 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 | A7 | L'axe 7 : écrit pour le plan v2, pas envoyé | |
 | KB2 v2 | Le plan peint, d'après le plan v3 : bonne disposition, mais l'escalier sur la rue, la lumière de côté | (supprimé) |
 | KB2 v3 | Le plan peint, d'après le plan v5 sans caméras : **la base fixe, validée** | `image/decors/kebab/plan-peint_v2.png` |
+| A6 (plan v5) | L'axe 6 : la table de Sky dans l'angle, la banquette, le miroir | `image/decors/kebab/table-du-fond/fond_v1.png` |
 
 La suite (un fond vide par axe de caméra) s'écrit d'après KB1 et d'après les scènes du texte.
 
@@ -364,3 +365,20 @@ What is where, as in the plan:
 À contrôler à la reprise : chaque élément contre le plan v5 ; le palier de l'escalier dans la salle, la devanture ouverte jusqu'au coin, sans mur ; la rampe basse ; les ombres droites vers le fond ; la caisse tournée vers l'intérieur du comptoir ; aucun texte.
 
 **Résultat de KB2 v3, le 2026-10-17 : la base fixe, validée par l'auteur** (« on l'a enfin ! »), rangée en `plan-peint_v2.png`. Chaque élément du plan v5 est à sa place : le palier de l'escalier dans la salle et la devanture ouverte jusqu'au coin, la rampe basse, les ombres droites vers le fond, la table de Sky dans l'angle, l'herbe entre les rails. Seul écart accepté : la caisse reste tournée vers la rue. À la demande de l'auteur, toutes les autres images du kebab sont supprimées (repo, disque externe, Téléchargements) ; elles restent dans l'historique git. Les fonds par axe commencent : `axes.md`, « Le modèle de prompt d'un axe ».
+
+### Prompt A6 (plan v5) — La table de Sky dans l'angle
+
+Le modèle de `axes.md`. Joins `~/Téléchargements/kebab_pour_A6_camera.png` puis `~/Téléchargements/kebab_pour_axes_plan-peint.png`, dans une nouvelle conversation ChatGPT réservée aux fonds du kebab.
+
+```
+The first attached image is the floor plan of our kebab restaurant, with one camera marked in blue (number 6): its position and the cone of what it sees. The second attached image is the same restaurant seen from above, painted in our style; it gives the style, the materials, the colours and the objects. Paint the view from this camera, as an empty background for an anime series: a flat 2D hand-drawn background painting from a 1990s anime film, in the style of the second image (clean dark outlines, flat cel shading, muted warm palette, painted details). NOT a 3D render, NOT photorealistic. Do not copy the labels of the plan. Landscape format (1536×1024); keep the important things away from the top and bottom edges, the image will be cropped to 16:9.
+The camera stands in the room, about two metres in front of the table in the back right corner, at the eye level of a seated person (about 1.2 m), and looks straight at the back wall. Normal lens, straight vertical lines, no fisheye.
+What we see, from front to back:
+- At the bottom of the frame, the tops of the backs of the two empty wooden chairs of that table, turned away from us.
+- The rectangular wooden table, with a red sauce bottle, a white sauce bottle and a napkin dispenser.
+- Behind the table, the red padded bench along the back wall, empty, and above it the long dark smoky mirror, which fills the left and the middle of the frame.
+- On the right of the frame, the bench turns in the corner and comes toward us along the right side: the right short end of the table touches it (that is the seat at the head of the table). Beyond it, a low open wooden railing, and behind the railing the wooden staircase going up toward the back, to a plain closed wooden door at the top, on the far right.
+Light: the only daylight comes from the open shopfront behind the camera; there are no other windows, the side walls are solid. The shadows of the chairs and of the table fall toward the back wall. Inside, the light is warm and dim. The mirror is dark smoky glass, with no recognisable reflection. No people. No text, no letters and no logos anywhere.
+```
+
+À contrôler à la reprise : la caméra assise, face au mur du fond ; les dossiers des deux chaises en bas ; la table et ses deux sauces et ses serviettes ; la banquette vide qui tourne dans l'angle, le bout de la table contre elle ; le miroir fumé à gauche et au milieu ; la rampe basse, l'escalier et la porte à droite ; la lumière de derrière la caméra ; aucune personne, aucun texte.
