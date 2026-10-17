@@ -473,3 +473,8 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   lumières (ouverte, fermée, pluie, nuit). En deux jours avec la mise en place du plan. La méthode, stable depuis l'axe 20 : la vue
   en volumes (`pipeline/vue_kebab.py`) + le plan peint + un ou deux fonds déjà validés du même coin ; une retouche de deux points
   au plus si besoin ; les textes (enseignes) en code.
+- **YouTube, le 2026-10-17 (guides tiers, à confirmer sur les pages officielles)** : le programme partenaire demande 1 000 abonnés
+  et 4 000 heures de visionnage sur 12 mois (ou 10 millions de vues en Shorts sur 90 jours) ; pour les nouvelles chaînes, 8 000
+  heures (ou 20 millions de vues en Shorts) à partir du 1er février 2027, annoncé le 10 août 2026 (air.io, vidiq.com). RPM estimé
+  en France : environ 2,5 à 2,6 $ pour 1 000 vues (dynamoi.com, tubeanalytics.net). Avec des épisodes de 5 minutes, il faut de
+  l'ordre de 100 000 vues par an pour atteindre 4 000 heures : d'où une version compilée de chaque arc.

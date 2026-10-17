@@ -5,14 +5,14 @@ Version du 6 octobre 2026, mise à jour le 17 octobre 2026. C'est ce fichier qui
 ## Où on en est (17 octobre 2026)
 
 - **Fait** : les fondations du repo, la palette des émotions et l'outil de découpe. Maëlle et Sky ont toutes leurs planches de référence (Sky : la série 2, les 50 cases de son inventaire). La chaîne d'images marche de bout en bout : ComfyUI sur la carte AMD de sky-master (`pipeline/comfyui.py`), le modèle Animagine XL 4.0, le premier LoRA de Sky entraîné sur Kaggle en une heure et testé (`image/test-standard.md`). Le minage est désinstallé, et Claude se lance depuis un terminal (icône « Kebab Datastream »). Le style de la série est décidé (`image/style.md`), le canon aussi (Mohamed à Annemasse). Le kebab a son plan validé (`image/decors/kebab/plan_v6.png`), sa base peinte (`plan-peint_v2.png`), ses 25 axes (`axes.md`) et ses fonds : les 9 du pilote (axes 1, 2, 6, 7, 8, 10, 17, 20, 21), plus l'axe 11 et la façade en quatre lumières, faits avec la vue en volumes (`pipeline/vue_kebab.py`).
-- **En cours** : les fonds du kebab de l'épisode 1, un axe à la fois (les 9 du pilote sont faits le 2026-10-17). Le LoRA de Sky. La v1 reconnaît son visage, ses cheveux, sa barbe, ses lunettes dorées, ses colliers et son sourire de monstre ; l'auteur en est content. Elle rate l'œil aveugle hors de face, et la tenue hors des gros plans (une seule image en pied dans le jeu).
-- **Ensuite** : l'avis de l'auteur sur la v2 du LoRA de Sky (faite et testée le 2026-10-16 : l'œil aveugle est appris). Puis Maëlle : ses 4 planches en pied et en gestes, et son LoRA. Chaque nouveau perso aura ces planches dès le départ.
+- **En cours** : les fonds du kebab de l'épisode 1, un axe à la fois (les 9 du pilote sont faits le 2026-10-17 ; 13 fonds en tout, sur 45). Le LoRA de Sky : la v2 apprend l'œil aveugle (10 tests sur 10) et la chemise ; pour l'auteur, « pas mal, mais pas encore ça » : le style qui varie d'une image à l'autre. Les leviers : le passage local et une référence de style à chaque image (IP-Adapter, premier essai raté le 2026-10-16), pas un entraînement plus long.
+- **Ensuite**, au choix de l'auteur : valider les coupures de « Le Miroir » et mettre à jour les chiffres du CERN ; le test de Sky dans un fond du kebab, avec le modèle local (le premier rendu perso + décor) ; les images maîtres de Patrick et de Mohamed, pour le pilote ; tester la conversion de voix (l'idée de l'auteur, le 2026-10-17).
 - **Décisions qui attendent l'auteur** : les coupures de « Le Miroir » en trois épisodes de 5 minutes (proposées), s'il faut un LoRA de style (années 90 tout fait, ou le nôtre) en plus de l'IP-Adapter ; le style lui-même est décidé (`image/style.md`), garder ou non la règle « sans sudo » de CLAUDE.md (le compte a sudo).
-- **Pas commencé** : l'écriture de l'épisode 1 (phase 1), Patrick, Mohamed et les autres persos, les voix, la vidéo, le pilote.
+- **Pas commencé** : Patrick, Mohamed et les autres persos, les voix, la vidéo, le pilote.
 
 ## Mode d'emploi
 
-Objectif : un épisode 1 complet de 15 minutes, monté et prêt à publier.
+Objectif : les trois premiers épisodes, d'environ 5 minutes chacun (« Le Miroir », la partie 1 du texte du CERN), montés et prêts à publier, un par semaine (l'auteur, le 2026-10-17 ; avant : un épisode de 15 minutes).
 
 Ordre : la phase 0, puis les phases 1 et 2 en parallèle, puis le pilote (phase 3). Tout ce qui suit attend le bilan du pilote : phases 4, 5, 6 et 7. À l'intérieur d'une phase, tu coches dans l'ordre que tu veux, sauf mention contraire.
 
@@ -39,17 +39,19 @@ Terminée quand une image, une phrase de voix et un clip de 5 secondes sortent d
 - [x] Générer une première image dans ComfyUI : le 2026-10-15, avec Animagine XL 4.0, puis le test standard du LoRA de Sky (`<sorties_root>/comfyui/`)
 - [ ] Installer Kdenlive (AppImage)
 - [ ] Installer Qwen3-TTS et générer une phrase test
+- [ ] Tester la conversion de voix (l'idée de l'auteur, le 2026-10-17) : l'auteur joue toutes les répliques, un modèle change son timbre en celui de Maëlle, Patrick… ; comparer avec Qwen3-TTS sur les mêmes répliques. Licences à vérifier avant de télécharger, aucune voix d'une personne réelle sans son accord
 - [ ] Tester AniSora : un clip de 5 secondes depuis une image. Sur sky-master, la version 12 Go ne tient pas (8 Go) : une version compressée à essayer après les images ; sinon sur Modal ou Kaggle
 
 ## Phase 1 — Écriture
 
 Terminée quand l'épisode 1 est figé dans le repo avec le tag `ep01-v1`. Cette phase peut avancer en parallèle de la phase 2.
 
-- [ ] Trancher le canon : Mohamed à Annemasse ou Mehmet à Clichy
+- [x] Trancher le canon : Mohamed à Annemasse (l'auteur, le 2026-10-16) ; restent à aligner la section « MEHMET » de la bible, la bible d'écriture et le texte Navier-Stokes
 - [x] Choisir ce que couvre l'épisode 1 dans le texte du CERN : « Le Miroir », la partie 1, en trois épisodes d'environ 5 minutes, un par semaine (l'auteur, le 2026-10-17)
 - [ ] Valider les deux coupures proposées (après le « non » à Porcari, l. 212 ; après « la theorie je l ai deja », l. 382) ; la fin : « j ai une autre idee un peu plus rentable », l. 566
-- [ ] Corriger la science avec `ecriture/corrections-cern.md`, pour la partie retenue :
-  - [ ] CERN : 25 États membres, budget 2026 d'environ 1,5 milliard de CHF
+- [ ] Corriger la science avec `ecriture/corrections-cern.md` :
+  - [ ] Pour « Le Miroir » (épisodes 1 à 3) : CERN, 25 États membres et un budget 2026 d'environ 1,5 milliard de CHF (lignes 173, 216, 246, 326)
+  - Pour la suite (parties 2 à 4, après « Le Miroir ») :
   - [ ] Langues : remplacer l'explication de Maëlle par la transparence des nombres
   - [ ] Nucléaire : l'antimatière transporte l'énergie sans la produire ; Sky ne promet jamais « la fin du nucléaire »
   - [ ] Pivot vers l'espace à la place de la comparaison avec le lithium
@@ -58,10 +60,10 @@ Terminée quand l'épisode 1 est figé dans le repo avec le tag `ep01-v1`. Cette
 - [ ] Trancher les points en suspens : la théorie du tout (ambiguë ou révélée), les quenelles, la vanne sur la sodomie, le briefing de guerre (cet épisode ou le suivant)
 - [ ] Trancher les écarts entre `bible-ecriture.md` et la bible ou le texte : le couple (« Sky = soumis content »), Mehmet à Istanbul ou Mohamed à Alger, Sky à 87 ou 92 kg (l'auteur a dit 92 le 2026-10-14 : reste à aligner le texte du CERN et la bible), Yamauchi ou Asai, l'explication des langues que `corrections-cern.md` remplace
 - [ ] Fact-check final : chaque chiffre sourcé et daté, chaque comparaison faite sur la même base
-- [ ] Lire l'épisode à voix haute, chrono en main : viser 15 minutes
-- [ ] Déposer l'épisode dans `ecriture/episodes/ep01/episode.md`
+- [ ] Lire chaque épisode à voix haute, chrono en main : viser 5 minutes
+- [ ] Déposer les trois épisodes dans `ecriture/episodes/ep01/`, `ep02/` et `ep03/` (`episode.md`)
 - [ ] Remplir `ecriture/continuite.md` : running gags et leur phase, boucles ouvertes, qui sait quoi
-- [ ] Poser le tag `ep01-v1`
+- [ ] Poser les tags `ep01-v1`, `ep02-v1`, `ep03-v1`
 
 ## Phase 2 — Direction artistique
 
@@ -95,7 +97,7 @@ Terminée quand la minute des mots croisés est montée et que le temps passé �
 - [ ] Ambiance sonore : la broche, le tram
 - [ ] Montage dans Kdenlive → validation
 - [ ] Bilan dans `journal.md` : temps par étape, ce qui a été pénible
-- [ ] Estimer le temps d'un épisode : le temps de la minute × 15
+- [ ] Estimer le temps d'un épisode : le temps de la minute × 5
 
 ## Phase 4 — Automatisation
 
@@ -217,7 +219,7 @@ La palette des émotions, la même pour tous : 36 émotions en 6 planches, défi
 - [ ] Grep, le chat de Daria : fiche (le motif du pelage), image maître, rotation, 2 signatures
 - [ ] Nmap, le chat de Sky et Maëlle : fiche (tout le design), image maître, rotation
 - [ ] LoRA de style : d'abord essayer les LoRA « années 90 » déjà prêts sur Hugging Face, notés dans `journal.md` (2026-10-15)
-- [ ] Un fond par axe de caméra du kebab, plus l'escalier : 45 fonds (23 de jour, 12 de pluie, 10 de nuit), la liste dans `image/decors/kebab/axes.md` et les cases dans `image/INVENTAIRE.md`
+- [ ] Un fond par axe de caméra du kebab, plus l'escalier : 45 fonds (23 de jour, 12 de pluie, 10 de nuit), la liste dans `image/decors/kebab/axes.md` et les cases dans `image/INVENTAIRE.md` ; 13 faits le 2026-10-17 (les axes 1, 2, 6, 7, 8, 10, 11, 17, 20, 21 de jour, la façade fermée, sous la pluie et la nuit), avec ses enseignes en code (`pipeline/enseignes.py`)
 - [ ] Une image maître par axe, avec les persos à leur place habituelle
 
 ## Phase 6 — Production scène par scène
@@ -245,7 +247,8 @@ Terminée quand l'épisode est exporté, revu en entier, et que le bilan est éc
 - [ ] Générique de début et de fin
 - [ ] Visionnage complet, puis corrections
 - [ ] Vérifier les licences des modèles utilisés (`modeles.yaml`)
-- [ ] Vérifier les règles actuelles de YouTube sur les contenus générés par IA
+- [ ] Vérifier les règles actuelles de YouTube sur les contenus générés par IA, et les seuils du programme partenaire (d'après des guides tiers relevés le 2026-10-17 : 1 000 abonnés et 4 000 heures de visionnage sur 12 mois, puis 8 000 heures pour les nouvelles chaînes à partir du 1er février 2027 ; à confirmer sur la page officielle)
+- [ ] Une version compilée de « Le Miroir » (les trois épisodes, environ 15 minutes) : les épisodes de 5 minutes donnent peu d'heures de visionnage par vue
 - [ ] Export final
 - [ ] Mettre à jour `ecriture/continuite.md` et `journal.md`, poser le tag `ep01-final`
 - [ ] Décider : publier tout de suite, ou attendre d'avoir trois ou quatre épisodes d'avance
