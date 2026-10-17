@@ -70,3 +70,23 @@ rect(9.6, 0.0, 10.7, 0.12, "#8a5a2b"); txt(10.15, -0.25, "porte de Datastream (e
 txt(10.15, 7.55, "pied : depuis la rue")
 d.text((MX, 15), "Le kebab vu de dessus (plan de travail, 1 carreau = 1 m)", fill="black", font=G)
 img.save(sys.argv[1])
+
+# Les axes de caméra (image/decors/kebab/axes.md) : python3 pipeline/plan_kebab.py <sortie.png> axes
+# numéro : (x, y de la caméra, direction du regard en degrés : 0 = vers la droite, 90 = vers la rue, 270 = vers le fond)
+AXES = {
+    1: (5.5, 9.3, 270), 2: (5.5, 8.35, 270), 3: (7.6, 1.1, 100), 4: (1.65, 4.0, 0), 5: (10.15, 3.2, 160),
+    6: (5.5, 3.0, 270), 7: (5.5, 0.55, 90), 8: (4.3, 4.6, 180), 9: (3.4, 3.1, 180), 10: (6.6, 7.4, 8),
+    11: (10.15, 7.5, 270), 12: (3.3, 1.4, 330), 13: (6.5, 0.45, 110), 14: (6.6, 3.4, 300), 15: (6.0, 5.0, 100),
+    16: (3.6, 2.4, 225), 17: (5.5, 1.25, 270), 18: (3.0, 2.4, 200), 19: (8.0, 1.5, 90),
+}
+if len(sys.argv) > 2 and sys.argv[2] == "axes":
+    import math
+    for n, (x, y, a) in AXES.items():
+        r = math.radians(a)
+        for da, longueur, epaisseur in ((0, 1.3, 3), (-28, 1.0, 1), (28, 1.0, 1)):
+            rr = r + math.radians(da)
+            d.line([p(x, y), p(x + longueur * math.cos(rr), y + longueur * math.sin(rr))], fill="#1060c0", width=epaisseur)
+        cx, cy = p(x, y)
+        d.ellipse([cx - 13, cy - 13, cx + 13, cy + 13], fill="#1060c0", outline="white", width=2)
+        d.text((cx, cy), str(n), fill="white", font=F, anchor="mm")
+    img.save(sys.argv[1])

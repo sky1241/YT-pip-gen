@@ -193,8 +193,16 @@ La série 1, faite avec la monture argentée, est archivée sur le disque extern
 
 ### Décors du pilote — `decors/kebab/`
 
-- [ ] `table-du-fond/fond_v1.png` : la banquette, la table bancale, le grand miroir derrière
-- [ ] `comptoir/fond_v1.png` : le comptoir, la broche, le menu, l'horloge
+Les axes et leurs numéros : `decors/kebab/axes.md` et le plan `decors/kebab/plan-axes_v1.png`.
+
+- [x] `plan-peint_v1.png` : le kebab vu exactement d'en haut, la référence de la disposition et du style
+- [ ] `exterieur/fond_v1.png` (1) : la façade, deux étages, le kebab au rez-de-chaussée, Datastream au premier, la rue d'Annemasse et le tram
+- [ ] `entree/fond_v1.png` (2) : depuis le trottoir, toute la salle
+- [ ] `table-du-fond/fond_v1.png` (6) : la table de Sky, la banquette, le grand miroir au-dessus
+- [ ] `table-du-fond-contrechamp/fond_v1.png` (7) : depuis la banquette, les deux chaises, la salle, la rue
+- [ ] `comptoir/fond_v1.png` (8) : la caisse, les salades, la broche, l'horloge, le menu
+- [ ] `pied-de-l-escalier/fond_v1.png` (10) : les premières marches, pour les descentes
+- [ ] `table-vue-de-dessus/fond_v1.png` (17) : le dessus de la table de Sky, pour les inserts
 
 ### Accessoires du pilote — `accessoires/`
 
@@ -434,14 +442,29 @@ La série 1, faite avec la monture argentée, est archivée sur le disque extern
 
 ### Décors — `decors/kebab/`
 
-Axes provisoires, à valider avec le plan du kebab (phase 2 de `PLAN.md`).
+Les axes de l'épisode 1, en plus de ceux du pilote (`decors/kebab/axes.md`, à valider par l'auteur).
 
-- [ ] `exterieur/fond_v1.png` : la façade, deux étages, le kebab au rez-de-chaussée (dépend du canon : Annemasse ou Clichy)
-- [ ] `salle/fond_v1.png` : la salle en vue large
-- [ ] `contrechamp/fond_v1.png` : depuis la banquette, vers le comptoir et la vitrine
-- [ ] `escalier/fond_v1.png` : le pied de l'escalier, pour les entrées
-- [ ] `miroir/fond_v1.png` : le grand miroir en gros plan, vierge
-- [ ] `vitrine/fond_v1.png` : la vitrine vue de l'intérieur, la rue et le tram
+- [ ] `salle-depuis-le-fond/fond_v1.png` (3) : vers la rue, le contrechamp de l'entrée
+- [ ] `depuis-le-comptoir/fond_v1.png` (4) : le regard de Mohamed
+- [ ] `depuis-l-escalier/fond_v1.png` (5) : en plongée, depuis le milieu de l'escalier
+- [ ] `broche/fond_v1.png` (9) : la broche, le grill, la hotte
+- [ ] `escalier-vers-datastream/fond_v1.png` (11) : l'escalier et la porte de Datastream en haut
+- [ ] `miroir/fond_v1.png` (12) : le grand miroir de biais, vierge
+- [ ] `depuis-le-miroir/fond_v1.png` (13) : la salle vue par Sky qui dessine
+- [ ] `coin-de-la-banquette/fond_v1.png` (14) : l'angle de la banquette, les plans de groupe
+- [ ] `devanture/fond_v1.png` (15) : la devanture, les panneaux, le menu plastifié, la rue et le tram
+- [ ] `horloge/fond_v1.png` (18) : l'horloge au-dessus du comptoir
+- [ ] `banquette-de-droite/fond_v1.png` (19) : les tables de droite en enfilade
+- [ ] `frigo/fond_v1.png` (16) : le frigo à boissons, si besoin
+
+Les variantes de pluie (Navier-Stokes), la devanture fermée par les panneaux vitrés :
+
+- [ ] `exterieur/fond_pluie_v1.png` (1)
+- [ ] `entree/fond_pluie_v1.png` (2)
+- [ ] `salle-depuis-le-fond/fond_pluie_v1.png` (3)
+- [ ] `table-du-fond-contrechamp/fond_pluie_v1.png` (7)
+- [ ] `depuis-le-miroir/fond_pluie_v1.png` (13)
+- [ ] `devanture/fond_pluie_v1.png` (15)
 
 ### Accessoires — `accessoires/`
 
