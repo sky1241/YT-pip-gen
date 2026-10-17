@@ -534,3 +534,20 @@ Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the 
 ```
 
 À contrôler à la reprise : le comptoir de face, la vitrine des salades ; la caisse à gauche, le dos tourné vers nous ; la broche, la hotte, l'horloge derrière ; le frigo à droite ; les mêmes que l'axe 21 ; aucune personne, aucun texte.
+
+L'auteur redessine l'axe 8 sur le plan, le 2026-10-17 : la caméra derrière la première table du milieu, vers le fond gauche, du bout du comptoir au frigo. Le prompt A8 ci-dessus, non envoyé, est remplacé.
+
+### Prompt A8 v2 — Le comptoir et la cuisine, vers le frigo
+
+Les mêmes trois images : `~/Téléchargements/kebab_pour_A8_1_vue.png` (refaite), `~/Téléchargements/kebab_pour_axes_plan-peint.png`, `~/Téléchargements/kebab_pour_A8_3_angle21.png`.
+
+```
+The first attached image is a rough 3D layout of one view of our kebab restaurant, made of simple flat-coloured volumes: it fixes the camera, the perspective, the framing and the place of every object. The second attached image is the same restaurant seen from above, painted in our style: it gives the art style, the materials and the objects. The third attached image is another view of the same counter and kitchen, already painted and approved: the counter, the kebab spit, the hood, the clock, the fridge, the plant, the walls and the light must look exactly the same. Paint exactly the view of the first image, as an empty background for an anime series: keep the same camera, the same perspective and framing, and every object at the same place, with the same size and angle, as if the layout had been painted over. The camera stands in the dining room and looks toward the kitchen and the back corner. Replace the simple volumes with the real objects:
+- on the left, in the foreground, the stainless steel counter seen from its back end: the end close to us is where the food is handed over, and its long side runs away to the left; at the far left edge, the end of the glass salad display;
+- behind the counter, against the far wall: the kitchen worktops, the vertical kebab spit (the brown block) in front of its grill, the stainless steel hood above it (the grey block), and a round clock on the wall (the small light square);
+- on the right, the back corner of the room: the tall drinks fridge with glass doors facing us, full of bottles, and in front of it a large green potted plant;
+- in the middle, the tiled floor; at the top, the ceiling.
+Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the style of the second and third images (clean dark outlines, flat cel shading, muted warm palette, painted details). NOT a 3D render, NOT photorealistic, and do not keep the flat colours of the layout. Light: the only daylight comes from the open shopfront, out of frame on the left, behind; there are no windows; the light is warm and dim, as in the third image, and the shadows fall to the right. No people. No text, no letters and no logos anywhere, including on the clock, the fridge and the counter. Landscape format (1536×1024).
+```
+
+À contrôler à la reprise : le bout du comptoir en premier plan à gauche ; la broche, la hotte, l'horloge derrière ; le frigo et la plante à droite ; les mêmes que l'axe 21 ; aucune personne, aucun texte.
