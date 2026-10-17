@@ -22,7 +22,7 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 | A17 | L'axe 17 : la table de Sky vue d'en haut, pour les inserts : **fait** | `image/decors/kebab/table-vue-de-dessus/fond_v1.png` |
 | A4 | L'axe 4 : depuis le comptoir, le regard de Mohamed : **fait** (une retouche) | `image/decors/kebab/depuis-le-comptoir/fond_v1.png` |
 | A12 | L'axe 12 : le grand miroir de biais : **fait** (une retouche) | `image/decors/kebab/miroir/fond_v1.png` |
-| A13 | L'axe 13 : depuis le miroir, la table de Sky en plongée | `image/decors/kebab/depuis-le-miroir/fond_v1.png` |
+| A13 | L'axe 13 : depuis le miroir, la table de Sky en plongée : **fait** (deux retouches) | `image/decors/kebab/depuis-le-miroir/fond_v1.png` |
 | KB2 v2 | Le plan peint, d'après le plan v3 : bonne disposition, mais l'escalier sur la rue, la lumière de côté | (supprimé) |
 | KB2 v3 | Le plan peint, d'après le plan v5 sans caméras : **la base fixe, validée** | `image/decors/kebab/plan-peint_v2.png` |
 | A6 v3 | L'axe 6 : la table de Sky dans l'angle, la banquette, le miroir, la plante : **fait** (la vue en volumes, puis une retouche) | `image/decors/kebab/table-du-fond/fond_v1.png` |
@@ -915,3 +915,5 @@ Edit ONLY the street seen through the open shopfront at the top of this image. K
 ```
 
 À contrôler à la reprise : deux arbres, espacés ; plus de haie ; la façade visible entre eux ; le reste inchangé.
+
+**Résultat de la retouche 2 de A13, le 2026-10-17 : validé par l'auteur.** Les deux arbres sont un peu petits à côté de ceux de l'axe 7, accepté.

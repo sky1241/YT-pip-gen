@@ -141,6 +141,13 @@
       "date": "2026-10-17",
       "axe": 12,
       "_note": "validé par l'auteur, téléchargé sous le nom « Banquette rétro dans un café chaleureux.png ». Le miroir vierge et sombre (les dessins de Sky s'y posent en calque), la lumière douce et égale, le plafond fermé au-dessus de l'escalier"
+    },
+    "depuis-le-miroir/fond_v1.png": {
+      "source": "ChatGPT",
+      "prompt": "A13 (la vue en volumes, les fonds 7 et 6 joints) puis deux retouches (la rue sans poteaux, deux arbres)",
+      "date": "2026-10-17",
+      "axe": 13,
+      "_note": "validé par l'auteur, téléchargé sous le nom « Café chaleureux, vue sur les rails.png ». Écart relevé par Claude, accepté : les deux arbres sont plus petits que ceux de l'axe 7"
     }
   },
   "_supprimees": "le 2026-10-17, à la demande de l'auteur (« vire les autres images ») : maquette_v1.png, maquette_v2.png et plan_v1.png, retirées du repo (elles restent dans l'historique git, jusqu'au commit 50132dd), et les retouches intermédiaires du disque externe ; le 2026-10-17, à la demande de l'auteur (« clean-moi les images qui restent du kebab ») : plan-peint_v1.png, table-du-fond/fond_v1.png (l'ancien plan), plan_v2 à v4, plan-axes_v1 à v4 (dans l'historique git), les captures du disque externe et les images du kebab des Téléchargements"
