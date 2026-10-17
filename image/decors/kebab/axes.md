@@ -1,14 +1,14 @@
 # Le kebab — les axes de caméra
 
-Un axe = un fond vide, sans perso, fait une fois et réutilisé à chaque épisode (CLAUDE.md, « Images »). Les numéros sont ceux du plan `plan-axes_v3.png` (les cercles bleus : la caméra et la direction où elle regarde). Les positions viennent de `plan_v3.png`, validé par l'auteur le 2026-10-17, et les besoins des textes : le CERN (`ecriture/brouillons/cern.md`, numéros de ligne) et Navier-Stokes.
+Un axe = un fond vide, sans perso, fait une fois et réutilisé à chaque épisode (CLAUDE.md, « Images »). Les numéros sont ceux du plan `plan-axes_v4.png` (les cercles bleus : la caméra et la direction où elle regarde). Les positions viennent de `plan_v4.png` (le plan v3 validé par l'auteur le 2026-10-17, avec ses corrections), et les besoins des textes : le CERN (`ecriture/brouillons/cern.md`, numéros de ligne) et Navier-Stokes.
 
-## Le plan, en bref (`plan_v3.png`)
+## Le plan, en bref (`plan_v4.png`)
 
-- À gauche, le comptoir en L (la caisse devant, les salades le long), la broche, le grill et la friteuse contre le mur ; le frigo à boissons au fond à gauche.
+- À gauche, le comptoir en L (la caisse devant, **tournée vers Mohamed**, les salades le long), la broche, le grill et la friteuse contre le mur ; le frigo à boissons au fond à gauche.
 - Au fond, la banquette rouge en L : le long du mur du fond, puis le long de la rampe, à droite. **Le miroir couvre toute la banquette du fond**, à fleur de son bout gauche.
 - **La table de Sky, dans l'angle de la banquette, pour cinq** : Sky et Maëlle sur la banquette du fond, deux chaises en face, **Patrick au bout, sur la banquette de droite** (c'est l'ancien). Un plan où Sky se lève et laisse sa place à Maëlle est possible.
 - Au milieu, deux tables pour quatre ; le long de la banquette de droite, deux tables perpendiculaires, un petit bout contre elle.
-- À droite, **l'escalier en bois** monte de la rue vers le fond, jusqu'à la porte de Datastream. **Entre la banquette et l'escalier, rien qu'une rampe basse, tout droit, sans mur ni retour dans la salle : l'angle reste grand ouvert.**
+- À droite, **l'escalier en bois est dans le kebab** : il part d'un palier intérieur, à l'avant droit, au bout de la banquette, et monte vers le fond jusqu'à la porte de Datastream. **Devant lui, la façade est pleine** : il ne donne pas sur la rue. **Entre la banquette et l'escalier, rien qu'une rampe basse, tout droit, sans mur ni retour dans la salle : l'angle reste grand ouvert.**
 - Devant, la devanture ouverte sur la rue d'Annemasse ; les panneaux vitrés repliés à gauche. **Dans la rue, les rails du tram, avec de l'herbe entre les rails**, comme à Annemasse.
 
 ## Les règles de chaque prompt

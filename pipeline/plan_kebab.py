@@ -1,6 +1,6 @@
 """Plan du kebab vu de dessus, d'après la maquette (image/decors/kebab/), en mètres. y = 0 au mur du fond, la rue en bas.
 
-  python3 pipeline/plan_kebab.py image/decors/kebab/plan_v3.png   (jamais par-dessus une version validée)
+  python3 pipeline/plan_kebab.py image/decors/kebab/plan_v4.png   (jamais par-dessus une version validée)
 """
 from PIL import Image, ImageDraw, ImageFont
 import sys
@@ -29,14 +29,16 @@ def chaise(x, y, vers):
 # les murs
 d.line([p(0, D), p(0, 0), p(W, 0), p(W, D)], fill="black", width=6)
 # la devanture : ouverte, les panneaux vitrés repliés à gauche
-d.line([p(0.6, D), p(W, D)], fill="#7fb2d9", width=3)
+d.line([p(0.6, D), p(9.3, D)], fill="#7fb2d9", width=3)
+# devant l'escalier, la façade est pleine : l'escalier est dans le kebab, pas sur la rue (l'auteur, le 2026-10-17)
+d.line([p(9.3, D), p(W, D)], fill="black", width=6)
 rect(0, D - 0.15, 0.6, D + 0.15, "#7fb2d9")
-txt(W / 2, D + 0.45, "LA RUE : devanture ouverte, panneaux vitrés repliés à gauche (ils ferment le kebab le soir)", F)
+txt(W / 2 - 0.6, D + 0.45, "LA RUE : devanture ouverte, panneaux vitrés repliés à gauche (ils ferment le kebab le soir) ; façade pleine devant l'escalier", F)
 # la cuisine, contre le mur gauche
 rect(0, 1.4, 1.0, 6.4, "#d9d9d9")
 txt(0.5, 3.0, "broche", G); txt(0.5, 3.4, "grill"); txt(0.5, 4.6, "friteuse"); txt(0.5, 5.6, "plans inox")
 # le comptoir en L : petit côté devant (la caisse), long côté vers le fond (les salades)
-rect(1.2, 6.2, 3.0, 7.0, "#b0b8c0"); txt(2.0, 6.6, "CAISSE", G)
+rect(1.2, 6.2, 3.0, 7.0, "#b0b8c0"); txt(2.0, 6.5, "CAISSE", G); txt(2.0, 6.82, "tournée vers Mohamed ↑", F)
 rect(2.3, 1.8, 3.0, 6.2, "#b0b8c0"); txt(2.65, 4.6, "salades", G); txt(2.65, 5.0, "sauces")
 txt(2.65, 2.4, "passe")
 # le frigo à boissons, au fond à gauche
@@ -58,20 +60,22 @@ for ty in (3.6, 5.9):
 # à droite : la banquette le long de la rampe, et 2 tables perpendiculaires, un petit bout contre elle (la première, près de l'angle,
 # enlevée pour la table de Sky : l'auteur, le 2026-10-17)
 # la banquette en L : sous le miroir, le long du mur du fond, puis le long de la rampe
-rect(3.6, 0.2, 9.2, 0.8, "#b03a2e"); rect(8.6, 0.8, 9.2, 7.2, "#b03a2e"); txt(3.2, 0.5, "banquette")
+rect(3.6, 0.2, 9.2, 0.8, "#b03a2e"); rect(8.6, 0.8, 9.2, 6.9, "#b03a2e"); txt(3.2, 0.5, "banquette")
 for ty in (4.0, 6.2):
     rect(7.4, ty - 0.4, 8.6, ty + 0.4, "#d9a066")
     for cx in (7.7, 8.3):
         chaise(cx, ty - 0.65, "bas"); chaise(cx, ty + 0.65, "haut")
 # la rampe ouverte et l'escalier vers Datastream : entre la banquette et l'escalier, rien qu'une rampe basse, tout droit,
 # sans mur ni retour dans la salle ; l'angle reste grand ouvert (l'auteur, le 2026-10-17)
-d.line([p(9.3, 0.6), p(9.3, 7.6)], fill="#8a5a2b", width=4)
-rect(9.4, 0.4, 10.9, 7.8, "#e8e0d0")
-for k in range(14):
+# l'escalier part d'un palier, à l'intérieur, au bout de la banquette, et monte vers le fond ; la rampe s'arrête au palier
+d.line([p(9.3, 0.6), p(9.3, 6.4)], fill="#8a5a2b", width=4)
+rect(9.4, 0.4, 10.9, 6.4, "#e8e0d0")
+for k in range(12):
     yy = 0.4 + k * 0.5; d.line([p(9.4, yy), p(10.9, yy)], fill="#a09080", width=1)
+rect(9.4, 6.4, 10.9, 7.9, "#f2ece0", outline="#a09080", w=1); txt(10.15, 7.15, "palier", F)
 txt(10.15, 4.2, "ESCALIER", G); txt(10.15, 4.6, "en bois, il grince"); txt(10.15, 5.0, "monte vers le fond")
 rect(9.6, 0.0, 10.7, 0.12, "#8a5a2b"); txt(10.15, -0.25, "porte de Datastream (en haut)")
-txt(10.15, 7.55, "pied : depuis la rue")
+txt(10.15, 6.15, "pied : depuis la salle", F)
 d.text((MX, 15), "Le kebab vu de dessus (plan de travail, 1 carreau = 1 m)", fill="black", font=G)
 # qui s'assoit où, à la table de Sky
 txt(8.0, 0.5, "Sky, Maëlle", F, "white"); txt(8.9, 1.25, "P", G, "white")
@@ -82,8 +86,8 @@ img.save(sys.argv[1])
 # numéro : (x, y de la caméra, direction du regard en degrés : 0 = vers la droite, 90 = vers la rue, 270 = vers le fond)
 AXES = {
     1: (5.5, 9.3, 270), 2: (5.5, 8.35, 270), 3: (4.8, 1.3, 95), 4: (1.65, 4.0, 345), 5: (10.15, 3.2, 160),
-    6: (8.0, 2.85, 270), 7: (7.8, 0.5, 90), 8: (4.3, 4.6, 180), 9: (3.4, 3.1, 180), 10: (6.6, 7.4, 8),
-    11: (10.15, 7.5, 270), 12: (4.6, 2.0, 315), 13: (7.0, 0.4, 100), 14: (6.2, 3.0, 315), 15: (6.0, 5.0, 100),
+    6: (8.0, 2.85, 270), 7: (7.8, 0.5, 90), 8: (4.3, 4.6, 180), 9: (3.4, 3.1, 180), 10: (7.3, 7.6, 0),
+    11: (10.15, 7.3, 270), 12: (4.6, 2.0, 315), 13: (7.0, 0.4, 100), 14: (6.2, 3.0, 315), 15: (6.0, 5.0, 100),
     16: (3.6, 2.4, 225), 17: (8.0, 1.25, 270), 18: (3.0, 2.4, 200), 19: (8.9, 1.7, 90),
     20: (6.95, 1.25, 0), 21: (8.95, 1.25, 180), 22: (5.5, 5.0, 90), 23: (6.2, 8.6, 280),
 }

@@ -308,3 +308,19 @@ What is where, as in the plan:
 ```
 
 À contrôler à la reprise : la table de Sky dans l'angle, contre les deux banquettes ; le miroir sur toute la banquette du fond ; deux tables au milieu, deux le long de la banquette de droite ; la rampe basse et droite, sans mur ; l'herbe entre les rails ; rien de l'ancien plan peint recopié ; rien du plan (couleurs, étiquettes) ; aucun texte.
+
+Résultat de KB2 v2, le 2026-10-17 : la disposition du plan v3 est là (la table de Sky dans l'angle, le miroir sur la banquette du fond, deux tables au milieu, deux à droite, l'herbe entre les rails). L'auteur relève trois erreurs : l'escalier donne directement sur la rue (il le veut dans le kebab) ; la lumière arrive encore de biais, comme par une fenêtre sur le côté ; la caisse est tournée vers le client, alors que c'est Mohamed qui tape dedans. Claude ajoute : la rampe est un haut panneau, pas une rampe basse. D'où `plan_v4.png` (façade pleine devant l'escalier, un palier à l'intérieur, la banquette de droite raccourcie pour y passer) et une retouche. Capture hors du repo (`plan-peint_v2_essai-1_capture.png`). L'auteur fera tous les fonds d'un coup.
+
+### Prompt KB2 v2 retouche — L'escalier, la lumière, la caisse
+
+Dans la case « Décrivez les modifications » de l'image.
+
+```
+Edit ONLY this image. Keep everything else exactly as it is: the same top view, the same layout, the same style and colours. Make only these four changes:
+1. The staircase must not open onto the street. Close the front of the building in front of the staircase with a plain solid wall, from the end of the shopfront to the right corner. The staircase now starts from a small landing inside the restaurant, at the front right, reached from the dining room past the end of the red bench; from there it goes up toward the back as now, to the door.
+2. Between the red bench and the staircase, a low open wooden railing only, no tall panel.
+3. The light: the sunlight comes only from the open shopfront at the bottom of the image. The shadows of the tables, chairs and counter point straight up toward the back wall. No light comes from the left or the right: the side walls are solid, with no windows.
+4. The cash register on the front of the counter: turn it around so that its screen and keypad face the inside of the counter, toward the kitchen, where the cook stands; its back faces the street.
+```
+
+À contrôler à la reprise : l'escalier fermé côté rue, son palier dans la salle ; la rampe basse ; les ombres droites vers le fond, sans lumière de côté ; la caisse tournée vers l'intérieur du comptoir ; rien d'autre de changé.
