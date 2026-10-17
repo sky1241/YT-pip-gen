@@ -755,3 +755,13 @@ No letters, no words, no logos anywhere.
 À contrôler à la reprise : les deux étages en verre teinté, cadres fins ; l'enseigne vide au-dessus de la devanture ; le panneau vide entre les étages ; le rez-de-chaussée, la salle, la rue et les arbres inchangés.
 
 **Résultat de la retouche A1, le 2026-10-17 : validé par l'auteur** (« parfait »). Les enseignes vides reçoivent leurs lettres en code : `pipeline/enseignes.py` (Lato Black ; KEBAB rouge sombre sur le caisson clair, DATASTREAM crème sur le bandeau sombre ; les feuilles restent devant les lettres, les ombres des feuilles passent dessus).
+
+### Prompt A1 fermé — La devanture fermée, même lumière
+
+Le premier des fonds « rideau fermé » : les panneaux vitrés dépliés sur toute la devanture, la porte au milieu (`axes.md`, « Le rideau de verre fermé »). Retouche de l'image validée de l'axe 1, dans sa conversation, case « Décrivez les modifications ». La pluie et la nuit viendront ensuite, à partir de cette version.
+
+```
+Edit ONLY the shopfront on the ground floor of this image. Keep everything else exactly as it is: the same view, the glass floors above, the two blank signs, the neighbouring buildings, the sidewalk, the grass tram track, the trees, the style and the light. Make only this change: the shopfront is now closed. The folding glass panels that are folded together at the left end are unfolded across the whole width of the shopfront, from the left end to the right end: a row of tall, clear glass panels in thin dark metal frames, from the floor up to the sign box. The panel in the middle is the entrance door, the same glass and frame as the others, with a long vertical metal handle. Through the clean glass we still see the inside of the restaurant exactly as now, a little darker, with soft reflections of the trees and the street on the glass. No letters, no words, no logos anywhere, not even on the glass or the door.
+```
+
+À contrôler à la reprise : les panneaux sur toute la largeur, du sol au caisson ; la porte au milieu, sa poignée ; la salle visible derrière le verre, la même ; les reflets doux ; le reste inchangé ; aucun texte.

@@ -60,7 +60,7 @@ Trois lumières, dans le même cadrage (l'auteur, le 2026-10-17) :
 - **La pluie** (`fond_pluie_v1.png`) : le rideau de verre est fermé, les panneaux vitrés dépliés sur toute la devanture, la pluie coule sur le verre, la lumière est grise. Navier-Stokes : « Jeudi matin. Il pleut ». Sky peut se tenir près de la vitre : d'où les axes 22 et 23, qui n'existent que sous la pluie.
 - **La nuit** (`fond_nuit_v1.png`) : le kebab ouvert tard, éclairé par ses appliques et ses panneaux de menu, la rue sombre sous les lampadaires.
 
-La pluie et la nuit se font en retouche du fond de jour : seule la lumière change, ce que ChatGPT retouche bien (contrairement à la disposition).
+La pluie et la nuit se font en retouche du fond de jour : seule la lumière change, ce que ChatGPT retouche bien (contrairement à la disposition). Pour les axes qui voient la devanture, en deux temps, une chose à la fois : d'abord le rideau fermé sous la même lumière (`fond_ferme_v1.png`), puis la pluie ou la nuit à partir de lui.
 
 **Qui a besoin de quoi.** Seuls les axes qui voient la rue ou la devanture changent vraiment avec la pluie ou la nuit : 1, 2, 3, 7, 10, 13, 15, 19, 24, 25. Pour les autres, tournés vers le fond, la pluie et la nuit passent d'abord par l'étalonnage au montage (plus gris, plus sombre) et par le son ; on ne fait leur fond de pluie ou de nuit que si un texte le demande. Le compte : 23 fonds de jour (tous sauf 22 et 23), 12 de pluie (les 10 axes, plus 22 et 23), 10 de nuit, soit **45 fonds**, dont 9 pour le pilote, tous de jour. L'épisode Navier-Stokes se passe sous la pluie : ses axes (22 à 25) se font d'abord en pluie.
 
