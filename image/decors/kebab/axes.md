@@ -2,6 +2,26 @@
 
 Un axe = un fond vide, sans perso, fait une fois et réutilisé à chaque épisode (CLAUDE.md, « Images »). Les numéros sont ceux du plan `plan-axes_v5.png` (les cercles bleus : la caméra et la direction où elle regarde). Les positions viennent de `plan_v5.png` (le plan v3 validé par l'auteur le 2026-10-17, avec ses corrections), et les besoins des textes : le CERN (`ecriture/brouillons/cern.md`, numéros de ligne) et Navier-Stokes.
 
+## Où on en est (2026-10-17)
+
+- **Validé par l'auteur** : le plan `plan_v5.png` (sans caméras, à joindre dans ChatGPT) et les 25 axes `plan-axes_v5.png` (avec caméras, pour Claude). « On bougera peut-être 2 ou 3 plans un peu, mais l'idée est là. »
+- **En cours** : le plan peint v2 (`plan-peint_v2.png`). L'essai KB2 v2 a la bonne disposition ; sa retouche corrigée (le palier de l'escalier, la rampe basse, la lumière de face, la caisse tournée vers Mohamed) est dans `prompts-chatgpt.md`. C'est lui qui servira de référence de style et d'objets pour tous les axes.
+- **Ensuite** : l'auteur fait tous les fonds d'un coup, un prompt à la fois, le pilote d'abord (1, 2, 6, 7, 8, 10, 17, 20, 21), de jour. Le fond `table-du-fond/fond_v1.png` suit l'ancien plan : l'axe 6 se refait en `fond_v2.png`.
+
+## Les décisions de l'auteur sur le décor (2026-10-16 et 17)
+
+- Le canon : Mohamed à Annemasse. Le style : celui des images de référence de Sky et de Maëlle (`image/style.md`).
+- La devanture : pas de porte, des panneaux vitrés qui se replient en accordéon, tous à gauche, sur toute la hauteur ; ils ferment le kebab (la pluie, le soir). Ouverte sur toute la largeur, jusqu'au coin de droite, sans muret.
+- Le comptoir en L : la caisse juste en entrant, sur le petit côté devant, **tournée vers Mohamed** (c'est lui qui tape dedans) ; puis la vitrine des salades (laitue, tomates, oignons, chou rouge, carottes, concombres) et les sauces le long du grand côté ; la broche, le grill, la friteuse contre le mur gauche ; une horloge ronde au mur.
+- Le frigo à boissons tout au fond à gauche, qu'on voit un plan sur deux ; il ne gêne pas Sky au miroir.
+- La banquette rouge en L, sous le miroir puis le long de la rampe ; le miroir sur toute la banquette du fond, à fleur de son bout gauche, en verre fumé.
+- La table de Sky pour cinq, dans l'angle : Sky et Maëlle sur la banquette, deux chaises en face, Patrick au bout (« c'est l'ancien, ça résout les problèmes de champ ») ; Sky peut se lever et laisser sa place à Maëlle.
+- Les tables : rectangulaires, toutes pareilles, les chaises face à face, deux de chaque long côté ; celles de droite perpendiculaires à la banquette, un petit bout contre elle. La table de devant à droite : celle de Sky dans l'épisode Navier-Stokes.
+- Sur chaque table : une sauce rouge, une sauce blanche, un distributeur de serviettes (Sky griffonne dessus). Pas de plante sur les tables ; quelques grandes plantes au sol, dans les coins.
+- L'escalier en bois (il grince), dans le kebab : un palier à l'intérieur, à l'avant droit, puis il monte vers le fond jusqu'à la porte de Datastream (une porte en bois simple, sans texte). Une rampe basse et ouverte entre la banquette et l'escalier.
+- Dehors : la rue d'Annemasse, les rails du tram avec de l'herbe entre les rails, des potelets, un trottoir.
+- Trois lumières : le jour, la pluie (rideau de verre fermé, gris), la nuit.
+
 ## Le plan, en bref (`plan_v5.png`)
 
 - À gauche, le comptoir en L (la caisse devant, **tournée vers Mohamed**, les salades le long), la broche, le grill et la friteuse contre le mur ; le frigo à boissons au fond à gauche.
@@ -28,7 +48,7 @@ Trois lumières, dans le même cadrage (l'auteur, le 2026-10-17) :
 
 La pluie et la nuit se font en retouche du fond de jour : seule la lumière change, ce que ChatGPT retouche bien (contrairement à la disposition).
 
-**Qui a besoin de quoi.** Seuls les axes qui voient la rue ou la devanture changent vraiment avec la pluie ou la nuit : 1, 2, 3, 7, 10, 13, 15, 19. Pour les autres, tournés vers le fond, la pluie et la nuit passent d'abord par l'étalonnage au montage (plus gris, plus sombre) et par le son ; on ne fait leur fond de pluie ou de nuit que si un texte le demande. Le compte : 21 fonds de jour, 10 de pluie (les 8 axes et les axes 22 et 23), 8 de nuit, soit **39 fonds**, dont 9 pour le pilote, tous de jour.
+**Qui a besoin de quoi.** Seuls les axes qui voient la rue ou la devanture changent vraiment avec la pluie ou la nuit : 1, 2, 3, 7, 10, 13, 15, 19, 24, 25. Pour les autres, tournés vers le fond, la pluie et la nuit passent d'abord par l'étalonnage au montage (plus gris, plus sombre) et par le son ; on ne fait leur fond de pluie ou de nuit que si un texte le demande. Le compte : 23 fonds de jour (tous sauf 22 et 23), 12 de pluie (les 10 axes, plus 22 et 23), 10 de nuit, soit **45 fonds**, dont 9 pour le pilote, tous de jour. L'épisode Navier-Stokes se passe sous la pluie : ses axes (22 à 25) se font d'abord en pluie.
 
 ## Les 25 axes
 
@@ -73,4 +93,18 @@ Les neuf fonds du pilote (la minute des mots croisés) : 1, 2, 6, 7, 8, 10, 17, 
 
 ## Comment on fait chaque fond
 
-Un prompt à la fois, comme pour Sky. D'abord le plan peint refait d'après `plan_v3.png` (prompt KB2 v2). Puis, pour chaque axe, Claude dessine le plan avec cette seule caméra (`python3 pipeline/plan_kebab.py <sortie> axe <numéro>`), et l'auteur joint dans ChatGPT : ce plan, puis le plan peint, pour le style et les objets. Le prompt décrit la vue : où est la caméra, à quelle hauteur, et ce qu'on voit de gauche à droite. Claude contrôle (la disposition contre le plan, aucun texte, aucune personne, la lumière), range dans `image/decors/kebab/<dossier>/fond_v1.png` et note la provenance. Les prompts s'écrivent dans `prompts-chatgpt.md`.
+Un prompt à la fois, comme pour Sky. D'abord le plan peint refait d'après `plan_v5.png` (prompt KB2 v2 et sa retouche). Puis, pour chaque axe, Claude dessine le plan avec cette seule caméra (`python3 pipeline/plan_kebab.py <sortie> axe <numéro>`), et l'auteur joint dans ChatGPT : ce plan, puis le plan peint, pour le style et les objets. Le prompt décrit la vue : où est la caméra, à quelle hauteur, et ce qu'on voit de gauche à droite. Claude contrôle (la disposition contre le plan, aucun texte, aucune personne, la lumière), range dans `image/decors/kebab/<dossier>/fond_v1.png` et note la provenance. Les prompts s'écrivent dans `prompts-chatgpt.md`.
+
+### Le modèle de prompt d'un axe
+
+Deux images jointes dans le même message, dans cet ordre : le plan de l'axe seul (`~/Téléchargements/kebab_pour_A<n>_camera.png`, fait avec `pipeline/plan_kebab.py <sortie> axe <n>`), puis le plan peint (`~/Téléchargements/kebab_pour_axes_plan-peint.png`, copie de `plan-peint_v2.png`). Les parties entre crochets changent d'un axe à l'autre ; le reste ne bouge pas.
+
+```
+The first attached image is the floor plan of our kebab restaurant, with one camera marked in blue (number [n]): its position and the cone of what it sees. The second attached image is the same restaurant seen from above, painted in our style; it gives the style, the materials, the colours and the objects. Paint the view from this camera, as an empty background for an anime series: a flat 2D hand-drawn background painting from a 1990s anime film, in the style of the second image (clean dark outlines, flat cel shading, muted warm palette, painted details). NOT a 3D render, NOT photorealistic. Landscape format (1536×1024); keep the important things away from the top and bottom edges, the image will be cropped to 16:9.
+The camera [where it stands, at what height: seated about 1.2 m or standing about 1.6 m], and looks [where]. Normal lens, straight vertical lines, no fisheye.
+What we see, from front to back:
+- [element by element, with left and right of the frame named from the camera's point of view]
+Light: the only daylight comes from the open shopfront on the street side; there are no other windows, the side walls are solid. [Where the street is in the frame, and where the shadows fall.] Inside, the light is warm and dim; the street is bright with warm morning sun. The mirror above the back bench is dark smoky glass, with no recognisable reflection. No people. No text, no letters and no logos anywhere.
+```
+
+Rappels selon l'axe : la caisse tournée vers Mohamed (vers l'intérieur du comptoir) ; la rampe basse et ouverte ; le palier de l'escalier dans la salle ; les panneaux vitrés repliés à gauche de la devanture (vus de la salle vers la rue, ils sont à droite de l'image) ; l'herbe entre les rails du tram ; deux sauces et un distributeur de serviettes sur chaque table ; pas de plante sur les tables.

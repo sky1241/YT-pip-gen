@@ -432,3 +432,7 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   sur toute la banquette du fond ; la rampe basse, l'angle ouvert sur l'escalier ; l'herbe entre les rails du tram ; trois
   lumières par axe (jour, pluie, nuit). 21 axes (`image/decors/kebab/axes.md`). Le fond de l'axe 6, fait avant, est à refaire.
   Leçon de l'axe 6 : écrire dans chaque prompt d'où vient la lumière (la rue seule) et le miroir fumé sans reflet.
+- **Le plan du kebab et ses 25 axes validés (2026-10-17)** : `plan_v5.png` (sans caméras, pour ChatGPT) et `plan-axes_v5.png`
+  (avec caméras, pour Claude). Les décisions de l'auteur sur le décor sont réunies en tête de `image/decors/kebab/axes.md`, avec le
+  modèle de prompt d'un axe. 45 fonds en tout (23 de jour, 12 de pluie, 10 de nuit), 9 pour le pilote. La méthode qui marche :
+  l'auteur annote le plan dans ChatGPT, Claude le redessine en code, ChatGPT peint la vue prise du même point.
