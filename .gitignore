@@ -61,3 +61,6 @@ Thumbs.db
 # --- ComfyUI (si jamais installé dans le repo par erreur) ---
 ComfyUI/
 custom_nodes/
+
+# cache de tiktoken (créé dans le repo quand /tmp était plein, le 2026-10-16)
+data-gym-cache/
