@@ -57,6 +57,10 @@ Au départ : commence par le prompt 1, la première planche d'émotions. C'est l
 | 10 | Bouches : faite | `planches/bouches_v1.png` |
 | 11 | Les reprises : faite | `planches/trois-quarts_reprises_v2.png` |
 | 12 | Soulagement, seul : faite | `expressions/trois-quarts_soulagement_v3.png` |
+| M1 | En pied, de face et de trois-quarts | `planches/pied-1_v1.png` |
+| M2 | En pied, de profil et de dos | `planches/pied-2_v1.png` |
+| M3 | Trois poses | `planches/poses_v1.png` |
+| M4 | Six gestes (à valider par l'auteur avant) | `planches/gestes_v1.png` |
 
 Les chemins partent de `image/persos/maelle/`.
 
@@ -262,3 +266,53 @@ Dans les reprises, il est sorti lèvres poussées et yeux fermés, sans joues go
 ```
 Make a single image of Maëlle with the same framing as her expression sheets: one head-and-shoulders bust, in the same three-quarter angle as her master image (we see her left side), plain light-grey background, soft even light, square format (1024×1024). Expression: relief. Eyes closed, head tilted back, mouth open in a big sigh, as if saying "phew", shoulders dropping, a small anime sweat drop on her temple. Not a kiss, not a smirk. No text.
 ```
+
+## La série en pied et en gestes, pour son LoRA
+
+La leçon du premier LoRA de Sky (2026-10-15) : avec une seule image en pied, le LoRA n'apprend que le buste et invente le reste. Ces quatre planches le comblent avant son premier LoRA, sur le même fond gris clair que ses autres planches. Pas de décor : en production, elle est intégrée dans nos fonds. Dans sa conversation ChatGPT ; si elle est perdue, refaire d'abord le prompt 0 avec l'image maître.
+
+### Prompt M1 — En pied, de face et de trois-quarts
+
+Joins l'image en pied validée (`references/pied_v1.png`, copiée en `~/Téléchargements/maelle_pour_M1-M3_en-pied_v1.png`). Découpe : `--noms pied-face,pied-trois-quarts-gauche,pied-trois-quarts-droit --dossier references`.
+
+```
+Make a full-body sheet of Maëlle: a regular grid of 3 columns and 1 row, landscape format (1536×1024), three equal tall cells separated by thin white gaps. In each cell, Maëlle stands full body from head to feet, neutral watchful expression, arms relaxed, same scale, same light, plain light-grey background. Her usual outfit, exactly as in the attached full-body image: the black fitted turtleneck sweater in a matte, slightly textured fabric, its sleeves pushed up to the forearms; black slim high-waisted trousers, fitted but practical; sturdy black ankle boots with a square heel. One wide silver ring on HER RIGHT THUMB, no other jewelry. Short unpainted nails. Her copper-red hair: HER LEFT side shaved, the longer, messy strands falling over HER RIGHT side of the face. A small vertical scar through HER LEFT eyebrow. Fine black winged eyeliner, a light dusting of freckles on the nose and upper cheeks, green eyes. Broad swimmer's shoulders, toned forearms, an athletic hourglass build, 1.65 m. Cells, left to right:
+
+1. Front view.
+2. Three-quarter view showing HER LEFT side, as in her master image: the shaved side of her head and the scar on her left eyebrow are nearer to us.
+3. Three-quarter view showing HER RIGHT side: the long strands of hair fall on this side, nearer to us; her shaved left side is farther away.
+
+No text or labels anywhere.
+```
+
+### Prompt M2 — En pied, de profil et de dos
+
+Joins la même image en pied. Découpe : `--noms pied-profil-gauche,pied-profil-droit,pied-dos --dossier references`.
+
+```
+Make a full-body sheet of Maëlle: a regular grid of 3 columns and 1 row, landscape format (1536×1024), three equal tall cells separated by thin white gaps. In each cell, Maëlle stands full body from head to feet, neutral watchful expression, arms relaxed, same scale, same light, plain light-grey background. Her usual outfit, exactly as in the attached full-body image: the black fitted turtleneck sweater in a matte, slightly textured fabric, its sleeves pushed up to the forearms; black slim high-waisted trousers, fitted but practical; sturdy black ankle boots with a square heel. One wide silver ring on HER RIGHT THUMB, no other jewelry. Short unpainted nails. Her copper-red hair: HER LEFT side shaved, the longer, messy strands falling over HER RIGHT side of the face. A small vertical scar through HER LEFT eyebrow. Fine black winged eyeliner, a light dusting of freckles on the nose and upper cheeks, green eyes. Broad swimmer's shoulders, toned forearms, an athletic hourglass build, 1.65 m. Cells, left to right:
+
+1. Profile showing HER LEFT side: we see the shaved side of her head and her left eyebrow with its scar.
+2. Profile showing HER RIGHT side: the long strands of hair fall over this side of her face.
+3. Back view: no face visible; the shaved side is on HER LEFT, which is on the left of the image.
+
+No text or labels anywhere.
+```
+
+### Prompt M3 — Trois poses
+
+Joins la même image en pied. Découpe : `--noms assis-face,assis-cote,accoude --dossier references`.
+
+```
+Make a full-body sheet of Maëlle: a regular grid of 3 columns and 1 row, landscape format (1536×1024), three equal tall cells separated by thin white gaps. In each cell, Maëlle full body from head to feet, neutral watchful expression, same scale, same light, plain light-grey background, no other furniture than the one named. Her usual outfit, exactly as in the attached full-body image: the black fitted turtleneck sweater in a matte, slightly textured fabric, its sleeves pushed up to the forearms; black slim high-waisted trousers, fitted but practical; sturdy black ankle boots with a square heel. One wide silver ring on HER RIGHT THUMB, no other jewelry. Short unpainted nails. Her copper-red hair: HER LEFT side shaved, the longer, messy strands falling over HER RIGHT side of the face. A small vertical scar through HER LEFT eyebrow. Fine black winged eyeliner, a light dusting of freckles on the nose and upper cheeks, green eyes. Broad swimmer's shoulders, toned forearms, an athletic hourglass build, 1.65 m. Cells, left to right:
+
+1. Sitting on a simple wooden chair, facing the viewer, one leg crossed over the other, her hands resting on her knee, the silver ring visible on her right thumb.
+2. Sitting on the same chair, in profile showing HER LEFT side: we see the shaved side of her head.
+3. Standing, leaning with her right elbow on a plain light-grey block at counter height, a coffee cup in her left hand.
+
+No text or labels anywhere.
+```
+
+### Prompt M4 — Six gestes
+
+À écrire quand l'auteur aura validé les six gestes (l'inventaire : « à fixer avec l'auteur avant les prompts »). Proposition de Claude, d'après le texte du CERN, Navier-Stokes et le test prévu (Sky et Maëlle qui mangent côte à côte) : boire son café, croquer dans une galette, mâcher la bouche pleine, prendre une photo avec son téléphone (Navier-Stokes, l. 411), plier une serviette et la glisser dans sa poche (CERN, l. 540), donner un ordre, l'index levé (« Monte. Dors. Je gère. »).
