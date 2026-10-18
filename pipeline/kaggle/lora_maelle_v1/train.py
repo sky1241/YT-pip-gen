@@ -91,7 +91,7 @@ lancer(" ".join([
     "--max_train_epochs 8",
     "--network_module networks.lora --network_dim 32 --network_alpha 16",
     "--network_train_unet_only --learning_rate 1e-4 --unet_lr 1e-4",
-    "--optimizer_type AdamW8bit --lr_scheduler cosine --lr_warmup_steps 100",
+    "--optimizer_type AdamW --lr_scheduler cosine --lr_warmup_steps 100",   # AdamW8bit : pas sûr sur une P100
     "--mixed_precision fp16 --no_half_vae --gradient_checkpointing --sdpa",
     "--cache_latents --cache_latents_to_disk --cache_text_encoder_outputs",
     "--min_snr_gamma 5 --seed 42",

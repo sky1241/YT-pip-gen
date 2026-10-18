@@ -498,3 +498,6 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   69 images (`pipeline/preparer_lora.py maelle v1`), légendes avec `1girl, solo, female focus` (fiche > `genre` = f) et son angle
   de trois-quarts « facing left » (fiche > lora > `angle_trois_quarts`, `angle_signatures`) : son côté gauche, à l'inverse de
   Sky. Entraînement sur Kaggle (`pipeline/kaggle/lora_maelle_v1`), 3 répétitions × 8 époques (≈ 1 650 pas), sans retournement.
+- **Kaggle, la file d'attente (2026-10-18)** : le LoRA de Maëlle est resté 1 h 30 en « QUEUED » sur T4 sans démarrer. Relancé
+  sur une P100 (version 2 du notebook), avec l'optimiseur AdamW ordinaire au lieu d'AdamW8bit (bitsandbytes n'est pas sûr sur
+  la P100) : démarré en moins de 2 minutes. La P100 n'a pas les cœurs tensoriels de la T4 : l'entraînement peut être plus long.
