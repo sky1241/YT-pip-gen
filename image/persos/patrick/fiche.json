@@ -8,7 +8,9 @@
     "tenue canonique",
     "détails asymétriques, puis le réglage du flip du LoRA",
     "ce qu'il ne porte jamais",
-    "image maître"
+    "valider la silhouette, la tenue et les traits relevés par Claude sur l'image maître",
+    "l'image maître lui donne un mug « COBOL FOREVER » ; la bible et le texte du CERN (l. 16) lui donnent une tasse de thé en porcelaine : les deux (le mug au bureau, la porcelaine au kebab), ou la porcelaine seule ?",
+    "la description maître : la faire écrire par ChatGPT d'après l'image maître (prompt P0)"
   ],
   "energie": {
     "resume": "Basse, constante, gravitationnelle",
@@ -16,14 +18,26 @@
     "volume": "Bas. Plus c'est important, plus c'est bas.",
     "frequence": "Le transformateur. Il convertit le chaos en signal propre."
   },
-  "silhouette": null,
+  "silhouette": {
+    "_note": "relevé par Claude sur l'image maître le 2026-10-18 : à valider par l'auteur",
+    "corps": "la soixantaine, corpulent, un ventre rond, les épaules un peu tombantes",
+    "visage": "rond, bonhomme, doubles joues, un sourire en coin retenu"
+  },
   "palette": {
     "_note": "à définir avec l'auteur : la bible ne décrit pas son look"
   },
-  "tenue_canonique": null,
+  "tenue_canonique": {
+    "_note": "relevée par Claude sur l'image maître le 2026-10-18 : à valider par l'auteur",
+    "haut": "chemise noire boutonnée, une poche de poitrine avec deux stylos (un rouge, un bleu), un gilet noir ouvert par-dessus",
+    "bas": "pantalon gris anthracite à pinces, ample, ceinture noire à boucle argentée",
+    "chaussures": "chaussures de ville noires en cuir, cirées"
+  },
   "traits": {
     "parole": "dit « monsieur » et « madame » ; pense avant de parler",
-    "sous_pression": "il ralentit : il pose sa tasse et joint les mains"
+    "sous_pression": "il ralentit : il pose sa tasse et joint les mains",
+    "cheveux": "chauve sur le dessus, une couronne de cheveux blancs courts sur les côtés et derrière",
+    "lunettes": "fines lunettes rectangulaires à monture sombre",
+    "yeux": "sombres, bienveillants, les paupières un peu lourdes"
   },
   "expressions_signatures": {
     "sans-lever-les-yeux": "le regard sur la grille, le stylo plume en l'air",
@@ -35,9 +49,15 @@
   "details_asymetriques": {
     "_note": "à fixer avec l'auteur"
   },
-  "accessoires": ["tasse de thé en porcelaine", "théière", "stylo plume", "grille de mots croisés", "document COBOL"],
+  "accessoires": [
+    "tasse de thé en porcelaine",
+    "théière",
+    "stylo plume",
+    "grille de mots croisés",
+    "document COBOL"
+  ],
   "ne_porte_jamais": [],
-  "image_maitre": null,
+  "image_maitre": "image/persos/patrick/references/master_v1.png",
   "lora": {
     "flip_horizontal": null
   },

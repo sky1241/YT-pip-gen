@@ -1,0 +1,11 @@
+{
+  "_note": "D'où vient chaque image de Patrick, et laquelle sert. Les prompts sont dans prompts-chatgpt.md. Toutes viennent de ChatGPT.",
+  "images": {
+    "references/master_v1.png": {
+      "source": "ChatGPT",
+      "date": "2026-10-18",
+      "retenue": true,
+      "_note": "l'image maître, validée par l'auteur, téléchargée sous le nom « Portrait d’un développeur COBOL chevronné.png ». Une planche de 10 cases (en pied, visages, au clavier, de dos, la tasse) plutôt qu'une seule scène. Elle contient du texte (la tasse « COBOL FOREVER », l'écran, une boîte « COBOL ») : rien de tout ça n'est demandé dans ses planches"
+    }
+  }
+}

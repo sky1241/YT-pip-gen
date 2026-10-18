@@ -111,7 +111,7 @@ La série 1, faite avec la monture argentée, est archivée sur le disque extern
 
 ### Patrick — `persos/patrick/`
 
-- [ ] `references/master_v1.png` : image maître · pilote
+- [x] `references/master_v1.png` : image maître · pilote
 
 **Rotation**
 - [ ] `references/face_v1.png`
