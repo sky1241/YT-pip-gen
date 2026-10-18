@@ -31,7 +31,7 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 | A19 | L'axe 19 : le long de la banquette de droite, vers la rue : **fait** | `image/decors/kebab/banquette-de-droite/fond_v1.png` |
 | A24 pluie | L'axe 24 : la table de Sky dans Navier-Stokes, rideau fermé, sous la pluie : **fait** | `image/decors/kebab/table-navier-stokes/fond_pluie_v1.png` |
 | A25 pluie | L'axe 25 : depuis la place de Sky dans Navier-Stokes, vers la salle : **fait** | `image/decors/kebab/table-navier-stokes-contrechamp/fond_pluie_v1.png` |
-| A22 pluie | L'axe 22 : à la place de Sky, vers la vitre sous la pluie | `image/decors/kebab/vitrine-fermee/fond_pluie_v1.png` |
+| A22 pluie | L'axe 22 : à la place de Sky, vers la vitre sous la pluie : **fait** | `image/decors/kebab/vitrine-fermee/fond_pluie_v1.png` |
 | KB2 v2 | Le plan peint, d'après le plan v3 : bonne disposition, mais l'escalier sur la rue, la lumière de côté | (supprimé) |
 | KB2 v3 | Le plan peint, d'après le plan v5 sans caméras : **la base fixe, validée** | `image/decors/kebab/plan-peint_v2.png` |
 | A6 v3 | L'axe 6 : la table de Sky dans l'angle, la banquette, le miroir, la plante : **fait** (la vue en volumes, puis une retouche) | `image/decors/kebab/table-du-fond/fond_v1.png` |
@@ -1156,3 +1156,5 @@ Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the 
 ```
 
 À contrôler à la reprise : la vitre tout près, ses cadres ; les gouttes et les filets d'eau bien visibles ; la rue grise et floue derrière, deux arbres ; le bout de la banquette et le dossier de chaise en bas ; aucune personne, aucun reflet de personne, aucun texte.
+
+**Résultat de A22 pluie, le 2026-10-18 : validé par l'auteur du premier coup.**

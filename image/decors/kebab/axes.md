@@ -15,7 +15,8 @@ Un axe = un fond vide, sans perso, fait une fois et réutilisé à chaque épiso
 - **Fait** aussi : l'axe 9 (`broche/fond_v1.png`), l'axe 15 (`devanture/fond_v1.png`), l'axe 5 (`depuis-l-escalier/fond_v1.png`), l'axe 19 (`banquette-de-droite/fond_v1.png`).
 - **Fait** aussi : l'axe 24 sous la pluie (`table-navier-stokes/fond_pluie_v1.png`).
 - **Fait** aussi : l'axe 25 sous la pluie (`table-navier-stokes-contrechamp/fond_pluie_v1.png`).
-- **Ensuite** : Navier-Stokes sous la pluie (22, 23), puis les axes 3 et 16. L'axe 19 ne se fait pas sous la pluie ni la nuit : dans Navier-Stokes, Sky est à la table de devant, qu'on ne voit pas d'ici (l'auteur, le 2026-10-18) ; on ne fait la pluie ou la nuit d'un axe que si une scène la demande.
+- **Fait** aussi : l'axe 22 sous la pluie (`vitrine-fermee/fond_pluie_v1.png`).
+- **Ensuite** : l'axe 23 (Sky vu de la rue, à travers la vitre mouillée), puis les axes 3 et 16. L'axe 19 ne se fait pas sous la pluie ni la nuit : dans Navier-Stokes, Sky est à la table de devant, qu'on ne voit pas d'ici (l'auteur, le 2026-10-18) ; on ne fait la pluie ou la nuit d'un axe que si une scène la demande.
 - **La vue en volumes, rideau fermé** : `python3 pipeline/vue_kebab.py <sortie> <axe> ferme` dessine les panneaux dépliés (leurs cadres fins seulement, le verre transparent) et la poignée de la porte., puis Navier-Stokes (22 à 25) et les versions pluie et nuit, puis ceux de Navier-Stokes (22 à 25, sous la pluie) et les versions pluie et nuit des axes qui voient la rue. Claude ne lui montre qu'un axe à la fois (le plan de cet axe seul) ; le plan des 25 axes reste pour Claude. L'ancien fond de l'axe 6 est supprimé : l'axe 6 se refait en `fond_v1.png`.
 
 ## Les décisions de l'auteur sur le décor (2026-10-16 et 17)
