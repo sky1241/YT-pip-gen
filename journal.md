@@ -501,3 +501,5 @@ Vérifié sur les pages officielles, le 2026-10-15 :
 - **Kaggle, la file d'attente (2026-10-18)** : le LoRA de Maëlle est resté 1 h 30 en « QUEUED » sur T4 sans démarrer. Relancé
   sur une P100 (version 2 du notebook), avec l'optimiseur AdamW ordinaire au lieu d'AdamW8bit (bitsandbytes n'est pas sûr sur
   la P100) : démarré en moins de 2 minutes. La P100 n'a pas les cœurs tensoriels de la T4 : l'entraînement peut être plus long.
+- **LoRA de Maëlle v1 entraîné (2026-10-18)** : 61 min sur une P100 (plus vite que prévu), 69 images × 3 répétitions × 8 époques
+  = 1 656 pas, perte moyenne finale 0,057. Les 4 fichiers (époques 2, 4, 6, 8) vérifiés et copiés dans `<modeles_root>/loras/`.
