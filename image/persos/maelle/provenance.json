@@ -526,6 +526,30 @@
       "date": "2026-10-18",
       "retenue": true,
       "_note": "la bague au pouce droit"
+    },
+    "planches/pied-2_v1.png": {
+      "prompt": "M2",
+      "date": "2026-10-18",
+      "retenue": true,
+      "_note": "validée par l'auteur. De dos, pas de bague visible : juste, le pouce est caché devant la main quand les bras tombent (la retouche qui l'ajoutait l'a mise au petit doigt, non retenue)"
+    },
+    "references/pied-profil-gauche_v1.png": {
+      "planche": "planches/pied-2_v1.png",
+      "case": 1,
+      "date": "2026-10-18",
+      "retenue": true
+    },
+    "references/pied-profil-droit_v1.png": {
+      "planche": "planches/pied-2_v1.png",
+      "case": 2,
+      "date": "2026-10-18",
+      "retenue": true
+    },
+    "references/pied-dos_v1.png": {
+      "planche": "planches/pied-2_v1.png",
+      "case": 3,
+      "date": "2026-10-18",
+      "retenue": true
     }
   }
 }

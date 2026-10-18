@@ -58,7 +58,7 @@ Au départ : commence par le prompt 1, la première planche d'émotions. C'est l
 | 11 | Les reprises : faite | `planches/trois-quarts_reprises_v2.png` |
 | 12 | Soulagement, seul : faite | `expressions/trois-quarts_soulagement_v3.png` |
 | M1 | En pied, de face et de trois-quarts : faite (une retouche) | `planches/pied-1_v1.png` |
-| M2 | En pied, de profil et de dos | `planches/pied-2_v1.png` |
+| M2 | En pied, de profil et de dos : faite | `planches/pied-2_v1.png` |
 | M3 | Trois poses | `planches/poses_v1.png` |
 | M4 | Six gestes (à valider par l'auteur avant) | `planches/gestes_v1.png` |
 
@@ -320,6 +320,8 @@ Résultat de M2, le 2026-10-18 : bonne pour l'auteur ; contrôlé par Claude : l
 ```
 Edit ONLY the hands in the third cell, the back view on the right. Keep everything else exactly as it is, in all three cells. In the back view, her right hand is the hand on the RIGHT of the image: add one wide silver ring on its thumb, visible from behind. The hand on the left of the image stays without any ring.
 ```
+
+La retouche a mis la bague au petit doigt. Erreur de Claude : de dos, les bras le long du corps, le pouce est caché devant la main ; ne pas voir la bague est juste. L'auteur garde donc le premier essai, sans bague de dos (`planches/pied-2_v1.png`).
 
 ### Prompt M3 — Trois poses
 
