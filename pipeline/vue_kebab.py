@@ -169,9 +169,12 @@ for k in range(11):                                         # monte du palier (y
                                                             # la 12e marche, c'est le palier du haut
     y0, y1, dessus = 6.4 - 0.5 * (k + 1), 6.4 - 0.5 * k, 0.25 * (k + 1)
     boite(9.4, y0, 10.9, y1, max(0, dessus - 0.55), dessus, "#9c6b3c")                 # la marche et son limon
-    boite(9.3, y0, 9.4, y1, 0, dessus, "#dcc69c", trait=False, groupe="cote-escalier")   # le côté fermé, sous les marches
+    # le côté fermé, sous les marches ; vers le fond, là où la rampe touche le plafond, il monte jusqu'au plafond : dans
+    # l'angle de la banquette, c'est un mur plein (l'auteur, axes 6 et 14)
+    boite(9.3, y0, 9.4, y1, 0, 3.0 if dessus + 0.96 >= 2.95 else dessus, "#dcc69c", trait=False, groupe="cote-escalier")
     boite(9.33, (y0 + y1) / 2 - 0.02, 9.37, (y0 + y1) / 2 + 0.02, dessus, dessus + 0.9, BOIS)  # les barreaux
 boite(9.4, 6.4, 10.9, 7.9, 0, 0.03, "#b07a45")              # le palier
+boite(9.3, 0, 9.4, 0.9, 0, 3.0, "#dcc69c", trait=False, groupe="cote-escalier")   # le bout, sous le palier du haut
 for xr, nr in ((9.32, (-1, 0, 0)), (9.38, (1, 0, 0))):     # la main courante, en pente avec l'escalier, jusqu'au poteau du bas
     plaque([(xr, 6.45, 1.1), (xr, 0.4, 3.9), (xr, 0.4, 4.0), (xr, 6.45, 1.2)], nr, BOIS)
 boite(9.29, 6.35, 9.41, 6.5, 0, 1.25, BOIS)                 # le poteau du bas, sur la première marche

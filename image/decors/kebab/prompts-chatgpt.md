@@ -935,3 +935,13 @@ Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the 
 ```
 
 À contrôler à la reprise : le coin vu debout ; le miroir à gauche ; la banquette d'un seul tenant ; la même plante ; la table et ses chaises ; le haut du côté de l'escalier et la rampe en haut à droite, le plafond fermé ; une lumière douce, sans tache de soleil ; aucune personne, aucun texte.
+
+Résultat de A14, le 2026-10-18 : faux pour l'auteur. Derrière la plante, le côté de l'escalier sort du coin comme un bloc ; en haut à droite, son sommet en marches et les barreaux apparaissent sous le plafond. La faute vient de la vue en volumes : vers le fond, le côté de l'escalier s'arrêtait sous les marches, à 2,75 m, et laissait un vide jusqu'au plafond. Corrigé dans `pipeline/vue_kebab.py` : là où la rampe touche le plafond, le côté monte jusqu'au plafond ; l'angle est un coin simple. Capture hors du repo (`coin-de-la-banquette_essai-1_capture.png`).
+
+### Prompt A14 retouche — Un coin simple, un mur plein jusqu'au plafond
+
+```
+Edit ONLY the right part of this image, above the red bench. Keep everything else exactly as it is: the same view, the same mirror, plant, bench, table, chairs, style and light. Make only this change: the wall on the right is one plain, flat wall from the bench up to the ceiling, meeting the back wall in a simple straight vertical corner just behind the plant. Remove the block that sticks out of the corner, the stepped shapes at the top right and the vertical posts under the ceiling: no staircase, no steps, no banister and no door can be seen in this view.
+```
+
+À contrôler à la reprise : un mur plein à droite, du dossier au plafond ; un angle droit, simple, derrière la plante ; plus de marches ni de barreaux en haut ; rien d'autre de changé. Si la retouche rate : la vue en volumes corrigée est dans `~/Téléchargements/kebab_pour_A14_1_vue.png`, avec le prompt A14.

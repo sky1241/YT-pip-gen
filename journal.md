@@ -482,3 +482,7 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   par l'ouverture du plafond au-dessus de l'escalier (juste en vrai, refusé par l'auteur : « le bug de l'escalier »).
   `pipeline/vue_kebab.py` ferme ce plafond pour les caméras de la salle (x < 9,3) ; depuis l'escalier (axe 11), la cage et la
   porte restent visibles.
+- **Le côté de l'escalier jusqu'au plafond (2026-10-18)** : à l'axe 14, le côté de l'escalier s'arrêtait au-dessus des
+  dernières marches, à 2,75 m ; le vide jusqu'au plafond laissait voir des marches et des barreaux, et le côté sortait du coin
+  comme un bloc. `pipeline/vue_kebab.py` monte maintenant ce côté jusqu'au plafond là où la rampe touche le plafond, et ferme le
+  bout sous le palier du haut : l'angle de la banquette est un coin simple.
