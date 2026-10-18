@@ -269,11 +269,11 @@ Make a single image of Maëlle with the same framing as her expression sheets: o
 
 ## La série en pied et en gestes, pour son LoRA
 
-La leçon du premier LoRA de Sky (2026-10-15) : avec une seule image en pied, le LoRA n'apprend que le buste et invente le reste. Ces quatre planches le comblent avant son premier LoRA, sur le même fond gris clair que ses autres planches. Pas de décor : en production, elle est intégrée dans nos fonds. Dans sa conversation ChatGPT ; si elle est perdue, refaire d'abord le prompt 0 avec l'image maître.
+La leçon du premier LoRA de Sky (2026-10-15) : avec une seule image en pied, le LoRA n'apprend que le buste et invente le reste. Ces quatre planches le comblent avant son premier LoRA, sur le même fond gris clair que ses autres planches. Pas de décor : en production, elle est intégrée dans nos fonds. Chaque prompt M est complet (toute sa description y est) : il marche dans n'importe quelle conversation, même neuve. Pour chacun, joindre deux images : son image maître (`~/Téléchargements/maelle_pour_M_1_image-maitre.png`) et son image en pied (`~/Téléchargements/maelle_pour_M_2_en-pied.png`), préparées par Claude.
 
 ### Prompt M1 — En pied, de face et de trois-quarts
 
-Joins l'image en pied validée (`references/pied_v1.png`, copiée en `~/Téléchargements/maelle_pour_M1-M3_en-pied_v1.png`). Découpe : `--noms pied-face,pied-trois-quarts-gauche,pied-trois-quarts-droit --dossier references`.
+Joins les deux images (l'image maître, puis l'image en pied). Découpe : `--noms pied-face,pied-trois-quarts-gauche,pied-trois-quarts-droit --dossier references`.
 
 ```
 Make a full-body sheet of Maëlle: a regular grid of 3 columns and 1 row, landscape format (1536×1024), three equal tall cells separated by thin white gaps. In each cell, Maëlle stands full body from head to feet, neutral watchful expression, arms relaxed, same scale, same light, plain light-grey background. Her usual outfit, exactly as in the attached full-body image: the black fitted turtleneck sweater in a matte, slightly textured fabric, its sleeves pushed up to the forearms; black slim high-waisted trousers, fitted but practical; sturdy black ankle boots with a square heel. One wide silver ring on HER RIGHT THUMB, no other jewelry. Short unpainted nails. Her copper-red hair: HER LEFT side shaved, the longer, messy strands falling over HER RIGHT side of the face. A small vertical scar through HER LEFT eyebrow. Fine black winged eyeliner, a light dusting of freckles on the nose and upper cheeks, green eyes. Broad swimmer's shoulders, toned forearms, an athletic hourglass build, 1.65 m. Cells, left to right:
@@ -287,7 +287,7 @@ No text or labels anywhere.
 
 ### Prompt M2 — En pied, de profil et de dos
 
-Joins la même image en pied. Découpe : `--noms pied-profil-gauche,pied-profil-droit,pied-dos --dossier references`.
+Joins les deux mêmes images. Découpe : `--noms pied-profil-gauche,pied-profil-droit,pied-dos --dossier references`.
 
 ```
 Make a full-body sheet of Maëlle: a regular grid of 3 columns and 1 row, landscape format (1536×1024), three equal tall cells separated by thin white gaps. In each cell, Maëlle stands full body from head to feet, neutral watchful expression, arms relaxed, same scale, same light, plain light-grey background. Her usual outfit, exactly as in the attached full-body image: the black fitted turtleneck sweater in a matte, slightly textured fabric, its sleeves pushed up to the forearms; black slim high-waisted trousers, fitted but practical; sturdy black ankle boots with a square heel. One wide silver ring on HER RIGHT THUMB, no other jewelry. Short unpainted nails. Her copper-red hair: HER LEFT side shaved, the longer, messy strands falling over HER RIGHT side of the face. A small vertical scar through HER LEFT eyebrow. Fine black winged eyeliner, a light dusting of freckles on the nose and upper cheeks, green eyes. Broad swimmer's shoulders, toned forearms, an athletic hourglass build, 1.65 m. Cells, left to right:
@@ -301,7 +301,7 @@ No text or labels anywhere.
 
 ### Prompt M3 — Trois poses
 
-Joins la même image en pied. Découpe : `--noms assis-face,assis-cote,accoude --dossier references`.
+Joins les deux mêmes images. Découpe : `--noms assis-face,assis-cote,accoude --dossier references`.
 
 ```
 Make a full-body sheet of Maëlle: a regular grid of 3 columns and 1 row, landscape format (1536×1024), three equal tall cells separated by thin white gaps. In each cell, Maëlle full body from head to feet, neutral watchful expression, same scale, same light, plain light-grey background, no other furniture than the one named. Her usual outfit, exactly as in the attached full-body image: the black fitted turtleneck sweater in a matte, slightly textured fabric, its sleeves pushed up to the forearms; black slim high-waisted trousers, fitted but practical; sturdy black ankle boots with a square heel. One wide silver ring on HER RIGHT THUMB, no other jewelry. Short unpainted nails. Her copper-red hair: HER LEFT side shaved, the longer, messy strands falling over HER RIGHT side of the face. A small vertical scar through HER LEFT eyebrow. Fine black winged eyeliner, a light dusting of freckles on the nose and upper cheeks, green eyes. Broad swimmer's shoulders, toned forearms, an athletic hourglass build, 1.65 m. Cells, left to right:
