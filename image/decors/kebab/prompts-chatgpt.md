@@ -945,3 +945,23 @@ Edit ONLY the right part of this image, above the red bench. Keep everything els
 ```
 
 À contrôler à la reprise : un mur plein à droite, du dossier au plafond ; un angle droit, simple, derrière la plante ; plus de marches ni de barreaux en haut ; rien d'autre de changé. Si la retouche rate : la vue en volumes corrigée est dans `~/Téléchargements/kebab_pour_A14_1_vue.png`, avec le prompt A14.
+
+Résultat de la retouche A14, le 2026-10-18 : le coin est juste, un mur plein derrière la plante. Mais l'auteur veut voir « le petit bout d'escalier » : la caméra 14 tournée vers la droite et élargie (78°) ; à droite, le côté de l'escalier descend le long de la banquette avec sa rampe. Dans la vue en volumes, les morceaux d'un même groupe (le côté de l'escalier) ne forment plus qu'un pan, sans fentes. Capture hors du repo (`coin-de-la-banquette_essai-2_capture.png`).
+
+### Prompt A14 v2 — L'angle de la banquette et le bout d'escalier
+
+Les mêmes images : `~/Téléchargements/kebab_pour_A14_1_vue.png` (refaite), `~/Téléchargements/kebab_pour_axes_plan-peint.png`, `~/Téléchargements/kebab_pour_A14_3_angle6.png`, `~/Téléchargements/kebab_pour_A14_4_angle12.png`.
+
+```
+The first attached image is a rough 3D layout of one view of our kebab restaurant, made of simple flat-coloured volumes: it fixes the camera, the perspective, the framing and the place of every object. The second attached image is the same restaurant seen from above, painted in our style: it gives the art style, the materials and the objects. The third and fourth attached images are two other views of the same corner, already painted and approved: the mirror, its frame, the red bench, the plant, the table, the walls and the light must look exactly the same. Paint exactly the view of the first image, as an empty background for an anime series: keep the same camera, the same perspective and framing, and every object at the same place, with the same size and angle, as if the layout had been painted over. The camera stands in the room and looks into the corner of the bench, a little toward the right. Replace the simple volumes with the real objects:
+- on the left, the long dark smoky mirror on the back wall, in its thin brown frame, empty, with no recognisable reflection;
+- the red padded bench in one continuous L: along the back wall, then turning in the corner and running toward the right along the right wall, all the way to the right edge;
+- in the corner, the same large green potted plant as in the other images, behind the corner of the bench; behind it, a simple straight vertical corner;
+- just right of the corner, a plain flat wall from the bench up to the ceiling;
+- further right, this wall is the closed side of the wooden staircase: its top edge steps down toward the right, following the steps, and above it a wooden banister with its handrail and balusters goes up from the right toward the back and disappears into the ceiling; we see the edges of a few steps above the wall, not the stairs from the front;
+- in the angle of the bench, the rectangular wooden table with a red sauce bottle, a white sauce bottle and a napkin dispenser, and its two empty chairs; at the bottom right, the chairs and the corner of the next table along the bench;
+- the surface at the top is the ceiling, plain and closed: no opening, no door.
+Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the style of the other images (clean dark outlines, flat cel shading, muted warm palette, painted details). NOT a 3D render, NOT photorealistic, and do not keep the flat colours of the layout. Light: warm, dim, even light from the open shopfront behind the camera; there are no windows, no sharp patches of sunlight on the walls. No people. No text, no letters and no logos anywhere. Landscape format (1536×1024).
+```
+
+À contrôler à la reprise : un coin simple derrière la plante ; le mur plein jusqu'au plafond près du coin ; plus à droite, le côté de l'escalier en marches et la rampe qui monte dans le plafond ; la banquette d'un seul tenant ; aucune porte, aucune ouverture ; aucune personne, aucun texte.

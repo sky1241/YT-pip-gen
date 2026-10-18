@@ -23,6 +23,7 @@ CAMERAS[2] = (DEBOUT, -3, 76)         # du trottoir : toute la devanture dans le
 CAMERAS[10] = (DEBOUT, 0, 72)        # du devant de la salle, vers le palier et l'escalier : on voit descendre
 CAMERAS[1] = (DEBOUT, 8, 84)         # du trottoir d'en face, un peu vers le haut : la devanture et les étages
 CAMERAS[4] = (DEBOUT, -12, 72)       # derrière le comptoir : le dessus du comptoir et les salades au premier plan
+CAMERAS[14] = (DEBOUT, 0, 78)        # assez large pour voir, à droite, la rampe qui descend le long de la banquette
 CAMERAS[8] = (DEBOUT, 0, 70)          # le mur de la cuisine de face : la ligne du plafond reste droite (l'auteur)
 CAMERAS[7] = (ASSIS, 0, 80)          # plus large : la rampe de l'escalier à gauche et la caisse à droite (l'auteur)
 CAMERAS.update({5: (2.1, -25, 70), 11: (DEBOUT, 18, 66), 13: (DEBOUT, -24, 74), 17: (2.2, -89, 60), 18: (DEBOUT, 10, 30)})
@@ -171,7 +172,8 @@ for k in range(11):                                         # monte du palier (y
     boite(9.4, y0, 10.9, y1, max(0, dessus - 0.55), dessus, "#9c6b3c")                 # la marche et son limon
     # le côté fermé, sous les marches ; vers le fond, là où la rampe touche le plafond, il monte jusqu'au plafond : dans
     # l'angle de la banquette, c'est un mur plein (l'auteur, axes 6 et 14)
-    boite(9.3, y0, 9.4, y1, 0, 3.0 if dessus + 0.96 >= 2.95 else dessus, "#dcc69c", trait=False, groupe="cote-escalier")
+    boite(9.3, y0 - 0.01, 9.4, y1 + 0.01, 0, 3.0 if dessus + 0.96 >= 2.95 else dessus, "#dcc69c", trait=False,
+          groupe="cote-escalier")                           # les morceaux se chevauchent d'un cm : pas de fente entre eux
     boite(9.33, (y0 + y1) / 2 - 0.02, 9.37, (y0 + y1) / 2 + 0.02, dessus, dessus + 0.9, BOIS)  # les barreaux
 boite(9.4, 6.4, 10.9, 7.9, 0, 0.03, "#b07a45")              # le palier
 boite(9.3, 0, 9.4, 0.9, 0, 3.0, "#dcc69c", trait=False, groupe="cote-escalier")   # le bout, sous le palier du haut
@@ -298,7 +300,7 @@ def vue(numero, sortie):
             sol.append(cles.get(("plaque", k)))
     for k, (_, forme, couleur, trait, groupe) in enumerate(OBJETS):
         for f, (points, normale) in enumerate(faces(forme)):
-            remplir(points, normale, couleur, ("boite", k, f) if trait else ("groupe", groupe, normale))
+            remplir(points, normale, couleur, ("boite", k, f) if trait else ("groupe", groupe))   # un groupe : un seul pan
 
     # les carreaux du sol, tous les 50 cm, retrouvés depuis la profondeur
     if sol and sol[0] is not None:
