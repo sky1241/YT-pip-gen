@@ -25,6 +25,8 @@ Les mêmes 10 prompts pour chaque perso (CLAUDE.md, protocole, étape 7), les m�
 | 9 | Sa signature, celle de `fiche.json` > `lora` > `test_signature` (pour Sky : le sourire), dont les tags s'ajoutent à la fin | `upper body, facing viewer` |
 | 10 | Une situation qu'il n'a jamais vue à l'entraînement : il doit rester lui-même | `upper body, night, street, rain, holding umbrella, city lights` |
 
+Quand la fiche d'un perso donne sa tenue ou un détail d'un seul côté (`fiche.json` > `lora` > `tenue`, `cote_visible` : Maëlle depuis sa v2), le test les écrit comme en production (`pipeline/test_lora.py`, `comme_en_production`) : le haut sur les 10, les bras à partir du 5, le bas au 5, le détail d'un seul côté sauf quand le perso regarde à droite. Un LoRA testé avec ces tags ne se compare pas à un test fait sans.
+
 ## Ce qu'on regarde
 
 - Le perso est reconnaissable sur les 10 images, sans hésiter.

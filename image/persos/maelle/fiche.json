@@ -71,7 +71,7 @@
     "flip_horizontal": false,
     "_note": "flip désactivé (détails asymétriques)",
     "declencheur": "maellekebab",
-    "_note_legendes": "légendes en tags Danbooru (le format d'Animagine XL 4.0). Les traits fixes (cheveux cuivrés en undercut, côté rasé à sa gauche, cicatrice au sourcil gauche, yeux verts, eye-liner, taches de rousseur, col roulé noir, bague au pouce droit) ne sont jamais écrits : le mot déclencheur les absorbe. On écrit ce qui change : l'angle, l'expression, le cadrage",
+    "_note_legendes": "légendes en tags Danbooru (le format d'Animagine XL 4.0). Le mot déclencheur absorbe le visage et les cheveux (cuivrés, cicatrice au sourcil gauche, yeux verts, eye-liner, taches de rousseur). Depuis la v2 (2026-10-18), on écrit en plus sa tenue là où elle se voit (lora > tenue) et son côté rasé là où il se voit (lora > cote_visible) : la v1 a perdu son pantalon noir en pied, lu ses manches remontées comme des manches courtes avec un bracelet, et fait passer le côté rasé à sa droite quand elle se tourne. On écrit aussi ce qui change : l'angle, l'expression, le cadrage. La bague au pouce (quelques pixels) n'est pas apprise : elle se pose en production, sur les plans où sa main droite se voit",
     "angle_trois_quarts": "three-quarter view, facing left",
     "angle_signatures": "three-quarter view, facing left",
     "_note_angles": "sa palette, ses signatures et ses gestes sont de trois-quarts sous l'angle de son image maître : son côté gauche, tournée vers la gauche de l'image (vérifié le 2026-10-18)",
@@ -87,6 +87,39 @@
       "references/assis-cote_v2.png": "full body, sitting, chair, crossed legs, from side, facing left",
       "references/assis-face_v2.png": "full body, sitting, chair, crossed legs, facing viewer",
       "references/accoude_v2.png": "full body, standing, leaning, elbow rest, holding cup"
+    },
+    "cote_visible": {
+      "tag": "undercut",
+      "cache_sur": [
+        "references/trois-quarts-droit_v1.png",
+        "references/profil-droit_v1.png",
+        "references/pied-trois-quarts-droit_v2.png",
+        "references/pied-profil-droit_v1.png"
+      ],
+      "_note": "le côté rasé est à sa gauche : invisible quand elle montre son côté droit. En production : écrire « undercut » sauf quand elle est tournée vers la droite de l'image (facing right)"
+    },
+    "tenue": {
+      "haut": "black turtleneck",
+      "bras": "long sleeves, sleeves pushed up",
+      "bas": "black pants, high-waist pants, black ankle boots",
+      "bras_visibles": [
+        "ennui",
+        "fatigue",
+        "triomphe",
+        "bras-croises"
+      ],
+      "_note": "à écrire aussi dans ses prompts de production : le haut toujours, les bras quand ils se voient, le bas en pied"
+    },
+    "renfort": {
+      "fichiers": [
+        "references/trois-quarts-droit_v1.png",
+        "references/profil-droit_v1.png",
+        "references/pied-trois-quarts-droit_v2.png",
+        "references/pied-profil-droit_v1.png"
+      ],
+      "repetitions": 10,
+      "repetitions_base": 3,
+      "_note": "ses 4 vues du côté droit, contre une cinquantaine du côté gauche : répétées plus souvent (v2, 2026-10-18)"
     }
   },
   "voix": "audio/voix/maelle/",

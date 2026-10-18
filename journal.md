@@ -503,3 +503,24 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   la P100) : démarré en moins de 2 minutes. La P100 n'a pas les cœurs tensoriels de la T4 : l'entraînement peut être plus long.
 - **LoRA de Maëlle v1 entraîné (2026-10-18)** : 61 min sur une P100 (plus vite que prévu), 69 images × 3 répétitions × 8 époques
   = 1 656 pas, perte moyenne finale 0,057. Les 4 fichiers (époques 2, 4, 6, 8) vérifiés et copiés dans `<modeles_root>/loras/`.
+- **Le test du LoRA de Maëlle v1 (2026-10-18)** (`maelle_v1.safetensors`, planche
+  `<sorties_root>/comfyui/test-standard_maelle_v1_planche.png`) : reconnaissable sur les 10, la cicatrice au sourcil gauche,
+  le côté rasé à sa gauche de face et de trois-quarts gauche, le style tient (pluie, resto). Quatre défauts. **1. Le côté
+  rasé passe à sa droite dès qu'elle se tourne vers la droite de l'image** : le profil (test 4) la tourne à droite avec un
+  côté rasé, donc du mauvais côté ; « facing right » (test 2) la tourne à gauche ; même avec « facing right » au profil, pareil
+  (essai à part). La cause : 4 images sur 69 montrent son côté droit (les cheveux longs), une cinquantaine son côté gauche
+  (toute la palette, les signatures, les gestes) ; le déclencheur a appris « le côté rasé se voit toujours ». **2. La tenue
+  en pied perdue** (test 5 : pantalon caramel, col roulé sans manches, une chaîne). **3. Les manches courtes et un bracelet
+  noir aux deux poignets** (tests 5 à 8) : sur toutes ses références, les manches sont remontées et font un bourrelet à
+  l'avant-bras, lu (hypothèse) comme une manche courte plus un bracelet. **4. La bague au pouce droit pas apprise** (quelques
+  pixels sur les images d'entraînement). Essai : écrire la tenue dans le prompt (`black turtleneck, long sleeves, sleeves
+  pushed up, black pants, high-waist pants, black ankle boots`) règle le 2 et le 3 en partie (le pantalon noir, les manches
+  longues ; un bracelet reste au resto) ; ne règle pas le 1. Images : `<sorties_root>/comfyui/essai_maelle_v1_*`.
+- **Le LoRA de Maëlle v2 (2026-10-18)**, pour le défaut 1 sans nouvelle image : ses 4 vues du côté droit dans un sous-dossier
+  répété 10 fois (contre 3 pour les 65 autres : 17 % des pas au lieu de 6 %), et deux sortes de tags en plus dans les
+  légendes (`pipeline/preparer_lora.py` > `tags_en_plus`, réglés dans `fiche.json` > `lora`) : `undercut` sur les images où
+  le côté rasé se voit, jamais sur celles du côté droit ; la tenue là où elle se voit. Le déclencheur garde le visage et les
+  cheveux. En production, ces tags s'écrivent dans le prompt ; le test standard aussi les écrit désormais
+  (`comme_en_production`). Mêmes réglages d'entraînement que la v1 (`pipeline/kaggle/lora_maelle_v2`), 8 × 235 = 1 880 pas.
+  Si le côté rasé passe encore à droite : faire faire par l'auteur une planche de son côté droit (trois-quarts droit, quelques
+  expressions et gestes), le seul vrai remède à un jeu déséquilibré. La bague se posera en production.

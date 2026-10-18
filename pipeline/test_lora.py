@@ -36,6 +36,25 @@ def prompts_du_test(fiche):
     return prompts
 
 
+def comme_en_production(numero, tags, fiche):
+    """Les tags que le perso n'absorbe pas dans son déclencheur (fiche.json > lora > tenue, cote_visible), écrits comme
+    ils le seront en production : le haut toujours, les bras dès qu'ils peuvent se voir, le bas en pied, le détail d'un
+    seul côté sauf quand le perso montre l'autre côté (pour Maëlle : son côté rasé, invisible quand elle regarde à droite)."""
+    lora = fiche["lora"]
+    en_plus = []
+    cote = lora.get("cote_visible")
+    if cote and "facing right" not in tags:
+        en_plus.append(cote["tag"])
+    tenue = lora.get("tenue")
+    if tenue:
+        en_plus.append(tenue["haut"])
+        if numero >= 5:
+            en_plus.append(tenue["bras"])
+        if numero == 5:
+            en_plus.append(tenue["bas"])
+    return ", ".join(en_plus + [tags])
+
+
 def workflow(positif, lora, graine, largeur, hauteur, prefixe):
     return {
         "1": {"class_type": "CheckpointLoaderSimple", "inputs": {"ckpt_name": "animagine-xl-4.0.safetensors"}},
@@ -79,6 +98,7 @@ def main():
     sorties = Path(CONFIG["sorties_root"]) / "comfyui"
     images = []
     for numero, tags in prompts_du_test(fiche).items():
+        tags = comme_en_production(numero, tags, fiche)
         largeur, hauteur = (832, 1216) if numero == 5 else (1024, 1024)
         t = time.time()
         fichiers = generer(workflow(f"{debut}, {tags}, {QUALITE}", lora, 1000 + numero, largeur, hauteur,

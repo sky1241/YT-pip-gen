@@ -1,13 +1,14 @@
 """Prépare le jeu d'entraînement du LoRA d'un perso : ses images retenues, agrandies, chacune avec sa légende.
 
 Les images viennent de provenance.json (les versions retenues), les légendes de leur nom de fichier : l'angle,
-l'expression, le cadrage. Les traits fixes du perso ne sont jamais écrits : le mot déclencheur (fiche.json > lora)
-les absorbe. Les petites images (les cases des planches, environ 510 pixels) sont agrandies avec Real-ESRGAN anime,
+l'expression, le cadrage. Les traits fixes du perso ne sont pas écrits : le mot déclencheur (fiche.json > lora)
+les absorbe, sauf ceux qu'il n'a pas su absorber (tags_en_plus). Les petites images (les cases des planches, environ 510 pixels) sont agrandies avec Real-ESRGAN anime,
 puis ramenées à environ un mégapixel, la taille de travail du modèle.
 
   ~/venvs/kebab/bin/python pipeline/preparer_lora.py sky v1
 
-Sortie : <sorties_root>/lora/<perso>/jeu_<version>/ (images PNG et légendes .txt du même nom).
+Sortie : <sorties_root>/lora/<perso>/jeu_<version>/ (images PNG et légendes .txt du même nom). Avec un renfort
+(fiche.json > lora > renfort) : deux sous-dossiers, base/ et renfort/, et leurs répétitions dans repetitions.json.
 """
 import json
 import math
@@ -140,6 +141,32 @@ def legende(chemin, fiche):
     return f"{cadrage}, {angle}, {yeux}{tags}, {FOND}"
 
 
+def tags_en_plus(chemin, fiche):
+    """Les tags que le mot déclencheur n'a pas su absorber (fiche.json > lora, facultatifs) :
+    - tenue : les vêtements, écrits là où ils se voient. Le LoRA v1 de Maëlle a perdu sa tenue en pied (un pantalon
+      caramel) et a lu ses manches remontées comme des manches courtes avec un bracelet (journal.md, 2026-10-18) ;
+    - cote_visible : un détail d'un seul côté (le côté rasé de Maëlle), écrit seulement sur les images où il se voit :
+      sans ça, le déclencheur l'absorbe comme « toujours visible » et le fait passer de l'autre côté quand le perso
+      se tourne."""
+    lora = fiche["lora"]
+    dossier, nom = chemin.split("/")
+    base = nom.rsplit("_v", 1)[0]
+    cle = base.removeprefix("trois-quarts_")
+    tags = []
+    cote = lora.get("cote_visible")
+    if cote and chemin not in cote["cache_sur"]:
+        tags.append(cote["tag"])
+    tenue = lora.get("tenue")
+    if tenue:
+        tags.append(tenue["haut"])
+        en_pied = dossier == "references" and base.split("-")[0] in ("pied", "assis", "accoude")
+        if en_pied or dossier == "gestes" or base.startswith("master") or cle in tenue["bras_visibles"]:
+            tags.append(tenue["bras"])
+        if en_pied:
+            tags.append(tenue["bas"])
+    return tags
+
+
 def images_retenues(perso):
     prov = json.loads((perso / "provenance.json").read_text())
     fichiers = []
@@ -188,6 +215,15 @@ def main():
     sortie.mkdir(parents=True, exist_ok=True)
     modele, appareil = charger_agrandisseur()
     fichiers = images_retenues(perso)
+    # les vues rares (fiche.json > lora > renfort) vont dans un sous-dossier répété plus souvent à l'entraînement
+    renfort = fiche["lora"].get("renfort")
+    if renfort:
+        manque = set(renfort["fichiers"]) - set(fichiers)
+        assert not manque, f"renfort : pas dans les images retenues : {manque}"
+        for sous in ("base", "renfort"):
+            (sortie / sous).mkdir()
+        (sortie / "repetitions.json").write_text(json.dumps(
+            {"base": renfort["repetitions_base"], "renfort": renfort["repetitions"]}) + "\n")
     for i, chemin in enumerate(fichiers, 1):
         image = Image.open(perso / chemin).convert("RGB")
         w, h = image.size
@@ -196,10 +232,11 @@ def main():
             k = math.sqrt(AIRE / (w * h))
             image = image.resize((round(w * k / 8) * 8, round(h * k / 8) * 8), Image.LANCZOS)
         nom = chemin.replace("/", "__").removesuffix(".png")
-        image.save(sortie / f"{nom}.png")
+        dossier = sortie / ("renfort" if chemin in renfort["fichiers"] else "base") if renfort else sortie
+        image.save(dossier / f"{nom}.png")
         genre = "1girl, solo, female focus" if fiche.get("genre") == "f" else "1boy, solo, male focus"
-        texte = f"{declencheur}, {genre}, {legende(chemin, fiche)}"
-        (sortie / f"{nom}.txt").write_text(texte + "\n")
+        texte = ", ".join([declencheur, genre, *tags_en_plus(chemin, fiche), legende(chemin, fiche)])
+        (dossier / f"{nom}.txt").write_text(texte + "\n")
         print(f"{i:3d}/{len(fichiers)}  {image.size[0]}x{image.size[1]}  {nom}")
     print(f"jeu prêt : {sortie} ({len(fichiers)} images)")
 

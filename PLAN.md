@@ -150,7 +150,8 @@ La palette des émotions, la même pour tous : 36 émotions en 6 planches, défi
   - [x] Bouches : les 6 (références de forme ; les calques se feront en local sur une seule image de base)
   - [ ] Taches de rousseur à simplifier au passage local : sur les planches, elles restent nombreuses
   - [ ] LoRA : passage local, entraînement sans retournement horizontal, test standard
-    - [ ] v1, entraînée sur Kaggle le 2026-10-18 (une P100, 61 min, 1 656 pas, perte moyenne finale 0,057) : 69 images de ChatGPT sans passage local (`<sorties_root>/lora/maelle/jeu_v1/`), le mot déclencheur `maellekebab` ; test standard en cours
+    - [x] v1, entraînée sur Kaggle le 2026-10-18 (une P100, 61 min, 1 656 pas, perte moyenne finale 0,057) : 69 images de ChatGPT sans passage local (`<sorties_root>/lora/maelle/jeu_v1/`), le mot déclencheur `maellekebab`. Testée : le visage oui ; le côté rasé passe à sa droite quand elle se tourne, la tenue en pied perdue, la bague pas apprise (`journal.md`)
+    - [ ] v2, lancée sur Kaggle le 2026-10-18 à 20 h 39 : ses 4 vues du côté droit répétées plus souvent, `undercut` et sa tenue dans les légendes là où ils se voient (`fiche.json` > `lora`) ; puis test standard
   - [ ] Voix : compléter et valider `audio/voix/maelle/`
 - [ ] Patrick
   - [ ] Fiche : compléter le look
