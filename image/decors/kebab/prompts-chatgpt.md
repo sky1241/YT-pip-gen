@@ -24,7 +24,7 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 | A12 | L'axe 12 : le grand miroir de biais : **fait** (une retouche) | `image/decors/kebab/miroir/fond_v1.png` |
 | A13 | L'axe 13 : depuis le miroir, la table de Sky en plongée : **fait** (deux retouches) | `image/decors/kebab/depuis-le-miroir/fond_v1.png` |
 | A14 | L'axe 14 : l'angle de la banquette, debout : **fait** (la retouche gardée, sans le bout d'escalier) | `image/decors/kebab/coin-de-la-banquette/fond_v1.png` |
-| A18 | L'axe 18 : l'horloge, en gros plan | `image/decors/kebab/horloge/fond_v1.png` |
+| A18 | L'axe 18 : l'horloge, en gros plan : **fait** (les aiguilles en code) | `image/decors/kebab/horloge/fond_v1.png` |
 | KB2 v2 | Le plan peint, d'après le plan v3 : bonne disposition, mais l'escalier sur la rue, la lumière de côté | (supprimé) |
 | KB2 v3 | Le plan peint, d'après le plan v5 sans caméras : **la base fixe, validée** | `image/decors/kebab/plan-peint_v2.png` |
 | A6 v3 | L'axe 6 : la table de Sky dans l'angle, la banquette, le miroir, la plante : **fait** (la vue en volumes, puis une retouche) | `image/decors/kebab/table-du-fond/fond_v1.png` |
@@ -982,3 +982,5 @@ Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the 
 ```
 
 À contrôler à la reprise : l'horloge ronde, la même qu'à l'axe 8, de face ; le cadran vide, sans aiguilles ni chiffres ; le bord de la hotte à droite ; le mur ; aucun texte.
+
+**Résultat de A18, le 2026-10-18 : du premier coup**, le cadran vide. Les aiguilles : `pipeline/aiguilles.py` (exemple : 10:13, l'heure du message de Léa).

@@ -461,7 +461,7 @@ Les axes de l'épisode 1, en plus de ceux du pilote (`decors/kebab/axes.md`, à 
 - [x] `depuis-le-miroir/fond_v1.png` (13) : la salle vue par Sky qui dessine
 - [x] `coin-de-la-banquette/fond_v1.png` (14) : l'angle de la banquette, les plans de groupe
 - [ ] `devanture/fond_v1.png` (15) : la devanture, les panneaux, le menu plastifié, la rue et le tram
-- [ ] `horloge/fond_v1.png` (18) : l'horloge au-dessus du comptoir
+- [x] `horloge/fond_v1.png` (18) : l'horloge au-dessus du comptoir
 - [ ] `banquette-de-droite/fond_v1.png` (19) : les tables de droite en enfilade
 - [ ] `frigo/fond_v1.png` (16) : le frigo à boissons, si besoin
 
