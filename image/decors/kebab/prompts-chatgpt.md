@@ -1089,3 +1089,15 @@ Edit ONLY the shopfront at the far end of this image. Keep everything else exact
 ```
 
 À contrôler à la reprise : les panneaux sur toute la largeur, du sol au haut de l'ouverture ; la porte au milieu, sa poignée côté salle ; la rue derrière le verre, la même ; des reflets légers ; le reste inchangé ; aucun texte.
+
+**Résultat de A19 fermé, le 2026-10-18 : validé par l'auteur du premier coup** (`banquette-de-droite/fond_ferme_v1.png`).
+
+### Prompt A19 pluie — La salle, le rideau fermé, sous la pluie
+
+Retouche de l'image fermée, dans la même conversation. Navier-Stokes : « Jeudi matin. 9h47. Il pleut. La grosse. Celle qui rebondit sur le trottoir et qui fait un bruit de friture sur la vitrine. »
+
+```
+Edit ONLY the weather and the light of this image. Keep everything exactly where it is: the same view, the bench, the staircase side and banister, the tables, chairs, sauces, ceiling lights, the closed glass shopfront and its door. Make only this change: it is a grey, rainy morning with heavy rain. Outside, the sky is overcast and the street is grey and wet: rain falls in thin slanted streaks, the sidewalk shines with puddles, the grass of the tram track and the trees are dark and wet. On the glass of the shopfront, drops and trickles of water run down. Inside, there is no sunlight and no leaf shadows anymore: the room is lit by its warm ceiling lights, cosy against the grey outside; the bench and the tables keep their colours, with soft warm light. No people. No letters, no words, no logos anywhere.
+```
+
+À contrôler à la reprise : le même cadrage ; plus de soleil ni d'ombres de feuilles dedans ; les plafonniers allumés ; la pluie dehors et l'eau sur le verre ; la rue grise ; aucune personne, aucun texte.
