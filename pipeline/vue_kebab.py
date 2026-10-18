@@ -27,7 +27,7 @@ CAMERAS[9] = (1.6, -9, 70)            # derrière le comptoir, près de la broch
 CAMERAS[15] = (DEBOUT, 0, 74)        # vers l'avant gauche : les panneaux repliés, le bout du comptoir, la rue
 CAMERAS[8] = (DEBOUT, 0, 70)          # le mur de la cuisine de face : la ligne du plafond reste droite (l'auteur)
 CAMERAS[7] = (ASSIS, 0, 80)          # plus large : la rampe de l'escalier à gauche et la caisse à droite (l'auteur)
-CAMERAS.update({5: (2.1, -25, 70), 11: (DEBOUT, 18, 66), 13: (DEBOUT, -24, 74), 17: (2.2, -89, 60), 18: (DEBOUT, 10, 34)})
+CAMERAS.update({5: (2.45, -20, 72), 11: (DEBOUT, 18, 66), 13: (DEBOUT, -24, 74), 17: (2.2, -89, 60), 18: (DEBOUT, 10, 34)})
 
 FOND, OBJETS = [], []   # les surfaces plates du décor, et les boîtes ; tout passe par un tampon de profondeur (vue)
 

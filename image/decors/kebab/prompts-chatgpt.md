@@ -27,6 +27,7 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 | A18 | L'axe 18 : l'horloge, en gros plan : **fait** (les aiguilles en code) | `image/decors/kebab/horloge/fond_v1.png` |
 | A9 | L'axe 9 : la broche, de près : **fait** (une retouche) | `image/decors/kebab/broche/fond_v1.png` |
 | A15 | L'axe 15 : la devanture vue de dedans, les panneaux repliés : **fait** | `image/decors/kebab/devanture/fond_v1.png` |
+| A5 | L'axe 5 : depuis l'escalier, en plongée | `image/decors/kebab/depuis-l-escalier/fond_v1.png` |
 | KB2 v2 | Le plan peint, d'après le plan v3 : bonne disposition, mais l'escalier sur la rue, la lumière de côté | (supprimé) |
 | KB2 v3 | Le plan peint, d'après le plan v5 sans caméras : **la base fixe, validée** | `image/decors/kebab/plan-peint_v2.png` |
 | A6 v3 | L'axe 6 : la table de Sky dans l'angle, la banquette, le miroir, la plante : **fait** (la vue en volumes, puis une retouche) | `image/decors/kebab/table-du-fond/fond_v1.png` |
@@ -1031,3 +1032,20 @@ Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the 
 À contrôler à la reprise : la devanture grande ouverte, sans poteaux ; la rue comme à l'axe 7, deux arbres ; les panneaux repliés à droite ; le bout du comptoir, la caisse, la plante ; aucun texte.
 
 **Résultat de A15, le 2026-10-18 : validé par l'auteur du premier coup.**
+
+### Prompt A5 — Depuis l'escalier, en plongée
+
+Maëlle parle depuis l'escalier (« Le Miroir », l. 72) ; Daria et Théo descendent. La caméra sur les premières marches, juste au-dessus de la rampe, en plongée sur la salle. Quatre images jointes, dans cet ordre : `~/Téléchargements/kebab_pour_A5_1_vue.png`, `~/Téléchargements/kebab_pour_axes_plan-peint.png`, `~/Téléchargements/kebab_pour_A5_3_angle4.png` (le fond de l'axe 4 : la même salle, la même banquette, le même miroir), `~/Téléchargements/kebab_pour_A5_4_angle8.png` (le fond de l'axe 8 : le même comptoir, la même cuisine, le même frigo).
+
+```
+The first attached image is a rough 3D layout of one view of our kebab restaurant, made of simple flat-coloured volumes: it fixes the camera, the perspective, the framing and the place of every object. The second attached image is the same restaurant seen from above, painted in our style. The third and fourth attached images are two other views of the same restaurant, already painted and approved: the tables, chairs, red bench, mirror, counter, salad trays, kebab spit, hood, fridge, plants, walls and light must look exactly the same. Paint exactly the view of the first image, as an empty background for an anime series: keep the same camera, the same perspective and framing, and every object at the same place, with the same size and angle, as if the layout had been painted over. The camera stands on the lower steps of the wooden staircase, just above its banister, and looks down into the dining room, toward the back. Replace the simple volumes with the real objects:
+- on the right, in the foreground, the wooden handrail and balusters of the staircase banister, going down toward us;
+- below, the rectangular wooden tables with their chairs, seen from above, each with a red sauce bottle, a white sauce bottle and a napkin dispenser;
+- at the back, the long dark smoky mirror above the red padded bench, which runs along the back wall;
+- on the left, the stainless steel counter with the salad trays built into it and the low glass sneeze guard, the kebab spit and the hood behind, against the left wall;
+- in the back left corner, the tall drinks fridge with glass doors and a large green potted plant;
+- at the top, the ceiling, plain and closed.
+Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the style of the other images (clean dark outlines, flat cel shading, muted warm palette, painted details). NOT a 3D render, NOT photorealistic, and do not keep the flat colours of the layout. Light: warm morning daylight from the open shopfront, out of frame behind the camera on the left; inside, warm and dim; no windows, no sharp patches of sunlight on the walls. No people. No text, no letters and no logos anywhere. Landscape format (1536×1024).
+```
+
+À contrôler à la reprise : la plongée depuis l'escalier ; la rampe au premier plan à droite ; les tables vues d'en haut ; le miroir et la banquette au fond ; le comptoir, la broche, la hotte à gauche ; le frigo et la plante ; aucune personne, aucun texte.
