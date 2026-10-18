@@ -1049,3 +1049,13 @@ Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the 
 ```
 
 À contrôler à la reprise : la plongée depuis l'escalier ; la rampe au premier plan à droite ; les tables vues d'en haut ; le miroir et la banquette au fond ; le comptoir, la broche, la hotte à gauche ; le frigo et la plante ; aucune personne, aucun texte.
+
+Résultat de A5, le 2026-10-18 : « pas mal ». À corriger (l'auteur) : allonger un peu le comptoir des bacs à légumes, à son bout droit ; Claude : les bacs y vont jusqu'au bout, alors que le bout du comptoir, côté fond, doit rester libre (la place de la théière de Patrick, axe 8). Capture hors du repo (`depuis-l-escalier_essai-1_capture.png`).
+
+### Prompt A5 retouche — Le comptoir plus long, son bout libre
+
+```
+Edit ONLY the stainless steel counter with the salad trays, on the left. Keep everything else exactly as it is: the same view, the same trays, kebab spit, hood, fridge, plant, tables, chairs, bench, mirror, staircase, style and light. Make only this change: the counter is a little longer on its right end, toward the fridge: after the last salad tray, the stainless steel counter continues with a plain, clear and empty top, about as long as two trays, and its low glass sneeze guard stops above the last tray. The end of the counter stays a short step away from the fridge.
+```
+
+À contrôler à la reprise : le comptoir plus long ; un bout libre, en inox, après les bacs ; la vitre seulement au-dessus des bacs ; un petit passage avant le frigo ; rien d'autre de changé.
