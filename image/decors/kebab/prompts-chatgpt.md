@@ -25,7 +25,7 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 | A13 | L'axe 13 : depuis le miroir, la table de Sky en plongée : **fait** (deux retouches) | `image/decors/kebab/depuis-le-miroir/fond_v1.png` |
 | A14 | L'axe 14 : l'angle de la banquette, debout : **fait** (la retouche gardée, sans le bout d'escalier) | `image/decors/kebab/coin-de-la-banquette/fond_v1.png` |
 | A18 | L'axe 18 : l'horloge, en gros plan : **fait** (les aiguilles en code) | `image/decors/kebab/horloge/fond_v1.png` |
-| A9 | L'axe 9 : la broche, de près | `image/decors/kebab/broche/fond_v1.png` |
+| A9 | L'axe 9 : la broche, de près : **fait** (une retouche) | `image/decors/kebab/broche/fond_v1.png` |
 | KB2 v2 | Le plan peint, d'après le plan v3 : bonne disposition, mais l'escalier sur la rue, la lumière de côté | (supprimé) |
 | KB2 v3 | Le plan peint, d'après le plan v5 sans caméras : **la base fixe, validée** | `image/decors/kebab/plan-peint_v2.png` |
 | A6 v3 | L'axe 6 : la table de Sky dans l'angle, la banquette, le miroir, la plante : **fait** (la vue en volumes, puis une retouche) | `image/decors/kebab/table-du-fond/fond_v1.png` |
@@ -1011,3 +1011,5 @@ Edit ONLY the worktop on the left of the kebab spit. Keep everything else exactl
 ```
 
 À contrôler à la reprise : le bol près de la broche, l'évier et son robinet plus à gauche, comme à l'axe 8 ; rien d'autre de changé.
+
+**Résultat de la retouche A9, le 2026-10-18 : validé par l'auteur.**

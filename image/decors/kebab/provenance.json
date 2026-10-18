@@ -162,6 +162,13 @@
       "date": "2026-10-18",
       "axe": 18,
       "_note": "du premier coup, téléchargé sous le nom « Mur chaleureux avec horloge et hotte.png ». Le cadran vide : les aiguilles se posent en code à l'heure de la scène (pipeline/aiguilles.py, centre 763,416)"
+    },
+    "broche/fond_v1.png": {
+      "source": "ChatGPT",
+      "prompt": "A9 (la vue en volumes, les fonds 8 et 21 joints) puis A9 retouche (le bol et l'évier)",
+      "date": "2026-10-18",
+      "axe": 9,
+      "_note": "validé par l'auteur, téléchargé sous le nom « Cuisine de kebab chaleureuse et moderne.png ». La broche de face, le grill rougeoyant, le bol, l'évier, le couteau, le plateau, la hotte, l'horloge coupée"
     }
   },
   "_supprimees": "le 2026-10-17, à la demande de l'auteur (« vire les autres images ») : maquette_v1.png, maquette_v2.png et plan_v1.png, retirées du repo (elles restent dans l'historique git, jusqu'au commit 50132dd), et les retouches intermédiaires du disque externe ; le 2026-10-17, à la demande de l'auteur (« clean-moi les images qui restent du kebab ») : plan-peint_v1.png, table-du-fond/fond_v1.png (l'ancien plan), plan_v2 à v4, plan-axes_v1 à v4 (dans l'historique git), les captures du disque externe et les images du kebab des Téléchargements"
