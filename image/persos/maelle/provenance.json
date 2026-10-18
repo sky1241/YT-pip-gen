@@ -550,6 +550,30 @@
       "case": 3,
       "date": "2026-10-18",
       "retenue": true
+    },
+    "planches/poses_v1.png": {
+      "prompt": "M3",
+      "date": "2026-10-18",
+      "retenue": true,
+      "_note": "les poses et les côtés justes (assise de côté : son côté gauche ; accoudée du coude droit, le café dans la main gauche). La bague à l'index (cases 1 et 3), pas au pouce"
+    },
+    "references/assis-face_v1.png": {
+      "planche": "planches/poses_v1.png",
+      "case": 1,
+      "date": "2026-10-18",
+      "retenue": true
+    },
+    "references/assis-cote_v1.png": {
+      "planche": "planches/poses_v1.png",
+      "case": 2,
+      "date": "2026-10-18",
+      "retenue": true
+    },
+    "references/accoude_v1.png": {
+      "planche": "planches/poses_v1.png",
+      "case": 3,
+      "date": "2026-10-18",
+      "retenue": true
     }
   }
 }

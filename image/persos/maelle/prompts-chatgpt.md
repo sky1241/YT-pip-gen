@@ -59,7 +59,7 @@ Au départ : commence par le prompt 1, la première planche d'émotions. C'est l
 | 12 | Soulagement, seul : faite | `expressions/trois-quarts_soulagement_v3.png` |
 | M1 | En pied, de face et de trois-quarts : faite (une retouche) | `planches/pied-1_v1.png` |
 | M2 | En pied, de profil et de dos : faite | `planches/pied-2_v1.png` |
-| M3 | Trois poses | `planches/poses_v1.png` |
+| M3 | Trois poses : faite | `planches/poses_v1.png` |
 | M4 | Six gestes (à valider par l'auteur avant) | `planches/gestes_v1.png` |
 
 Les chemins partent de `image/persos/maelle/`.
@@ -335,6 +335,12 @@ Make a full-body sheet of Maëlle: a regular grid of 3 columns and 1 row, landsc
 3. Standing, leaning with her right elbow on a plain light-grey block at counter height, a coffee cup in her left hand.
 
 No text or labels anywhere.
+```
+
+Résultat de M3, le 2026-10-18 : les poses et les côtés justes, la bague à l'index (cases 1 et 3). Claude propose de ne plus courir après la bague dans ChatGPT : il la change de doigt à chaque retouche, et le LoRA n'apprendra pas un doigt précis de toute façon (un détail de quelques pixels, que le modèle redessine à chaque image). En production, elle se corrige par inpainting sur les plans où sa main droite se voit de près. Si l'auteur veut quand même la retouche :
+
+```
+Edit ONLY the hands. Keep everything else exactly as it is, in all three cells. In each cell, the wide silver ring is on HER RIGHT hand, around the THUMB, the short thick finger set apart from the four others: move it there from the finger it is on now. In the first cell, her right hand is the upper hand on her knee; in the third cell, it is the hand hanging over the grey block. Her left hand has no ring.
 ```
 
 ### Prompt M4 — Six gestes

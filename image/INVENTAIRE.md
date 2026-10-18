@@ -237,7 +237,7 @@ Chaque fond a aussi sa version pluie et sa version nuit, dans le même cadrage (
 **En pied et en gestes** (pour son LoRA)
 - [x] `planches/pied-1_v1.png` : en pied, de face et de trois-quarts des deux côtés
 - [x] `planches/pied-2_v1.png` : en pied, de profil des deux côtés et de dos
-- [ ] `planches/poses_v1.png` : assis de face, assis de côté, debout accoudé
+- [x] `planches/poses_v1.png` : assis de face, assis de côté, debout accoudé
 - [ ] `planches/gestes_v1.png` : elle boit son café, tient sa tasse à deux mains, bras croisés, ramasse une serviette sur la table, regarde son téléphone, sur un laptop
 
 **Palette des émotions, de trois-quarts** (les 36 de `emotions.md`, sous l'angle de son image maître, côté gauche)
