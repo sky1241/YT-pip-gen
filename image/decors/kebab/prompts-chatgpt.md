@@ -30,6 +30,7 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 | A5 | L'axe 5 : depuis l'escalier, en plongée : **fait** (une retouche) | `image/decors/kebab/depuis-l-escalier/fond_v1.png` |
 | A19 | L'axe 19 : le long de la banquette de droite, vers la rue : **fait** | `image/decors/kebab/banquette-de-droite/fond_v1.png` |
 | A24 pluie | L'axe 24 : la table de Sky dans Navier-Stokes, rideau fermé, sous la pluie : **fait** | `image/decors/kebab/table-navier-stokes/fond_pluie_v1.png` |
+| A25 pluie | L'axe 25 : depuis la place de Sky dans Navier-Stokes, vers la salle | `image/decors/kebab/table-navier-stokes-contrechamp/fond_pluie_v1.png` |
 | KB2 v2 | Le plan peint, d'après le plan v3 : bonne disposition, mais l'escalier sur la rue, la lumière de côté | (supprimé) |
 | KB2 v3 | Le plan peint, d'après le plan v5 sans caméras : **la base fixe, validée** | `image/decors/kebab/plan-peint_v2.png` |
 | A6 v3 | L'axe 6 : la table de Sky dans l'angle, la banquette, le miroir, la plante : **fait** (la vue en volumes, puis une retouche) | `image/decors/kebab/table-du-fond/fond_v1.png` |
@@ -1122,3 +1123,19 @@ Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the 
 À contrôler à la reprise : la table devant la banquette, son bout contre elle ; la rampe jusqu'au poteau, le palier et sa plante ; le rideau de verre fermé à droite, ses cadres ; la pluie dehors, l'eau sur le verre ; pas de soleil dedans, les plafonniers ; aucune personne, aucun texte.
 
 **Résultat de A24 pluie, le 2026-10-18 : validé par l'auteur du premier coup**, directement sous la pluie depuis la vue en volumes rideau fermé.
+
+### Prompt A25 pluie — Depuis la place de Sky, vers la salle
+
+Le contrechamp de l'axe 24 : ce que voit Sky, assis sur la banquette au bout de la table ; Patrick en face, Mehmet « depuis le comptoir » (Navier-Stokes, l. 15 à 23). Quatre images jointes, dans cet ordre : `~/Téléchargements/kebab_pour_A25_1_vue.png`, `~/Téléchargements/kebab_pour_A25_2_angle24-pluie.png` (le fond de l'axe 24 : la même pluie, le même rideau fermé, la même table), `~/Téléchargements/kebab_pour_A25_3_angle8.png` (le fond de l'axe 8 : le même comptoir, la même cuisine), `~/Téléchargements/kebab_pour_A25_4_angle2.png` (le fond de l'axe 2 : la même salle).
+
+```
+The first attached image is a rough 3D layout of one view of our kebab restaurant, made of simple flat-coloured volumes: it fixes the camera, the perspective, the framing and the place of every object. The other three attached images are views of the same restaurant, already painted and approved: the second shows the same table and the closed rainy shopfront; the third and fourth show the same counter, kitchen and dining room on a sunny day. Paint exactly the view of the first image, as an empty background for an anime series: keep the same camera, the same perspective and framing, and every object at the same place, with the same size and angle, as if the layout had been painted over. The camera is seated on the red bench at the end of the front table and looks across the dining room toward the counter. Replace the simple volumes with the real objects:
+- at the bottom, the near end of our wooden table, with a white sauce bottle, a red sauce bottle and a napkin dispenser in the middle, and its empty chairs on both sides;
+- on the left, the closed glass shopfront running away from us: tall clear glass panels in thin dark metal frames, with the long vertical handle of the door; through the glass, the street under heavy rain, the wet sidewalk, the tram track on dark wet grass, a dripping tree; drops and trickles of water run down the glass;
+- in the middle distance, the rectangular wooden tables with their chairs;
+- at the back, the stainless steel counter with the dark cash register at its near corner, the salad trays built into it behind a low glass sneeze guard; behind it, against the far wall, the kebab spit, the stainless steel hood and the round wall clock (its face empty, no hands); a large green potted plant near the counter;
+- the surface at the top is the ceiling.
+Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the style of the other images (clean dark outlines, flat cel shading, muted palette, painted details). NOT a 3D render, NOT photorealistic, and do not keep the flat colours of the layout. Light: a grey, rainy morning as in the second image: no sunlight inside; the room is lit by its warm ceiling lights; cold grey light through the glass on the left. No people. No text, no letters, no numbers and no logos anywhere. Landscape format (1536×1024).
+```
+
+À contrôler à la reprise : le bout de la table et ses sauces en bas ; le rideau fermé à gauche, la pluie dehors, l'eau sur le verre ; les tables ; le comptoir, la caisse à son angle, la broche, la hotte, l'horloge sans aiguilles ; la lumière de pluie, les plafonniers ; aucune personne, aucun texte.
