@@ -20,11 +20,13 @@ Les leçons de Sky et de Maëlle, appliquées à chaque prompt :
 - un défaut se corrige tout de suite, en retouche, case par case, en nommant les mains et les côtés par leur place dans l'image ;
 - vue de dos, ne pas demander un détail caché (le pouce, une bague) ;
 - aucun texte dans les planches : ni sur la tasse, ni sur un écran.
+- sa tasse est une tasse de thé en porcelaine, jamais un mug (l'auteur, le 2026-10-18 : le mug « COBOL FOREVER » de l'image maître vient de ChatGPT) ;
+- pas de bague, et un seul détail d'un côté : la poche de chemise et ses deux stylos.
 
 ## Prompt P0 — Sa description maître
 
 Dans la conversation où l'image maître a été faite (sinon, une neuve avec l'image maître jointe).
 
 ```
-Write the MASTER CHARACTER DESCRIPTION of Patrick, the man in the attached image, in English, to paste at the top of every future prompt so that he always looks exactly the same. Describe only what is visible, precisely and concretely: approximate age, height and build; face shape and features; hair (where it is, where it is not, its colour and length); his glasses (shape, frame, colour); his eyes and eyebrows; his skin; every item of his outfit with its colour, cut and fabric (shirt, the breast pocket and the pens in it, the open cardigan, trousers, belt, shoes); his hands; his usual posture and expression at rest. Name every detail that is on one side only as HIS LEFT or HIS RIGHT (for example the breast pocket, a watch, a part in the hair), and say it must never be mirrored. End with a short list of what he never wears. Do not invent any story or personality, and do not mention any text or logo.
+Write the MASTER CHARACTER DESCRIPTION of Patrick, the man in the attached image, in English, to paste at the top of every future prompt so that he always looks exactly the same. Describe only what is visible, precisely and concretely: approximate age, height and build; face shape and features; hair (where it is, where it is not, its colour and length); his glasses (shape, frame, colour); his eyes and eyebrows; his skin; every item of his outfit with its colour, cut and fabric (shirt, the breast pocket and the pens in it, the open cardigan, trousers, belt, shoes); his hands; his usual posture and expression at rest. Name every detail that is on one side only as HIS LEFT or HIS RIGHT (for example the breast pocket, a watch, a part in the hair), and say it must never be mirrored. End with a short list of what he never wears; it includes a mug: when he drinks, it is always tea from a delicate white porcelain teacup on its saucer. Do not invent any story or personality, and do not mention any text or logo.
 ```

@@ -9,7 +9,6 @@
     "détails asymétriques, puis le réglage du flip du LoRA",
     "ce qu'il ne porte jamais",
     "valider la silhouette, la tenue et les traits relevés par Claude sur l'image maître",
-    "l'image maître lui donne un mug « COBOL FOREVER » ; la bible et le texte du CERN (l. 16) lui donnent une tasse de thé en porcelaine : les deux (le mug au bureau, la porcelaine au kebab), ou la porcelaine seule ?",
     "la description maître : la faire écrire par ChatGPT d'après l'image maître (prompt P0)"
   ],
   "energie": {
@@ -56,11 +55,14 @@
     "grille de mots croisés",
     "document COBOL"
   ],
-  "ne_porte_jamais": [],
+  "ne_porte_jamais": [
+    "de mug : toujours sa tasse de thé en porcelaine (l'auteur, le 2026-10-18 : le mug de l'image maître vient de ChatGPT)"
+  ],
   "image_maitre": "image/persos/patrick/references/master_v1.png",
   "lora": {
     "flip_horizontal": null
   },
   "voix": "audio/voix/patrick/",
-  "sources": "bible : table des énergies, section PATRICK, réactions de groupe ; bible-ecriture.md : règles spéciales de Patrick ; « Le Miroir » (ecriture/brouillons/cern.md, partie 1)"
+  "sources": "bible : table des énergies, section PATRICK, réactions de groupe ; bible-ecriture.md : règles spéciales de Patrick ; « Le Miroir » (ecriture/brouillons/cern.md, partie 1)",
+  "_note_hommage": "Patrick rend hommage à l'oncle de l'auteur, décédé (l'auteur, le 2026-10-18)"
 }
