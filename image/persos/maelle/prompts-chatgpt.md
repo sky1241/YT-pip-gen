@@ -60,7 +60,7 @@ Au départ : commence par le prompt 1, la première planche d'émotions. C'est l
 | M1 | En pied, de face et de trois-quarts : faite (une retouche) | `planches/pied-1_v1.png` |
 | M2 | En pied, de profil et de dos : faite | `planches/pied-2_v1.png` |
 | M3 | Trois poses : faite (une retouche) | `planches/poses_v2.png` |
-| M4 | Six gestes (à valider par l'auteur avant) | `planches/gestes_v1.png` |
+| M4 | Six gestes | `planches/gestes_v1.png` |
 
 Les chemins partent de `image/persos/maelle/`.
 
@@ -347,4 +347,17 @@ L'auteur veut la planche juste tout de suite (« tout ce qui est fait correcteme
 
 ### Prompt M4 — Six gestes
 
-À écrire quand l'auteur aura validé les six gestes (l'inventaire : « à fixer avec l'auteur avant les prompts »). L'inventaire en avait déjà une liste : boire son café, tenir sa tasse à deux mains, les bras croisés, ramasser une serviette sur la table, regarder son téléphone, travailler sur un laptop ; sans manger, alors que le premier test la fait manger à côté de Sky. Proposition de Claude, d'après le texte du CERN, Navier-Stokes et le test prévu (Sky et Maëlle qui mangent côte à côte) : boire son café, croquer dans une galette, mâcher la bouche pleine, prendre une photo avec son téléphone (Navier-Stokes, l. 411), plier une serviette et la glisser dans sa poche (CERN, l. 540), donner un ordre, l'index levé (« Monte. Dors. Je gère. »).
+Les gestes : la proposition de Claude (le café, la galette et la bouche pleine pour le premier test, la photo au téléphone de Navier-Stokes, la serviette du CERN, l'ordre l'index levé), l'auteur n'ayant pas tranché entre les deux listes. De trois-quarts côté gauche, l'angle de son image maître et de sa palette. Joins les deux images (l'image maître, puis l'image en pied). Découpe : `--noms cafe,mange,bouche-pleine,photo-telephone,serviette,ordre --dossier gestes`.
+
+```
+Make a sheet of Maëlle's gestures: a regular grid of 3 columns and 2 rows, landscape format (1536×1024), six equal cells separated by thin white gaps. In each cell, Maëlle from the waist up, in a three-quarter view showing HER LEFT side, as in her master image (the shaved side of her head nearer to us), same framing, same light, plain light-grey background. Only her pose and her hands change; her face keeps her watchful look unless a cell asks otherwise. Her usual outfit, exactly as in the attached images: the black fitted turtleneck sweater in a matte, slightly textured fabric, its sleeves pushed up to the forearms; black slim high-waisted trousers. One wide silver ring on HER RIGHT THUMB only (around the short thick finger set apart from the four others), visible whenever her right thumb is visible; her left hand has no ring; no other jewelry. Short unpainted nails. Her copper-red hair: HER LEFT side shaved, the longer, messy strands falling over HER RIGHT side of the face. A small vertical scar through HER LEFT eyebrow. Fine black winged eyeliner, a light dusting of freckles on the nose and upper cheeks, green eyes. Broad swimmer's shoulders, toned forearms. Cells read left to right, then top to bottom:
+
+1. Drinking from a plain white coffee cup held in her right hand, the silver ring on her right thumb against the cup.
+2. Biting into a chicken wrap held in both hands.
+3. Chewing a big bite, her mouth full: lips closed, both cheeks visibly puffed out, unimpressed, the wrap in her hand.
+4. Holding up a smartphone in both hands to take a photo, looking at its screen, the silver ring on her right thumb.
+5. Folding a white paper napkin with both hands, about to slip it into her trouser pocket.
+6. Giving an order: her right index finger raised, a cold, firm look, the silver ring on her right thumb.
+
+No text or labels anywhere.
+```
