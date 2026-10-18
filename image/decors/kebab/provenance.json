@@ -204,6 +204,13 @@
       "date": "2026-10-18",
       "axe": 24,
       "_note": "validé par l'auteur du premier coup, téléchargé sous le nom « Café chaleureux sous la pluie.png ». La table de Sky dans Navier-Stokes, le rideau fermé, la pluie, l'escalier et le palier derrière (Théo descend)"
+    },
+    "table-navier-stokes-contrechamp/fond_pluie_v1.png": {
+      "source": "ChatGPT",
+      "prompt": "A25 pluie (la vue en volumes rideau fermé, les fonds 24 pluie, 8 et 2 joints)",
+      "date": "2026-10-18",
+      "axe": 25,
+      "_note": "validé par l'auteur du premier coup, téléchargé sous le nom « Café désert sous la pluie.png ». Depuis la place de Sky dans Navier-Stokes : le rideau fermé et la pluie à gauche, la salle, le comptoir et la broche au fond"
     }
   },
   "_supprimees": "le 2026-10-17, à la demande de l'auteur (« vire les autres images ») : maquette_v1.png, maquette_v2.png et plan_v1.png, retirées du repo (elles restent dans l'historique git, jusqu'au commit 50132dd), et les retouches intermédiaires du disque externe ; le 2026-10-17, à la demande de l'auteur (« clean-moi les images qui restent du kebab ») : plan-peint_v1.png, table-du-fond/fond_v1.png (l'ancien plan), plan_v2 à v4, plan-axes_v1 à v4 (dans l'historique git), les captures du disque externe et les images du kebab des Téléchargements"

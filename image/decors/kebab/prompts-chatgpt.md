@@ -30,7 +30,8 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 | A5 | L'axe 5 : depuis l'escalier, en plongée : **fait** (une retouche) | `image/decors/kebab/depuis-l-escalier/fond_v1.png` |
 | A19 | L'axe 19 : le long de la banquette de droite, vers la rue : **fait** | `image/decors/kebab/banquette-de-droite/fond_v1.png` |
 | A24 pluie | L'axe 24 : la table de Sky dans Navier-Stokes, rideau fermé, sous la pluie : **fait** | `image/decors/kebab/table-navier-stokes/fond_pluie_v1.png` |
-| A25 pluie | L'axe 25 : depuis la place de Sky dans Navier-Stokes, vers la salle | `image/decors/kebab/table-navier-stokes-contrechamp/fond_pluie_v1.png` |
+| A25 pluie | L'axe 25 : depuis la place de Sky dans Navier-Stokes, vers la salle : **fait** | `image/decors/kebab/table-navier-stokes-contrechamp/fond_pluie_v1.png` |
+| A22 pluie | L'axe 22 : à la place de Sky, vers la vitre sous la pluie | `image/decors/kebab/vitrine-fermee/fond_pluie_v1.png` |
 | KB2 v2 | Le plan peint, d'après le plan v3 : bonne disposition, mais l'escalier sur la rue, la lumière de côté | (supprimé) |
 | KB2 v3 | Le plan peint, d'après le plan v5 sans caméras : **la base fixe, validée** | `image/decors/kebab/plan-peint_v2.png` |
 | A6 v3 | L'axe 6 : la table de Sky dans l'angle, la banquette, le miroir, la plante : **fait** (la vue en volumes, puis une retouche) | `image/decors/kebab/table-du-fond/fond_v1.png` |
@@ -1139,3 +1140,19 @@ Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the 
 ```
 
 À contrôler à la reprise : le bout de la table et ses sauces en bas ; le rideau fermé à gauche, la pluie dehors, l'eau sur le verre ; les tables ; le comptoir, la caisse à son angle, la broche, la hotte, l'horloge sans aiguilles ; la lumière de pluie, les plafonniers ; aucune personne, aucun texte.
+
+**Résultat de A25 pluie, le 2026-10-18 : validé par l'auteur du premier coup.** L'auteur, ensuite : l'axe suivant prend la même place, la tête tournée de 90° vers la gauche, vers la vitre : l'axe 22 est replacé à la place de Sky.
+
+### Prompt A22 pluie — Le regard de Sky sur la vitre
+
+« Il regarde la vitrine. Les gouttes qui descendent. » (Navier-Stokes, l. 13). La caméra à la place de Sky, la tête tournée vers la vitre. Trois images jointes, dans cet ordre : `~/Téléchargements/kebab_pour_A22_1_vue.png`, `~/Téléchargements/kebab_pour_A22_2_angle24-pluie.png`, `~/Téléchargements/kebab_pour_A22_3_angle25-pluie.png` (les deux fonds validés de la même table sous la pluie).
+
+```
+The first attached image is a rough 3D layout of one view of our kebab restaurant, made of simple flat-coloured volumes: it fixes the camera, the perspective, the framing and the place of every object. The second and third attached images are two other views of the same table on the same rainy morning, already painted and approved: the glass panels, the rain, the street, the bench, the chairs and the light must look exactly the same. Paint exactly the view of the first image, as an empty background for an anime series: keep the same camera, the same perspective and framing, and every object at the same place, with the same size and angle, as if the layout had been painted over. The camera is seated on the red bench, close to the closed glass shopfront, and looks straight out through it. Replace the simple volumes with the real objects:
+- across the whole frame, the closed glass shopfront, very close: tall clear glass panels in thin dark metal frames (the dark grey bars); on the glass, many raindrops and long trickles of water running down, clearly visible;
+- through the wet glass, the street under heavy rain: the wet sidewalk shining with puddles, the tram track on its dark wet grass, two large dark leafy trees dripping across the street (the dark brown bars are their trunks), and the plain beige facade behind them with its windows, all a little blurred by the water on the glass;
+- at the bottom left, the end of the red padded bench; at the bottom right, the top of the back of an empty wooden chair.
+Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the style of the other images (clean dark outlines, flat cel shading, muted palette, painted details). NOT a 3D render, NOT photorealistic, and do not keep the flat colours of the layout. Light: a grey, rainy morning: cold grey light outside; the warm light of the room behind the camera reflects faintly on the glass. No people, no reflection of people. No text, no letters and no logos anywhere. Landscape format (1536×1024).
+```
+
+À contrôler à la reprise : la vitre tout près, ses cadres ; les gouttes et les filets d'eau bien visibles ; la rue grise et floue derrière, deux arbres ; le bout de la banquette et le dossier de chaise en bas ; aucune personne, aucun reflet de personne, aucun texte.
