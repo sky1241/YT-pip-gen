@@ -11,8 +11,8 @@ Un axe = un fond vide, sans perso, fait une fois et réutilisé à chaque épiso
 - **Fait** aussi : l'axe 10 (`pied-de-l-escalier/fond_v1.png`).
 - **Fait** aussi : l'axe 1 (`exterieur/`), avec ses quatre lumières : `fond_v1` (ouverte, jour), `fond_ferme_v1`, `fond_pluie_v1`, `fond_nuit_v1` ; ses enseignes se posent avec `python3 pipeline/enseignes.py <fond> <sortie> 1`.
 - **Fait** aussi : l'axe 17 (`table-vue-de-dessus/fond_v1.png`). **Les 9 fonds du pilote sont faits** (le 2026-10-17), plus l'axe 11 et la façade en quatre lumières.
-- **Fait** aussi : l'axe 4 (`depuis-le-comptoir/fond_v1.png`), l'axe 12 (`miroir/fond_v1.png`), l'axe 13 (`depuis-le-miroir/fond_v1.png`).
-- **Ensuite** : les axes de l'épisode 1 (14, 18, puis 3, 5, 9, 15, 16, 19), puis ceux de Navier-Stokes (22 à 25, sous la pluie) et les versions pluie et nuit des axes qui voient la rue. Claude ne lui montre qu'un axe à la fois (le plan de cet axe seul) ; le plan des 25 axes reste pour Claude. L'ancien fond de l'axe 6 est supprimé : l'axe 6 se refait en `fond_v1.png`.
+- **Fait** aussi : l'axe 4 (`depuis-le-comptoir/fond_v1.png`), l'axe 12 (`miroir/fond_v1.png`), l'axe 13 (`depuis-le-miroir/fond_v1.png`), l'axe 14 (`coin-de-la-banquette/fond_v1.png`).
+- **Ensuite** : les axes de l'épisode 1 (18, 9, 15, puis 3, 5, 16, 19), puis ceux de Navier-Stokes (22 à 25, sous la pluie) et les versions pluie et nuit des axes qui voient la rue. Claude ne lui montre qu'un axe à la fois (le plan de cet axe seul) ; le plan des 25 axes reste pour Claude. L'ancien fond de l'axe 6 est supprimé : l'axe 6 se refait en `fond_v1.png`.
 
 ## Les décisions de l'auteur sur le décor (2026-10-16 et 17)
 
@@ -84,7 +84,7 @@ La pluie et la nuit se font en retouche du fond de jour : seule la lumière chan
 | 11 | `escalier-vers-datastream/` | Au pied de l'escalier, vers le haut | L'escalier en bois, la rampe, la porte de Datastream en haut | Théo passe la tête (l. 121), Vincent remonte (l. 816), Sky monte dormir (l. 1583) | épisode 1 |
 | 12 | `miroir/` | De la salle, côté gauche, à hauteur d'homme, le miroir de biais | Le grand miroir vierge sur toute la banquette du fond, la table de Sky dans l'angle | Sky dessine (l. 482), Seb et Daria s'approchent (l. 516, 518). Les dessins se posent en calque | épisode 1 |
 | 13 | `depuis-le-miroir/` | Debout devant le miroir, à la place de Sky qui dessine, en plongée sur sa table, vers la salle et la rue | La table de Sky en plongée, la salle, le comptoir, la rue | Les visages de l'équipe qui regarde Sky dessiner (l. 498) | épisode 1 |
-| 14 | `coin-de-la-banquette/` | De la salle, debout, vers l'angle de la banquette en L, champ large (78°) : à droite, le bout d'escalier qui descend le long de la banquette (l'auteur) | La table de Sky dans l'angle, ses deux banquettes, la rampe | Les plans de groupe autour de Sky ; Seb « assis au fond de la banquette » (l. 1470) | épisode 1 |
+| 14 | `coin-de-la-banquette/` | De la salle, debout, vers l'angle de la banquette en L | La table de Sky dans l'angle, ses deux banquettes, la rampe | Les plans de groupe autour de Sky ; Seb « assis au fond de la banquette » (l. 1470) | épisode 1 |
 | 15 | `devanture/` | Dans la salle, vers la rue, à hauteur d'homme | La devanture ouverte, les panneaux repliés et le menu plastifié collé dessus, le trottoir, les potelets, le tram et l'herbe entre les rails | Mohamed corrige le menu au feutre (l. 1482) ; la pluie sur la vitrine (Navier-Stokes) | épisode 1 |
 | 16 | `frigo/` | De la salle, vers le coin du fond à gauche | Le frigo à boissons, le bout du comptoir | Les boissons : l'Ayran de Daria (l. 117), « Vous voulez des boissons ? » (l. 298) | si besoin |
 | 17 | `table-vue-de-dessus/` | Au-dessus de la table de Sky, vue d'en haut | Le dessus de la table, vide : les accessoires s'y posent en calques (laptop, galette, frites, téléphone sur la sauce, tasse de Patrick, grille de mots croisés, serviettes à formules) | Les inserts | pilote |
