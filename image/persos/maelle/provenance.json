@@ -488,6 +488,31 @@
       "case": 2,
       "date": "2026-10-14",
       "retenue": true
+    },
+    "planches/pied-1_v1.png": {
+      "prompt": "M1 puis sa retouche (la case 3)",
+      "date": "2026-10-18",
+      "retenue": true,
+      "_note": "validée par l'auteur. Case 3 : la bague au pouce gauche au lieu du droit, gardée (la règle du 2026-10-16 pour Sky : une bague ratée ne fait pas refaire une planche), notée dans fiche.json"
+    },
+    "references/pied-face_v1.png": {
+      "planche": "planches/pied-1_v1.png",
+      "case": 1,
+      "date": "2026-10-18",
+      "retenue": true
+    },
+    "references/pied-trois-quarts-gauche_v1.png": {
+      "planche": "planches/pied-1_v1.png",
+      "case": 2,
+      "date": "2026-10-18",
+      "retenue": true
+    },
+    "references/pied-trois-quarts-droit_v1.png": {
+      "planche": "planches/pied-1_v1.png",
+      "case": 3,
+      "date": "2026-10-18",
+      "retenue": true,
+      "_note": "la bague au pouce gauche (à corriger au passage local)"
     }
   }
 }
