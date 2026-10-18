@@ -299,6 +299,8 @@ L'auteur veut quand même la case juste, pour que le LoRA apprenne la bague au b
 Edit ONLY the hands in the third cell, on the right. Keep everything else exactly as it is, in all three cells. In the third cell, remove the silver ring from the thumb of the hand on the RIGHT of the image (her left hand, farther from us), and put the same wide silver ring on the thumb of the hand on the LEFT of the image (her right hand, nearer to us). Only one ring in the cell.
 ```
 
+Résultat, le 2026-10-18 : la bague au pouce droit, validée (`planches/pied-1_v2.png`). Seule sa case 3 sert : `references/pied-trois-quarts-droit_v2.png` ; la v1 de cette case est marquée non retenue, le jeu du LoRA ne la prend pas.
+
 ### Prompt M2 — En pied, de profil et de dos
 
 Joins les deux mêmes images. Découpe : `--noms pied-profil-gauche,pied-profil-droit,pied-dos --dossier references`.
