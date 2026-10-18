@@ -598,6 +598,56 @@
       "case": 3,
       "date": "2026-10-18",
       "retenue": true
+    },
+    "planches/trois-quarts_gestes_v1.png": {
+      "prompt": "M4",
+      "date": "2026-10-18",
+      "retenue": true,
+      "_note": "validée par l'auteur sans retouche (la retouche de Claude confondait les mains). Cases 1 et 4 : pas de bague visible"
+    },
+    "gestes/trois-quarts_cafe_v1.png": {
+      "planche": "planches/trois-quarts_gestes_v1.png",
+      "case": 1,
+      "date": "2026-10-18",
+      "retenue": true
+    },
+    "gestes/trois-quarts_mange_v1.png": {
+      "planche": "planches/trois-quarts_gestes_v1.png",
+      "case": 2,
+      "date": "2026-10-18",
+      "retenue": true
+    },
+    "gestes/trois-quarts_bouche-pleine_v1.png": {
+      "planche": "planches/trois-quarts_gestes_v1.png",
+      "case": 3,
+      "date": "2026-10-18",
+      "retenue": true
+    },
+    "gestes/trois-quarts_photo-telephone_v1.png": {
+      "planche": "planches/trois-quarts_gestes_v1.png",
+      "case": 4,
+      "date": "2026-10-18",
+      "retenue": true
+    },
+    "gestes/trois-quarts_serviette_v1.png": {
+      "planche": "planches/trois-quarts_gestes_v1.png",
+      "case": 5,
+      "date": "2026-10-18",
+      "retenue": true
+    },
+    "gestes/trois-quarts_ordre_v1.png": {
+      "planche": "planches/trois-quarts_gestes_v1.png",
+      "case": 6,
+      "date": "2026-10-18",
+      "retenue": true
     }
+  },
+  "gestes_retenus": {
+    "cafe": "gestes/trois-quarts_cafe_v1.png",
+    "mange": "gestes/trois-quarts_mange_v1.png",
+    "bouche-pleine": "gestes/trois-quarts_bouche-pleine_v1.png",
+    "photo-telephone": "gestes/trois-quarts_photo-telephone_v1.png",
+    "serviette": "gestes/trois-quarts_serviette_v1.png",
+    "ordre": "gestes/trois-quarts_ordre_v1.png"
   }
 }

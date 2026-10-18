@@ -238,7 +238,7 @@ Chaque fond a aussi sa version pluie et sa version nuit, dans le même cadrage (
 - [x] `planches/pied-1_v1.png` : en pied, de face et de trois-quarts des deux côtés
 - [x] `planches/pied-2_v1.png` : en pied, de profil des deux côtés et de dos
 - [x] `planches/poses_v1.png` : assis de face, assis de côté, debout accoudé
-- [ ] `planches/gestes_v1.png` : elle boit son café, tient sa tasse à deux mains, bras croisés, ramasse une serviette sur la table, regarde son téléphone, sur un laptop
+- [x] `planches/trois-quarts_gestes_v1.png` : de trois-quarts (son côté gauche), elle boit son café, croque une galette, la bouche pleine, prend une photo au téléphone, plie une serviette, donne un ordre l'index levé
 
 **Palette des émotions, de trois-quarts** (les 36 de `emotions.md`, sous l'angle de son image maître, côté gauche)
 - [x] `planches/trois-quarts_emotions-1_v1.png` : neutre, joie, tristesse, colère, peur, surprise

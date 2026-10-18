@@ -144,7 +144,7 @@ La palette des émotions, la même pour tous : 36 émotions en 6 planches, défi
   - [x] Image maître
   - [x] Rotation : face, trois-quarts et profil des deux côtés, dos
   - [x] Image en pied
-  - [ ] En pied et en gestes : les 4 planches, avant son LoRA (elle n'a qu'une image en pied, comme Sky en v1)
+  - [x] En pied et en gestes : les 4 planches, le 2026-10-18 (prompts M1 à M4 de `prompts-chatgpt.md`) : 9 vues en pied et poses, 6 gestes de trois-quarts
   - [x] Palette des émotions de trois-quarts, sous l'angle de son image maître : les 6 planches et les reprises (la version retenue de chaque émotion est dans `provenance.json`)
   - [x] Signatures : les 4
   - [x] Bouches : les 6 (références de forme ; les calques se feront en local sur une seule image de base)

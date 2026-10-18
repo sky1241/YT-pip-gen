@@ -60,7 +60,7 @@ Au départ : commence par le prompt 1, la première planche d'émotions. C'est l
 | M1 | En pied, de face et de trois-quarts : faite (une retouche) | `planches/pied-1_v1.png` |
 | M2 | En pied, de profil et de dos : faite | `planches/pied-2_v1.png` |
 | M3 | Trois poses : faite (une retouche) | `planches/poses_v2.png` |
-| M4 | Six gestes | `planches/gestes_v1.png` |
+| M4 | Six gestes : faite | `planches/trois-quarts_gestes_v1.png` |
 
 Les chemins partent de `image/persos/maelle/`.
 
@@ -367,3 +367,5 @@ Résultat de M4, le 2026-10-18 (`<sorties_root>/persos/maelle/gestes_essai-1.png
 ```
 Edit ONLY the fourth cell, the smartphone (bottom left). Keep everything else exactly as it is, in all six cells. In the fourth cell, the hand on the LEFT of the image is her right hand: put one wide silver ring around its thumb, the thumb resting on the top edge of the phone. The other hand has no ring.
 ```
+
+L'auteur garde la planche sans retouche : la retouche proposée confondait ses mains. Rangée en `planches/trois-quarts_gestes_v1.png` (le préfixe donne `gestes/trois-quarts_<geste>_v1.png`). **La série en pied et en gestes est finie, le 2026-10-18 : 4 planches, 9 vues en pied et poses, 6 gestes.**
