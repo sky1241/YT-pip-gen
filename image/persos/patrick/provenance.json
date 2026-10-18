@@ -4,8 +4,14 @@
     "references/master_v1.png": {
       "source": "ChatGPT",
       "date": "2026-10-18",
+      "retenue": false,
+      "_note": "l'image maître, validée par l'auteur, téléchargée sous le nom « Portrait d’un développeur COBOL chevronné.png ». Une planche de 10 cases (en pied, visages, au clavier, de dos, la tasse) plutôt qu'une seule scène. Elle contient du texte (la tasse « COBOL FOREVER », l'écran, une boîte « COBOL ») : rien de tout ça n'est demandé dans ses planches ; remplacée par master_v2.png (la chemise noire et le gilet devenus le polo de rugby de la description de l'auteur)"
+    },
+    "references/master_v2.png": {
+      "source": "ChatGPT",
+      "date": "2026-10-18",
       "retenue": true,
-      "_note": "l'image maître, validée par l'auteur, téléchargée sous le nom « Portrait d’un développeur COBOL chevronné.png ». Une planche de 10 cases (en pied, visages, au clavier, de dos, la tasse) plutôt qu'une seule scène. Elle contient du texte (la tasse « COBOL FOREVER », l'écran, une boîte « COBOL ») : rien de tout ça n'est demandé dans ses planches"
+      "_note": "l'image maître retenue, validée par l'auteur avec sa description (description-auteur.md) ; téléchargée sous le nom « Portrait d’un ancien programmeur COBOL en bureau.png ». Une planche de 10 cases ; elle contient du texte (le mug « COBOL FOREVER », l'écran, une boîte « COBOL ») et un mug : rien de tout ça ne se reprend dans ses planches (sa tasse est en porcelaine)"
     }
   }
 }

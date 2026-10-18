@@ -3,13 +3,9 @@
   "nom": "Patrick",
   "role": "dev senior, 20 ans de COBOL",
   "_a_completer": [
-    "silhouette, visage et coiffure",
     "codes couleur de la palette",
-    "tenue canonique",
-    "détails asymétriques, puis le réglage du flip du LoRA",
     "ce qu'il ne porte jamais",
-    "valider la silhouette, la tenue et les traits relevés par Claude sur l'image maître",
-    "la description maître : la faire écrire par ChatGPT d'après l'image maître (prompt P0)"
+    "confirmer le côté du coq (sa gauche)"
   ],
   "energie": {
     "resume": "Basse, constante, gravitationnelle",
@@ -18,25 +14,28 @@
     "frequence": "Le transformateur. Il convertit le chaos en signal propre."
   },
   "silhouette": {
-    "_note": "relevé par Claude sur l'image maître le 2026-10-18 : à valider par l'auteur",
-    "corps": "la soixantaine, corpulent, un ventre rond, les épaules un peu tombantes",
-    "visage": "rond, bonhomme, doubles joues, un sourire en coin retenu"
+    "_note": "la description de l'auteur (2026-10-18)",
+    "taille": "environ 1,75 m",
+    "age": "la soixantaine",
+    "corps": "lourd et généreux, un ventre proéminent, des épaules larges, un cou épais, des bras encore solides ; les épaules un peu voûtées",
+    "visage": "large, joues pleines un peu tombantes, rides profondes autour des yeux, du front et de la bouche, double menton"
   },
   "palette": {
     "_note": "à définir avec l'auteur : la bible ne décrit pas son look"
   },
   "tenue_canonique": {
-    "_note": "relevée par Claude sur l'image maître le 2026-10-18 : à valider par l'auteur",
-    "haut": "chemise noire boutonnée, une poche de poitrine avec deux stylos (un rouge, un bleu), un gilet noir ouvert par-dessus",
-    "bas": "pantalon gris anthracite à pinces, ample, ceinture noire à boucle argentée",
-    "chaussures": "chaussures de ville noires en cuir, cirées"
+    "_note": "la description de l'auteur et l'image maître v2 (2026-10-18)",
+    "haut": "polo de rugby bleu marine à col blanc, boutonné, une bande blanche et une bande rouge en travers de la poitrine, un petit coq rouge brodé sur la poitrine, à sa gauche",
+    "bas": "pantalon gris foncé, ample, à pinces, ceinture noire à boucle argentée",
+    "chaussures": "chaussures de ville noires en cuir"
   },
   "traits": {
     "parole": "dit « monsieur » et « madame » ; pense avant de parler",
     "sous_pression": "il ralentit : il pose sa tasse et joint les mains",
-    "cheveux": "chauve sur le dessus, une couronne de cheveux blancs courts sur les côtés et derrière",
-    "lunettes": "fines lunettes rectangulaires à monture sombre",
-    "yeux": "sombres, bienveillants, les paupières un peu lourdes"
+    "cheveux": "crâne largement dégarni, une couronne de cheveux blancs et gris, fins et clairsemés",
+    "lunettes": "rectangulaires à monture sombre",
+    "yeux": "bruns, fatigués mais attentifs, paupières lourdes, sourcils un peu tombants",
+    "sourire": "discret : d'abord un plissement des yeux, puis lentement les lèvres"
   },
   "expressions_signatures": {
     "sans-lever-les-yeux": "le regard sur la grille, le stylo plume en l'air",
@@ -46,7 +45,8 @@
     "sourire-rare": "le vrai sourire, une fois par mois (bible-ecriture.md)"
   },
   "details_asymetriques": {
-    "_note": "à fixer avec l'auteur"
+    "_note": "relevé par Claude sur l'image maître v2, le 2026-10-18 : à confirmer par l'auteur",
+    "coq": "le petit coq rouge sur la poitrine, à sa gauche (à droite de l'image quand il est de face)"
   },
   "accessoires": [
     "tasse de thé en porcelaine",
@@ -58,11 +58,13 @@
   "ne_porte_jamais": [
     "de mug : toujours sa tasse de thé en porcelaine (l'auteur, le 2026-10-18 : le mug de l'image maître vient de ChatGPT)"
   ],
-  "image_maitre": "image/persos/patrick/references/master_v1.png",
+  "image_maitre": "image/persos/patrick/references/master_v2.png",
   "lora": {
-    "flip_horizontal": null
+    "flip_horizontal": false,
+    "_note": "flip désactivé (le coq à sa gauche)"
   },
   "voix": "audio/voix/patrick/",
   "sources": "bible : table des énergies, section PATRICK, réactions de groupe ; bible-ecriture.md : règles spéciales de Patrick ; « Le Miroir » (ecriture/brouillons/cern.md, partie 1)",
-  "_note_hommage": "Patrick rend hommage à l'oncle de l'auteur, décédé (l'auteur, le 2026-10-18)"
+  "_note_hommage": "Patrick rend hommage à l'oncle de l'auteur, décédé (l'auteur, le 2026-10-18)",
+  "description_auteur": "image/persos/patrick/description-auteur.md"
 }
