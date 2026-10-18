@@ -25,6 +25,7 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 | A13 | L'axe 13 : depuis le miroir, la table de Sky en plongée : **fait** (deux retouches) | `image/decors/kebab/depuis-le-miroir/fond_v1.png` |
 | A14 | L'axe 14 : l'angle de la banquette, debout : **fait** (la retouche gardée, sans le bout d'escalier) | `image/decors/kebab/coin-de-la-banquette/fond_v1.png` |
 | A18 | L'axe 18 : l'horloge, en gros plan : **fait** (les aiguilles en code) | `image/decors/kebab/horloge/fond_v1.png` |
+| A9 | L'axe 9 : la broche, de près | `image/decors/kebab/broche/fond_v1.png` |
 | KB2 v2 | Le plan peint, d'après le plan v3 : bonne disposition, mais l'escalier sur la rue, la lumière de côté | (supprimé) |
 | KB2 v3 | Le plan peint, d'après le plan v5 sans caméras : **la base fixe, validée** | `image/decors/kebab/plan-peint_v2.png` |
 | A6 v3 | L'axe 6 : la table de Sky dans l'angle, la banquette, le miroir, la plante : **fait** (la vue en volumes, puis une retouche) | `image/decors/kebab/table-du-fond/fond_v1.png` |
@@ -984,3 +985,19 @@ Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the 
 À contrôler à la reprise : l'horloge ronde, la même qu'à l'axe 8, de face ; le cadran vide, sans aiguilles ni chiffres ; le bord de la hotte à droite ; le mur ; aucun texte.
 
 **Résultat de A18, le 2026-10-18 : du premier coup**, le cadran vide. Les aiguilles : `pipeline/aiguilles.py` (exemple : 10:13, l'heure du message de Léa).
+
+### Prompt A9 — La broche, de près
+
+La partie 3 du texte s'appelle « La broche » : Sky la regarde, Mohamed coupe (l. 727, 1078). La caméra derrière le comptoir, face à la broche contre le mur. Quatre images jointes, dans cet ordre : `~/Téléchargements/kebab_pour_A9_1_vue.png`, `~/Téléchargements/kebab_pour_axes_plan-peint.png`, `~/Téléchargements/kebab_pour_A9_3_angle8.png` (le fond de l'axe 8 : la même broche, la même hotte, le même plan de travail), `~/Téléchargements/kebab_pour_A9_4_angle21.png` (le fond de l'axe 21 : la même cuisine).
+
+```
+The first attached image is a rough 3D layout of one view of our kebab restaurant, made of simple flat-coloured volumes: it fixes the camera, the perspective, the framing and the place of every object. The second attached image is the same restaurant seen from above, painted in our style. The third and fourth attached images are two other views of the same kitchen, already painted and approved: the kebab spit, its grill, the hood, the worktop, the clock, the wall and the light must look exactly the same. Paint exactly the view of the first image, as an empty background for an anime series: keep the same camera, the same perspective and framing, and every object at the same place, with the same size and angle, as if the layout had been painted over. The camera stands behind the counter, in the cook's place, and looks at the kebab spit against the kitchen wall. Replace the simple volumes with the real objects:
+- in the middle, the vertical kebab spit: a tall cone of golden-brown grilled meat turning on its metal rod, in front of its vertical grill with glowing heating elements, in a stainless steel frame;
+- in the foreground, the stainless steel worktop along the kitchen wall, clean, with a long knife and a metal tray near the spit;
+- at the top, the stainless steel hood above the spit, partly out of frame;
+- at the top left, the edge of the round wall clock, partly out of frame;
+- everywhere else, the warm kitchen wall.
+Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the style of the third and fourth images (clean dark outlines, flat cel shading, muted warm palette, painted details). NOT a 3D render, NOT photorealistic, and do not keep the flat colours of the layout. Light: warm, dim light from the dining room behind the camera, and the warm orange glow of the grill on the meat. No people. No text, no letters and no logos anywhere. Landscape format (1536×1024).
+```
+
+À contrôler à la reprise : la broche de face, au milieu, la même qu'à l'axe 8 ; le grill qui rougeoie ; le plan de travail devant ; la hotte en haut ; l'horloge coupée en haut à gauche ; aucune personne, aucun texte.
