@@ -12,8 +12,8 @@ Un axe = un fond vide, sans perso, fait une fois et réutilisé à chaque épiso
 - **Fait** aussi : l'axe 1 (`exterieur/`), avec ses quatre lumières : `fond_v1` (ouverte, jour), `fond_ferme_v1`, `fond_pluie_v1`, `fond_nuit_v1` ; ses enseignes se posent avec `python3 pipeline/enseignes.py <fond> <sortie> 1`.
 - **Fait** aussi : l'axe 17 (`table-vue-de-dessus/fond_v1.png`). **Les 9 fonds du pilote sont faits** (le 2026-10-17), plus l'axe 11 et la façade en quatre lumières.
 - **Fait** aussi : l'axe 4 (`depuis-le-comptoir/fond_v1.png`), l'axe 12 (`miroir/fond_v1.png`), l'axe 13 (`depuis-le-miroir/fond_v1.png`), l'axe 14 (`coin-de-la-banquette/fond_v1.png`), l'axe 18 (`horloge/fond_v1.png`, ses aiguilles en code : `python3 pipeline/aiguilles.py <fond> <sortie> HH:MM`).
-- **Fait** aussi : l'axe 9 (`broche/fond_v1.png`).
-- **Ensuite** : les axes de l'épisode 1 (15, puis 3, 5, 16, 19), puis ceux de Navier-Stokes (22 à 25, sous la pluie) et les versions pluie et nuit des axes qui voient la rue. Claude ne lui montre qu'un axe à la fois (le plan de cet axe seul) ; le plan des 25 axes reste pour Claude. L'ancien fond de l'axe 6 est supprimé : l'axe 6 se refait en `fond_v1.png`.
+- **Fait** aussi : l'axe 9 (`broche/fond_v1.png`), l'axe 15 (`devanture/fond_v1.png`).
+- **Ensuite** : les axes de l'épisode 1 qui restent (3, 5, 16, 19), puis Navier-Stokes (22 à 25) et les versions pluie et nuit, puis ceux de Navier-Stokes (22 à 25, sous la pluie) et les versions pluie et nuit des axes qui voient la rue. Claude ne lui montre qu'un axe à la fois (le plan de cet axe seul) ; le plan des 25 axes reste pour Claude. L'ancien fond de l'axe 6 est supprimé : l'axe 6 se refait en `fond_v1.png`.
 
 ## Les décisions de l'auteur sur le décor (2026-10-16 et 17)
 
