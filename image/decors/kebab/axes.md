@@ -2,7 +2,11 @@
 
 Un axe = un fond vide, sans perso, fait une fois et réutilisé à chaque épisode (CLAUDE.md, « Images »). Les numéros sont ceux du plan `plan-axes_v8.png` (les cercles bleus : la caméra et la direction où elle regarde). Les positions viennent de `plan_v7.png` (le plan v3 validé par l'auteur le 2026-10-17, avec ses corrections), et les besoins des textes : le CERN (`ecriture/brouillons/cern.md`, numéros de ligne) et Navier-Stokes.
 
-## Où on en est (2026-10-17)
+## Où on en est
+
+**Le décor du kebab est fini (2026-10-18)** : 27 fonds, tous les axes de l'épisode 1 et de Navier-Stokes. Facultatifs, à faire si une scène les demande : les axes 3 et 16, et les versions pluie ou nuit des autres axes (une retouche chacune). Restent hors décor : le menu plastifié (texte, en code dans `image/gabarits/`) et les accessoires posés en calque (`image/accessoires/` : la théière, la galette, les dessins du miroir…).
+
+### L'historique (2026-10-17 et 18)
 
 - **Validé par l'auteur** : le plan `plan_v5.png` (sans caméras, à joindre dans ChatGPT) et les 25 axes `plan-axes_v6.png` (avec caméras, pour Claude). « On bougera peut-être 2 ou 3 plans un peu, mais l'idée est là. »
 - **La base fixe, validée** : le plan peint `plan-peint_v2.png` (prompt KB2 v3, d'après `plan_v5.png`). Elle sert de référence de style et d'objets pour tous les axes. Seul écart accepté : la caisse y est encore tournée vers la rue ; dans chaque fond où elle se voit, le prompt la tourne vers Mohamed.

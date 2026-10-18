@@ -452,7 +452,7 @@ Chaque fond a aussi sa version pluie et sa version nuit, dans le même cadrage (
 
 Les axes de l'épisode 1, en plus de ceux du pilote (`decors/kebab/axes.md`, à valider par l'auteur).
 
-- [ ] `salle-depuis-le-fond/fond_v1.png` (3) : vers la rue, le contrechamp de l'entrée
+- [ ] `salle-depuis-le-fond/fond_v1.png` (3), facultatif : vers la rue, le contrechamp de l'entrée
 - [x] `depuis-le-comptoir/fond_v1.png` (4) : le regard de Mohamed
 - [x] `depuis-l-escalier/fond_v1.png` (5) : en plongée, depuis le milieu de l'escalier
 - [x] `broche/fond_v1.png` (9) : la broche, le grill, la hotte
@@ -464,7 +464,7 @@ Les axes de l'épisode 1, en plus de ceux du pilote (`decors/kebab/axes.md`, à 
 - [x] `horloge/fond_v1.png` (18) : l'horloge au-dessus du comptoir
 - [x] `banquette-de-droite/fond_v1.png` (19)
 - [x] `banquette-de-droite/fond_ferme_v1.png` (19) : le rideau de verre fermé, même lumière
-- [ ] `frigo/fond_v1.png` (16) : le frigo à boissons, si besoin
+- [ ] `frigo/fond_v1.png` (16), facultatif : le frigo à boissons, si besoin
 
 Comme pour le pilote : la pluie et la nuit de chaque axe s'ajoutent quand son fond de jour est fait.
 
