@@ -471,7 +471,7 @@ Comme pour le pilote : la pluie et la nuit de chaque axe s'ajoutent quand son fo
 Les deux axes de la pluie seule, le rideau de verre fermé :
 
 - [x] `vitrine-fermee/fond_pluie_v1.png` (22) : de l'intérieur, la pluie sur le verre
-- [ ] `a-travers-la-vitre/fond_pluie_v1.png` (23) : de la rue, la salle derrière le verre mouillé
+- [x] `a-travers-la-vitre/fond_pluie_v1.png` (23) : de la rue, la salle derrière le verre mouillé
 
 La table de Navier-Stokes (la table de devant, à droite) :
 

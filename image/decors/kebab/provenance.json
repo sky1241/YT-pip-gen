@@ -218,6 +218,13 @@
       "date": "2026-10-18",
       "axe": 22,
       "_note": "validé par l'auteur du premier coup, téléchargé sous le nom « Café sous la pluie matinale.png ». Le regard de Sky sur la vitre : la pluie sur le verre, la rue grise. Un bon candidat pour le mouvement (i2v : les gouttes qui coulent)"
+    },
+    "a-travers-la-vitre/fond_pluie_v1.png": {
+      "source": "ChatGPT",
+      "prompt": "A23 pluie (la vue en volumes rideau fermé, les fonds 24 pluie, façade pluie et 10 joints)",
+      "date": "2026-10-18",
+      "axe": 23,
+      "_note": "validé par l'auteur du premier coup. Pas téléchargé : enregistré depuis l'image collée dans la conversation de Claude, à la même taille (1536×1024 ; les images collées étaient identiques au pixel près aux téléchargements pour les fonds précédents). La place de Sky derrière le verre mouillé, entre deux cadres, l'escalier à droite"
     }
   },
   "_supprimees": "le 2026-10-17, à la demande de l'auteur (« vire les autres images ») : maquette_v1.png, maquette_v2.png et plan_v1.png, retirées du repo (elles restent dans l'historique git, jusqu'au commit 50132dd), et les retouches intermédiaires du disque externe ; le 2026-10-17, à la demande de l'auteur (« clean-moi les images qui restent du kebab ») : plan-peint_v1.png, table-du-fond/fond_v1.png (l'ancien plan), plan_v2 à v4, plan-axes_v1 à v4 (dans l'historique git), les captures du disque externe et les images du kebab des Téléchargements"

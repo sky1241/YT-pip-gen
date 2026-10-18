@@ -486,3 +486,10 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   dernières marches, à 2,75 m ; le vide jusqu'au plafond laissait voir des marches et des barreaux, et le côté sortait du coin
   comme un bloc. `pipeline/vue_kebab.py` monte maintenant ce côté jusqu'au plafond là où la rampe touche le plafond, et ferme le
   bout sous le palier du haut : l'angle de la banquette est un coin simple.
+- **Les fonds du kebab, le 2026-10-18** : 14 de plus en une journée (axes 4, 5, 9, 12, 13, 14, 15, 18, 19, l'axe 19 rideau fermé,
+  et les quatre axes de Navier-Stokes sous la pluie, 22 à 25), 27 sur 45. Presque tous du premier coup ou en une retouche,
+  avec deux ou trois fonds validés joints. Ce qui a coincé : la vue en volumes (le côté de l'escalier qui s'arrêtait sous le
+  plafond, la cage visible depuis la salle, les troncs d'arbres pris pour des poteaux, un montant du rideau de verre pile devant
+  la place de Sky) ; corrigée à chaque fois dans `pipeline/vue_kebab.py`, qui a maintenant un mode « rideau fermé ». Les
+  aiguilles de l'horloge se posent en code (`pipeline/aiguilles.py`). Un fond peut s'enregistrer depuis l'image collée dans la
+  conversation : elle est à la taille d'origine, identique au téléchargement.
