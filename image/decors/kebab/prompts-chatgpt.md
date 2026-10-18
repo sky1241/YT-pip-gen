@@ -24,6 +24,7 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 | A12 | L'axe 12 : le grand miroir de biais : **fait** (une retouche) | `image/decors/kebab/miroir/fond_v1.png` |
 | A13 | L'axe 13 : depuis le miroir, la table de Sky en plongée : **fait** (deux retouches) | `image/decors/kebab/depuis-le-miroir/fond_v1.png` |
 | A14 | L'axe 14 : l'angle de la banquette, debout : **fait** (la retouche gardée, sans le bout d'escalier) | `image/decors/kebab/coin-de-la-banquette/fond_v1.png` |
+| A18 | L'axe 18 : l'horloge, en gros plan | `image/decors/kebab/horloge/fond_v1.png` |
 | KB2 v2 | Le plan peint, d'après le plan v3 : bonne disposition, mais l'escalier sur la rue, la lumière de côté | (supprimé) |
 | KB2 v3 | Le plan peint, d'après le plan v5 sans caméras : **la base fixe, validée** | `image/decors/kebab/plan-peint_v2.png` |
 | A6 v3 | L'axe 6 : la table de Sky dans l'angle, la banquette, le miroir, la plante : **fait** (la vue en volumes, puis une retouche) | `image/decors/kebab/table-du-fond/fond_v1.png` |
@@ -967,3 +968,17 @@ Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the 
 À contrôler à la reprise : un coin simple derrière la plante ; le mur plein jusqu'au plafond près du coin ; plus à droite, le côté de l'escalier en marches et la rampe qui monte dans le plafond ; la banquette d'un seul tenant ; aucune porte, aucune ouverture ; aucune personne, aucun texte.
 
 **A14, le 2026-10-18 : l'auteur garde la retouche** (« ça me fait chier, on garde ça, tant pis ») ; A14 v2 n'est pas envoyé, la caméra 14 revient à sa place.
+
+### Prompt A18 — L'horloge, en gros plan
+
+Un insert : Maëlle regarde l'horloge (« Le Miroir », l. 1438). L'heure change d'une scène à l'autre : le cadran est peint sans aiguilles, et les aiguilles se posent en code, à l'heure de la scène, comme les enseignes. Le logo Efes du texte reste un point à trancher : pas de logo. Trois images jointes, dans cet ordre : `~/Téléchargements/kebab_pour_A18_1_vue.png`, `~/Téléchargements/kebab_pour_axes_plan-peint.png`, `~/Téléchargements/kebab_pour_A18_3_angle8.png` (le fond de l'axe 8 : la même horloge, la même hotte, le même mur).
+
+```
+The first attached image is a rough 3D layout of one view of our kebab restaurant, made of simple flat-coloured volumes: it fixes the camera, the framing and the place of every object. The second attached image is the same restaurant seen from above, painted in our style. The third attached image is another view of the same kitchen wall, already painted and approved: the round wall clock, the stainless steel hood, the wall and the light must look exactly the same. Paint exactly the view of the first image, as an empty background for an anime series: a close-up of the clock on the kitchen wall above the counter, keeping the same framing, the same size and place of the clock. Replace the simple volumes with the real objects:
+- in the middle, the round wall clock seen straight on: a light cream face with a thin dark round frame and simple tick marks around the edge; the face is empty: no hands, no numbers, no text, no logo;
+- on the right edge, the corner of the stainless steel hood above the kebab spit;
+- everywhere else, the warm textured wall of the kitchen.
+Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the style of the third image (clean dark outlines, flat cel shading, muted warm palette, painted details). NOT a 3D render, NOT photorealistic, and do not keep the flat colours of the layout. Light: warm, dim light from the dining room on the left; a soft shadow of the clock on the wall to the right. No people. No text, no letters, no numbers, no logos anywhere. Landscape format (1536×1024).
+```
+
+À contrôler à la reprise : l'horloge ronde, la même qu'à l'axe 8, de face ; le cadran vide, sans aiguilles ni chiffres ; le bord de la hotte à droite ; le mur ; aucun texte.
