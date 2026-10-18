@@ -475,7 +475,7 @@ Les deux axes de la pluie seule, le rideau de verre fermé :
 
 La table de Navier-Stokes (la table de devant, à droite) :
 
-- [ ] `table-navier-stokes/fond_pluie_v1.png` (24) : la table de Sky dans Navier-Stokes, le rideau fermé, la pluie
+- [x] `table-navier-stokes/fond_pluie_v1.png` (24) : la table de Sky dans Navier-Stokes, le rideau fermé, la pluie
 - [ ] `table-navier-stokes-contrechamp/fond_pluie_v1.png` (25)
 
 ### Accessoires — `accessoires/`

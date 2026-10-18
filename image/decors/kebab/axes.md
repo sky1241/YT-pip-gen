@@ -13,7 +13,8 @@ Un axe = un fond vide, sans perso, fait une fois et réutilisé à chaque épiso
 - **Fait** aussi : l'axe 17 (`table-vue-de-dessus/fond_v1.png`). **Les 9 fonds du pilote sont faits** (le 2026-10-17), plus l'axe 11 et la façade en quatre lumières.
 - **Fait** aussi : l'axe 4 (`depuis-le-comptoir/fond_v1.png`), l'axe 12 (`miroir/fond_v1.png`), l'axe 13 (`depuis-le-miroir/fond_v1.png`), l'axe 14 (`coin-de-la-banquette/fond_v1.png`), l'axe 18 (`horloge/fond_v1.png`, ses aiguilles en code : `python3 pipeline/aiguilles.py <fond> <sortie> HH:MM`).
 - **Fait** aussi : l'axe 9 (`broche/fond_v1.png`), l'axe 15 (`devanture/fond_v1.png`), l'axe 5 (`depuis-l-escalier/fond_v1.png`), l'axe 19 (`banquette-de-droite/fond_v1.png`).
-- **Ensuite** : Navier-Stokes sous la pluie (24, 25, 22, 23), puis les axes 3 et 16. L'axe 19 ne se fait pas sous la pluie ni la nuit : dans Navier-Stokes, Sky est à la table de devant, qu'on ne voit pas d'ici (l'auteur, le 2026-10-18) ; on ne fait la pluie ou la nuit d'un axe que si une scène la demande.
+- **Fait** aussi : l'axe 24 sous la pluie (`table-navier-stokes/fond_pluie_v1.png`).
+- **Ensuite** : Navier-Stokes sous la pluie (25, 22, 23), puis les axes 3 et 16. L'axe 19 ne se fait pas sous la pluie ni la nuit : dans Navier-Stokes, Sky est à la table de devant, qu'on ne voit pas d'ici (l'auteur, le 2026-10-18) ; on ne fait la pluie ou la nuit d'un axe que si une scène la demande.
 - **La vue en volumes, rideau fermé** : `python3 pipeline/vue_kebab.py <sortie> <axe> ferme` dessine les panneaux dépliés (leurs cadres fins seulement, le verre transparent) et la poignée de la porte., puis Navier-Stokes (22 à 25) et les versions pluie et nuit, puis ceux de Navier-Stokes (22 à 25, sous la pluie) et les versions pluie et nuit des axes qui voient la rue. Claude ne lui montre qu'un axe à la fois (le plan de cet axe seul) ; le plan des 25 axes reste pour Claude. L'ancien fond de l'axe 6 est supprimé : l'axe 6 se refait en `fond_v1.png`.
 
 ## Les décisions de l'auteur sur le décor (2026-10-16 et 17)
@@ -109,6 +110,7 @@ Les neuf fonds du pilote (la minute des mots croisés) : 1, 2, 6, 7, 8, 10, 17, 
 4. **Le menu plastifié** : il porte du texte (des prix). Il se fait en code (`image/gabarits/`) et se pose sur le fond, comme tout texte à l'écran.
 5. **Vincent « dans le coin »** : le bout de la banquette de droite, près de la rue (19) ?
 6. **Sky monte dormir** : « Il passe devant le comptoir » (l. 1583). Dans le plan, l'escalier est à droite et le comptoir à gauche : de la table de Sky à l'escalier, il ne passe pas devant. Le texte peut dire « devant la broche » s'il traverse la salle, ou rien.
+7. **Navier-Stokes : la place de Sky.** Le texte dit « Sky est au fond. Table bancale. […] Il regarde la vitrine. Les gouttes qui descendent. » (l. 13), et « Patrick est en face ». L'auteur l'a placé à la table de devant, contre la vitrine (axes 22 à 25) : le texte est à reprendre de toute façon (CLAUDE.md), « au fond » sera à changer ou à garder.
 
 ## Comment on fait chaque fond
 
