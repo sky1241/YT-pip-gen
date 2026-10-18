@@ -59,7 +59,7 @@ Au départ : commence par le prompt 1, la première planche d'émotions. C'est l
 | 12 | Soulagement, seul : faite | `expressions/trois-quarts_soulagement_v3.png` |
 | M1 | En pied, de face et de trois-quarts : faite (une retouche) | `planches/pied-1_v1.png` |
 | M2 | En pied, de profil et de dos : faite | `planches/pied-2_v1.png` |
-| M3 | Trois poses : faite | `planches/poses_v1.png` |
+| M3 | Trois poses : faite (une retouche) | `planches/poses_v2.png` |
 | M4 | Six gestes (à valider par l'auteur avant) | `planches/gestes_v1.png` |
 
 Les chemins partent de `image/persos/maelle/`.
@@ -342,6 +342,8 @@ Résultat de M3, le 2026-10-18 : les poses et les côtés justes, la bague à l'
 ```
 Edit ONLY the hands. Keep everything else exactly as it is, in all three cells. In each cell, the wide silver ring is on HER RIGHT hand, around the THUMB, the short thick finger set apart from the four others: move it there from the finger it is on now. In the first cell, her right hand is the upper hand on her knee; in the third cell, it is the hand hanging over the grey block. Her left hand has no ring.
 ```
+
+L'auteur veut la planche juste tout de suite (« tout ce qui est fait correctement avant me donne moins de travail à la fin ») : retouche envoyée. Résultat, validé : plus de bague au mauvais doigt (`planches/poses_v2.png`, ses trois cases en v2, la v1 non retenue).
 
 ### Prompt M4 — Six gestes
 

@@ -554,23 +554,47 @@
     "planches/poses_v1.png": {
       "prompt": "M3",
       "date": "2026-10-18",
-      "retenue": true,
-      "_note": "les poses et les côtés justes (assise de côté : son côté gauche ; accoudée du coude droit, le café dans la main gauche). La bague à l'index (cases 1 et 3), pas au pouce"
+      "retenue": false,
+      "_note": "la bague à l'index (cases 1 et 3) : remplacée par poses_v2.png"
     },
     "references/assis-face_v1.png": {
       "planche": "planches/poses_v1.png",
       "case": 1,
       "date": "2026-10-18",
-      "retenue": true
+      "retenue": false
     },
     "references/assis-cote_v1.png": {
       "planche": "planches/poses_v1.png",
       "case": 2,
       "date": "2026-10-18",
-      "retenue": true
+      "retenue": false
     },
     "references/accoude_v1.png": {
       "planche": "planches/poses_v1.png",
+      "case": 3,
+      "date": "2026-10-18",
+      "retenue": false
+    },
+    "planches/poses_v2.png": {
+      "prompt": "M3 puis la retouche de la bague",
+      "date": "2026-10-18",
+      "retenue": true,
+      "_note": "validée par l'auteur : plus de bague au mauvais doigt (cases 1 et 3, le pouce droit caché), la bague au pouce en case 2"
+    },
+    "references/assis-face_v2.png": {
+      "planche": "planches/poses_v2.png",
+      "case": 1,
+      "date": "2026-10-18",
+      "retenue": true
+    },
+    "references/assis-cote_v2.png": {
+      "planche": "planches/poses_v2.png",
+      "case": 2,
+      "date": "2026-10-18",
+      "retenue": true
+    },
+    "references/accoude_v2.png": {
+      "planche": "planches/poses_v2.png",
       "case": 3,
       "date": "2026-10-18",
       "retenue": true

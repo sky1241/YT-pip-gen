@@ -4,8 +4,7 @@
   "role": "CISO, femme de Sky",
   "_a_completer": [
     "valider les codes couleur relevés sur l'image maître",
-    "valider la lecture de ChatGPT sur sa silhouette (description-chatgpt.md)",
-    "la bague : ChatGPT la met souvent au mauvais doigt (index, petit doigt) ; sur references/assis-face_v1.png et accoude_v1.png, elle est à l'index. En production, la corriger par inpainting sur les plans où sa main droite se voit de près"
+    "valider la lecture de ChatGPT sur sa silhouette (description-chatgpt.md)"
   ],
   "energie": {
     "resume": "Haute tension constante, contrôlée",
