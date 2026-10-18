@@ -464,8 +464,6 @@ Les axes de l'épisode 1, en plus de ceux du pilote (`decors/kebab/axes.md`, à 
 - [x] `horloge/fond_v1.png` (18) : l'horloge au-dessus du comptoir
 - [x] `banquette-de-droite/fond_v1.png` (19)
 - [x] `banquette-de-droite/fond_ferme_v1.png` (19) : le rideau de verre fermé, même lumière
-- [ ] `banquette-de-droite/fond_pluie_v1.png` (19)
-- [ ] `banquette-de-droite/fond_nuit_v1.png` (19) : les tables de droite en enfilade
 - [ ] `frigo/fond_v1.png` (16) : le frigo à boissons, si besoin
 
 Comme pour le pilote : la pluie et la nuit de chaque axe s'ajoutent quand son fond de jour est fait.
@@ -477,8 +475,8 @@ Les deux axes de la pluie seule, le rideau de verre fermé :
 
 La table de Navier-Stokes (la table de devant, à droite) :
 
-- [ ] `table-navier-stokes/fond_v1.png` (24)
-- [ ] `table-navier-stokes-contrechamp/fond_v1.png` (25)
+- [ ] `table-navier-stokes/fond_pluie_v1.png` (24) : la table de Sky dans Navier-Stokes, le rideau fermé, la pluie
+- [ ] `table-navier-stokes-contrechamp/fond_pluie_v1.png` (25)
 
 ### Accessoires — `accessoires/`
 

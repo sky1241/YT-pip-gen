@@ -2,7 +2,7 @@
 par-dessus, comme il a peint le plan vu de dessus. Les mesures sont celles de pipeline/plan_kebab.py (plan v5), en mètres ;
 les axes sont lus dans plan_kebab.py, qui reste la seule source.
 
-  python3 pipeline/vue_kebab.py <sortie.png> <numéro d'axe>
+  python3 pipeline/vue_kebab.py <sortie.png> <numéro d'axe> [ferme]      (ferme : le rideau de verre fermé)
 """
 import ast
 import math
@@ -26,6 +26,7 @@ CAMERAS[4] = (DEBOUT, -12, 72)       # derrière le comptoir : le dessus du comp
 CAMERAS[9] = (1.6, -9, 70)            # derrière le comptoir, près de la broche : un plan rapproché
 CAMERAS[15] = (DEBOUT, 0, 74)        # vers l'avant gauche : les panneaux repliés, le bout du comptoir, la rue
 CAMERAS[19] = (ASSIS, 0, 72)         # assis au bout de la banquette, le coin de Vincent
+CAMERAS[24] = (ASSIS, 0, 74)         # la table de Navier-Stokes, la vitrine derrière elle
 CAMERAS[8] = (DEBOUT, 0, 70)          # le mur de la cuisine de face : la ligne du plafond reste droite (l'auteur)
 CAMERAS[7] = (ASSIS, 0, 80)          # plus large : la rampe de l'escalier à gauche et la caisse à droite (l'auteur)
 CAMERAS.update({5: (2.45, -20, 72), 11: (DEBOUT, 18, 66), 13: (DEBOUT, -24, 74), 17: (2.2, -89, 60), 18: (DEBOUT, 10, 34)})
@@ -334,5 +335,18 @@ def vue(numero, sortie):
     img.save(sortie)
 
 
+def fermer():
+    """Le rideau de verre fermé (la pluie, la nuit) : les panneaux dépliés sur toute la devanture, la porte au milieu."""
+    OBJETS[:] = [o for o in OBJETS if o[2] != "#9fc7d6"]       # plus de panneaux repliés
+    largeur, CADRE = 11.0 / 12, "#4f5a62"                       # le verre ne se dessine pas : seulement ses cadres fins
+    for k in range(13):
+        boite(k * largeur - 0.025, 7.95, k * largeur + 0.025, 8.0, 0, 2.7, CADRE)
+    boite(0, 7.95, 11, 8.0, 0, 0.06, CADRE, morceau=0.5)
+    boite(0, 7.95, 11, 8.0, 2.64, 2.7, CADRE, morceau=0.5)
+    boite(5.55, 7.9, 5.59, 7.96, 0.9, 1.6, "#3a3a3a")          # la poignée de la porte, côté salle
+
+
 if __name__ == "__main__":
+    if "ferme" in sys.argv[3:]:
+        fermer()
     vue(int(sys.argv[2]), sys.argv[1])

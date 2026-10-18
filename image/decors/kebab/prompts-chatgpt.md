@@ -29,6 +29,7 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 | A15 | L'axe 15 : la devanture vue de dedans, les panneaux repliés : **fait** | `image/decors/kebab/devanture/fond_v1.png` |
 | A5 | L'axe 5 : depuis l'escalier, en plongée : **fait** (une retouche) | `image/decors/kebab/depuis-l-escalier/fond_v1.png` |
 | A19 | L'axe 19 : le long de la banquette de droite, vers la rue : **fait** | `image/decors/kebab/banquette-de-droite/fond_v1.png` |
+| A24 pluie | L'axe 24 : la table de Sky dans Navier-Stokes, rideau fermé, sous la pluie | `image/decors/kebab/table-navier-stokes/fond_pluie_v1.png` |
 | KB2 v2 | Le plan peint, d'après le plan v3 : bonne disposition, mais l'escalier sur la rue, la lumière de côté | (supprimé) |
 | KB2 v3 | Le plan peint, d'après le plan v5 sans caméras : **la base fixe, validée** | `image/decors/kebab/plan-peint_v2.png` |
 | A6 v3 | L'axe 6 : la table de Sky dans l'angle, la banquette, le miroir, la plante : **fait** (la vue en volumes, puis une retouche) | `image/decors/kebab/table-du-fond/fond_v1.png` |
@@ -1101,3 +1102,21 @@ Edit ONLY the weather and the light of this image. Keep everything exactly where
 ```
 
 À contrôler à la reprise : le même cadrage ; plus de soleil ni d'ombres de feuilles dedans ; les plafonniers allumés ; la pluie dehors et l'eau sur le verre ; la rue grise ; aucune personne, aucun texte.
+
+L'auteur, le 2026-10-18 : le prompt A19 pluie ne sert à rien, Sky est à la table de devant dans Navier-Stokes. Non envoyé ; l'axe 19 reste de jour (ouvert et fermé).
+
+### Prompt A24 pluie — La table de Sky dans Navier-Stokes
+
+La caméra 24 replacée : assise dans la salle, vers la table de devant le long de la banquette, la vitrine fermée derrière elle (Navier-Stokes, l. 9 : « Jeudi matin. 9h47. Kebab d'en bas. Il pleut. La grosse. Celle qui rebondit sur le trottoir et qui fait un bruit de friture sur la vitrine »). Directement sous la pluie, avec la vue en volumes rideau fermé. Quatre images jointes, dans cet ordre : `~/Téléchargements/kebab_pour_A24_1_vue.png`, `~/Téléchargements/kebab_pour_A24_2_angle10.png` (le fond de l'axe 10 : la même table, la même banquette, la même rampe, le même palier), `~/Téléchargements/kebab_pour_A24_3_angle19-ferme.png` (le rideau de verre fermé, vu de dedans), `~/Téléchargements/kebab_pour_A24_4_facade-pluie.png` (la pluie sur la façade : la même lumière grise, le même verre mouillé).
+
+```
+The first attached image is a rough 3D layout of one view of our kebab restaurant, made of simple flat-coloured volumes: it fixes the camera, the perspective, the framing and the place of every object. The other three attached images are views of the same restaurant, already painted and approved: the second shows the same table, red bench, staircase side, banister and landing on a sunny day; the third shows the glass shopfront closed, seen from inside; the fourth shows the same building under heavy rain. Paint exactly the view of the first image, as an empty background for an anime series: keep the same camera, the same perspective and framing, and every object at the same place, with the same size and angle, as if the layout had been painted over. The camera is seated in the dining room and looks at the front table along the red bench, with the closed shopfront behind it. Replace the simple volumes with the real objects:
+- in the middle, the rectangular wooden table, its far short end against the red padded bench, with a napkin dispenser, a white sauce bottle and a red sauce bottle; its empty wooden chairs with red seats around it, and other chairs in the foreground on the left;
+- behind the table, on the left, the long red padded bench, empty, and above it the closed side of the wooden staircase, plain warm wall, with the wooden banister going down to a newel post near the landing; on the landing, a large green potted plant;
+- on the right, the closed glass shopfront: tall clear glass panels in thin dark metal frames (the dark grey bars), from the floor to the top of the opening;
+- through the glass, the street under heavy rain, as in the fourth image: grey sky, the wet sidewalk shining with puddles, the tram track on its dark wet grass, a large leafy tree across the street, dark and dripping, and the facade behind it (the dark brown bar is the tree trunk);
+- drops and trickles of water run down the glass; the surface at the top is the ceiling.
+Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the style of the other images (clean dark outlines, flat cel shading, muted palette, painted details). NOT a 3D render, NOT photorealistic, and do not keep the flat colours of the layout. Light: a grey, rainy morning: no sunlight and no shadows of leaves inside; the room is lit by its warm ceiling lights, cosy against the cold grey light coming through the glass. No people. No text, no letters and no logos anywhere. Landscape format (1536×1024).
+```
+
+À contrôler à la reprise : la table devant la banquette, son bout contre elle ; la rampe jusqu'au poteau, le palier et sa plante ; le rideau de verre fermé à droite, ses cadres ; la pluie dehors, l'eau sur le verre ; pas de soleil dedans, les plafonniers ; aucune personne, aucun texte.
