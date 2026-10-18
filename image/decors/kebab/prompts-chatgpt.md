@@ -28,6 +28,7 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 | A9 | L'axe 9 : la broche, de près : **fait** (une retouche) | `image/decors/kebab/broche/fond_v1.png` |
 | A15 | L'axe 15 : la devanture vue de dedans, les panneaux repliés : **fait** | `image/decors/kebab/devanture/fond_v1.png` |
 | A5 | L'axe 5 : depuis l'escalier, en plongée : **fait** (une retouche) | `image/decors/kebab/depuis-l-escalier/fond_v1.png` |
+| A19 | L'axe 19 : le long de la banquette de droite, vers la rue | `image/decors/kebab/banquette-de-droite/fond_v1.png` |
 | KB2 v2 | Le plan peint, d'après le plan v3 : bonne disposition, mais l'escalier sur la rue, la lumière de côté | (supprimé) |
 | KB2 v3 | Le plan peint, d'après le plan v5 sans caméras : **la base fixe, validée** | `image/decors/kebab/plan-peint_v2.png` |
 | A6 v3 | L'axe 6 : la table de Sky dans l'angle, la banquette, le miroir, la plante : **fait** (la vue en volumes, puis une retouche) | `image/decors/kebab/table-du-fond/fond_v1.png` |
@@ -1061,3 +1062,18 @@ Edit ONLY the stainless steel counter with the salad trays, on the left. Keep ev
 À contrôler à la reprise : le comptoir plus long ; un bout libre, en inox, après les bacs ; la vitre seulement au-dessus des bacs ; un petit passage avant le frigo ; rien d'autre de changé.
 
 **Résultat de la retouche A5, le 2026-10-18 : validé par l'auteur.**
+
+### Prompt A19 — Le long de la banquette de droite, vers la rue
+
+Vincent « s'assoit dans le coin » (« Le Miroir », l. 705) ; les tables de l'équipe. La caméra assise sur la banquette de droite, près de la place de Patrick, regarde le long de la banquette vers la rue. Quatre images jointes, dans cet ordre : `~/Téléchargements/kebab_pour_A19_1_vue.png`, `~/Téléchargements/kebab_pour_axes_plan-peint.png`, `~/Téléchargements/kebab_pour_A19_3_angle7.png` (le fond de l'axe 7 : la même rue, la même banquette, la même rampe), `~/Téléchargements/kebab_pour_A19_4_angle10.png` (le fond de l'axe 10 : le même côté d'escalier, la même rampe, vus de l'autre bout).
+
+```
+The first attached image is a rough 3D layout of one view of our kebab restaurant, made of simple flat-coloured volumes: it fixes the camera, the perspective, the framing and the place of every object. The second attached image is the same restaurant seen from above, painted in our style. The third and fourth attached images are two other views of the same restaurant, already painted and approved: the red bench, the side of the staircase and its banister, the tables, chairs, the street, the trees and the light must look exactly the same. Paint exactly the view of the first image, as an empty background for an anime series: keep the same camera, the same perspective and framing, and every object at the same place, with the same size and angle, as if the layout had been painted over. The camera sits on the red bench along the right side of the room and looks along it toward the street. Replace the simple volumes with the real objects:
+- on the left, the long red padded bench running away from us toward the street, empty; above it, the closed side of the wooden staircase, plain warm wall, its top edge stepping down toward the street, and the wooden banister with its balusters going down along it to a newel post at the far end;
+- on the right, the rectangular wooden tables along the bench and in the middle of the room, with their chairs, each with a red sauce bottle, a white sauce bottle and a napkin dispenser; in the foreground at the bottom right, the backs of two empty chairs;
+- at the far end, the wide open shopfront, with no posts, and the sunny street: the sidewalk, the tram track on its strip of grass, and across the street three large leafy trees spaced far apart in front of the plain beige facade (the dark brown bars are their trunks, not posts);
+- at the top, the ceiling, plain and closed.
+Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the style of the other images (clean dark outlines, flat cel shading, muted warm palette, painted details). NOT a 3D render, NOT photorealistic, and do not keep the flat colours of the layout. Light: the only daylight comes from the open shopfront at the far end; inside, warm and dim; the shadows of the tables and chairs fall toward the camera. No people. No text, no letters and no logos anywhere. Landscape format (1536×1024).
+```
+
+À contrôler à la reprise : la banquette qui file vers la rue ; le côté de l'escalier et la rampe jusqu'au poteau ; les tables ; la devanture sans poteaux, la rue comme à l'axe 7, trois arbres ; un plafond plein ; aucune personne, aucun texte.

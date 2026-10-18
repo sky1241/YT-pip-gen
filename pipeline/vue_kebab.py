@@ -25,6 +25,7 @@ CAMERAS[1] = (DEBOUT, 8, 84)         # du trottoir d'en face, un peu vers le hau
 CAMERAS[4] = (DEBOUT, -12, 72)       # derrière le comptoir : le dessus du comptoir et les salades au premier plan
 CAMERAS[9] = (1.6, -9, 70)            # derrière le comptoir, près de la broche : un plan rapproché
 CAMERAS[15] = (DEBOUT, 0, 74)        # vers l'avant gauche : les panneaux repliés, le bout du comptoir, la rue
+CAMERAS[19] = (ASSIS, 0, 72)         # assis au bout de la banquette, le coin de Vincent
 CAMERAS[8] = (DEBOUT, 0, 70)          # le mur de la cuisine de face : la ligne du plafond reste droite (l'auteur)
 CAMERAS[7] = (ASSIS, 0, 80)          # plus large : la rampe de l'escalier à gauche et la caisse à droite (l'auteur)
 CAMERAS.update({5: (2.45, -20, 72), 11: (DEBOUT, 18, 66), 13: (DEBOUT, -24, 74), 17: (2.2, -89, 60), 18: (DEBOUT, 10, 34)})
