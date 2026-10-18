@@ -524,3 +524,15 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   (`comme_en_production`). Mêmes réglages d'entraînement que la v1 (`pipeline/kaggle/lora_maelle_v2`), 8 × 235 = 1 880 pas.
   Si le côté rasé passe encore à droite : faire faire par l'auteur une planche de son côté droit (trois-quarts droit, quelques
   expressions et gestes), le seul vrai remède à un jeu déséquilibré. La bague se posera en production.
+- **Le test du LoRA de Maëlle v2 (2026-10-18)** (`maelle_v2.safetensors`, planche
+  `<sorties_root>/comfyui/test-standard_maelle_v2_planche.png`, comparée à la v1 dans
+  `~/Téléchargements/maelle_lora_v1_contre_v2.png`). Entraînée en 73 min sur une P100, 1 880 pas, perte moyenne finale 0,061.
+  **La tenue juste sur les 10** : col roulé, manches longues remontées, pantalon noir taille haute, bottines ; plus de bracelet.
+  **Le côté rasé** : juste aux tests 1, 2, 3, 4, 5, 7, 8, 9. Le 2 (« facing right », sans `undercut`) montre enfin son côté
+  droit, cheveux longs ; le 4 (profil) la tourne vers la gauche, côté rasé devant, juste. Faux aux tests 6 et 10, qui
+  n'écrivent pas l'angle : elle se tourne vers la droite avec le côté rasé devant. Repris avec l'angle écrit
+  (`essai_maelle_v2_*`) : le 6 « facing viewer » juste, le 10 « facing right » sans `undercut` juste, mais le 10
+  « facing viewer » encore faux. Les ratées sont un miroir complet d'elle (le côté rasé et la cicatrice tous deux à sa droite),
+  pas un mélange : une image retournée horizontalement redevient juste (utile pour un calque seul, pas quand le sens du regard
+  compte). Bilan : 10 justes sur 13. Utilisable en production si l'angle est toujours écrit et qu'on génère 2 ou 3 variantes ;
+  le remède de fond reste plus d'images de son côté droit (prompt M5, pour une v3). La bague : toujours pas apprise, comme prévu.

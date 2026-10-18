@@ -369,3 +369,22 @@ Edit ONLY the fourth cell, the smartphone (bottom left). Keep everything else ex
 ```
 
 L'auteur garde la planche sans retouche : la retouche proposée confondait ses mains. Rangée en `planches/trois-quarts_gestes_v1.png` (le préfixe donne `gestes/trois-quarts_<geste>_v1.png`). **La série en pied et en gestes est finie, le 2026-10-18 : 4 planches, 9 vues en pied et poses, 6 gestes.**
+
+### Prompt M5 — Six expressions de son côté droit, pour le LoRA v3
+
+Pourquoi : le LoRA v2 met le côté rasé du bon côté quand l'angle est écrit, mais il la retourne encore en miroir sur 3 images sur 13 (le côté rasé et la cicatrice à sa droite), parce que le jeu n'a que 4 images de son côté droit (journal.md, 2026-10-18). Six bustes de ce côté-là, sans les mains (pas de bague à placer). Joins deux images : son image maître (`~/Téléchargements/maelle_pour_M_1_image-maitre.png`), puis sa vue de trois-quarts côté droit (`~/Téléchargements/maelle_pour_M_3_cote-droit.png`, c'est `references/trois-quarts-droit_v1.png`). Découpe : `--noms cote-droit_neutre,cote-droit_regard-qui-tue,cote-droit_joie,cote-droit_colere,cote-droit_surprise,cote-droit_rire --dossier expressions`.
+
+```
+Make a sheet of Maëlle's expressions seen from HER RIGHT side: a regular grid of 3 columns and 2 rows, landscape format (1536×1024), six equal cells separated by thin white gaps. In each cell, Maëlle from the chest up, her hands out of frame, in a three-quarter view showing HER RIGHT side, exactly as in the second attached image: her face turns toward the RIGHT edge of the image; the long, messy copper strands that fall over HER RIGHT side are nearer to us, on the left part of her head in the image; the shaved side of her head (HER LEFT side) is turned away from us, on the far side, almost hidden. The small vertical scar is on HER LEFT eyebrow, the far one, barely visible; the near eyebrow has no scar. Same framing, same light, plain light-grey background. Only her expression changes. Her usual look, exactly as in the attached images: the black fitted turtleneck sweater in a matte, slightly textured fabric; fine black winged eyeliner, a light dusting of freckles on the nose and upper cheeks, green eyes; broad swimmer's shoulders. No jewelry visible. Cells read left to right, then top to bottom:
+
+1. Neutral and watchful, closed mouth.
+2. Her killer look: a cold glare straight at the viewer, narrowed eyes, closed mouth.
+3. Joy: a real smile, mouth open, teeth showing.
+4. Anger: a hard frown, lips pressed together.
+5. Surprise: raised eyebrows, mouth open.
+6. Laughing: eyes closed, mouth wide open.
+
+No text or labels anywhere.
+```
+
+À contrôler : les six tournées vers le bord droit de l'image, les longues mèches du côté le plus proche, le côté rasé loin et presque caché ; la cicatrice sur le sourcil du fond, jamais sur celui de devant ; pas de mains ; le col roulé ; les six expressions dans l'ordre.
