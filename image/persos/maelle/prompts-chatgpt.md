@@ -315,6 +315,12 @@ Make a full-body sheet of Maëlle: a regular grid of 3 columns and 1 row, landsc
 No text or labels anywhere.
 ```
 
+Résultat de M2, le 2026-10-18 : bonne pour l'auteur ; contrôlé par Claude : l'undercut à sa gauche dans le profil gauche et de dos (à gauche de l'image), les longues mèches sur le profil droit. De dos, la bague manque. Retouche, dans la case « Décrivez les modifications » :
+
+```
+Edit ONLY the hands in the third cell, the back view on the right. Keep everything else exactly as it is, in all three cells. In the back view, her right hand is the hand on the RIGHT of the image: add one wide silver ring on its thumb, visible from behind. The hand on the left of the image stays without any ring.
+```
+
 ### Prompt M3 — Trois poses
 
 Joins les deux mêmes images. Découpe : `--noms assis-face,assis-cote,accoude --dossier references`.
