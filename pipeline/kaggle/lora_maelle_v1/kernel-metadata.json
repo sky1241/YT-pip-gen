@@ -1,0 +1,16 @@
+{
+  "id": "skyzer/kebab-lora-maelle-v1",
+  "title": "kebab-lora-maelle-v1",
+  "code_file": "train.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": "true",
+  "enable_gpu": "true",
+  "enable_tpu": "false",
+  "enable_internet": "true",
+  "machine_shape": "NvidiaTeslaT4",
+  "dataset_sources": ["skyzer/kebab-lora-maelle-jeu-v1"],
+  "competition_sources": [],
+  "kernel_sources": [],
+  "model_sources": []
+}

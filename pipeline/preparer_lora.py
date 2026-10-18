@@ -92,8 +92,12 @@ VUES = {
     "assis-cote": "full body, sitting, chair, from side, facing right",
     "accoude": "full body, standing, leaning, elbow rest",
 }
-# Les gestes en plan moyen (gestes/), d'après fiche.json > accessoires ; ceux de Sky pour l'instant
+# Les gestes en plan moyen (gestes/), d'après fiche.json > accessoires
 GESTES = {
+    "cafe": "drinking, holding cup, coffee cup",
+    "photo-telephone": "holding phone, taking photo, smartphone, looking at phone",
+    "serviette": "holding paper, folding napkin, both hands",
+    "ordre": "index finger raised, serious, cold stare",
     "mange": "eating, biting, holding food with both hands, wrap",
     "boit": "drinking, holding bottle, soda bottle",
     "bouche-pleine": "chewing, mouth full, puffy cheeks, unimpressed",
@@ -113,13 +117,18 @@ def legende(chemin, fiche):
     base = nom.rsplit("_v", 1)[0]
     tq = base.startswith("trois-quarts_")
     cle = base.removeprefix("trois-quarts_")
-    angle = "three-quarter view, facing right" if tq else "facing viewer"
+    lora = fiche["lora"]
+    # l'angle de trois-quarts d'un perso : Sky montre son côté droit (facing right), Maëlle son côté gauche (facing left)
+    angle = lora.get("angle_trois_quarts", "three-quarter view, facing right") if tq else "facing viewer"
+    if not tq and dossier == "expressions" and cle in lora.get("legendes_signatures", {}):
+        angle = lora.get("angle_signatures", angle)
     yeux = fiche["lora"].get("tag_yeux")
     yeux = f"{yeux}, " if yeux and cle not in SANS_YEUX else ""
     if dossier == "references":
         if base.startswith("master"):
             return yeux + fiche["lora"]["legende_maitre"]
-        return f"{VUES[base]}, {yeux}{FOND}"
+        vue = lora.get("legendes_par_fichier", {}).get(chemin) or VUES[base]
+        return f"{vue}, {yeux}{FOND}"
     if dossier == "bouches":
         cle = base.split("_", 1)[1]
         return f"portrait, close-up, {angle}, {yeux}{BOUCHES[cle]}, {FOND}"
@@ -188,7 +197,8 @@ def main():
             image = image.resize((round(w * k / 8) * 8, round(h * k / 8) * 8), Image.LANCZOS)
         nom = chemin.replace("/", "__").removesuffix(".png")
         image.save(sortie / f"{nom}.png")
-        texte = f"{declencheur}, 1boy, solo, male focus, {legende(chemin, fiche)}"
+        genre = "1girl, solo, female focus" if fiche.get("genre") == "f" else "1boy, solo, male focus"
+        texte = f"{declencheur}, {genre}, {legende(chemin, fiche)}"
         (sortie / f"{nom}.txt").write_text(texte + "\n")
         print(f"{i:3d}/{len(fichiers)}  {image.size[0]}x{image.size[1]}  {nom}")
     print(f"jeu prêt : {sortie} ({len(fichiers)} images)")

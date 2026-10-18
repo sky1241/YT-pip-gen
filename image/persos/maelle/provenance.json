@@ -649,5 +649,19 @@
     "photo-telephone": "gestes/trois-quarts_photo-telephone_v1.png",
     "serviette": "gestes/trois-quarts_serviette_v1.png",
     "ordre": "gestes/trois-quarts_ordre_v1.png"
+  },
+  "signatures_retenues": {
+    "bras-croises": "expressions/bras-croises_v1.png",
+    "mode-ciso": "expressions/mode-ciso_v1.png",
+    "regard-qui-tue": "expressions/regard-qui-tue_v1.png",
+    "rougeur": "expressions/rougeur_v1.png"
+  },
+  "bouches_retenues": {
+    "face_fermee": "bouches/face_fermee_v1.png",
+    "face_mi-ouverte": "bouches/face_mi-ouverte_v1.png",
+    "face_ouverte": "bouches/face_ouverte_v1.png",
+    "trois-quarts_fermee": "bouches/trois-quarts_fermee_v1.png",
+    "trois-quarts_mi-ouverte": "bouches/trois-quarts_mi-ouverte_v1.png",
+    "trois-quarts_ouverte": "bouches/trois-quarts_ouverte_v1.png"
   }
 }

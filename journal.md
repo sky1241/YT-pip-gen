@@ -493,3 +493,8 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   la place de Sky) ; corrigée à chaque fois dans `pipeline/vue_kebab.py`, qui a maintenant un mode « rideau fermé ». Les
   aiguilles de l'horloge se posent en code (`pipeline/aiguilles.py`). Un fond peut s'enregistrer depuis l'image collée dans la
   conversation : elle est à la taille d'origine, identique au téléchargement.
+- **Le LoRA de Maëlle, v1 (2026-10-18)** : sa série en pied et en gestes finie (M1 à M4, 4 planches, plusieurs retouches pour la
+  bague : ChatGPT la met au mauvais doigt ou au mauvais pouce ; vue de dos, le pouce est caché, ne pas la demander). Jeu :
+  69 images (`pipeline/preparer_lora.py maelle v1`), légendes avec `1girl, solo, female focus` (fiche > `genre` = f) et son angle
+  de trois-quarts « facing left » (fiche > lora > `angle_trois_quarts`, `angle_signatures`) : son côté gauche, à l'inverse de
+  Sky. Entraînement sur Kaggle (`pipeline/kaggle/lora_maelle_v1`), 3 répétitions × 8 époques (≈ 1 650 pas), sans retournement.

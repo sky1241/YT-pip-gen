@@ -69,11 +69,30 @@
   "image_maitre": "image/persos/maelle/references/master_v1.png",
   "lora": {
     "flip_horizontal": false,
-    "_note": "flip désactivé (détails asymétriques)"
+    "_note": "flip désactivé (détails asymétriques)",
+    "declencheur": "maellekebab",
+    "_note_legendes": "légendes en tags Danbooru (le format d'Animagine XL 4.0). Les traits fixes (cheveux cuivrés en undercut, côté rasé à sa gauche, cicatrice au sourcil gauche, yeux verts, eye-liner, taches de rousseur, col roulé noir, bague au pouce droit) ne sont jamais écrits : le mot déclencheur les absorbe. On écrit ce qui change : l'angle, l'expression, le cadrage",
+    "angle_trois_quarts": "three-quarter view, facing left",
+    "angle_signatures": "three-quarter view, facing left",
+    "_note_angles": "sa palette, ses signatures et ses gestes sont de trois-quarts sous l'angle de son image maître : son côté gauche, tournée vers la gauche de l'image (vérifié le 2026-10-18)",
+    "legende_maitre": "upper body, sitting, table, indoors, cafe, holding cup, coffee cup, morning, sunlight, window",
+    "legendes_signatures": {
+      "regard-qui-tue": "glaring, cold stare, narrowed eyes, looking at viewer, closed mouth",
+      "bras-croises": "crossed arms, expressionless, unimpressed",
+      "mode-ciso": "serious, cold expression, narrowed eyes, closed mouth",
+      "rougeur": "blush, embarrassed, looking away"
+    },
+    "test_signature": "regard-qui-tue",
+    "legendes_par_fichier": {
+      "references/assis-cote_v2.png": "full body, sitting, chair, crossed legs, from side, facing left",
+      "references/assis-face_v2.png": "full body, sitting, chair, crossed legs, facing viewer",
+      "references/accoude_v2.png": "full body, standing, leaning, elbow rest, holding cup"
+    }
   },
   "voix": "audio/voix/maelle/",
   "sources": "bible : table des énergies, section MAËLLE ; « Le Miroir » (ecriture/brouillons/cern.md, partie 1) ; prompts d'origine de l'image maître (prompts-chatgpt.md)",
   "palette_emotions": "de trois-quarts, sous l'angle de son image maître (on voit son côté gauche) ; planche 1 faite le 2026-10-14",
   "provenance": "image/persos/maelle/provenance.json",
-  "description_maitre": "image/persos/maelle/description-chatgpt.md : à coller en tête de ses prompts, avec l'image maître jointe (sans le bloc d'expression par défaut pour une planche d'émotions)"
+  "description_maitre": "image/persos/maelle/description-chatgpt.md : à coller en tête de ses prompts, avec l'image maître jointe (sans le bloc d'expression par défaut pour une planche d'émotions)",
+  "genre": "f"
 }
