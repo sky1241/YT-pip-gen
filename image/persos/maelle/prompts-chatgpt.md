@@ -293,6 +293,12 @@ Edit ONLY the third cell, on the right. Keep the first two cells exactly as they
 
 Résultat de la retouche, le 2026-10-18 : la case 3 montre son côté droit, validée. La bague y est passée au pouce gauche : gardée, comme la règle fixée pour Sky (une bague ratée ne fait pas refaire une planche), et notée dans `fiche.json` pour le passage local. Pour M2 et M3, la phrase sur la bague dit aussi que la main gauche n'en a pas.
 
+L'auteur veut quand même la case juste, pour que le LoRA apprenne la bague au bon pouce. Retouche de la bague, case 3, dans la case « Décrivez les modifications » :
+
+```
+Edit ONLY the hands in the third cell, on the right. Keep everything else exactly as it is, in all three cells. In the third cell, remove the silver ring from the thumb of the hand on the RIGHT of the image (her left hand, farther from us), and put the same wide silver ring on the thumb of the hand on the LEFT of the image (her right hand, nearer to us). Only one ring in the cell.
+```
+
 ### Prompt M2 — En pied, de profil et de dos
 
 Joins les deux mêmes images. Découpe : `--noms pied-profil-gauche,pied-profil-droit,pied-dos --dossier references`.
