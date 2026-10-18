@@ -26,6 +26,7 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 | A14 | L'axe 14 : l'angle de la banquette, debout : **fait** (la retouche gardée, sans le bout d'escalier) | `image/decors/kebab/coin-de-la-banquette/fond_v1.png` |
 | A18 | L'axe 18 : l'horloge, en gros plan : **fait** (les aiguilles en code) | `image/decors/kebab/horloge/fond_v1.png` |
 | A9 | L'axe 9 : la broche, de près : **fait** (une retouche) | `image/decors/kebab/broche/fond_v1.png` |
+| A15 | L'axe 15 : la devanture vue de dedans, les panneaux repliés | `image/decors/kebab/devanture/fond_v1.png` |
 | KB2 v2 | Le plan peint, d'après le plan v3 : bonne disposition, mais l'escalier sur la rue, la lumière de côté | (supprimé) |
 | KB2 v3 | Le plan peint, d'après le plan v5 sans caméras : **la base fixe, validée** | `image/decors/kebab/plan-peint_v2.png` |
 | A6 v3 | L'axe 6 : la table de Sky dans l'angle, la banquette, le miroir, la plante : **fait** (la vue en volumes, puis une retouche) | `image/decors/kebab/table-du-fond/fond_v1.png` |
@@ -1013,3 +1014,18 @@ Edit ONLY the worktop on the left of the kebab spit. Keep everything else exactl
 À contrôler à la reprise : le bol près de la broche, l'évier et son robinet plus à gauche, comme à l'axe 8 ; rien d'autre de changé.
 
 **Résultat de la retouche A9, le 2026-10-18 : validé par l'auteur.**
+
+### Prompt A15 — La devanture vue de dedans
+
+Mohamed s'approche du menu plastifié sur la vitrine et corrige un prix au feutre (« Le Miroir », l. 1482). Le menu, avec ses prix, se posera en code sur les panneaux repliés. La caméra dans la salle, près du comptoir, tournée vers l'avant gauche. Quatre images jointes, dans cet ordre : `~/Téléchargements/kebab_pour_A15_1_vue.png`, `~/Téléchargements/kebab_pour_axes_plan-peint.png`, `~/Téléchargements/kebab_pour_A15_3_angle7.png` (le fond de l'axe 7 : la même rue, les mêmes arbres), `~/Téléchargements/kebab_pour_A15_4_angle2.png` (le fond de l'axe 2 : le même comptoir, la même caisse, les mêmes panneaux).
+
+```
+The first attached image is a rough 3D layout of one view of our kebab restaurant, made of simple flat-coloured volumes: it fixes the camera, the perspective, the framing and the place of every object. The second attached image is the same restaurant seen from above, painted in our style. The third and fourth attached images are two other views of the same restaurant, already painted and approved: the street, the trees, the facade across the street, the counter, the cash register, the folded glass panels, the plants and the light must look exactly the same. Paint exactly the view of the first image, as an empty background for an anime series: keep the same camera, the same perspective and framing, and every object at the same place, with the same size and angle, as if the layout had been painted over. The camera stands inside the restaurant, near the counter, and looks out through the fully open shopfront. Replace the simple volumes with the real objects:
+- across most of the frame, the wide open shopfront, with no posts or pillars, only its plain top edge; through it, the sunny street: the pale sidewalk, the tram track on its strip of green grass with grass between the rails, and across the street two large leafy trees spaced far apart in front of the plain beige facade with its large windows (the dark brown bars are the tree trunks, not posts);
+- on the right, at the end of the opening, the folded glass panels of the shopfront, stacked together, full height, clear glass in thin dark metal frames;
+- at the bottom right, the front end of the stainless steel counter, with the dark cash register and, behind its low glass sneeze guard, the first salad tray; next to the counter, a large green potted plant;
+- at the bottom left, the tiled floor of the restaurant; at the top, the ceiling.
+Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the style of the other images (clean dark outlines, flat cel shading, muted warm palette, painted details). NOT a 3D render, NOT photorealistic, and do not keep the flat colours of the layout. Light: warm morning sunlight outside; inside, warm and dimmer; the sunlight falls on the floor near the opening. No people. No text, no letters and no logos anywhere, including on the panels and the facade. Landscape format (1536×1024).
+```
+
+À contrôler à la reprise : la devanture grande ouverte, sans poteaux ; la rue comme à l'axe 7, deux arbres ; les panneaux repliés à droite ; le bout du comptoir, la caisse, la plante ; aucun texte.
