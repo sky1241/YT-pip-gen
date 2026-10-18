@@ -361,3 +361,9 @@ Make a sheet of Maëlle's gestures: a regular grid of 3 columns and 2 rows, land
 
 No text or labels anywhere.
 ```
+
+Résultat de M4, le 2026-10-18 (`<sorties_root>/persos/maelle/gestes_essai-1.png`) : les six gestes justes, l'undercut devant partout, la bouche pleine aux joues gonflées, la bague au pouce droit en case 6. Case 1 : le pouce est caché derrière la tasse, pas de bague visible, juste. Case 4 : son pouce droit se voit sur le téléphone, sans bague. Retouche :
+
+```
+Edit ONLY the fourth cell, the smartphone (bottom left). Keep everything else exactly as it is, in all six cells. In the fourth cell, the hand on the LEFT of the image is her right hand: put one wide silver ring around its thumb, the thumb resting on the top edge of the phone. The other hand has no ring.
+```
