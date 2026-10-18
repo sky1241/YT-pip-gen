@@ -28,7 +28,7 @@ Le canon du kebab n'est pas encore tranché (Mohamed à Annemasse ou Mehmet à C
 | A9 | L'axe 9 : la broche, de près : **fait** (une retouche) | `image/decors/kebab/broche/fond_v1.png` |
 | A15 | L'axe 15 : la devanture vue de dedans, les panneaux repliés : **fait** | `image/decors/kebab/devanture/fond_v1.png` |
 | A5 | L'axe 5 : depuis l'escalier, en plongée : **fait** (une retouche) | `image/decors/kebab/depuis-l-escalier/fond_v1.png` |
-| A19 | L'axe 19 : le long de la banquette de droite, vers la rue | `image/decors/kebab/banquette-de-droite/fond_v1.png` |
+| A19 | L'axe 19 : le long de la banquette de droite, vers la rue : **fait** | `image/decors/kebab/banquette-de-droite/fond_v1.png` |
 | KB2 v2 | Le plan peint, d'après le plan v3 : bonne disposition, mais l'escalier sur la rue, la lumière de côté | (supprimé) |
 | KB2 v3 | Le plan peint, d'après le plan v5 sans caméras : **la base fixe, validée** | `image/decors/kebab/plan-peint_v2.png` |
 | A6 v3 | L'axe 6 : la table de Sky dans l'angle, la banquette, le miroir, la plante : **fait** (la vue en volumes, puis une retouche) | `image/decors/kebab/table-du-fond/fond_v1.png` |
@@ -1077,3 +1077,15 @@ Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the 
 ```
 
 À contrôler à la reprise : la banquette qui file vers la rue ; le côté de l'escalier et la rampe jusqu'au poteau ; les tables ; la devanture sans poteaux, la rue comme à l'axe 7, trois arbres ; un plafond plein ; aucune personne, aucun texte.
+
+**Résultat de A19, le 2026-10-18 : validé par l'auteur du premier coup.**
+
+### Prompt A19 fermé — Le rideau de verre fermé, vu de dedans
+
+Le premier fond « rideau fermé » vu de l'intérieur, en retouche de l'image validée de l'axe 19, même lumière (la pluie et la nuit viendront ensuite, à partir de lui, comme pour la façade). Le rideau : les panneaux vitrés dépliés sur toute la devanture, la porte au milieu (`axes.md`).
+
+```
+Edit ONLY the shopfront at the far end of this image. Keep everything else exactly as it is: the same view, the bench, the staircase side and banister, the tables, chairs, ceiling, style and light. Make only this change: the shopfront is now closed. The folding glass panels are unfolded across the whole width of the opening: a row of tall, clear glass panels in thin dark metal frames, from the floor up to the top of the opening; the panel in the middle is the entrance door, the same glass and frame, with a long vertical metal handle on the inside. Through the clean glass we still see the same sunny street, the tram track on its grass, the trees and the facade, a little softer, with faint reflections of the warm room on the glass. No letters, no words, no logos anywhere, not even on the glass or the door.
+```
+
+À contrôler à la reprise : les panneaux sur toute la largeur, du sol au haut de l'ouverture ; la porte au milieu, sa poignée côté salle ; la rue derrière le verre, la même ; des reflets légers ; le reste inchangé ; aucun texte.

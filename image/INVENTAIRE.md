@@ -462,7 +462,8 @@ Les axes de l'épisode 1, en plus de ceux du pilote (`decors/kebab/axes.md`, à 
 - [x] `coin-de-la-banquette/fond_v1.png` (14) : l'angle de la banquette, les plans de groupe
 - [x] `devanture/fond_v1.png` (15) : la devanture, les panneaux, le menu plastifié, la rue et le tram
 - [x] `horloge/fond_v1.png` (18) : l'horloge au-dessus du comptoir
-- [ ] `banquette-de-droite/fond_v1.png` (19) : les tables de droite en enfilade
+- [x] `banquette-de-droite/fond_v1.png` (19)
+- [ ] `banquette-de-droite/fond_ferme_v1.png` (19) : le rideau de verre fermé, même lumière ; puis la pluie et la nuit à partir de lui : les tables de droite en enfilade
 - [ ] `frigo/fond_v1.png` (16) : le frigo à boissons, si besoin
 
 Comme pour le pilote : la pluie et la nuit de chaque axe s'ajoutent quand son fond de jour est fait.
