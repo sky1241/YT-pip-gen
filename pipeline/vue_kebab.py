@@ -103,6 +103,11 @@ INOX = "#aeb3b8"
 boite(0, 1.4, 0.9, 6.4, 0, 0.9, INOX, morceau=0.5)                   # le plan de travail contre le mur
 boite(0.35, 2.65, 0.65, 2.95, 0.9, 1.6, "#8b5a2b")       # la broche
 boite(0, 2.3, 1.0, 3.3, 2.1, 2.5, INOX)                   # la hotte
+# sur le plan de travail, à gauche de la broche vue de la salle (vers la rue) : le grand bol en métal, puis l'évier et son
+# robinet (comme sur le fond validé de l'axe 8)
+boite(0.3, 3.15, 0.7, 3.55, 0.9, 1.02, "#c9ccd0")
+boite(0.2, 3.85, 0.75, 4.45, 0.88, 0.9, "#5a5f66")
+boite(0.08, 4.1, 0.14, 4.2, 0.9, 1.15, "#9aa0a6")
 plaque([(0.01, 3.95 + 0.17 * math.cos(k * math.pi / 8), 2.25 + 0.17 * math.sin(k * math.pi / 8)) for k in range(16)],
        (1, 0, 0), "#f2efe6")                                # l'horloge, ronde (un carré, ChatGPT en faisait un panneau)
 boite(1.2, 6.2, 3.0, 7.0, 0, 1.0, INOX)                   # le petit côté, devant

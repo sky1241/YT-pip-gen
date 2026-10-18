@@ -1001,3 +1001,13 @@ Style: a flat 2D hand-drawn background painting from a 1990s anime film, in the 
 ```
 
 À contrôler à la reprise : la broche de face, au milieu, la même qu'à l'axe 8 ; le grill qui rougeoie ; le plan de travail devant ; la hotte en haut ; l'horloge coupée en haut à gauche ; aucune personne, aucun texte.
+
+Résultat de A9, le 2026-10-18 : la broche, le grill, la hotte, l'horloge sont justes. Il manque, à gauche de la broche sur le plan de travail, le grand bol en métal et l'évier avec son robinet, qu'on voit sur le fond de l'axe 8 (l'auteur). Ajoutés à la vue en volumes pour les axes suivants. Capture hors du repo (`broche_essai-1_capture.png`).
+
+### Prompt A9 retouche — Le bol et l'évier
+
+```
+Edit ONLY the worktop on the left of the kebab spit. Keep everything else exactly as it is: the same view, the same spit, grill, hood, clock, knife, tray, wall, style and light. Make only this change: on the stainless steel worktop, to the left of the spit, add the same objects as in the third image of my previous message: first, close to the spit, a large round stainless steel bowl; then, further left, a small stainless steel sink set into the worktop, with a tall curved tap behind it against the wall.
+```
+
+À contrôler à la reprise : le bol près de la broche, l'évier et son robinet plus à gauche, comme à l'axe 8 ; rien d'autre de changé.
