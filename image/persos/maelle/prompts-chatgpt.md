@@ -285,6 +285,12 @@ Make a full-body sheet of Maëlle: a regular grid of 3 columns and 1 row, landsc
 No text or labels anywhere.
 ```
 
+Premier essai de M1, le 2026-10-18 (`<sorties_root>/persos/maelle/pied-1_essai-1.png`) : la tenue, les bottines, la bague au pouce droit, l'undercut à sa gauche, justes. Mais la case 3 montre le même angle que la case 2 (son côté gauche, l'undercut devant), au lieu de son côté droit. Retouche de la case 3, dans la case « Décrivez les modifications » :
+
+```
+Edit ONLY the third cell, on the right. Keep the first two cells exactly as they are. In the third cell, redraw Maëlle in the same outfit, at the same scale and in the same light, but turned the other way: her face and body turn toward the RIGHT edge of the image, in a three-quarter view. The long, messy copper strands that fall over HER RIGHT side are now on the side of her face nearer to us (the left part of her head in the image); the shaved side of her head is turned away from us, on the far side, almost hidden. The silver ring stays on her right thumb.
+```
+
 ### Prompt M2 — En pied, de profil et de dos
 
 Joins les deux mêmes images. Découpe : `--noms pied-profil-gauche,pied-profil-droit,pied-dos --dossier references`.
