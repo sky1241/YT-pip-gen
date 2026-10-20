@@ -640,6 +640,48 @@
       "case": 6,
       "date": "2026-10-18",
       "retenue": true
+    },
+    "planches/cote-droit_v1.png": {
+      "prompt": "M5",
+      "date": "2026-10-20",
+      "retenue": true,
+      "controle": "les six tournées vers le bord droit, les longues mèches devant, le côté rasé caché ; la cicatrice sur le sourcil du fond ; pas de mains"
+    },
+    "expressions/cote-droit_neutre_v1.png": {
+      "planche": "planches/cote-droit_v1.png",
+      "case": 1,
+      "date": "2026-10-20",
+      "retenue": true
+    },
+    "expressions/cote-droit_regard-qui-tue_v1.png": {
+      "planche": "planches/cote-droit_v1.png",
+      "case": 2,
+      "date": "2026-10-20",
+      "retenue": true
+    },
+    "expressions/cote-droit_joie_v1.png": {
+      "planche": "planches/cote-droit_v1.png",
+      "case": 3,
+      "date": "2026-10-20",
+      "retenue": true
+    },
+    "expressions/cote-droit_colere_v1.png": {
+      "planche": "planches/cote-droit_v1.png",
+      "case": 4,
+      "date": "2026-10-20",
+      "retenue": true
+    },
+    "expressions/cote-droit_surprise_v1.png": {
+      "planche": "planches/cote-droit_v1.png",
+      "case": 5,
+      "date": "2026-10-20",
+      "retenue": true
+    },
+    "expressions/cote-droit_rire_v1.png": {
+      "planche": "planches/cote-droit_v1.png",
+      "case": 6,
+      "date": "2026-10-20",
+      "retenue": true
     }
   },
   "gestes_retenus": {
@@ -663,5 +705,13 @@
     "trois-quarts_fermee": "bouches/trois-quarts_fermee_v1.png",
     "trois-quarts_mi-ouverte": "bouches/trois-quarts_mi-ouverte_v1.png",
     "trois-quarts_ouverte": "bouches/trois-quarts_ouverte_v1.png"
+  },
+  "cote_droit_retenu": {
+    "neutre": "expressions/cote-droit_neutre_v1.png",
+    "regard-qui-tue": "expressions/cote-droit_regard-qui-tue_v1.png",
+    "joie": "expressions/cote-droit_joie_v1.png",
+    "colere": "expressions/cote-droit_colere_v1.png",
+    "surprise": "expressions/cote-droit_surprise_v1.png",
+    "rire": "expressions/cote-droit_rire_v1.png"
   }
 }

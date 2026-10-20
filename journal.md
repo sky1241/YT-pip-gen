@@ -536,3 +536,8 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   pas un mélange : une image retournée horizontalement redevient juste (utile pour un calque seul, pas quand le sens du regard
   compte). Bilan : 10 justes sur 13. Utilisable en production si l'angle est toujours écrit et qu'on génère 2 ou 3 variantes ;
   le remède de fond reste plus d'images de son côté droit (prompt M5, pour une v3). La bague : toujours pas apprise, comme prévu.
+- **Le LoRA de Maëlle v3 (2026-10-20)** : le prompt M5 (six bustes de trois-quarts côté droit, sans les mains, avec sa vue
+  `references/trois-quarts-droit_v1.png` jointe pour l'angle) est sorti bon du premier coup : joindre une image de l'angle
+  voulu, et dire où vont les mèches et la cicatrice en termes de bord de l'image, suffit à ChatGPT. Les six cases s'appellent
+  `expressions/cote-droit_<émotion>_v1.png` ; `preparer_lora.py` leur donne l'angle « facing right » et pas de `undercut`.
+  Jeu v3 : 75 images, dont 10 du côté droit répétées 6 fois (25 % des pas), contre 3 pour les 65 autres.

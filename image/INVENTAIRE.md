@@ -250,6 +250,9 @@ Chaque fond a aussi sa version pluie et sa version nuit, dans le même cadrage (
 - [x] `planches/trois-quarts_reprises_v2.png` : joie, stupeur, concentration, soulagement, émerveillement, malice, en version 2 (le soulagement reste à refaire seul)
 - [x] `expressions/trois-quarts_soulagement_v3.png` : le soulagement, seul, bouche ouverte qui soupire
 
+**Son côté droit** (pour son LoRA v3 : le côté rasé loin et caché)
+- [x] `planches/cote-droit_v1.png` : neutre, regard qui tue, joie, colère, surprise, rire, de trois-quarts côté droit
+
 **Signatures**
 - [x] `expressions/regard-qui-tue_v1.png` : « T'as compris quoi exactement Daria. »
 - [x] `expressions/bras-croises_v1.png` : elle s'adosse et s'efface quand le sourire arrive

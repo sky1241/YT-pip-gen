@@ -117,11 +117,15 @@ def legende(chemin, fiche):
     dossier, nom = chemin.split("/")
     base = nom.rsplit("_v", 1)[0]
     tq = base.startswith("trois-quarts_")
-    cle = base.removeprefix("trois-quarts_")
+    # cote-droit_ : de trois-quarts côté droit, pour un perso dont la palette montre l'autre côté (Maëlle, prompt M5)
+    cd = base.startswith("cote-droit_")
+    cle = base.removeprefix("trois-quarts_").removeprefix("cote-droit_")
     lora = fiche["lora"]
     # l'angle de trois-quarts d'un perso : Sky montre son côté droit (facing right), Maëlle son côté gauche (facing left)
     angle = lora.get("angle_trois_quarts", "three-quarter view, facing right") if tq else "facing viewer"
-    if not tq and dossier == "expressions" and cle in lora.get("legendes_signatures", {}):
+    if cd:
+        angle = "three-quarter view, facing right"
+    elif not tq and dossier == "expressions" and cle in lora.get("legendes_signatures", {}):
         angle = lora.get("angle_signatures", angle)
     yeux = fiche["lora"].get("tag_yeux")
     yeux = f"{yeux}, " if yeux and cle not in SANS_YEUX else ""
@@ -170,7 +174,8 @@ def tags_en_plus(chemin, fiche):
 def images_retenues(perso):
     prov = json.loads((perso / "provenance.json").read_text())
     fichiers = []
-    for cle in ("palette_retenue", "palette_retenue_trois_quarts", "signatures_retenues", "bouches_retenues", "gestes_retenus"):
+    for cle in ("palette_retenue", "palette_retenue_trois_quarts", "signatures_retenues", "bouches_retenues", "gestes_retenus",
+                "cote_droit_retenu"):
         fichiers += prov.get(cle, {}).values()
     for chemin, info in prov["images"].items():
         if chemin.startswith("references/") and info.get("retenue"):

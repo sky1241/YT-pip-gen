@@ -388,3 +388,5 @@ No text or labels anywhere.
 ```
 
 À contrôler : les six tournées vers le bord droit de l'image, les longues mèches du côté le plus proche, le côté rasé loin et presque caché ; la cicatrice sur le sourcil du fond, jamais sur celui de devant ; pas de mains ; le col roulé ; les six expressions dans l'ordre.
+
+Résultat de M5, le 2026-10-20 : bonne du premier coup, contrôlée par Claude. Les six tournées vers le bord droit, les longues mèches devant, le côté rasé caché ; la cicatrice sur le sourcil du fond, rien sur celui de devant ; pas de mains. Les taches de rousseur plus marquées que « light dusting », comme sur ses autres planches. Rangée en `planches/cote-droit_v1.png`, découpée en `expressions/cote-droit_<émotion>_v1.png`.

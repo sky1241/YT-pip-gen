@@ -94,7 +94,13 @@
         "references/trois-quarts-droit_v1.png",
         "references/profil-droit_v1.png",
         "references/pied-trois-quarts-droit_v2.png",
-        "references/pied-profil-droit_v1.png"
+        "references/pied-profil-droit_v1.png",
+        "expressions/cote-droit_neutre_v1.png",
+        "expressions/cote-droit_regard-qui-tue_v1.png",
+        "expressions/cote-droit_joie_v1.png",
+        "expressions/cote-droit_colere_v1.png",
+        "expressions/cote-droit_surprise_v1.png",
+        "expressions/cote-droit_rire_v1.png"
       ],
       "_note": "le côté rasé est à sa gauche : invisible quand elle montre son côté droit. En production : écrire « undercut » sauf quand elle est tournée vers la droite de l'image (facing right)"
     },
@@ -115,11 +121,17 @@
         "references/trois-quarts-droit_v1.png",
         "references/profil-droit_v1.png",
         "references/pied-trois-quarts-droit_v2.png",
-        "references/pied-profil-droit_v1.png"
+        "references/pied-profil-droit_v1.png",
+        "expressions/cote-droit_neutre_v1.png",
+        "expressions/cote-droit_regard-qui-tue_v1.png",
+        "expressions/cote-droit_joie_v1.png",
+        "expressions/cote-droit_colere_v1.png",
+        "expressions/cote-droit_surprise_v1.png",
+        "expressions/cote-droit_rire_v1.png"
       ],
-      "repetitions": 10,
+      "repetitions": 6,
       "repetitions_base": 3,
-      "_note": "ses 4 vues du côté droit, contre une cinquantaine du côté gauche : répétées plus souvent (v2, 2026-10-18)"
+      "_note": "ses vues du côté droit : 4 en v2, répétées 10 fois ; 10 en v3 (+ les six bustes du prompt M5), répétées 6 fois, contre 3 pour les autres (25 % des pas)"
     }
   },
   "voix": "audio/voix/maelle/",
