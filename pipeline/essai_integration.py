@@ -133,8 +133,10 @@ MEMBRES = [(1, 2), (1, 5), (2, 3), (3, 4), (5, 6), (6, 7), (1, 8), (8, 9), (9, 1
 
 
 def dessin_pose(points, taille, epaisseur=8):
-    """Le squelette au format OpenPose, sur fond noir : points = 18 positions en pixels (None pour un point caché)."""
-    toile = np.zeros((taille, taille, 3), np.uint8)
+    """Le squelette au format OpenPose, sur fond noir : points = 18 positions en pixels (None pour un point caché) ;
+    taille = un côté (carré) ou (largeur, hauteur)."""
+    largeur, hauteur = (taille, taille) if isinstance(taille, int) else taille
+    toile = np.zeros((hauteur, largeur, 3), np.uint8)
     for i, p in enumerate(points):
         if p is not None:
             cv2.circle(toile, (int(p[0]), int(p[1])), epaisseur, COULEURS[i], thickness=-1)
@@ -149,6 +151,29 @@ def dessin_pose(points, taille, epaisseur=8):
         cv2.fillConvexPoly(calque, poly, COULEURS[i])
         toile = cv2.addWeighted(toile, 0.4, calque, 0.6, 0)
     return Image.fromarray(toile)
+
+
+CADRE = (832, 1216)                 # le format portrait de SDXL : un perso assis, des cheveux aux pieds
+
+
+def cadre_perso(perso, camera):
+    """Le cadre de la méthode B, sur le fond : du haut de ses cheveux à ses pieds, au format CADRE. Dessiné sur gris dans ce
+    cadre, il le remplit (son LoRA a appris des persos qui remplissent l'image) : sa taille suit le cadre. Au 6e essai, dans
+    un carré trop grand pour lui, il sortait 2 fois trop grand. Le haut laisse de la place à une tête d'anime, plus grosse et
+    plus haute que la tête réelle du squelette (5e essai)."""
+    c = corps(perso)
+    pts = projeter(camera, [q for q in c["squelette"] if q is not None])
+    (cx, cy), (mx, my) = projeter(camera, [c["crane"], c["menton"]])
+    h = my - cy
+    x0, x1 = float(pts[:, 0].min()) - 0.9 * h, float(pts[:, 0].max()) + 0.9 * h
+    y0, y1 = cy - 0.8 * h, float(pts[:, 1].max()) + 0.3 * h
+    rapport = CADRE[0] / CADRE[1]
+    if (x1 - x0) / (y1 - y0) < rapport:
+        milieu, demi = (x0 + x1) / 2, rapport * (y1 - y0) / 2
+        x0, x1 = milieu - demi, milieu + demi
+    else:
+        y1 = y0 + (x1 - x0) / rapport
+    return x0, y0, x1, y1
 
 
 def place(perso, camera, taille_fond, devant=()):
@@ -187,13 +212,15 @@ def prompt(perso, cadrage, fond_gris=False):
     morceaux += [cadrage, ANGLE]
     if cadrage != "portrait, close-up":
         morceaux.append(ACTION)
-    morceaux.append("sitting, table, simple background, grey background" if fond_gris else DECOR)
+    morceaux.append("sitting, simple background, grey background" if fond_gris else DECOR)
     return ", ".join(morceaux + [QUALITE])
 
 
-def negatif(perso):
+def negatif(perso, gris=False):
     fiche = json.loads((RACINE / "image" / "persos" / perso / "fiche.json").read_text())
     en_plus = fiche["lora"].get("negatif_production")
+    if gris:            # sur fond gris, pas de meuble : ce sont la banquette et la table du fond qui le portent
+        en_plus = ", ".join(x for x in (en_plus, "table, desk, chair, stool, bench") if x)
     # pas d'assiette ni de bol : les accessoires de la table se posent en calques (axes.md), pas au hasard du modèle
     return NEGATIF + ", multiple girls, multiple boys, 2girls, 2boys, plate, bowl" + (f", {en_plus}" if en_plus else "")
 
@@ -361,26 +388,43 @@ def main():
         image = diffusion(travail_fond, masque_travail, reglages["prompt"], PERSOS[perso]["lora"], graine, 1.0, prefixe,
                           negatif(perso), pose)
     else:
-        # la table de Sky (le dessus, à 0,75 m, et sa tranche), dans l'image de travail
-        coins = [(x, y, z) for x in (7.4, 8.6) for y in (0.85, 1.65) for z in (0.71, 0.75)]
-        table = [((u - boite[0]) * k, (v - boite[1]) * k) for u, v in enveloppe(projeter(camera, coins))]
-        jambes = [((u - boite[0]) * k, (v - boite[1]) * k) for u, v in projeter(camera, corps(perso)["jambes"])]
-        # sans la table : dessinée sur le gris, le détourage la prenait avec le perso (5e essai). C'est la vraie table du fond,
-        # posée devant lui au collage (camera.json > devant), qui cache le bas de son buste
-        guide = silhouette(perso, travail_fond, None, tete_travail, jambes)
+        # B : dessiné sur gris dans son cadre (sa taille suit le cadre), guidé par son squelette, détouré, collé sur le fond
+        # derrière les objets « devant » (la vraie table cache le bas de son buste), puis fondu dans la lumière du décor
+        cadre = cadre_perso(perso, camera)
+        c = CADRE[1] / (cadre[3] - cadre[1])
+        def vers_cadre(u, v):
+            return (u - cadre[0]) * c, (v - cadre[1]) * c
+        squelette = corps(perso)["squelette"]
+        pose_cadre = dessin_pose([None if q is None else vers_cadre(*projeter(camera, [q])[0]) for q in squelette], CADRE)
+        pose_cadre.save(etapes / "0_pose-cadre.png")
+        tete_cadre = {"crane": vers_cadre(*tete["crane"]), "hauteur": tete["hauteur"] * c}
+        jambes = [vers_cadre(u, v) for u, v in projeter(camera, corps(perso)["jambes"])]
+        guide = silhouette(perso, Image.new("RGB", CADRE), None, tete_cadre, jambes)
         guide.save(etapes / "1_guide.png")
-        reglages["prompt_gris"] = prompt(perso, "cowboy shot", fond_gris=True)
+        reglages["cadre"] = [round(v, 1) for v in cadre]
+        reglages["prompt_gris"] = prompt(perso, "full body", fond_gris=True)
         gris = diffusion(guide, None, reglages["prompt_gris"], PERSOS[perso]["lora"], graine, 0.9, f"{prefixe}_gris",
-                         negatif(perso), pose)
+                         negatif(perso, gris=True), pose_cadre)
         gris.save(etapes / "2_sur-gris.png")
-        # le perso détouré entier : au 2e essai, couper au bord de sa place avait tranché net l'épaule de Sky
-        alpha = Image.fromarray(np.minimum(np.asarray(detourage_net(gris)), 255 - np.asarray(devant_travail)))
+        # sur le fond entier : le perso détouré dans son cadre, caché par les objets « devant »
+        taille_cadre = (round(cadre[2] - cadre[0]), round(cadre[3] - cadre[1]))
+        coin = (round(cadre[0]), round(cadre[1]))
+        calque, alpha_fond = Image.new("RGB", fond.size), Image.new("L", fond.size, 0)
+        calque.paste(gris.resize(taille_cadre, Image.LANCZOS), coin)
+        alpha_fond.paste(detourage_net(gris).resize(taille_cadre, Image.LANCZOS), coin)
+        devant_fond = Image.new("L", fond.size, 0)
+        for objet in recalage.get("devant", ()):
+            ImageDraw.Draw(devant_fond).polygon([tuple(q) for q in objet["pixels"]], fill=255)
+        alpha_fond = Image.fromarray(np.minimum(np.asarray(alpha_fond), 255 - np.asarray(devant_fond)))
+        colle_fond = fond.copy()
+        colle_fond.paste(calque, (0, 0), alpha_fond)
+        colle_fond.save(etapes / "4_colle-fond.png")
+        # la passe qui fond sa lumière dans celle du décor, dans la boîte de travail (débruitage 0,35)
+        alpha = alpha_fond.crop(boite).resize((TRAVAIL, TRAVAIL), Image.LANCZOS)
         alpha.save(etapes / "3_detourage.png")
-        colle = travail_fond.copy()
-        colle.paste(gris, (0, 0), alpha)
-        colle.save(etapes / "4_colle.png")
+        colle = colle_fond.crop(boite).resize((TRAVAIL, TRAVAIL), Image.LANCZOS)
         zone = alpha.filter(ImageFilter.MaxFilter(31)).filter(ImageFilter.GaussianBlur(12))
-        image = diffusion(colle, zone, reglages["prompt"], PERSOS[perso]["lora"], graine, 0.4, f"{prefixe}_fondu",
+        image = diffusion(colle, zone, reglages["prompt"], PERSOS[perso]["lora"], graine, 0.35, f"{prefixe}_fondu",
                           negatif(perso))
     if not recomposer:
         image.save(etapes / "5_avant-visage.png")
@@ -392,7 +436,7 @@ def main():
     alpha_gris = Image.open(etapes / "3_detourage.png").convert("L") if methode == "B" else None
     alpha = composer(methode, image, masque_travail, devant_travail, alpha_gris)
     alpha.save(etapes / "7_detourage-final.png")
-    final = fond.copy()
+    final = Image.open(etapes / "4_colle-fond.png").convert("RGB") if methode == "B" else fond.copy()
     taille = boite[2] - boite[0]
     final.paste(image.resize((taille, taille), Image.LANCZOS), boite[:2], alpha.resize((taille, taille), Image.LANCZOS))
     final.save(SORTIE / f"{prefixe}.png")

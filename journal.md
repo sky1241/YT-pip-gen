@@ -591,3 +591,16 @@ Vérifié sur les pages officielles, le 2026-10-15 :
      de la table, et le détourage d'une scène entière prend aussi la plante et la table. Remède standard : un guide de pose
      (T2I-Adapter openpose SDXL, TencentARC, 316 Mo, Apache 2.0) : son squelette, calculé à sa place avec la caméra
      recalée, imposé au modèle. À télécharger avec l'accord de l'auteur.
+- **Étape 1, la méthode qui marche (2026-10-20, 14 h 30) : B cadrée, guidée par le squelette.** Le guide de pose
+  (T2I-Adapter OpenPose, force 0,9) fait suivre au modèle le corps du squelette (épaules, bras, mains, hanches, jambes),
+  pas la tête : il dessine une tête d'anime plus grosse et plus haute que la tête réelle du squelette. Dans un carré trop
+  grand pour lui, sur fond gris, il grossit tout le perso (2 fois trop grand). La parade : le cadre. Sky est dessiné sur fond
+  gris dans un cadre portrait 832 × 1216 qui va de ses cheveux à ses pieds, à sa place (`cadre_perso`) ; il remplit le cadre,
+  comme les images de son LoRA, donc sa taille suit le cadre. Sur gris, le détourage est net (sur la scène entière, isnet
+  prenait aussi la banquette, la table et la plante). Collé sur le fond derrière les objets « devant » (la vraie table cache
+  le bas de son buste), fondu (débruitage 0,35), visage repassé : `sky_B_2001` passe les six critères (les lunettes, l'œil
+  bleu à sa droite, la barbe, les manches sous le coude, les jambes en noir sous la table, il croque sa galette, le décor
+  intact). Le prompt sur gris dit « full body, sitting » sans table, et interdit les meubles (au 6e essai, une table blanche
+  dessinée sur le gris passait au collage). La méthode A guidée (dessiné dans le fond) : Maëlle propre (`maelle_A_2001`),
+  Sky avec des restes de décor redessiné (une lampe dans le miroir, un 2e chant de table), faute d'un détourage net dans la
+  scène.
