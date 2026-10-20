@@ -620,3 +620,7 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   perso : « wrap » est trop vague. Essai suivant : « burrito, biting » et, en négatif, « flower, cup, glass, drinking »
   (graines 2003 et 2004 de Sky ; les versions « wrap » gardées dans `v7_wrap/`). Temps : 8 min 20 par image sur la carte.
   La bague de Maëlle apparaît parfois à la main gauche : le LoRA ne la connaît pas (prévu).
+- **« burrito » au lieu de « wrap » (2026-10-20, 15 h 45)**, graines 2003 et 2004 de Sky : la 2004 croque une vraie galette,
+  la garniture se voit ; la 2003 tient le papier contre sa bouche, comme une serviette. Le geste de manger tient donc à peu
+  près une image sur deux : en production, 2 ou 3 variantes par plan (CLAUDE.md), ou la galette posée en calque d'accessoire
+  (`image/accessoires/`) si le geste doit être sûr.
