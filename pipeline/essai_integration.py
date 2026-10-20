@@ -37,13 +37,13 @@ RACINE = Path(__file__).resolve().parent.parent
 CONFIG = yaml.safe_load((RACINE / "config.yaml").read_text())
 ENTREE = Path(CONFIG["comfyui_dir"]) / "input"
 SORTIES_COMFY = Path(CONFIG["sorties_root"]) / "comfyui"
-SORTIE = Path(CONFIG["sorties_root"]) / "essais" / "etape1"
+# un dossier par axe : le fond, sa caméra recalée et ses objets « devant » (camera.json) ; les essais à part, par axe
+ESSAIS = Path(CONFIG["sorties_root"]) / "essais" / "integration"
 DETOUREUR = Path(CONFIG["modeles_root"]) / "segmentation" / "isnet-anime.onnx"
-AXE = RACINE / "image" / "decors" / "kebab" / "table-du-fond"
+DECORS = RACINE / "image" / "decors" / "kebab"
+AXE_PAR_DEFAUT = "table-du-fond"
 TRAVAIL = 1024                      # la taille de travail du modèle
 
-# sur l'axe 6, la caméra est devant eux, sur leur droite : on voit leur côté droit (le calcul : journal.md, 2026-10-20)
-ANGLE = "three-quarter view, facing right"
 # « wrap » était trop vague : sur 4 graines, Sky a tenu une fleur, un verre, un objet doré (8e essai). Le burrito est ce que
 # le modèle connaît de plus proche d'une galette de kebab
 ACTION = "eating, biting, holding burrito with both hands, burrito"
@@ -87,7 +87,7 @@ def corps(perso):
         (x - 0.15, 0.50, siege + 0.05), (x - 0.15, 1.00, siege + 0.07), (x - 0.13, 1.05, 0.08),  # 8-10 la hanche, le genou, la cheville droits
         (x + 0.15, 0.50, siege + 0.05), (x + 0.15, 1.00, siege + 0.07), (x + 0.13, 1.05, 0.08),  # 11-13 les gauches
         (x - 0.032, y + 0.085, crane - 0.47 * tete), (x + 0.032, y + 0.085, crane - 0.47 * tete),  # 14-15 les yeux
-        (x - 0.075, y - 0.005, crane - 0.5 * tete), None,                     # 16 l'oreille droite ; la gauche est cachée
+        (x - 0.075, y - 0.005, crane - 0.5 * tete), (x + 0.075, y - 0.005, crane - 0.5 * tete),   # 16-17 les oreilles
     ]
     return {
         "crane": (x, y, crane), "menton": (x, y + 0.02, crane - tete), "squelette": squelette,
@@ -180,12 +180,13 @@ def cadre_perso(perso, camera):
 
 def forme_jambes(points, echelle, taille):
     """Sous ses hanches, il ne garde que ce qui longe ses jambes (le squelette) : sur le gris, le modèle l'asseyait sur un
-    bloc gris que le détourage prenait avec lui (Maëlle, 7e essai). Au-dessus des hanches, tout reste. echelle : pixels par
-    mètre, à sa place."""
+    bloc gris que le détourage prenait avec lui (Maëlle, 7e essai). Jusqu'à 18 cm sous les hanches, tout reste : le bas de
+    la chemise de Sky, sorti du pantalon, y tombe (coupé à 5 cm, il laissait voir la banquette à travers, 9e essai) ; le haut
+    du bloc gris, dans cette bande, part avec le gris du fond (coller_cadre). echelle : pixels par mètre, à sa place."""
     forme = Image.new("L", taille, 0)
     d = ImageDraw.Draw(forme)
     hanches = min(points[8][1], points[11][1])
-    d.rectangle([0, 0, taille[0], hanches + 0.05 * echelle], fill=255)
+    d.rectangle([0, 0, taille[0], hanches + 0.18 * echelle], fill=255)
     rayon = 0.14 * echelle
     for i, j in ((8, 9), (9, 10), (11, 12), (12, 13)):
         d.line([points[i], points[j]], fill=255, width=int(2 * rayon))
@@ -207,16 +208,23 @@ def coller_cadre(perso, gris, cadre, camera, fond, devant):
     x = PERSOS[perso]["x"]
     (_, h1), (_, h0) = projeter(camera, [(x, 0.6, 1.0), (x, 0.6, 0.0)])
     alpha = np.asarray(detourage_net(gris), np.float32) * np.asarray(forme_jambes(points, (h0 - h1) * c, CADRE), np.float32) / 255
-    # sous les genoux, il n'y a que ses tibias et ses chaussures, sombres : ce qui est gris clair ou moyen, sans couleur (le
-    # fond, l'ombre portée sur le fond, entre ses jambes), s'en va. Plus haut, non : les plis ombrés de la chemise blanche de
-    # Sky sont de ce gris-là (7e essai)
+    # sous ses hanches, le gris du fond lui-même (le bloc gris sur lequel le modèle l'assied, son ombre entre ses jambes)
+    # s'en va : un gris sans couleur, pas plus clair que le fond, en grande tache ou qui touche le dehors de sa silhouette.
+    # Ce qui est plus clair que le fond reste : la chemise blanche de Sky, dont le bas tombe sous ses hanches (une règle
+    # « tout le gris sous les genoux » la trouait, 9e essai) ; les petits plis sombres à l'intérieur de sa silhouette aussi
     g = np.asarray(gris, np.int32)
     teinte = g.max(axis=2) - g.min(axis=2)
     lumiere = g.mean(axis=2)
-    genoux = int(min(points[9][1], points[12][1]))
-    gris_fond = (teinte < 22) & (lumiere > 85) & (lumiere < 235)
-    gris_fond[:genoux] = False
-    alpha[gris_fond] = 0
+    bord = np.concatenate([g[:8].reshape(-1, 3), g[:, :8].reshape(-1, 3), g[:, -8:].reshape(-1, 3)])
+    gris_du_fond = (teinte < 22) & (lumiere > 70) & (lumiere < np.median(bord, axis=0).mean() + 12) & (alpha > 0)
+    gris_du_fond[:int(min(points[8][1], points[11][1]))] = False
+    dehors = cv2.dilate((alpha <= 0).astype(np.uint8), np.ones((7, 7), np.uint8)) > 0
+    n, taches, stats, _ = cv2.connectedComponentsWithStats(gris_du_fond.astype(np.uint8), connectivity=8)
+    aire = max(int((alpha > 0).sum()), 1)
+    for k in range(1, n):
+        tache = taches == k
+        if stats[k, cv2.CC_STAT_AREA] > 0.003 * aire or (tache & dehors).any():
+            alpha[tache] = 0
     # resserré de 3 pixels : son bord gardait un liseré du gris de fond, clair sur le miroir sombre (7e essai)
     alpha = Image.fromarray(alpha.astype(np.uint8)).filter(ImageFilter.MinFilter(7)).filter(ImageFilter.GaussianBlur(1))
     taille_cadre = (round(cadre[2] - cadre[0]), round(cadre[3] - cadre[1]))
@@ -254,19 +262,48 @@ def place(perso, camera, taille_fond, devant=()):
     return masque, (bx, by, bx + cote, by + cote), {"crane": (cx, cy), "menton": (mx, my), "hauteur": my - cy}
 
 
-def prompt(perso, cadrage, fond_gris=False):
+def angle_vu(perso, camera):
+    """L'angle sous lequel la caméra le voit, en degrés : 0 de face, positif quand elle est sur sa droite (il regarde vers la
+    rue, +y ; sa droite est du côté des x petits). Sur l'axe 6 : 37° ; sur l'axe 14 : 33°."""
+    dx, dy = camera["x"] - PERSOS[perso]["x"], camera["y"] - 0.62
+    return math.degrees(math.atan2(-dx, dy))
+
+
+def tags_angle(perso, camera):
+    """L'angle en tags Danbooru. Tourné vers le bord droit de l'image, il montre son côté droit (« facing right »)."""
+    a = angle_vu(perso, camera)
+    cote = "facing right" if a > 0 else "facing left"
+    if abs(a) < 20:
+        return "facing viewer"
+    if abs(a) < 60:
+        return f"three-quarter view, {cote}"
+    return f"profile, from side, {cote}"
+
+
+def squelette_vu(perso, camera):
+    """Son squelette sans l'oreille que sa tête cache à la caméra."""
+    points = list(corps(perso)["squelette"])
+    a = angle_vu(perso, camera)
+    if a > 20:
+        points[17] = None               # la caméra est sur sa droite : son oreille gauche est cachée
+    elif a < -20:
+        points[16] = None
+    return points
+
+
+def prompt(perso, cadrage, fond_gris=False, angle="three-quarter view, facing right"):
     fiche = json.loads((RACINE / "image" / "persos" / perso / "fiche.json").read_text())
     lora = fiche["lora"]
     morceaux = [lora["declencheur"], "1girl, solo, female focus" if fiche.get("genre") == "f" else "1boy, solo, male focus"]
     if lora.get("tag_yeux"):
         morceaux.append(lora["tag_yeux"])
-    if lora.get("cote_visible") and "facing right" not in ANGLE:
+    if lora.get("cote_visible") and "facing right" not in angle:
         morceaux.append(lora["cote_visible"]["tag"])
     if lora.get("tenue"):
         morceaux += [lora["tenue"]["haut"], lora["tenue"]["bras"]]
     if lora.get("tags_production"):
         morceaux.append(lora["tags_production"])
-    morceaux += [cadrage, ANGLE]
+    morceaux += [cadrage, angle]
     if cadrage != "portrait, close-up":
         morceaux.append(ACTION)
     morceaux.append("sitting, simple background, grey background" if fond_gris else DECOR)
@@ -373,7 +410,7 @@ def silhouette(perso, travail_fond, table, tete, jambes):
     return guide
 
 
-def passe_visage(perso, image, tete, graine, prefixe):
+def passe_visage(perso, image, tete, graine, prefixe, angle):
     """Un gros plan sur sa tête, repassé par le modèle avec son LoRA (débruitage 0,45), puis remis en place. Le haut de sa
     tête est relevé sur le détourage (la tête dessinée n'est pas toujours pile à la place prévue)."""
     h = tete["hauteur"]
@@ -391,7 +428,7 @@ def passe_visage(perso, image, tete, graine, prefixe):
     bord = Image.new("L", (TRAVAIL, TRAVAIL), 0)
     ImageDraw.Draw(bord).rectangle([80, 80, TRAVAIL - 80, TRAVAIL - 80], fill=255)
     bord = bord.filter(ImageFilter.GaussianBlur(40))
-    refait = diffusion(gros, bord, prompt(perso, "portrait, close-up"), PERSOS[perso]["lora"], graine, 0.45,
+    refait = diffusion(gros, bord, prompt(perso, "portrait, close-up", angle=angle), PERSOS[perso]["lora"], graine, 0.45,
                        f"{prefixe}_visage", negatif(perso))
     sortie = image.copy()
     sortie.paste(refait.resize((cote, cote), Image.LANCZOS), boite[:2], bord.resize((cote, cote), Image.LANCZOS))
@@ -412,10 +449,16 @@ def composer(methode, image, masque_travail, devant_travail, alpha_gris=None):
 
 def main():
     perso, methode, graine = sys.argv[1], sys.argv[2].upper(), int(sys.argv[3])
-    recomposer = "--recomposer" in sys.argv[4:]
+    options = sys.argv[4:]
+    recomposer = "--recomposer" in options
+    axe = options[options.index("--axe") + 1] if "--axe" in options else AXE_PAR_DEFAUT
+    AXE = DECORS / axe
+    SORTIE = ESSAIS / axe
+    SORTIE.mkdir(parents=True, exist_ok=True)
     debut = time.time()
     recalage = json.loads((AXE / "camera.json").read_text())
     camera = recalage["camera"]
+    angle = tags_angle(perso, camera)
     fond = Image.open(AXE / "fond_v1.png").convert("RGB")
     masque, boite, tete = place(perso, camera, fond.size, recalage.get("devant", ()))
     prefixe = f"{perso}_{methode}_{graine}"
@@ -432,13 +475,13 @@ def main():
     etapes = SORTIE / prefixe
     etapes.mkdir(parents=True, exist_ok=True)
     # son squelette, à sa place, dans l'image de travail
-    points = [None if p is None else ((u - boite[0]) * k, (v - boite[1]) * k)
-              for p, (u, v) in zip(corps(perso)["squelette"],
-                                    (projeter(camera, [q]) [0] if q is not None else (0, 0) for q in corps(perso)["squelette"]))]
+    points = [None if q is None else tuple((c - o) * k for c, o in zip(projeter(camera, [q])[0], boite[:2]))
+              for q in squelette_vu(perso, camera)]
     pose = dessin_pose(points, TRAVAIL)
     pose.save(etapes / "0_pose.png")
-    reglages = {"perso": perso, "methode": methode, "graine": graine, "lora": PERSOS[perso]["lora"], "camera": camera,
-                "boite": boite, "tete_px": round(tete["hauteur"], 1), "prompt": prompt(perso, "cowboy shot")}
+    reglages = {"perso": perso, "methode": methode, "graine": graine, "lora": PERSOS[perso]["lora"], "axe": axe,
+                "camera": camera, "boite": boite, "tete_px": round(tete["hauteur"], 1), "angle": angle,
+                "prompt": prompt(perso, "cowboy shot", angle=angle)}
     if recomposer:
         reglages = json.loads((SORTIE / f"{prefixe}.json").read_text())
         image = Image.open(etapes / "6_apres-visage.png").convert("RGB")
@@ -457,7 +500,7 @@ def main():
         c = CADRE[1] / (cadre[3] - cadre[1])
         def vers_cadre(u, v):
             return (u - cadre[0]) * c, (v - cadre[1]) * c
-        squelette = corps(perso)["squelette"]
+        squelette = squelette_vu(perso, camera)
         pose_cadre = dessin_pose([None if q is None else vers_cadre(*projeter(camera, [q])[0]) for q in squelette], CADRE)
         pose_cadre.save(etapes / "0_pose-cadre.png")
         tete_cadre = {"crane": vers_cadre(*tete["crane"]), "hauteur": tete["hauteur"] * c}
@@ -465,7 +508,7 @@ def main():
         guide = silhouette(perso, Image.new("RGB", CADRE), None, tete_cadre, jambes)
         guide.save(etapes / "1_guide.png")
         reglages["cadre"] = [round(v, 1) for v in cadre]
-        reglages["prompt_gris"] = prompt(perso, "full body", fond_gris=True)
+        reglages["prompt_gris"] = prompt(perso, "full body", fond_gris=True, angle=angle)
         gris = diffusion(guide, None, reglages["prompt_gris"], PERSOS[perso]["lora"], graine, 0.9, f"{prefixe}_gris",
                          negatif(perso, gris=True), pose_cadre)
         gris.save(etapes / "2_sur-gris.png")
@@ -481,7 +524,7 @@ def main():
                           negatif(perso))
     if not recomposer:
         image.save(etapes / "5_avant-visage.png")
-        image, boite_visage = passe_visage(perso, image, tete_travail, graine, prefixe)
+        image, boite_visage = passe_visage(perso, image, tete_travail, graine, prefixe, angle)
         image.save(etapes / "6_apres-visage.png")
         reglages["boite_visage_travail"] = boite_visage
     # retour sur le fond entier : seul le perso détouré y entre. Le reste de sa place revient au fond d'origine : au premier

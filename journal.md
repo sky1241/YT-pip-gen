@@ -624,3 +624,19 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   la garniture se voit ; la 2003 tient le papier contre sa bouche, comme une serviette. Le geste de manger tient donc à peu
   près une image sur deux : en production, 2 ou 3 variantes par plan (CLAUDE.md), ou la galette posée en calque d'accessoire
   (`image/accessoires/`) si le geste doit être sûr.
+- **Étape 2, à deux, axe 6 (2026-10-20, 18 h)** : `pipeline/composer_scene.py` assemble des variantes déjà générées, chacune
+  seule avec son LoRA : du plus loin au plus près de la caméra (Maëlle, puis Sky devant), les objets « devant » par-dessus.
+  Aucune nouvelle génération : on choisit la meilleure variante de chacun, puis on assemble (3 duos,
+  `~/Téléchargements/etape2_duos_axe6.png`). L'échelle entre eux suit la caméra (la tête de Maëlle à 0,75 fois celle de Sky :
+  plus petite, et plus loin). Défaut trouvé et corrigé : le bas de la chemise de Sky troué sur le côté (la règle « tout le gris
+  sous les genoux » prenait ses plis blancs ombrés) ; la règle est maintenant : sous les hanches, le gris pas plus clair que
+  le fond, en grande tache ou touchant le dehors. Reste : sur la graine 2004 de Sky, un bout de banc en bois sous sa hanche
+  (le modèle l'assied sur un banc sur le gris ; la couleur bois passe le filtre).
+- **Les essais rangés par axe (2026-10-20)** : `<sorties_root>/essais/integration/<axe>/` (ceux de l'axe 6, avant dans
+  `essais/etape1/`), les plans assemblés dans `essais/plans/<axe>/`. `essai_integration.py` prend `--axe` ; l'angle des tags
+  se calcule (`tags_angle`, d'après la caméra recalée et la place du perso), comme l'oreille cachée du squelette.
+- **Axe 14 (coin de la banquette)** : sa caméra recalée (`coin-de-la-banquette/camera.json`, écart 4 à 14 px), ses objets
+  « devant » relevés (les sauces, la boîte, le dessus de la table et ses chants). Sky et Maëlle y sont vus à 35° et 43° de face,
+  de leur côté droit. La série n'a pas tourné : le garde-fou a tué ComfyUI au chargement du modèle (RAM disponible 1,2 Go ;
+  Firefox rouvert, 1,9 Go). Le chargement du modèle est le pic (environ 6,5 Go) ; il faut environ 8,5 Go disponibles avant de
+  lancer.

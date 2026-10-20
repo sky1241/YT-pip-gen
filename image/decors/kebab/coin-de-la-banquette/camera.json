@@ -1,0 +1,252 @@
+{
+  "_note": "La caméra du fond fond_v1.png, recalée sur des points repérés à la main sur le fond peint (pipeline/recaler_camera.py, 2026-10-20). Le coin du fond de la table est caché par la boîte à serviettes : son pixel est le croisement de ses deux bords.",
+  "fond": "image/decors/kebab/coin-de-la-banquette/fond_v1.png",
+  "depart": {
+    "x": 6.2,
+    "y": 3.0,
+    "hauteur": 1.6,
+    "cap": 315,
+    "champ": 66
+  },
+  "points": [
+    {
+      "quoi": "table de Sky, coin arrière gauche (dessus)",
+      "plan": [
+        7.4,
+        0.85,
+        0.75
+      ],
+      "pixel": [
+        417,
+        895
+      ],
+      "ecart_px": 7.5
+    },
+    {
+      "quoi": "table de Sky, coin arrière droit (dessus, caché)",
+      "plan": [
+        8.6,
+        0.85,
+        0.75
+      ],
+      "pixel": [
+        824,
+        787
+      ],
+      "ecart_px": 4.4
+    },
+    {
+      "quoi": "table de Sky, coin avant droit (dessus)",
+      "plan": [
+        8.6,
+        1.65,
+        0.75
+      ],
+      "pixel": [
+        1105,
+        847
+      ],
+      "ecart_px": 8.0
+    },
+    {
+      "quoi": "table de Sky, coin avant gauche (dessus)",
+      "plan": [
+        7.4,
+        1.65,
+        0.75
+      ],
+      "pixel": [
+        727,
+        1000
+      ],
+      "ecart_px": 6.3
+    },
+    {
+      "quoi": "angle de la banquette en L, haut des dossiers",
+      "plan": [
+        9.0,
+        0.3,
+        1.0
+      ],
+      "pixel": [
+        787,
+        652
+      ],
+      "ecart_px": 14.0
+    }
+  ],
+  "camera": {
+    "x": 6.118,
+    "y": 2.924,
+    "hauteur": 1.467,
+    "cap": 317.326,
+    "champ": 63.648
+  },
+  "devant": [
+    {
+      "quoi": "le ketchup, sur la table de Sky",
+      "pixels": [
+        [
+          748,
+          766
+        ],
+        [
+          752,
+          766
+        ],
+        [
+          755,
+          778
+        ],
+        [
+          765,
+          783
+        ],
+        [
+          767,
+          795
+        ],
+        [
+          770,
+          800
+        ],
+        [
+          770,
+          884
+        ],
+        [
+          765,
+          889
+        ],
+        [
+          735,
+          889
+        ],
+        [
+          730,
+          884
+        ],
+        [
+          730,
+          800
+        ],
+        [
+          733,
+          795
+        ],
+        [
+          735,
+          783
+        ],
+        [
+          745,
+          778
+        ]
+      ]
+    },
+    {
+      "quoi": "la mayonnaise",
+      "pixels": [
+        [
+          783,
+          761
+        ],
+        [
+          788,
+          761
+        ],
+        [
+          790,
+          775
+        ],
+        [
+          799,
+          779
+        ],
+        [
+          802,
+          790
+        ],
+        [
+          804,
+          796
+        ],
+        [
+          804,
+          875
+        ],
+        [
+          800,
+          880
+        ],
+        [
+          772,
+          880
+        ],
+        [
+          769,
+          875
+        ],
+        [
+          769,
+          790
+        ]
+      ]
+    },
+    {
+      "quoi": "la boîte à serviettes",
+      "pixels": [
+        [
+          803,
+          800
+        ],
+        [
+          845,
+          803
+        ],
+        [
+          845,
+          866
+        ],
+        [
+          812,
+          874
+        ],
+        [
+          804,
+          870
+        ]
+      ]
+    },
+    {
+      "quoi": "le dessus de la table de Sky et ses deux chants, côté salle : devant le bas de leur buste et leurs genoux",
+      "pixels": [
+        [
+          417,
+          895
+        ],
+        [
+          824,
+          787
+        ],
+        [
+          1105,
+          847
+        ],
+        [
+          1102,
+          869
+        ],
+        [
+          727,
+          1024
+        ],
+        [
+          417,
+          921
+        ]
+      ]
+    }
+  ],
+  "_note_devant": "les contours relevés à la main sur le fond, au pixel près (2026-10-20)"
+}
