@@ -50,6 +50,12 @@ def demarrer():
         "--extra-model-paths-config", str(dossier / "extra_model_paths.yaml"),
         "--output-directory", str(sorties),
     ], check=True)
+    # le garde-fou de la RAM (pipeline/garde_memoire.py) : il s'arrête avec ComfyUI (BindsTo)
+    subprocess.run(["systemctl", "--user", "reset-failed", "comfyui-garde"], stderr=subprocess.DEVNULL)
+    subprocess.run([
+        "systemd-run", "--user", "--unit=comfyui-garde", "-p", f"BindsTo={SERVICE}.service",
+        "-p", f"After={SERVICE}.service", str(python), str(RACINE / "pipeline" / "garde_memoire.py"),
+    ], check=True)
     for _ in range(120):
         if etat(silencieux=True):
             print("ComfyUI est prêt :", CONFIG["comfyui_url"])

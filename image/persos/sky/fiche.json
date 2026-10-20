@@ -138,7 +138,10 @@
       "positif": "white shirt, untucked shirt, black pants, sweatpants, black sneakers",
       "negatif": "striped pants, side stripes, stripes, patterned pants, bracelet",
       "_note": "testé avec sky_v2 le 2026-10-16, sur deux graines : la tenue juste, sans bande. Sans ces tags, le LoRA v2 met les lys sur le pantalon ou allonge la chemise en manteau ; avec « track pants », un passepoil blanc apparaît. Reste : des semelles blanches (les baskets de référence sont toutes noires)"
-    }
+    },
+    "tags_production": "white shirt, leaf print, long sleeves, sleeves rolled up, sleeves past elbows, glasses, yellow-framed eyewear, stubble, facial hair, black pants, sweatpants",
+    "_note_tags_production": "à écrire dans ses prompts dès qu'il est dans un décor : le 2026-10-20, dans le kebab (axe 6, lumière chaude, tête de 140 px), le LoRA v2 seul a rendu sa chemise sombre, ses lunettes presque invisibles, ses manches relevées au-dessus du coude (elles s'arrêtent juste sous le coude : tenue_canonique) et une barbe trop légère (journal.md, l'auteur). Sur fond gris, le déclencheur suffit",
+    "negatif_production": "short sleeves, striped pants, side stripes, bracelet"
   },
   "voix": "audio/voix/sky/",
   "_note_voix": "la voix de l'auteur, faite par lui (CLAUDE.md > Stack)",

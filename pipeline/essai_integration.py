@@ -6,10 +6,13 @@
                         dans celle du décor.
 
 Les deux finissent par une passe sur le visage, en gros plan : sur ce plan large, sa tête fait 100 à 140 pixels, trop peu pour
-que le LoRA y mette ses traits. Hors de sa place, le fond reste intact au pixel près. Sa place et sa taille viennent de la
+que le LoRA y mette ses traits. Seul le perso détouré entre dans le fond, avec un détourage plein et net : tout le reste du
+fond reste intact au pixel près, et les objets « devant » (les sauces) restent devant lui. Sa place et sa taille viennent de la
 caméra recalée sur le fond (`camera.json`, pipeline/recaler_camera.py) et de sa taille dans la fiche.
 
-  ~/venvs/kebab/bin/python pipeline/essai_integration.py <perso> <A|B> <graine>
+  ~/venvs/kebab/bin/python pipeline/essai_integration.py <perso> <A|B> <graine> [--recomposer]
+
+Avec --recomposer : seul le collage final est refait, depuis l'image de travail déjà générée (6_apres-visage.png).
 
 Sortie : <sorties_root>/essais/etape1/<perso>_<méthode>_<graine>.png (le fond entier), ses étapes et ses réglages (.json).
 ComfyUI doit tourner (pipeline/comfyui.py demarrer).
@@ -19,6 +22,7 @@ import sys
 import time
 from pathlib import Path
 
+import cv2
 import numpy as np
 import onnxruntime
 import yaml
@@ -43,10 +47,17 @@ ACTION = "eating, holding food with both hands, wrap"
 DECOR = "sitting, booth, table, indoors, restaurant, warm lighting"
 # leur place sur la banquette du fond, dans l'ordre du plan validé (« Sky, Maëlle », plan_kebab.py) ; la taille : la fiche
 PERSOS = {
-    "sky": {"lora": "sky_v2.safetensors", "taille": 1.87, "x": 7.75, "epaules": 0.44, "cheveux": (125, 68, 40)},
-    "maelle": {"lora": "maelle_v3.safetensors", "taille": 1.65, "x": 8.3, "epaules": 0.40, "cheveux": (147, 65, 28)},
+    "sky": {"lora": "sky_v2.safetensors", "taille": 1.87, "x": 7.75, "epaules": 0.44, "cheveux": (125, 68, 40),
+            "habits": (226, 222, 214)},                       # sa chemise blanche
+    "maelle": {"lora": "maelle_v3.safetensors", "taille": 1.65, "x": 8.3, "epaules": 0.40, "cheveux": (147, 65, 28),
+               "habits": (28, 26, 26)},                       # son col roulé noir
 }
 GRIS = (170, 170, 170)              # le fond gris de leurs images d'entraînement
+# le détourage d'isnet-anime est doux (le visage vers 200 sur 255, la table du fond vers 10, une assiette posée vers 50) et
+# percé là où le perso a du noir (les feuilles de la chemise de Sky) : on le seuille, on bouche ses trous, on lisse son bord.
+# Sans ça, Sky paraissait « un fantôme », effacé par endroits (l'auteur, 2026-10-20)
+DETOURAGE_SEUIL = 64
+TROU_MAX = 0.02                     # un trou plus petit que 2 % du perso est bouché ; au-delà (entre un bras et le corps), il reste
 
 
 def corps(perso):
@@ -65,7 +76,13 @@ def corps(perso):
                     (x - 0.19, y, crane - tete / 2), (x + 0.19, y, crane - tete / 2),
                     (x - ep - 0.06, 0.55, epaules), (x + ep + 0.06, 0.55, epaules),
                     (x - ep - 0.08, 0.85, 0.75), (x + ep + 0.08, 0.85, 0.75),
-                    (x - 0.3, 1.05, 0.76), (x + 0.3, 1.05, 0.76), (x, 1.0, 1.05)],
+                    (x - 0.3, 1.05, 0.76), (x + 0.3, 1.05, 0.76), (x, 1.0, 1.05),
+                    # ses jambes, sous la table, jusqu'au sol : au 3e essai, l'auteur a vu qu'elles manquaient
+                    (x - 0.2, 0.5, 0.45), (x + 0.2, 0.5, 0.45), (x - 0.18, 1.0, 0.52), (x + 0.18, 1.0, 0.52),
+                    (x - 0.15, 1.05, 0.0), (x + 0.15, 1.05, 0.0), (x - 0.15, 1.2, 0.0), (x + 0.15, 1.2, 0.0)],
+        # la silhouette de ses jambes, pour le guide de la méthode B : la hanche, le genou, le pied
+        "jambes": [(x - 0.2, 0.5, 0.45), (x + 0.2, 0.5, 0.45), (x + 0.18, 1.0, 0.55), (x + 0.15, 1.1, 0.0),
+                   (x - 0.15, 1.1, 0.0), (x - 0.18, 1.0, 0.55)],
     }
 
 
@@ -93,7 +110,9 @@ def place(perso, camera, taille_fond, devant=()):
     contour = projeter(camera, c["contour"])
     masque = Image.new("L", taille_fond, 0)
     ImageDraw.Draw(masque).polygon([tuple(p) for p in enveloppe(contour)], fill=255)
-    masque = masque.filter(ImageFilter.MaxFilter(21)).filter(ImageFilter.GaussianBlur(10))
+    # large : seul le perso détouré entre dans le fond, le modèle peut donc redessiner autour sans abîmer le décor. Trop juste
+    # (21 px au 2e essai), le visage de Sky, penché vers sa galette, débordait dans le bord adouci et s'y effaçait à moitié
+    masque = masque.filter(ImageFilter.MaxFilter(61)).filter(ImageFilter.GaussianBlur(12))
     for objet in devant:
         ImageDraw.Draw(masque).polygon([tuple(p) for p in objet["pixels"]], fill=0)
     (cx, cy), (mx, my) = projeter(camera, [c["crane"], c["menton"]])
@@ -115,14 +134,22 @@ def prompt(perso, cadrage, fond_gris=False):
         morceaux.append(lora["cote_visible"]["tag"])
     if lora.get("tenue"):
         morceaux += [lora["tenue"]["haut"], lora["tenue"]["bras"]]
+    if lora.get("tags_production"):
+        morceaux.append(lora["tags_production"])
     morceaux += [cadrage, ANGLE]
-    if cadrage == "upper body":
+    if cadrage != "portrait, close-up":
         morceaux.append(ACTION)
     morceaux.append("sitting, table, simple background, grey background" if fond_gris else DECOR)
     return ", ".join(morceaux + [QUALITE])
 
 
-def diffusion(image, masque, positif, lora, graine, debruitage, prefixe):
+def negatif(perso):
+    fiche = json.loads((RACINE / "image" / "persos" / perso / "fiche.json").read_text())
+    en_plus = fiche["lora"].get("negatif_production")
+    return NEGATIF + ", multiple girls, multiple boys, 2girls, 2boys" + (f", {en_plus}" if en_plus else "")
+
+
+def diffusion(image, masque, positif, lora, graine, debruitage, prefixe, negatif_texte=None):
     """Une passe du modèle sur une image de travail, avec le LoRA du perso ; avec un masque, seule sa zone blanche change
     (bords adoucis : DifferentialDiffusion)."""
     ENTREE.mkdir(exist_ok=True)
@@ -132,9 +159,10 @@ def diffusion(image, masque, positif, lora, graine, debruitage, prefixe):
         "1": {"class_type": "CheckpointLoaderSimple", "inputs": {"ckpt_name": "animagine-xl-4.0.safetensors"}},
         "2": {"class_type": "LoraLoaderBypassModelOnly", "inputs": {"model": ["1", 0], "lora_name": lora, "strength_model": 1.0}},
         "3": {"class_type": "CLIPTextEncode", "inputs": {"text": positif, "clip": ["1", 1]}},
-        "4": {"class_type": "CLIPTextEncode", "inputs": {"text": NEGATIF + ", multiple girls, multiple boys, 2girls, 2boys",
-                                                         "clip": ["1", 1]}},
+        "4": {"class_type": "CLIPTextEncode", "inputs": {"text": negatif_texte or NEGATIF, "clip": ["1", 1]}},
         "10": {"class_type": "LoadImage", "inputs": {"image": f"{nom}.png"}},
+        # le VAE d'un bloc : par tuiles, ComfyUI le passe trois fois (trois découpages moyennés), et sur le processeur
+        # (--cpu-vae) une variante prenait 13 minutes au lieu de 5 (2026-10-20)
         "12": {"class_type": "VAEEncode", "inputs": {"pixels": ["10", 0], "vae": ["1", 2]}},
         "6": {"class_type": "KSampler", "inputs": {"seed": graine, "steps": 25, "cfg": 5.0, "sampler_name": "euler_ancestral",
                                                    "scheduler": "normal", "denoise": debruitage, "model": ["2", 0],
@@ -166,16 +194,36 @@ def detourer(image):
     return Image.fromarray((sortie * 255).astype(np.uint8)).resize(image.size, Image.LANCZOS)
 
 
-def silhouette(perso, travail_fond, table, tete):
+def detourage_net(image):
+    """Le détourage plein et net : seuillé, ses encoches refermées, ses petits trous bouchés, les îlots parasites ôtés, son
+    bord adouci d'un pixel."""
+    m = (np.asarray(detourer(image)) >= DETOURAGE_SEUIL).astype(np.uint8)
+    m = cv2.morphologyEx(m, cv2.MORPH_CLOSE, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (11, 11)))
+    aire = max(int(m.sum()), 1)
+    contours, hierarchie = cv2.findContours(m, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_NONE)
+    for i, c in enumerate(contours):
+        if hierarchie[0][i][3] >= 0 and cv2.contourArea(c) < TROU_MAX * aire:     # un trou (il a un contour parent)
+            cv2.drawContours(m, contours, i, 1, thickness=-1)
+    n, etiquettes, stats, _ = cv2.connectedComponentsWithStats(m, connectivity=8)
+    garde = np.zeros_like(m)
+    for k in range(1, n):
+        if stats[k, cv2.CC_STAT_AREA] >= 0.01 * aire:
+            garde[etiquettes == k] = 1
+    return Image.fromarray(garde * 255).filter(ImageFilter.GaussianBlur(1))
+
+
+def silhouette(perso, travail_fond, table, tete, jambes):
     """Le guide de la méthode B : le gris de l'entraînement, la table du fond à sa place (pour qu'il soit dessiné derrière),
-    et une silhouette grossière du perso (la tête et les cheveux, le buste en noir) à sa place et à sa taille. Le modèle
-    repart de là (débruitage 0,85)."""
+    et une silhouette grossière du perso (la tête et les cheveux, le buste de la couleur de ses habits : au 2e essai, un buste
+    noir avait donné à Sky des manches noires, et ses jambes sous la table) à sa place et à sa taille. Le modèle repart de là
+    (débruitage 0,85)."""
     guide = Image.new("RGB", travail_fond.size, GRIS)
     d = ImageDraw.Draw(guide)
     (cx, cy), h = tete["crane"], tete["hauteur"]
-    d.rectangle([cx - 1.1 * h, cy + 1.25 * h, cx + 1.1 * h, cy + 3.3 * h], fill=(28, 26, 26))       # le buste
+    d.rectangle([cx - 1.1 * h, cy + 1.25 * h, cx + 1.1 * h, cy + 3.3 * h], fill=PERSOS[perso]["habits"])   # le buste
     d.ellipse([cx - 0.5 * h, cy, cx + 0.5 * h, cy + 1.05 * h], fill=PERSOS[perso]["cheveux"])       # la tête
     d.ellipse([cx - 0.28 * h, cy + 0.35 * h, cx + 0.42 * h, cy + 1.05 * h], fill=(200, 120, 70))     # le visage
+    d.polygon(enveloppe(jambes), fill=(24, 24, 26))                                                 # les jambes, en noir
     zone = Image.new("L", travail_fond.size, 0)
     ImageDraw.Draw(zone).polygon(table, fill=255)
     guide.paste(travail_fond, mask=zone)                     # la table par-dessus : le buste passe derrière
@@ -200,58 +248,87 @@ def passe_visage(perso, image, tete, graine, prefixe):
     bord = Image.new("L", (TRAVAIL, TRAVAIL), 0)
     ImageDraw.Draw(bord).rectangle([80, 80, TRAVAIL - 80, TRAVAIL - 80], fill=255)
     bord = bord.filter(ImageFilter.GaussianBlur(40))
-    refait = diffusion(gros, bord, prompt(perso, "portrait, close-up"), PERSOS[perso]["lora"], graine, 0.45, f"{prefixe}_visage")
+    refait = diffusion(gros, bord, prompt(perso, "portrait, close-up"), PERSOS[perso]["lora"], graine, 0.45,
+                       f"{prefixe}_visage", negatif(perso))
     sortie = image.copy()
     sortie.paste(refait.resize((cote, cote), Image.LANCZOS), boite[:2], bord.resize((cote, cote), Image.LANCZOS))
     return sortie, boite
 
 
+def composer(methode, image, masque_travail, devant_travail):
+    """Le masque du collage final : le perso détouré, plein et net. A : dans sa place (seuillée, élargie : couper au bord
+    adouci l'effaçait à moitié) ; B : entier. Les objets « devant » le cachent."""
+    alpha = np.asarray(detourage_net(image), np.float32) / 255
+    if methode == "A":
+        place = masque_travail.point(lambda v: 255 if v > 10 else 0).filter(ImageFilter.MaxFilter(21))
+        alpha *= np.asarray(place, np.float32) / 255
+    alpha *= 1 - np.asarray(devant_travail, np.float32) / 255
+    return Image.fromarray((alpha * 255).astype(np.uint8))
+
+
 def main():
     perso, methode, graine = sys.argv[1], sys.argv[2].upper(), int(sys.argv[3])
+    recomposer = "--recomposer" in sys.argv[4:]
     debut = time.time()
     recalage = json.loads((AXE / "camera.json").read_text())
     camera = recalage["camera"]
     fond = Image.open(AXE / "fond_v1.png").convert("RGB")
     masque, boite, tete = place(perso, camera, fond.size, recalage.get("devant", ()))
+    prefixe = f"{perso}_{methode}_{graine}"
+    if recomposer:                      # la boîte de travail de l'image déjà générée
+        boite = tuple(json.loads((SORTIE / f"{prefixe}.json").read_text())["boite"])
     k = TRAVAIL / (boite[2] - boite[0])
     travail_fond = fond.crop(boite).resize((TRAVAIL, TRAVAIL), Image.LANCZOS)
     masque_travail = masque.crop(boite).resize((TRAVAIL, TRAVAIL), Image.LANCZOS)
+    devant_travail = Image.new("L", (TRAVAIL, TRAVAIL), 0)
+    for objet in recalage.get("devant", ()):
+        ImageDraw.Draw(devant_travail).polygon([((u - boite[0]) * k, (v - boite[1]) * k) for u, v in objet["pixels"]], fill=255)
     tete_travail = {"crane": ((tete["crane"][0] - boite[0]) * k, (tete["crane"][1] - boite[1]) * k),
                     "hauteur": tete["hauteur"] * k}
-    prefixe = f"{perso}_{methode}_{graine}"
     etapes = SORTIE / prefixe
     etapes.mkdir(parents=True, exist_ok=True)
     reglages = {"perso": perso, "methode": methode, "graine": graine, "lora": PERSOS[perso]["lora"], "camera": camera,
-                "boite": boite, "tete_px": round(tete["hauteur"], 1), "prompt": prompt(perso, "upper body")}
-    if methode == "A":
-        image = diffusion(travail_fond, masque_travail, reglages["prompt"], PERSOS[perso]["lora"], graine, 1.0, prefixe)
+                "boite": boite, "tete_px": round(tete["hauteur"], 1), "prompt": prompt(perso, "cowboy shot")}
+    if recomposer:
+        reglages = json.loads((SORTIE / f"{prefixe}.json").read_text())
+        image = Image.open(etapes / "6_apres-visage.png").convert("RGB")
+    elif methode == "A":
+        image = diffusion(travail_fond, masque_travail, reglages["prompt"], PERSOS[perso]["lora"], graine, 1.0, prefixe, negatif(perso))
     else:
         # la table de Sky (le dessus, à 0,75 m, et sa tranche), dans l'image de travail
         coins = [(x, y, z) for x in (7.4, 8.6) for y in (0.85, 1.65) for z in (0.71, 0.75)]
         table = [((u - boite[0]) * k, (v - boite[1]) * k) for u, v in enveloppe(projeter(camera, coins))]
-        guide = silhouette(perso, travail_fond, table, tete_travail)
+        jambes = [((u - boite[0]) * k, (v - boite[1]) * k) for u, v in projeter(camera, corps(perso)["jambes"])]
+        guide = silhouette(perso, travail_fond, table, tete_travail, jambes)
         guide.save(etapes / "1_guide.png")
-        reglages["prompt_gris"] = prompt(perso, "upper body", fond_gris=True)
-        gris = diffusion(guide, None, reglages["prompt_gris"], PERSOS[perso]["lora"], graine, 0.85, f"{prefixe}_gris")
+        reglages["prompt_gris"] = prompt(perso, "cowboy shot", fond_gris=True)
+        gris = diffusion(guide, None, reglages["prompt_gris"], PERSOS[perso]["lora"], graine, 0.85, f"{prefixe}_gris",
+                         negatif(perso))
         gris.save(etapes / "2_sur-gris.png")
-        alpha = detourer(gris)
-        alpha = Image.fromarray(np.minimum(np.asarray(alpha), np.asarray(masque_travail)))
+        # le perso détouré entier : au 2e essai, couper au bord de sa place avait tranché net l'épaule de Sky
+        alpha = Image.fromarray(np.minimum(np.asarray(detourage_net(gris)), 255 - np.asarray(devant_travail)))
         alpha.save(etapes / "3_detourage.png")
         colle = travail_fond.copy()
         colle.paste(gris, (0, 0), alpha)
         colle.save(etapes / "4_colle.png")
         zone = alpha.filter(ImageFilter.MaxFilter(31)).filter(ImageFilter.GaussianBlur(12))
-        image = diffusion(colle, zone, reglages["prompt"], PERSOS[perso]["lora"], graine, 0.4, f"{prefixe}_fondu")
-    image.save(etapes / "5_avant-visage.png")
-    image, boite_visage = passe_visage(perso, image, tete_travail, graine, prefixe)
-    image.save(etapes / "6_apres-visage.png")
-    reglages["boite_visage_travail"] = boite_visage
-    # retour sur le fond entier : seule sa place change
+        image = diffusion(colle, zone, reglages["prompt"], PERSOS[perso]["lora"], graine, 0.4, f"{prefixe}_fondu",
+                          negatif(perso))
+    if not recomposer:
+        image.save(etapes / "5_avant-visage.png")
+        image, boite_visage = passe_visage(perso, image, tete_travail, graine, prefixe)
+        image.save(etapes / "6_apres-visage.png")
+        reglages["boite_visage_travail"] = boite_visage
+    # retour sur le fond entier : seul le perso détouré y entre. Le reste de sa place revient au fond d'origine : au premier
+    # essai, le modèle avait changé le miroir en fenêtre de nuit derrière lui, et ajouté une assiette sur la table
+    alpha = composer(methode, image, masque_travail, devant_travail)
+    alpha.save(etapes / "7_detourage-final.png")
     final = fond.copy()
     taille = boite[2] - boite[0]
-    final.paste(image.resize((taille, taille), Image.LANCZOS), boite[:2], masque.crop(boite))
+    final.paste(image.resize((taille, taille), Image.LANCZOS), boite[:2], alpha.resize((taille, taille), Image.LANCZOS))
     final.save(SORTIE / f"{prefixe}.png")
-    reglages["duree_s"] = round(time.time() - debut)
+    if not recomposer:
+        reglages["duree_s"] = round(time.time() - debut)
     (SORTIE / f"{prefixe}.json").write_text(json.dumps(reglages, ensure_ascii=False, indent=2) + "\n")
     print(f"{prefixe} : {reglages['duree_s']} s → {SORTIE / f'{prefixe}.png'}")
 

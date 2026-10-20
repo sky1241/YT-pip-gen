@@ -84,25 +84,199 @@
   },
   "devant": [
     {
-      "quoi": "les sauces et la boîte à serviettes, sur la table de Sky : elles restent devant les persos, intactes",
+      "quoi": "le ketchup, sur la table de Sky : il reste devant les persos, intact",
       "pixels": [
         [
-          750,
-          605
+          777,
+          614
         ],
         [
-          890,
-          605
+          781,
+          614
         ],
         [
-          890,
-          770
+          784,
+          632
         ],
         [
-          750,
-          770
+          795,
+          633
+        ],
+        [
+          797,
+          645
+        ],
+        [
+          801,
+          650
+        ],
+        [
+          801,
+          760
+        ],
+        [
+          796,
+          766
+        ],
+        [
+          760,
+          766
+        ],
+        [
+          755,
+          760
+        ],
+        [
+          755,
+          650
+        ],
+        [
+          759,
+          645
+        ],
+        [
+          761,
+          633
+        ],
+        [
+          773,
+          632
+        ]
+      ]
+    },
+    {
+      "quoi": "la mayonnaise",
+      "pixels": [
+        [
+          816,
+          611
+        ],
+        [
+          821,
+          611
+        ],
+        [
+          824,
+          628
+        ],
+        [
+          834,
+          629
+        ],
+        [
+          836,
+          642
+        ],
+        [
+          840,
+          647
+        ],
+        [
+          840,
+          750
+        ],
+        [
+          836,
+          756
+        ],
+        [
+          805,
+          756
+        ],
+        [
+          801,
+          750
+        ],
+        [
+          801,
+          644
+        ]
+      ]
+    },
+    {
+      "quoi": "la boîte à serviettes",
+      "pixels": [
+        [
+          840,
+          665
+        ],
+        [
+          887,
+          667
+        ],
+        [
+          887,
+          741
+        ],
+        [
+          840,
+          748
+        ]
+      ]
+    },
+    {
+      "quoi": "le chant de la table de Sky, côté gauche (devant les jambes des persos)",
+      "pixels": [
+        [
+          347,
+          787
+        ],
+        [
+          820,
+          902
+        ],
+        [
+          822,
+          942
+        ],
+        [
+          350,
+          820
+        ]
+      ]
+    },
+    {
+      "quoi": "le chant de la table de Sky, côté droit",
+      "pixels": [
+        [
+          820,
+          902
+        ],
+        [
+          1200,
+          720
+        ],
+        [
+          1200,
+          740
+        ],
+        [
+          822,
+          942
+        ]
+      ]
+    },
+    {
+      "quoi": "le pied central de la table de Sky",
+      "pixels": [
+        [
+          780,
+          930
+        ],
+        [
+          866,
+          930
+        ],
+        [
+          866,
+          1024
+        ],
+        [
+          780,
+          1024
         ]
       ]
     }
-  ]
+  ],
+  "_note_devant": "les contours relevés à la main sur le fond, au pixel près (2026-10-20) : un perso qui passe derrière reste caché là, et seulement là"
 }

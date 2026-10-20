@@ -566,3 +566,28 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   sauces). Sur cet axe, la caméra est devant eux, sur leur droite : on voit leur côté droit (« facing right »), le bon angle
   pour Sky (celui de sa palette) et pour Maëlle (les cheveux longs, 2 sur 2 en v3). La tête calculée : 142 px pour Sky, 103 pour
   Maëlle, sur le fond de 1536 × 1024.
+- **Le gel de sky-master pendant l'étape 1 (2026-10-20, 12 h 07)** : la RAM pleine. VS Code avec ses extensions (environ
+  4 Go), Firefox et Codex ouverts, il restait 4,8 Go ; ComfyUI en demande environ 6 pendant une génération (le modèle,
+  le VAE sur le processeur). Le plafond du service (MemoryMax 10 Go) ne protège pas : il ne compte pas les autres
+  programmes. Ajouté : `pipeline/garde_memoire.py`, lancé avec ComfyUI, qui le tue si la RAM disponible passe sous 1,2 Go
+  (il a servi une fois, à 12 h 15 : ComfyUI tué, la machine n'a pas gelé), et note la RAM toutes les 10 s dans
+  `<sorties_root>/comfyui/garde.log`. L'erreur du pilote `init_user_pages: Failed to get user pages: -16` revient à chaque
+  chargement du modèle, sans dégât (déjà vue le 18) : ce n'est pas elle. Le VAE par tuiles prend moins de RAM mais ComfyUI
+  le passe trois fois : 13 min au lieu de 5 par variante. Gardé d'un bloc.
+- **Étape 1, ce que les quatre premiers essais ont appris (2026-10-20)** :
+  1. Dans un décor, le déclencheur ne suffit plus : la chemise de Sky sort sombre, ses lunettes disparaissent, ses manches
+     remontent au-dessus du coude (elles s'arrêtent juste sous le coude, coudes couverts : tenue_canonique), sa barbe
+     s'efface. Écrits dans le prompt (`fiche.json` > `lora` > `tags_production`, `negatif_production`) : réglé.
+  2. Le collage final ne prend que le perso détouré (isnet-anime) : le reste du fond reste celui d'origine (au 1er essai,
+     le modèle avait changé le miroir en fenêtre de nuit). Le détourage brut est percé là où le perso a du noir (les feuilles
+     de la chemise) et coupé au bord flou de sa place : Sky paraissait « un fantôme » (l'auteur). Réglé : seuil, trous
+     bouchés, bord net (`detourage_net`). Les objets qui restent devant lui (les sauces, le chant et le pied de la table)
+     sont relevés au pixel dans `camera.json` > `devant`.
+  3. L'auteur : il manquait ses jambes. Sa place descend maintenant jusqu'au sol, sous la table.
+  4. **Le vrai problème des deux méthodes : le modèle décide seul de la pose et de la taille.** A (dessiné dans le fond) :
+     Sky se penche plus que prévu, sa tête sort de sa place et y est tranchée ; il redessine la table (un 2e chant, une
+     assiette), et ses jambes tombent derrière le vrai chant. B (sur gris d'après une silhouette, débruitage 0,85) : Sky
+     juste (lunettes, œil bleu à sa droite, barbe, manches, jambes en noir), mais 2,5 fois trop grand, comme assis au bout
+     de la table, et le détourage d'une scène entière prend aussi la plante et la table. Remède standard : un guide de pose
+     (T2I-Adapter openpose SDXL, TencentARC, 316 Mo, Apache 2.0) : son squelette, calculé à sa place avec la caméra
+     recalée, imposé au modèle. À télécharger avec l'accord de l'auteur.
