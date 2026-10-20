@@ -611,3 +611,12 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   refait le collage depuis l'image sur gris, sans régénérer.
 - **Méthode B, le liseré (2026-10-20)** : le bord du détourage sur gris gardait un liseré du gris de fond, clair sur le miroir
   sombre (autour des cheveux, de la nourriture). Le masque est resserré de 3 pixels (`coller_cadre`) : réglé.
+- **Étape 1, le bilan de la méthode B cadrée (2026-10-20, 15 h 25)** : 4 graines par perso (2001 à 2004), planche
+  `~/Téléchargements/etape1_bilan_methode-B.png`, images dans `<sorties_root>/essais/etape1/`. Critères 1 à 5
+  (reconnaissable, détails du bon côté, à sa place et à sa taille, dans la lumière, décor intact) : **8 sur 8**. Le critère 6
+  (il mange) : Sky 1 sur 4 (une fleur, un verre, un objet doré flou), Maëlle 2 sur 4 (une fois la nourriture ne se voit pas,
+  une fois ses mains ne sont pas à sa bouche). Passent les six : Sky 1 sur 4, Maëlle 2 sur 4. Selon la règle fixée avant
+  (2 sur 4 pour chacun), la méthode passe pour Maëlle, pas encore pour Sky, et ce qui rate est l'objet dans ses mains, pas le
+  perso : « wrap » est trop vague. Essai suivant : « burrito, biting » et, en négatif, « flower, cup, glass, drinking »
+  (graines 2003 et 2004 de Sky ; les versions « wrap » gardées dans `v7_wrap/`). Temps : 8 min 20 par image sur la carte.
+  La bague de Maëlle apparaît parfois à la main gauche : le LoRA ne la connaît pas (prévu).

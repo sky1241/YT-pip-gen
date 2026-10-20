@@ -44,7 +44,9 @@ TRAVAIL = 1024                      # la taille de travail du modèle
 
 # sur l'axe 6, la caméra est devant eux, sur leur droite : on voit leur côté droit (le calcul : journal.md, 2026-10-20)
 ANGLE = "three-quarter view, facing right"
-ACTION = "eating, holding food with both hands, wrap"
+# « wrap » était trop vague : sur 4 graines, Sky a tenu une fleur, un verre, un objet doré (8e essai). Le burrito est ce que
+# le modèle connaît de plus proche d'une galette de kebab
+ACTION = "eating, biting, holding burrito with both hands, burrito"
 DECOR = "sitting, booth, table, indoors, restaurant, warm lighting"
 # leur place sur la banquette du fond, dans l'ordre du plan validé (« Sky, Maëlle », plan_kebab.py) ; la taille : la fiche
 PERSOS = {
@@ -277,7 +279,8 @@ def negatif(perso, gris=False):
     if gris:            # sur fond gris, pas de meuble : ce sont la banquette et la table du fond qui le portent
         en_plus = ", ".join(x for x in (en_plus, "table, desk, chair, stool, bench") if x)
     # pas d'assiette ni de bol : les accessoires de la table se posent en calques (axes.md), pas au hasard du modèle
-    return NEGATIF + ", multiple girls, multiple boys, 2girls, 2boys, plate, bowl" + (f", {en_plus}" if en_plus else "")
+    return (NEGATIF + ", multiple girls, multiple boys, 2girls, 2boys, plate, bowl, flower, cup, glass, drinking"
+            + (f", {en_plus}" if en_plus else ""))
 
 
 def diffusion(image, masque, positif, lora, graine, debruitage, prefixe, negatif_texte=None, pose=None):
