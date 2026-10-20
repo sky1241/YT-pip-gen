@@ -604,3 +604,8 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   dessinée sur le gris passait au collage). La méthode A guidée (dessiné dans le fond) : Maëlle propre (`maelle_A_2001`),
   Sky avec des restes de décor redessiné (une lampe dans le miroir, un 2e chant de table), faute d'un détourage net dans la
   scène.
+- **Méthode B, le collage nettoyé (2026-10-20)** : sur le gris, le modèle assied le perso sur un bloc gris (malgré
+  « chair, stool, bench » en négatif) et dessine son ombre ; le détourage les garde. Sous ses hanches, il ne reste que ce qui
+  longe les jambes du squelette (`forme_jambes`, 14 cm de rayon) ; sous ses genoux, le gris sans couleur (le fond, l'ombre)
+  s'en va (`coller_cadre`). Pas plus haut : les plis ombrés de la chemise blanche de Sky sont de ce gris-là. `--recomposer`
+  refait le collage depuis l'image sur gris, sans régénérer.

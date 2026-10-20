@@ -176,6 +176,60 @@ def cadre_perso(perso, camera):
     return x0, y0, x1, y1
 
 
+def forme_jambes(points, echelle, taille):
+    """Sous ses hanches, il ne garde que ce qui longe ses jambes (le squelette) : sur le gris, le modèle l'asseyait sur un
+    bloc gris que le détourage prenait avec lui (Maëlle, 7e essai). Au-dessus des hanches, tout reste. echelle : pixels par
+    mètre, à sa place."""
+    forme = Image.new("L", taille, 0)
+    d = ImageDraw.Draw(forme)
+    hanches = min(points[8][1], points[11][1])
+    d.rectangle([0, 0, taille[0], hanches + 0.05 * echelle], fill=255)
+    rayon = 0.14 * echelle
+    for i, j in ((8, 9), (9, 10), (11, 12), (12, 13)):
+        d.line([points[i], points[j]], fill=255, width=int(2 * rayon))
+        for q in (points[i], points[j]):
+            d.ellipse([q[0] - rayon, q[1] - rayon, q[0] + rayon, q[1] + rayon], fill=255)
+    for i in (10, 13):                                  # les pieds
+        r = 0.17 * echelle
+        d.ellipse([points[i][0] - r, points[i][1] - r, points[i][0] + r, points[i][1] + r], fill=255)
+    return forme.filter(ImageFilter.GaussianBlur(3))
+
+
+def coller_cadre(perso, gris, cadre, camera, fond, devant):
+    """Méthode B : le perso dessiné sur gris dans son cadre, détouré, posé sur le fond entier, caché par les objets
+    « devant ». Rend le masque et le fond avec le perso collé."""
+    c = CADRE[1] / (cadre[3] - cadre[1])
+    points = [None if q is None else ((u - cadre[0]) * c, (v - cadre[1]) * c)
+              for q, (u, v) in zip(corps(perso)["squelette"],
+                                    (projeter(camera, [q])[0] if q is not None else (0, 0) for q in corps(perso)["squelette"]))]
+    x = PERSOS[perso]["x"]
+    (_, h1), (_, h0) = projeter(camera, [(x, 0.6, 1.0), (x, 0.6, 0.0)])
+    alpha = np.asarray(detourage_net(gris), np.float32) * np.asarray(forme_jambes(points, (h0 - h1) * c, CADRE), np.float32) / 255
+    # sous les genoux, il n'y a que ses tibias et ses chaussures, sombres : ce qui est gris clair ou moyen, sans couleur (le
+    # fond, l'ombre portée sur le fond, entre ses jambes), s'en va. Plus haut, non : les plis ombrés de la chemise blanche de
+    # Sky sont de ce gris-là (7e essai)
+    g = np.asarray(gris, np.int32)
+    teinte = g.max(axis=2) - g.min(axis=2)
+    lumiere = g.mean(axis=2)
+    genoux = int(min(points[9][1], points[12][1]))
+    gris_fond = (teinte < 22) & (lumiere > 85) & (lumiere < 235)
+    gris_fond[:genoux] = False
+    alpha[gris_fond] = 0
+    alpha = Image.fromarray(alpha.astype(np.uint8)).filter(ImageFilter.GaussianBlur(1))
+    taille_cadre = (round(cadre[2] - cadre[0]), round(cadre[3] - cadre[1]))
+    coin = (round(cadre[0]), round(cadre[1]))
+    calque, alpha_fond = Image.new("RGB", fond.size), Image.new("L", fond.size, 0)
+    calque.paste(gris.resize(taille_cadre, Image.LANCZOS), coin)
+    alpha_fond.paste(alpha.resize(taille_cadre, Image.LANCZOS), coin)
+    devant_fond = Image.new("L", fond.size, 0)
+    for objet in devant:
+        ImageDraw.Draw(devant_fond).polygon([tuple(q) for q in objet["pixels"]], fill=255)
+    alpha_fond = Image.fromarray(np.minimum(np.asarray(alpha_fond), 255 - np.asarray(devant_fond)))
+    colle_fond = fond.copy()
+    colle_fond.paste(calque, (0, 0), alpha_fond)
+    return alpha_fond, colle_fond
+
+
 def place(perso, camera, taille_fond, devant=()):
     """Son masque sur le fond (blanc = sa place, bords adoucis), la boîte de travail autour, sa tête en pixels. Les objets
     « devant » (camera.json) sont ôtés du masque, nets : ils restent devant lui, intacts."""
@@ -384,6 +438,11 @@ def main():
     if recomposer:
         reglages = json.loads((SORTIE / f"{prefixe}.json").read_text())
         image = Image.open(etapes / "6_apres-visage.png").convert("RGB")
+        if methode == "B":
+            gris = Image.open(etapes / "2_sur-gris.png").convert("RGB")
+            alpha_fond, colle_fond = coller_cadre(perso, gris, tuple(reglages["cadre"]), camera, fond, recalage.get("devant", ()))
+            colle_fond.save(etapes / "4_colle-fond.png")
+            alpha_fond.crop(boite).resize((TRAVAIL, TRAVAIL), Image.LANCZOS).save(etapes / "3_detourage.png")
     elif methode == "A":
         image = diffusion(travail_fond, masque_travail, reglages["prompt"], PERSOS[perso]["lora"], graine, 1.0, prefixe,
                           negatif(perso), pose)
@@ -407,17 +466,7 @@ def main():
                          negatif(perso, gris=True), pose_cadre)
         gris.save(etapes / "2_sur-gris.png")
         # sur le fond entier : le perso détouré dans son cadre, caché par les objets « devant »
-        taille_cadre = (round(cadre[2] - cadre[0]), round(cadre[3] - cadre[1]))
-        coin = (round(cadre[0]), round(cadre[1]))
-        calque, alpha_fond = Image.new("RGB", fond.size), Image.new("L", fond.size, 0)
-        calque.paste(gris.resize(taille_cadre, Image.LANCZOS), coin)
-        alpha_fond.paste(detourage_net(gris).resize(taille_cadre, Image.LANCZOS), coin)
-        devant_fond = Image.new("L", fond.size, 0)
-        for objet in recalage.get("devant", ()):
-            ImageDraw.Draw(devant_fond).polygon([tuple(q) for q in objet["pixels"]], fill=255)
-        alpha_fond = Image.fromarray(np.minimum(np.asarray(alpha_fond), 255 - np.asarray(devant_fond)))
-        colle_fond = fond.copy()
-        colle_fond.paste(calque, (0, 0), alpha_fond)
+        alpha_fond, colle_fond = coller_cadre(perso, gris, cadre, camera, fond, recalage.get("devant", ()))
         colle_fond.save(etapes / "4_colle-fond.png")
         # la passe qui fond sa lumière dans celle du décor, dans la boîte de travail (débruitage 0,35)
         alpha = alpha_fond.crop(boite).resize((TRAVAIL, TRAVAIL), Image.LANCZOS)
