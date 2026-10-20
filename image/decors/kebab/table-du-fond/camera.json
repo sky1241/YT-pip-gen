@@ -276,6 +276,27 @@
           1024
         ]
       ]
+    },
+    {
+      "quoi": "le dessus de la table de Sky : rien ne s'y ajoute (au 5e essai, le modèle y posait un plateau de nourriture) ; à retirer pour un plan où ses avant-bras sont posés sur la table",
+      "pixels": [
+        [
+          346,
+          787
+        ],
+        [
+          812,
+          681
+        ],
+        [
+          1200,
+          719
+        ],
+        [
+          819,
+          903
+        ]
+      ]
     }
   ],
   "_note_devant": "les contours relevés à la main sur le fond, au pixel près (2026-10-20) : un perso qui passe derrière reste caché là, et seulement là"

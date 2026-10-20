@@ -64,3 +64,13 @@ modeles:
     taille_octets: 176069933
     vram_go: 0
     note: "téléchargé le 2026-10-20 avec l'accord de l'auteur, md5 identique à celui qu'attend rembg (6f184e756bb3bd901c8849220a83e38e) ; tourne sur le processeur avec onnxruntime 1.31.0 (pip, dans le venv), sans rembg : la préparation de l'image est recopiée de rembg (dis_anime.py). Sert à détourer un perso pour la méthode des calques"
+
+  - nom: T2I-Adapter OpenPose SDXL 1.0 (le guide de pose)
+    type: t2i-adapter
+    lien: "https://huggingface.co/TencentARC/t2i-adapter-openpose-sdxl-1.0/resolve/main/diffusion_pytorch_model.safetensors"
+    empreinte_sha256: "24c55f4b4f4903a50caaae7e3e11f4008bd51d24041385a5ca94e8d05be6311e"
+    licence: "Apache 2.0 (dépôt TencentARC/t2i-adapter-openpose-sdxl-1.0), vérifiée le 2026-10-20"
+    fichier: "controlnet/t2i-adapter-openpose-sdxl-1.0.safetensors"
+    taille_octets: 316116784
+    vram_go: null
+    note: "téléchargé le 2026-10-20 avec l'accord de l'auteur, empreinte identique à celle de Hugging Face ; impose la pose et la taille d'un perso : son squelette, calculé à sa place avec la caméra recalée du fond, dessiné au format OpenPose (pipeline/essai_integration.py). Entraîné sur des photos : à vérifier sur le style anime"

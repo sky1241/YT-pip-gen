@@ -18,6 +18,7 @@ Sortie : <sorties_root>/essais/etape1/<perso>_<méthode>_<graine>.png (le fond e
 ComfyUI doit tourner (pipeline/comfyui.py demarrer).
 """
 import json
+import math
 import sys
 import time
 from pathlib import Path
@@ -57,6 +58,10 @@ GRIS = (170, 170, 170)              # le fond gris de leurs images d'entraîneme
 # percé là où le perso a du noir (les feuilles de la chemise de Sky) : on le seuille, on bouche ses trous, on lisse son bord.
 # Sans ça, Sky paraissait « un fantôme », effacé par endroits (l'auteur, 2026-10-20)
 DETOURAGE_SEUIL = 64
+# le guide de pose (modeles.yaml) : sans lui, le modèle décidait seul de la pose et de la taille (Sky 2,5 fois trop grand au
+# 4e essai, journal.md)
+GUIDE_POSE = "t2i-adapter-openpose-sdxl-1.0.safetensors"
+FORCE_POSE = 0.9
 TROU_MAX = 0.02                     # un trou plus petit que 2 % du perso est bouché ; au-delà (entre un bras et le corps), il reste
 
 
@@ -69,11 +74,26 @@ def corps(perso):
     crane = siege + 0.52 * t
     tete = t / 7.5
     epaules = siege + 0.34 * t
+    # son squelette au format OpenPose (l'ordre COCO à 18 points), pour le guide de pose. Il regarde vers la rue (+y) ;
+    # sa droite est du côté des x petits. Assis, les coudes au bord de la table, les mains à la bouche (il mange)
+    mains = crane - 1.05 * tete
+    squelette = [
+        (x, y + 0.10, crane - 0.62 * tete),                                   # 0 le nez
+        (x, 0.57, epaules + 0.02),                                            # 1 le cou
+        (x - ep, 0.55, epaules), (x - ep - 0.02, 0.80, 0.80), (x - 0.05, y + 0.22, mains),   # 2-4 l'épaule, le coude, le poignet droits
+        (x + ep, 0.55, epaules), (x + ep + 0.02, 0.80, 0.80), (x + 0.05, y + 0.22, mains),   # 5-7 les gauches
+        (x - 0.15, 0.50, siege + 0.05), (x - 0.15, 1.00, siege + 0.07), (x - 0.13, 1.05, 0.08),  # 8-10 la hanche, le genou, la cheville droits
+        (x + 0.15, 0.50, siege + 0.05), (x + 0.15, 1.00, siege + 0.07), (x + 0.13, 1.05, 0.08),  # 11-13 les gauches
+        (x - 0.032, y + 0.085, crane - 0.47 * tete), (x + 0.032, y + 0.085, crane - 0.47 * tete),  # 14-15 les yeux
+        (x - 0.075, y - 0.005, crane - 0.5 * tete), None,                     # 16 l'oreille droite ; la gauche est cachée
+    ]
     return {
-        "crane": (x, y, crane), "menton": (x, y + 0.02, crane - tete),
-        # le contour de sa place : les cheveux, les épaules, les coudes au bord de la table, les avant-bras dessus
-        "contour": [(x - 0.12, y, crane + 0.06), (x, y, crane + 0.1), (x + 0.12, y, crane + 0.06),
-                    (x - 0.19, y, crane - tete / 2), (x + 0.19, y, crane - tete / 2),
+        "crane": (x, y, crane), "menton": (x, y + 0.02, crane - tete), "squelette": squelette,
+        # le contour de sa place : les cheveux (large : au 4e essai, sa tête penchée sortait de sa place et y était
+        # tranchée), les épaules, les coudes au bord de la table, les mains à la bouche, les avant-bras sur la table
+        "contour": [(x - 0.16, y, crane + 0.12), (x, y, crane + 0.15), (x + 0.16, y, crane + 0.12),
+                    (x - 0.26, y, crane - tete / 2), (x + 0.26, y, crane - tete / 2),
+                    (x - 0.15, y + 0.32, mains), (x + 0.15, y + 0.32, mains),
                     (x - ep - 0.06, 0.55, epaules), (x + ep + 0.06, 0.55, epaules),
                     (x - ep - 0.08, 0.85, 0.75), (x + ep + 0.08, 0.85, 0.75),
                     (x - 0.3, 1.05, 0.76), (x + 0.3, 1.05, 0.76), (x, 1.0, 1.05),
@@ -101,6 +121,34 @@ def enveloppe(points):
             haut.pop()
         haut.append(p)
     return bas[:-1] + haut[:-1]
+
+
+# le dessin OpenPose (le code de l'annotateur de ControlNet, controlnet_aux > draw_bodypose) : les couleurs et les membres
+# dans l'ordre où le guide de pose les a appris
+COULEURS = [(255, 0, 0), (255, 85, 0), (255, 170, 0), (255, 255, 0), (170, 255, 0), (85, 255, 0), (0, 255, 0), (0, 255, 85),
+            (0, 255, 170), (0, 255, 255), (0, 170, 255), (0, 85, 255), (0, 0, 255), (85, 0, 255), (170, 0, 255), (255, 0, 255),
+            (255, 0, 170), (255, 0, 85)]
+MEMBRES = [(1, 2), (1, 5), (2, 3), (3, 4), (5, 6), (6, 7), (1, 8), (8, 9), (9, 10), (1, 11), (11, 12), (12, 13), (1, 0), (0, 14),
+           (14, 16), (0, 15), (15, 17)]
+
+
+def dessin_pose(points, taille, epaisseur=8):
+    """Le squelette au format OpenPose, sur fond noir : points = 18 positions en pixels (None pour un point caché)."""
+    toile = np.zeros((taille, taille, 3), np.uint8)
+    for i, p in enumerate(points):
+        if p is not None:
+            cv2.circle(toile, (int(p[0]), int(p[1])), epaisseur, COULEURS[i], thickness=-1)
+    for i, (a, b) in enumerate(MEMBRES):
+        if points[a] is None or points[b] is None:
+            continue
+        (xa, ya), (xb, yb) = points[a], points[b]
+        longueur = math.hypot(xa - xb, ya - yb)
+        angle = math.degrees(math.atan2(ya - yb, xa - xb))
+        calque = toile.copy()
+        poly = cv2.ellipse2Poly((int((xa + xb) / 2), int((ya + yb) / 2)), (int(longueur / 2), epaisseur), int(angle), 0, 360, 1)
+        cv2.fillConvexPoly(calque, poly, COULEURS[i])
+        toile = cv2.addWeighted(toile, 0.4, calque, 0.6, 0)
+    return Image.fromarray(toile)
 
 
 def place(perso, camera, taille_fond, devant=()):
@@ -146,12 +194,13 @@ def prompt(perso, cadrage, fond_gris=False):
 def negatif(perso):
     fiche = json.loads((RACINE / "image" / "persos" / perso / "fiche.json").read_text())
     en_plus = fiche["lora"].get("negatif_production")
-    return NEGATIF + ", multiple girls, multiple boys, 2girls, 2boys" + (f", {en_plus}" if en_plus else "")
+    # pas d'assiette ni de bol : les accessoires de la table se posent en calques (axes.md), pas au hasard du modèle
+    return NEGATIF + ", multiple girls, multiple boys, 2girls, 2boys, plate, bowl" + (f", {en_plus}" if en_plus else "")
 
 
-def diffusion(image, masque, positif, lora, graine, debruitage, prefixe, negatif_texte=None):
+def diffusion(image, masque, positif, lora, graine, debruitage, prefixe, negatif_texte=None, pose=None):
     """Une passe du modèle sur une image de travail, avec le LoRA du perso ; avec un masque, seule sa zone blanche change
-    (bords adoucis : DifferentialDiffusion)."""
+    (bords adoucis : DifferentialDiffusion) ; avec une pose, le guide de pose (T2I-Adapter OpenPose) impose son squelette."""
     ENTREE.mkdir(exist_ok=True)
     nom = f"kebab_{prefixe}"
     image.save(ENTREE / f"{nom}.png")
@@ -170,6 +219,14 @@ def diffusion(image, masque, positif, lora, graine, debruitage, prefixe, negatif
         "7": {"class_type": "VAEDecode", "inputs": {"samples": ["6", 0], "vae": ["1", 2]}},
         "8": {"class_type": "SaveImage", "inputs": {"filename_prefix": f"etape1_{prefixe}", "images": ["7", 0]}},
     }
+    if pose is not None:
+        pose.save(ENTREE / f"{nom}_pose.png")
+        wf["20"] = {"class_type": "ControlNetLoader", "inputs": {"control_net_name": GUIDE_POSE}}
+        wf["21"] = {"class_type": "LoadImage", "inputs": {"image": f"{nom}_pose.png"}}
+        wf["22"] = {"class_type": "ControlNetApplyAdvanced", "inputs": {
+            "positive": ["3", 0], "negative": ["4", 0], "control_net": ["20", 0], "image": ["21", 0],
+            "strength": FORCE_POSE, "start_percent": 0.0, "end_percent": 1.0}}
+        wf["6"]["inputs"].update({"positive": ["22", 0], "negative": ["22", 1]})
     if masque is not None:
         masque.save(ENTREE / f"{nom}_masque.png")
         wf["11"] = {"class_type": "LoadImageMask", "inputs": {"image": f"{nom}_masque.png", "channel": "red"}}
@@ -224,9 +281,10 @@ def silhouette(perso, travail_fond, table, tete, jambes):
     d.ellipse([cx - 0.5 * h, cy, cx + 0.5 * h, cy + 1.05 * h], fill=PERSOS[perso]["cheveux"])       # la tête
     d.ellipse([cx - 0.28 * h, cy + 0.35 * h, cx + 0.42 * h, cy + 1.05 * h], fill=(200, 120, 70))     # le visage
     d.polygon(enveloppe(jambes), fill=(24, 24, 26))                                                 # les jambes, en noir
-    zone = Image.new("L", travail_fond.size, 0)
-    ImageDraw.Draw(zone).polygon(table, fill=255)
-    guide.paste(travail_fond, mask=zone)                     # la table par-dessus : le buste passe derrière
+    if table is not None:
+        zone = Image.new("L", travail_fond.size, 0)
+        ImageDraw.Draw(zone).polygon(table, fill=255)
+        guide.paste(travail_fond, mask=zone)                 # la table par-dessus : le buste passe derrière
     return guide
 
 
@@ -255,10 +313,11 @@ def passe_visage(perso, image, tete, graine, prefixe):
     return sortie, boite
 
 
-def composer(methode, image, masque_travail, devant_travail):
+def composer(methode, image, masque_travail, devant_travail, alpha_gris=None):
     """Le masque du collage final : le perso détouré, plein et net. A : dans sa place (seuillée, élargie : couper au bord
-    adouci l'effaçait à moitié) ; B : entier. Les objets « devant » le cachent."""
-    alpha = np.asarray(detourage_net(image), np.float32) / 255
+    adouci l'effaçait à moitié) ; B : le détourage fait sur fond gris, où il est seul (détourer la scène entière prenait aussi
+    la plante et la table, 4e essai). Les objets « devant » le cachent."""
+    alpha = np.asarray(alpha_gris if alpha_gris is not None else detourage_net(image), np.float32) / 255
     if methode == "A":
         place = masque_travail.point(lambda v: 255 if v > 10 else 0).filter(ImageFilter.MaxFilter(21))
         alpha *= np.asarray(place, np.float32) / 255
@@ -287,23 +346,32 @@ def main():
                     "hauteur": tete["hauteur"] * k}
     etapes = SORTIE / prefixe
     etapes.mkdir(parents=True, exist_ok=True)
+    # son squelette, à sa place, dans l'image de travail
+    points = [None if p is None else ((u - boite[0]) * k, (v - boite[1]) * k)
+              for p, (u, v) in zip(corps(perso)["squelette"],
+                                    (projeter(camera, [q]) [0] if q is not None else (0, 0) for q in corps(perso)["squelette"]))]
+    pose = dessin_pose(points, TRAVAIL)
+    pose.save(etapes / "0_pose.png")
     reglages = {"perso": perso, "methode": methode, "graine": graine, "lora": PERSOS[perso]["lora"], "camera": camera,
                 "boite": boite, "tete_px": round(tete["hauteur"], 1), "prompt": prompt(perso, "cowboy shot")}
     if recomposer:
         reglages = json.loads((SORTIE / f"{prefixe}.json").read_text())
         image = Image.open(etapes / "6_apres-visage.png").convert("RGB")
     elif methode == "A":
-        image = diffusion(travail_fond, masque_travail, reglages["prompt"], PERSOS[perso]["lora"], graine, 1.0, prefixe, negatif(perso))
+        image = diffusion(travail_fond, masque_travail, reglages["prompt"], PERSOS[perso]["lora"], graine, 1.0, prefixe,
+                          negatif(perso), pose)
     else:
         # la table de Sky (le dessus, à 0,75 m, et sa tranche), dans l'image de travail
         coins = [(x, y, z) for x in (7.4, 8.6) for y in (0.85, 1.65) for z in (0.71, 0.75)]
         table = [((u - boite[0]) * k, (v - boite[1]) * k) for u, v in enveloppe(projeter(camera, coins))]
         jambes = [((u - boite[0]) * k, (v - boite[1]) * k) for u, v in projeter(camera, corps(perso)["jambes"])]
-        guide = silhouette(perso, travail_fond, table, tete_travail, jambes)
+        # sans la table : dessinée sur le gris, le détourage la prenait avec le perso (5e essai). C'est la vraie table du fond,
+        # posée devant lui au collage (camera.json > devant), qui cache le bas de son buste
+        guide = silhouette(perso, travail_fond, None, tete_travail, jambes)
         guide.save(etapes / "1_guide.png")
         reglages["prompt_gris"] = prompt(perso, "cowboy shot", fond_gris=True)
-        gris = diffusion(guide, None, reglages["prompt_gris"], PERSOS[perso]["lora"], graine, 0.85, f"{prefixe}_gris",
-                         negatif(perso))
+        gris = diffusion(guide, None, reglages["prompt_gris"], PERSOS[perso]["lora"], graine, 0.9, f"{prefixe}_gris",
+                         negatif(perso), pose)
         gris.save(etapes / "2_sur-gris.png")
         # le perso détouré entier : au 2e essai, couper au bord de sa place avait tranché net l'épaule de Sky
         alpha = Image.fromarray(np.minimum(np.asarray(detourage_net(gris)), 255 - np.asarray(devant_travail)))
@@ -321,7 +389,8 @@ def main():
         reglages["boite_visage_travail"] = boite_visage
     # retour sur le fond entier : seul le perso détouré y entre. Le reste de sa place revient au fond d'origine : au premier
     # essai, le modèle avait changé le miroir en fenêtre de nuit derrière lui, et ajouté une assiette sur la table
-    alpha = composer(methode, image, masque_travail, devant_travail)
+    alpha_gris = Image.open(etapes / "3_detourage.png").convert("L") if methode == "B" else None
+    alpha = composer(methode, image, masque_travail, devant_travail, alpha_gris)
     alpha.save(etapes / "7_detourage-final.png")
     final = fond.copy()
     taille = boite[2] - boite[0]
