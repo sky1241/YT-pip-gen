@@ -215,7 +215,8 @@ def coller_cadre(perso, gris, cadre, camera, fond, devant):
     gris_fond = (teinte < 22) & (lumiere > 85) & (lumiere < 235)
     gris_fond[:genoux] = False
     alpha[gris_fond] = 0
-    alpha = Image.fromarray(alpha.astype(np.uint8)).filter(ImageFilter.GaussianBlur(1))
+    # resserré de 3 pixels : son bord gardait un liseré du gris de fond, clair sur le miroir sombre (7e essai)
+    alpha = Image.fromarray(alpha.astype(np.uint8)).filter(ImageFilter.MinFilter(7)).filter(ImageFilter.GaussianBlur(1))
     taille_cadre = (round(cadre[2] - cadre[0]), round(cadre[3] - cadre[1]))
     coin = (round(cadre[0]), round(cadre[1]))
     calque, alpha_fond = Image.new("RGB", fond.size), Image.new("L", fond.size, 0)

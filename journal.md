@@ -609,3 +609,5 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   longe les jambes du squelette (`forme_jambes`, 14 cm de rayon) ; sous ses genoux, le gris sans couleur (le fond, l'ombre)
   s'en va (`coller_cadre`). Pas plus haut : les plis ombrés de la chemise blanche de Sky sont de ce gris-là. `--recomposer`
   refait le collage depuis l'image sur gris, sans régénérer.
+- **Méthode B, le liseré (2026-10-20)** : le bord du détourage sur gris gardait un liseré du gris de fond, clair sur le miroir
+  sombre (autour des cheveux, de la nourriture). Le masque est resserré de 3 pixels (`coller_cadre`) : réglé.
