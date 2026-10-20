@@ -132,7 +132,9 @@
       "repetitions": 6,
       "repetitions_base": 3,
       "_note": "ses vues du côté droit : 4 en v2, répétées 10 fois ; 10 en v3 (+ les six bustes du prompt M5), répétées 6 fois, contre 3 pour les autres (25 % des pas)"
-    }
+    },
+    "fichier_retenu": "maelle_v3.safetensors",
+    "_note_production": "toujours écrire l'angle dans le prompt (facing viewer, three-quarter view facing left ou right, profile) : avec l'angle, la v3 met le côté rasé du bon côté sur 10 images sur 10 ; sans, elle la retourne en miroir sur 2 images sur 3 de ce genre (journal.md, 2026-10-20). « undercut » sauf quand elle regarde à droite ; sa tenue (lora > tenue) dans chaque prompt"
   },
   "voix": "audio/voix/maelle/",
   "sources": "bible : table des énergies, section MAËLLE ; « Le Miroir » (ecriture/brouillons/cern.md, partie 1) ; prompts d'origine de l'image maître (prompts-chatgpt.md)",

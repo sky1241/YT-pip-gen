@@ -541,3 +541,11 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   voulu, et dire où vont les mèches et la cicatrice en termes de bord de l'image, suffit à ChatGPT. Les six cases s'appellent
   `expressions/cote-droit_<émotion>_v1.png` ; `preparer_lora.py` leur donne l'angle « facing right » et pas de `undercut`.
   Jeu v3 : 75 images, dont 10 du côté droit répétées 6 fois (25 % des pas), contre 3 pour les 65 autres.
+- **Le test du LoRA de Maëlle v3 (2026-10-20)** (`maelle_v3.safetensors`, 83 min sur une P100, 2 040 pas, perte 0,058), les
+  mêmes 13 images et graines que la v2 (`~/Téléchargements/maelle_lora_v2_contre_v3.png`) : **11 justes sur 13** (v2 : 10).
+  La seule différence : le 10 « facing viewer » sous la pluie, faux en v2, juste en v3. Les deux ratées sont les mêmes qu'en
+  v2 : le 6 (resto) et le 10 (pluie), les deux prompts qui n'écrivent pas l'angle ; elle s'y tourne vers la droite avec le
+  côté rasé devant. Avec l'angle écrit : 10 sur 10. Un écart d'une image sur 13 ne prouve pas que les six bustes du côté droit
+  ont servi : la v3 est au moins aussi bonne que la v2 partout, on la garde. La tenue est juste sur les 13, le fond du
+  test 9 n'est plus le décor d'orage de la v2. **Décision : on arrête de réentraîner pour le côté.** En production, l'angle
+  est toujours écrit (`fiche.json` > `lora` > `_note_production`), 2 ou 3 variantes par plan, les miroirs écartés au choix.
