@@ -54,3 +54,13 @@ modeles:
     taille_octets: 2528373448
     vram_go: null
     note: "téléchargé le 2026-10-16, empreinte identique à celle de Hugging Face ; renommé au nom qu'attend ComfyUI_IPAdapter_plus"
+
+  - nom: isnet-anime (détourage des persos)
+    type: segmentation
+    lien: "https://github.com/danielgatis/rembg/releases/download/v0.0.0/isnet-anime.onnx"
+    empreinte_sha256: "f15622d853e8260172812b657053460e20806f04b9e05147d49af7bed31a6e99"
+    licence: "Apache 2.0 (le modèle, SkyTNT/anime-segmentation) ; MIT (rembg, qui le publie), vérifiées le 2026-10-20"
+    fichier: "segmentation/isnet-anime.onnx"
+    taille_octets: 176069933
+    vram_go: 0
+    note: "téléchargé le 2026-10-20 avec l'accord de l'auteur, md5 identique à celui qu'attend rembg (6f184e756bb3bd901c8849220a83e38e) ; tourne sur le processeur avec onnxruntime 1.31.0 (pip, dans le venv), sans rembg : la préparation de l'image est recopiée de rembg (dis_anime.py). Sert à détourer un perso pour la méthode des calques"

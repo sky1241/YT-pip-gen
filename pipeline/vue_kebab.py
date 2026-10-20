@@ -221,13 +221,10 @@ def faces(forme):
 ECLAIRAGE = {(0, 0, 1): 1.0, (0, 0, -1): 0.8, (0, 1, 0): 0.9, (0, -1, 0): 0.8, (1, 0, 0): 0.75, (-1, 0, 0): 0.85}
 
 
-def vue(numero, sortie):
-    """La vue d'un axe : chaque face est remplie avec un tampon de profondeur (ce qui est caché reste caché), puis les
-    contours se tracent là où deux faces se touchent à l'écran."""
-    import numpy as np
+def repere(numero):
+    """La caméra d'un axe : sa position (m), ses trois directions (droite, haut, avant) et sa focale (pixels)."""
     cx, cy, angle = AXES[numero]
     h, inclinaison, champ = CAMERAS[numero]
-    camera = (cx, cy, h)
     a, t = math.radians(angle), math.radians(inclinaison)
     avant = (math.cos(a) * math.cos(t), math.sin(a) * math.cos(t), math.sin(t))   # en coordonnées du plan (y vers la rue)
     # le plan a y vers le bas : la droite de la caméra est (−sin a, cos a, 0), le haut est droite × avant, ramené vers z > 0
@@ -237,6 +234,26 @@ def vue(numero, sortie):
     if haut[2] < 0:
         haut = tuple(-v for v in haut)
     focale = (LARGEUR / 2) / math.tan(math.radians(champ) / 2)
+    return (cx, cy, h), droite, haut, avant, focale
+
+
+def projeter(numero, points):
+    """Où tombent des points du kebab (en mètres) sur l'image d'un axe, en pixels du fond (1536 × 1024), avec leur
+    distance à la caméra ; None pour un point derrière elle. Sert à placer un perso dans un fond peint d'après la vue."""
+    camera, droite, haut, avant, focale = repere(numero)
+    sortie = []
+    for p in points:
+        v = [p[i] - camera[i] for i in range(3)]
+        x, y, z = (sum(v[i] * d[i] for i in range(3)) for d in (droite, haut, avant))
+        sortie.append((LARGEUR / 2 + focale * x / z, HAUTEUR / 2 - focale * y / z, z) if z > 0.05 else None)
+    return sortie
+
+
+def vue(numero, sortie):
+    """La vue d'un axe : chaque face est remplie avec un tampon de profondeur (ce qui est caché reste caché), puis les
+    contours se tracent là où deux faces se touchent à l'écran."""
+    import numpy as np
+    camera, droite, haut, avant, focale = repere(numero)
 
     def vers_camera(p):
         v = (p[0] - camera[0], p[1] - camera[1], p[2] - camera[2])

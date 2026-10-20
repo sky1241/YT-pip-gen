@@ -1,0 +1,108 @@
+{
+  "_note": "La caméra du fond fond_v1.png, recalée sur des points repérés à la main sur le fond peint (pipeline/recaler_camera.py, 2026-10-20). Sert à poser un perso à sa place et à sa taille. Le coin arrière droit de la table est caché par les sauces : son pixel est le croisement des deux bords de la table.",
+  "fond": "image/decors/kebab/table-du-fond/fond_v1.png",
+  "depart": {
+    "x": 6.42,
+    "y": 2.33,
+    "hauteur": 1.2,
+    "cap": 323,
+    "champ": 66
+  },
+  "points": [
+    {
+      "quoi": "table de Sky, coin arrière gauche (dessus)",
+      "plan": [
+        7.4,
+        0.85,
+        0.75
+      ],
+      "pixel": [
+        346,
+        787
+      ],
+      "ecart_px": 6.3
+    },
+    {
+      "quoi": "table de Sky, coin arrière droit (dessus, caché)",
+      "plan": [
+        8.6,
+        0.85,
+        0.75
+      ],
+      "pixel": [
+        812,
+        681
+      ],
+      "ecart_px": 15.6
+    },
+    {
+      "quoi": "table de Sky, coin avant droit (dessus)",
+      "plan": [
+        8.6,
+        1.65,
+        0.75
+      ],
+      "pixel": [
+        1200,
+        719
+      ],
+      "ecart_px": 4.8
+    },
+    {
+      "quoi": "table de Sky, coin avant gauche (dessus)",
+      "plan": [
+        7.4,
+        1.65,
+        0.75
+      ],
+      "pixel": [
+        819,
+        903
+      ],
+      "ecart_px": 1.0
+    },
+    {
+      "quoi": "angle de la banquette en L, haut des dossiers",
+      "plan": [
+        9.0,
+        0.3,
+        1.0
+      ],
+      "pixel": [
+        752,
+        545
+      ],
+      "ecart_px": 13.3
+    }
+  ],
+  "camera": {
+    "x": 6.513,
+    "y": 2.257,
+    "hauteur": 1.124,
+    "cap": 322.986,
+    "champ": 68.65
+  },
+  "devant": [
+    {
+      "quoi": "les sauces et la boîte à serviettes, sur la table de Sky : elles restent devant les persos, intactes",
+      "pixels": [
+        [
+          750,
+          605
+        ],
+        [
+          890,
+          605
+        ],
+        [
+          890,
+          770
+        ],
+        [
+          750,
+          770
+        ]
+      ]
+    }
+  ]
+}

@@ -549,3 +549,20 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   ont servi : la v3 est au moins aussi bonne que la v2 partout, on la garde. La tenue est juste sur les 13, le fond du
   test 9 n'est plus le décor d'orage de la v2. **Décision : on arrête de réentraîner pour le côté.** En production, l'angle
   est toujours écrit (`fiche.json` > `lora` > `_note_production`), 2 ou 3 variantes par plan, les miroirs écartés au choix.
+- **Étape 1 du premier vrai test : les critères, fixés avant les images (2026-10-20).** Un perso seul, assis à sa place sur
+  la banquette du fond de l'axe 6, qui mange une galette. Deux méthodes (`pipeline/essai_integration.py`) : A, dessiné
+  directement dans le fond (inpainting avec son LoRA) ; B, dessiné sur fond gris d'après une silhouette posée à sa place,
+  détouré (isnet-anime), collé, puis fondu par une passe légère. Les deux finissent par une passe sur le visage en gros plan.
+  4 graines par perso et par méthode (2001 à 2004). Une image passe si elle a les six : 1. reconnaissable, comparé à ses
+  références ; 2. ses détails du bon côté (Sky : l'œil aveugle à sa gauche, côté du fond sur cet axe, et ses lunettes ;
+  Maëlle : le côté rasé caché, les mèches longues devant, la cicatrice au sourcil gauche) ; 3. assis à sa place, à sa taille
+  (la tête à la hauteur calculée, derrière la table) ; 4. dans la lumière du kebab, sans air collé ; 5. le décor intact hors de
+  sa place, les sauces devant lui ; 6. il mange, les mains acceptables. Une méthode est bonne si au moins 2 graines sur 4
+  passent, pour chacun des deux.
+- **La caméra recalée sur le fond peint (2026-10-20)** : le fond de l'axe 6 suit la vue en volumes à quelques centimètres
+  près, pas au pixel (la caméra peinte est 8 cm plus bas que celle de la vue). `pipeline/recaler_camera.py` retrouve la caméra
+  du fond à partir de 5 points repérés à la main (les 4 coins du dessus de la table, l'angle de la banquette) : écart moyen
+  8 px, au pire 16 px. Fichier : `image/decors/kebab/table-du-fond/camera.json`, avec les objets qui restent devant (les
+  sauces). Sur cet axe, la caméra est devant eux, sur leur droite : on voit leur côté droit (« facing right »), le bon angle
+  pour Sky (celui de sa palette) et pour Maëlle (les cheveux longs, 2 sur 2 en v3). La tête calculée : 142 px pour Sky, 103 pour
+  Maëlle, sur le fond de 1536 × 1024.
