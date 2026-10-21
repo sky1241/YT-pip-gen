@@ -807,3 +807,37 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   `bilan15_duos_meilleur_reglage.png`) : 3 sur 4 utilisables (la graine 2003 de Maëlle ratée), Sky le même sur les 4 (la
   chemise, les couleurs, pas de liseré). Restent : l'aliment, qui change à chaque image ; la barbe, plus légère que sur sa
   référence (70/100 pour l'auteur à 0,75).
+- **La tête dédoublée, d'après la recherche (2026-10-21, 16 h 30)** : un défaut de ma passe, pas du LoRA. Avec Differential
+  Diffusion, un pixel du bord flou du masque ne change qu'aux dernières étapes : à 0,85-0,95, le cœur dessine une tête qui a
+  bougé, le bord garde l'ancienne mâchoire ; puis je recollais avec ce même bord flou (Acly : « utiliser le même masque pour le
+  collage annule l'effet »). Et le prompt disait « portrait, close-up » sans le geste : la tête se relevait, et « stubble »
+  appelle souvent « cigarette » (4,9 % des images « stubble » de Danbooru). Corrections testées (`passe_visage`, options
+  `--visage-v2`, `--visage-masque tete2`, `--visage-contours`) : un masque plus grand, un collage net (`net`), ses mains et ce
+  qu'elles tiennent recollées nettes par-dessus, « close-up » et le geste dans le prompt, « cigarette, smoking » en négatif ;
+  le guide de contours (T2I-Adapter Lineart SDXL, 158 Mo, Apache 2.0 ; force 0,7 jusqu'à 60 % des étapes) qui fige la tête.
+- **L'objet identique d'un plan à l'autre, d'après la recherche** : aucun modèle ouvert ne redessine un objet à l'identique
+  depuis une référence ; ce qui tient : coller les vrais pixels de l'objet dans ses mains, puis ne repeindre que ses doigts
+  autour. Test avec un rouleau factice dessiné en code (`rouleau`, option `--objet`) : posé de ses mains (repérées sur l'image)
+  à sa bouche, ses doigts repeints dans une bande autour (0,55), le cœur du rouleau gardé. Critères : le même rouleau sur les
+  4 graines, ses doigts devant, sa bouche dessus, aucune fleur, verre ni cigarette, le même Sky.
+- **Les premiers résultats (graine 2001, 16 h 45)** : la passe v2 à 0,75 ne dédouble plus la tête et garde le geste (il mord
+  sa galette). À 0,9 avec le guide de contours, la tête reste en place (pas de double, la bouche sur la galette, plus de barbe),
+  mais ses cheveux sortent plus clairs et frisés (mon guide de contours, une différence de flous, relève chaque mèche). **Le
+  rouleau collé dans le gros plan, raté** : posé d'après la peau sous sa bouche, il est parti de sa poitrine (la chemise est
+  ouverte) et flottait devant son menton, et la nourriture dessinée par le modèle restait à côté, dans ses mains. **Refait
+  autrement** : la galette factice posée dans le guide avant le rendu sur gris, de sa bouche vers ses mains d'après le
+  squelette (`place_objet`), presque figée pendant le rendu (un quart de la force, Differential Diffusion) : le modèle dessine
+  ses mains autour d'elle ; puis protégée pendant le fondu et la passe du visage (`2_objet.png`).
+- **La passe v2 sur les 4 graines** (`~/Téléchargements/bilan16_sky_visage_v2.png`) : à 0,75, **plus de tête dédoublée sur
+  les 4**, le geste gardé (il mord la galette), plus de cigarette ; la barbe au niveau de la passe précédente (70/100), pas
+  au-delà. À 0,9 avec le guide de contours : la tête reste en place sur les 4, mais les cheveux sortent frisés et plus clairs
+  sur les 4 (le guide relève chaque mèche) : pas utilisable tel quel.
+- **La galette factice dans le guide du rendu sur gris** (`bilan17_galette_factice.png`) : un rouleau proche du factice (le
+  papier, le trait rouge) sur 2 graines sur 4 ; sur les 2 autres, le modèle dessine sa propre nourriture à côté (un burrito,
+  un taco), et la galette factice s'efface. Le prompt disait « holding burrito » : il veut son burrito. 2e essai lancé : plus
+  de « burrito » dans les prompts quand la galette est posée (« holding food », « burrito, sandwich, taco, hamburger » en
+  négatif).
+- **Son gros plan en référence** (IP-Adapter Plus Face SDXL, 848 Mo, Apache 2.0 ; la référence : le visage de son test
+  standard 2, noté 90/100, `essais/integration/reference_visage_sky.png`) : branché dans la passe du visage v2, poids 0,5 et
+  0,8 (`--visage-reference`). Les critères : sa barbe et ses cernes plus proches de la référence, le même Sky, le geste gardé,
+  la peau. 3 min 40 par image (contre 2 min 30 sans).

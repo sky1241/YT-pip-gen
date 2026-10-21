@@ -110,3 +110,23 @@ modeles:
     taille_octets: 492381880
     vram_go: 0
     note: "téléchargé le 2026-10-21 avec l'accord de l'auteur, empreinte identique à celle de Hugging Face. Détoure un perso d'anime ; plus net qu'isnet-anime sur les cheveux (99,5 % contre 95,3 % de pixels justes, d'après son article)"
+
+  - nom: T2I-Adapter Lineart SDXL 1.0 (fp16, le guide de contours)
+    type: t2i-adapter
+    lien: "https://huggingface.co/TencentARC/t2i-adapter-lineart-sdxl-1.0/resolve/main/diffusion_pytorch_model.fp16.safetensors"
+    empreinte_sha256: "c19e9e1038c7c53b238185d8dc9fad87f95aa3124d211e19f39f1165bfb7230f"
+    licence: "Apache 2.0 (dépôt TencentARC/t2i-adapter-lineart-sdxl-1.0), vérifiée le 2026-10-21"
+    fichier: "controlnet/t2i-adapter-lineart-sdxl-1.0.fp16.safetensors"
+    taille_octets: 158060440
+    vram_go: null
+    note: "téléchargé le 2026-10-21 (accord général de l'auteur le matin même : « dl tout »), empreinte identique à celle de Hugging Face ; fige les contours du gros plan pendant la passe du visage, pour que la tête ne bouge pas à fort débruitage (la recherche du 2026-10-21 : la tête dédoublée à 0,85-0,95)"
+
+  - nom: IP-Adapter Plus Face SDXL (ViT-H)
+    type: ip-adapter
+    lien: "https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter-plus-face_sdxl_vit-h.safetensors"
+    empreinte_sha256: "677ad8860204f7d0bfba12d29e6c31ded9beefdf3e4bbd102518357d31a292c1"
+    licence: "Apache 2.0 (dépôt h94/IP-Adapter), vérifiée le 2026-10-21"
+    fichier: "ipadapter/ip-adapter-plus-face_sdxl_vit-h.safetensors"
+    taille_octets: 847517512
+    vram_go: null
+    note: "téléchargé le 2026-10-21 (accord général de l'auteur le matin même) ; donne à la passe du visage une image de référence de son visage (son gros plan à 90/100), pour garder sa barbe et ses cernes quand il est petit dans le plan. Encodeur : le CLIP ViT-H déjà là"

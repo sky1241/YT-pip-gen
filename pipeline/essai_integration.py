@@ -64,6 +64,11 @@ DETOURAGE_SEUIL = 64
 # le guide de pose (modeles.yaml) : sans lui, le modèle décidait seul de la pose et de la taille (Sky 2,5 fois trop grand au
 # 4e essai, journal.md)
 GUIDE_POSE = "t2i-adapter-openpose-sdxl-1.0.safetensors"
+GUIDE_CONTOURS = "t2i-adapter-lineart-sdxl-1.0.fp16.safetensors"
+IPA_VISAGE = "ip-adapter-plus-face_sdxl_vit-h.safetensors"
+IPA_ENCODEUR = "CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors"
+NEGATIF_EN_PLUS = []                # des tags négatifs pour tout l'essai (option --objet)
+FORCE_CONTOURS, FIN_CONTOURS = 0.7, 0.6
 FORCE_POSE = 0.9
 TROU_MAX = 0.02                     # un trou plus petit que 2 % du perso est bouché ; au-delà (entre un bras et le corps), il reste
 
@@ -363,7 +368,7 @@ def negatif(perso, gris=False):
         en_plus = ", ".join(x for x in (en_plus, "table, desk, chair, stool, bench") if x)
     # pas d'assiette ni de bol : les accessoires de la table se posent en calques (axes.md), pas au hasard du modèle
     return (NEGATIF + ", multiple girls, multiple boys, 2girls, 2boys, plate, bowl, flower, cup, glass, drinking"
-            + (f", {en_plus}" if en_plus else ""))
+            + (f", {en_plus}" if en_plus else "") + "".join(f", {t}" for t in NEGATIF_EN_PLUS))
 
 
 def etapes_pour(debruitage):
@@ -371,7 +376,8 @@ def etapes_pour(debruitage):
     return 25 if debruitage >= 0.9 else max(10, round(25 * debruitage * 1.25))
 
 
-def diffusion(image, masque, positif, lora, graine, debruitage, prefixe, negatif_texte=None, pose=None, fooocus=False):
+def diffusion(image, masque, positif, lora, graine, debruitage, prefixe, negatif_texte=None, pose=None, fooocus=False,
+              contours=None, reference=None, poids_reference=0.6):
     """Une passe du modèle sur une image de travail, avec le LoRA du perso ; avec un masque, seule sa zone blanche change
     (bords adoucis : DifferentialDiffusion) ; avec une pose, le guide de pose (T2I-Adapter OpenPose) impose son squelette.
     fooocus : le modèle d'inpainting (le patch de Fooocus fusionné, pipeline/fusionner_inpaint.py) et sa tête, qui lui
@@ -404,6 +410,17 @@ def diffusion(image, masque, positif, lora, graine, debruitage, prefixe, negatif
             "positive": ["3", 0], "negative": ["4", 0], "control_net": ["20", 0], "image": ["21", 0],
             "strength": FORCE_POSE, "start_percent": 0.0, "end_percent": 1.0}}
         wf["6"]["inputs"].update({"positive": ["22", 0], "negative": ["22", 1]})
+    if contours is not None:
+        # le guide de contours (T2I-Adapter Lineart) : les traits de l'image de départ, blancs sur noir ; il fige la tête
+        # pendant la passe du visage, jusqu'à 60 % des étapes (la recherche du 2026-10-21)
+        contours.save(ENTREE / f"{nom}_contours.png")
+        avant = wf["6"]["inputs"]["positive"], wf["6"]["inputs"]["negative"]
+        wf["23"] = {"class_type": "ControlNetLoader", "inputs": {"control_net_name": GUIDE_CONTOURS}}
+        wf["24"] = {"class_type": "LoadImage", "inputs": {"image": f"{nom}_contours.png"}}
+        wf["25"] = {"class_type": "ControlNetApplyAdvanced", "inputs": {
+            "positive": avant[0], "negative": avant[1], "control_net": ["23", 0], "image": ["24", 0],
+            "strength": FORCE_CONTOURS, "start_percent": 0.0, "end_percent": FIN_CONTOURS}}
+        wf["6"]["inputs"].update({"positive": ["25", 0], "negative": ["25", 1]})
     if masque is not None:
         masque.save(ENTREE / f"{nom}_masque.png")
         wf["11"] = {"class_type": "LoadImageMask", "inputs": {"image": f"{nom}_masque.png", "channel": "red"}}
@@ -424,6 +441,19 @@ def diffusion(image, masque, positif, lora, graine, debruitage, prefixe, negatif
             wf["18"] = {"class_type": "INPAINT_ApplyFooocusInpaint", "inputs": {"model": ["2", 0], "patch": ["17", 0],
                                                                                  "latent": ["16", 0]}}
             wf["9"]["inputs"]["model"] = ["18", 0]
+    if reference is not None:
+        # une image de référence de son visage (IP-Adapter Plus Face) : branchée entre son LoRA et la suite (2026-10-21)
+        reference.save(ENTREE / f"{nom}_reference.png")
+        wf["30"] = {"class_type": "IPAdapterModelLoader", "inputs": {"ipadapter_file": IPA_VISAGE}}
+        wf["31"] = {"class_type": "CLIPVisionLoader", "inputs": {"clip_name": IPA_ENCODEUR}}
+        wf["32"] = {"class_type": "LoadImage", "inputs": {"image": f"{nom}_reference.png"}}
+        wf["33"] = {"class_type": "IPAdapterAdvanced", "inputs": {
+            "model": ["2", 0], "ipadapter": ["30", 0], "image": ["32", 0], "clip_vision": ["31", 0],
+            "weight": poids_reference, "weight_type": "linear", "combine_embeds": "concat", "start_at": 0.0, "end_at": 1.0,
+            "embeds_scaling": "V only"}}
+        for cle, noeud in wf.items():
+            if cle != "33" and noeud["inputs"].get("model") == ["2", 0]:
+                noeud["inputs"]["model"] = ["33", 0]
     return Image.open(SORTIES_COMFY / generer(wf)[0]).convert("RGB")
 
 
@@ -495,6 +525,65 @@ def silhouette(perso, travail_fond, table, tete, jambes):
     return guide
 
 
+def traits(image):
+    """Les traits d'une image, blancs sur noir, pour le guide de contours : une différence de flous (XDoG simplifié)."""
+    g = cv2.cvtColor(np.asarray(image.convert("RGB")), cv2.COLOR_RGB2GRAY).astype(np.float32)
+    dog = cv2.GaussianBlur(g, (0, 0), 0.9) - 0.98 * cv2.GaussianBlur(g, (0, 0), 1.8)
+    lignes = (dog < -2.0).astype(np.uint8) * 255
+    return Image.fromarray(cv2.dilate(lignes, np.ones((2, 2), np.uint8))).convert("RGB")
+
+
+def net(masque, seuil=0.1, largeur=0.12, flou=2):
+    """Un masque de collage net à partir d'un masque de diffusion flou (le « Denoise to Compositing Mask » d'Acly) : le bord
+    flou, où l'ancienne image reste visible, n'est pas recollé ; sinon, la tête paraissait dédoublée (2026-10-21)."""
+    a = np.asarray(masque, np.float32) / 255
+    a = np.clip((a - seuil) / largeur, 0, 1)
+    return Image.fromarray((a * 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(flou))
+
+
+def rouleau(p1, p2, largeur, taille=TRAVAIL):
+    """Un rouleau factice (une galette en attendant la vraie, dessinée une fois pour toutes) : de p1 (le bout tenu, sous ses
+    mains) à p2 (sa bouche), une bande de papier blanc côté mains, un trait rouge sur le papier. Rend l'image RGBA du calque."""
+    import math as m
+    taille = (taille, taille) if isinstance(taille, int) else taille
+    calque = Image.new("RGBA", taille, (0, 0, 0, 0))
+    d = ImageDraw.Draw(calque)
+    dx, dy = p2[0] - p1[0], p2[1] - p1[1]
+    longueur = max(m.hypot(dx, dy), 1)
+    ux, uy = dx / longueur, dy / longueur
+    nx, ny = -uy, ux
+    r = largeur / 2
+
+    def bande(a, b, couleur):
+        q1 = (p1[0] + ux * longueur * a, p1[1] + uy * longueur * a)
+        q2 = (p1[0] + ux * longueur * b, p1[1] + uy * longueur * b)
+        d.polygon([(q1[0] + nx * r, q1[1] + ny * r), (q2[0] + nx * r, q2[1] + ny * r),
+                   (q2[0] - nx * r, q2[1] - ny * r), (q1[0] - nx * r, q1[1] - ny * r)], fill=couleur)
+
+    d.ellipse([p1[0] - r, p1[1] - r, p1[0] + r, p1[1] + r], fill=(242, 238, 230, 255))
+    bande(0.0, 0.55, (242, 238, 230, 255))                     # le papier
+    bande(0.55, 1.0, (214, 160, 98, 255))                      # la galette
+    bande(0.36, 0.42, (192, 57, 43, 255))                      # le trait rouge sur le papier
+    d.ellipse([p2[0] - r, p2[1] - r, p2[0] + r, p2[1] + r], fill=(176, 92, 52, 255))     # la viande, à l'entame
+    d.ellipse([p2[0] - r * 0.55, p2[1] - r * 0.55, p2[0] + r * 0.2, p2[1] + r * 0.2], fill=(110, 160, 70, 255))
+    return calque
+
+
+def place_objet(perso, camera, vers, metre_px, tete_px):
+    """La galette factice à sa place, d'après son squelette : de sa bouche (sous le nez) vers ses mains, et au-delà (le bout
+    tenu, dans son papier). vers : des pixels du fond vers les coordonnées voulues ; metre_px, tete_px : un mètre et la hauteur
+    de sa tête à sa place, dans ces coordonnées. Rend le bout tenu, la bouche et la largeur."""
+    sq = squelette_vu(perso, camera)
+    nez, p4, p7 = (vers(*projeter(camera, [sq[i]])[0]) for i in (0, 4, 7))
+    bouche = (nez[0], nez[1] + 0.28 * tete_px)
+    milieu = ((p4[0] + p7[0]) / 2, (p4[1] + p7[1]) / 2)
+    dx, dy = milieu[0] - bouche[0], milieu[1] - bouche[1]
+    longueur = math.hypot(dx, dy) or 1.0
+    total = max(0.24 * metre_px, 2.0 * longueur)
+    bout = (bouche[0] + dx / longueur * total, bouche[1] + dy / longueur * total)
+    return bout, bouche, 0.075 * metre_px
+
+
 def masque_visage(forme, cote, x0, y0, cx, cy, h, squelette):
     """Le masque de la passe du visage, dans l'image de travail du gros plan (TRAVAIL × TRAVAIL). « carre » : tout le gros plan
     sauf un bord ; « tete » : une ellipse des cheveux au menton, ses mains protégées ; « barbe » : le bas du visage seul (la
@@ -506,6 +595,11 @@ def masque_visage(forme, cote, x0, y0, cx, cy, h, squelette):
         return masque.filter(ImageFilter.GaussianBlur(40))
     k = TRAVAIL / cote
     hx, hy, hh = (cx - x0) * k, (cy - y0) * k, h * k
+    if forme == "tete2":
+        # la tête et une marge (le bord flou tombe sur les cheveux, le cou, le fond) ; les mains ne sont pas ôtées : elles
+        # sont recollées nettes après la passe, avec ce qu'elles tiennent (la recherche du 2026-10-21)
+        d.ellipse([hx - 0.95 * hh, hy - 0.4 * hh, hx + 0.95 * hh, hy + 1.8 * hh], fill=255)
+        return masque.filter(ImageFilter.GaussianBlur(18))
     if forme == "tete":
         d.ellipse([hx - 0.78 * hh, hy - 0.25 * hh, hx + 0.78 * hh, hy + 1.2 * hh], fill=255)
     else:
@@ -520,9 +614,16 @@ def masque_visage(forme, cote, x0, y0, cx, cy, h, squelette):
 
 
 def passe_visage(perso, image, tete, graine, prefixe, angle, fooocus=False, debruitage=0.45, tags=(), negatif_en_plus=(),
-                 forme="carre", squelette=None):
-    """Un gros plan sur sa tête, repassé par le modèle avec son LoRA (débruitage 0,45), puis remis en place. Le haut de sa
-    tête est relevé sur le détourage (la tête dessinée n'est pas toujours pile à la place prévue)."""
+                 forme="carre", squelette=None, v2=False, contours=False, protege=None, sans_visage=False,
+                 reference=None, poids_reference=0.6):
+    """Un gros plan sur sa tête, repassé par le modèle avec son LoRA, puis remis en place. Le haut de sa tête est relevé sur
+    le détourage (la tête dessinée n'est pas toujours pile à la place prévue).
+
+    v2 (la recherche du 2026-10-21, contre la tête dédoublée) : le geste écrit dans le prompt (« close-up » et ce qu'il fait,
+    au lieu de « portrait »), « cigarette, smoking » en négatif, un collage net (le bord flou du masque n'est pas recollé), et
+    ses mains avec ce qu'elles tiennent recollées nettes par-dessus. contours : le guide de contours fige la tête.
+    protege : une zone (dans l'image de travail) que la passe ne touche pas (l'objet qu'il tient). Rend l'image et la boîte
+    du gros plan."""
     h = tete["hauteur"]
     cx, cy = tete["crane"]
     alpha = np.asarray(detourer(image)) > 128
@@ -535,17 +636,48 @@ def passe_visage(perso, image, tete, graine, prefixe, angle, fooocus=False, debr
     y0 = int(min(max(cy - 0.2 * h - cote * 0.12, 0), image.height - cote))
     boite = (x0, y0, x0 + cote, y0 + cote)
     gros = image.crop(boite).resize((TRAVAIL, TRAVAIL), Image.LANCZOS)
-    # le masque (option --visage-masque) : à 0,75, le masque carré redessinait aussi ses mains et il ne mangeait plus
-    # (2026-10-21) ; « tete » les protège ; « barbe » ne reprend que le bas du visage
-    bord = masque_visage(forme, cote, x0, y0, cx, cy, h, squelette)
-    positif = prompt(perso, "portrait, close-up", angle=angle)
-    if tags:                            # ses traits, écrits pour le gros plan (option --visage-tags)
-        positif = positif.replace("portrait, close-up", "portrait, close-up, " + ", ".join(tags))
+    k = TRAVAIL / cote
+    hy, hh = (cy - y0) * k, h * k
+    poignets = [((u - x0) * k, (v - y0) * k) for u, v in (squelette[4], squelette[7])] if squelette else []
+    bouche = ((squelette[0][0] - x0) * k, hy + 1.3 * hh) if squelette else None
     neg = negatif(perso) + "".join(f", {t}" for t in negatif_en_plus)
-    refait = diffusion(gros, bord, positif, PERSOS[perso]["lora"], graine, debruitage, f"{prefixe}_visage", neg,
-                       fooocus=fooocus)
+    cadrage = "close-up" if v2 else "portrait, close-up"
+    positif = prompt(perso, cadrage, angle=angle)
+    if tags:                            # ses traits, écrits pour le gros plan (option --visage-tags)
+        positif = positif.replace(cadrage, cadrage + ", " + ", ".join(tags), 1)
+    if v2:
+        neg += ", cigarette, smoking"
+    visage = gros
+    change = Image.new("L", (TRAVAIL, TRAVAIL), 0)
+    if not sans_visage:
+        # le masque (option --visage-masque) : à 0,75, le masque carré redessinait aussi ses mains et il ne mangeait plus
+        # (2026-10-21) ; « tete » les protège ; « tete2 » est plus grand et les recolle nettes après ; « barbe » ne reprend
+        # que le bas du visage
+        bord = masque_visage(forme, cote, x0, y0, cx, cy, h, squelette)
+        refait = diffusion(gros, bord, positif, PERSOS[perso]["lora"], graine, debruitage, f"{prefixe}_visage", neg,
+                           fooocus=fooocus, contours=traits(gros) if contours else None, reference=reference,
+                           poids_reference=poids_reference)
+        if v2:
+            colle = np.asarray(net(bord), np.float32) / 255
+            if poignets and bouche:
+                # ses mains et ce qu'elles tiennent (jusqu'à la bouche), recollées nettes par-dessus la passe
+                devant = Image.new("L", (TRAVAIL, TRAVAIL), 0)
+                d = ImageDraw.Draw(devant)
+                for u, v in poignets:
+                    d.ellipse([u - 0.6 * hh, v - 0.6 * hh, u + 0.6 * hh, v + 0.6 * hh], fill=255)
+                milieu = ((poignets[0][0] + poignets[1][0]) / 2, (poignets[0][1] + poignets[1][1]) / 2)
+                d.line([milieu, bouche], fill=255, width=int(0.55 * hh))
+                colle *= 1 - np.asarray(devant.filter(ImageFilter.GaussianBlur(2)), np.float32) / 255
+            if protege is not None:
+                colle *= 1 - np.asarray(protege.crop(boite).resize((TRAVAIL, TRAVAIL), Image.LANCZOS), np.float32) / 255
+            colle_img = Image.fromarray((colle * 255).astype(np.uint8))
+            visage = Image.composite(refait, gros, colle_img)
+            change = colle_img
+        else:
+            visage = Image.composite(refait, gros, bord)
+            change = bord
     sortie = image.copy()
-    sortie.paste(refait.resize((cote, cote), Image.LANCZOS), boite[:2], bord.resize((cote, cote), Image.LANCZOS))
+    sortie.paste(visage.resize((cote, cote), Image.LANCZOS), boite[:2], change.resize((cote, cote), Image.LANCZOS))
     return sortie, boite
 
 
@@ -562,8 +694,14 @@ def composer(methode, image, masque_travail, devant_travail, alpha_gris=None):
 
 
 def main():
+    global ACTION
     perso, methode, graine = sys.argv[1], sys.argv[2].upper(), int(sys.argv[3])
     options = sys.argv[4:]
+    if "--objet" in options:
+        # avec la galette factice, plus de « burrito » dans les prompts : sinon le modèle dessine le sien à côté (2 graines sur
+        # 4, le 2026-10-21) ; il tient « de la nourriture », la galette posée dans le guide
+        ACTION = "eating, biting, holding food with both hands"
+        NEGATIF_EN_PLUS[:] = ["burrito", "sandwich", "taco", "hamburger", "cigarette"]
     recomposer = "--recomposer" in options
     axe = options[options.index("--axe") + 1] if "--axe" in options else AXE_PAR_DEFAUT
     AXE = DECORS / axe
@@ -666,6 +804,19 @@ def main():
         tete_cadre = {"crane": vers_cadre(*tete["crane"]), "hauteur": tete["hauteur"] * c}
         jambes = [vers_cadre(u, v) for u, v in projeter(camera, corps(perso)["jambes"])]
         guide = silhouette(perso, Image.new("RGB", CADRE), None, tete_cadre, jambes)
+        objet_cadre = None
+        if "--objet" in options:
+            # la galette factice (--objet), posée dans le guide avant le rendu : le modèle dessine ses mains autour d'elle, et
+            # elle reste presque telle quelle (un quart de la force) ; la même sur toutes les graines (2026-10-21). Collée
+            # après coup dans le gros plan, elle flottait devant son menton, et la nourriture du modèle restait à côté
+            x_p = PERSOS[perso]["x"]
+            (_, h1), (_, h0) = projeter(camera, [(x_p, 0.6, 1.0), (x_p, 0.6, 0.0)])
+            bout, bouche, largeur_objet = place_objet(perso, camera, vers_cadre, (h0 - h1) * c, tete["hauteur"] * c)
+            calque = rouleau(bout, bouche, largeur_objet, taille=CADRE)
+            guide.paste(calque, (0, 0), calque)
+            objet_cadre = calque.split()[3]
+            reglages["objet"] = {"bout": [round(v, 1) for v in bout], "bouche": [round(v, 1) for v in bouche],
+                                 "largeur": round(largeur_objet, 1)}
         guide.save(etapes / "1_guide.png")
         reglages["cadre"] = [round(v, 1) for v in cadre]
         reglages["prompt_gris"] = prompt(perso, "full body", fond_gris=True, angle=angle)
@@ -675,9 +826,21 @@ def main():
             gris = Image.open(gris_b).convert("RGB")
             reglages["gris_repris_de"] = f"{perso}_B_{graine}"
         else:
-            gris = diffusion(guide, None, reglages["prompt_gris"], PERSOS[perso]["lora"], graine, 0.9, f"{prefixe}_gris",
-                             negatif(perso, gris=True), pose_cadre)
+            masque_gris = None
+            if objet_cadre is not None:
+                a_objet = np.asarray(objet_cadre, np.float32) / 255
+                masque_gris = Image.fromarray((255 * (1 - 0.75 * a_objet)).astype(np.uint8)).filter(ImageFilter.GaussianBlur(2))
+            gris = diffusion(guide, masque_gris, reglages["prompt_gris"], PERSOS[perso]["lora"], graine, 0.9,
+                             f"{prefixe}_gris", negatif(perso, gris=True), pose_cadre)
         gris.save(etapes / "2_sur-gris.png")
+        objet_travail = None
+        if objet_cadre is not None:
+            # sa place dans l'image de travail : protégée pendant le fondu et la passe du visage
+            taille_c = (round(cadre[2] - cadre[0]), round(cadre[3] - cadre[1]))
+            objet_fond = Image.new("L", fond.size, 0)
+            objet_fond.paste(objet_cadre.resize(taille_c, Image.LANCZOS), (round(cadre[0]), round(cadre[1])))
+            objet_travail = objet_fond.crop(boite).resize((TRAVAIL, TRAVAIL), Image.LANCZOS)
+            objet_travail.save(etapes / "2_objet.png")
         # sur le fond entier : le perso détouré dans son cadre, caché par les objets « devant »
         alpha_fond, colle_fond = coller_cadre(perso, gris, cadre, camera, fond, recalage.get("devant", ()))
         colle_fond.save(etapes / "4_colle-fond.png")
@@ -686,6 +849,9 @@ def main():
         alpha.save(etapes / "3_detourage.png")
         colle = colle_fond.crop(boite).resize((TRAVAIL, TRAVAIL), Image.LANCZOS)
         zone = alpha.filter(ImageFilter.MaxFilter(31)).filter(ImageFilter.GaussianBlur(12))
+        if objet_travail is not None:   # la galette presque figée pendant le fondu aussi
+            zone = Image.fromarray(np.minimum(np.asarray(zone, np.float32),
+                                              255 - 0.75 * np.asarray(objet_travail, np.float32)).astype(np.uint8))
         if methode == "D":
             # D : le fondu par le modèle d'inpainting (il voit le décor autour), plus appuyé (0,45) : la lumière du décor
             # sur le perso, que la passe à 0,35 du modèle ordinaire ne donnait qu'à peine
@@ -699,10 +865,20 @@ def main():
         image.save(etapes / "5_avant-visage.png")
         if visage_normal and methode in ("C", "D"):
             liberer()                   # le modèle ordinaire après celui d'inpainting : la carte vidée d'abord
-        image, boite_visage = passe_visage(perso, image, tete_travail, graine, prefixe, angle,
-                                           fooocus=methode in ("C", "D") and not visage_normal,
-                                           debruitage=visage_debruitage, tags=visage_tags, negatif_en_plus=visage_negatif,
-                                           forme=visage_forme, squelette=points)
+        objet_travail = Image.open(etapes / "2_objet.png").convert("L") if (etapes / "2_objet.png").exists() else None
+        image, boite_visage = passe_visage(
+            perso, image, tete_travail, graine, prefixe, angle, fooocus=methode in ("C", "D") and not visage_normal,
+            debruitage=visage_debruitage, tags=visage_tags, negatif_en_plus=visage_negatif, forme=visage_forme,
+            squelette=points, v2="--visage-v2" in options, contours="--visage-contours" in options,
+            protege=objet_travail, sans_visage="--sans-visage" in options,
+            reference=Image.open(options[options.index("--visage-reference") + 1]).convert("RGB")
+            if "--visage-reference" in options else None,
+            poids_reference=float(options[options.index("--visage-reference-poids") + 1])
+            if "--visage-reference-poids" in options else 0.6)
+        if "--visage-reference" in options:
+            reglages["visage_reference"] = {"image": options[options.index("--visage-reference") + 1],
+                                            "poids": float(options[options.index("--visage-reference-poids") + 1])
+                                            if "--visage-reference-poids" in options else 0.6}
         reglages["visage_passe"] = {"debruitage": visage_debruitage, "tags": visage_tags, "negatif": visage_negatif}
         reglages["retires"] = list(RETIRES)
         reglages["visage"] = "normal" if (visage_normal or methode not in ("C", "D")) else "inpaint"
