@@ -495,7 +495,32 @@ def silhouette(perso, travail_fond, table, tete, jambes):
     return guide
 
 
-def passe_visage(perso, image, tete, graine, prefixe, angle, fooocus=False):
+def masque_visage(forme, cote, x0, y0, cx, cy, h, squelette):
+    """Le masque de la passe du visage, dans l'image de travail du gros plan (TRAVAIL × TRAVAIL). « carre » : tout le gros plan
+    sauf un bord ; « tete » : une ellipse des cheveux au menton, ses mains protégées ; « barbe » : le bas du visage seul (la
+    mâchoire, le menton, la lèvre du haut), ses mains protégées."""
+    masque = Image.new("L", (TRAVAIL, TRAVAIL), 0)
+    d = ImageDraw.Draw(masque)
+    if forme == "carre":
+        d.rectangle([80, 80, TRAVAIL - 80, TRAVAIL - 80], fill=255)
+        return masque.filter(ImageFilter.GaussianBlur(40))
+    k = TRAVAIL / cote
+    hx, hy, hh = (cx - x0) * k, (cy - y0) * k, h * k
+    if forme == "tete":
+        d.ellipse([hx - 0.78 * hh, hy - 0.25 * hh, hx + 0.78 * hh, hy + 1.2 * hh], fill=255)
+    else:
+        # le bas du visage, mesuré sur ses images : une tête d'anime est 1,5 fois plus haute que la tête réelle du
+        # squelette ; depuis le haut des cheveux, ses yeux sont à 0,8 fois la hauteur de la tête du squelette, son menton à 1,5
+        nx = (squelette[0][0] - x0) * k                       # le nez, pour le côté du visage
+        d.ellipse([nx - 0.5 * hh, hy + 1.0 * hh, nx + 0.38 * hh, hy + 1.62 * hh], fill=255)
+    for u, v in (squelette[4], squelette[7]):                 # les poignets : ses mains et ce qu'elles tiennent
+        r = 0.55 * hh
+        d.ellipse([(u - x0) * k - r, (v - y0) * k - r, (u - x0) * k + r, (v - y0) * k + r], fill=0)
+    return masque.filter(ImageFilter.GaussianBlur(18 if forme == "tete" else 10))
+
+
+def passe_visage(perso, image, tete, graine, prefixe, angle, fooocus=False, debruitage=0.45, tags=(), negatif_en_plus=(),
+                 forme="carre", squelette=None):
     """Un gros plan sur sa tête, repassé par le modèle avec son LoRA (débruitage 0,45), puis remis en place. Le haut de sa
     tête est relevé sur le détourage (la tête dessinée n'est pas toujours pile à la place prévue)."""
     h = tete["hauteur"]
@@ -510,11 +535,15 @@ def passe_visage(perso, image, tete, graine, prefixe, angle, fooocus=False):
     y0 = int(min(max(cy - 0.2 * h - cote * 0.12, 0), image.height - cote))
     boite = (x0, y0, x0 + cote, y0 + cote)
     gros = image.crop(boite).resize((TRAVAIL, TRAVAIL), Image.LANCZOS)
-    bord = Image.new("L", (TRAVAIL, TRAVAIL), 0)
-    ImageDraw.Draw(bord).rectangle([80, 80, TRAVAIL - 80, TRAVAIL - 80], fill=255)
-    bord = bord.filter(ImageFilter.GaussianBlur(40))
-    refait = diffusion(gros, bord, prompt(perso, "portrait, close-up", angle=angle), PERSOS[perso]["lora"], graine, 0.45,
-                       f"{prefixe}_visage", negatif(perso), fooocus=fooocus)
+    # le masque (option --visage-masque) : à 0,75, le masque carré redessinait aussi ses mains et il ne mangeait plus
+    # (2026-10-21) ; « tete » les protège ; « barbe » ne reprend que le bas du visage
+    bord = masque_visage(forme, cote, x0, y0, cx, cy, h, squelette)
+    positif = prompt(perso, "portrait, close-up", angle=angle)
+    if tags:                            # ses traits, écrits pour le gros plan (option --visage-tags)
+        positif = positif.replace("portrait, close-up", "portrait, close-up, " + ", ".join(tags))
+    neg = negatif(perso) + "".join(f", {t}" for t in negatif_en_plus)
+    refait = diffusion(gros, bord, positif, PERSOS[perso]["lora"], graine, debruitage, f"{prefixe}_visage", neg,
+                       fooocus=fooocus)
     sortie = image.copy()
     sortie.paste(refait.resize((cote, cote), Image.LANCZOS), boite[:2], bord.resize((cote, cote), Image.LANCZOS))
     return sortie, boite
@@ -563,6 +592,16 @@ def main():
         RETIRES[:] = [t.strip() for t in options[options.index("--retirer") + 1].split(";")]
     visage_normal = "--visage-normal" in options
     depuis = options[options.index("--depuis-corps") + 1] if "--depuis-corps" in options else None
+    # la passe du visage : sa force (--visage-debruitage) et des tags pour ses traits (--visage-tags « a;b », --visage-negatif)
+    visage_debruitage = float(options[options.index("--visage-debruitage") + 1]) if "--visage-debruitage" in options else 0.45
+    visage_tags = [t.strip() for t in options[options.index("--visage-tags") + 1].split(";")] if "--visage-tags" in options else []
+    visage_negatif = ([t.strip() for t in options[options.index("--visage-negatif") + 1].split(";")]
+                      if "--visage-negatif" in options else [])
+    visage_forme = options[options.index("--visage-masque") + 1] if "--visage-masque" in options else "carre"
+    # --depuis-visage VARIANTE : la passe s'applique à l'image d'une autre variante déjà passée au visage (une 2e passe)
+    depuis_visage = options[options.index("--depuis-visage") + 1] if "--depuis-visage" in options else None
+    if depuis_visage:
+        depuis = depuis_visage
     if recomposer:                      # la boîte de travail de l'image déjà générée
         boite = tuple(json.loads((SORTIE / f"{prefixe}.json").read_text())["boite"])
     k = TRAVAIL / (boite[2] - boite[0])
@@ -596,7 +635,7 @@ def main():
         for f in ("3_zone.png", "2_sur-gris.png", "3_detourage.png", "4_colle-fond.png"):
             if (SORTIE / source / f).exists():
                 shutil.copy(SORTIE / source / f, etapes / f)
-        image = Image.open(SORTIE / source / "5_avant-visage.png").convert("RGB")
+        image = Image.open(SORTIE / source / ("6_apres-visage.png" if depuis_visage else "5_avant-visage.png")).convert("RGB")
         base = json.loads((SORTIE / f"{source}.json").read_text())
         reglages.update({k: base[k] for k in ("cadre", "prompt_gris", "gris_repris_de") if k in base})
         reglages["corps_repris_de"] = source
@@ -661,7 +700,10 @@ def main():
         if visage_normal and methode in ("C", "D"):
             liberer()                   # le modèle ordinaire après celui d'inpainting : la carte vidée d'abord
         image, boite_visage = passe_visage(perso, image, tete_travail, graine, prefixe, angle,
-                                           fooocus=methode in ("C", "D") and not visage_normal)
+                                           fooocus=methode in ("C", "D") and not visage_normal,
+                                           debruitage=visage_debruitage, tags=visage_tags, negatif_en_plus=visage_negatif,
+                                           forme=visage_forme, squelette=points)
+        reglages["visage_passe"] = {"debruitage": visage_debruitage, "tags": visage_tags, "negatif": visage_negatif}
         reglages["retires"] = list(RETIRES)
         reglages["visage"] = "normal" if (visage_normal or methode not in ("C", "D")) else "inpaint"
         image.save(etapes / "6_apres-visage.png")

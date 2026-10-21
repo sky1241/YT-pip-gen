@@ -773,3 +773,37 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   référence), les mêmes couleurs, pas de liseré. Reste : **l'aliment change à chaque image** (un sandwich dans du papier, une
   serviette, un burrito) : à faire en accessoire fixe, dessiné une fois et le même dans tous les plans ; sa barbe, plus légère
   que sur sa référence.
+- **Sky « un ado de 14 ans » (l'auteur, 2026-10-21, 13 h 50)** : « tous les traits physiques du perso ont disparu, la barbe
+  n'existe jamais, la couleur de peau dérive ». Suivi étape par étape sur la graine 2001 de la méthode D : son LoRA seul en
+  gros plan (le test standard) dessine le bon Sky (barbe de 3 jours marquée, cernes, mâchoire carrée, l'âge) ; le rendu sur
+  gris en pied (sa tête à 160 px) garde une barbe plus légère ; **le fondu par le modèle d'inpainting lisse le visage, puis ma
+  passe du visage à 0,45 le rajeunit** (elle « nettoie » un visage flou en visage d'anime générique). Ce n'est pas la limite
+  du modèle : c'est le pipeline. Test (critères avant les images, jugés côte à côte avec sa référence, sur les 4 graines) : la
+  barbe de 3 jours visible (mâchoire, menton, lèvre du haut) ; un homme adulte (la trentaine), pas un ado ; les cernes ; ses
+  aviateurs ; la peau (rouge ≥ 180, luminosité ≥ 113) ; le même Sky sur les 4. Variantes de la passe du visage, sur les mêmes
+  corps : 0,6 sans tags ; 0,6 avec « mature male, stubble, bags under eyes » (« aged down, child » en négatif) ; 0,75 avec.
+- **La passe du visage, le résultat** (2026-10-21, 14 h 40 ; `~/Téléchargements/bilan11_sky_visage.png`) : notée par l'auteur
+  70/100 à 0,6 comme à 0,75 (contre 60 pour la passe à 0,45 ; son LoRA seul en gros plan : 90) : « c'est vraiment la barbe et
+  les cernes qui donnent le caractère au personnage, il manque encore un peu de barbe ». À 0,75, la passe redessinait aussi
+  ses mains (sur 3 images sur 4, il ne mangeait plus) : **la passe sur la tête seule** (`--visage-masque tete` : une ellipse des
+  cheveux au menton, ses poignets protégés d'après le squelette) garde le geste sur les 4 et le vieillit autant. Suivant :
+  « stubble » renforcé dans le prompt, à 1,4 puis 1,7.
+- **« stubble » renforcé** (`(stubble:1.4)`, `(stubble:1.7)`, la passe de la tête seule à 0,75, mêmes graines ;
+  `~/Téléchargements/bilan12_sky_barbe.png`) : aucune différence visible avec « stubble » simple, sur les 4 graines. À ce
+  débruitage, la barbe vient de l'image de départ et du LoRA, pas du poids du mot. Essai suivant : une 2e passe sur le bas du
+  visage seul (`--visage-masque barbe`, `--depuis-visage`), 0,8. Le détecteur de visages d'anime (lbpcascade) ne sert à rien
+  ici : OpenCV 5 n'a plus le `CascadeClassifier` ; le bas du visage se place d'après les proportions mesurées sur ses images
+  (une tête d'anime 1,5 fois plus haute que la tête réelle du squelette).
+- **La 2e passe sur le bas du visage** (0,8, « (stubble:1.3), facial hair, beard stubble », « clean-shaven » en négatif ;
+  `~/Téléchargements/bilan13_sky_passe_barbe.png`) : à peine plus de barbe sur la joue, sur les 4 graines. Quand il mange,
+  ses mains et la galette couvrent sa bouche et son menton, et le masque les protège : il ne reste que la joue. Pas le bon
+  levier. Le seul qui a marché jusqu'ici : la force de la passe (0,45 → 0,75 : 60 → 70/100). Essai suivant : la tête seule à
+  0,85 et 0,95 (son gros plan à 90/100 est dessiné de zéro).
+- **La tête seule à 0,85 et 0,95** (`~/Téléchargements/bilan14_sky_tete_forte.png`) : le visage se rapproche de son gros plan
+  (plus mûr, plus de barbe), mais le geste casse : la tête se relève, la bouche quitte la galette, et sur 3 graines le modèle
+  lui met une cigarette (un petit trait blanc au coin de la bouche, là où le masque protège ses mains). **À retenir : 0,75 pour
+  un plan où il mange ou tient quelque chose à la bouche ; 0,85 à 0,95 à essayer sur un plan de dialogue**, rien devant la
+  bouche. Les duos du meilleur réglage du jour (Maëlle en C détourée, Sky en D sans les tags des lunettes, la tête seule à 0,75 ;
+  `bilan15_duos_meilleur_reglage.png`) : 3 sur 4 utilisables (la graine 2003 de Maëlle ratée), Sky le même sur les 4 (la
+  chemise, les couleurs, pas de liseré). Restent : l'aliment, qui change à chaque image ; la barbe, plus légère que sur sa
+  référence (70/100 pour l'auteur à 0,75).
