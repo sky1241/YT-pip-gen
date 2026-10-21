@@ -841,3 +841,18 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   standard 2, noté 90/100, `essais/integration/reference_visage_sky.png`) : branché dans la passe du visage v2, poids 0,5 et
   0,8 (`--visage-reference`). Les critères : sa barbe et ses cernes plus proches de la référence, le même Sky, le geste gardé,
   la peau. 3 min 40 par image (contre 2 min 30 sans).
+- **Son gros plan en référence (IP-Adapter Plus Face), le résultat** (`~/Téléchargements/bilan18_sky_visage_reference.png`) :
+  **pire**. À 0,5 comme à 0,8, sur les 4 graines, le visage pâlit et rosit, les cheveux virent au rose, les cernes s'effacent ;
+  la barbe n'augmente pas. L'adaptateur reprend surtout la lumière plate et grise du gros plan. Abandonné.
+- **La galette factice, 2e essai** (sans « burrito » dans les prompts ; `bilan19_galette_factice_2.png`) : **le même objet sur
+  3 graines sur 4** (un rouleau de papier blanc, tenu à deux mains à la bouche, qui part vers la droite ; contre 2 sur 4 au 1er
+  essai) ; la 4e tient un petit pain rond. Mais ça ne marche pas encore : la partie galette est cachée par ses mains, on ne voit
+  que le papier, et il a l'air de tenir une serviette plutôt que de manger ; le papier, presque figé, reste d'un blanc plat qui
+  ne prend pas la lumière chaude de la salle (il a l'air collé). Suite possible : coller l'objet exact tout à la fin, puis une
+  passe légère (0,3) sur l'objet et les mains pour la lumière ; un objet factice dont la nourriture se voit.
+- **Bilan du réglage de Sky, le 2026-10-21 au soir** : réglés, la tête dédoublée (la passe v2), ses lunettes (sans les tags),
+  sa peau et sa cohérence d'une image à l'autre (la méthode D) ; bloquée à 70/100, sa barbe (ni le poids du mot, ni une 2e
+  passe, ni son gros plan en référence n'y font rien). Le levier qui reste, d'après la recherche : son LoRA. Ses traits n'ont
+  jamais été écrits dans ses légendes, le mot déclencheur les absorbe, et le LoRA ne les a vus presque qu'en buste ; un LoRA v3
+  avec `beard_stubble`, `bags_under_eyes`, `mature_male` dans les légendes les rendrait demandables dans le prompt (non prouvé
+  pour un petit visage).
