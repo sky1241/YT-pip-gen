@@ -760,3 +760,16 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   rien) : nets, les tags des lunettes (0 sur 8 contre 7 sur 7), la peau de Sky en C (3 sur 12 contre 9 sur 12 en B et D), les
   duos enchaînés (4 ratés sur 4), le halo de C autour du perso (parti sur toutes les images une fois le perso détouré). À
   confirmer sur plus d'images : `sidecut` (0 miroir sur 6 contre 3 sur 6), C contre D pour Maëlle (3 contre 2 sur 4).
+- **La planche 3 refusée par l'auteur (2026-10-21, 13 h)** : « Sky a un contour blanc lumineux autour de lui, ce qu'il mange
+  change à chaque image, sa chemise change entre les images ; Maëlle a l'air bien intégrée, Sky pas du tout ». Juste.
+  **Erreur de ma part** : je jugeais chaque image seule, avec les six critères, sans comparer Sky d'une image à l'autre ni
+  regarder ses bords. Désormais, un critère de plus pour chaque perso : **la cohérence**, jugée côte à côte avec sa référence
+  sur toutes les images de l'essai (la même chemise et le même motif, les mêmes couleurs de peau et de cheveux, pas de liseré
+  ni de halo autour de lui, le même aliment). Vérifié, sans nouvelle génération (`~/Téléchargements/bilan9_sky_coherence.png`,
+  `bilan10_duos_sky-hybride.png`) : avec la méthode C, Sky change d'une image à l'autre (le motif de la chemise noir, puis
+  bleu-vert, puis bleu ; les cheveux et la peau ; une fois un autre homme) et garde un liseré clair autour des cheveux et des
+  épaules (le décor repeint autour de lui, que le détourage dilaté de 5 pixels reprend) ; avec la méthode D sans les tags des
+  lunettes, collé dans le même duo, **la même chemise sur 4 images sur 4** (blanche, feuilles noires clairsemées, comme sa
+  référence), les mêmes couleurs, pas de liseré. Reste : **l'aliment change à chaque image** (un sandwich dans du papier, une
+  serviette, un burrito) : à faire en accessoire fixe, dessiné une fois et le même dans tous les plans ; sa barbe, plus légère
+  que sur sa référence.
