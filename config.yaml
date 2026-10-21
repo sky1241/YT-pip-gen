@@ -10,6 +10,7 @@
 disque_externe_label: "disque 5T"
 sorties_root: "/media/sky/disque 5T/YT-pip-gen-data/sorties"   # variantes, clips, voix générées, montages
 modeles_root: "/media/sky/disque 5T/YT-pip-gen-data/modeles"   # poids des modèles
+modeles_rapides: "/home/sky/kebab-modeles"   # sur le disque interne : le modèle découpé (UNet fp8, CLIP, VAE), chargé vite et sans pic de RAM (pipeline/unet_fp8.py, 2026-10-21)
 
 # --- ComfyUI (piloté par son API HTTP ; valeur par défaut, rien n'est installé) ---
 comfyui_url: "http://127.0.0.1:8188"

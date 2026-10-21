@@ -278,7 +278,8 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   VS Code, les navigateurs et Discord ouverts, il en reste 3,7 et le swap est plein aux deux tiers.
 - **AniSora sur 8 Go** (vérifié le 2026-10-15) : la version la plus légère d'AniSora est la V3.1 « 12GB VRAM » (ModelScope,
   2025-09-25) ; les V3 à V3.2 sont des modèles de 14 milliards de paramètres, en fp16 et fp8 pour ComfyUI (Kijai/WanVideo_comfy),
-  pas de version GGUF publiée. Son modèle de base, Wan 2.2 14B, tourne compressé (GGUF Q4) sur des cartes NVIDIA de 8 Go : environ
+  pas de version GGUF publiée (faux, corrigé le 2026-10-21 : des GGUF de la communauté existent, V3 10,9 Go
+  woctordho/AniSora-v3-GGUF, 2025-09 ; V3.2 10,1 Go youcef079/Index-Anisora-V3.2-GGUF, 2026-03). Son modèle de base, Wan 2.2 14B, tourne compressé (GGUF Q4) sur des cartes NVIDIA de 8 Go : environ
   111 s par clip sur une RTX 4060 (lilting.ch), 181 s pour 5 s en 480p (runflow.io), avec environ 13 Go de RAM (workflow Cordux).
   Aucun essai publié sur une carte AMD de la génération de la 5700 XT : à tester après les images, sans promesse.
 - **Test de la carte AMD, le 2026-10-15** : PyTorch 2.12.0+rocm7.14.1 (paquets AMD `torch[device-gfx1010]`, 869 Mo, venv
@@ -640,3 +641,41 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   de leur côté droit. La série n'a pas tourné : le garde-fou a tué ComfyUI au chargement du modèle (RAM disponible 1,2 Go ;
   Firefox rouvert, 1,9 Go). Le chargement du modèle est le pic (environ 6,5 Go) ; il faut environ 8,5 Go disponibles avant de
   lancer.
+- **Les quatre recherches du 2026-10-21** (l'auteur : « avant de tâter dans le vide, tu as été regarder sur internet ? » ; non,
+  la méthode de l'étape 1 avait été construite sans chercher ce qui existe). Quatre agents en parallèle, sources datées :
+  1. **Ce qu'on garde** : un perso et un seul LoRA par génération (deux LoRA dans la même passe mélangent les persos, partout
+     où c'est testé ; les modèles d'édition, Qwen-Image-Edit, Kontext, redessinent les persos) ; la pose et la taille depuis la
+     caméra du décor (Mickmumpitz fait pareil avec une maquette 3D) ; l'assemblage en calques ; l'animation sans modèle vidéo
+     (trois bouches, le standard de l'animation japonaise ; Rhubarb Lip Sync a un mode phonétique pour toute langue), les
+     modèles vidéo seulement pour quelques gros plans (« talking » en négatif chez Wan pour qui écoute).
+  2. **Ce qu'on change** : dessiner le perso directement dans le fond avec un vrai modèle d'inpainting (le patch de Fooocus,
+     comme le fait Krita AI Diffusion pour SDXL), au lieu de le dessiner sur gris pour le découper : le modèle voit la vraie
+     banquette (plus de tabouret) et la vraie lumière. La méthode A de l'étape 1 en était la version naïve (l'inpainting avec le
+     modèle ordinaire). Pour les détourages qui restent : ToonOut (BiRefNet affiné sur l'anime, MIT).
+  3. **Maëlle** : sa v3 applique déjà tout ce qui se conseille pour un perso asymétrique ; le texte ne sait pas dire gauche ou
+     droite (l'encodeur de texte de SDXL est mauvais là-dessus). Reste : l'angle écrit, 2 ou 3 variantes, l'inpainting des
+     ratés ; essayer le tag `sidecut` (le tag Danbooru exact pour « rasé d'un seul côté »).
+  4. **À éviter** : LayerDiffuse (échoue sur Animagine 4.0), IC-Light (SD1.5, ombres fausses sur l'anime), tout ce qui repose
+     sur FLUX.1-dev (Kontext, Fill, Insert Anything : licence qui exclut l'usage commercial, d'après la lecture de l'agent),
+     Qwen-Image-2.1 (licence de recherche), les modèles vidéo payants (environ 80 $ la minute finie).
+  5. **Kaggle, à trancher par l'auteur** : ses conditions d'utilisation (2025-06-22) réservent le service à un usage
+     « personnel, non commercial » ; produire pour une chaîne monétisée s'accorde mal avec ça, y compris les LoRA déjà
+     entraînés là-bas. Lu par l'agent, pas vérifié ici ; une location ponctuelle d'une carte (quelques euros) serait l'autre voie.
+- **La machine, mesuré le 2026-10-21 par l'agent** : la chute de RAM au chargement venait du checkpoint de 6,9 Go lu sur le disque
+  externe (un disque mécanique : 123 Mo/s en lecture suivie, 19 Mo/s en mmap) ; un fichier recopié sur la carte devient de la RAM
+  ordinaire jusqu'à sa fermeture. Le VAE sur le processeur prenait 33 s par décodage d'une image 1024², 16 s par encodage ; en
+  tuiles de 512 sur la carte, en fp16, 11 s et 6 s. Le VAE d'Animagine 4.0 est déjà le « fp16-fix » : `--fp16-vae` est sûr.
+  Fait : le modèle découpé (`pipeline/unet_fp8.py` : l'UNet en fp8, 2,6 Go ; les encodeurs de texte et le VAE à part) sur le
+  disque interne (`/home/sky/kebab-modeles/`, config.yaml > `modeles_rapides`), `--cpu-vae` remplacé par `--fp16-vae` et des
+  nœuds en tuiles. Résultat : même image à la même graine (vérifié sur deux prompts du test standard de Sky), 1 min 57 par image
+  au lieu de 2 min 30, la RAM ne descend plus sous 4,3 Go au chargement. Les poids restent en fp8 sur la carte
+  (`weight_dtype` fp8_e4m3fn : 2,5 Go au lieu de 4,9), sinon deux UNet ne tiennent pas ensemble ; `liberer()` vide la carte
+  avant de changer de modèle. Restent à essayer : fusionner le LoRA d'un perso dans son UNet (le mode « bypass » coûte jusqu'à
+  19 % du temps), TunableOp sans hipBLASLt (3 à 5 %), TAESDXL pour trier les variantes.
+- **Méthode C, le patch d'inpainting de Fooocus** : appliqué au chargement par le nœud, il touche 960 poids de l'UNet, et avec
+  `--highvram` ComfyUI garde une copie de chaque poids d'origine sur la carte : il est fusionné une fois pour toutes dans une
+  copie d'Animagine (`pipeline/fusionner_inpaint.py`, puis en fp8) ; le nœud « Apply Fooocus Inpaint » ne branche plus que sa
+  tête (un patch vide, `inpaint/patch-vide.pth`). Nœuds : comfyui-inpaint-nodes (Acly, GPL-3.0, v1.4.4).
+- **Erreur de ma part (2026-10-21, 08 h 15)** : le test de ToonOut (sur le processeur, plusieurs Go de RAM) lancé pendant le
+  chargement du modèle dans ComfyUI ; le garde-fou a coupé ComfyUI. Règle : rien de lourd sur le processeur pendant une
+  génération.

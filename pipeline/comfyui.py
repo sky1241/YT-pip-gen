@@ -25,7 +25,9 @@ OPTIONS = [
                                 # raison, jamais PYTORCH_CUDA_ALLOC_CONF=expandable_segments : toute allocation échoue
     "--disable-pinned-memory",  # la mémoire épinglée pose problème sur gfx1010
     "--highvram",               # garde le modèle sur la carte : sinon il se recopie en RAM à chaque image
-    "--cpu-vae",                # le VAE sur le processeur : sur la carte, il ne tient plus à côté du modèle
+    "--fp16-vae",               # le VAE sur la carte, en fp16 (celui d'Animagine 4.0 est déjà le « fp16-fix »), découpé en
+                                # tuiles de 512 par les nœuds : depuis que l'UNet est en fp8 (2,6 Go), il tient à côté ; sur le
+                                # processeur, il prenait 33 s par décodage (journal.md, 2026-10-21)
     "--fp8_e4m3fn-text-enc",    # les encodeurs de texte en fp8 : sinon un LoRA ne tient plus sur les 8 Go
 ]
 

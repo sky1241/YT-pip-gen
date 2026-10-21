@@ -74,3 +74,39 @@ modeles:
     taille_octets: 316116784
     vram_go: null
     note: "téléchargé le 2026-10-20 avec l'accord de l'auteur, empreinte identique à celle de Hugging Face ; impose la pose et la taille d'un perso : son squelette, calculé à sa place avec la caméra recalée du fond, dessiné au format OpenPose (pipeline/essai_integration.py). Entraîné sur des photos : à vérifier sur le style anime"
+
+  - nom: Fooocus inpaint v2.6 (le patch et sa tête)
+    type: inpainting (patch d'UNet SDXL)
+    lien: "https://huggingface.co/lllyasviel/fooocus_inpaint (inpaint_v26.fooocus.patch, fooocus_inpaint_head.pth)"
+    empreinte_sha256: "patch f8657a025104e22d70f9c060635d8e8c2196f433871a2f68dc40abd2171f0d59 ; tête 32f7f838e0c6d8f13437ba8411e77a4688d77a2e34df8857e4ef4d51f6b97692"
+    licence: "OpenRAIL (dépôt lllyasviel/fooocus_inpaint) : usage commercial permis, avec des interdits d'usage ; vérifiée le 2026-10-21"
+    fichier: "inpaint/inpaint_v26.fooocus.patch, inpaint/fooocus_inpaint_head.pth, inpaint/patch-vide.pth (un patch vide : les poids sont fusionnés)"
+    taille_octets: 1323414635
+    vram_go: 0
+    note: "téléchargé le 2026-10-21 avec l'accord de l'auteur, empreintes identiques à celles de Hugging Face. Fusionné dans une copie d'Animagine (pipeline/fusionner_inpaint.py) : appliqué au chargement, il aurait doublé les poids sur la carte. Nœuds : comfyui-inpaint-nodes (Acly, GPL-3.0, v1.4.4, commit 5b76817, dans ~/ComfyUI/custom_nodes)"
+
+  - nom: Animagine XL 4.0 + inpaint Fooocus (fusionné)
+    type: checkpoint (dérivé)
+    lien: "fabriqué ici : pipeline/fusionner_inpaint.py, à partir d'animagine-xl-4.0.safetensors et du patch Fooocus v2.6"
+    licence: "celle d'Animagine XL 4.0 et celle du patch (OpenRAIL)"
+    fichier: "checkpoints/animagine-xl-4.0-inpaint-fooocus.safetensors"
+    taille_octets: 6938434216
+    note: "le 2026-10-21 : 960 poids de l'UNet fusionnés sur 960. Sert à dessiner un perso directement dans un fond (méthode C, pipeline/essai_integration.py)"
+
+  - nom: Le modèle découpé, sur le disque interne (config.yaml > modeles_rapides)
+    type: UNet fp8 + encodeurs de texte + VAE
+    lien: "fabriqué ici : pipeline/unet_fp8.py (les UNet) ; les nœuds CLIPSave et VAESave de ComfyUI (les encodeurs, le VAE)"
+    licence: "celle d'Animagine XL 4.0"
+    fichier: "/home/sky/kebab-modeles/ : diffusion_models/animagine-xl-4.0_unet_fp8.safetensors (2,57 Go), diffusion_models/animagine-xl-4.0-inpaint-fooocus_unet_fp8.safetensors (2,57 Go), clip/animagine-xl-4.0_clip_g_fp8.safetensors, clip/animagine-xl-4.0_clip_l_fp8.safetensors, vae/animagine-xl-4.0_vae.safetensors"
+    taille_octets: 6400000000
+    note: "le 2026-10-21 : le checkpoint entier, lu sur le disque externe (mécanique), faisait chuter la RAM de 6,5 Go à chaque chargement. Découpé et posé sur le disque interne : la RAM ne descend plus sous 4,3 Go. Les poids en fp8 donnent la même image à la même graine (vérifié sur deux prompts du test standard de Sky)"
+
+  - nom: ToonOut (BiRefNet affiné sur l'anime, en ONNX fp16)
+    type: segmentation
+    lien: "https://huggingface.co/sprited/birefnet-toonout-onnx/resolve/main/birefnet-toonout-fp16.onnx"
+    empreinte_sha256: "213a8a98ee426ef8f02d247eb5a5a9889359e37c2e1e7e31e282d61034d08a83"
+    licence: "MIT (ToonOut, arXiv 2509.06839, et sa conversion ONNX), vérifiée le 2026-10-21"
+    fichier: "segmentation/birefnet-toonout-fp16.onnx"
+    taille_octets: 492381880
+    vram_go: 0
+    note: "téléchargé le 2026-10-21 avec l'accord de l'auteur, empreinte identique à celle de Hugging Face. Détoure un perso d'anime ; plus net qu'isnet-anime sur les cheveux (99,5 % contre 95,3 % de pixels justes, d'après son article)"

@@ -31,7 +31,7 @@ from PIL import Image, ImageDraw, ImageFilter
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from recaler_camera import projeter          # noqa: E402
-from test_lora import NEGATIF, QUALITE, generer   # noqa: E402
+from test_lora import NEGATIF, QUALITE, TUILES, UNET, UNET_INPAINT, chargeurs, generer, liberer   # noqa: E402
 
 RACINE = Path(__file__).resolve().parent.parent
 CONFIG = yaml.safe_load((RACINE / "config.yaml").read_text())
@@ -241,6 +241,47 @@ def coller_cadre(perso, gris, cadre, camera, fond, devant):
     return alpha_fond, colle_fond
 
 
+def masque_corps(perso, camera, boite, k, taille=TRAVAIL):
+    """Méthode C : la zone à repeindre, en forme de corps autour de son squelette, dans l'image de travail. La tête est
+    large et haute : une tête d'anime est plus grosse que la vraie (le modèle la dessinait au-dessus de la place prévue,
+    5e essai) ; les mains ont de la place pour ce qu'elles tiennent. Les objets « devant » sont ôtés ensuite."""
+    def vers(points):
+        return [None if q is None else ((u - boite[0]) * k, (v - boite[1]) * k)
+                for q, (u, v) in zip(points, (projeter(camera, [q])[0] if q is not None else (0, 0) for q in points))]
+    c = corps(perso)
+    p = vers(squelette_vu(perso, camera))
+    (cx, cy), (mx, my) = vers([c["crane"], c["menton"]])
+    x = PERSOS[perso]["x"]
+    (_, h1), (_, h0) = projeter(camera, [(x, 0.6, 1.0), (x, 0.6, 0.0)])
+    metre = (h0 - h1) * k                          # pixels par mètre, à sa place
+    forme = Image.new("L", (taille, taille), 0)
+    d = ImageDraw.Draw(forme)
+
+    def trait(i, j, rayon):
+        if p[i] is None or p[j] is None:
+            return
+        r = rayon * metre
+        d.line([p[i], p[j]], fill=255, width=int(2 * r))
+        for q in (p[i], p[j]):
+            d.ellipse([q[0] - r, q[1] - r, q[0] + r, q[1] + r], fill=255)
+
+    d.polygon([p[2], p[5], p[11], p[8]], fill=255)                     # le buste
+    for i, j in ((1, 2), (1, 5), (2, 8), (5, 11)):
+        trait(i, j, 0.10)
+    for i, j in ((2, 3), (3, 4), (5, 6), (6, 7)):                       # les bras
+        trait(i, j, 0.09)
+    for i, j in ((8, 9), (9, 10), (11, 12), (12, 13)):                  # les jambes
+        trait(i, j, 0.11)
+    for i in (4, 7, 10, 13):                                            # les mains et ce qu'elles tiennent, les pieds
+        r = 0.14 * metre
+        d.ellipse([p[i][0] - r, p[i][1] - r, p[i][0] + r, p[i][1] + r], fill=255)
+    h = my - cy                                                          # la tête, en grand
+    d.ellipse([cx - 0.85 * h, cy - 0.45 * h, cx + 0.85 * h, my + 0.25 * h], fill=255)
+    trait(0, 1, 0.08)
+    marge = max(3, int(0.03 * metre)) | 1
+    return forme.filter(ImageFilter.MaxFilter(marge)).filter(ImageFilter.GaussianBlur(6))
+
+
 def place(perso, camera, taille_fond, devant=()):
     """Son masque sur le fond (blanc = sa place, bords adoucis), la boîte de travail autour, sa tête en pixels. Les objets
     « devant » (camera.json) sont ôtés du masque, nets : ils restent devant lui, intacts."""
@@ -320,25 +361,26 @@ def negatif(perso, gris=False):
             + (f", {en_plus}" if en_plus else ""))
 
 
-def diffusion(image, masque, positif, lora, graine, debruitage, prefixe, negatif_texte=None, pose=None):
+def diffusion(image, masque, positif, lora, graine, debruitage, prefixe, negatif_texte=None, pose=None, fooocus=False):
     """Une passe du modèle sur une image de travail, avec le LoRA du perso ; avec un masque, seule sa zone blanche change
-    (bords adoucis : DifferentialDiffusion) ; avec une pose, le guide de pose (T2I-Adapter OpenPose) impose son squelette."""
+    (bords adoucis : DifferentialDiffusion) ; avec une pose, le guide de pose (T2I-Adapter OpenPose) impose son squelette.
+    fooocus : le modèle d'inpainting (le patch de Fooocus fusionné, pipeline/fusionner_inpaint.py) et sa tête, qui lui
+    montre la zone à repeindre et ce qui l'entoure : il dessine dans le décor au lieu de coller une image à part."""
     ENTREE.mkdir(exist_ok=True)
     nom = f"kebab_{prefixe}"
     image.save(ENTREE / f"{nom}.png")
     wf = {
-        "1": {"class_type": "CheckpointLoaderSimple", "inputs": {"ckpt_name": "animagine-xl-4.0.safetensors"}},
+        **chargeurs(UNET_INPAINT if fooocus else UNET),
         "2": {"class_type": "LoraLoaderBypassModelOnly", "inputs": {"model": ["1", 0], "lora_name": lora, "strength_model": 1.0}},
-        "3": {"class_type": "CLIPTextEncode", "inputs": {"text": positif, "clip": ["1", 1]}},
-        "4": {"class_type": "CLIPTextEncode", "inputs": {"text": negatif_texte or NEGATIF, "clip": ["1", 1]}},
+        "3": {"class_type": "CLIPTextEncode", "inputs": {"text": positif, "clip": ["1c", 0]}},
+        "4": {"class_type": "CLIPTextEncode", "inputs": {"text": negatif_texte or NEGATIF, "clip": ["1c", 0]}},
         "10": {"class_type": "LoadImage", "inputs": {"image": f"{nom}.png"}},
-        # le VAE d'un bloc : par tuiles, ComfyUI le passe trois fois (trois découpages moyennés), et sur le processeur
-        # (--cpu-vae) une variante prenait 13 minutes au lieu de 5 (2026-10-20)
-        "12": {"class_type": "VAEEncode", "inputs": {"pixels": ["10", 0], "vae": ["1", 2]}},
+        # le VAE sur la carte, en tuiles (pipeline/comfyui.py) : sur le processeur, 33 s par décodage
+        "12": {"class_type": "VAEEncodeTiled", "inputs": {"pixels": ["10", 0], "vae": ["1v", 0], **TUILES}},
         "6": {"class_type": "KSampler", "inputs": {"seed": graine, "steps": 25, "cfg": 5.0, "sampler_name": "euler_ancestral",
                                                    "scheduler": "normal", "denoise": debruitage, "model": ["2", 0],
                                                    "positive": ["3", 0], "negative": ["4", 0], "latent_image": ["12", 0]}},
-        "7": {"class_type": "VAEDecode", "inputs": {"samples": ["6", 0], "vae": ["1", 2]}},
+        "7": {"class_type": "VAEDecodeTiled", "inputs": {"samples": ["6", 0], "vae": ["1v", 0], **TUILES}},
         "8": {"class_type": "SaveImage", "inputs": {"filename_prefix": f"etape1_{prefixe}", "images": ["7", 0]}},
     }
     if pose is not None:
@@ -355,6 +397,20 @@ def diffusion(image, masque, positif, lora, graine, debruitage, prefixe, negatif
         wf["13"] = {"class_type": "SetLatentNoiseMask", "inputs": {"samples": ["12", 0], "mask": ["11", 0]}}
         wf["9"] = {"class_type": "DifferentialDiffusion", "inputs": {"model": ["2", 0]}}
         wf["6"]["inputs"].update({"model": ["9", 0], "latent_image": ["13", 0]})
+        if fooocus:
+            # la tête d'inpainting de Fooocus voit l'image avec la zone à repeindre remplie de gris (comme le nœud
+            # « VAE Encode & Inpaint Conditioning », mais encodée en tuiles) ; le patch vide : ses poids sont déjà fusionnés
+            gris = np.asarray(image.convert("RGB"), np.float32)
+            m = (np.asarray(masque.convert("L"), np.float32) / 255 > 0.5)[..., None]
+            Image.fromarray(np.where(m, 127.5, gris).astype(np.uint8)).save(ENTREE / f"{nom}_gris.png")
+            wf["14"] = {"class_type": "LoadImage", "inputs": {"image": f"{nom}_gris.png"}}
+            wf["15"] = {"class_type": "VAEEncodeTiled", "inputs": {"pixels": ["14", 0], "vae": ["1v", 0], **TUILES}}
+            wf["16"] = {"class_type": "SetLatentNoiseMask", "inputs": {"samples": ["15", 0], "mask": ["11", 0]}}
+            wf["17"] = {"class_type": "INPAINT_LoadFooocusInpaint", "inputs": {"head": "fooocus_inpaint_head.pth",
+                                                                                "patch": "patch-vide.pth"}}
+            wf["18"] = {"class_type": "INPAINT_ApplyFooocusInpaint", "inputs": {"model": ["2", 0], "patch": ["17", 0],
+                                                                                 "latent": ["16", 0]}}
+            wf["9"]["inputs"]["model"] = ["18", 0]
     return Image.open(SORTIES_COMFY / generer(wf)[0]).convert("RGB")
 
 
@@ -410,7 +466,7 @@ def silhouette(perso, travail_fond, table, tete, jambes):
     return guide
 
 
-def passe_visage(perso, image, tete, graine, prefixe, angle):
+def passe_visage(perso, image, tete, graine, prefixe, angle, fooocus=False):
     """Un gros plan sur sa tête, repassé par le modèle avec son LoRA (débruitage 0,45), puis remis en place. Le haut de sa
     tête est relevé sur le détourage (la tête dessinée n'est pas toujours pile à la place prévue)."""
     h = tete["hauteur"]
@@ -429,7 +485,7 @@ def passe_visage(perso, image, tete, graine, prefixe, angle):
     ImageDraw.Draw(bord).rectangle([80, 80, TRAVAIL - 80, TRAVAIL - 80], fill=255)
     bord = bord.filter(ImageFilter.GaussianBlur(40))
     refait = diffusion(gros, bord, prompt(perso, "portrait, close-up", angle=angle), PERSOS[perso]["lora"], graine, 0.45,
-                       f"{prefixe}_visage", negatif(perso))
+                       f"{prefixe}_visage", negatif(perso), fooocus=fooocus)
     sortie = image.copy()
     sortie.paste(refait.resize((cote, cote), Image.LANCZOS), boite[:2], bord.resize((cote, cote), Image.LANCZOS))
     return sortie, boite
@@ -462,6 +518,11 @@ def main():
     fond = Image.open(AXE / "fond_v1.png").convert("RGB")
     masque, boite, tete = place(perso, camera, fond.size, recalage.get("devant", ()))
     prefixe = f"{perso}_{methode}_{graine}"
+    # --sur <essai> : il se pose sur l'image d'un autre essai du même axe (un autre perso déjà là, plus loin de la caméra)
+    sur = options[options.index("--sur") + 1] if "--sur" in options else None
+    if sur:
+        fond = Image.open(SORTIE / f"{sur}.png").convert("RGB")
+        prefixe += f"_sur_{sur}"
     if recomposer:                      # la boîte de travail de l'image déjà générée
         boite = tuple(json.loads((SORTIE / f"{prefixe}.json").read_text())["boite"])
     k = TRAVAIL / (boite[2] - boite[0])
@@ -493,6 +554,17 @@ def main():
     elif methode == "A":
         image = diffusion(travail_fond, masque_travail, reglages["prompt"], PERSOS[perso]["lora"], graine, 1.0, prefixe,
                           negatif(perso), pose)
+    elif methode == "C":
+        liberer()                       # un autre modèle (celui d'inpainting) : la carte vidée d'abord
+        # C : dessiné directement dans le décor, avec le modèle d'inpainting de Fooocus, guidé par son squelette, dans une
+        # zone en forme de corps ; les objets « devant » ne sont pas repeints. Le modèle voit la vraie banquette et la vraie
+        # lumière : pas de tabouret inventé, pas de détourage (les recherches du 2026-10-21, journal.md)
+        zone_c = masque_corps(perso, camera, boite, k)
+        zone_c = Image.fromarray(np.minimum(np.asarray(zone_c), 255 - np.asarray(devant_travail)))
+        zone_c.save(etapes / "3_zone.png")
+        reglages["sur"] = sur
+        image = diffusion(travail_fond, zone_c, reglages["prompt"], PERSOS[perso]["lora"], graine, 1.0, prefixe,
+                          negatif(perso), pose, fooocus=True)
     else:
         # B : dessiné sur gris dans son cadre (sa taille suit le cadre), guidé par son squelette, détouré, collé sur le fond
         # derrière les objets « devant » (la vraie table cache le bas de son buste), puis fondu dans la lumière du décor
@@ -524,13 +596,16 @@ def main():
                           negatif(perso))
     if not recomposer:
         image.save(etapes / "5_avant-visage.png")
-        image, boite_visage = passe_visage(perso, image, tete_travail, graine, prefixe, angle)
+        image, boite_visage = passe_visage(perso, image, tete_travail, graine, prefixe, angle, fooocus=methode == "C")
         image.save(etapes / "6_apres-visage.png")
         reglages["boite_visage_travail"] = boite_visage
     # retour sur le fond entier : seul le perso détouré y entre. Le reste de sa place revient au fond d'origine : au premier
     # essai, le modèle avait changé le miroir en fenêtre de nuit derrière lui, et ajouté une assiette sur la table
     alpha_gris = Image.open(etapes / "3_detourage.png").convert("L") if methode == "B" else None
-    alpha = composer(methode, image, masque_travail, devant_travail, alpha_gris)
+    if methode == "C":                  # sa zone, telle quelle : le reste de l'image n'a pas été repeint
+        alpha = Image.open(etapes / "3_zone.png").convert("L")
+    else:
+        alpha = composer(methode, image, masque_travail, devant_travail, alpha_gris)
     alpha.save(etapes / "7_detourage-final.png")
     final = Image.open(etapes / "4_colle-fond.png").convert("RGB") if methode == "B" else fond.copy()
     taille = boite[2] - boite[0]

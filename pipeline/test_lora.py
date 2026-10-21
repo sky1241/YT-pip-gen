@@ -55,20 +55,47 @@ def comme_en_production(numero, tags, fiche):
     return ", ".join(en_plus + [tags])
 
 
+# Le modèle découpé, sur le disque interne (config.yaml > modeles_rapides, pipeline/unet_fp8.py) : l'UNet en fp8, les deux
+# encodeurs de texte, le VAE. Le checkpoint entier, lu sur le disque externe, faisait chuter la RAM de 6,5 Go à chaque
+# chargement (journal.md, 2026-10-21)
+UNET = "animagine-xl-4.0_unet_fp8.safetensors"
+UNET_INPAINT = "animagine-xl-4.0-inpaint-fooocus_unet_fp8.safetensors"    # le patch d'inpainting de Fooocus fusionné
+CLIP_G, CLIP_L = "animagine-xl-4.0_clip_g_fp8.safetensors", "animagine-xl-4.0_clip_l_fp8.safetensors"
+VAE = "animagine-xl-4.0_vae.safetensors"
+# le VAE sur la carte, en tuiles de 512 : sur le processeur, un décodage prenait 33 s, en tuiles sur la carte 11 s
+TUILES = {"tile_size": 512, "overlap": 64, "temporal_size": 64, "temporal_overlap": 8}
+
+
+def chargeurs(unet=UNET):
+    """Les nœuds qui chargent le modèle : « 1 » l'UNet, « 1c » les encodeurs de texte, « 1v » le VAE."""
+    # « fp8_e4m3fn » : les poids restent en fp8 sur la carte (2,5 Go au lieu de 4,9), convertis à la volée ; en « default »,
+    # ComfyUI les repassait en fp16, et deux UNet (le normal, celui d'inpainting) ne tenaient plus ensemble (2026-10-21)
+    return {"1": {"class_type": "UNETLoader", "inputs": {"unet_name": unet, "weight_dtype": "fp8_e4m3fn"}},
+            "1c": {"class_type": "DualCLIPLoader", "inputs": {"clip_name1": CLIP_G, "clip_name2": CLIP_L, "type": "sdxl"}},
+            "1v": {"class_type": "VAELoader", "inputs": {"vae_name": VAE}}}
+
+
+def liberer():
+    """Vide la carte et la RAM de ComfyUI (les modèles chargés) : à faire avant de changer de modèle."""
+    requete = urllib.request.Request(f"{URL}/free", data=json.dumps({"unload_models": True, "free_memory": True}).encode(),
+                                     headers={"Content-Type": "application/json"})
+    urllib.request.urlopen(requete).read()
+
+
 def workflow(positif, lora, graine, largeur, hauteur, prefixe):
     return {
-        "1": {"class_type": "CheckpointLoaderSimple", "inputs": {"ckpt_name": "animagine-xl-4.0.safetensors"}},
+        **chargeurs(),
         # Le LoRA en mode « bypass » : il s'ajoute pendant le calcul sans réécrire les poids du modèle. Le chargement
         # classique garde une copie des poids d'origine sur la carte et déborde des 8 Go (journal.md, 2026-10-15).
         "2": {"class_type": "LoraLoaderBypassModelOnly", "inputs": {"model": ["1", 0], "lora_name": lora,
                                                                      "strength_model": 1.0}},
-        "3": {"class_type": "CLIPTextEncode", "inputs": {"text": positif, "clip": ["1", 1]}},
-        "4": {"class_type": "CLIPTextEncode", "inputs": {"text": NEGATIF, "clip": ["1", 1]}},
+        "3": {"class_type": "CLIPTextEncode", "inputs": {"text": positif, "clip": ["1c", 0]}},
+        "4": {"class_type": "CLIPTextEncode", "inputs": {"text": NEGATIF, "clip": ["1c", 0]}},
         "5": {"class_type": "EmptyLatentImage", "inputs": {"width": largeur, "height": hauteur, "batch_size": 1}},
         "6": {"class_type": "KSampler", "inputs": {"seed": graine, "steps": 25, "cfg": 5.0, "sampler_name": "euler_ancestral",
                                                    "scheduler": "normal", "denoise": 1.0, "model": ["2", 0],
                                                    "positive": ["3", 0], "negative": ["4", 0], "latent_image": ["5", 0]}},
-        "7": {"class_type": "VAEDecode", "inputs": {"samples": ["6", 0], "vae": ["1", 2]}},
+        "7": {"class_type": "VAEDecodeTiled", "inputs": {"samples": ["6", 0], "vae": ["1v", 0], **TUILES}},
         "8": {"class_type": "SaveImage", "inputs": {"filename_prefix": prefixe, "images": ["7", 0]}},
     }
 
