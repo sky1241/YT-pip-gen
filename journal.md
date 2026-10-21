@@ -943,3 +943,11 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   prompt, sa barbe est plus fournie qu'en v2, ses cernes et ses aviateurs là, l'œil aveugle du bon côté ; sans ses traits
   dans le prompt, il sort imberbe et plus jeune : ses traits sont maintenant portés par leurs tags (le prix attendu du
   tagging). Pas d'époque écartée : aucun fond gris dans les prompts de restaurant, pas d'anatomie cassée.
+- **Le test (c) de la v3 (2026-10-21, 23 h 15)** : la passe de la tête sur les 8 corps figés de la v2, avec la v3 (époques 12 et
+  9) et les mêmes tags que « v2barbe » : « beard » moyen 0,740 (époque 12) et 0,734 (époque 9) contre 0,750 pour la v2 ; la
+  peau juste sur 7 sur 8 (la graine 2004 un peu sombre) ; à l'œil, presque le même visage. À 0,75, la passe repart du visage
+  en place, et le LoRA y change peu : ce test ne départage pas les versions. Le vrai test est (d), le pipeline entier de la
+  version (son rendu sur gris, où sa barbe est plus fournie d'après les images d'essai). Ajouté au test : la tête presque
+  gardée pendant le fondu (`--fondu-tete 0.2`, la recherche : le fondu lissait le visage du rendu sur gris).
+- **Le LoRA v4 lancé sur Kaggle (23 h 16)**, en parallèle des tests de la v3 : la v3 (le même jeu) sans `min_snr_gamma`, une
+  seule chose changée (`pipeline/kaggle/lora_sky_v4/`).

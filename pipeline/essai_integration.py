@@ -868,6 +868,17 @@ def main():
         if objet_travail is not None:   # la galette presque figée pendant le fondu aussi
             zone = Image.fromarray(np.minimum(np.asarray(zone, np.float32),
                                               255 - 0.75 * np.asarray(objet_travail, np.float32)).astype(np.uint8))
+        if "--fondu-tete" in options:
+            # sa tête presque gardée pendant le fondu (--fondu-tete 0.2 : un cinquième de la force) : le fondu lissait son
+            # visage et effaçait la barbe du rendu sur gris avant la passe du visage (la recherche du 2026-10-21)
+            force_tete = float(options[options.index("--fondu-tete") + 1])
+            cx, cy = tete_travail["crane"]
+            h = tete_travail["hauteur"]
+            tete_m = Image.new("L", zone.size, 0)
+            ImageDraw.Draw(tete_m).ellipse([cx - 0.95 * h, cy - 0.35 * h, cx + 0.95 * h, cy + 1.75 * h], fill=255)
+            tete_m = np.asarray(tete_m.filter(ImageFilter.GaussianBlur(14)), np.float32) / 255
+            zone = Image.fromarray((np.asarray(zone, np.float32) * (1 - (1 - force_tete) * tete_m)).astype(np.uint8))
+            reglages["fondu_tete"] = force_tete
         if methode == "D":
             # D : le fondu par le modèle d'inpainting (il voit le décor autour), plus appuyé (0,45) : la lumière du décor
             # sur le perso, que la passe à 0,35 du modèle ordinaire ne donnait qu'à peine
