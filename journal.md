@@ -679,3 +679,84 @@ Vérifié sur les pages officielles, le 2026-10-15 :
 - **Erreur de ma part (2026-10-21, 08 h 15)** : le test de ToonOut (sur le processeur, plusieurs Go de RAM) lancé pendant le
   chargement du modèle dans ComfyUI ; le garde-fou a coupé ComfyUI. Règle : rien de lourd sur le processeur pendant une
   génération.
+- **Le plan de tests du 2026-10-21 (l'auteur au sport ; critères fixés avant les images)**. Une seule chose à la fois sur la
+  machine (rien de lourd sur le processeur pendant une génération). Chaque cas sur 4 graines (2001 à 2004), les mêmes pour
+  toutes les méthodes, pour comparer image à image.
+  1. **Méthode C, chacun seul**, Sky et Maëlle, axe 6 (table-du-fond) et axe 14 (coin-de-la-banquette) : 16 images. Les six
+     critères de l'étape 1 (reconnaissable ; détails du bon côté ; à sa place et à sa taille ; dans la lumière du décor, sans
+     air collé ; le décor intact hors de sa zone et les objets devant lui ; il mange, les mains acceptables). Un cas passe à
+     2 graines sur 4. Comparé à la méthode B (axe 6, mêmes graines, déjà faites) : le nombre d'images qui passent, le temps.
+  2. **À deux, méthode C** : Maëlle d'abord, Sky posé sur son image (`--sur`), axes 6 et 14, 2 paires de graines par axe.
+     Critères en plus : chacun passe les six ; Sky devant Maëlle là où ils se chevauchent ; la table et les sauces devant eux ;
+     l'écart de taille entre eux fidèle à la caméra (Maëlle plus loin et plus petite).
+  3. **Maëlle, `sidecut` contre `undercut`** : les prompts 6 et 10 du test standard (ceux où elle sortait en miroir : l'angle
+     n'y est pas écrit), 3 graines chacun, les deux tags : 12 images. On compte le côté rasé juste.
+  4. **ToonOut contre isnet-anime** (processeur, ComfyUI arrêté) : les 8 rendus sur gris de la méthode B ; on mesure ce qui
+     reste du fond gris dans le détourage, les trous dans le perso, et on regarde les cheveux.
+- **Les résultats des tests du 2026-10-21** (planches dans `~/Téléchargements/bilan*.png`, images dans
+  `<sorties_root>/essais/integration/<axe>/` et `essais/plans/<axe>/`) :
+  1. **Méthode C** (dessiné directement dans le décor, modèle d'inpainting de Fooocus, guidé par le squelette) : 4 min 30 par
+     image. Assis sur la vraie banquette, dans la vraie lumière, plus de tabouret ; il mange vraiment sur 14 images sur 16. Mais
+     le modèle repeint aussi le décor autour du perso, dans sa zone : un halo sur le miroir derrière la tête de Sky (sur ses
+     8 images : des feuilles, des fleurs), une tasse ajoutée près des sauces. **Remède testé : ne garder, dans la zone, que le
+     perso détouré** (`--detourer toonout`), le décor d'origine autour : halos et objets ajoutés partis sur toutes les images ;
+     ToonOut un peu plus net qu'isnet autour des cheveux. Avec ce détourage, les six critères : **Sky 1 sur 4 (axe 6) et 2 sur 4
+     (axe 14), Maëlle 3 sur 4 et 3 sur 4.** Ce qui rate : la fidélité au perso, plus fragile dessiné dans le décor que sur le
+     gris de son entraînement (Sky : des cheveux longs et noirs, l'œil aveugle avec un iris, un œil vert, une bande sur le
+     pantalon malgré le négatif ; Maëlle : une fois absente, une fois sans manches). Méthode B sur l'axe 6, mêmes graines (le
+     2026-10-20) : Sky 2 sur 4, Maëlle 2 sur 4 ; le perso y est plus fidèle, mais la lumière plus plate et la nourriture moins sûre.
+  2. **À deux, enchaînés** (Sky dessiné dans l'image où Maëlle est déjà, `--sur`) : **les 4 ratent**. Le modèle voit Maëlle
+     juste à côté de la zone et se mélange : Sky avec les cheveux roux de Maëlle, les corps fondus, Sky pas dessiné du tout, un
+     fantôme d'un autre homme. À ne pas refaire. **À deux, en calques** (chacun dessiné seul dans le décor vide, détouré,
+     superposé du plus loin au plus près, `composer_scene.py`) : marche ; Sky devant Maëlle, la table et les sauces devant eux,
+     l'écart de taille juste. Un duo réussit quand ses deux images seules réussissent (3 sur 8 aux mêmes graines ; en
+     choisissant la meilleure variante de chacun, un duo propre par axe à coup sûr ici).
+  3. **Maëlle, `sidecut` contre `undercut`**, l'angle non écrit, 6 paires aux mêmes graines : undercut 3 justes, 3 en miroir ;
+     sidecut 4 justes, 0 en miroir, 2 où le côté rasé est caché par les cheveux ; sidecut n'a jamais empiré une image. Peu
+     d'images : encourageant, pas prouvé. Adopté dans sa fiche (`lora` > `cote_visible` > `tag`).
+  4. **ToonOut** : sa sortie est déjà une probabilité ; mon code la repassait dans une sigmoïde (une règle « si hors de 0 à 1 »
+     déclenchée par l'arrondi du fp16) : le premier test ToonOut contre isnet est faux, refait à la fin. Les détourages de la
+     méthode C, eux, ont été faits après la correction.
+- **La régression vue par l'auteur (2026-10-21, 11 h)** : « le modèle a perdu la forme des lunettes » et la peau de Sky a
+  foncé (« on dirait qu'il est devenu arabe »). Mesuré sur les visages (la médiane des tons chair) : son LoRA seul, sur gris,
+  rouge 210 et luminosité 129 ; sa vue de trois-quarts de référence 187 et 122 ; la méthode B 193/122 (graine 2001) et 180/113
+  (2004) ; la méthode C 173/120 et 157/99, une peau plus brune et plus terne. Les lunettes : le LoRA seul dessine ses
+  aviateurs avec la barre du haut ; avec les tags « glasses, yellow-framed eyewear » ajoutés le 2026-10-20 (`tags_production`),
+  des lunettes rectangulaires génériques, en B comme en C. **Erreur de ma part** : ces deux tags, ajoutés pour que les lunettes
+  ne disparaissent pas, ont écrasé leur forme. Test (`--retirer`, sans toucher à la fiche avant le résultat), Sky, axe 6,
+  graines 2001 à 2004, critères fixés avant : les lunettes passent si ce sont des aviateurs (verres en goutte, plus larges en
+  haut, la barre au-dessus du nez) ; la peau passe si sa médiane a un rouge d'au moins 180 et une luminosité d'au moins 113
+  (le plus foncé de la méthode B, que l'auteur n'a pas relevé). Trois variantes, pour séparer les causes : C sans les tags ;
+  le même corps avec la passe du visage refaite par le modèle ordinaire ; D (le rendu sur gris refait sans les tags, fondu par
+  le modèle d'inpainting, visage ordinaire).
+- **Méthode D (hybride, 2026-10-21)** : le rendu sur gris de la méthode B (aux mêmes graines, déjà fait), collé, puis fondu
+  par le modèle d'inpainting à 0,45 (au lieu du modèle ordinaire à 0,35) et le visage repassé par le modèle d'inpainting :
+  3 min 40 par image en reprenant le rendu sur gris (5 min 30 en le refaisant). Les six critères, axe 6 : **Sky 3 sur 4,
+  Maëlle 2 sur 4** (`~/Téléchargements/bilan6_methodeD_hybride_axe6.png`). La peau de Sky reste celle de son LoRA (rouge
+  184, luminosité 119 à la graine 2001), la lumière du décor mieux prise qu'en B. Ce qui rate : la nourriture (un papier, un
+  anneau de pain), une fois Maëlle qui tient sa galette sans la manger, des traces sur une main de Sky.
+- **La régression, premier résultat (graine 2001)** : sans les tags « glasses, yellow-framed eyewear », Sky retrouve ses
+  aviateurs fins avec la barre du haut, en C comme avec le visage refait par le modèle ordinaire. La peau, elle, reste trop
+  foncée en C (rouge 171, puis 166 avec le visage ordinaire) : c'est la passe du corps dans le décor (le modèle d'inpainting à
+  1,0, « warm lighting », la lumière sombre de la scène) qui la fonce ; la passe du visage à 0,45 garde la couleur qu'elle
+  reçoit.
+- **La régression, résultat complet (2026-10-21, 12 h 15)**, Sky, axe 6, graines 2001 à 2004 (`~/Téléchargements/bilan7_*`,
+  `bilan8_*`) :
+  - **Les lunettes** : avec « glasses, yellow-framed eyewear », 0 aviateur sur 8 (B et D) ; sans ces deux tags, ses aviateurs
+    fins à barre reviennent sur 7 images sur 7 où le visage se voit (C : 3 sur 3, une image où ses mains cachent son visage ;
+    D : 4 sur 4). Plus fines et plus discrètes qu'avec les tags, comme sur sa référence. **Corrigé dans sa fiche**
+    (`lora` > `tags_production`, l'ancienne valeur notée).
+  - **La peau** (critère fixé avant : rouge ≥ 180 et luminosité ≥ 113) : B 4 sur 4 ; C 1 sur 4 dans ses trois variantes (avec
+    les tags, sans, et avec le visage refait par le modèle ordinaire) ; D 3 sur 4 ; D sans les tags 2 sur 4 (les deux autres à
+    1 et 3 points de luminosité du seuil, rouge 184 et 185). **C'est la méthode C qui fonce la peau de Sky**, par sa passe du
+    corps (le modèle d'inpainting à 1,0 dans la lumière sombre et orangée du décor) ; ni les tags ni la passe du visage n'y
+    changent rien. Maëlle, elle, sort juste en C (3 sur 4 sur les deux axes).
+  - D sans les tags, les six critères : 3 sur 4 hors peau (la graine 2003 tient un papier) ; avec le seuil de peau, 1 sur 4
+    strictement, 3 sur 4 si l'on accepte les deux à 1 et 3 points.
+- **ToonOut contre isnet, refait après la correction** : aucun des deux ne garde de fond (bord à 0) ; ToonOut laisse un peu
+  moins de pixels à moitié transparents dans le perso (97,6 à 98,4 % pleins contre 96,7 à 98,0 %), garde un peu plus de mèches
+  fines ; 18 s par image sur le processeur contre 2 s. Les deux suffisent ; ToonOut pour les plans finaux.
+- **Ce que ces tests tranchent, et ce qu'ils ne tranchent pas** (4 graines par cas : un écart d'une image sur 4 ne prouve
+  rien) : nets, les tags des lunettes (0 sur 8 contre 7 sur 7), la peau de Sky en C (3 sur 12 contre 9 sur 12 en B et D), les
+  duos enchaînés (4 ratés sur 4), le halo de C autour du perso (parti sur toutes les images une fois le perso détouré). À
+  confirmer sur plus d'images : `sidecut` (0 miroir sur 6 contre 3 sur 6), C contre D pour Maëlle (3 contre 2 sur 4).

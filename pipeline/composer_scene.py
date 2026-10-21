@@ -31,15 +31,20 @@ def composer(axe, essais):
     reglages = [(nom, json.loads((ESSAIS / axe / f"{nom}.json").read_text())) for nom in essais]
     for nom, r in sorted(reglages, key=lambda e: -distance(e[1]["perso"], camera)):
         etapes = ESSAIS / axe / nom
-        # comme à la fin de son essai : le perso dessiné sur gris, collé dans son cadre, puis ses pixels repassés (la lumière
-        # du décor, le visage) dans sa boîte de travail
-        gris = Image.open(etapes / "2_sur-gris.png").convert("RGB")
-        _, image = coller_cadre(r["perso"], gris, tuple(r["cadre"]), camera, image, devant)
         x0, y0, x1, _ = r["boite"]
         taille = (x1 - x0, x1 - x0)
+        if r["methode"] in ("B", "D"):
+            # comme à la fin de son essai : le perso dessiné sur gris, collé dans son cadre, puis ses pixels repassés (la
+            # lumière du décor, le visage) dans sa boîte de travail
+            gris = Image.open(etapes / "2_sur-gris.png").convert("RGB")
+            _, image = coller_cadre(r["perso"], gris, tuple(r["cadre"]), camera, image, devant)
+            alpha = etapes / "7_detourage-final.png"
+        else:
+            # C : le perso dessiné dans le décor, détouré (le décor autour de lui reste celui d'origine) s'il l'a été
+            detoures = sorted(etapes.glob("7_detourage-toonout.png")) + sorted(etapes.glob("7_detourage-isnet.png"))
+            alpha = detoures[0] if detoures else etapes / "3_zone.png"
         repasse = Image.open(etapes / "6_apres-visage.png").convert("RGB").resize(taille, Image.LANCZOS)
-        alpha = Image.open(etapes / "7_detourage-final.png").convert("L").resize(taille, Image.LANCZOS)
-        image.paste(repasse, (x0, y0), alpha)
+        image.paste(repasse, (x0, y0), Image.open(alpha).convert("L").resize(taille, Image.LANCZOS))
     return image
 
 

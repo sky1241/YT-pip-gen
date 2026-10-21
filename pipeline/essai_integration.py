@@ -19,6 +19,7 @@ ComfyUI doit tourner (pipeline/comfyui.py demarrer).
 """
 import json
 import math
+import shutil
 import sys
 import time
 from pathlib import Path
@@ -332,6 +333,9 @@ def squelette_vu(perso, camera):
     return points
 
 
+RETIRES = []                        # des tags à retirer de tous les prompts (option --retirer), pour un essai
+
+
 def prompt(perso, cadrage, fond_gris=False, angle="three-quarter view, facing right"):
     fiche = json.loads((RACINE / "image" / "persos" / perso / "fiche.json").read_text())
     lora = fiche["lora"]
@@ -348,7 +352,8 @@ def prompt(perso, cadrage, fond_gris=False, angle="three-quarter view, facing ri
     if cadrage != "portrait, close-up":
         morceaux.append(ACTION)
     morceaux.append("sitting, simple background, grey background" if fond_gris else DECOR)
-    return ", ".join(morceaux + [QUALITE])
+    tags = ", ".join(morceaux + [QUALITE]).split(", ")
+    return ", ".join(t for t in tags if t not in RETIRES)
 
 
 def negatif(perso, gris=False):
@@ -359,6 +364,11 @@ def negatif(perso, gris=False):
     # pas d'assiette ni de bol : les accessoires de la table se posent en calques (axes.md), pas au hasard du modèle
     return (NEGATIF + ", multiple girls, multiple boys, 2girls, 2boys, plate, bowl, flower, cup, glass, drinking"
             + (f", {en_plus}" if en_plus else ""))
+
+
+def etapes_pour(debruitage):
+    """25 étapes pour une image dessinée de zéro ; moins pour une passe légère : à peu près 25 × débruitage × 1,25."""
+    return 25 if debruitage >= 0.9 else max(10, round(25 * debruitage * 1.25))
 
 
 def diffusion(image, masque, positif, lora, graine, debruitage, prefixe, negatif_texte=None, pose=None, fooocus=False):
@@ -377,7 +387,10 @@ def diffusion(image, masque, positif, lora, graine, debruitage, prefixe, negatif
         "10": {"class_type": "LoadImage", "inputs": {"image": f"{nom}.png"}},
         # le VAE sur la carte, en tuiles (pipeline/comfyui.py) : sur le processeur, 33 s par décodage
         "12": {"class_type": "VAEEncodeTiled", "inputs": {"pixels": ["10", 0], "vae": ["1v", 0], **TUILES}},
-        "6": {"class_type": "KSampler", "inputs": {"seed": graine, "steps": 25, "cfg": 5.0, "sampler_name": "euler_ancestral",
+        # avec un débruitage partiel, ComfyUI fait quand même toutes les étapes demandées : une passe légère (le visage, à
+        # 0,45) en faisait 25 au lieu d'une douzaine, 1 min 50 au lieu de 50 s (2026-10-21)
+        "6": {"class_type": "KSampler", "inputs": {"seed": graine, "steps": etapes_pour(debruitage), "cfg": 5.0,
+                                                   "sampler_name": "euler_ancestral",
                                                    "scheduler": "normal", "denoise": debruitage, "model": ["2", 0],
                                                    "positive": ["3", 0], "negative": ["4", 0], "latent_image": ["12", 0]}},
         "7": {"class_type": "VAEDecodeTiled", "inputs": {"samples": ["6", 0], "vae": ["1v", 0], **TUILES}},
@@ -415,6 +428,22 @@ def diffusion(image, masque, positif, lora, graine, debruitage, prefixe, negatif
 
 
 _SESSION = None
+_TOONOUT = None
+DETOUREUR_TOONOUT = Path(CONFIG["modeles_root"]) / "segmentation" / "birefnet-toonout-fp16.onnx"
+
+
+def detourer_toonout(image):
+    """Le perso détouré par ToonOut (BiRefNet affiné sur l'anime, MIT) : un masque de 0 à 255. Sur le processeur, environ
+    20 s et plusieurs Go de RAM : jamais pendant une génération (journal.md, 2026-10-21)."""
+    global _TOONOUT
+    if _TOONOUT is None:
+        onnxruntime.set_default_logger_severity(3)
+        _TOONOUT = onnxruntime.InferenceSession(str(DETOUREUR_TOONOUT), providers=["CPUExecutionProvider"])
+    a = np.asarray(image.convert("RGB").resize((1024, 1024), Image.BILINEAR), np.float32) / 255
+    a = (a - np.array([0.485, 0.456, 0.406], np.float32)) / np.array([0.229, 0.224, 0.225], np.float32)
+    m = _TOONOUT.run(None, {_TOONOUT.get_inputs()[0].name: a.transpose(2, 0, 1)[None].astype(np.float32)})[0][0, 0]
+    m = np.clip(m, 0, 1)                 # déjà une probabilité (de 0 à 1, à l'arrondi du fp16 près)
+    return Image.fromarray((m * 255).astype(np.uint8)).resize(image.size, Image.BILINEAR)
 
 
 def detourer(image):
@@ -523,6 +552,17 @@ def main():
     if sur:
         fond = Image.open(SORTIE / f"{sur}.png").convert("RGB")
         prefixe += f"_sur_{sur}"
+    # --variante NOM : un essai à part, à côté de l'essai de base (même perso, méthode, graine) ; --retirer « a;b » : des tags
+    # retirés des prompts ; --visage-normal : la passe du visage avec le modèle ordinaire (celui du LoRA), même en C et D ;
+    # --depuis-corps VARIANTE : seule la passe du visage est refaite, sur le corps d'une autre variante (« base » : l'essai
+    # de base) ; --regris (D) : un nouveau rendu sur gris au lieu de celui de la méthode B
+    variante = options[options.index("--variante") + 1] if "--variante" in options else None
+    if variante:
+        prefixe += f"_{variante}"
+    if "--retirer" in options:
+        RETIRES[:] = [t.strip() for t in options[options.index("--retirer") + 1].split(";")]
+    visage_normal = "--visage-normal" in options
+    depuis = options[options.index("--depuis-corps") + 1] if "--depuis-corps" in options else None
     if recomposer:                      # la boîte de travail de l'image déjà générée
         boite = tuple(json.loads((SORTIE / f"{prefixe}.json").read_text())["boite"])
     k = TRAVAIL / (boite[2] - boite[0])
@@ -546,11 +586,20 @@ def main():
     if recomposer:
         reglages = json.loads((SORTIE / f"{prefixe}.json").read_text())
         image = Image.open(etapes / "6_apres-visage.png").convert("RGB")
-        if methode == "B":
+        if methode in ("B", "D"):
             gris = Image.open(etapes / "2_sur-gris.png").convert("RGB")
             alpha_fond, colle_fond = coller_cadre(perso, gris, tuple(reglages["cadre"]), camera, fond, recalage.get("devant", ()))
             colle_fond.save(etapes / "4_colle-fond.png")
             alpha_fond.crop(boite).resize((TRAVAIL, TRAVAIL), Image.LANCZOS).save(etapes / "3_detourage.png")
+    elif depuis:
+        source = f"{perso}_{methode}_{graine}" + ("" if depuis == "base" else f"_{depuis}")
+        for f in ("3_zone.png", "2_sur-gris.png", "3_detourage.png", "4_colle-fond.png"):
+            if (SORTIE / source / f).exists():
+                shutil.copy(SORTIE / source / f, etapes / f)
+        image = Image.open(SORTIE / source / "5_avant-visage.png").convert("RGB")
+        base = json.loads((SORTIE / f"{source}.json").read_text())
+        reglages.update({k: base[k] for k in ("cadre", "prompt_gris", "gris_repris_de") if k in base})
+        reglages["corps_repris_de"] = source
     elif methode == "A":
         image = diffusion(travail_fond, masque_travail, reglages["prompt"], PERSOS[perso]["lora"], graine, 1.0, prefixe,
                           negatif(perso), pose)
@@ -581,8 +630,14 @@ def main():
         guide.save(etapes / "1_guide.png")
         reglages["cadre"] = [round(v, 1) for v in cadre]
         reglages["prompt_gris"] = prompt(perso, "full body", fond_gris=True, angle=angle)
-        gris = diffusion(guide, None, reglages["prompt_gris"], PERSOS[perso]["lora"], graine, 0.9, f"{prefixe}_gris",
-                         negatif(perso, gris=True), pose_cadre)
+        gris_b = SORTIE / f"{perso}_B_{graine}" / "2_sur-gris.png"
+        if methode == "D" and gris_b.exists() and "--regris" not in options:
+            # D : le même rendu sur gris que la méthode B à la même graine (le perso fidèle : son LoRA a appris sur gris)
+            gris = Image.open(gris_b).convert("RGB")
+            reglages["gris_repris_de"] = f"{perso}_B_{graine}"
+        else:
+            gris = diffusion(guide, None, reglages["prompt_gris"], PERSOS[perso]["lora"], graine, 0.9, f"{prefixe}_gris",
+                             negatif(perso, gris=True), pose_cadre)
         gris.save(etapes / "2_sur-gris.png")
         # sur le fond entier : le perso détouré dans son cadre, caché par les objets « devant »
         alpha_fond, colle_fond = coller_cadre(perso, gris, cadre, camera, fond, recalage.get("devant", ()))
@@ -592,29 +647,51 @@ def main():
         alpha.save(etapes / "3_detourage.png")
         colle = colle_fond.crop(boite).resize((TRAVAIL, TRAVAIL), Image.LANCZOS)
         zone = alpha.filter(ImageFilter.MaxFilter(31)).filter(ImageFilter.GaussianBlur(12))
-        image = diffusion(colle, zone, reglages["prompt"], PERSOS[perso]["lora"], graine, 0.35, f"{prefixe}_fondu",
-                          negatif(perso))
+        if methode == "D":
+            # D : le fondu par le modèle d'inpainting (il voit le décor autour), plus appuyé (0,45) : la lumière du décor
+            # sur le perso, que la passe à 0,35 du modèle ordinaire ne donnait qu'à peine
+            liberer()
+            image = diffusion(colle, zone, reglages["prompt"], PERSOS[perso]["lora"], graine, 0.45, f"{prefixe}_fondu",
+                              negatif(perso), fooocus=True)
+        else:
+            image = diffusion(colle, zone, reglages["prompt"], PERSOS[perso]["lora"], graine, 0.35, f"{prefixe}_fondu",
+                              negatif(perso))
     if not recomposer:
         image.save(etapes / "5_avant-visage.png")
-        image, boite_visage = passe_visage(perso, image, tete_travail, graine, prefixe, angle, fooocus=methode == "C")
+        if visage_normal and methode in ("C", "D"):
+            liberer()                   # le modèle ordinaire après celui d'inpainting : la carte vidée d'abord
+        image, boite_visage = passe_visage(perso, image, tete_travail, graine, prefixe, angle,
+                                           fooocus=methode in ("C", "D") and not visage_normal)
+        reglages["retires"] = list(RETIRES)
+        reglages["visage"] = "normal" if (visage_normal or methode not in ("C", "D")) else "inpaint"
         image.save(etapes / "6_apres-visage.png")
         reglages["boite_visage_travail"] = boite_visage
     # retour sur le fond entier : seul le perso détouré y entre. Le reste de sa place revient au fond d'origine : au premier
     # essai, le modèle avait changé le miroir en fenêtre de nuit derrière lui, et ajouté une assiette sur la table
-    alpha_gris = Image.open(etapes / "3_detourage.png").convert("L") if methode == "B" else None
+    alpha_gris = Image.open(etapes / "3_detourage.png").convert("L") if methode in ("B", "D") else None
+    prefixe_sortie = prefixe
+    detoureur = options[options.index("--detourer") + 1] if "--detourer" in options else None
     if methode == "C":                  # sa zone, telle quelle : le reste de l'image n'a pas été repeint
         alpha = Image.open(etapes / "3_zone.png").convert("L")
+        if detoureur:
+            # dans sa zone, le perso seul : le modèle y repeint aussi un peu du décor autour de lui (un halo sur le miroir,
+            # une tasse ajoutée près des sauces, 2026-10-21) ; le décor d'origine revient autour de sa silhouette
+            perso_seul = (detourer_toonout if detoureur == "toonout" else detourer)(image)
+            perso_seul = perso_seul.point(lambda v: 255 if v > 128 else 0).filter(ImageFilter.MaxFilter(5)).filter(
+                ImageFilter.GaussianBlur(1.5))
+            alpha = Image.fromarray(np.minimum(np.asarray(alpha), np.asarray(perso_seul)))
+            prefixe_sortie = f"{prefixe}_detoure-{detoureur}"
     else:
         alpha = composer(methode, image, masque_travail, devant_travail, alpha_gris)
-    alpha.save(etapes / "7_detourage-final.png")
-    final = Image.open(etapes / "4_colle-fond.png").convert("RGB") if methode == "B" else fond.copy()
+    alpha.save(etapes / ("7_detourage-final.png" if prefixe_sortie == prefixe else f"7_detourage-{detoureur}.png"))
+    final = Image.open(etapes / "4_colle-fond.png").convert("RGB") if methode in ("B", "D") else fond.copy()
     taille = boite[2] - boite[0]
     final.paste(image.resize((taille, taille), Image.LANCZOS), boite[:2], alpha.resize((taille, taille), Image.LANCZOS))
-    final.save(SORTIE / f"{prefixe}.png")
+    final.save(SORTIE / f"{prefixe_sortie}.png")
     if not recomposer:
         reglages["duree_s"] = round(time.time() - debut)
-    (SORTIE / f"{prefixe}.json").write_text(json.dumps(reglages, ensure_ascii=False, indent=2) + "\n")
-    print(f"{prefixe} : {reglages['duree_s']} s → {SORTIE / f'{prefixe}.png'}")
+    (SORTIE / f"{prefixe_sortie}.json").write_text(json.dumps(reglages, ensure_ascii=False, indent=2) + "\n")
+    print(f"{prefixe_sortie} : {reglages['duree_s']} s → {SORTIE / f'{prefixe_sortie}.png'}")
 
 
 if __name__ == "__main__":

@@ -89,7 +89,7 @@
       "references/accoude_v2.png": "full body, standing, leaning, elbow rest, holding cup"
     },
     "cote_visible": {
-      "tag": "undercut",
+      "tag": "sidecut",
       "cache_sur": [
         "references/trois-quarts-droit_v1.png",
         "references/profil-droit_v1.png",
@@ -102,7 +102,8 @@
         "expressions/cote-droit_surprise_v1.png",
         "expressions/cote-droit_rire_v1.png"
       ],
-      "_note": "le côté rasé est à sa gauche : invisible quand elle montre son côté droit. En production : écrire « undercut » sauf quand elle est tournée vers la droite de l'image (facing right)"
+      "_note": "le côté rasé est à sa gauche : invisible quand elle montre son côté droit. En production : écrire « undercut » sauf quand elle est tournée vers la droite de l'image (facing right)",
+      "_note_tag": "« sidecut » (le tag Danbooru exact pour « rasé d'un seul côté ») au lieu de « undercut » depuis le 2026-10-21 : sur 6 paires d'images aux mêmes graines, l'angle non écrit, undercut la retournait en miroir 3 fois, sidecut 0 fois (4 justes, 2 où le côté rasé est caché par les cheveux). Peu d'images : à confirmer. Le LoRA v3 a été entraîné avec « undercut » dans ses légendes ; le mot déclencheur porte la coupe, le tag ne fait que l'orienter"
     },
     "tenue": {
       "haut": "black turtleneck",

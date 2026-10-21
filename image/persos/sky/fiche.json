@@ -139,8 +139,8 @@
       "negatif": "striped pants, side stripes, stripes, patterned pants, bracelet",
       "_note": "testé avec sky_v2 le 2026-10-16, sur deux graines : la tenue juste, sans bande. Sans ces tags, le LoRA v2 met les lys sur le pantalon ou allonge la chemise en manteau ; avec « track pants », un passepoil blanc apparaît. Reste : des semelles blanches (les baskets de référence sont toutes noires)"
     },
-    "tags_production": "white shirt, leaf print, long sleeves, sleeves rolled up, sleeves past elbows, glasses, yellow-framed eyewear, stubble, facial hair, black pants, sweatpants",
-    "_note_tags_production": "à écrire dans ses prompts dès qu'il est dans un décor : le 2026-10-20, dans le kebab (axe 6, lumière chaude, tête de 140 px), le LoRA v2 seul a rendu sa chemise sombre, ses lunettes presque invisibles, ses manches relevées au-dessus du coude (elles s'arrêtent juste sous le coude : tenue_canonique) et une barbe trop légère (journal.md, l'auteur). Sur fond gris, le déclencheur suffit",
+    "tags_production": "white shirt, leaf print, long sleeves, sleeves rolled up, sleeves past elbows, stubble, facial hair, black pants, sweatpants",
+    "_note_tags_production": "à écrire dans ses prompts dès qu'il est dans un décor (sa chemise, ses manches sous le coude, sa barbe, son pantalon : sans eux, le LoRA v2 les perdait dans le kebab, 2026-10-20). Plus de tag pour les lunettes depuis le 2026-10-21 : « glasses, yellow-framed eyewear » remplaçait ses aviateurs à barre par des lunettes rectangulaires génériques (0 sur 8 images) ; sans eux, le LoRA dessine ses aviateurs (7 sur 7 images où le visage se voit). Ancienne valeur : « white shirt, leaf print, long sleeves, sleeves rolled up, sleeves past elbows, glasses, yellow-framed eyewear, stubble, facial hair, black pants, sweatpants »",
     "negatif_production": "short sleeves, striped pants, side stripes, bracelet"
   },
   "voix": "audio/voix/sky/",
