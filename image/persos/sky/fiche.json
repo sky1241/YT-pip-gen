@@ -114,7 +114,7 @@
     "flip_horizontal": false,
     "_note": "flip désactivé : œil gauche aveugle, bague à droite",
     "declencheur": "skykebab",
-    "_note_legendes": "légendes en tags Danbooru (le format d'Animagine XL 4.0). Les traits fixes (lunettes dorées, œil aveugle, œil bleu, barbe, chemise, colliers, bague) ne sont jamais écrits : le mot déclencheur les absorbe. On écrit ce qui change : l'angle, l'expression, le cadrage",
+    "_note_legendes": "légendes en tags Danbooru (le format d'Animagine XL 4.0). Les traits fixes (lunettes dorées, œil aveugle, œil bleu, barbe, chemise, colliers, bague) ne sont jamais écrits : le mot déclencheur les absorbe. On écrit ce qui change : l'angle, l'expression, le cadrage [jusqu'à la v2 ; depuis la v3, ses traits sont écrits : lora > traits]",
     "legende_maitre": "upper body, sitting, table, indoors, restaurant, holding bottle, food, morning, sunlight",
     "legendes_signatures": {
       "regard-plafond": "chewing, looking up, thinking",
@@ -141,7 +141,20 @@
     },
     "tags_production": "white shirt, leaf print, long sleeves, sleeves rolled up, sleeves past elbows, stubble, facial hair, black pants, sweatpants",
     "_note_tags_production": "à écrire dans ses prompts dès qu'il est dans un décor (sa chemise, ses manches sous le coude, sa barbe, son pantalon : sans eux, le LoRA v2 les perdait dans le kebab, 2026-10-20). Plus de tag pour les lunettes depuis le 2026-10-21 : « glasses, yellow-framed eyewear » remplaçait ses aviateurs à barre par des lunettes rectangulaires génériques (0 sur 8 images) ; sans eux, le LoRA dessine ses aviateurs (7 sur 7 images où le visage se voit). Ancienne valeur : « white shirt, leaf print, long sleeves, sleeves rolled up, sleeves past elbows, glasses, yellow-framed eyewear, stubble, facial hair, black pants, sweatpants »",
-    "negatif_production": "short sleeves, striped pants, side stripes, bracelet"
+    "negatif_production": "short sleeves, striped pants, side stripes, bracelet",
+    "traits": {
+      "partout": [
+        "mature male"
+      ],
+      "visage": [
+        "facial hair",
+        "beard",
+        "stubble",
+        "bags under eyes"
+      ],
+      "_note": "ses traits fixes, écrits dans ses légendes depuis la v3 (2026-10-21, pipeline/jeu_lora.py) : « mature male » partout, « facial hair, beard, stubble, bags under eyes » là où son visage se voit (pas de dos). Jusqu'à la v2, jamais écrits : absorbés par le déclencheur, ils ne se commandaient pas dans un prompt (« stubble » à 1,7 n'y faisait rien), et s'effaçaient quand il est petit dans le plan. Ses lunettes, sa chemise et son cordon restent sans tag : ils marchent déjà ainsi (avec « glasses » dans le prompt, ses aviateurs devenaient des lunettes génériques). À écrire dans ses prompts de production avec un LoRA v3 ou plus",
+      "_note_tagueur": "le 2026-10-21, un tagueur d'anime (WD SwinV2 v3, le vocabulaire de Danbooru, celui d'Animagine) sur ses images de référence : « facial hair » 0,99 et « beard » 0,98, mais « stubble » 0,21 ; « bags under eyes » 0. Sur ses gros plans de production : « beard » 0,61 pour ceux que l'auteur trouvait trop jeunes (60/100), 0,75 pour la passe à 0,75 (70/100), 0,93 en moyenne sur ses références : la probabilité de « beard » suit la note de l'auteur. Pour le modèle, sa barbe de 3 jours dessinée par ChatGPT est une « beard » courte ; « stubble » seul tire vers un duvet plus léger. D'où « facial hair, beard, stubble » dans ses légendes et ses prompts"
+    }
   },
   "voix": "audio/voix/sky/",
   "_note_voix": "la voix de l'auteur, faite par lui (CLAUDE.md > Stack)",

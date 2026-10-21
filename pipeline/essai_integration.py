@@ -339,12 +339,20 @@ def squelette_vu(perso, camera):
 
 
 RETIRES = []                        # des tags à retirer de tous les prompts (option --retirer), pour un essai
+# un LoRA v3 ou plus (option --v3) : les prompts dans l'ordre de ses légendes (le genre puis le déclencheur, celui
+# d'Animagine XL 4.0) et ses traits écrits (fiche.json > lora > traits), comme dans ses légendes (pipeline/jeu_lora.py)
+FORMAT_V3 = []
 
 
 def prompt(perso, cadrage, fond_gris=False, angle="three-quarter view, facing right"):
     fiche = json.loads((RACINE / "image" / "persos" / perso / "fiche.json").read_text())
     lora = fiche["lora"]
-    morceaux = [lora["declencheur"], "1girl, solo, female focus" if fiche.get("genre") == "f" else "1boy, solo, male focus"]
+    if FORMAT_V3:
+        genre = "1girl" if fiche.get("genre") == "f" else "1boy"
+        morceaux = [genre, lora["declencheur"], "solo", "female focus" if genre == "1girl" else "male focus"]
+        morceaux += lora["traits"].get("partout", []) + lora["traits"].get("visage", [])
+    else:
+        morceaux = [lora["declencheur"], "1girl, solo, female focus" if fiche.get("genre") == "f" else "1boy, solo, male focus"]
     if lora.get("tag_yeux"):
         morceaux.append(lora["tag_yeux"])
     if lora.get("cote_visible") and "facing right" not in angle:
@@ -358,7 +366,11 @@ def prompt(perso, cadrage, fond_gris=False, angle="three-quarter view, facing ri
         morceaux.append(ACTION)
     morceaux.append("sitting, simple background, grey background" if fond_gris else DECOR)
     tags = ", ".join(morceaux + [QUALITE]).split(", ")
-    return ", ".join(t for t in tags if t not in RETIRES)
+    vus = []
+    for t in tags:                      # un tag une seule fois (les traits de la v3 et les tags de production se recoupent)
+        if t not in RETIRES and t not in vus:
+            vus.append(t)
+    return ", ".join(vus)
 
 
 def negatif(perso, gris=False):
@@ -697,6 +709,10 @@ def main():
     global ACTION
     perso, methode, graine = sys.argv[1], sys.argv[2].upper(), int(sys.argv[3])
     options = sys.argv[4:]
+    if "--lora" in options:             # un autre fichier de LoRA que celui de PERSOS (une autre version)
+        PERSOS[perso]["lora"] = options[options.index("--lora") + 1]
+    if "--v3" in options:
+        FORMAT_V3[:] = [True]
     if "--objet" in options:
         # avec la galette factice, plus de « burrito » dans les prompts : sinon le modèle dessine le sien à côté (2 graines sur
         # 4, le 2026-10-21) ; il tient « de la nourriture », la galette posée dans le guide

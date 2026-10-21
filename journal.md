@@ -856,3 +856,79 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   jamais été écrits dans ses légendes, le mot déclencheur les absorbe, et le LoRA ne les a vus presque qu'en buste ; un LoRA v3
   avec `beard_stubble`, `bags_under_eyes`, `mature_male` dans les légendes les rendrait demandables dans le prompt (non prouvé
   pour un petit visage).
+- **Le LoRA de Sky v3 (2026-10-21, 20 h), d'après trois recherches** (agents en parallèle, sources datées) :
+  1. **Les légendes** : ses traits n'ont jamais été écrits dans ses légendes, le déclencheur les absorbait ; un tag absent des
+     légendes n'a aucun lien appris avec son visage, d'où « stubble » à 1,7 sans effet, et les lunettes génériques avec
+     « glasses ». v3 : « mature male » partout, « stubble, bags under eyes » là où son visage se voit (pas de dos) ; ses
+     lunettes, sa chemise et son cordon restent sans tag (ils marchent ainsi). L'ordre d'Animagine XL 4.0 (sa fiche) : le genre
+     puis le nom du perso en tête : « 1boy, skykebab, … ». Les tags mélangés à chaque passage (`shuffle_caption`,
+     `keep_tokens 2` : les deux premiers restent en tête), 10 % retirés au hasard (`caption_tag_dropout_rate 0.1`). Avec le
+     mélange, sd-scripts refuse le cache des encodeurs de texte : il saute (environ 1,6 Go de plus sur la carte).
+  2. **Le jeu** : 97 images sur 126 sont des bustes ou des gros plans de bouche, 10 en pied. Real-ESRGAN anime garde sa barbe
+     sur les bustes (vérifié à 100 %) mais l'amincit en traits durs sur les petites têtes (en pied, gestes) : le LoRA a appris
+     « Sky petit = barbe légère ». v3 : les 22 images à petite tête reprises de leur fichier d'origine, agrandies en Lanczos ;
+     répétées plus (en pied × 4, gestes × 3, bustes × 1 : 180 images par époque).
+  3. **Le fond gris** : un masque alpha par image (ToonOut, dilaté de 12 px, le fond à 15 % ; à 0, des corps en trop
+     apparaissent d'après OneTrainer) : l'entraînement regarde le perso. Ne corrige pas la lumière de studio, que portent ses
+     propres pixels.
+  4. **Réglages** inchangés (rang 32 / alpha 16, UNet seul, AdamW sur P100, 1e-4 cosinus, min_snr 5) : la v2 n'est pas sous-
+     entraînée (90/100 en gros plan) et changer d'optimiseur ne comble pas un trou dans les données. 12 époques, chacune
+     sauvegardée, des images d'essai toutes les 3 époques. Écartés pour la v3 : des copies dézoomées (elles apprendraient
+     « petit = sans barbe »), de nouvelles images à demander à l'auteur, changer le déclencheur (`skykebab` se découpe en
+     « sky » + « kebab »). Pour la v4 ou la v5, une chose à la fois selon la v3 : sans min_snr (il affaiblit les étapes qui
+     dessinent les textures fines), les encodeurs de texte entraînés à 1e-5, LoKr facteur 8.
+  Script : `pipeline/jeu_lora.py` (le jeu), `pipeline/kaggle/lora_sky_v3/` (l'entraînement).
+- **Le protocole de test des versions de Sky (fixé avant les images de la v3)**. Le même déroulé pour la v2, la v3, la v4,
+  la v5 ; l'UNet fp8, CFG 5, euler_a, 25 étapes, le LoRA à 1,0 ; les prompts de chaque version dans l'ordre de ses légendes.
+  - (a) Le test standard (10 prompts, graines 1001 à 1010) : un contrôle. Rejet si l'œil aveugle passe du mauvais côté aux
+    prompts 1 à 3, ou si le fond gris apparaît aux prompts 6 à 8 et 10.
+  - (b) 8 rendus sur gris de la méthode D, qui mange (graines 2001 à 2008) : sa tenue, ses lunettes, le même Sky d'une image
+    à l'autre. Rejet si la chemise ou les couleurs changent sur 2 images ou plus.
+  - (c) La passe de la tête v2 à 0,75 (masque « tete2 », « mature male, stubble, bags under eyes ») sur 8 corps figés (les
+    corps de la v2 dans le kebab, axe 6, graines 2001 à 2008, après le fondu), avec le LoRA de la version : isole ce que le
+    LoRA apporte à la barbe. Rejet si les lunettes manquent sur 2 images ou plus, ou l'œil aveugle du mauvais côté.
+  - Les mesures : un tagueur d'anime (WD SwinV2 v3) sur les gros plans de (c) : la présence de « stubble », « bags under
+    eyes », « mature male », calibrée d'abord sur ses images de référence (un tag ne compte que s'il sort sur au moins 80 %
+    d'entre elles) ; la peau (médiane des tons chair).
+  - Le jugement : des planches à l'aveugle (v2 et la version à gauche ou à droite au hasard, la clé cachée) jugées par un agent
+    indépendant, ligne par ligne (barbe, âge, cernes, lunettes, le même Sky), puis par l'auteur. Une version remplace la v2 si
+    elle gagne au moins 12 lignes sur 16 en (b) + (c), ou 6 sur 8 en (c) avec la barbe détectée sur 6 images sur 8. Moins,
+    c'est une égalité : on garde la v2.
+- **Le tagueur d'anime, calibré sur Sky (2026-10-21, 20 h 10)** (`pipeline/tagueur.py` : WD SwinV2 v3, SmilingWolf, Apache 2.0,
+  467 Mo, environ 1 s par image sur le processeur) : sur ses 15 images de référence, « facial hair » 0,98, **« beard » 0,93**,
+  « mature male » 0,87, « stubble » 0,21 seulement, « bags under eyes » 0 (ses cernes sont dessinées en ombre : le tagueur ne
+  les voit pas) ; sur ses gros plans de production trop jeunes (60/100) « beard » 0,61, sur la passe à 0,75 (70/100) 0,75 ;
+  sur Maëlle 0 partout. **La probabilité de « beard » suit la note de l'auteur** : c'est la mesure de la barbe. Les tags du
+  tagueur sur ses références : « facial hair, beard, mature male, muscular male, dark-skinned male, brown hair, short hair,
+  white shirt, collared shirt, floral print, necklace ». Pour le modèle, sa barbe de 3 jours est une « beard » courte ;
+  « stubble » seul tire vers un duvet plus léger. D'où « facial hair, beard, stubble » dans ses légendes v3 (le jeu refait).
+  Les cernes ne se mesurent pas : à l'œil seulement.
+- **La relecture indépendante avant le lancement de la v3 (un agent, 2026-10-21, 20 h 30)** : lancer, une fois le jeu envoyé
+  sur Kaggle. Vérifié contre le code de sd-scripts v0.12.0 : la configuration (`alpha_mask` par sous-dossier ; le « masked
+  loss » s'active seul avec des images à transparence), le refus du cache des encodeurs avec le mélange des tags, le format
+  des images d'essai ; les 126 légendes lues (le genre et le déclencheur en tête partout, les 4 tags du visage sur 124, la plus
+  longue à 74 jetons CLIP sur 75) ; 37 masques regardés (mains, lunettes, galette, téléphone, ordinateur dedans). Corrigé
+  avant l'envoi : les images Lanczos étaient plus molles que les bustes (un léger renforcement des contours) ; les répétitions
+  ramenées à en pied × 3, gestes × 2 (à × 4, chaque image en pied revenait 48 fois) : 158 images par époque, 1 896 pas ;
+  l'optimiseur choisi selon la carte (Kaggle donne une T4 même quand on demande une P100 : AdamW8bit, comme la v2) ; une image
+  d'essai de plus (petit dans un restaurant, là où la v2 lâchait) et une au départ. Reconnu : la v3 change plusieurs choses à
+  la fois ; elle dira si l'ensemble aide, pas lequel. Lancée sur Kaggle à 20 h 42.
+- **Le protocole, complété avant les images de la v3** (d'après la relecture) :
+  - La passe de la tête (c) se fait, pour toutes les versions, avec « mature male, facial hair, beard, stubble, bags under
+    eyes » : la base v2 est la variante « v2barbe ». En plus, (d) : le pipeline entier de la version (méthode D, son rendu sur
+    gris, le fondu dans le kebab, la passe de la tête), 8 graines : le vrai cas, Sky petit dans le kebab.
+  - La mesure de la barbe : la probabilité moyenne de « beard » (le tagueur) sur les 8 gros plans, et le nombre au-dessus de
+    0,85 (ses références : 0,96 au 20e centile ; la passe v2 à 0,75 : 0,73 à 0,76). Limite connue : son gros plan noté 90/100
+    par l'auteur ne fait que 0,76 en « beard » (le tagueur y voit plutôt « stubble », 0,80) : le tagueur mesure la ressemblance
+    avec la barbe courte de ses références ChatGPT, pas la note de l'auteur. Il s'ajoute au jugement, il ne le remplace pas.
+  - Le jugement à l'aveugle : par ligne (une graine), sa référence puis les deux gros plans (v2 et la version, à gauche ou à
+    droite au hasard) ; l'agent choisit le plus proche de la référence (barbe, âge, cernes, lunettes) ou l'égalité, et note
+    les défauts. 16 lignes : (c) × 8 et (d) × 8. La version remplace la v2 si elle gagne au moins 12 lignes sur 16 (une
+    chance sur 25 d'y arriver par hasard), si sa barbe moyenne dépasse celle de la v2 d'au moins 0,05, et sans critère de
+    rejet. En cas de désaccord entre l'agent et l'auteur, l'auteur tranche.
+  - Le choix de l'époque : d'abord les images d'essai de Kaggle (au départ, puis aux époques 3, 6, 9, 12) : on écarte une
+    époque à l'œil aveugle du mauvais côté, au fond gris dans les prompts de restaurant, à l'anatomie cassée. Puis (c) avec
+    l'époque 12 et l'époque 9 ; la meilleure (barbe moyenne, jugement) passe au test standard (a) et à (d).
+  - Les gros plans ne doivent pas régresser : au test standard (a), prompts 1 à 4, la version ne doit pas perdre 3 des 4
+    lignes contre la v2 au jugement à l'aveugle. La peau : médiane des tons chair, rouge au moins 180 et luminosité au moins
+    113, comptée sur (c) et (d).
