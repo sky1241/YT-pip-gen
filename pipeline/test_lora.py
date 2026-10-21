@@ -119,6 +119,11 @@ def main():
     fiche = json.loads((RACINE / "image" / "persos" / slug / "fiche.json").read_text())
     genre = "1girl" if fiche.get("genre") == "f" else "1boy"
     debut = f"{fiche['lora']['declencheur']}, {genre}, solo, {'male' if genre == '1boy' else 'female'} focus"
+    if "--v3" in sys.argv[3:]:
+        # un LoRA v3 ou plus (pipeline/jeu_lora.py) : le genre puis le déclencheur en tête, ses traits écrits, comme ses légendes
+        traits = fiche["lora"].get("traits", {})
+        debut = ", ".join([genre, fiche["lora"]["declencheur"], "solo", f"{'male' if genre == '1boy' else 'female'} focus",
+                           *traits.get("partout", []), *traits.get("visage", [])])
     if fiche["lora"].get("tag_yeux"):
         debut += ", " + fiche["lora"]["tag_yeux"]
     nom = lora.removesuffix(".safetensors")

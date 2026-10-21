@@ -932,3 +932,14 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   - Les gros plans ne doivent pas régresser : au test standard (a), prompts 1 à 4, la version ne doit pas perdre 3 des 4
     lignes contre la v2 au jugement à l'aveugle. La peau : médiane des tons chair, rouge au moins 180 et luminosité au moins
     113, comptée sur (c) et (d).
+- **La base v2 du protocole (2026-10-21, 21 h)** : la passe de la tête v2 sur les 8 corps figés (graines 2001 à 2008), avec
+  « stubble » : « beard » moyen 0,66, aucun au-dessus de 0,85 ; avec « facial hair, beard » dans la passe (sans réentraîner) :
+  0,75, 2 sur 8 au-dessus de 0,85 ; la peau juste sur 8 sur 8 dans les deux cas (`~/Téléchargements/bilan20_sky_mot_beard.png`).
+  Le mot seul aide un peu ; à l'œil, la différence se voit à peine.
+- **Le LoRA de Sky v3 entraîné (2026-10-21, 22 h 24)** : une T4 (comme prévu par la relecture, malgré la P100 demandée),
+  AdamW8bit, 1 896 pas en 100 min (avec les images d'essai), perte moyenne finale 0,058 ; les 12 époques sauvegardées
+  (`<sorties_root>/lora/sky/kaggle_v3/`, copiées dans `<modeles_root>/loras/`). Les images d'essai de sd-scripts (au départ
+  et aux époques 3, 6, 9, 12 ; `~/Téléchargements/bilan21_v3_images_essai.png`) : dès l'époque 3, avec ses traits dans le
+  prompt, sa barbe est plus fournie qu'en v2, ses cernes et ses aviateurs là, l'œil aveugle du bon côté ; sans ses traits
+  dans le prompt, il sort imberbe et plus jeune : ses traits sont maintenant portés par leurs tags (le prix attendu du
+  tagging). Pas d'époque écartée : aucun fond gris dans les prompts de restaurant, pas d'anatomie cassée.
