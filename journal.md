@@ -1018,3 +1018,50 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   modèle par appel (35 appels depuis, environ 8 min par graine). Fini à 3 h 16, ComfyUI arrêté, le PC rendu à l'auteur.
   Reste à trancher par l'auteur : le LoRA de production de Sky (proposé : la v3, époque 12). Pistes suivantes pour la barbe :
   la passe de la tête plus forte (0,85 à 0,95) ; pour la galette : l'objet exact collé à la fin, puis une passe de lumière.
+- **Le flou (l'auteur, 2026-10-22, 4 h)** : « c'est quoi cette espèce de flou dégueulasse ? ». Sur ses gros plans à 1 pour 1
+  (le gros plan fait 397 px dans l'image finale), les mains, la galette, la chemise et la bouche sont floues, en v2 comme en
+  v3 et en v4. La cause, image par image (`~/Téléchargements/bilan25_d_ou_vient_le_flou.png`) : le rendu sur gris collé est
+  net ; **le fondu par le modèle d'inpainting à 0,45 efface ses traits** ; la passe de la tête redessine le visage net, le
+  reste garde le flou. Raté par moi et par les juges : on comparait la barbe entre des versions qui ont toutes ce flou.
+  Essai 1, sans la carte : les traits fins du rendu sur gris remis sur le fondu (`bilan26`) : le corps net, mais le fondu
+  déplace les feuilles de la chemise et la bouche, et les deux images ne collent plus. Essai 2, `fondu_net` (option
+  `--fondu-net`) : dans sa silhouette, le rendu sur gris tel quel, avec la lumière du fondu prise à grande échelle (l'écart
+  de couleur flouté sur 24 px, dans la silhouette seule) ; le fondu tel quel sur un bord de 12 px. Critères fixés avant les
+  images : les mains, la galette et la chemise aussi nettes que le rendu sur gris, pas de contour blanc, la barbe pas plus de
+  0,03 sous celle d'aujourd'hui (0,772 sur les graines 2001 à 2004), la peau juste. Comparé au fondu à 0,25 (`--fondu-force`).
+- **Les fonds v2, lissés (2026-10-22, 8 h 45)** : l'auteur, sur le fond du kebab à taille réelle (le mur et la fenêtre de
+  l'axe 6 peints en taches par ChatGPT ; hors de Sky, l'image finale est ce fond au pixel près) : « l'effet pastel on le vire,
+  tant que ça permet d'avoir une image nette ». `pipeline/lisser_fonds.py` : chaque `fond_v1.png` passé dans un filtre qui
+  lisse en gardant les bords (OpenCV edgePreservingFilter, filtre récursif, sigma_s 40, sigma_r 0,25), écrit en `fond_v2.png`
+  à côté (les 19 axes ; les v1 gardés). Le pipeline prend le fond le plus récent de l'axe (`dernier_fond`), noté dans le
+  réglage de chaque essai. Le fondu net est essayé seul d'abord : sur les graines 2001 à 2004, la netteté du corps de Sky
+  passe de 64 % à 98 % de celle de son rendu sur gris (la tête de 77 % à 102 %). Reste vu par l'auteur : des doigts en trop
+  (et une 3e main sous la table en 2002, prise par moi pour un pied nu) : le rendu sur gris les dessine, le flou les cachait.
+  Le fondu à 0,25 arrêté en cours : le flou venait du fondu, le fondu net le règle.
+- **Le bord flou (l'auteur, 2026-10-22, 10 h 33, sur le duo)** : « tu n'as pas appliqué ton filtre sur l'intégralité de
+  l'image » ; le bras de Sky au milieu de sa silhouette est net, « c'est l'autre derrière qui merde ». La cause : le fondu net
+  gardait le fondu flou sur une bande de 12 px tout autour du perso (la recherche disait 1 à 2 px) : ses mains, sa galette,
+  ses bras au bord de la silhouette, et presque tout le corps de Maëlle, plus petite, y tombaient (19 % de la silhouette de
+  Sky, 29 % de celle de Maëlle). Et ma mesure de netteté excluait justement ces 12 px : elle donnait 98 % pendant que le bord
+  restait flou. Corrigé : un bord de 3 px (le liseré du gris de fond est déjà retiré au collage, `coller_cadre`), refait
+  sans la carte depuis le fondu brut gardé. La mesure refaite sur toute la silhouette (rétrécie de 2 px) et sur la bande du
+  bord seule (`nettete2.py`) : avec le bord de 12 px, la silhouette entière 96 % (Sky) et 87 % (Maëlle), la bande 78 % et
+  74 %. Critère fixé avant la série n3 (bord de 3 px) : la bande au moins à 90 %, la silhouette entière au moins à 95 %,
+  pour les deux, et chaque image regardée à taille réelle avant de la montrer.
+- **La passe des mains, premier essai (`--mains`, 0,5 ; graines 2001 à 2007, sur les corps au bord de 12 px)** : les doigts un
+  peu plus propres, rien de spectaculaire ; elle ne touche pas la 3e main de 2002 (hors de son cadre) ; un point blanc ajouté
+  au coin de la bouche en 2005. Gardée dans la série n3. La graine 2008 a sauté : ComfyUI coupé trois fois en 7 min par le
+  garde-fou (la RAM : une 2e fenêtre de VS Code et une autre session ouvertes, environ 3 Go).
+- **Le liseré tracé au masque : raté (l'auteur, 2026-10-22, 12 h 35 : « tu débordes de partout »)**. Un trait sombre de 2 px
+  posé sur le bord du détourage : le détourage est grossier, le trait déborde du dessin en escalier, comme le bord d'un
+  autocollant. Le fond du problème, vu sur le rendu sur gris : le modèle dessine lui-même un fin trait sombre au bord du
+  perso ; le détourage brut passe juste dehors (dans le gris du fond), et le resserrement de 3 px du collage (pris le
+  2026-10-20 contre le liseré gris) tombait pile sur ce trait et le coupait : d'où les bords blanchâtres de Sky depuis le
+  début. Remplacé par `detoure_au_trait` (au collage, `coller_cadre`), une incrustation sur fond uni : (1) le gris relié à
+  l'extérieur part, jusqu'au trait sombre du modèle ; (2) une tache grise restée dedans près du bord part si son pourtour est
+  coloré (entre les mèches de Maëlle, dans un verre de lunettes cerclé d'or), pas s'il est blanc ou gris (sa chemise) ;
+  (3) un pixel de moins au bord, puis adouci. Essayé avant sur rouge et sur sombre, ×2 : la chemise de Sky sans halo ni trou,
+  ses lunettes transparentes au-dehors de son visage, les mèches de Maëlle sans trou gris. Le fondu net ne prend plus rien
+  au fondu brut sur le bord (`bord=0` : un pixel suffisait à ramener un liseré clair, ce fondu ayant été fait sur l'ancien
+  collage). Le liseré tracé reste en option (`--lisere`), désactivé. Série n4 relancée sur ces corps (la tête et les mains
+  sans toucher le bord, `--visage-garde-bord`).

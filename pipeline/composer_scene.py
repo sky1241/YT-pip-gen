@@ -17,7 +17,8 @@ from pathlib import Path
 from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from essai_integration import DECORS, ESSAIS, PERSOS, coller_cadre   # noqa: E402
+from essai_integration import DECORS, ESSAIS, PERSOS, TRAVAIL, avec_lisere, coller_cadre, sans_frange   # noqa: E402
+from lisser_fonds import dernier_fond  # noqa: E402
 
 
 def distance(perso, camera):
@@ -27,7 +28,7 @@ def distance(perso, camera):
 def composer(axe, essais):
     recalage = json.loads((DECORS / axe / "camera.json").read_text())
     camera, devant = recalage["camera"], recalage.get("devant", ())
-    image = Image.open(DECORS / axe / "fond_v1.png").convert("RGB")
+    image = Image.open(dernier_fond(DECORS / axe)).convert("RGB")
     reglages = [(nom, json.loads((ESSAIS / axe / f"{nom}.json").read_text())) for nom in essais]
     for nom, r in sorted(reglages, key=lambda e: -distance(e[1]["perso"], camera)):
         etapes = ESSAIS / axe / nom
@@ -43,8 +44,12 @@ def composer(axe, essais):
             # C : le perso dessiné dans le décor, détouré (le décor autour de lui reste celui d'origine) s'il l'a été
             detoures = sorted(etapes.glob("7_detourage-toonout.png")) + sorted(etapes.glob("7_detourage-isnet.png"))
             alpha = detoures[0] if detoures else etapes / "3_zone.png"
-        repasse = Image.open(etapes / "6_apres-visage.png").convert("RGB").resize(taille, Image.LANCZOS)
-        image.paste(repasse, (x0, y0), Image.open(alpha).convert("L").resize(taille, Image.LANCZOS))
+        repasse = Image.open(etapes / "6_apres-visage.png").convert("RGB")
+        if r["methode"] in ("B", "D") and r.get("lisere"):   # sa frange grise retirée et son liseré, comme à la fin de son essai
+            silhouette = Image.open(etapes / "3_detourage.png")
+            repasse = sans_frange(repasse, silhouette, Image.open(etapes / "2_sur-gris.png"), echelle=TRAVAIL / taille[0])
+            repasse = avec_lisere(repasse, silhouette, Image.open(alpha), echelle=TRAVAIL / taille[0])
+        image.paste(repasse.resize(taille, Image.LANCZOS), (x0, y0), Image.open(alpha).convert("L").resize(taille, Image.LANCZOS))
     return image
 
 

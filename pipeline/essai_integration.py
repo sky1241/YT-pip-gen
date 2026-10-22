@@ -31,6 +31,7 @@ import yaml
 from PIL import Image, ImageDraw, ImageFilter
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from lisser_fonds import dernier_fond        # noqa: E402
 from recaler_camera import projeter          # noqa: E402
 from test_lora import NEGATIF, QUALITE, TUILES, UNET, UNET_INPAINT, chargeurs, generer, liberer   # noqa: E402
 
@@ -204,6 +205,36 @@ def forme_jambes(points, echelle, taille):
     return forme.filter(ImageFilter.GaussianBlur(3))
 
 
+def detoure_au_trait(gris, alpha, bande=24, ecart=30, teinte_max=26, pourtour_colore=40):
+    """Le perso détouré au ras de son trait (2026-10-22, à la place d'un resserrement de 3 px qui coupait le trait sombre du
+    modèle et laissait un bord blanchâtre ; l'auteur : « tu débordes de partout » sur un liseré tracé au masque), comme une incrustation sur fond uni (le gris de son rendu). (1) Le gris relié
+    à l'extérieur part, dans les `bande` derniers pixels : le trait sombre du modèle arrête la remontée. (2) Les trous : une
+    tache grise restée dedans, près du bord, part si son pourtour est coloré (entre des mèches, dans un verre de lunettes
+    cerclé d'or) ; entourée de blanc ou de gris (sa chemise), elle reste. (3) Un pixel de moins au bord (le mélange avec le
+    gris), puis adouci. Rend la transparence (0 à 1)."""
+    g = np.asarray(gris.convert("RGB"), np.float32)
+    G = np.median(np.concatenate([g[:8].reshape(-1, 3), g[:, :8].reshape(-1, 3), g[:, -8:].reshape(-1, 3)]), axis=0)
+    a = cv2.dilate((np.asarray(alpha) > 128).astype(np.uint8), np.ones((3, 3), np.uint8))
+    pres = (a - cv2.erode(a, np.ones((2 * bande + 1, 2 * bande + 1), np.uint8))).astype(bool)
+    teinte = g.max(axis=2) - g.min(axis=2)
+    gris_like = (np.abs(g - G).max(axis=2) < ecart) & (teinte < teinte_max)
+    _, comp = cv2.connectedComponents(((a == 0) | (pres & gris_like)).astype(np.uint8), connectivity=4)
+    dehors = np.unique(comp[a == 0])
+    garde = a.astype(bool) & ~np.isin(comp, dehors[dehors > 0])
+    n, taches, stats, _ = cv2.connectedComponentsWithStats((garde & pres & gris_like).astype(np.uint8), connectivity=8)
+    for k in range(1, n):
+        x, y, w, h, aire = stats[k]
+        if aire < 3:
+            continue
+        x0, y0, x1, y1 = max(x - 3, 0), max(y - 3, 0), x + w + 3, y + h + 3
+        t = taches[y0:y1, x0:x1] == k
+        tour = cv2.dilate(t.astype(np.uint8), np.ones((5, 5), np.uint8)).astype(bool) & ~t
+        if tour.any() and teinte[y0:y1, x0:x1][tour].mean() > pourtour_colore:
+            garde[y0:y1, x0:x1][t] = False
+    garde = cv2.erode(garde.astype(np.uint8), np.ones((3, 3), np.uint8)).astype(np.float32)
+    return cv2.GaussianBlur(garde, (0, 0), 0.7)
+
+
 def coller_cadre(perso, gris, cadre, camera, fond, devant):
     """Méthode B : le perso dessiné sur gris dans son cadre, détouré, posé sur le fond entier, caché par les objets
     « devant ». Rend le masque et le fond avec le perso collé."""
@@ -231,8 +262,9 @@ def coller_cadre(perso, gris, cadre, camera, fond, devant):
         tache = taches == k
         if stats[k, cv2.CC_STAT_AREA] > 0.003 * aire or (tache & dehors).any():
             alpha[tache] = 0
-    # resserré de 3 pixels : son bord gardait un liseré du gris de fond, clair sur le miroir sombre (7e essai)
-    alpha = Image.fromarray(alpha.astype(np.uint8)).filter(ImageFilter.MinFilter(7)).filter(ImageFilter.GaussianBlur(1))
+    # détouré au ras de son trait (detoure_au_trait) : resserré de 3 pixels, son bord perdait le trait du modèle et
+    # gardait un bord blanchâtre ; avant le resserrement, un liseré du gris de fond, clair sur le miroir sombre (7e essai)
+    alpha = Image.fromarray((detoure_au_trait(gris, alpha) * 255).astype(np.uint8))
     taille_cadre = (round(cadre[2] - cadre[0]), round(cadre[3] - cadre[1]))
     coin = (round(cadre[0]), round(cadre[1]))
     calque, alpha_fond = Image.new("RGB", fond.size), Image.new("L", fond.size, 0)
@@ -553,6 +585,34 @@ def net(masque, seuil=0.1, largeur=0.12, flou=2):
     return Image.fromarray((a * 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(flou))
 
 
+def fondu_net(colle, fondu, alpha, rayon=24, bord=0):
+    """Le fondu sans son flou (2026-10-22) : le fondu par le modèle d'inpainting à 0,45 effaçait ses traits (les mains, la
+    galette, la chemise, la bouche restaient floues après la passe de la tête). Dans sa silhouette, le rendu sur gris collé
+    garde ses traits et reçoit la lumière du fondu à grande échelle : l'écart de couleur entre le fondu et lui, flouté sur
+    `rayon` pixels dans la silhouette seule (pas le gris du fond ni le décor). Sur un bord de `bord` pixels, le fondu tel
+    quel : il raccorde le perso au décor. 1 px depuis le détourage au ras du trait (detoure_au_trait) ; à 12, ses mains, sa galette, ses bras au bord de la silhouette
+    et presque tout le corps de Maëlle (plus petite) restaient flous, 19 % de Sky et 29 % de Maëlle (l'auteur, le 2026-10-22 ;
+    la recherche disait 1 à 2 px) ; le liseré du gris de fond est déjà retiré au collage (coller_cadre). Remettre les traits fins par-dessus le fondu
+    (essai du 2026-10-22) ne marchait pas : le fondu déplace les feuilles de la chemise et la bouche, et les deux images ne
+    collaient plus."""
+    a = np.asarray(alpha.convert("L"), np.float32) / 255
+    c = np.asarray(colle.convert("RGB"), np.float32)
+    f = np.asarray(fondu.convert("RGB"), np.float32)
+    k = (0, 0)
+    poids = cv2.GaussianBlur(a, k, rayon)[..., None]
+    def basse(x):                       # la moyenne locale de x dans la silhouette seule
+        return cv2.GaussianBlur(x * a[..., None], k, rayon) / np.maximum(poids, 1e-3)
+    corrige = c + basse(f) - basse(c)
+    if bord == 0:                       # sa transparence même : rien n'est pris au fondu brut (son bord avait été calculé sur
+        interieur = a[..., None]        # l'ancien collage, au bord blanchâtre : un liseré clair revenait, 2026-10-22)
+    else:
+        interieur = (a > 0.5).astype(np.uint8)
+        interieur = cv2.erode(interieur, np.ones((2 * bord + 1, 2 * bord + 1), np.uint8)).astype(np.float32)
+        interieur = cv2.GaussianBlur(interieur, k, bord / 3)[..., None]
+    sortie = f * (1 - interieur) + corrige * interieur
+    return Image.fromarray(np.clip(sortie, 0, 255).astype(np.uint8))
+
+
 def rouleau(p1, p2, largeur, taille=TRAVAIL):
     """Un rouleau factice (une galette en attendant la vraie, dessinée une fois pour toutes) : de p1 (le bout tenu, sous ses
     mains) à p2 (sa bouche), une bande de papier blanc côté mains, un trait rouge sur le papier. Rend l'image RGBA du calque."""
@@ -627,7 +687,7 @@ def masque_visage(forme, cote, x0, y0, cx, cy, h, squelette):
 
 def passe_visage(perso, image, tete, graine, prefixe, angle, fooocus=False, debruitage=0.45, tags=(), negatif_en_plus=(),
                  forme="carre", squelette=None, v2=False, contours=False, protege=None, sans_visage=False,
-                 reference=None, poids_reference=0.6):
+                 reference=None, poids_reference=0.6, silhouette=None):
     """Un gros plan sur sa tête, repassé par le modèle avec son LoRA, puis remis en place. Le haut de sa tête est relevé sur
     le détourage (la tête dessinée n'est pas toujours pile à la place prévue).
 
@@ -682,6 +742,9 @@ def passe_visage(perso, image, tete, graine, prefixe, angle, fooocus=False, debr
                 colle *= 1 - np.asarray(devant.filter(ImageFilter.GaussianBlur(2)), np.float32) / 255
             if protege is not None:
                 colle *= 1 - np.asarray(protege.crop(boite).resize((TRAVAIL, TRAVAIL), Image.LANCZOS), np.float32) / 255
+            if silhouette is not None:  # le bord de sa silhouette gardé tel quel (interieur_silhouette)
+                colle *= np.asarray(interieur_silhouette(silhouette).crop(boite).resize((TRAVAIL, TRAVAIL), Image.LANCZOS),
+                                    np.float32) / 255
             colle_img = Image.fromarray((colle * 255).astype(np.uint8))
             visage = Image.composite(refait, gros, colle_img)
             change = colle_img
@@ -691,6 +754,96 @@ def passe_visage(perso, image, tete, graine, prefixe, angle, fooocus=False, debr
     sortie = image.copy()
     sortie.paste(visage.resize((cote, cote), Image.LANCZOS), boite[:2], change.resize((cote, cote), Image.LANCZOS))
     return sortie, boite
+
+
+def interieur_silhouette(silhouette, bord=6):
+    """Le dedans de sa silhouette (le détourage du rendu sur gris, celui du collage final), sans ses `bord` derniers pixels :
+    là, les passes de la tête et des mains ne recollent rien (option --visage-garde-bord). Elles redessinaient le bord de ses
+    cheveux un peu à côté de sa silhouette, et ce bord ressortait plus doux : la netteté de la bande du bord de Maëlle tombait
+    de 96 % à 84 % (2026-10-22)."""
+    a = (np.asarray(silhouette.convert("L")) > 128).astype(np.uint8)
+    a = cv2.erode(a, np.ones((2 * bord + 1, 2 * bord + 1), np.uint8)).astype(np.float32)
+    return Image.fromarray((cv2.GaussianBlur(a, (0, 0), 1.5) * 255).astype(np.uint8))
+
+
+def passe_mains(perso, image, tete, graine, prefixe, angle, squelette, debruitage=0.5, silhouette=None):
+    """La passe des mains (2026-10-22 ; la recherche : ADetailer et FaceDetailer font de même) : un seul gros plan sur ses deux
+    mains et ce qu'elles tiennent, placé par les poignets de son squelette (sans détecteur de mains), de 3 fois la taille d'une
+    main plus leur écart, agrandi à 1024, repassé par le modèle avec son LoRA (0,5, « extra arms » en négatif), recollé net
+    (`net`). Sa tête n'est pas touchée : la passe de la tête l'a déjà refaite. Limite connue : l'inpainting garde la
+    répartition des couleurs, il retire mal un doigt en trop ; tirer plusieurs graines. Rend l'image et la boîte."""
+    if not squelette or squelette[4] is None or squelette[7] is None:
+        return image, None
+    h = tete["hauteur"]
+    cx, cy = tete["crane"]
+    (u1, v1), (u2, v2) = squelette[4], squelette[7]
+    main = 0.8 * h                      # une main : à peu près la taille de son visage
+    cote = max(int(max(abs(u1 - u2), abs(v1 - v2)) + 3 * main), 192)
+    x0 = int(min(max((u1 + u2) / 2 - cote / 2, 0), image.width - cote))
+    y0 = int(min(max((v1 + v2) / 2 - cote / 2, 0), image.height - cote))
+    boite = (x0, y0, x0 + cote, y0 + cote)
+    k = TRAVAIL / cote
+    gros = image.crop(boite).resize((TRAVAIL, TRAVAIL), Image.LANCZOS)
+    masque = Image.new("L", (TRAVAIL, TRAVAIL), 0)
+    d = ImageDraw.Draw(masque)
+    r = main * k
+    for u, v in ((u1, v1), (u2, v2)):
+        X, Y = (u - x0) * k, (v - y0) * k
+        d.ellipse([X - r, Y - r, X + r, Y + r], fill=255)
+    d.line([((u1 - x0) * k, (v1 - y0) * k), ((u2 - x0) * k, (v2 - y0) * k)], fill=255, width=int(r))
+    masque = masque.filter(ImageFilter.MaxFilter(25))
+    tete_m = Image.new("L", (TRAVAIL, TRAVAIL), 0)       # sa tête, jusqu'au menton : protégée
+    ImageDraw.Draw(tete_m).ellipse([(cx - 0.9 * h - x0) * k, (cy - 0.4 * h - y0) * k, (cx + 0.9 * h - x0) * k,
+                                    (cy + 1.15 * h - y0) * k], fill=255)
+    masque = Image.fromarray(np.minimum(np.asarray(masque), 255 - np.asarray(tete_m))).filter(ImageFilter.GaussianBlur(8))
+    positif = prompt(perso, "close-up, hands", angle=angle)
+    neg = negatif(perso) + ", extra arms, extra hands, bad hands, extra digits, fused fingers, cigarette, smoking"
+    refait = diffusion(gros, masque, positif, PERSOS[perso]["lora"], graine, debruitage, f"{prefixe}_mains", neg)
+    colle = net(masque)
+    if silhouette is not None:          # le bord de sa silhouette gardé tel quel
+        colle = Image.fromarray((np.asarray(colle, np.float32) * np.asarray(
+            interieur_silhouette(silhouette).crop(boite).resize((TRAVAIL, TRAVAIL), Image.LANCZOS), np.float32) / 255
+            ).astype(np.uint8))
+    gros = Image.composite(refait, gros, colle)
+    sortie = image.copy()
+    sortie.paste(gros.resize((cote, cote), Image.LANCZOS), boite[:2], colle.resize((cote, cote), Image.LANCZOS))
+    return sortie, boite
+
+
+LISERE = np.array([28, 18, 14], np.float32)   # un brun presque noir, celui de leurs traits
+
+
+def sans_frange(image, silhouette, gris, echelle=1.0, bord=7, ecart=34, teinte_max=28):
+    """Le gris du fond du rendu sur gris resté au bord de sa silhouette (entre les mèches de Maëlle, une frange gris-bleu de
+    2 à 4 px que le liseré faisait ressortir, 2026-10-22) : dans les `bord` derniers pixels de sa silhouette, les pixels de
+    la couleur de ce gris (à moins de `ecart`, peu colorés) sont repeints avec les couleurs de l'intérieur (cv2.inpaint).
+    Le gris du fond est mesuré sur le tour de son rendu sur gris, comme au collage (coller_cadre)."""
+    g = np.asarray(gris.convert("RGB"), np.int32)
+    fond_gris = np.median(np.concatenate([g[:8].reshape(-1, 3), g[:, :8].reshape(-1, 3), g[:, -8:].reshape(-1, 3)]), axis=0)
+    a = (np.asarray(silhouette.convert("L")) > 128).astype(np.uint8)
+    e = max(1, round(bord * echelle))
+    bande = (a - cv2.erode(a, np.ones((2 * e + 1, 2 * e + 1), np.uint8))).astype(bool)
+    im = np.asarray(image.convert("RGB"))
+    i = im.astype(np.int32)
+    frange = bande & (np.abs(i - fond_gris).max(axis=2) < ecart) & (i.max(axis=2) - i.min(axis=2) < teinte_max)
+    frange = cv2.dilate(frange.astype(np.uint8), np.ones((3, 3), np.uint8)) & a
+    return Image.fromarray(cv2.inpaint(np.ascontiguousarray(im), frange * 255, 3, cv2.INPAINT_TELEA))
+
+
+def avec_lisere(image, silhouette, vu, echelle=1.0, epaisseur=2, opacite=0.9):
+    """Le liseré (l'auteur, 2026-10-22 : « pourquoi tu mets pas le liseré noir partout vu que ça a l'air de bien aider ») :
+    un trait sombre de `epaisseur` px de l'image finale tout le long de sa silhouette, comme les persos des anime des années
+    90 (les fonds peints n'en ont pas). Il cache aussi le bord plus doux de son collage. Pas là où un objet est devant lui :
+    ce bord-là est celui de l'objet (la table). `silhouette` : son détourage (3_detourage), `vu` : ce qui se voit de lui
+    (7_detourage-final), tous deux dans l'image de travail ; `echelle` : pixels de travail par pixel de l'image finale."""
+    a = (np.asarray(silhouette.convert("L")) > 128).astype(np.uint8)
+    v = (np.asarray(vu.convert("L")) > 128).astype(np.uint8)
+    cache = cv2.dilate(((a > 0) & (v == 0)).astype(np.uint8), np.ones((7, 7), np.uint8))
+    e = max(1, round(epaisseur * echelle))
+    bord = (a - cv2.erode(a, np.ones((2 * e + 1, 2 * e + 1), np.uint8))) * (1 - cache)
+    bord = (cv2.GaussianBlur(bord.astype(np.float32), (0, 0), 0.6 * echelle) * opacite)[..., None]
+    im = np.asarray(image.convert("RGB"), np.float32)
+    return Image.fromarray((im * (1 - bord) + LISERE * bord).astype(np.uint8))
 
 
 def composer(methode, image, masque_travail, devant_travail, alpha_gris=None):
@@ -727,7 +880,8 @@ def main():
     recalage = json.loads((AXE / "camera.json").read_text())
     camera = recalage["camera"]
     angle = tags_angle(perso, camera)
-    fond = Image.open(AXE / "fond_v1.png").convert("RGB")
+    fond_fichier = dernier_fond(AXE)    # le fond le plus récent de l'axe (v2 : lissé, pipeline/lisser_fonds.py)
+    fond = Image.open(fond_fichier).convert("RGB")
     masque, boite, tete = place(perso, camera, fond.size, recalage.get("devant", ()))
     prefixe = f"{perso}_{methode}_{graine}"
     # --sur <essai> : il se pose sur l'image d'un autre essai du même axe (un autre perso déjà là, plus loin de la caméra)
@@ -775,7 +929,7 @@ def main():
     pose.save(etapes / "0_pose.png")
     reglages = {"perso": perso, "methode": methode, "graine": graine, "lora": PERSOS[perso]["lora"], "axe": axe,
                 "camera": camera, "boite": boite, "tete_px": round(tete["hauteur"], 1), "angle": angle,
-                "prompt": prompt(perso, "cowboy shot", angle=angle)}
+                "prompt": prompt(perso, "cowboy shot", angle=angle), "fond": fond_fichier.name}
     if recomposer:
         reglages = json.loads((SORTIE / f"{prefixe}.json").read_text())
         image = Image.open(etapes / "6_apres-visage.png").convert("RGB")
@@ -893,10 +1047,16 @@ def main():
             reglages["fondu_tete"] = force_tete
         if methode == "D":
             # D : le fondu par le modèle d'inpainting (il voit le décor autour), plus appuyé (0,45) : la lumière du décor
-            # sur le perso, que la passe à 0,35 du modèle ordinaire ne donnait qu'à peine
+            # sur le perso, que la passe à 0,35 du modèle ordinaire ne donnait qu'à peine. --fondu-force F : une autre force ;
+            # --fondu-net : ses traits gardés, seule sa lumière prise au fondu (fondu_net)
+            force = float(options[options.index("--fondu-force") + 1]) if "--fondu-force" in options else 0.45
             liberer()
-            image = diffusion(colle, zone, reglages["prompt"], PERSOS[perso]["lora"], graine, 0.45, f"{prefixe}_fondu",
+            image = diffusion(colle, zone, reglages["prompt"], PERSOS[perso]["lora"], graine, force, f"{prefixe}_fondu",
                               negatif(perso), fooocus=True)
+            reglages["fondu"] = {"force": force, "net": "--fondu-net" in options}
+            if "--fondu-net" in options:
+                image.save(etapes / "5_fondu-brut.png")
+                image = fondu_net(colle, image, alpha)
         else:
             image = diffusion(colle, zone, reglages["prompt"], PERSOS[perso]["lora"], graine, 0.35, f"{prefixe}_fondu",
                               negatif(perso))
@@ -905,6 +1065,8 @@ def main():
         if visage_normal and methode in ("C", "D"):
             liberer()                   # le modèle ordinaire après celui d'inpainting : la carte vidée d'abord
         objet_travail = Image.open(etapes / "2_objet.png").convert("L") if (etapes / "2_objet.png").exists() else None
+        silhouette = (Image.open(etapes / "3_detourage.png").convert("L")
+                      if "--visage-garde-bord" in options and (etapes / "3_detourage.png").exists() else None)
         image, boite_visage = passe_visage(
             perso, image, tete_travail, graine, prefixe, angle, fooocus=methode in ("C", "D") and not visage_normal,
             debruitage=visage_debruitage, tags=visage_tags, negatif_en_plus=visage_negatif, forme=visage_forme,
@@ -913,11 +1075,19 @@ def main():
             reference=Image.open(options[options.index("--visage-reference") + 1]).convert("RGB")
             if "--visage-reference" in options else None,
             poids_reference=float(options[options.index("--visage-reference-poids") + 1])
-            if "--visage-reference-poids" in options else 0.6)
+            if "--visage-reference-poids" in options else 0.6, silhouette=silhouette)
         if "--visage-reference" in options:
             reglages["visage_reference"] = {"image": options[options.index("--visage-reference") + 1],
                                             "poids": float(options[options.index("--visage-reference-poids") + 1])
                                             if "--visage-reference-poids" in options else 0.6}
+        if "--mains" in options:
+            # la passe des mains (--mains [--mains-debruitage F]), après celle de la tête, avec le même modèle
+            image.save(etapes / "6_avant-mains.png")
+            force_mains = (float(options[options.index("--mains-debruitage") + 1]) if "--mains-debruitage" in options
+                           else 0.5)
+            image, boite_mains = passe_mains(perso, image, tete_travail, graine, prefixe, angle, points, force_mains,
+                                             silhouette=silhouette)
+            reglages["mains"] = {"debruitage": force_mains, "boite": boite_mains}
         reglages["visage_passe"] = {"debruitage": visage_debruitage, "tags": visage_tags, "negatif": visage_negatif}
         reglages["retires"] = list(RETIRES)
         reglages["visage"] = "normal" if (visage_normal or methode not in ("C", "D")) else "inpaint"
@@ -943,6 +1113,10 @@ def main():
     alpha.save(etapes / ("7_detourage-final.png" if prefixe_sortie == prefixe else f"7_detourage-{detoureur}.png"))
     final = Image.open(etapes / "4_colle-fond.png").convert("RGB") if methode in ("B", "D") else fond.copy()
     taille = boite[2] - boite[0]
+    if methode in ("B", "D") and "--lisere" in options:   # le liseré tracé au masque : en option (il débordait, 2026-10-22)
+        image = sans_frange(image, alpha_gris, Image.open(etapes / "2_sur-gris.png"), echelle=TRAVAIL / taille)
+        image = avec_lisere(image, alpha_gris, alpha, echelle=TRAVAIL / taille)
+        reglages["lisere"] = True
     final.paste(image.resize((taille, taille), Image.LANCZOS), boite[:2], alpha.resize((taille, taille), Image.LANCZOS))
     final.save(SORTIE / f"{prefixe_sortie}.png")
     if not recomposer:
