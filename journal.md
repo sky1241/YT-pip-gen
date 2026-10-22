@@ -1074,3 +1074,12 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   son squelette), où il n'y a que des cheveux ; l'œil, les dents, la chemise ne sont plus touchés ; le verre de ses lunettes
   qui dépasse de son visage reste gris (un reflet). Vérifié dans le décor sur les quatre cas. Série n5 lancée (12 corps
   refaits sans la carte, la tête et les mains sur la carte).
+- **La série n5, finale (2026-10-22, 14 h 18)** : le collage au ras du trait du modèle, le fondu net sans bord pris au fondu
+  brut, la passe de la tête et celle des mains sans toucher le bord ; Sky 8 graines, Maëlle 4, les 4 duos (axe 6). Netteté
+  (`pipeline/mesures/nettete.py`, contre le critère fixé avant : la silhouette ≥ 95 %, la bande du bord ≥ 90 %) : **Sky
+  98 % et 98 %** (graine la plus basse 96 %), **Maëlle 100 % et 96 %** (la plus basse 91 %). Chaque image regardée à 1
+  pour 1 : plus de flou, plus de contour blanc, plus d'encoche, l'œil aveugle intact, les cheveux de Maëlle sans trou gris.
+  Restent, du rendu sur gris : deux galettes et un bras tendu vers Maëlle (2002), Maëlle avec une galette dans chaque main
+  (2004), des dents serrées (2001, 2003, 2008), un point blanc au coin de la bouche (2005, la passe des mains), un faux logo
+  (2006), la chemise ouverte (2007), et la galette qui change d'une graine à l'autre : le travail de l'image maître par axe.
+  Planches : `~/Téléchargements/bilan40_duo_final.png`, `bilan41_sky_2005_2008_final.png`.
