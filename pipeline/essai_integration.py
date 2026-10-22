@@ -837,10 +837,17 @@ def main():
         reglages["cadre"] = [round(v, 1) for v in cadre]
         reglages["prompt_gris"] = prompt(perso, "full body", fond_gris=True, angle=angle)
         gris_b = SORTIE / f"{perso}_B_{graine}" / "2_sur-gris.png"
+        if "--gris-de" in options:
+            # --gris-de VARIANTE (D) : le rendu sur gris d'une autre variante (faite avec --gris-seul), ComfyUI redémarré entre
+            # les deux : un seul modèle par appel. Au passage du modèle ordinaire à celui d'inpainting (ou l'inverse) dans le
+            # même ComfyUI, le garde-fou de la RAM l'a coupé 3 fois sur 6 (2026-10-21, journal.md)
+            gris_b = SORTIE / f"{perso}_{methode}_{graine}_{options[options.index('--gris-de') + 1]}" / "2_sur-gris.png"
+            if not gris_b.exists():
+                sys.exit(f"pas de rendu sur gris à reprendre : {gris_b}")
         if methode == "D" and gris_b.exists() and "--regris" not in options:
             # D : le même rendu sur gris que la méthode B à la même graine (le perso fidèle : son LoRA a appris sur gris)
             gris = Image.open(gris_b).convert("RGB")
-            reglages["gris_repris_de"] = f"{perso}_B_{graine}"
+            reglages["gris_repris_de"] = gris_b.parent.name
         else:
             masque_gris = None
             if objet_cadre is not None:
@@ -849,6 +856,11 @@ def main():
             gris = diffusion(guide, masque_gris, reglages["prompt_gris"], PERSOS[perso]["lora"], graine, 0.9,
                              f"{prefixe}_gris", negatif(perso, gris=True), pose_cadre)
         gris.save(etapes / "2_sur-gris.png")
+        if "--gris-seul" in options:    # le rendu sur gris seul, repris ensuite par --gris-de
+            reglages["duree_s"] = round(time.time() - debut)
+            (SORTIE / f"{prefixe}.json").write_text(json.dumps(reglages, ensure_ascii=False, indent=2) + "\n")
+            print(f"{prefixe} : {reglages['duree_s']} s, le rendu sur gris seul → {etapes / '2_sur-gris.png'}")
+            return
         objet_travail = None
         if objet_cadre is not None:
             # sa place dans l'image de travail : protégée pendant le fondu et la passe du visage

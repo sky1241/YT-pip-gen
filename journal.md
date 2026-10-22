@@ -951,3 +951,61 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   gardée pendant le fondu (`--fondu-tete 0.2`, la recherche : le fondu lissait le visage du rendu sur gris).
 - **Le LoRA v4 lancé sur Kaggle (23 h 16)**, en parallèle des tests de la v3 : la v3 (le même jeu) sans `min_snr_gamma`, une
   seule chose changée (`pipeline/kaggle/lora_sky_v4/`).
+- **ComfyUI coupé deux fois par le garde-fou pendant le test (d) (2026-10-21, 23 h 28 et 23 h 35)**, les deux fois sur la
+  graine 2002, juste après le fondu : au passage du modèle d'inpainting au modèle ordinaire pour la passe de la tête, la RAM
+  disponible tombait de 3,9 Go à 1,2 Go en 20 s (le reste de la machine : 5 Go dans le swap). La graine 2001 était passée.
+  Essayé : `--cache-ram 4` (ComfyUI vide son cache plus tôt) : coupé quand même, retiré. Ce qui marche : chaque graine en
+  deux appels, ComfyUI redémarré avant chacun, (1) le rendu sur gris et le fondu (`--sans-visage`), (2) la passe de la tête
+  sur ce corps (`--depuis-corps`), la procédure de la base v2. La passe de la tête seule n'avait jamais coupé (16 passages).
+  Contrôle prévu : la graine 2001, faite en un appel, refaite en deux. La cause exacte de la montée n'est pas trouvée
+  (`/free` ne fait que poser une demande, que ComfyUI traite entre deux travaux). Pour la production : redémarrer ComfyUI
+  entre deux modèles plutôt que compter sur `/free`.
+- **Le test (d) de la v3 (2026-10-22, 0 h 44)**, le pipeline entier sur les 8 graines, en trois appels par graine à partir de
+  2003 (le gris, le fondu, la passe de la tête : un ComfyUI neuf pour chacun, plus aucune coupure). Contrôle : la graine
+  2001, faite en un appel, refaite en deux : la même image au pixel près (écart 0). Le tagueur : « beard » moyen **0,790**
+  contre 0,750 pour la v2 (4 sur 8 au-dessus de 0,85 contre 2 sur 8), « mature male » 0,85 contre 0,79, la peau juste sur
+  8 sur 8 des deux côtés. Le jugement à l'aveugle (un agent, la clé levée après) : **la v3 gagne 6 lignes, la v2 aucune,
+  2 égalités** ; la barbe départage presque toujours. Défauts relevés : v2, un visage en double exposition (2005), des
+  lèvres dédoublées (2006), l'œil aveugle remplacé par un œil coloré (2003) ; v3, un verre de lunettes opaque (2005). Le
+  test (c) de la v3, jugé de même : 8 égalités sur 8.
+  - **À la lettre du protocole, la v3 ne remplace pas la v2** : 6 lignes gagnées sur 16 ((c) + (d)), il en fallait 12, et
+    la barbe moyenne gagne 0,040, il fallait 0,05. Sur le vrai cas (d) seul, 6 à 0 (6 sur 6 hors égalités : une chance sur
+    32 au hasard). L'auteur tranche.
+  - (b), les 8 rendus sur gris (jugés par le même agent) : la v2 et la v3 ont chacune 2 écarts de tenue (des chaussures
+    blanches ou camel ; pour la v3, une chemise ouverte jusqu'au ventre) ; les lys de la chemise, relevés comme un écart,
+    sont sur ses références. Les lunettes : 7 sur 8 (v2), 8 sur 8 (v3), mais rondes et fines partout à cette taille. L'œil
+    bleu se perd à cette taille dans les deux versions (deux yeux pâles, ou inversés sur 1 image) : la passe de la tête le
+    remet. La barbe à peine visible en pied, un peu plus en v3.
+- **Le LoRA v4 entraîné (2026-10-22, 0 h 50)** : la v3 sans `min_snr_gamma`, le même jeu, une T4, perte moyenne finale 0,0745
+  (0,058 pour la v3 : sans min_snr, la perte n'est pas pondérée de la même façon, les deux chiffres ne se comparent pas). Les
+  12 époques copiées dans `<modeles_root>/loras/`. Les images d'essai (époques 9 et 12 contre la v3 à l'époque 12,
+  `~/Téléchargements/bilan22_v4_images_essai.png`) : presque les mêmes images que la v3 ; la barbe avec ses traits dans le
+  prompt, l'œil aveugle du bon côté, pas de fond gris au restaurant ; sans ses traits, imberbe et plus jeune, comme la v3.
+  Pas d'époque écartée : l'époque 12 passe directement à (d). Le test (c) n'est pas refait pour la v4 : sur la v3 il donnait
+  8 égalités sur 8, il ne départage pas (une entorse au protocole, notée ici).
+- **Le test standard (a) dure 21 min par version** (environ 128 s par image en 1024 × 1024, l'UNet fp8). Celui de la v2
+  (2026-10-16) datait d'avant le fp8 : refait cette nuit dans les mêmes conditions, sa planche d'alors gardée
+  (`test-standard_sky_v2_planche_2026-10-16.png`).
+- **Le test standard (a), v3 contre v2 refaite (2026-10-22, 1 h 30)**, jugé à l'aveugle par un agent (le haut de l'image,
+  prompts 1 à 4 ; la clé levée après) : la v3 gagne 1 ligne (de face : les cernes de ses références), 3 égalités, aucune
+  perdue : pas de régression en gros plan. Critères de rejet : aucun, pour les deux (l'œil aveugle du bon côté aux prompts
+  1 à 3, jamais de fond gris aux prompts 6 à 8 et 10). Relevé : sous la pluie (10), les deux portent une chemise noire à
+  lys clairs ; en pied (5), la v2 déforme la tenue ; la v3 perd l'œil bleu aux prompts 6 et 7 (deux yeux blancs) ; aucune
+  ne fait un vrai profil (4). Le juge a cru voir la même version en A sur les 4 lignes : faux pour la ligne 2 (à graine
+  égale, les deux versions donnent des images très proches) ; ses choix de la partie 1 étaient faits avant.
+- **Le test (d) de la v4 (2026-10-22, 2 h 33)**, la même procédure que la v3 (trois appels par graine, aucune coupure) : le
+  tagueur, « beard » moyen **0,771** (1 sur 8 au-dessus de 0,85), « mature male » 0,81, la peau juste sur 8 sur 8 ; la v3
+  reste devant (0,790, 4 sur 8), la v2 derrière (0,750, 2 sur 8). Jugée à l'aveugle par deux agents séparés (les clés
+  levées après) : **v4 contre v2 : 6 lignes pour la v4, 1 pour la v2, 1 égalité** ; **v4 contre v3 : 7 égalités, 1 ligne
+  pour la v3** (2006, la barbe plus lisible). Retirer min_snr n'apporte rien de visible. Défauts relevés sur la graine 2005,
+  quelle que soit la version (un verre de lunettes opaque, des contours dédoublés pour la v2), et des bouchées qui ne
+  ressemblent pas à de la nourriture un peu partout (la galette, toujours pas réglée).
+- **Le bilan de la v3 et de la v4** : sur le vrai cas, les deux battent la v2 (6 à 0 et 6 à 1) et se valent entre elles ;
+  la v3 a la meilleure barbe au tagueur. À la lettre du protocole, aucune ne remplace la v2 (il fallait 12 lignes sur 16 en
+  comptant (c), qui ne départage pas, et 0,05 de barbe en plus : +0,040 pour la v3, +0,021 pour la v4). Proposé à l'auteur :
+  la v3 (époque 12) pour la production de Sky ; il tranche. Le LoRA n'est plus le verrou de la barbe : à 0,75, la passe de
+  la tête change peu selon la version (c), la barbe se joue dans le rendu sur gris et le fondu. Ses gros plans restent sous
+  ses références (0,79 contre 0,93). Pas de v5 cette nuit : 100 min d'entraînement et 70 min de test ne tenaient pas avant
+  4 h, et la piste suivante est dans le pipeline (la tête gardée pendant le fondu, la force de la passe de la tête), pas
+  dans le LoRA. Planches : `~/Téléchargements/bilan23a_sky_v2_v3_v4.png`, `bilan23b_…` (les gros plans, nommés),
+  `bilan24_sky_v3_dans_le_kebab.png` (la v3 dans le décor : deux galettes et un pied nu en 2002, la chemise ouverte en 2007).
