@@ -1009,3 +1009,12 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   4 h, et la piste suivante est dans le pipeline (la tête gardée pendant le fondu, la force de la passe de la tête), pas
   dans le LoRA. Planches : `~/Téléchargements/bilan23a_sky_v2_v3_v4.png`, `bilan23b_…` (les gros plans, nommés),
   `bilan24_sky_v3_dans_le_kebab.png` (la v3 dans le décor : deux galettes et un pied nu en 2002, la chemise ouverte en 2007).
+- **La tête presque gardée pendant le fondu (`--fondu-tete 0.2`), 2026-10-22, 3 h 16** : sur les mêmes rendus sur gris de la
+  v3 (graines 2001 à 2004, seul le fondu change), le tagueur donne une barbe **plus faible sur les 4 graines** (0,698 en
+  moyenne contre 0,772 ; aucune au-dessus de 0,85 contre 2). À l'aveugle (un agent) : 2 lignes pour le fondu normal, 1 pour
+  la tête gardée, 1 égalité, départagées par la bouchée, pas par le visage. **Écartée** : l'hypothèse (le fondu efface la
+  barbe du rendu sur gris) ne tient pas ; le fondu à 0,45 ne l'efface pas, il la redessine même un peu.
+- **Le bilan de la nuit (21 au 22 octobre)** : 6 coupures de ComfyUI au total, la dernière à 23 h 41 ; plus aucune avec un seul
+  modèle par appel (35 appels depuis, environ 8 min par graine). Fini à 3 h 16, ComfyUI arrêté, le PC rendu à l'auteur.
+  Reste à trancher par l'auteur : le LoRA de production de Sky (proposé : la v3, époque 12). Pistes suivantes pour la barbe :
+  la passe de la tête plus forte (0,85 à 0,95) ; pour la galette : l'objet exact collé à la fin, puis une passe de lumière.
