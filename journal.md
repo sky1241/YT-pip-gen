@@ -1065,3 +1065,12 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   au fondu brut sur le bord (`bord=0` : un pixel suffisait à ramener un liseré clair, ce fondu ayant été fait sur l'ancien
   collage). Le liseré tracé reste en option (`--lisere`), désactivé. Série n4 relancée sur ces corps (la tête et les mains
   sans toucher le bord, `--visage-garde-bord`).
+- **Le découpage au ras du trait, corrigé deux fois (2026-10-22, 13 h 20)**. La série n4 (12 images) passait le critère de
+  netteté (Maëlle : silhouette 99 %, bande du bord 98 % ; Sky : 98 et 99 %), mais à 1 pour 1, une encoche dans la chemise
+  de Sky (graine 2002) : une ombre grise de sa chemise, juste dans son trait, prise pour un trou entre des mèches (son
+  pourtour beige dépassait le seuil « coloré », un écart brut max − min > 40). Passé à la saturation relative (> 0,35 : le
+  beige 0,18, la peau 0,55, l'or 0,7, le roux 0,8) : l'encoche part, mais l'œil aveugle de Sky, blanc-gris entouré de peau,
+  devenait un trou (le décor passait à travers, graine 2004). Ce test-là ne se fait plus qu'au-dessus de ses yeux (d'après
+  son squelette), où il n'y a que des cheveux ; l'œil, les dents, la chemise ne sont plus touchés ; le verre de ses lunettes
+  qui dépasse de son visage reste gris (un reflet). Vérifié dans le décor sur les quatre cas. Série n5 lancée (12 corps
+  refaits sans la carte, la tête et les mains sur la carte).

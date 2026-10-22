@@ -205,23 +205,30 @@ def forme_jambes(points, echelle, taille):
     return forme.filter(ImageFilter.GaussianBlur(3))
 
 
-def detoure_au_trait(gris, alpha, bande=24, ecart=30, teinte_max=26, pourtour_colore=40):
+def detoure_au_trait(gris, alpha, bande=24, ecart=30, teinte_max=26, pourtour_colore=0.35, zone_trous=None):
     """Le perso détouré au ras de son trait (2026-10-22, à la place d'un resserrement de 3 px qui coupait le trait sombre du
     modèle et laissait un bord blanchâtre ; l'auteur : « tu débordes de partout » sur un liseré tracé au masque), comme une incrustation sur fond uni (le gris de son rendu). (1) Le gris relié
     à l'extérieur part, dans les `bande` derniers pixels : le trait sombre du modèle arrête la remontée. (2) Les trous : une
     tache grise restée dedans, près du bord, part si son pourtour est coloré (entre des mèches, dans un verre de lunettes
     cerclé d'or) ; entourée de blanc ou de gris (sa chemise), elle reste. (3) Un pixel de moins au bord (le mélange avec le
-    gris), puis adouci. Rend la transparence (0 à 1)."""
+    gris), puis adouci. Rend la transparence (0 à 1). Le test des trous ne se fait que dans `zone_trous` (au-dessus de ses
+    yeux, où il n'y a que des cheveux) : partout, il prenait aussi l'œil aveugle de Sky, blanc-gris entouré de peau, pour un
+    trou (le décor passait à travers, 2026-10-22)."""
     g = np.asarray(gris.convert("RGB"), np.float32)
     G = np.median(np.concatenate([g[:8].reshape(-1, 3), g[:, :8].reshape(-1, 3), g[:, -8:].reshape(-1, 3)]), axis=0)
     a = cv2.dilate((np.asarray(alpha) > 128).astype(np.uint8), np.ones((3, 3), np.uint8))
     pres = (a - cv2.erode(a, np.ones((2 * bande + 1, 2 * bande + 1), np.uint8))).astype(bool)
     teinte = g.max(axis=2) - g.min(axis=2)
+    # la saturation relative du pourtour d'une tache : le beige chaud de la chemise de Sky (0,18) n'est pas « coloré », sa
+    # peau (0,55), l'or de ses lunettes (0,7) et les cheveux de Maëlle (0,8) le sont. Un écart brut (max - min > 40)
+    # prenait le beige pour de la couleur : une ombre grise de sa chemise partait comme un trou (2026-10-22, graine 2002)
+    saturation = teinte / np.maximum(g.max(axis=2), 1)
     gris_like = (np.abs(g - G).max(axis=2) < ecart) & (teinte < teinte_max)
     _, comp = cv2.connectedComponents(((a == 0) | (pres & gris_like)).astype(np.uint8), connectivity=4)
     dehors = np.unique(comp[a == 0])
     garde = a.astype(bool) & ~np.isin(comp, dehors[dehors > 0])
-    n, taches, stats, _ = cv2.connectedComponentsWithStats((garde & pres & gris_like).astype(np.uint8), connectivity=8)
+    cherche = garde & pres & gris_like & (zone_trous if zone_trous is not None else False)
+    n, taches, stats, _ = cv2.connectedComponentsWithStats(cherche.astype(np.uint8), connectivity=8)
     for k in range(1, n):
         x, y, w, h, aire = stats[k]
         if aire < 3:
@@ -229,7 +236,7 @@ def detoure_au_trait(gris, alpha, bande=24, ecart=30, teinte_max=26, pourtour_co
         x0, y0, x1, y1 = max(x - 3, 0), max(y - 3, 0), x + w + 3, y + h + 3
         t = taches[y0:y1, x0:x1] == k
         tour = cv2.dilate(t.astype(np.uint8), np.ones((5, 5), np.uint8)).astype(bool) & ~t
-        if tour.any() and teinte[y0:y1, x0:x1][tour].mean() > pourtour_colore:
+        if tour.any() and saturation[y0:y1, x0:x1][tour].mean() > pourtour_colore:
             garde[y0:y1, x0:x1][t] = False
     garde = cv2.erode(garde.astype(np.uint8), np.ones((3, 3), np.uint8)).astype(np.float32)
     return cv2.GaussianBlur(garde, (0, 0), 0.7)
@@ -264,7 +271,11 @@ def coller_cadre(perso, gris, cadre, camera, fond, devant):
             alpha[tache] = 0
     # détouré au ras de son trait (detoure_au_trait) : resserré de 3 pixels, son bord perdait le trait du modèle et
     # gardait un bord blanchâtre ; avant le resserrement, un liseré du gris de fond, clair sur le miroir sombre (7e essai)
-    alpha = Image.fromarray((detoure_au_trait(gris, alpha) * 255).astype(np.uint8))
+    zone_trous = np.zeros(alpha.shape, bool)       # les trous entre ses mèches : au-dessus de ses yeux seulement
+    if points[14] and points[15] and points[1]:
+        yeux, cou = min(points[14][1], points[15][1]), points[1][1]
+        zone_trous[:max(int(yeux - 0.35 * (cou - yeux)), 0)] = True
+    alpha = Image.fromarray((detoure_au_trait(gris, alpha, zone_trous=zone_trous) * 255).astype(np.uint8))
     taille_cadre = (round(cadre[2] - cadre[0]), round(cadre[3] - cadre[1]))
     coin = (round(cadre[0]), round(cadre[1]))
     calque, alpha_fond = Image.new("RGB", fond.size), Image.new("L", fond.size, 0)
