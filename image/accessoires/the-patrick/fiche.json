@@ -1,0 +1,20 @@
+{
+  "nom": "Le service à thé de Patrick",
+  "canon": "ecriture/bible/bible.md : « Il boit du thé en porcelaine dans un kebab parce que les standards ne baissent pas » ; Patrick pose sa tasse lentement ; « la tasse de Patrick qui tombe » ; « la tasse dans les frites » (Théo)",
+  "description": "un service anglais des années 80 (l'auteur, le 2026-10-23) : porcelaine blanche brillante à roses bleues, les liserés dorés ajoutés par ChatGPT et gardés par l'auteur ; la théière ronde au long bec verseur, son couvercle à bouton doré ; la tasse sur sa soucoupe",
+  "etats": {
+    "theiere_v1.png": "la théière",
+    "tasse-pleine_v1.png": "la tasse pleine de thé ambré, sur sa soucoupe, une petite cuillère en argent posée dessus",
+    "tasse-vide_v1.png": "la tasse vide, un cerne de thé au fond, sur sa soucoupe"
+  },
+  "plus_tard": "la tasse qui tombe (la bible) : un état « cassée » si une scène le demande",
+  "fichiers": "planche_v1.png : la planche de ChatGPT telle quelle ; les autres : chaque objet découpé au ras de son trait (pipeline/decouper_accessoire.py), fond transparent, le gris des anses retiré",
+  "usage": "collé tel quel (sur la table, dans sa main au rendu sur gris), puis la passe de lumière du décor ; pas de LoRA",
+  "provenance": {
+    "outil": "ChatGPT (conception)",
+    "date": "2026-10-23",
+    "reference_jointe": "image/accessoires/galette-sky/planche_v1.png (le style et le fond seulement)",
+    "prompt": "Use the attached image only as a reference for the art style and the background: the same clean dark line art, flat cel shading, warm colors, plain light grey background. Do not draw any food. Draw Patrick's tea set: classic English porcelain from the 1980s, glossy white with a delicate blue flower pattern, the same pattern on every piece. Three objects side by side, same scale, same three-quarter view from slightly above: 1. the teapot, round body, with a long, elegant curved spout for pouring, a lid with a small knob, the blue flower pattern; 2. the matching teacup on its saucer, full of amber tea, a small silver spoon on the saucer; 3. the same cup on its saucer, empty, a thin tea stain at the bottom. The teapot is about twice as tall as the cup. Elegant, old-fashioned, spotless. Soft even light, glossy porcelain highlights, no shadow on the background. No steam, no hands, no person, no text, no logo. Wide image."
+  },
+  "valide": "l'auteur, le 2026-10-23 : « ça me va comme ça »"
+}
