@@ -1,0 +1,18 @@
+{
+  "nom": "Les kebabs du menu",
+  "description": "le sandwich : une demi-lune de pain turc épais et moelleux, ouverte en poche, viande de kebab, salade, tomate, oignon rouge, sauce blanche, le bas dans le même papier blanc froissé que les galettes ; l'assiette : une assiette ovale blanche, la même viande, des frites dorées, une salade, un ramequin de sauce blanche",
+  "etats": {
+    "sandwich_v1.png": "le sandwich, entier",
+    "assiette_v1.png": "l'assiette, pleine"
+  },
+  "pour_qui": "les clients, les autres persos. Pas Sky : « l'assiette, c'est presque trop distinguée pour lui » ; lui, c'est sa galette, et une barquette de frites à côté (l'auteur, le 2026-10-23)",
+  "style": "les plats de Ghibli (image/style.md, « La bouffe »)",
+  "usage": "comme les galettes (image/accessoires/galette-sky/fiche.json)",
+  "provenance": {
+    "outil": "ChatGPT (conception)",
+    "date": "2026-10-23",
+    "reference_jointe": "image/accessoires/galette-seb/planche_v1.png",
+    "prompt": "Use the attached image as the reference for the art style, the doner meat, the white sauce, the white paper and the plain grey background. Same appetizing Studio Ghibli food rendering, same clean dark outlines and flat cel shading. Draw two kebabs side by side, same scale, same three-quarter view from slightly above: 1. a kebab sandwich: a half-moon of round, thick, fluffy Turkish bread with light grill marks, opened like a pocket and generously filled with the same sliced doner meat, lettuce, tomato, red onion and white sauce, its bottom wrapped in the same crumpled white paper; 2. a kebab plate: an oval white plate with the same sliced doner meat, golden French fries, a fresh salad of lettuce, tomato and red onion, and a small round cup of white sauce. No steam. No hands, no person, no text, no logo. Wide image."
+  },
+  "valide": "l'auteur, le 2026-10-23 : « je trouve ça bien »"
+}
