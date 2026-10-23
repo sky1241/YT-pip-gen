@@ -1,0 +1,24 @@
+{
+  "nom": "Les pizzas du kebab-pizzeria",
+  "description": "trois pizzas entières, chacune sur une assiette ronde blanche : la margherita (sauce tomate, mozzarella, basilic), la reine (jambon, champignons), l'orientale (merguez, poivrons vert et rouge, oignon rouge) ; la pâte dorée tachée de brûlé",
+  "choix": "les trois classiques d'un kebab-pizzeria en France, proposés par Claude, validés par l'auteur",
+  "etats": {
+    "margherita_v1.png": "entière",
+    "reine_v1.png": "entière",
+    "orientale_v1.png": "entière"
+  },
+  "plus_tard": "des parts manquantes, en retouche de la planche, si une scène le demande (comme la galette de Sky)",
+  "fichiers": "planche_v1.png : la planche validée (les assiettes se chevauchaient : impossible à découper proprement) ; planche_v2.png : la même, retouchée par ChatGPT avec de l'espace entre les assiettes ; les découpes viennent de la v2",
+  "style": "les plats de Ghibli (image/style.md, « La bouffe »)",
+  "usage": "comme les galettes (image/accessoires/galette-sky/fiche.json)",
+  "provenance": {
+    "outil": "ChatGPT (conception)",
+    "date": "2026-10-23",
+    "reference_jointe": "image/accessoires/kebabs/planche_v1.png",
+    "prompts": [
+      "Use the attached image as the reference for the art style and the plain grey background. Same appetizing Studio Ghibli food rendering, same clean dark outlines and flat cel shading. Draw three whole pizzas from a kebab-pizzeria, side by side, same size, same three-quarter view from above, each on a plain round white plate: 1. a margherita: tomato sauce, melted mozzarella, fresh basil leaves; 2. a \"reine\": tomato sauce, melted cheese, ham, sliced mushrooms; 3. an \"orientale\": tomato sauce, melted cheese, slices of merguez sausage, green and red pepper strips, red onion. Golden crust with a few dark blistered spots, glossy melted cheese. No steam. No hands, no person, no text, no logo. Wide image.",
+      "Edit this image. Keep the three pizzas and their plates exactly as they are: same toppings, same crust, same plates, same art style, same grey background. Only move them apart, so that a clear gap of plain grey background separates each plate from the next. Nothing touches. No steam, no text."
+    ]
+  },
+  "valide": "l'auteur, le 2026-10-23 : « moi ça me plaît, je valide »"
+}
