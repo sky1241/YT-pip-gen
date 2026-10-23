@@ -1,0 +1,20 @@
+{
+  "nom": "La barquette de frites",
+  "canon": "image/persos/sky/fiche.json > accessoires : « plateau de frites » ; ecriture/bible/bible.md : Théo, « frites (toujours les frites) » ; « la tasse dans les frites » (Théo et Patrick)",
+  "description": "une barquette rectangulaire en carton blanc, un peu usée, des taches de gras, des frites dorées ; sans sauce",
+  "etats": {
+    "pleine_v1.png": "pleine, les frites en tas au-dessus du bord",
+    "moitie_v1.png": "à moitié mangée",
+    "presque-vide_v1.png": "presque vide : quelques frites, des miettes, des taches de gras"
+  },
+  "pour_qui": "Sky (à côté de sa galette ; l'auteur : pas d'assiette pour lui) et Théo. Le gag « la tasse dans les frites » : la tasse de Patrick (image/accessoires/the-patrick) posée dans la barquette, sans image de plus",
+  "style": "les plats de Ghibli (image/style.md, « La bouffe »)",
+  "usage": "comme les galettes (image/accessoires/galette-sky/fiche.json)",
+  "provenance": {
+    "outil": "ChatGPT (conception)",
+    "date": "2026-10-23",
+    "reference_jointe": "image/accessoires/kebabs/planche_v1.png",
+    "prompt": "Use the attached image as the reference for the art style, the golden French fries and the plain grey background. Same appetizing Studio Ghibli food rendering, same clean dark outlines and flat cel shading. Draw a French kebab-shop fries tray: a small rectangular white cardboard tray, slightly worn, with small grease spots, filled with the same golden French fries. Three versions side by side, the same tray, same scale, same three-quarter view from slightly above, the tray being eaten: 1. full, the fries heaped above the rim; 2. half eaten, the fries below the rim; 3. almost empty: a few fries left, crumbs and grease spots. No sauce. No steam. No hands, no person, no text, no logo. Wide image."
+  },
+  "valide": "l'auteur, le 2026-10-23 : « yep good »"
+}
