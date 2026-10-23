@@ -1,0 +1,16 @@
+{
+  "nom": "La galette de Seb",
+  "canon": "ecriture/bible/bible.md, « La bouffe dans le texte » : Seb, galette mixte intacte (il ne peut pas avaler ce qui se passe)",
+  "description": "le même pain plat aux taches de grill et le même papier blanc froissé que la galette de Sky ; dedans : viande de kebab en tranches et poulet grillé, sauce blanche seule (pas de rouge), salade, tomate, oignon rouge",
+  "style": "les plats de Ghibli (image/style.md, « La bouffe »)",
+  "etats": {
+    "entiere_v1.png": "entière : elle le reste (« intacte »)"
+  },
+  "usage": "comme la galette de Sky (image/accessoires/galette-sky/fiche.json)",
+  "provenance": {
+    "outil": "ChatGPT (conception)",
+    "date": "2026-10-23",
+    "reference_jointe": "image/accessoires/galette-sky/planche_v1.png",
+    "prompt": "Edit this image. Keep the same kebab wrap design: same flatbread with grill spots, same crumpled white paper, same three-quarter angle, same art style, same plain grey background. Draw only ONE wrap, whole, not bitten, centered, and change its filling to a mixed kebab: sliced doner meat and grilled chicken, white sauce only (no red sauce), lettuce, tomato, red onion. Same appetizing Studio Ghibli food rendering. No steam. No hands, no person, no text."
+  }
+}
