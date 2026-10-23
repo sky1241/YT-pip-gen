@@ -1,0 +1,27 @@
+{
+  "nom": "La galette de Sky",
+  "canon": "ecriture/bible/bible.md, « La bouffe dans le texte » : Sky, galette poulet harissa, 5-6 par jour",
+  "description": "une galette (dürüm) : un pain plat roulé aux taches de grill, du poulet grillé, la harissa rouge par-dessus la sauce blanche, de la salade, de la tomate ; à moitié dans un papier blanc froissé",
+  "sauces": "la blanche d'abord, la rouge par-dessus (le texte Navier-Stokes) ; choisie par l'auteur le 2026-10-23",
+  "style": "les plats de Ghibli (image/style.md, « La bouffe »)",
+  "etats": {
+    "etat-1-entiere_v1.png": "entière",
+    "etat-2-croquee_v1.png": "une bouchée",
+    "etat-3-moitie_v1.png": "à moitié mangée",
+    "etat-4-derniere-bouchee_v1.png": "la dernière bouchée",
+    "etat-5-finie_v1.png": "finie : le papier et le bout du pain"
+  },
+  "fichiers": "planche_v1.png : la planche de ChatGPT telle quelle ; etat-*_v1.png : chaque état découpé au ras de son trait (detoure_au_trait), fond transparent",
+  "usage": "collée telle quelle dans ses mains au rendu sur gris (le modèle dessine ses doigts autour), puis la passe de lumière du décor ; l'état change d'un plan à l'autre (CLAUDE.md : la bouchée suggérée par une coupe). Pas de LoRA : l'image elle-même est réutilisée.",
+  "a_verifier": "le collage dans ses mains n'a été essayé qu'avec la galette factice (2026-10-21 : le même objet sur 3 graines sur 4, mais on ne voyait que le papier)",
+  "provenance": {
+    "outil": "ChatGPT (conception)",
+    "date": "2026-10-23",
+    "reference_jointe": "image/persos/sky/gestes/mange_v1.png",
+    "prompts": [
+      "Use the attached image only as a reference for the food and the art style. Draw the same kebab wrap the man is eating: a soft flatbread with light grill spots, filled with grilled chicken, red harissa sauce, lettuce and tomato, half wrapped in white paper. Render the food the way Studio Ghibli films draw food, so it looks delicious: juicy glossy highlights on the sauce and the chicken, fresh crisp lettuce, warm rich colors, a little steam rising. Draw it ALONE: no person, no hands. Two versions side by side on the same plain light grey background, same size, same three-quarter view, slightly tilted: left: the whole wrap, not yet bitten; right: the same wrap, bitten once at the top. Keep the line art of the reference: clean dark outlines, flat cel shading with crisp edges. No painterly texture, no grain, no blur. Soft even light, no shadow on the background, no text, no logo. Wide image. (puis, à la main de l'auteur : la même avec de la sauce blanche)",
+      "Edit this image. Keep the same kebab wrap exactly: same flatbread, same grill spots, same filling and sauces, same white paper, same three-quarter angle, same art style, same plain grey background. Replace the two versions with FIVE versions in a row, left to right, the same wrap being eaten: 1. whole, not bitten; 2. one big bite taken at the top: a clear round bite mark, the filling visible inside the bite; 3. half eaten: the top half gone, the filling visible in cross-section, the paper unchanged; 4. only the last bite left: a small piece of wrap sticking out of the paper; 5. the empty paper, crumpled and slightly open, a few crumbs. No steam. No hands, no person, no text."
+    ]
+  },
+  "valide": "l'auteur, le 2026-10-23 : « je trouve ça clean, ça donne envie »"
+}

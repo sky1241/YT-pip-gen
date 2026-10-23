@@ -19,6 +19,7 @@ Seules les images validées de `image/persos/` et `image/decors/` font foi, jama
 - **Les couleurs** : une palette chaude et un peu passée : bruns, ocres, roux, noirs profonds, blancs cassés. Rien de saturé ni de fluo.
 - **Les corps** : des proportions réalistes, des visages adultes et marqués (cernes, barbe, taches de rousseur), à la manière des animes de combat des années 90 ; pas de grands yeux ni de visage d'enfant.
 - **Les décors** : peints et détaillés, à la manière de Ghibli : bois, briques, plantes, objets du quotidien.
+- **La bouffe** (l'auteur, le 2026-10-23) : le rendu des plats des films Ghibli, « qui donne envie de manger » : des reflets humides sur les sauces et la viande, des couleurs chaudes et franches, un peu de vapeur, toujours en aplats nets. C'est une exception, pour la nourriture seule, à « pas de reflets » et à « rien de saturé ».
 
 ## Ce qu'on évite
 
