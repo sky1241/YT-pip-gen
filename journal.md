@@ -1083,3 +1083,15 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   (2004), des dents serrées (2001, 2003, 2008), un point blanc au coin de la bouche (2005, la passe des mains), un faux logo
   (2006), la chemise ouverte (2007), et la galette qui change d'une graine à l'autre : le travail de l'image maître par axe.
   Planches : `~/Téléchargements/bilan40_duo_final.png`, `bilan41_sky_2005_2008_final.png`.
+- **Les objets récurrents (2026-10-23)**, dans `image/accessoires/` : conçus dans ChatGPT (comme les persos et les fonds), au
+  style des plats de Ghibli (`image/style.md`, « La bouffe » : une exception pour la nourriture seule), puis découpés au ras de
+  leur trait (`pipeline/decouper_accessoire.py`). La galette de Sky (5 états, d'entière à finie, faits en une seule retouche
+  pour que ce soit la même), celle de Seb, le sandwich et l'assiette (pas pour Sky, « trop distinguée pour lui »), la
+  barquette de frites (Sky et Théo), le service à thé anglais de Patrick, trois pizzas, la bière de Sky. Pas de LoRA pour
+  les objets : l'image elle-même est collée dans la scène (au rendu sur gris, dans ses mains), puis la passe de lumière ; pas
+  encore essayé avec un vrai objet. Leçons : demander l'objet seul sur un gris uni, sans vapeur (elle disparaît au
+  découpage), avec du fond entre les objets (les assiettes des pizzas se chevauchaient : aucun découpage propre, la planche
+  refaite) ; le détoureur d'anime jette les assiettes (gardées par une clé du fond, un gris en dégradé) ; le verre
+  transparent montre le gris du fond (le haut du verre de bière sort en taches). Restent : le Fanta et l'Ayran du texte (une
+  première planche, une erreur à corriger selon l'auteur, gardée hors du dépôt), et la bière contre le Fanta du texte, à
+  trancher par l'auteur.

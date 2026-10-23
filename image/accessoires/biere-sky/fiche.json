@@ -1,0 +1,18 @@
+{
+  "nom": "La bière de Sky",
+  "description": "une bouteille de bière en verre vert, ouverte, une étiquette verte unie sans texte ; un verre de bière à pans, mousse blanche",
+  "etats": {
+    "bouteille_v1.png": "la bouteille, pleine",
+    "verre_v1.png": "le verre, plein"
+  },
+  "a_accorder_avec_le_texte": "l'auteur, le 2026-10-23 : « l'image de la bière pour Sky ». Le texte du CERN (ecriture/brouillons/cern.md) dit « Fanta » partout (la bouteille de Fanta de la première scène, « Sky boit son Fanta », « 4 Fanta ») : à l'auteur de trancher dans son texte ; la production suit le texte",
+  "defaut_connu": "le haut du verre, vide et transparent, sort en taches au découpage (le gris du fond vu à travers le verre) : à reprendre avec les boissons (un verre plus plein, ou le verre traité à part)",
+  "usage": "comme les autres objets (image/accessoires/galette-sky/fiche.json)",
+  "provenance": {
+    "outil": "ChatGPT (conception)",
+    "date": "2026-10-23",
+    "reference_jointe": "image/accessoires/the-patrick/planche_v1.png",
+    "prompt": "fait par l'auteur, à partir du prompt des boissons (Fanta et Ayran) adapté à la bière"
+  },
+  "valide": "l'auteur, le 2026-10-23"
+}
