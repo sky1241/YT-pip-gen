@@ -316,6 +316,26 @@ def detoure_au_trait(gris, alpha, bande=24, ecart=30, teinte_max=26, pourtour_co
         tour = cv2.dilate(t.astype(np.uint8), np.ones((5, 5), np.uint8)).astype(bool) & ~t
         if tour.any() and saturation[y0:y1, x0:x1][tour].mean() > pourtour_colore:
             garde[y0:y1, x0:x1][t] = False
+    # (4) le gris du fond enfermé n'importe où dans sa silhouette (entre ses bras et son corps, entre ses jambes ; l'auteur, le
+    # 2026-10-24 : « des zones grises entre les bras et le corps ») : une tache plate (écart type local sous 3), de la couleur
+    # même du fond (à moins de 11 par canal) et de sa teinte (rouge-vert et vert-bleu à moins de 6 près : les ombres de sa
+    # chemise, rosées, en sont exclues), d'au moins 120 px
+    rg, gb = g[..., 0] - g[..., 1], g[..., 1] - g[..., 2]
+    meme = ((np.abs(g - G).max(axis=2) < 11) & (np.abs(rg - (G[0] - G[1])) < 6) & (np.abs(gb - (G[1] - G[2])) < 6))
+    gg = g.mean(axis=2)
+    m1, m2 = cv2.blur(gg, (7, 7)), cv2.blur(gg * gg, (7, 7))
+    plat = np.sqrt(np.maximum(m2 - m1 * m1, 0)) < 3.0
+    n, taches, stats, _ = cv2.connectedComponentsWithStats((garde & meme & plat).astype(np.uint8), connectivity=8)
+    trous = np.zeros(garde.shape, bool)
+    for k in range(1, n):
+        if stats[k][4] >= 120:
+            trous |= taches == k
+    # le bord de ces trous : le gris tout contre ses habits n'est pas « plat » (la fenêtre de 7 px voit le noir du pull) et
+    # restait en liseré gris clair de 3 à 5 px autour du trou ; le trou gagne les pixels grisâtres voisins, sur 6 px au plus
+    grisatre = (np.abs(g - G).max(axis=2) < 28) & (teinte < 30)
+    for _ in range(6):
+        trous = trous | (cv2.dilate(trous.astype(np.uint8), np.ones((3, 3), np.uint8)).astype(bool) & grisatre & garde)
+    garde[trous] = False
     garde = cv2.erode(garde.astype(np.uint8), np.ones((3, 3), np.uint8)).astype(np.float32)
     return cv2.GaussianBlur(garde, (0, 0), 0.7)
 

@@ -1142,7 +1142,8 @@ Vérifié sur les pages officielles, le 2026-10-15 :
     « accoudé » : un squelette relevé sur une vraie image de la pose (ChatGPT), ou un axe de trois-quarts.
   - **Les aviateurs de Sky debout, 3 essais** (la même image de départ, axe 10 graine 3101, et l'axe 4 graine 3201) : la passe
     de la tête à 0,75 : pas de lunettes (0 sur 2) ; avec « aviator sunglasses » : pas de lunettes ; à 0,85 : pas de lunettes ;
-    **à 0,95 : ses aviateurs reviennent (2 sur 2)**, la tête à sa place, l'œil aveugle du bon côté. Debout, son visage fait
+    **à 0,95 : ses aviateurs reviennent (2 sur 2)**, mais au comptoir (axe 4) sa tête sort déformée, de travers (vu par
+    l'auteur, le soir ; je l'avais comptée bonne) : à 0,95, la passe redessine la tête presque entière. Debout, son visage fait
     60 px : le rendu sur gris ne dessine pas les lunettes, et sous 0,95 la passe repart de ce visage-là. Règle proposée : la
     tête à 0,95 quand il ne mange pas (debout, dialogue), 0,75 quand il mange (à 0,85-0,95, il ne mangeait plus et une
     cigarette apparaissait, 2026-10-21). Deux images seulement : à confirmer sur plus de graines.
@@ -1156,7 +1157,7 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   | Axe 14, ils mangent (posture « tient », la vraie galette, le sandwich) | 1 sur 2 (3001 : la galette posée sur sa chemise, pas tenue) | 1 sur 2 (3002 : netteté 93 %) | **passe** |
   | Axe 14, ils parlent | 0 sur 1 (les mains sous la table, pas sur la table) | 0 sur 1 (idem) | **ne passe pas** (la posture), utilisable en plan de dialogue |
   | Axe 10, ils descendent l'escalier | 0 sur 2 à 0,75 (sans aviateurs) ; 1 sur 1 à 0,95 | 2 sur 2 | **passe avec la tête à 0,95** |
-  | Axe 4, au comptoir de Mohamed (debout) | 0 sur 2 à 0,75 (un trait doré au lieu des aviateurs) ; 1 sur 1 à 0,95 | 2 sur 2 | **passe avec la tête à 0,95** |
+  | Axe 4, au comptoir de Mohamed (debout) | 0 sur 2 à 0,75 (un trait doré au lieu des aviateurs) ; 0 sur 1 à 0,95 (la tête déformée) | 2 sur 2 | **ne passe pas** (Sky) |
   | Axe 4, accoudés | raté au rendu sur gris | — | **ne passe pas** |
   | Les objets posés sur la table (frites, thé, pizza) | | | **passe** (taille, ombre de contact) ; pas d'occultation entre objets |
 
@@ -1165,3 +1166,11 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   squelette relevé sur une vraie image de la pose ; les mains sur la table en « parle » (un guide des mains, comme la
   galette) ; l'occultation des objets de table par les sauces ; le liseré clair des mèches de Maëlle, réduit pas parti.
   Planches : `~/Téléchargements/bilan45_axe14_ils_mangent.png` à `bilan49_aviateurs_095.png`.
+- **Le soir (l'auteur, 22 h 30) : « une image où la tête de Sky est totalement déformée ; des zones grises entre les bras et le
+  corps »**. La tête : Sky au comptoir à 0,95 (corrigé ci-dessus : la règle « 0,95 hors des plans où il mange » n'est pas
+  validée, 1 tête sur 2 déformée ; à essayer : 0,9, ou ses lunettes en objet figé comme la galette). Le gris : le gris du fond
+  enfermé entre ses bras et son corps, entre ses jambes, que rien ne retirait (le test des trous ne visait que la tête). Ajouté
+  à `detoure_au_trait` : une tache plate (écart type local sous 3), de la couleur et de la teinte même du fond (les ombres
+  rosées de sa chemise en sont exclues), d'au moins 120 px, partout dans la silhouette, puis élargie aux pixels grisâtres
+  voisins sur 6 px (sinon un liseré gris clair restait autour). Vérifié sur 6 rendus sur gris avant (aucune tache sur les
+  habits ni sur Maëlle assise), puis sur les duos : les trous montrent le décor ; les mesures inchangées.
