@@ -277,7 +277,7 @@ def forme_jambes(points, echelle, taille):
     return forme.filter(ImageFilter.GaussianBlur(3))
 
 
-def detoure_au_trait(gris, alpha, bande=24, ecart=30, teinte_max=26, pourtour_colore=0.35, zone_trous=None):
+def detoure_au_trait(gris, alpha, bande=24, ecart=30, teinte_max=26, pourtour_colore=0.35, zone_trous=None, bande_trous=12):
     """Le perso détouré au ras de son trait (2026-10-22, à la place d'un resserrement de 3 px qui coupait le trait sombre du
     modèle et laissait un bord blanchâtre ; l'auteur : « tu débordes de partout » sur un liseré tracé au masque), comme une incrustation sur fond uni (le gris de son rendu). (1) Le gris relié
     à l'extérieur part, dans les `bande` derniers pixels : le trait sombre du modèle arrête la remontée. (2) Les trous : une
@@ -299,7 +299,13 @@ def detoure_au_trait(gris, alpha, bande=24, ecart=30, teinte_max=26, pourtour_co
     _, comp = cv2.connectedComponents(((a == 0) | (pres & gris_like)).astype(np.uint8), connectivity=4)
     dehors = np.unique(comp[a == 0])
     garde = a.astype(bool) & ~np.isin(comp, dehors[dehors > 0])
-    cherche = garde & pres & gris_like & (zone_trous if zone_trous is not None else False)
+    # les reflets clairs du gris de fond entre ses mèches, au bord (plus clairs que le gris : 214 contre 176 ; une frange
+    # blanche le long des cheveux de Maëlle, 2026-10-24) : candidats aussi, s'ils sont entourés de couleur (ses cheveux),
+    # jamais sa chemise blanche (entourée de blanc et de gris)
+    lum = g.mean(axis=2)
+    clair = (teinte < 28) & (lum > G.mean() - 10) & (lum < G.mean() + 75)
+    pres_trous = (a - cv2.erode(a, np.ones((2 * bande_trous + 1, 2 * bande_trous + 1), np.uint8))).astype(bool)
+    cherche = garde & pres_trous & (gris_like | clair) & (zone_trous if zone_trous is not None else False)
     n, taches, stats, _ = cv2.connectedComponentsWithStats(cherche.astype(np.uint8), connectivity=8)
     for k in range(1, n):
         x, y, w, h, aire = stats[k]
@@ -337,16 +343,28 @@ def coller_cadre(perso, gris, cadre, camera, fond, devant):
     dehors = cv2.dilate((alpha <= 0).astype(np.uint8), np.ones((7, 7), np.uint8)) > 0
     n, taches, stats, _ = cv2.connectedComponentsWithStats(gris_du_fond.astype(np.uint8), connectivity=8)
     aire = max(int((alpha > 0).sum()), 1)
+    # seulement les grandes taches (le bloc gris) : celles qui touchaient le dehors partaient aussi, et c'étaient les plis
+    # gris de sa chemise, au bord, sous les hanches : l'ourlet de Sky sortait déchiqueté sur la banquette de l'axe 14
+    # (2026-10-24). Le gris relié au dehors, lui, est retiré au ras du trait par detoure_au_trait
     for k in range(1, n):
-        tache = taches == k
-        if stats[k, cv2.CC_STAT_AREA] > 0.003 * aire or (tache & dehors).any():
-            alpha[tache] = 0
+        if stats[k, cv2.CC_STAT_AREA] > 0.003 * aire:
+            alpha[taches == k] = 0
     # détouré au ras de son trait (detoure_au_trait) : resserré de 3 pixels, son bord perdait le trait du modèle et
     # gardait un bord blanchâtre ; avant le resserrement, un liseré du gris de fond, clair sur le miroir sombre (7e essai)
-    zone_trous = np.zeros(alpha.shape, bool)       # les trous entre ses mèches : au-dessus de ses yeux seulement
-    if points[14] and points[15] and points[1]:
-        yeux, cou = min(points[14][1], points[15][1]), points[1][1]
-        zone_trous[:max(int(yeux - 0.35 * (cou - yeux)), 0)] = True
+    # les trous entre ses mèches : toute sa tête jusqu'au cou (les mèches de Maëlle tombent sur les côtés : au-dessus des
+    # yeux seulement, une frange blanche restait le long de sa joue, 2026-10-24), sauf son visage (les yeux, le nez, la
+    # bouche : l'œil aveugle de Sky, blanc-gris entouré de peau, y était percé, 2026-10-22)
+    # (un 1er essai excluait tout le visage, une ellipse trop large : elle couvrait aussi les mèches près de l'oreille ; ici,
+    # seulement ses yeux, et les trous ne se cherchent qu'à 12 px du bord : la bouche et les dents sont plus loin)
+    zone_trous = np.zeros(alpha.shape, bool)
+    yeux = [q for q in (points[14], points[15]) if q]
+    if yeux and points[1]:
+        ey, cou = min(q[1] for q in yeux), points[1][1]
+        hh = max(cou - ey, 10.0)
+        zone_trous[:int(cou)] = True
+        yy, xx = np.ogrid[:alpha.shape[0], :alpha.shape[1]]
+        for q in yeux:
+            zone_trous &= (xx - q[0]) ** 2 + (yy - q[1]) ** 2 > (0.3 * hh) ** 2
     alpha = Image.fromarray((detoure_au_trait(gris, alpha, zone_trous=zone_trous) * 255).astype(np.uint8))
     taille_cadre = (round(cadre[2] - cadre[0]), round(cadre[3] - cadre[1]))
     coin = (round(cadre[0]), round(cadre[1]))

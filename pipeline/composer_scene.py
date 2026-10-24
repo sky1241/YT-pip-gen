@@ -72,6 +72,23 @@ def poser_objet(image, camera, fichier, x, y, largeur, z=0.75, ancre=0.5, ombre=
     return image
 
 
+def ombre_pieds(image, camera, pose, force=0.55):
+    """Debout (--pose) : une ombre de contact sous ses pieds, posée sur le sol avant lui (2026-10-24 : sans elle, Sky et
+    Maëlle sur le palier de l'axe 10 avaient l'air collés). Une ellipse floue de 64 × 50 cm sous ses pieds, à leur hauteur."""
+    a = math.radians(camera["cap"])
+    droite, avant = (-math.sin(a), math.cos(a)), (math.cos(a), math.sin(a))
+    x, y, z = pose["x"], pose["y"], pose["z"]
+    (ug, vg), (ud, vd), (ua, va), (ur, vr), (uc, vc) = projeter(camera, [
+        (x - droite[0] * 0.32, y - droite[1] * 0.32, z), (x + droite[0] * 0.32, y + droite[1] * 0.32, z),
+        (x + avant[0] * 0.25, y + avant[1] * 0.25, z), (x - avant[0] * 0.25, y - avant[1] * 0.25, z), (x, y, z)])
+    largeur, hauteur = math.hypot(ud - ug, vd - vg), max(abs(vr - va), 4)
+    calque = Image.new("L", image.size, 0)
+    ImageDraw.Draw(calque).ellipse([uc - largeur / 2, vc - hauteur / 2, uc + largeur / 2, vc + hauteur / 2],
+                                   fill=int(255 * force))
+    calque = calque.filter(ImageFilter.GaussianBlur(max(3, largeur / 12)))
+    return Image.composite(Image.new("RGB", image.size, (30, 18, 10)), image, calque)
+
+
 def composer(axe, essais):
     recalage = json.loads((DECORS / axe / "camera.json").read_text())
     camera, devant = recalage["camera"], recalage.get("devant", ())
@@ -79,6 +96,8 @@ def composer(axe, essais):
     reglages = [(nom, json.loads((ESSAIS / axe / f"{nom}.json").read_text())) for nom in essais]
     for nom, r in sorted(reglages, key=lambda e: -distance(e[1]["perso"], camera, e[1].get("pose"))):
         etapes = ESSAIS / axe / nom
+        if r.get("pose"):                   # debout : son ombre de contact d'abord, sur le sol
+            image = ombre_pieds(image, camera, r["pose"])
         x0, y0, x1, _ = r["boite"]
         taille = (x1 - x0, x1 - x0)
         if r["methode"] in ("B", "D"):

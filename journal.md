@@ -1119,3 +1119,49 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   - La mesure (b), calibrée avant les nouvelles images sur les 12 images validées du 2026-10-22 (la série n5) : leurs
     cheveux dépassent le crâne de leur squelette de 0,40 à 0,72 tête. Le seuil passe de 0,6 à 1,0 tête
     (`pipeline/mesures/protocole.py`).
+- **Les résultats du 2026-10-24, au fil de l'eau** (le protocole ci-dessus) :
+  - **Axe 14, ils tiennent leur nourriture** : sa vraie galette (Sky) et le sandwich (Maëlle), figés en entier au rendu sur
+    gris puis recollés au pixel près (l'écart sur l'objet : 2,3 et 3,0 sur 255). 3 graines sur 4 passent les mesures (Maëlle
+    3002 : netteté 93 %, sous 95). À l'œil : les mains tiennent bien l'objet, l'objet est le bon. Deux étapes ont échoué
+    avant : à un quart de la force, l'objet était redessiné en boule ; la moitié seule figée, collée à la bouche, sortait en
+    broche sur la chemise (graine 3001, refaite en fin de série).
+  - **Axe 14, ils parlent** : le guide met les avant-bras sur la table ; le modèle pose leurs mains sur leurs genoux, sous la
+    table. Ça reste un plan de dialogue utilisable (rien en main, les visages nets, Maëlle qui le regarde). Les objets posés
+    sur la table (`composer_scene.py --objets`) : à leur taille, une ombre de contact ; une pizza posée au même endroit que les
+    sauces passait devant elles : les objets se posent là où rien ne les cache (pas encore d'occultation entre objets).
+  - **Le liseré clair entre les mèches de Maëlle** : le test des trous ne se faisait qu'au-dessus des yeux ; ses mèches tombent
+    sur les côtés. Le test couvre maintenant toute la tête jusqu'au cou, sauf un disque autour de chaque œil, et seulement à
+    12 px du bord ; les reflets clairs du gris de fond (plus clairs que lui) comptent aussi. Réduit, pas entièrement parti.
+  - **Axe 10, ils descendent l'escalier** (debout, `--pose`, la caméra recalée sur 5 points, 1 à 15 px d'écart) : les
+    4 images passent les mesures (96 à 101 %). À l'œil : la scène se lit, mais **Sky debout perd ses aviateurs** (2 sur 2 ;
+    son visage fait 60 px) ; une ombre de contact sous leurs pieds ajoutée (`ombre_pieds`), sinon ils avaient l'air collés.
+    Un essai mis en file : la passe de la tête avec « aviator sunglasses », puis à 0,85 sans tag.
+  - **Axe 4, accoudés au comptoir : raté au rendu sur gris** (Sky les mains derrière la tête). Le guide de squelette vu de face
+    ne peut pas dire « les avant-bras posés vers la caméra » (ils se raccourcissent en traits courts), et « hands together »
+    dans le prompt l'a poussé vers la pose. Refait debout, les bras le long du corps : le comptoir cache le bas. Pour
+    « accoudé » : un squelette relevé sur une vraie image de la pose (ChatGPT), ou un axe de trois-quarts.
+  - **Les aviateurs de Sky debout, 3 essais** (la même image de départ, axe 10 graine 3101, et l'axe 4 graine 3201) : la passe
+    de la tête à 0,75 : pas de lunettes (0 sur 2) ; avec « aviator sunglasses » : pas de lunettes ; à 0,85 : pas de lunettes ;
+    **à 0,95 : ses aviateurs reviennent (2 sur 2)**, la tête à sa place, l'œil aveugle du bon côté. Debout, son visage fait
+    60 px : le rendu sur gris ne dessine pas les lunettes, et sous 0,95 la passe repart de ce visage-là. Règle proposée : la
+    tête à 0,95 quand il ne mange pas (debout, dialogue), 0,75 quand il mange (à 0,85-0,95, il ne mangeait plus et une
+    cigarette apparaissait, 2026-10-21). Deux images seulement : à confirmer sur plus de graines.
+  - **L'ourlet de la chemise de Sky, déchiqueté sur la banquette (axe 14)** : le nettoyage du « bloc gris » sous les hanches
+    retirait aussi les plis gris de sa chemise qui touchaient le bord. Il ne retire plus que les grandes taches ; le gris relié
+    au dehors part au ras du trait. Mieux, pas parfait (le bord de l'ourlet reste dentelé par endroits).
+- **Le verdict du protocole (2026-10-24, 20 h 40)**, une image bonne si tout passe, une scène si une graine sur deux l'est :
+
+  | Scène | Sky | Maëlle | Verdict |
+  |---|---|---|---|
+  | Axe 14, ils mangent (posture « tient », la vraie galette, le sandwich) | 1 sur 2 (3001 : la galette posée sur sa chemise, pas tenue) | 1 sur 2 (3002 : netteté 93 %) | **passe** |
+  | Axe 14, ils parlent | 0 sur 1 (les mains sous la table, pas sur la table) | 0 sur 1 (idem) | **ne passe pas** (la posture), utilisable en plan de dialogue |
+  | Axe 10, ils descendent l'escalier | 0 sur 2 à 0,75 (sans aviateurs) ; 1 sur 1 à 0,95 | 2 sur 2 | **passe avec la tête à 0,95** |
+  | Axe 4, au comptoir de Mohamed (debout) | 0 sur 2 à 0,75 (un trait doré au lieu des aviateurs) ; 1 sur 1 à 0,95 | 2 sur 2 | **passe avec la tête à 0,95** |
+  | Axe 4, accoudés | raté au rendu sur gris | — | **ne passe pas** |
+  | Les objets posés sur la table (frites, thé, pizza) | | | **passe** (taille, ombre de contact) ; pas d'occultation entre objets |
+
+  Les mesures (a)-(c) passent sur 15 images sur 16 (l'exception : Maëlle 3002, 93 %). Ce qui reste à faire, par ordre
+  d'utilité : la tête à 0,95 par défaut hors des plans où il mange (et vérifier sur 8 graines) ; « accoudé » avec un
+  squelette relevé sur une vraie image de la pose ; les mains sur la table en « parle » (un guide des mains, comme la
+  galette) ; l'occultation des objets de table par les sauces ; le liseré clair des mèches de Maëlle, réduit pas parti.
+  Planches : `~/Téléchargements/bilan45_axe14_ils_mangent.png` à `bilan49_aviateurs_095.png`.
