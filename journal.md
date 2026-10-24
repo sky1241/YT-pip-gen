@@ -1095,3 +1095,27 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   transparent montre le gris du fond (le haut du verre de bière sort en taches). Restent : le Fanta et l'Ayran du texte (une
   première planche, une erreur à corriger selon l'auteur, gardée hors du dépôt), et la bière contre le Fanta du texte, à
   trancher par l'auteur.
+- **Les essais du 2026-10-24 (l'auteur : « des angles différents, Sky et Maëlle avec la tasse, la pizza, le kebab, la
+  galette, le sandwich ; 2-3 postures ; des tests utiles pour les épisodes, avec un protocole qui dit si c'est bon »)**.
+  Le protocole, fixé avant les images :
+  - Les scènes. (1) Axe 14 (le coin de la banquette), assis : Sky tient sa vraie galette et mâche (posture « tient », la
+    bouchée se montre par une coupe, CLAUDE.md), Maëlle tient le sandwich, 2 graines chacun ; puis « parle » (les avant-bras
+    sur la table, rien en main), 1 graine chacun ; les objets de table posés en calques (frites, tasse de Patrick, pizza).
+    (2) Axe 10 (le pied de l'escalier), debout : ils viennent de descendre, Maëlle au pied de l'escalier, Sky sur le palier
+    qui marche vers la salle ; 2 graines. (3) Axe 4 (depuis le comptoir) : accoudés au comptoir de Mohamed, face à lui.
+  - Chaque image, à 1 pour 1 : (a) la netteté, silhouette ≥ 95 % et bande du bord ≥ 90 % (`pipeline/mesures/nettete.py`) ;
+    (b) la taille et la place : le haut de sa silhouette à moins de 0,6 tête du crâne de son squelette ; (c) l'objet tenu :
+    sa partie figée identique à l'objet validé (écart moyen ≤ 6 sur 255), et aucune seconde nourriture dessinée ;
+    (d) l'anatomie : deux mains au plus, cinq doigts, pas de bras en trop ; (e) l'identité : Sky, ses aviateurs et sa barbe,
+    Maëlle, ses cheveux roux et son côté rasé ; (f) la posture demandée. (a) à (c) mesurés, (c) à (f) à l'œil.
+  - Le verdict : une image est bonne si tout passe ; une scène passe si une graine sur deux est bonne (en production, on
+    tire des variantes et l'auteur choisit). Sinon : ce qui rate, pourquoi, la correction.
+  - Les objets de table : à la bonne taille (une pizza, environ un tiers de la largeur de la table), posés sur la table
+    (une ombre de contact, rien ne flotte), derrière ce qui est devant eux.
+  - Ce qui a déjà servi avant les images : la vraie galette posée dans le guide à un quart de la force sortait redessinée en
+    boule blanche et orange (le 1er essai) ; sa moitié côté nourriture est maintenant figée au rendu sur gris puis recollée
+    au pixel près, le papier redessiné sous ses doigts. Collée à la bouche, le modèle dessinait en plus sa propre nourriture
+    à la bouche (2e essai) : la galette est maintenant tenue sous le menton, il mâche (« tient »).
+  - La mesure (b), calibrée avant les nouvelles images sur les 12 images validées du 2026-10-22 (la série n5) : leurs
+    cheveux dépassent le crâne de leur squelette de 0,40 à 0,72 tête. Le seuil passe de 0,6 à 1,0 tête
+    (`pipeline/mesures/protocole.py`).

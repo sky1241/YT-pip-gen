@@ -27,7 +27,9 @@ def projeter(camera, points):
     v = np.atleast_2d(np.asarray(points, float)) - np.array([camera["x"], camera["y"], camera["hauteur"]])
     x, y, z = v @ droite, v[:, 2], v @ avant
     z = np.where(z > 0.05, z, np.nan)
-    return np.stack([LARGEUR / 2 + focale * x / z, HAUTEUR / 2 - focale * y / z], axis=1)
+    # « decalage » : l'horizon décalé (en pixels) sans incliner la caméra, comme un objectif à décentrement : ChatGPT garde
+    # les verticales verticales même quand la vue plonge (l'axe 4, derrière le comptoir, 2026-10-24)
+    return np.stack([LARGEUR / 2 + focale * x / z, HAUTEUR / 2 + camera.get("decalage", 0) - focale * y / z], axis=1)
 
 
 def nelder_mead(f, depart, pas, iterations=4000):
@@ -57,21 +59,31 @@ def nelder_mead(f, depart, pas, iterations=4000):
 
 def recaler(chemin):
     donnees = json.loads(open(chemin).read())
+    inconnues = INCONNUES + (("decalage",) if "decalage" in donnees["depart"] else ())
     plan = np.array([p["plan"] for p in donnees["points"]], float)
     pixels = np.array([p["pixel"] for p in donnees["points"]], float)
 
-    def erreur(v):
-        ecart = projeter(dict(zip(INCONNUES, v)), plan) - pixels
-        return float(np.nansum(ecart ** 2)) + 1e9 * int(np.isnan(ecart).any())
+    # « tenir » : rester près de la caméra de la vue en volumes (le fond suit cette vue) ; sans ça, sur l'axe 4, la caméra
+    # partait à 85 m avec un champ de 6° (les tables peintes ne sont pas tout à fait celles du plan)
+    echelles = {"x": 0.5, "y": 0.5, "hauteur": 0.2, "cap": 5.0, "champ": 6.0, "decalage": 150.0}
+    tenir = float(donnees.get("tenir", 0.0))
+    v0 = np.array([donnees["depart"][k] for k in inconnues], float)
+    s0 = np.array([echelles[k] for k in inconnues])
 
-    depart = [donnees["depart"][k] for k in INCONNUES]
+    def erreur(v):
+        ecart = projeter(dict(zip(inconnues, v)), plan) - pixels
+        prior = tenir * float(np.sum(((np.asarray(v) - v0) / s0) ** 2))
+        return float(np.nansum(ecart ** 2)) + prior + 1e9 * int(np.isnan(ecart).any())
+
+    depart = [donnees["depart"][k] for k in inconnues]
     meilleur = None
     # plusieurs départs autour de la caméra de la vue en volumes, pour ne pas rester dans un creux local
+    n = len(inconnues)
     for decalage in ([0, 0, 0, 0, 0], [-0.4, 0.4, 0.1, 7, -6], [0.4, -0.4, -0.1, -8, 6], [-0.9, 0.7, 0, -3, -11]):
-        v, e = nelder_mead(erreur, np.array(depart) + decalage, [0.3, 0.3, 0.1, 5, 5])
+        v, e = nelder_mead(erreur, np.array(depart) + (decalage + [0] * n)[:n], ([0.3, 0.3, 0.1, 5, 5] + [40])[:n])
         if meilleur is None or e < meilleur[1]:
             meilleur = (v, e)
-    camera = {k: round(float(c), 3) for k, c in zip(INCONNUES, meilleur[0])}
+    camera = {k: round(float(c), 3) for k, c in zip(inconnues, meilleur[0])}
     calcules = projeter(camera, plan)
     for p, c in zip(donnees["points"], calcules):
         p["ecart_px"] = round(float(np.hypot(*(c - np.array(p["pixel"])))), 1)

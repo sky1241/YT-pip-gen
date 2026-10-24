@@ -1,0 +1,87 @@
+{
+  "_note": "La caméra du fond de l'axe 10 (pied-de-l-escalier), recalée sur des points repérés à la main sur le fond peint (pipeline/recaler_camera.py, 2026-10-24). Le palier peint est une marche d'environ 7 cm (le plan : 3 cm). Sert à poser un perso debout sur le palier, à sa place et à sa taille.",
+  "fond": "image/decors/kebab/pied-de-l-escalier/fond_v1.png",
+  "depart": {
+    "x": 5.8,
+    "y": 7.7,
+    "hauteur": 1.6,
+    "cap": 343.0,
+    "champ": 72.0
+  },
+  "points": [
+    {
+      "quoi": "poteau du bas de la rampe, le dessus de son chapeau",
+      "plan": [
+        9.35,
+        6.425,
+        1.25
+      ],
+      "pixel": [
+        745,
+        566
+      ],
+      "ecart_px": 15.1
+    },
+    {
+      "quoi": "le coin du mur de droite et de la devanture, au plafond",
+      "plan": [
+        11.0,
+        8.0,
+        3.0
+      ],
+      "pixel": [
+        1163,
+        137
+      ],
+      "ecart_px": 11.4
+    },
+    {
+      "quoi": "le palier, coin arrière droit (contre le mur), le dessus",
+      "plan": [
+        10.9,
+        7.9,
+        0.07
+      ],
+      "pixel": [
+        1152,
+        800
+      ],
+      "ecart_px": 13.5
+    },
+    {
+      "quoi": "le palier, coin avant droit, le dessus",
+      "plan": [
+        9.4,
+        7.9,
+        0.07
+      ],
+      "pixel": [
+        1193,
+        925
+      ],
+      "ecart_px": 3.8
+    },
+    {
+      "quoi": "le palier, coin avant droit, au sol",
+      "plan": [
+        9.4,
+        7.9,
+        0.0
+      ],
+      "pixel": [
+        1197,
+        946
+      ],
+      "ecart_px": 0.9
+    }
+  ],
+  "devant": [],
+  "_note_devant": "aucun objet devant : les persos se posent sur le palier, à gauche du pot de fleur et à droite des chaises du premier plan",
+  "camera": {
+    "x": 5.222,
+    "y": 7.324,
+    "hauteur": 1.383,
+    "cap": 348.928,
+    "champ": 63.135
+  }
+}

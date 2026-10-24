@@ -1,0 +1,142 @@
+{
+ "_note": "La caméra du fond de l'axe 4 (depuis-le-comptoir), recalée sur des points repérés à la main sur le fond peint (pipeline/recaler_camera.py, 2026-10-24). La vue plonge, mais ChatGPT a gardé les verticales verticales : l'horizon est décalé (« decalage ») au lieu d'incliner la caméra. Les tables peintes sont plus larges que celles du plan (d'environ un quart).",
+ "fond": "image/decors/kebab/depuis-le-comptoir/fond_v1.png",
+ "depart": {
+  "x": 1.65,
+  "y": 4.0,
+  "hauteur": 1.6,
+  "cap": 345.0,
+  "champ": 72.0,
+  "decalage": -200.0
+ },
+ "points": [
+  {
+   "quoi": "table du milieu (A), coin du fond à gauche, le dessus",
+   "plan": [
+    5.9,
+    3.0,
+    0.75
+   ],
+   "pixel": [
+    790,
+    492
+   ],
+   "ecart_px": 13.5
+  },
+  {
+   "quoi": "table du milieu (A), coin de devant à gauche, le dessus",
+   "plan": [
+    5.1,
+    3.0,
+    0.75
+   ],
+   "pixel": [
+    766,
+    523
+   ],
+   "ecart_px": 7.2
+  },
+  {
+   "quoi": "table de droite (C), coin du fond à gauche, le dessus",
+   "plan": [
+    8.6,
+    3.6,
+    0.75
+   ],
+   "pixel": [
+    960,
+    426
+   ],
+   "ecart_px": 11.9
+  },
+  {
+   "quoi": "table de droite (C), coin du fond à droite, le dessus",
+   "plan": [
+    8.6,
+    4.4,
+    0.75
+   ],
+   "pixel": [
+    1128,
+    426
+   ],
+   "ecart_px": 43.5
+  },
+  {
+   "quoi": "le poteau du bas de la rampe, le dessus",
+   "plan": [
+    9.35,
+    6.425,
+    1.25
+   ],
+   "pixel": [
+    1353,
+    353
+   ],
+   "ecart_px": 32.6
+  },
+  {
+   "quoi": "le miroir, son coin droit en bas",
+   "plan": [
+    8.6,
+    0.05,
+    1.05
+   ],
+   "pixel": [
+    480,
+    362
+   ],
+   "ecart_px": 0.3
+  },
+  {
+   "quoi": "le miroir, son coin droit en haut",
+   "plan": [
+    8.6,
+    0.05,
+    1.95
+   ],
+   "pixel": [
+    480,
+    207
+   ],
+   "ecart_px": 34.6
+  }
+ ],
+ "devant": [
+  {
+   "quoi": "le comptoir de Mohamed et la vitre des salades (sous le haut de la vitre)",
+   "pixels": [
+    [
+     0,
+     638
+    ],
+    [
+     530,
+     648
+    ],
+    [
+     1536,
+     735
+    ],
+    [
+     1536,
+     1024
+    ],
+    [
+     0,
+     1024
+    ]
+   ]
+  }
+ ],
+ "tenir": 400.0,
+ "camera": {
+  "x": 1.506,
+  "y": 3.809,
+  "hauteur": 1.615,
+  "cap": 347.67,
+  "champ": 73.307,
+  "decalage": -225.691
+ },
+ "_note_devant": "relevé sur le fond (2026-10-24) : le haut de l'inox à gauche, puis la barre du haut de la vitre ; un perso accoudé de l'autre côté est caché en dessous"
+}

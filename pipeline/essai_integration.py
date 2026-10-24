@@ -74,9 +74,71 @@ FORCE_POSE = 0.9
 TROU_MAX = 0.02                     # un trou plus petit que 2 % du perso est bouché ; au-delà (entre un bras et le corps), il reste
 
 
+POSTURE = ["mange"]                 # la posture assise (option --posture) : « mange », « tient » (un vrai objet) ou « parle »
+
+
+POSE = {}                           # debout, ailleurs que sur la banquette (option --pose x,y,z,cap,posture) : { perso: {...} }
+
+
+def position(perso):
+    """Sa place au sol, en mètres : celle de --pose s'il est debout, sinon sa place sur la banquette du fond."""
+    if perso in POSE:
+        return POSE[perso]["x"], POSE[perso]["y"]
+    return PERSOS[perso]["x"], 0.6
+
+
+def corps_debout(perso):
+    """Les points de son corps debout (2026-10-24) : à (x, y), les pieds à z, tourné vers `cap` (degrés, dans le plan : 0 vers
+    +x, 90 vers la rue) ; « debout » (les bras le long du corps) ou « marche » (la jambe gauche en avant, les bras qui
+    balancent). Les proportions d'un adulte (la tête fait 1/7,5 de sa taille)."""
+    p, q = PERSOS[perso], POSE[perso]
+    t, ep = p["taille"], p["epaules"] / 2
+    x, y, z0, cap, posture = q["x"], q["y"], q["z"], q["cap"], q["posture"]
+    a = math.radians(cap)
+    avant, gauche = (math.cos(a), math.sin(a)), (math.sin(a), -math.cos(a))
+    def w(lat, av, z):                  # lat : vers sa gauche ; av : vers l'avant
+        return (x + lat * gauche[0] + av * avant[0], y + lat * gauche[1] + av * avant[1], z)
+    tete = t / 7.5
+    m = 1.0 if posture == "marche" else 0.0
+    # accoudé (à un comptoir, sa hauteur dans « appui ») : le buste penché en avant, les avant-bras posés devant lui, les
+    # mains l'une près de l'autre
+    pen = 0.20 if posture == "accoude" else 0.0          # l'avancée de ses épaules (m)
+    baisse = 0.06 if posture == "accoude" else 0.0       # la tête et les épaules un peu plus bas
+    crane = z0 + t - baisse
+    appui = q.get("appui", 1.08)
+    if posture == "accoude":
+        bras_d = [w(-ep - 0.05, pen + 0.16, appui + 0.03), w(-0.10, pen + 0.40, appui + 0.03)]
+        bras_g = [w(ep + 0.05, pen + 0.16, appui + 0.03), w(0.10, pen + 0.40, appui + 0.03)]
+    else:
+        bras_d = [w(-ep - 0.03, 0.06 * m, z0 + 0.62 * t), w(-ep - 0.02, 0.15 * m, z0 + 0.475 * t)]
+        bras_g = [w(ep + 0.03, -0.05 * m, z0 + 0.62 * t), w(ep + 0.02, -0.12 * m, z0 + 0.475 * t)]
+    squelette = [
+        w(0, pen + 0.10, crane - 0.62 * tete), w(0, pen, z0 + 0.84 * t - baisse),                     # 0 le nez, 1 le cou
+        w(-ep, pen - 0.01, z0 + 0.815 * t - baisse), *bras_d,                                         # 2-4 droits
+        w(ep, pen - 0.01, z0 + 0.815 * t - baisse), *bras_g,                                          # 5-7 gauches
+        w(-0.09, 0.0, z0 + 0.52 * t), w(-0.095, -0.05 * m, z0 + 0.285 * t), w(-0.09, -0.18 * m, z0 + 0.045 * t + 0.04 * m),  # 8-10
+        w(0.09, 0.0, z0 + 0.52 * t), w(0.095, 0.12 * m, z0 + 0.285 * t), w(0.09, 0.24 * m, z0 + 0.045 * t),                   # 11-13
+        w(-0.032, pen + 0.085, crane - 0.47 * tete), w(0.032, pen + 0.085, crane - 0.47 * tete),      # 14-15 les yeux
+        w(-0.075, pen - 0.005, crane - 0.5 * tete), w(0.075, pen - 0.005, crane - 0.5 * tete),        # 16-17 les oreilles
+    ]
+    contour = [w(-0.16, pen, crane + 0.12), w(0, pen, crane + 0.15), w(0.16, pen, crane + 0.12),
+               w(-0.26, pen, crane - tete / 2), w(0.26, pen, crane - tete / 2),
+               w(-ep - 0.12, pen + 0.45, appui + 0.1 if posture == "accoude" else z0 + 0.5 * t),
+               w(ep + 0.12, pen + 0.45, appui + 0.1 if posture == "accoude" else z0 + 0.5 * t),
+               w(-ep - 0.1, 0, z0 + 0.8 * t), w(ep + 0.1, 0, z0 + 0.8 * t),
+               w(-ep - 0.12, 0.2, z0 + 0.45 * t), w(ep + 0.12, -0.15, z0 + 0.45 * t),
+               w(-0.25, 0, z0 + 0.52 * t), w(0.25, 0, z0 + 0.52 * t),
+               w(-0.22, -0.3, z0), w(0.22, -0.3, z0), w(-0.22, 0.35, z0), w(0.22, 0.35, z0)]
+    jambes = [w(-0.18, 0, z0 + 0.52 * t), w(0.18, 0, z0 + 0.52 * t), w(0.15, 0.24 * m, z0), w(-0.15, -0.18 * m, z0)]
+    return {"crane": w(0, pen + 0.03, crane), "menton": w(0, pen + 0.05, crane - tete), "squelette": squelette, "contour": contour,
+            "jambes": jambes}
+
+
 def corps(perso):
     """Les points de son corps assis, en mètres : proportions moyennes d'un adulte (la tête fait 1/7,5 de sa taille, le crâne
     est à 0,52 de sa taille au-dessus du siège), penché vers la table pour manger."""
+    if perso in POSE:
+        return corps_debout(perso)
     p = PERSOS[perso]
     t, x, ep = p["taille"], p["x"], p["epaules"] / 2
     siege, y = 0.45, 0.62
@@ -86,11 +148,21 @@ def corps(perso):
     # son squelette au format OpenPose (l'ordre COCO à 18 points), pour le guide de pose. Il regarde vers la rue (+y) ;
     # sa droite est du côté des x petits. Assis, les coudes au bord de la table, les mains à la bouche (il mange)
     mains = crane - 1.05 * tete
+    if POSTURE[0] == "parle":           # il parle, les avant-bras sur la table, les mains posées devant lui (2026-10-24)
+        coude_d, poignet_d = (x - ep - 0.03, 0.88, 0.79), (x - 0.12, 1.08, 0.77)
+        coude_g, poignet_g = (x + ep + 0.03, 0.88, 0.79), (x + 0.12, 1.08, 0.77)
+    elif POSTURE[0] == "tient":         # un vrai objet (--objet <fichier>) : les mains devant la poitrine, l'objet monte à sa
+        bas = crane - 1.75 * tete       # bouche ; avec les mains à la bouche, la galette tombait à l'horizontale (2026-10-24)
+        coude_d, poignet_d = (x - ep - 0.02, 0.82, 0.79), (x - 0.06, y + 0.20, bas)
+        coude_g, poignet_g = (x + ep + 0.02, 0.82, 0.79), (x + 0.06, y + 0.20, bas)
+    else:
+        coude_d, poignet_d = (x - ep - 0.02, 0.80, 0.80), (x - 0.05, y + 0.22, mains)
+        coude_g, poignet_g = (x + ep + 0.02, 0.80, 0.80), (x + 0.05, y + 0.22, mains)
     squelette = [
         (x, y + 0.10, crane - 0.62 * tete),                                   # 0 le nez
         (x, 0.57, epaules + 0.02),                                            # 1 le cou
-        (x - ep, 0.55, epaules), (x - ep - 0.02, 0.80, 0.80), (x - 0.05, y + 0.22, mains),   # 2-4 l'épaule, le coude, le poignet droits
-        (x + ep, 0.55, epaules), (x + ep + 0.02, 0.80, 0.80), (x + 0.05, y + 0.22, mains),   # 5-7 les gauches
+        (x - ep, 0.55, epaules), coude_d, poignet_d,                          # 2-4 l'épaule, le coude, le poignet droits
+        (x + ep, 0.55, epaules), coude_g, poignet_g,                          # 5-7 les gauches
         (x - 0.15, 0.50, siege + 0.05), (x - 0.15, 1.00, siege + 0.07), (x - 0.13, 1.05, 0.08),  # 8-10 la hanche, le genou, la cheville droits
         (x + 0.15, 0.50, siege + 0.05), (x + 0.15, 1.00, siege + 0.07), (x + 0.13, 1.05, 0.08),  # 11-13 les gauches
         (x - 0.032, y + 0.085, crane - 0.47 * tete), (x + 0.032, y + 0.085, crane - 0.47 * tete),  # 14-15 les yeux
@@ -249,8 +321,8 @@ def coller_cadre(perso, gris, cadre, camera, fond, devant):
     points = [None if q is None else ((u - cadre[0]) * c, (v - cadre[1]) * c)
               for q, (u, v) in zip(corps(perso)["squelette"],
                                     (projeter(camera, [q])[0] if q is not None else (0, 0) for q in corps(perso)["squelette"]))]
-    x = PERSOS[perso]["x"]
-    (_, h1), (_, h0) = projeter(camera, [(x, 0.6, 1.0), (x, 0.6, 0.0)])
+    x, y_p = position(perso)
+    (_, h1), (_, h0) = projeter(camera, [(x, y_p, 1.0), (x, y_p, 0.0)])
     alpha = np.asarray(detourage_net(gris), np.float32) * np.asarray(forme_jambes(points, (h0 - h1) * c, CADRE), np.float32) / 255
     # sous ses hanches, le gris du fond lui-même (le bloc gris sur lequel le modèle l'assied, son ombre entre ses jambes)
     # s'en va : un gris sans couleur, pas plus clair que le fond, en grande tache ou qui touche le dehors de sa silhouette.
@@ -300,8 +372,8 @@ def masque_corps(perso, camera, boite, k, taille=TRAVAIL):
     c = corps(perso)
     p = vers(squelette_vu(perso, camera))
     (cx, cy), (mx, my) = vers([c["crane"], c["menton"]])
-    x = PERSOS[perso]["x"]
-    (_, h1), (_, h0) = projeter(camera, [(x, 0.6, 1.0), (x, 0.6, 0.0)])
+    x, y_p = position(perso)
+    (_, h1), (_, h0) = projeter(camera, [(x, y_p, 1.0), (x, y_p, 0.0)])
     metre = (h0 - h1) * k                          # pixels par mètre, à sa place
     forme = Image.new("L", (taille, taille), 0)
     d = ImageDraw.Draw(forme)
@@ -355,6 +427,10 @@ def place(perso, camera, taille_fond, devant=()):
 def angle_vu(perso, camera):
     """L'angle sous lequel la caméra le voit, en degrés : 0 de face, positif quand elle est sur sa droite (il regarde vers la
     rue, +y ; sa droite est du côté des x petits). Sur l'axe 6 : 37° ; sur l'axe 14 : 33°."""
+    if perso in POSE:                   # debout, tourné vers son cap : le même angle, mesuré dans son repère
+        a = math.radians(POSE[perso]["cap"])
+        vx, vy = camera["x"] - POSE[perso]["x"], camera["y"] - POSE[perso]["y"]
+        return math.degrees(math.atan2(vx * -math.sin(a) + vy * math.cos(a), vx * math.cos(a) + vy * math.sin(a)))
     dx, dy = camera["x"] - PERSOS[perso]["x"], camera["y"] - 0.62
     return math.degrees(math.atan2(-dx, dy))
 
@@ -407,7 +483,8 @@ def prompt(perso, cadrage, fond_gris=False, angle="three-quarter view, facing ri
     morceaux += [cadrage, angle]
     if cadrage != "portrait, close-up":
         morceaux.append(ACTION)
-    morceaux.append("sitting, simple background, grey background" if fond_gris else DECOR)
+    assise = "standing" if perso in POSE else "sitting"
+    morceaux.append(f"{assise}, simple background, grey background" if fond_gris else DECOR)
     tags = ", ".join(morceaux + [QUALITE]).split(", ")
     vus = []
     for t in tags:                      # un tag une seule fois (les traits de la v3 et les tags de production se recoupent)
@@ -652,6 +729,31 @@ def rouleau(p1, p2, largeur, taille=TRAVAIL):
     return calque
 
 
+def objet_reel(fichier, p1, p2, largeur, taille=TRAVAIL):
+    """Un objet découpé (image/accessoires/…, RGBA) à la place du rouleau factice (2026-10-24) : tourné et mis à l'échelle de
+    p1 (le bout tenu, sous ses mains) à p2 (sa bouche). Son bout le plus haut sur l'image découpée (l'entame de la galette, le
+    haut du sandwich) va à la bouche ; ses proportions sont gardées, sa largeur pas plus de 1,6 fois `largeur` (le reste du
+    trajet vers ses mains reste vide). Rend l'image RGBA du calque."""
+    taille = (taille, taille) if isinstance(taille, int) else taille
+    im = np.asarray(Image.open(fichier).convert("RGBA"))
+    ys, xs = np.nonzero(im[..., 3] > 128)
+    c = np.array([xs.mean(), ys.mean()])
+    pts = np.stack([xs, ys], 1) - c
+    _, _, vt = np.linalg.svd(pts, full_matrices=False)
+    proj = pts @ vt[0]
+    a, b = c + vt[0] * proj.min(), c + vt[0] * proj.max()
+    haut, bas = (a, b) if a[1] < b[1] else (b, a)
+    longueur_src = float(np.linalg.norm(haut - bas))
+    largeur_src = float(np.ptp(pts @ vt[1]))
+    k = math.hypot(p2[0] - p1[0], p2[1] - p1[1]) / longueur_src
+    k = min(k, 1.9 * largeur / largeur_src)
+    theta = math.atan2(p2[1] - p1[1], p2[0] - p1[0]) - math.atan2(haut[1] - bas[1], haut[0] - bas[0])
+    R = k * np.array([[math.cos(theta), -math.sin(theta)], [math.sin(theta), math.cos(theta)]])
+    M = np.hstack([R, (np.array(p2) - R @ haut)[:, None]]).astype(np.float32)
+    calque = cv2.warpAffine(im, M, taille, flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_CONSTANT, borderValue=(0, 0, 0, 0))
+    return Image.fromarray(calque, "RGBA")
+
+
 def place_objet(perso, camera, vers, metre_px, tete_px):
     """La galette factice à sa place, d'après son squelette : de sa bouche (sous le nez) vers ses mains, et au-delà (le bout
     tenu, dans son papier). vers : des pixels du fond vers les coordonnées voulues ; metre_px, tete_px : un mètre et la hauteur
@@ -659,6 +761,8 @@ def place_objet(perso, camera, vers, metre_px, tete_px):
     sq = squelette_vu(perso, camera)
     nez, p4, p7 = (vers(*projeter(camera, [sq[i]])[0]) for i in (0, 4, 7))
     bouche = (nez[0], nez[1] + 0.28 * tete_px)
+    if POSTURE[0] == "tient":           # tenu devant lui, sous le menton : il mâche (la bouchée se montre par une coupe,
+        bouche = (nez[0], nez[1] + 1.0 * tete_px)   # CLAUDE.md) ; à la bouche, le modèle dessinait sa propre nourriture
     milieu = ((p4[0] + p7[0]) / 2, (p4[1] + p7[1]) / 2)
     dx, dy = milieu[0] - bouche[0], milieu[1] - bouche[1]
     longueur = math.hypot(dx, dy) or 1.0
@@ -777,7 +881,7 @@ def interieur_silhouette(silhouette, bord=6):
     return Image.fromarray((cv2.GaussianBlur(a, (0, 0), 1.5) * 255).astype(np.uint8))
 
 
-def passe_mains(perso, image, tete, graine, prefixe, angle, squelette, debruitage=0.5, silhouette=None):
+def passe_mains(perso, image, tete, graine, prefixe, angle, squelette, debruitage=0.5, silhouette=None, protege=None):
     """La passe des mains (2026-10-22 ; la recherche : ADetailer et FaceDetailer font de même) : un seul gros plan sur ses deux
     mains et ce qu'elles tiennent, placé par les poignets de son squelette (sans détecteur de mains), de 3 fois la taille d'une
     main plus leur écart, agrandi à 1024, repassé par le modèle avec son LoRA (0,5, « extra arms » en négatif), recollé net
@@ -811,6 +915,9 @@ def passe_mains(perso, image, tete, graine, prefixe, angle, squelette, debruitag
     neg = negatif(perso) + ", extra arms, extra hands, bad hands, extra digits, fused fingers, cigarette, smoking"
     refait = diffusion(gros, masque, positif, PERSOS[perso]["lora"], graine, debruitage, f"{prefixe}_mains", neg)
     colle = net(masque)
+    if protege is not None:             # l'objet qu'il tient n'est pas repassé (comme dans la passe de la tête)
+        colle = Image.fromarray((np.asarray(colle, np.float32) * (1 - np.asarray(
+            protege.crop(boite).resize((TRAVAIL, TRAVAIL), Image.LANCZOS), np.float32) / 255)).astype(np.uint8))
     if silhouette is not None:          # le bord de sa silhouette gardé tel quel
         colle = Image.fromarray((np.asarray(colle, np.float32) * np.asarray(
             interieur_silhouette(silhouette).crop(boite).resize((TRAVAIL, TRAVAIL), Image.LANCZOS), np.float32) / 255
@@ -882,6 +989,25 @@ def main():
         # 4, le 2026-10-21) ; il tient « de la nourriture », la galette posée dans le guide
         ACTION = "eating, biting, holding food with both hands"
         NEGATIF_EN_PLUS[:] = ["burrito", "sandwich", "taco", "hamburger", "cigarette"]
+    if "--posture" in options:          # une autre posture que « mange » (corps, POSTURE)
+        POSTURE[0] = options[options.index("--posture") + 1]
+        if POSTURE[0] == "tient":
+            ACTION = "holding food with both hands, food in front of chest, closed mouth"
+            NEGATIF_EN_PLUS[:] = ["biting", "open mouth", "food in mouth", "burrito", "taco", "hamburger", "cigarette"]
+        if POSTURE[0] == "parle":
+            ACTION = "sitting, talking, forearms on table, hands on table"
+            NEGATIF_EN_PLUS[:] = ["food", "eating", "holding", "cigarette"]
+    if "--pose" in options:             # --pose x,y,z,cap,posture : debout (corps_debout)
+        champs = options[options.index("--pose") + 1].split(",")
+        x_, y_, z_, cap_, posture_ = champs[:5]
+        POSE[perso] = {"x": float(x_), "y": float(y_), "z": float(z_), "cap": float(cap_), "posture": posture_}
+        if len(champs) > 5:
+            POSE[perso]["appui"] = float(champs[5])
+        ACTION = {"marche": "walking, full body", "debout": "standing, full body, arms at sides",
+                  "accoude": "standing, leaning forward, forearms resting, hands together"}.get(posture_, posture_)
+        NEGATIF_EN_PLUS[:] = ["sitting", "chair", "food", "holding", "cigarette"]
+    if "--action" in options:
+        ACTION = options[options.index("--action") + 1]
     recomposer = "--recomposer" in options
     axe = options[options.index("--axe") + 1] if "--axe" in options else AXE_PAR_DEFAUT
     AXE = DECORS / axe
@@ -940,7 +1066,8 @@ def main():
     pose.save(etapes / "0_pose.png")
     reglages = {"perso": perso, "methode": methode, "graine": graine, "lora": PERSOS[perso]["lora"], "axe": axe,
                 "camera": camera, "boite": boite, "tete_px": round(tete["hauteur"], 1), "angle": angle,
-                "prompt": prompt(perso, "cowboy shot", angle=angle), "fond": fond_fichier.name}
+                "prompt": prompt(perso, "cowboy shot", angle=angle), "fond": fond_fichier.name,
+                "pose": POSE.get(perso), "posture": POSTURE[0] if perso not in POSE else POSE[perso]["posture"]}
     if recomposer:
         reglages = json.loads((SORTIE / f"{prefixe}.json").read_text())
         image = Image.open(etapes / "6_apres-visage.png").convert("RGB")
@@ -951,7 +1078,7 @@ def main():
             alpha_fond.crop(boite).resize((TRAVAIL, TRAVAIL), Image.LANCZOS).save(etapes / "3_detourage.png")
     elif depuis:
         source = f"{perso}_{methode}_{graine}" + ("" if depuis == "base" else f"_{depuis}")
-        for f in ("3_zone.png", "2_sur-gris.png", "3_detourage.png", "4_colle-fond.png"):
+        for f in ("3_zone.png", "2_sur-gris.png", "3_detourage.png", "4_colle-fond.png", "2_objet.png"):
             if (SORTIE / source / f).exists():
                 shutil.copy(SORTIE / source / f, etapes / f)
         image = Image.open(SORTIE / source / ("6_apres-visage.png" if depuis_visage else "5_avant-visage.png")).convert("RGB")
@@ -986,16 +1113,29 @@ def main():
         jambes = [vers_cadre(u, v) for u, v in projeter(camera, corps(perso)["jambes"])]
         guide = silhouette(perso, Image.new("RGB", CADRE), None, tete_cadre, jambes)
         objet_cadre = None
+        fige = None
         if "--objet" in options:
             # la galette factice (--objet), posée dans le guide avant le rendu : le modèle dessine ses mains autour d'elle, et
             # elle reste presque telle quelle (un quart de la force) ; la même sur toutes les graines (2026-10-21). Collée
             # après coup dans le gros plan, elle flottait devant son menton, et la nourriture du modèle restait à côté
-            x_p = PERSOS[perso]["x"]
-            (_, h1), (_, h0) = projeter(camera, [(x_p, 0.6, 1.0), (x_p, 0.6, 0.0)])
+            x_p, y_p = position(perso)
+            (_, h1), (_, h0) = projeter(camera, [(x_p, y_p, 1.0), (x_p, y_p, 0.0)])
             bout, bouche, largeur_objet = place_objet(perso, camera, vers_cadre, (h0 - h1) * c, tete["hauteur"] * c)
-            calque = rouleau(bout, bouche, largeur_objet, taille=CADRE)
+            i = options.index("--objet") + 1
+            fichier_objet = options[i] if i < len(options) and options[i].endswith(".png") else None
+            calque = (objet_reel(RACINE / fichier_objet, bout, bouche, largeur_objet, taille=CADRE) if fichier_objet
+                      else rouleau(bout, bouche, largeur_objet, taille=CADRE))
+            reglages["objet_fichier"] = fichier_objet
             guide.paste(calque, (0, 0), calque)
             objet_cadre = calque.split()[3]
+            if fichier_objet:
+                # un vrai objet : sa moitié côté bouche (la nourriture, ce qui le fait reconnaître) est figée au rendu sur gris,
+                # puis recollée au pixel près ; l'autre moitié (le papier) est redessinée, pour que ses doigts s'y posent.
+                # Au premier essai (2026-10-24), tout l'objet à un quart de la force : redessiné en boule blanche et orange
+                # 3e essai : l'objet entier figé (la moitié seule, posée sous le menton, sortait comme une broche sur sa
+                # chemise, et ses mains tenaient autre chose)
+                fige = objet_cadre.filter(ImageFilter.MinFilter(3))
+                objet_cadre = fige
             reglages["objet"] = {"bout": [round(v, 1) for v in bout], "bouche": [round(v, 1) for v in bouche],
                                  "largeur": round(largeur_objet, 1)}
         guide.save(etapes / "1_guide.png")
@@ -1015,11 +1155,18 @@ def main():
             reglages["gris_repris_de"] = gris_b.parent.name
         else:
             masque_gris = None
-            if objet_cadre is not None:
+            if objet_cadre is not None and fige is None:
                 a_objet = np.asarray(objet_cadre, np.float32) / 255
                 masque_gris = Image.fromarray((255 * (1 - 0.75 * a_objet)).astype(np.uint8)).filter(ImageFilter.GaussianBlur(2))
+            elif fige is not None:
+                a_tout = np.asarray(calque.split()[3], np.float32) / 255
+                a_fige = np.asarray(fige, np.float32) / 255
+                masque_gris = Image.fromarray((255 * (1 - np.maximum(a_fige, 0.55 * a_tout))).astype(np.uint8)).filter(
+                    ImageFilter.GaussianBlur(2))
             gris = diffusion(guide, masque_gris, reglages["prompt_gris"], PERSOS[perso]["lora"], graine, 0.9,
                              f"{prefixe}_gris", negatif(perso, gris=True), pose_cadre)
+            if fige is not None:                  # la partie figée recollée au pixel près
+                gris = Image.composite(calque.convert("RGB"), gris, fige.filter(ImageFilter.GaussianBlur(0.8)))
         gris.save(etapes / "2_sur-gris.png")
         if "--gris-seul" in options:    # le rendu sur gris seul, repris ensuite par --gris-de
             reglages["duree_s"] = round(time.time() - debut)
@@ -1076,7 +1223,7 @@ def main():
         if visage_normal and methode in ("C", "D"):
             liberer()                   # le modèle ordinaire après celui d'inpainting : la carte vidée d'abord
         objet_travail = Image.open(etapes / "2_objet.png").convert("L") if (etapes / "2_objet.png").exists() else None
-        silhouette = (Image.open(etapes / "3_detourage.png").convert("L")
+        bord_garde = (Image.open(etapes / "3_detourage.png").convert("L")
                       if "--visage-garde-bord" in options and (etapes / "3_detourage.png").exists() else None)
         image, boite_visage = passe_visage(
             perso, image, tete_travail, graine, prefixe, angle, fooocus=methode in ("C", "D") and not visage_normal,
@@ -1086,7 +1233,7 @@ def main():
             reference=Image.open(options[options.index("--visage-reference") + 1]).convert("RGB")
             if "--visage-reference" in options else None,
             poids_reference=float(options[options.index("--visage-reference-poids") + 1])
-            if "--visage-reference-poids" in options else 0.6, silhouette=silhouette)
+            if "--visage-reference-poids" in options else 0.6, silhouette=bord_garde)
         if "--visage-reference" in options:
             reglages["visage_reference"] = {"image": options[options.index("--visage-reference") + 1],
                                             "poids": float(options[options.index("--visage-reference-poids") + 1])
@@ -1097,7 +1244,7 @@ def main():
             force_mains = (float(options[options.index("--mains-debruitage") + 1]) if "--mains-debruitage" in options
                            else 0.5)
             image, boite_mains = passe_mains(perso, image, tete_travail, graine, prefixe, angle, points, force_mains,
-                                             silhouette=silhouette)
+                                             silhouette=bord_garde, protege=objet_travail)
             reglages["mains"] = {"debruitage": force_mains, "boite": boite_mains}
         reglages["visage_passe"] = {"debruitage": visage_debruitage, "tags": visage_tags, "negatif": visage_negatif}
         reglages["retires"] = list(RETIRES)
