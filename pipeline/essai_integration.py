@@ -1152,6 +1152,7 @@ def main():
         guide = silhouette(perso, Image.new("RGB", CADRE), None, tete_cadre, jambes)
         objet_cadre = None
         fige = None
+        guide_objet = None
         if "--objet" in options:
             # la galette factice (--objet), posée dans le guide avant le rendu : le modèle dessine ses mains autour d'elle, et
             # elle reste presque telle quelle (un quart de la force) ; la même sur toutes les graines (2026-10-21). Collée
@@ -1172,8 +1173,33 @@ def main():
                 # Au premier essai (2026-10-24), tout l'objet à un quart de la force : redessiné en boule blanche et orange
                 # 3e essai : l'objet entier figé (la moitié seule, posée sous le menton, sortait comme une broche sur sa
                 # chemise, et ses mains tenaient autre chose)
-                fige = objet_cadre.filter(ImageFilter.MinFilter(3))
-                objet_cadre = fige
+                # --objet-mode (2026-10-25, l'auteur : « il ne sait pas bien construire autour » : figé en entier, l'objet
+                # recollé par-dessus effaçait tout doigt posé devant lui ; les mains restaient derrière, ou il dessinait un
+                # support dessous) : « fige » (l'objet entier figé), « coeur » (seule sa moitié nourriture figée et
+                # recollée, le papier libre sous ses doigts, et la passe des mains peut peindre dessus), « guide » (rien de
+                # recollé : la nourriture gardée aux deux tiers comme modèle, le reste libre ; il le redessine avec ses mains)
+                # « coeur » par défaut : sur la graine 3002 (axe 14), ses doigts se referment autour de l'objet, qui reste
+                # celui validé ; « guide » le perdait (la galette en fleur de lys, le sandwich en saucisse), 2026-10-25
+                mode_objet = options[options.index("--objet-mode") + 1] if "--objet-mode" in options else "coeur"
+                reglages["objet_mode"] = mode_objet
+                if mode_objet == "fige":
+                    fige = objet_cadre.filter(ImageFilter.MinFilter(3))
+                    objet_cadre = fige
+                else:
+                    a_obj = np.asarray(objet_cadre, np.float32) / 255
+                    ys, xs = np.nonzero(a_obj > 0.5)
+                    ux, uy = bout[0] - bouche[0], bout[1] - bouche[1]
+                    n_u = math.hypot(ux, uy) or 1.0
+                    t = ((xs - bouche[0]) * ux + (ys - bouche[1]) * uy) / n_u
+                    tt = np.ones_like(a_obj)
+                    tt[ys, xs] = t / max(float(t.max()), 1.0)
+                    nourriture = Image.fromarray((a_obj * (tt < 0.55) * 255).astype(np.uint8)).filter(ImageFilter.MinFilter(3))
+                    if mode_objet == "coeur":
+                        fige = nourriture
+                        objet_cadre = fige
+                    else:
+                        guide_objet = nourriture
+                        objet_cadre = None
             reglages["objet"] = {"bout": [round(v, 1) for v in bout], "bouche": [round(v, 1) for v in bouche],
                                  "largeur": round(largeur_objet, 1)}
         guide.save(etapes / "1_guide.png")
@@ -1199,7 +1225,13 @@ def main():
             elif fige is not None:
                 a_tout = np.asarray(calque.split()[3], np.float32) / 255
                 a_fige = np.asarray(fige, np.float32) / 255
-                masque_gris = Image.fromarray((255 * (1 - np.maximum(a_fige, 0.55 * a_tout))).astype(np.uint8)).filter(
+                reste = 0.2 if reglages.get("objet_mode") == "coeur" else 0.55   # le papier presque libre en « coeur »
+                masque_gris = Image.fromarray((255 * (1 - np.maximum(a_fige, reste * a_tout))).astype(np.uint8)).filter(
+                    ImageFilter.GaussianBlur(2))
+            elif guide_objet is not None:
+                a_tout = np.asarray(calque.split()[3], np.float32) / 255
+                a_guide = np.asarray(guide_objet, np.float32) / 255
+                masque_gris = Image.fromarray((255 * (1 - np.maximum(0.65 * a_guide, 0.2 * a_tout))).astype(np.uint8)).filter(
                     ImageFilter.GaussianBlur(2))
             gris = diffusion(guide, masque_gris, reglages["prompt_gris"], PERSOS[perso]["lora"], graine, 0.9,
                              f"{prefixe}_gris", negatif(perso, gris=True), pose_cadre)

@@ -1174,3 +1174,12 @@ Vérifié sur les pages officielles, le 2026-10-15 :
   rosées de sa chemise en sont exclues), d'au moins 120 px, partout dans la silhouette, puis élargie aux pixels grisâtres
   voisins sur 6 px (sinon un liseré gris clair restait autour). Vérifié sur 6 rendus sur gris avant (aucune tache sur les
   habits ni sur Maëlle assise), puis sur les duos : les trous montrent le décor ; les mesures inchangées.
+- **Les mains autour des vrais objets (l'auteur, 2026-10-25 : « il ne sait pas bien construire autour, regarde les mains »)**.
+  L'objet figé en entier puis recollé par-dessus effaçait tout doigt dessiné devant lui : les mains passaient derrière (Sky),
+  le modèle inventait une planche dessous (Maëlle 3001), ou écrasait la main sur le côté (Maëlle 3002). Deux façons de laisser
+  passer les doigts, essayées sur la même graine (3002, axe 14) : **« coeur »** (`--objet-mode coeur`, désormais par défaut :
+  seule la moitié nourriture est figée et recollée, le papier presque libre) : **ses doigts se referment autour de l'objet,
+  qui reste celui validé, pour Sky comme pour Maëlle** (netteté 95 et 94 %) ; « guide » (rien de recollé, la nourriture gardée
+  aux deux tiers comme modèle) : l'objet perdu, la galette de Sky devenue une fleur de lys (celle de sa chemise), le sandwich de
+  Maëlle une saucisse. « fige » reste en option. ComfyUI coupé 3 fois par le garde-fou pendant l'essai (Firefox ouvert) ; les
+  reprises ont suffi. Planche : `~/Téléchargements/bilan50_mains_autour_de_l_objet.png`.
